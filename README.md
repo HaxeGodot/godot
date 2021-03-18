@@ -1,3 +1,10 @@
+![](https://raw.github.com/HaxeGodot/godot/main/.github/logo.png)
+
+[![CI](https://img.shields.io/github/workflow/status/HaxeGodot/godot/Main.svg?logo=github)](https://github.com/HaxeGodot/godot/actions?query=workflow%3AMain)
+[![Haxelib Version](https://badgen.net/haxelib/v/godot)](https://lib.haxe.org/p/godot)
+[![Haxelib Downloads](https://badgen.net/haxelib/d/godot?color=blue)](https://lib.haxe.org/p/godot)
+[![Haxelib License](https://badgen.net/haxelib/license/godot)](LICENSE.md)
+
 # Haxe/C# externs for Godot 3.2.3
 
 Use the Godot engine with Haxe scripting, using the Haxe/C# target.
