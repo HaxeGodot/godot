@@ -36,6 +36,8 @@ Adding a new script is a bit awkward for the moment:
 * Create your Haxe script
 * Build your Haxe code, the C# file opened by Godot is replaced by the C# output of your Haxe script
 
+Godot will show many warnings about the Haxe generated C# code, this is because of <https://github.com/godotengine/godot/issues/28293>.
+
 A Godot editor plugin will be researched to streamline this process.
 
 See [Squash the Creeps 3D](https://github.com/HaxeGodot/squash-the-creeps-3d/) sample for an example of a Godot project using Haxe.
