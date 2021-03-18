@@ -1,0 +1,8 @@
+extraParams.hxml
+--cs build
+-D no-compilation
+-D net-ver=50
+-D doc-gen
+--macro include("godot")
+--xml documentation/godot.xml
+--cmd haxelib run dox -o documentation/out/ -i documentation/godot.xml -in godot --title "Haxe/C# Godot API reference" --toplevel-package godot -D version 3.2.3 -D source-path https://github.com/HaxeGodot/godot/blob/master/ -D website https://github.com/HaxeGodot/ -D description "Haxe/C# externs for the Godot game engine"

@@ -1,0 +1,10 @@
+{
+	"name": "godot",
+	"url" : "https://github.com/HaxeGodot/godot/",
+	"license": "MIT",
+	"tags": ["godot", "game", "extern", "cs", "3d"],
+	"description": "Haxe/C# externs for Godot",
+	"version": "3.2.3",
+	"releasenote": "Version 3.2.3",
+	"contributors": ["_ibilon"]
+}

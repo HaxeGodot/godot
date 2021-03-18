@@ -1,0 +1,273 @@
+// Automatically generated Godot externs: DO NOT EDIT
+// MIT licensed, see LICENSE.md
+package godot;
+
+import cs.system.*;
+
+/**
+A GraphNode is a container. Each GraphNode can have several input and output slots, sometimes referred to as ports, allowing connections between GraphNodes. To add a slot to GraphNode, add any `godot.Control`-derived child node to it.
+
+After adding at least one child to GraphNode new sections will be automatically created in the Inspector called 'Slot'. When 'Slot' is expanded you will see list with index number for each slot. You can click on each of them to expand further.
+
+In the Inspector you can enable (show) or disable (hide) slots. By default all slots are disabled so you may not see any slots on your GraphNode initially. You can assign a type to each slot. Only slots of the same type will be able to connect to each other. You can also assign colors to slots. A tuple of input and output slots is defined for each GUI element included in the GraphNode. Input connections are on the left and output connections are on the right side of GraphNode. Only enabled slots are counted as connections.
+**/
+@:libType
+@:csNative
+@:native("Godot.GraphNode")
+@:autoBuild(godot.Godot.buildUserClass())
+extern class GraphNode extends godot.Container {
+	/**		
+		Sets the overlay shown above the GraphNode. See `godot.GraphNode_OverlayEnum`.
+	**/
+	@:native("Overlay")
+	public var overlay:godot.GraphNode_OverlayEnum;
+
+	/**		
+		If `true`, the GraphNode is a comment node.
+	**/
+	@:native("Comment")
+	public var comment:Bool;
+
+	/**		
+		If `true`, the GraphNode is selected.
+	**/
+	@:native("Selected")
+	public var selected:Bool;
+
+	/**		
+		If `true`, the user can resize the GraphNode.
+		
+		Note: Dragging the handle will only emit the `resize_request` signal, the GraphNode needs to be resized manually.
+	**/
+	@:native("Resizable")
+	public var resizable:Bool;
+
+	/**		
+		If `true`, the close button will be visible.
+		
+		Note: Pressing it will only emit the `close_request` signal, the GraphNode needs to be removed manually.
+	**/
+	@:native("ShowClose")
+	public var showClose:Bool;
+
+	/**		
+		The offset of the GraphNode, relative to the scroll offset of the `godot.GraphEdit`.
+		
+		Note: You cannot use position directly, as `godot.GraphEdit` is a `godot.Container`.
+	**/
+	@:native("Offset")
+	public var offset:godot.Vector2;
+
+	/**		
+		The text displayed in the GraphNode's title bar.
+	**/
+	@:native("Title")
+	public var title:std.String;
+
+	@:native("new")
+	public function new():Void;
+
+	@:native("SetTitle")
+	public function setTitle(title:std.String):Void;
+
+	@:native("GetTitle")
+	public function getTitle():std.String;
+
+	#if doc_gen
+	/**		
+		Sets properties of the slot with ID `idx`.
+		
+		If `enable_left`/`right`, a port will appear and the slot will be able to be connected from this side.
+		
+		`type_left`/`right` is an arbitrary type of the port. Only ports with the same type values can be connected.
+		
+		`color_left`/`right` is the tint of the port's icon on this side.
+		
+		`custom_left`/`right` is a custom texture for this side's port.
+		
+		Note: This method only sets properties of the slot. To create the slot, add a `godot.Control`-derived child to the GraphNode.
+	**/
+	@:native("SetSlot")
+	public function setSlot(idx:Int, enableLeft:Bool, typeLeft:Int, colorLeft:godot.Color, enableRight:Bool, typeRight:Int, colorRight:godot.Color, ?customLeft:godot.Texture, ?customRight:godot.Texture):Void;
+	#else
+	/**		
+		Sets properties of the slot with ID `idx`.
+		
+		If `enable_left`/`right`, a port will appear and the slot will be able to be connected from this side.
+		
+		`type_left`/`right` is an arbitrary type of the port. Only ports with the same type values can be connected.
+		
+		`color_left`/`right` is the tint of the port's icon on this side.
+		
+		`custom_left`/`right` is a custom texture for this side's port.
+		
+		Note: This method only sets properties of the slot. To create the slot, add a `godot.Control`-derived child to the GraphNode.
+	**/
+	@:native("SetSlot")
+	public overload function setSlot(idx:Int, enableLeft:Bool, typeLeft:Int, colorLeft:godot.Color, enableRight:Bool, typeRight:Int, colorRight:godot.Color):Void;
+
+	/**		
+		Sets properties of the slot with ID `idx`.
+		
+		If `enable_left`/`right`, a port will appear and the slot will be able to be connected from this side.
+		
+		`type_left`/`right` is an arbitrary type of the port. Only ports with the same type values can be connected.
+		
+		`color_left`/`right` is the tint of the port's icon on this side.
+		
+		`custom_left`/`right` is a custom texture for this side's port.
+		
+		Note: This method only sets properties of the slot. To create the slot, add a `godot.Control`-derived child to the GraphNode.
+	**/
+	@:native("SetSlot")
+	public overload function setSlot(idx:Int, enableLeft:Bool, typeLeft:Int, colorLeft:godot.Color, enableRight:Bool, typeRight:Int, colorRight:godot.Color, customLeft:godot.Texture):Void;
+
+	/**		
+		Sets properties of the slot with ID `idx`.
+		
+		If `enable_left`/`right`, a port will appear and the slot will be able to be connected from this side.
+		
+		`type_left`/`right` is an arbitrary type of the port. Only ports with the same type values can be connected.
+		
+		`color_left`/`right` is the tint of the port's icon on this side.
+		
+		`custom_left`/`right` is a custom texture for this side's port.
+		
+		Note: This method only sets properties of the slot. To create the slot, add a `godot.Control`-derived child to the GraphNode.
+	**/
+	@:native("SetSlot")
+	public overload function setSlot(idx:Int, enableLeft:Bool, typeLeft:Int, colorLeft:godot.Color, enableRight:Bool, typeRight:Int, colorRight:godot.Color, customLeft:godot.Texture, customRight:godot.Texture):Void;
+	#end
+
+	/**		
+		Disables input and output slot whose index is `idx`.
+	**/
+	@:native("ClearSlot")
+	public function clearSlot(idx:Int):Void;
+
+	/**		
+		Disables all input and output slots of the GraphNode.
+	**/
+	@:native("ClearAllSlots")
+	public function clearAllSlots():Void;
+
+	/**		
+		Returns `true` if left (input) slot `idx` is enabled, `false` otherwise.
+	**/
+	@:native("IsSlotEnabledLeft")
+	public function isSlotEnabledLeft(idx:Int):Bool;
+
+	/**		
+		Returns the (integer) type of left (input) `idx` slot.
+	**/
+	@:native("GetSlotTypeLeft")
+	public function getSlotTypeLeft(idx:Int):Int;
+
+	/**		
+		Returns the color set to `idx` left (input) slot.
+	**/
+	@:native("GetSlotColorLeft")
+	public function getSlotColorLeft(idx:Int):godot.Color;
+
+	/**		
+		Returns `true` if right (output) slot `idx` is enabled, `false` otherwise.
+	**/
+	@:native("IsSlotEnabledRight")
+	public function isSlotEnabledRight(idx:Int):Bool;
+
+	/**		
+		Returns the (integer) type of right (output) `idx` slot.
+	**/
+	@:native("GetSlotTypeRight")
+	public function getSlotTypeRight(idx:Int):Int;
+
+	/**		
+		Returns the color set to `idx` right (output) slot.
+	**/
+	@:native("GetSlotColorRight")
+	public function getSlotColorRight(idx:Int):godot.Color;
+
+	@:native("SetOffset")
+	public function setOffset(offset:godot.Vector2):Void;
+
+	@:native("GetOffset")
+	public function getOffset():godot.Vector2;
+
+	@:native("SetComment")
+	public function setComment(comment:Bool):Void;
+
+	@:native("IsComment")
+	public function isComment():Bool;
+
+	@:native("SetResizable")
+	public function setResizable(resizable:Bool):Void;
+
+	@:native("IsResizable")
+	public function isResizable():Bool;
+
+	@:native("SetSelected")
+	public function setSelected(selected:Bool):Void;
+
+	@:native("IsSelected")
+	public function isSelected():Bool;
+
+	/**		
+		Returns the number of enabled output slots (connections) of the GraphNode.
+	**/
+	@:native("GetConnectionOutputCount")
+	public function getConnectionOutputCount():Int;
+
+	/**		
+		Returns the number of enabled input slots (connections) to the GraphNode.
+	**/
+	@:native("GetConnectionInputCount")
+	public function getConnectionInputCount():Int;
+
+	/**		
+		Returns the position of the output connection `idx`.
+	**/
+	@:native("GetConnectionOutputPosition")
+	public function getConnectionOutputPosition(idx:Int):godot.Vector2;
+
+	/**		
+		Returns the type of the output connection `idx`.
+	**/
+	@:native("GetConnectionOutputType")
+	public function getConnectionOutputType(idx:Int):Int;
+
+	/**		
+		Returns the color of the output connection `idx`.
+	**/
+	@:native("GetConnectionOutputColor")
+	public function getConnectionOutputColor(idx:Int):godot.Color;
+
+	/**		
+		Returns the position of the input connection `idx`.
+	**/
+	@:native("GetConnectionInputPosition")
+	public function getConnectionInputPosition(idx:Int):godot.Vector2;
+
+	/**		
+		Returns the type of the input connection `idx`.
+	**/
+	@:native("GetConnectionInputType")
+	public function getConnectionInputType(idx:Int):Int;
+
+	/**		
+		Returns the color of the input connection `idx`.
+	**/
+	@:native("GetConnectionInputColor")
+	public function getConnectionInputColor(idx:Int):godot.Color;
+
+	@:native("SetShowCloseButton")
+	public function setShowCloseButton(show:Bool):Void;
+
+	@:native("IsCloseButtonVisible")
+	public function isCloseButtonVisible():Bool;
+
+	@:native("SetOverlay")
+	public function setOverlay(overlay:godot.GraphNode_OverlayEnum):Void;
+
+	@:native("GetOverlay")
+	public function getOverlay():godot.GraphNode_OverlayEnum;
+}
