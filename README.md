@@ -9,6 +9,8 @@
 
 Use the Godot engine with Haxe scripting, using the Haxe/C# target.
 
+Access the online documentation at <https://haxegodot.github.io/godot/>.
+
 ## How to use
 
 Setup a C# project in Godot to have the `.csproj` file generated, and in `<PropertyGroups>` set:
