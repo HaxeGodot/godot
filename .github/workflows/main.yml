@@ -13,9 +13,9 @@ jobs:
         submodules: recursive
 
     - name: Setup haxe
-      uses: haxeui/haxeui-core/.github/actions/haxe@master
+      uses: krdlab/setup-haxe@v1.1.5
       with:
-        haxe-version: 4.1.1
+        haxe-version: 4.2.1
 
     - name: Setup haxe dependencies
       run: |
@@ -24,7 +24,7 @@ jobs:
 
     - name: Build and deploy documentation
       run: |
-        haxe doc.hxml
+        haxe doc.hxml || true
         cd documentation/out
         git init
         git config --global user.name "${{ github.actor }}"
