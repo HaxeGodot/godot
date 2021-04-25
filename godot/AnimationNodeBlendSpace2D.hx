@@ -16,6 +16,16 @@ You can add vertices to the blend space with `godot.AnimationNodeBlendSpace2D.ad
 @:native("Godot.AnimationNodeBlendSpace2D")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class AnimationNodeBlendSpace2D extends godot.AnimationRootNode {
+	/**
+		`triangles_updated` signal.
+		
+		Emitted every time the blend space's triangles are created, removed, or when one of their vertices changes position.
+	**/
+	public var onTrianglesUpdated(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onTrianglesUpdated():Signal<Void->Void> {
+		return new Signal(this, "triangles_updated", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		Controls the interpolation between animations. See `godot.AnimationNodeBlendSpace2D_BlendModeEnum` constants.
 	**/

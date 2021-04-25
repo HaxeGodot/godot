@@ -18,6 +18,14 @@ Internally, a GridMap is split into a sparse collection of octants for efficient
 @:native("Godot.GridMap")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class GridMap extends godot.Spatial {
+	/**
+		`cell_size_changed` signal.
+	**/
+	public var onCellSizeChanged(get, never):Signal<(cellSize:Vector3)->Void>;
+	@:dox(hide) inline function get_onCellSizeChanged():Signal<(cellSize:Vector3)->Void> {
+		return new Signal(this, "cell_size_changed", Signal.SignalHandlerVector3Void.connectSignal, Signal.SignalHandlerVector3Void.disconnectSignal, Signal.SignalHandlerVector3Void.isSignalConnected);
+	}
+
 	/**		
 		The physics layers this GridMap detects collisions in. See [https://docs.godotengine.org/en/latest/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/

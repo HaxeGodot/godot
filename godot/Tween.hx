@@ -32,6 +32,46 @@ Many of the methods accept `trans_type` and `ease_type`. The first accepts an `g
 @:native("Godot.Tween")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Tween extends godot.Node {
+	/**
+		`tween_all_completed` signal.
+		
+		Emitted when all processes in a tween end.
+	**/
+	public var onTweenAllCompleted(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onTweenAllCompleted():Signal<Void->Void> {
+		return new Signal(this, "tween_all_completed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`tween_completed` signal.
+		
+		Emitted when a tween ends.
+	**/
+	public var onTweenCompleted(get, never):Signal<(object:godot.Object, key:NodePath)->Void>;
+	@:dox(hide) inline function get_onTweenCompleted():Signal<(object:godot.Object, key:NodePath)->Void> {
+		return new Signal(this, "tween_completed", Signal.SignalHandlerObjectNodePathVoid.connectSignal, Signal.SignalHandlerObjectNodePathVoid.disconnectSignal, Signal.SignalHandlerObjectNodePathVoid.isSignalConnected);
+	}
+
+	/**
+		`tween_started` signal.
+		
+		Emitted when a tween starts.
+	**/
+	public var onTweenStarted(get, never):Signal<(object:godot.Object, key:NodePath)->Void>;
+	@:dox(hide) inline function get_onTweenStarted():Signal<(object:godot.Object, key:NodePath)->Void> {
+		return new Signal(this, "tween_started", Signal.SignalHandlerObjectNodePathVoid.connectSignal, Signal.SignalHandlerObjectNodePathVoid.disconnectSignal, Signal.SignalHandlerObjectNodePathVoid.isSignalConnected);
+	}
+
+	/**
+		`tween_step` signal.
+		
+		Emitted at each step of the animation.
+	**/
+	public var onTweenStep(get, never):Signal<(object:godot.Object, key:NodePath, elapsed:Float, value:godot.Object)->Void>;
+	@:dox(hide) inline function get_onTweenStep():Signal<(object:godot.Object, key:NodePath, elapsed:Float, value:godot.Object)->Void> {
+		return new Signal(this, "tween_step", Signal.SignalHandlerObjectNodePathFloatObjectVoid.connectSignal, Signal.SignalHandlerObjectNodePathFloatObjectVoid.disconnectSignal, Signal.SignalHandlerObjectNodePathFloatObjectVoid.isSignalConnected);
+	}
+
 	/**		
 		The tween's speed multiplier. For example, set it to `1.0` for normal speed, `2.0` for two times normal speed, or `0.5` for half of the normal speed. A value of `0` pauses the animation, but see also `godot.Tween.setActive` or `godot.Tween.stopAll` for this.
 	**/

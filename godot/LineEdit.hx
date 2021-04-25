@@ -50,6 +50,36 @@ On macOS, some extra keyboard shortcuts are available:
 @:native("Godot.LineEdit")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class LineEdit extends godot.Control {
+	/**
+		`text_change_rejected` signal.
+		
+		Emitted when trying to append text that would overflow the `maxLength`.
+	**/
+	public var onTextChangeRejected(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onTextChangeRejected():Signal<Void->Void> {
+		return new Signal(this, "text_change_rejected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`text_changed` signal.
+		
+		Emitted when the text changes.
+	**/
+	public var onTextChanged(get, never):Signal<(newText:std.String)->Void>;
+	@:dox(hide) inline function get_onTextChanged():Signal<(newText:std.String)->Void> {
+		return new Signal(this, "text_changed", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
+	}
+
+	/**
+		`text_entered` signal.
+		
+		Emitted when the user presses `KEY_ENTER` on the `LineEdit`.
+	**/
+	public var onTextEntered(get, never):Signal<(newText:std.String)->Void>;
+	@:dox(hide) inline function get_onTextEntered():Signal<(newText:std.String)->Void> {
+		return new Signal(this, "text_entered", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
+	}
+
 	/**		
 		The cursor's position inside the `godot.LineEdit`. When set, the text may scroll to accommodate it.
 	**/

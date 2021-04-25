@@ -80,6 +80,16 @@ Note: When performing HTTP requests from a project exported to HTML5, keep in mi
 @:native("Godot.HTTPRequest")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class HTTPRequest extends godot.Node {
+	/**
+		`request_completed` signal.
+		
+		Emitted when a request is completed.
+	**/
+	public var onRequestCompleted(get, never):Signal<(result:Int, responseCode:Int, headers:std.Array<std.String>, body:std.Array<cs.types.UInt8>)->Void>;
+	@:dox(hide) inline function get_onRequestCompleted():Signal<(result:Int, responseCode:Int, headers:std.Array<std.String>, body:std.Array<cs.types.UInt8>)->Void> {
+		return new Signal(this, "request_completed", Signal.SignalHandlerIntIntPoolStringArrayPoolByteArrayVoid.connectSignal, Signal.SignalHandlerIntIntPoolStringArrayPoolByteArrayVoid.disconnectSignal, Signal.SignalHandlerIntIntPoolStringArrayPoolByteArrayVoid.isSignalConnected);
+	}
+
 	@:native("Timeout")
 	public var timeout:Int;
 

@@ -12,6 +12,26 @@ This dialog is useful for small notifications to the user about an event. It can
 @:native("Godot.AcceptDialog")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class AcceptDialog extends godot.WindowDialog {
+	/**
+		`confirmed` signal.
+		
+		Emitted when the dialog is accepted, i.e. the OK button is pressed.
+	**/
+	public var onConfirmed(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onConfirmed():Signal<Void->Void> {
+		return new Signal(this, "confirmed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`custom_action` signal.
+		
+		Emitted when a custom button is pressed. See `addButton`.
+	**/
+	public var onCustomAction(get, never):Signal<(action:std.String)->Void>;
+	@:dox(hide) inline function get_onCustomAction():Signal<(action:std.String)->Void> {
+		return new Signal(this, "custom_action", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
+	}
+
 	/**		
 		Sets autowrapping for the text in the dialog.
 	**/

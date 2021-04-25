@@ -23,6 +23,16 @@ print("Timer ended.")
 @:native("Godot.SceneTreeTimer")
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class SceneTreeTimer extends godot.Reference {
+	/**
+		`timeout` signal.
+		
+		Emitted when the timer reaches 0.
+	**/
+	public var onTimeout(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onTimeout():Signal<Void->Void> {
+		return new Signal(this, "timeout", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The time remaining.
 	**/

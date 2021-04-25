@@ -12,6 +12,16 @@ Node used for displaying a `godot.Mesh` in 2D. Can be constructed from an existi
 @:native("Godot.MeshInstance2D")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class MeshInstance2D extends godot.Node2D {
+	/**
+		`texture_changed` signal.
+		
+		Emitted when the `texture` is changed.
+	**/
+	public var onTextureChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onTextureChanged():Signal<Void->Void> {
+		return new Signal(this, "texture_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The normal map that will be used if using the default `godot.CanvasItemMaterial`.
 		

@@ -14,6 +14,16 @@ New items can be created inside this `godot.PopupMenu` using `get_popup().add_it
 @:native("Godot.MenuButton")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class MenuButton extends godot.Button {
+	/**
+		`about_to_show` signal.
+		
+		Emitted when `PopupMenu` of this MenuButton is about to show.
+	**/
+	public var onAboutToShow(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onAboutToShow():Signal<Void->Void> {
+		return new Signal(this, "about_to_show", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		If `true`, when the cursor hovers above another `godot.MenuButton` within the same parent which also has `switch_on_hover` enabled, it will close the current `godot.MenuButton` and open the other one.
 	**/

@@ -26,6 +26,16 @@ Animations are just data containers, and must be added to nodes such as an `godo
 @:native("Godot.Animation")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Animation extends godot.Resource {
+	/**
+		`tracks_changed` signal.
+		
+		Emitted when there's a change in the list of tracks, e.g. tracks are added, moved or have changed paths.
+	**/
+	public var onTracksChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onTracksChanged():Signal<Void->Void> {
+		return new Signal(this, "tracks_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The animation step value.
 	**/
@@ -331,7 +341,7 @@ extern class Animation extends godot.Resource {
 		@param outHandle If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("BezierTrackInsertKey")
-	public function bezierTrackInsertKey(trackIdx:Int, time:Single, value:Single, ?inHandle:Nullable1<godot.Vector2>, ?outHandle:Nullable1<godot.Vector2>):Int;
+	public function bezierTrackInsertKey(trackIdx:Int, time:Single, value:Single, ?inHandle:Null<godot.Vector2>, ?outHandle:Null<godot.Vector2>):Int;
 	#else
 	/**		
 		Inserts a Bezier Track key at the given `time` in seconds. The `track_idx` must be the index of a Bezier Track.

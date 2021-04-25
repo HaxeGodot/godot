@@ -29,6 +29,166 @@ To iterate over all the `godot.TreeItem` objects in a `godot.Tree` object, use `
 @:native("Godot.Tree")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Tree extends godot.Control {
+	/**
+		`button_pressed` signal.
+		
+		Emitted when a button on the tree was pressed (see `treeItem.addButton`).
+	**/
+	public var onButtonPressed(get, never):Signal<(item:TreeItem, column:Int, id:Int)->Void>;
+	@:dox(hide) inline function get_onButtonPressed():Signal<(item:TreeItem, column:Int, id:Int)->Void> {
+		return new Signal(this, "button_pressed", Signal.SignalHandlerTreeItemIntIntVoid.connectSignal, Signal.SignalHandlerTreeItemIntIntVoid.disconnectSignal, Signal.SignalHandlerTreeItemIntIntVoid.isSignalConnected);
+	}
+
+	/**
+		`cell_selected` signal.
+		
+		Emitted when a cell is selected.
+	**/
+	public var onCellSelected(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onCellSelected():Signal<Void->Void> {
+		return new Signal(this, "cell_selected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`column_title_pressed` signal.
+		
+		Emitted when a column's title is pressed.
+	**/
+	public var onColumnTitlePressed(get, never):Signal<(column:Int)->Void>;
+	@:dox(hide) inline function get_onColumnTitlePressed():Signal<(column:Int)->Void> {
+		return new Signal(this, "column_title_pressed", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
+	/**
+		`custom_popup_edited` signal.
+		
+		Emitted when a cell with the `CELL_MODE_CUSTOM` is clicked to be edited.
+	**/
+	public var onCustomPopupEdited(get, never):Signal<(arrowClicked:Bool)->Void>;
+	@:dox(hide) inline function get_onCustomPopupEdited():Signal<(arrowClicked:Bool)->Void> {
+		return new Signal(this, "custom_popup_edited", Signal.SignalHandlerBoolVoid.connectSignal, Signal.SignalHandlerBoolVoid.disconnectSignal, Signal.SignalHandlerBoolVoid.isSignalConnected);
+	}
+
+	/**
+		`empty_rmb` signal.
+		
+		Emitted when the right mouse button is pressed in the empty space of the tree.
+	**/
+	public var onEmptyRmb(get, never):Signal<(position:Vector2)->Void>;
+	@:dox(hide) inline function get_onEmptyRmb():Signal<(position:Vector2)->Void> {
+		return new Signal(this, "empty_rmb", Signal.SignalHandlerVector2Void.connectSignal, Signal.SignalHandlerVector2Void.disconnectSignal, Signal.SignalHandlerVector2Void.isSignalConnected);
+	}
+
+	/**
+		`empty_tree_rmb_selected` signal.
+		
+		Emitted when the right mouse button is pressed if right mouse button selection is active and the tree is empty.
+	**/
+	public var onEmptyTreeRmbSelected(get, never):Signal<(position:Vector2)->Void>;
+	@:dox(hide) inline function get_onEmptyTreeRmbSelected():Signal<(position:Vector2)->Void> {
+		return new Signal(this, "empty_tree_rmb_selected", Signal.SignalHandlerVector2Void.connectSignal, Signal.SignalHandlerVector2Void.disconnectSignal, Signal.SignalHandlerVector2Void.isSignalConnected);
+	}
+
+	/**
+		`item_activated` signal.
+		
+		Emitted when an item's label is double-clicked.
+	**/
+	public var onItemActivated(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onItemActivated():Signal<Void->Void> {
+		return new Signal(this, "item_activated", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`item_collapsed` signal.
+		
+		Emitted when an item is collapsed by a click on the folding arrow.
+	**/
+	public var onItemCollapsed(get, never):Signal<(item:TreeItem)->Void>;
+	@:dox(hide) inline function get_onItemCollapsed():Signal<(item:TreeItem)->Void> {
+		return new Signal(this, "item_collapsed", Signal.SignalHandlerTreeItemVoid.connectSignal, Signal.SignalHandlerTreeItemVoid.disconnectSignal, Signal.SignalHandlerTreeItemVoid.isSignalConnected);
+	}
+
+	/**
+		`item_custom_button_pressed` signal.
+		
+		Emitted when a custom button is pressed (i.e. in a `CELL_MODE_CUSTOM` mode cell).
+	**/
+	public var onItemCustomButtonPressed(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onItemCustomButtonPressed():Signal<Void->Void> {
+		return new Signal(this, "item_custom_button_pressed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`item_double_clicked` signal.
+		
+		Emitted when an item's icon is double-clicked.
+	**/
+	public var onItemDoubleClicked(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onItemDoubleClicked():Signal<Void->Void> {
+		return new Signal(this, "item_double_clicked", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`item_edited` signal.
+		
+		Emitted when an item is edited.
+	**/
+	public var onItemEdited(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onItemEdited():Signal<Void->Void> {
+		return new Signal(this, "item_edited", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`item_rmb_edited` signal.
+		
+		Emitted when an item is edited using the right mouse button.
+	**/
+	public var onItemRmbEdited(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onItemRmbEdited():Signal<Void->Void> {
+		return new Signal(this, "item_rmb_edited", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`item_rmb_selected` signal.
+		
+		Emitted when an item is selected with the right mouse button.
+	**/
+	public var onItemRmbSelected(get, never):Signal<(position:Vector2)->Void>;
+	@:dox(hide) inline function get_onItemRmbSelected():Signal<(position:Vector2)->Void> {
+		return new Signal(this, "item_rmb_selected", Signal.SignalHandlerVector2Void.connectSignal, Signal.SignalHandlerVector2Void.disconnectSignal, Signal.SignalHandlerVector2Void.isSignalConnected);
+	}
+
+	/**
+		`item_selected` signal.
+		
+		Emitted when an item is selected.
+	**/
+	public var onItemSelected(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onItemSelected():Signal<Void->Void> {
+		return new Signal(this, "item_selected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`multi_selected` signal.
+		
+		Emitted instead of `item_selected` if `select_mode` is `SELECT_MULTI`.
+	**/
+	public var onMultiSelected(get, never):Signal<(item:TreeItem, column:Int, selected:Bool)->Void>;
+	@:dox(hide) inline function get_onMultiSelected():Signal<(item:TreeItem, column:Int, selected:Bool)->Void> {
+		return new Signal(this, "multi_selected", Signal.SignalHandlerTreeItemIntBoolVoid.connectSignal, Signal.SignalHandlerTreeItemIntBoolVoid.disconnectSignal, Signal.SignalHandlerTreeItemIntBoolVoid.isSignalConnected);
+	}
+
+	/**
+		`nothing_selected` signal.
+		
+		Emitted when a left mouse button click does not select any item.
+	**/
+	public var onNothingSelected(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onNothingSelected():Signal<Void->Void> {
+		return new Signal(this, "nothing_selected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		Allows single or multiple selection. See the `godot.Tree_SelectModeEnum` constants.
 	**/

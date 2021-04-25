@@ -36,6 +36,16 @@ Note: Unlike references to a `godot.Reference`, references to an Object stored i
 @:native("Godot.Object")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Object implements cs.system.IDisposable {
+	/**
+		`script_changed` signal.
+		
+		Emitted whenever the object's script is changed.
+	**/
+	public var onScriptChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onScriptChanged():Signal<Void->Void> {
+		return new Signal(this, "script_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		Gets a new `godot.DynamicGodotObject` associated with this instance.
 	**/

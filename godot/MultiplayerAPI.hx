@@ -16,6 +16,66 @@ It is possible to override the MultiplayerAPI instance used by specific Nodes by
 @:native("Godot.MultiplayerAPI")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class MultiplayerAPI extends godot.Reference {
+	/**
+		`connected_to_server` signal.
+		
+		Emitted when this MultiplayerAPI's `networkPeer` successfully connected to a server. Only emitted on clients.
+	**/
+	public var onConnectedToServer(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onConnectedToServer():Signal<Void->Void> {
+		return new Signal(this, "connected_to_server", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`connection_failed` signal.
+		
+		Emitted when this MultiplayerAPI's `networkPeer` fails to establish a connection to a server. Only emitted on clients.
+	**/
+	public var onConnectionFailed(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onConnectionFailed():Signal<Void->Void> {
+		return new Signal(this, "connection_failed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`network_peer_connected` signal.
+		
+		Emitted when this MultiplayerAPI's `networkPeer` connects with a new peer. ID is the peer ID of the new peer. Clients get notified when other clients connect to the same server. Upon connecting to a server, a client also receives this signal for the server (with ID being 1).
+	**/
+	public var onNetworkPeerConnected(get, never):Signal<(id:Int)->Void>;
+	@:dox(hide) inline function get_onNetworkPeerConnected():Signal<(id:Int)->Void> {
+		return new Signal(this, "network_peer_connected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
+	/**
+		`network_peer_disconnected` signal.
+		
+		Emitted when this MultiplayerAPI's `networkPeer` disconnects from a peer. Clients get notified when other clients disconnect from the same server.
+	**/
+	public var onNetworkPeerDisconnected(get, never):Signal<(id:Int)->Void>;
+	@:dox(hide) inline function get_onNetworkPeerDisconnected():Signal<(id:Int)->Void> {
+		return new Signal(this, "network_peer_disconnected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
+	/**
+		`network_peer_packet` signal.
+		
+		Emitted when this MultiplayerAPI's `networkPeer` receive a `packet` with custom data (see `sendBytes`). ID is the peer ID of the peer that sent the packet.
+	**/
+	public var onNetworkPeerPacket(get, never):Signal<(id:Int, packet:std.Array<cs.types.UInt8>)->Void>;
+	@:dox(hide) inline function get_onNetworkPeerPacket():Signal<(id:Int, packet:std.Array<cs.types.UInt8>)->Void> {
+		return new Signal(this, "network_peer_packet", Signal.SignalHandlerIntPoolByteArrayVoid.connectSignal, Signal.SignalHandlerIntPoolByteArrayVoid.disconnectSignal, Signal.SignalHandlerIntPoolByteArrayVoid.isSignalConnected);
+	}
+
+	/**
+		`server_disconnected` signal.
+		
+		Emitted when this MultiplayerAPI's `networkPeer` disconnects from server. Only emitted on clients.
+	**/
+	public var onServerDisconnected(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onServerDisconnected():Signal<Void->Void> {
+		return new Signal(this, "server_disconnected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The peer object to handle the RPC system (effectively enabling networking when set). Depending on the peer itself, the MultiplayerAPI will become a network server (check with `godot.MultiplayerAPI.isNetworkServer`) and will set root node's network mode to master, or it will become a regular peer with root node set to puppet. All child nodes are set to inherit the network mode by default. Handling of networking-related events (connection, disconnection, new clients) is done by connecting to MultiplayerAPI's signals.
 	**/

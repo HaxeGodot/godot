@@ -18,6 +18,36 @@ To hide only a tab's content, nest the content inside a child `godot.Control`, s
 @:native("Godot.TabContainer")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class TabContainer extends godot.Container {
+	/**
+		`pre_popup_pressed` signal.
+		
+		Emitted when the `TabContainer`'s `Popup` button is clicked. See `setPopup` for details.
+	**/
+	public var onPrePopupPressed(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onPrePopupPressed():Signal<Void->Void> {
+		return new Signal(this, "pre_popup_pressed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`tab_changed` signal.
+		
+		Emitted when switching to another tab.
+	**/
+	public var onTabChanged(get, never):Signal<(tab:Int)->Void>;
+	@:dox(hide) inline function get_onTabChanged():Signal<(tab:Int)->Void> {
+		return new Signal(this, "tab_changed", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
+	/**
+		`tab_selected` signal.
+		
+		Emitted when a tab is selected, even if it is the current tab.
+	**/
+	public var onTabSelected(get, never):Signal<(tab:Int)->Void>;
+	@:dox(hide) inline function get_onTabSelected():Signal<(tab:Int)->Void> {
+		return new Signal(this, "tab_selected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
 	/**		
 		If `true`, children `godot.Control` nodes that are hidden have their minimum size take into account in the total, instead of only the currently visible one.
 	**/

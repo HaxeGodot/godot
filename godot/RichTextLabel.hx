@@ -16,6 +16,36 @@ Note: Unlike `godot.Label`, RichTextLabel doesn't have a property to horizontall
 @:native("Godot.RichTextLabel")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class RichTextLabel extends godot.Control {
+	/**
+		`meta_clicked` signal.
+		
+		Triggered when the user clicks on content between meta tags. If the meta is defined in text, e.g. ``url={"data"="hi"}`hi`/url``, then the parameter for this signal will be a `String` type. If a particular type or an object is desired, the `pushMeta` method must be used to manually insert the data into the tag stack.
+	**/
+	public var onMetaClicked(get, never):Signal<(meta:Any)->Void>;
+	@:dox(hide) inline function get_onMetaClicked():Signal<(meta:Any)->Void> {
+		return new Signal(this, "meta_clicked", Signal.SignalHandlerVariantVoid.connectSignal, Signal.SignalHandlerVariantVoid.disconnectSignal, Signal.SignalHandlerVariantVoid.isSignalConnected);
+	}
+
+	/**
+		`meta_hover_ended` signal.
+		
+		Triggers when the mouse exits a meta tag.
+	**/
+	public var onMetaHoverEnded(get, never):Signal<(meta:Any)->Void>;
+	@:dox(hide) inline function get_onMetaHoverEnded():Signal<(meta:Any)->Void> {
+		return new Signal(this, "meta_hover_ended", Signal.SignalHandlerVariantVoid.connectSignal, Signal.SignalHandlerVariantVoid.disconnectSignal, Signal.SignalHandlerVariantVoid.isSignalConnected);
+	}
+
+	/**
+		`meta_hover_started` signal.
+		
+		Triggers when the mouse enters a meta tag.
+	**/
+	public var onMetaHoverStarted(get, never):Signal<(meta:Any)->Void>;
+	@:dox(hide) inline function get_onMetaHoverStarted():Signal<(meta:Any)->Void> {
+		return new Signal(this, "meta_hover_started", Signal.SignalHandlerVariantVoid.connectSignal, Signal.SignalHandlerVariantVoid.disconnectSignal, Signal.SignalHandlerVariantVoid.isSignalConnected);
+	}
+
 	/**		
 		The currently installed custom effects. This is an array of `godot.RichTextEffect`s.
 		

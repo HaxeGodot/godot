@@ -12,6 +12,36 @@ import cs.system.*;
 @:native("Godot.ColorPicker")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ColorPicker extends godot.BoxContainer {
+	/**
+		`color_changed` signal.
+		
+		Emitted when the color is changed.
+	**/
+	public var onColorChanged(get, never):Signal<(color:Color)->Void>;
+	@:dox(hide) inline function get_onColorChanged():Signal<(color:Color)->Void> {
+		return new Signal(this, "color_changed", Signal.SignalHandlerColorVoid.connectSignal, Signal.SignalHandlerColorVoid.disconnectSignal, Signal.SignalHandlerColorVoid.isSignalConnected);
+	}
+
+	/**
+		`preset_added` signal.
+		
+		Emitted when a preset is added.
+	**/
+	public var onPresetAdded(get, never):Signal<(color:Color)->Void>;
+	@:dox(hide) inline function get_onPresetAdded():Signal<(color:Color)->Void> {
+		return new Signal(this, "preset_added", Signal.SignalHandlerColorVoid.connectSignal, Signal.SignalHandlerColorVoid.disconnectSignal, Signal.SignalHandlerColorVoid.isSignalConnected);
+	}
+
+	/**
+		`preset_removed` signal.
+		
+		Emitted when a preset is removed.
+	**/
+	public var onPresetRemoved(get, never):Signal<(color:Color)->Void>;
+	@:dox(hide) inline function get_onPresetRemoved():Signal<(color:Color)->Void> {
+		return new Signal(this, "preset_removed", Signal.SignalHandlerColorVoid.connectSignal, Signal.SignalHandlerColorVoid.disconnectSignal, Signal.SignalHandlerColorVoid.isSignalConnected);
+	}
+
 	/**		
 		If `true`, saved color presets are visible.
 	**/

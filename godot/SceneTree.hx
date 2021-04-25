@@ -16,6 +16,156 @@ You can also use the `godot.SceneTree` to organize your nodes into groups: every
 @:native("Godot.SceneTree")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class SceneTree extends godot.MainLoop {
+	/**
+		`connected_to_server` signal.
+		
+		Emitted whenever this `SceneTree`'s `networkPeer` successfully connected to a server. Only emitted on clients.
+	**/
+	public var onConnectedToServer(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onConnectedToServer():Signal<Void->Void> {
+		return new Signal(this, "connected_to_server", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`connection_failed` signal.
+		
+		Emitted whenever this `SceneTree`'s `networkPeer` fails to establish a connection to a server. Only emitted on clients.
+	**/
+	public var onConnectionFailed(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onConnectionFailed():Signal<Void->Void> {
+		return new Signal(this, "connection_failed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`files_dropped` signal.
+		
+		Emitted when files are dragged from the OS file manager and dropped in the game window. The arguments are a list of file paths and the identifier of the screen where the drag originated.
+	**/
+	public var onFilesDropped(get, never):Signal<(files:std.Array<std.String>, screen:Int)->Void>;
+	@:dox(hide) inline function get_onFilesDropped():Signal<(files:std.Array<std.String>, screen:Int)->Void> {
+		return new Signal(this, "files_dropped", Signal.SignalHandlerPoolStringArrayIntVoid.connectSignal, Signal.SignalHandlerPoolStringArrayIntVoid.disconnectSignal, Signal.SignalHandlerPoolStringArrayIntVoid.isSignalConnected);
+	}
+
+	/**
+		`global_menu_action` signal.
+		
+		Emitted whenever global menu item is clicked.
+	**/
+	public var onGlobalMenuAction(get, never):Signal<(id:Any, meta:Any)->Void>;
+	@:dox(hide) inline function get_onGlobalMenuAction():Signal<(id:Any, meta:Any)->Void> {
+		return new Signal(this, "global_menu_action", Signal.SignalHandlerAnyAnyVoid.connectSignal, Signal.SignalHandlerAnyAnyVoid.disconnectSignal, Signal.SignalHandlerAnyAnyVoid.isSignalConnected);
+	}
+
+	/**
+		`idle_frame` signal.
+		
+		Emitted immediately before `node.Process` is called on every node in the `SceneTree`.
+	**/
+	public var onIdleFrame(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onIdleFrame():Signal<Void->Void> {
+		return new Signal(this, "idle_frame", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`network_peer_connected` signal.
+		
+		Emitted whenever this `SceneTree`'s `networkPeer` connects with a new peer. ID is the peer ID of the new peer. Clients get notified when other clients connect to the same server. Upon connecting to a server, a client also receives this signal for the server (with ID being 1).
+	**/
+	public var onNetworkPeerConnected(get, never):Signal<(id:Int)->Void>;
+	@:dox(hide) inline function get_onNetworkPeerConnected():Signal<(id:Int)->Void> {
+		return new Signal(this, "network_peer_connected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
+	/**
+		`network_peer_disconnected` signal.
+		
+		Emitted whenever this `SceneTree`'s `networkPeer` disconnects from a peer. Clients get notified when other clients disconnect from the same server.
+	**/
+	public var onNetworkPeerDisconnected(get, never):Signal<(id:Int)->Void>;
+	@:dox(hide) inline function get_onNetworkPeerDisconnected():Signal<(id:Int)->Void> {
+		return new Signal(this, "network_peer_disconnected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
+	/**
+		`node_added` signal.
+		
+		Emitted whenever a node is added to the `SceneTree`.
+	**/
+	public var onNodeAdded(get, never):Signal<(node:Node)->Void>;
+	@:dox(hide) inline function get_onNodeAdded():Signal<(node:Node)->Void> {
+		return new Signal(this, "node_added", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
+	}
+
+	/**
+		`node_configuration_warning_changed` signal.
+		
+		Emitted when a node's configuration changed. Only emitted in `tool` mode.
+	**/
+	public var onNodeConfigurationWarningChanged(get, never):Signal<(node:Node)->Void>;
+	@:dox(hide) inline function get_onNodeConfigurationWarningChanged():Signal<(node:Node)->Void> {
+		return new Signal(this, "node_configuration_warning_changed", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
+	}
+
+	/**
+		`node_removed` signal.
+		
+		Emitted whenever a node is removed from the `SceneTree`.
+	**/
+	public var onNodeRemoved(get, never):Signal<(node:Node)->Void>;
+	@:dox(hide) inline function get_onNodeRemoved():Signal<(node:Node)->Void> {
+		return new Signal(this, "node_removed", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
+	}
+
+	/**
+		`node_renamed` signal.
+		
+		Emitted whenever a node is renamed.
+	**/
+	public var onNodeRenamed(get, never):Signal<(node:Node)->Void>;
+	@:dox(hide) inline function get_onNodeRenamed():Signal<(node:Node)->Void> {
+		return new Signal(this, "node_renamed", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
+	}
+
+	/**
+		`physics_frame` signal.
+		
+		Emitted immediately before `node.PhysicsProcess` is called on every node in the `SceneTree`.
+	**/
+	public var onPhysicsFrame(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onPhysicsFrame():Signal<Void->Void> {
+		return new Signal(this, "physics_frame", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`screen_resized` signal.
+		
+		Emitted when the screen resolution (fullscreen) or window size (windowed) changes.
+	**/
+	public var onScreenResized(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onScreenResized():Signal<Void->Void> {
+		return new Signal(this, "screen_resized", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`server_disconnected` signal.
+		
+		Emitted whenever this `SceneTree`'s `networkPeer` disconnected from server. Only emitted on clients.
+	**/
+	public var onServerDisconnected(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onServerDisconnected():Signal<Void->Void> {
+		return new Signal(this, "server_disconnected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`tree_changed` signal.
+		
+		Emitted whenever the `SceneTree` hierarchy changed (children being moved or renamed, etc.).
+	**/
+	public var onTreeChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onTreeChanged():Signal<Void->Void> {
+		return new Signal(this, "tree_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		If `true` (default value), enables automatic polling of the `godot.MultiplayerAPI` for this SceneTree during `idle_frame`.
 		

@@ -12,6 +12,56 @@ Manages the connection to network peers. Assigns unique IDs to each client conne
 @:native("Godot.NetworkedMultiplayerPeer")
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
+	/**
+		`connection_failed` signal.
+		
+		Emitted when a connection attempt fails.
+	**/
+	public var onConnectionFailed(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onConnectionFailed():Signal<Void->Void> {
+		return new Signal(this, "connection_failed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`connection_succeeded` signal.
+		
+		Emitted when a connection attempt succeeds.
+	**/
+	public var onConnectionSucceeded(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onConnectionSucceeded():Signal<Void->Void> {
+		return new Signal(this, "connection_succeeded", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`peer_connected` signal.
+		
+		Emitted by the server when a client connects.
+	**/
+	public var onPeerConnected(get, never):Signal<(id:Int)->Void>;
+	@:dox(hide) inline function get_onPeerConnected():Signal<(id:Int)->Void> {
+		return new Signal(this, "peer_connected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
+	/**
+		`peer_disconnected` signal.
+		
+		Emitted by the server when a client disconnects.
+	**/
+	public var onPeerDisconnected(get, never):Signal<(id:Int)->Void>;
+	@:dox(hide) inline function get_onPeerDisconnected():Signal<(id:Int)->Void> {
+		return new Signal(this, "peer_disconnected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
+	/**
+		`server_disconnected` signal.
+		
+		Emitted by clients when the server disconnects.
+	**/
+	public var onServerDisconnected(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onServerDisconnected():Signal<Void->Void> {
+		return new Signal(this, "server_disconnected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The manner in which to send packets to the `target_peer`. See `godot.NetworkedMultiplayerPeer_TransferModeEnum`.
 	**/

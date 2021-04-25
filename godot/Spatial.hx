@@ -16,6 +16,16 @@ Note: Unless otherwise specified, all methods that have angle parameters must ha
 @:native("Godot.Spatial")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Spatial extends godot.Node {
+	/**
+		`visibility_changed` signal.
+		
+		Emitted when node visibility changes.
+	**/
+	public var onVisibilityChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onVisibilityChanged():Signal<Void->Void> {
+		return new Signal(this, "visibility_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The `godot.SpatialGizmo` for this node. Used for example in `Godot.EditorSpatialGizmo` as custom visualization and editing handles in Editor.
 	**/

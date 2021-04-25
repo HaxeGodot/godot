@@ -130,7 +130,7 @@ extern class Physics2DServer {
 		@param transform If the parameter is null, then the default value is Transform2D.Identity
 	**/
 	@:native("AreaAddShape")
-	public static function areaAddShape(area:godot.RID, shape:godot.RID, ?transform:Nullable1<godot.Transform2D>, ?disabled:Bool):Void;
+	public static function areaAddShape(area:godot.RID, shape:godot.RID, ?transform:Null<godot.Transform2D>, ?disabled:Bool):Void;
 	#else
 	/**		
 		Adds a shape to the area, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.
@@ -318,7 +318,7 @@ extern class Physics2DServer {
 		@param transform If the parameter is null, then the default value is Transform2D.Identity
 	**/
 	@:native("BodyAddShape")
-	public static function bodyAddShape(body:godot.RID, shape:godot.RID, ?transform:Nullable1<godot.Transform2D>, ?disabled:Bool):Void;
+	public static function bodyAddShape(body:godot.RID, shape:godot.RID, ?transform:Null<godot.Transform2D>, ?disabled:Bool):Void;
 	#else
 	/**		
 		Adds a shape to the body, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.

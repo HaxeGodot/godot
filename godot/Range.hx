@@ -12,6 +12,26 @@ Range is a base class for `godot.Control` nodes that change a floating-point val
 @:native("Godot.Range")
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class Range extends godot.Control {
+	/**
+		`changed` signal.
+		
+		Emitted when `minValue`, `maxValue`, `page`, or `step` change.
+	**/
+	public var onChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onChanged():Signal<Void->Void> {
+		return new Signal(this, "changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`value_changed` signal.
+		
+		Emitted when `value` changes.
+	**/
+	public var onValueChanged(get, never):Signal<(value:Float)->Void>;
+	@:dox(hide) inline function get_onValueChanged():Signal<(value:Float)->Void> {
+		return new Signal(this, "value_changed", Signal.SignalHandlerFloatVoid.connectSignal, Signal.SignalHandlerFloatVoid.disconnectSignal, Signal.SignalHandlerFloatVoid.isSignalConnected);
+	}
+
 	/**		
 		If `true`, `godot.Range.value` may be less than `godot.Range.minValue`.
 	**/

@@ -12,6 +12,16 @@ A node that displays a 2D texture in a 3D environment. The texture displayed can
 @:native("Godot.Sprite3D")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Sprite3D extends godot.SpriteBase3D {
+	/**
+		`frame_changed` signal.
+		
+		Emitted when the `frame` changes.
+	**/
+	public var onFrameChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onFrameChanged():Signal<Void->Void> {
+		return new Signal(this, "frame_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The region of the atlas texture to display. `godot.Sprite3D.regionEnabled` must be `true`.
 	**/

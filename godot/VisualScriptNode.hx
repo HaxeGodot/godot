@@ -12,6 +12,14 @@ A node which is part of a `godot.VisualScript`. Not to be confused with `godot.N
 @:native("Godot.VisualScriptNode")
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class VisualScriptNode extends godot.Resource {
+	/**
+		`ports_changed` signal.
+	**/
+	public var onPortsChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onPortsChanged():Signal<Void->Void> {
+		return new Signal(this, "ports_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	@:native("_DefaultInputValues")
 	public var _DefaultInputValues:godot.collections.Array;
 

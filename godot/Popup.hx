@@ -12,6 +12,26 @@ Popup is a base `godot.Control` used to show dialogs and popups. It's a subwindo
 @:native("Godot.Popup")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Popup extends godot.Control {
+	/**
+		`about_to_show` signal.
+		
+		Emitted when a popup is about to be shown. This is often used in `PopupMenu` to clear the list of options then create a new one according to the current context.
+	**/
+	public var onAboutToShow(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onAboutToShow():Signal<Void->Void> {
+		return new Signal(this, "about_to_show", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`popup_hide` signal.
+		
+		Emitted when a popup is hidden.
+	**/
+	public var onPopupHide(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onPopupHide():Signal<Void->Void> {
+		return new Signal(this, "popup_hide", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		If `true`, the popup will not be hidden when a click event occurs outside of it, or when it receives the `ui_cancel` action event.
 		
@@ -48,7 +68,7 @@ extern class Popup extends godot.Control {
 		@param size If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("PopupCentered")
-	public function popupCentered(?size:Nullable1<godot.Vector2>):Void;
+	public function popupCentered(?size:Null<godot.Vector2>):Void;
 	#else
 	/**		
 		Popup (show the control in modal form) in the center of the screen relative to its current canvas transform, at the current size, or at a size determined by `size`.
@@ -94,7 +114,7 @@ extern class Popup extends godot.Control {
 		@param minsize If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("PopupCenteredMinsize")
-	public function popupCenteredMinsize(?minsize:Nullable1<godot.Vector2>):Void;
+	public function popupCenteredMinsize(?minsize:Null<godot.Vector2>):Void;
 	#else
 	/**		
 		Popup (show the control in modal form) in the center of the screen relative to the current canvas transform, ensuring the size is never smaller than `minsize`.
@@ -120,7 +140,7 @@ extern class Popup extends godot.Control {
 		@param size If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("PopupCenteredClamped")
-	public function popupCenteredClamped(?size:Nullable1<godot.Vector2>, ?fallbackRatio:Single):Void;
+	public function popupCenteredClamped(?size:Null<godot.Vector2>, ?fallbackRatio:Single):Void;
 	#else
 	/**		
 		Popup (show the control in modal form) in the center of the screen relative to the current canvas transform, clamping the size to `size`, then ensuring the popup is no larger than the viewport size multiplied by `fallback_ratio`.
@@ -154,7 +174,7 @@ extern class Popup extends godot.Control {
 		@param bounds If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
 	**/
 	@:native("Popup_")
-	public function popup_(?bounds:Nullable1<godot.Rect2>):Void;
+	public function popup_(?bounds:Null<godot.Rect2>):Void;
 	#else
 	/**		
 		Popup (show the control in modal form).

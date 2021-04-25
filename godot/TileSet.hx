@@ -310,7 +310,7 @@ extern class TileSet extends godot.Resource {
 		@param autotileCoord If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("TileAddShape")
-	public function tileAddShape(id:Int, shape:godot.Shape2D, shapeTransform:godot.Transform2D, ?oneWay:Bool, ?autotileCoord:Nullable1<godot.Vector2>):Void;
+	public function tileAddShape(id:Int, shape:godot.Shape2D, shapeTransform:godot.Transform2D, ?oneWay:Bool, ?autotileCoord:Null<godot.Vector2>):Void;
 	#else
 	/**		
 		Adds a shape to the tile.

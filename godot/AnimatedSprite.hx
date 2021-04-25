@@ -14,6 +14,26 @@ Note: You can associate a set of normal maps by creating additional `godot.Sprit
 @:native("Godot.AnimatedSprite")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class AnimatedSprite extends godot.Node2D {
+	/**
+		`animation_finished` signal.
+		
+		Emitted when the animation is finished (when it plays the last frame). If the animation is looping, this signal is emitted every time the last frame is drawn.
+	**/
+	public var onAnimationFinished(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onAnimationFinished():Signal<Void->Void> {
+		return new Signal(this, "animation_finished", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`frame_changed` signal.
+		
+		Emitted when `frame` changed.
+	**/
+	public var onFrameChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onFrameChanged():Signal<Void->Void> {
+		return new Signal(this, "frame_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		If `true`, texture is flipped vertically.
 	**/

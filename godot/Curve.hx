@@ -12,6 +12,16 @@ A curve that can be saved and re-used for other objects. By default, it ranges b
 @:native("Godot.Curve")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Curve extends godot.Resource {
+	/**
+		`range_changed` signal.
+		
+		Emitted when `maxValue` or `minValue` is changed.
+	**/
+	public var onRangeChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onRangeChanged():Signal<Void->Void> {
+		return new Signal(this, "range_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	@:native("_Data")
 	public var _Data:godot.collections.Array;
 

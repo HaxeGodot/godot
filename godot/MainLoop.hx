@@ -51,6 +51,16 @@ print("  Keys typed: %s" % var2str(keys_typed))
 @:native("Godot.MainLoop")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class MainLoop extends godot.Object {
+	/**
+		`on_request_permissions_result` signal.
+		
+		Emitted when a user responds to a permission request.
+	**/
+	public var onOnRequestPermissionsResult(get, never):Signal<(permission:std.String, granted:Bool)->Void>;
+	@:dox(hide) inline function get_onOnRequestPermissionsResult():Signal<(permission:std.String, granted:Bool)->Void> {
+		return new Signal(this, "on_request_permissions_result", Signal.SignalHandlerStringBoolVoid.connectSignal, Signal.SignalHandlerStringBoolVoid.disconnectSignal, Signal.SignalHandlerStringBoolVoid.isSignalConnected);
+	}
+
 	/**		
 		Notification received from the OS when the app is paused.
 		

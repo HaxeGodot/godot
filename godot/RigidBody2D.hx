@@ -22,6 +22,57 @@ The center of mass is always located at the node's origin without taking into ac
 @:native("Godot.RigidBody2D")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class RigidBody2D extends godot.PhysicsBody2D {
+	/**
+		`body_entered` signal.
+		
+		Emitted when a body enters into contact with this one. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
+	**/
+	public var onBodyEntered(get, never):Signal<(body:Node)->Void>;
+	@:dox(hide) inline function get_onBodyEntered():Signal<(body:Node)->Void> {
+		return new Signal(this, "body_entered", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
+	}
+
+	/**
+		`body_exited` signal.
+		
+		Emitted when a body exits contact with this one. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
+	**/
+	public var onBodyExited(get, never):Signal<(body:Node)->Void>;
+	@:dox(hide) inline function get_onBodyExited():Signal<(body:Node)->Void> {
+		return new Signal(this, "body_exited", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
+	}
+
+	/**
+		`body_shape_entered` signal.
+		
+		Emitted when a body enters into contact with this one. Reports colliding shape information. See `CollisionObject2D` for shape index information. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
+	**/
+	public var onBodyShapeEntered(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
+	@:dox(hide) inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
+		return new Signal(this, "body_shape_entered", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	}
+
+	/**
+		`body_shape_exited` signal.
+		
+		Emitted when a body shape exits contact with this one. Reports colliding shape information. See `CollisionObject2D` for shape index information. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
+	**/
+	public var onBodyShapeExited(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
+	@:dox(hide) inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
+		return new Signal(this, "body_shape_exited", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	}
+
+	/**
+		`sleeping_state_changed` signal.
+		
+		Emitted when the physics engine changes the body's sleeping state.
+		`b`Note:`/b` Changing the value `sleeping` will not trigger this signal. It is only emitted if the sleeping state is changed by the physics engine or `emit_signal("sleeping_state_changed")` is used.
+	**/
+	public var onSleepingStateChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onSleepingStateChanged():Signal<Void->Void> {
+		return new Signal(this, "sleeping_state_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The body's total applied torque.
 	**/

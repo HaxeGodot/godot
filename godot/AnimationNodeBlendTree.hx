@@ -64,7 +64,7 @@ extern class AnimationNodeBlendTree extends godot.AnimationRootNode {
 		@param position If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("AddNode")
-	public function addNode(name:std.String, node:godot.AnimationNode, ?position:Nullable1<godot.Vector2>):Void;
+	public function addNode(name:std.String, node:godot.AnimationNode, ?position:Null<godot.Vector2>):Void;
 	#else
 	/**		
 		Adds an `godot.AnimationNode` at the given `position`. The `name` is used to identify the created sub-node later.

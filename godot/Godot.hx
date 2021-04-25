@@ -16,7 +16,7 @@ class Godot {
 			for (meta in field.meta) {
 				if (meta.name == ":export") {
 					meta.name = ":meta";
-					meta.params = [macro "Godot.Export"];
+					meta.params = [macro "Godot.Export"].concat(meta.params);
 				}
 			}
 		}

@@ -12,6 +12,16 @@ Texture-based nine-patch `godot.StyleBox`, in a way similar to `godot.NinePatchR
 @:native("Godot.StyleBoxTexture")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class StyleBoxTexture extends godot.StyleBox {
+	/**
+		`texture_changed` signal.
+		
+		Emitted when the stylebox's texture is changed.
+	**/
+	public var onTextureChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onTextureChanged():Signal<Void->Void> {
+		return new Signal(this, "texture_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		If `true`, the nine-patch texture's center tile will be drawn.
 	**/

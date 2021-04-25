@@ -9,6 +9,16 @@ import cs.system.*;
 @:native("Godot.VisualShaderNode")
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class VisualShaderNode extends godot.Resource {
+	/**
+		`editor_refresh_request` signal.
+		
+		Emitted when the node requests an editor refresh. Currently called only in setter of `visualShaderNodeTexture.source`, `VisualShaderNodeTexture`, and `VisualShaderNodeCubeMap` (and their derivatives).
+	**/
+	public var onEditorRefreshRequest(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onEditorRefreshRequest():Signal<Void->Void> {
+		return new Signal(this, "editor_refresh_request", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	@:native("DefaultInputValues")
 	public var defaultInputValues:godot.collections.Array;
 

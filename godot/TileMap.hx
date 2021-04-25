@@ -12,6 +12,16 @@ Node for 2D tile-based maps. Tilemaps use a `godot.TileSet` which contain a list
 @:native("Godot.TileMap")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class TileMap extends godot.Node2D {
+	/**
+		`settings_changed` signal.
+		
+		Emitted when a tilemap setting has changed.
+	**/
+	public var onSettingsChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onSettingsChanged():Signal<Void->Void> {
+		return new Signal(this, "settings_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The light mask assigned to all light occluders in the TileMap. The TileSet's light occluders will cast shadows only from Light2D(s) that have the same light mask(s).
 	**/
@@ -293,7 +303,7 @@ extern class TileMap extends godot.Node2D {
 		@param autotileCoord If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("SetCell")
-	public function setCell(x:Int, y:Int, tile:Int, ?flipX:Bool, ?flipY:Bool, ?transpose:Bool, ?autotileCoord:Nullable1<godot.Vector2>):Void;
+	public function setCell(x:Int, y:Int, tile:Int, ?flipX:Bool, ?flipY:Bool, ?transpose:Bool, ?autotileCoord:Null<godot.Vector2>):Void;
 	#else
 	/**		
 		Sets the tile index for the cell given by a Vector2.
@@ -623,7 +633,7 @@ extern class TileMap extends godot.Node2D {
 		@param end If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("UpdateBitmaskRegion")
-	public function updateBitmaskRegion(?start:Nullable1<godot.Vector2>, ?end:Nullable1<godot.Vector2>):Void;
+	public function updateBitmaskRegion(?start:Null<godot.Vector2>, ?end:Null<godot.Vector2>):Void;
 	#else
 	/**		
 		Applies autotiling rules to the cells in the given region (specified by grid-based X and Y coordinates).

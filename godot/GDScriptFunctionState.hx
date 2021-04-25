@@ -12,6 +12,14 @@ Calling `@GDScript.yield` within a function will cause that function to yield an
 @:native("Godot.GDScriptFunctionState")
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class GDScriptFunctionState extends godot.Reference {
+	/**
+		`completed` signal.
+	**/
+	public var onCompleted(get, never):Signal<(result:Any)->Void>;
+	@:dox(hide) inline function get_onCompleted():Signal<(result:Any)->Void> {
+		return new Signal(this, "completed", Signal.SignalHandlerVariantVoid.connectSignal, Signal.SignalHandlerVariantVoid.disconnectSignal, Signal.SignalHandlerVariantVoid.isSignalConnected);
+	}
+
 	#if doc_gen
 	/**		
 		Resume execution of the yielded function call.

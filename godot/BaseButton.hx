@@ -12,6 +12,47 @@ BaseButton is the abstract base class for buttons, so it shouldn't be used direc
 @:native("Godot.BaseButton")
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class BaseButton extends godot.Control {
+	/**
+		`button_down` signal.
+		
+		Emitted when the button starts being held down.
+	**/
+	public var onButtonDown(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onButtonDown():Signal<Void->Void> {
+		return new Signal(this, "button_down", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`button_up` signal.
+		
+		Emitted when the button stops being held down.
+	**/
+	public var onButtonUp(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onButtonUp():Signal<Void->Void> {
+		return new Signal(this, "button_up", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`pressed` signal.
+		
+		Emitted when the button is toggled or pressed. This is on `onButtonDown` if `actionMode` is `ACTION_MODE_BUTTON_PRESS` and on `onButtonUp` otherwise.
+		If you need to know the button's pressed state (and `toggleMode` is active), use `onToggled` instead.
+	**/
+	public var onPressed(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onPressed():Signal<Void->Void> {
+		return new Signal(this, "pressed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`toggled` signal.
+		
+		Emitted when the button was just toggled between pressed and normal states (only if `toggleMode` is active). The new state is contained in the `button_pressed` argument.
+	**/
+	public var onToggled(get, never):Signal<(buttonPressed:Bool)->Void>;
+	@:dox(hide) inline function get_onToggled():Signal<(buttonPressed:Bool)->Void> {
+		return new Signal(this, "toggled", Signal.SignalHandlerBoolVoid.connectSignal, Signal.SignalHandlerBoolVoid.disconnectSignal, Signal.SignalHandlerBoolVoid.isSignalConnected);
+	}
+
 	/**		
 		`godot.ButtonGroup` associated to the button.
 	**/

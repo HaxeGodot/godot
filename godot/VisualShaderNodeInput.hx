@@ -12,6 +12,14 @@ Gives access to input variables (built-ins) available for the shader. See the sh
 @:native("Godot.VisualShaderNodeInput")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualShaderNodeInput extends godot.VisualShaderNode {
+	/**
+		`input_type_changed` signal.
+	**/
+	public var onInputTypeChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onInputTypeChanged():Signal<Void->Void> {
+		return new Signal(this, "input_type_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		One of the several input constants in lower-case style like: "vertex"(`VERTEX`) or "point_size"(`POINT_SIZE`).
 	**/

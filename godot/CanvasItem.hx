@@ -22,6 +22,46 @@ Note: Unless otherwise specified, all methods that have angle parameters must ha
 @:native("Godot.CanvasItem")
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class CanvasItem extends godot.Node {
+	/**
+		`draw` signal.
+		
+		Emitted when the `CanvasItem` must redraw. This can only be connected realtime, as deferred will not allow drawing.
+	**/
+	public var onDraw(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onDraw():Signal<Void->Void> {
+		return new Signal(this, "draw", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`hide` signal.
+		
+		Emitted when becoming hidden.
+	**/
+	public var onHide(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onHide():Signal<Void->Void> {
+		return new Signal(this, "hide", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`item_rect_changed` signal.
+		
+		Emitted when the item rect has changed.
+	**/
+	public var onItemRectChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onItemRectChanged():Signal<Void->Void> {
+		return new Signal(this, "item_rect_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`visibility_changed` signal.
+		
+		Emitted when the visibility (hidden/visible) changes.
+	**/
+	public var onVisibilityChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onVisibilityChanged():Signal<Void->Void> {
+		return new Signal(this, "visibility_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		If `true`, the parent `godot.CanvasItem`'s `godot.CanvasItem.material` property is used as this one's material.
 	**/
@@ -407,7 +447,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("DrawTexture")
-	public function drawTexture(texture:godot.Texture, position:godot.Vector2, ?modulate:Nullable1<godot.Color>, ?normalMap:godot.Texture):Void;
+	public function drawTexture(texture:godot.Texture, position:godot.Vector2, ?modulate:Null<godot.Color>, ?normalMap:godot.Texture):Void;
 	#else
 	/**		
 		Draws a texture at a given position.
@@ -441,7 +481,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("DrawTextureRect")
-	public function drawTextureRect(texture:godot.Texture, rect:godot.Rect2, tile:Bool, ?modulate:Nullable1<godot.Color>, ?transpose:Bool, ?normalMap:godot.Texture):Void;
+	public function drawTextureRect(texture:godot.Texture, rect:godot.Rect2, tile:Bool, ?modulate:Null<godot.Color>, ?transpose:Bool, ?normalMap:godot.Texture):Void;
 	#else
 	/**		
 		Draws a textured rectangle at a given position, optionally modulated by a color. If `transpose` is `true`, the texture will have its X and Y coordinates swapped.
@@ -483,7 +523,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("DrawTextureRectRegion")
-	public function drawTextureRectRegion(texture:godot.Texture, rect:godot.Rect2, srcRect:godot.Rect2, ?modulate:Nullable1<godot.Color>, ?transpose:Bool, ?normalMap:godot.Texture, ?clipUv:Bool):Void;
+	public function drawTextureRectRegion(texture:godot.Texture, rect:godot.Rect2, srcRect:godot.Rect2, ?modulate:Null<godot.Color>, ?transpose:Bool, ?normalMap:godot.Texture, ?clipUv:Bool):Void;
 	#else
 	/**		
 		Draws a textured rectangle region at a given position, optionally modulated by a color. If `transpose` is `true`, the texture will have its X and Y coordinates swapped.
@@ -685,7 +725,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("DrawString")
-	public function drawString(font:godot.Font, position:godot.Vector2, text:std.String, ?modulate:Nullable1<godot.Color>, ?clipW:Int):Void;
+	public function drawString(font:godot.Font, position:godot.Vector2, text:std.String, ?modulate:Null<godot.Color>, ?clipW:Int):Void;
 	#else
 	/**		
 		Draws `text` using the specified `font` at the `position` (top-left corner). The text will have its color multiplied by `modulate`. If `clip_w` is greater than or equal to 0, the text will be clipped if it exceeds the specified width.
@@ -761,7 +801,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("DrawChar")
-	public function drawChar(font:godot.Font, position:godot.Vector2, char:std.String, next:std.String, ?modulate:Nullable1<godot.Color>):Single;
+	public function drawChar(font:godot.Font, position:godot.Vector2, char:std.String, next:std.String, ?modulate:Null<godot.Color>):Single;
 	#else
 	/**		
 		Draws a string character using a custom font. Returns the advance, depending on the character width and kerning with an optional next character.
@@ -788,7 +828,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("DrawMesh")
-	public function drawMesh(mesh:godot.Mesh, texture:godot.Texture, ?normalMap:godot.Texture, ?transform:Nullable1<godot.Transform2D>, ?modulate:Nullable1<godot.Color>):Void;
+	public function drawMesh(mesh:godot.Mesh, texture:godot.Texture, ?normalMap:godot.Texture, ?transform:Null<godot.Transform2D>, ?modulate:Null<godot.Color>):Void;
 	#else
 	/**		
 		Draws a `godot.Mesh` in 2D, using the provided texture. See `godot.MeshInstance2D` for related documentation.

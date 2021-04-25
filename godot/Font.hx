@@ -26,7 +26,7 @@ extern abstract class Font extends godot.Resource {
 		@param outlineModulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("Draw")
-	public function draw(canvasItem:godot.RID, position:godot.Vector2, string:std.String, ?modulate:Nullable1<godot.Color>, ?clipW:Int, ?outlineModulate:Nullable1<godot.Color>):Void;
+	public function draw(canvasItem:godot.RID, position:godot.Vector2, string:std.String, ?modulate:Null<godot.Color>, ?clipW:Int, ?outlineModulate:Null<godot.Color>):Void;
 	#else
 	/**		
 		Draw `string` into a canvas item using the font at a given position, with `modulate` color, and optionally clipping the width. `position` specifies the baseline, not the top. To draw from the top, ascent must be added to the Y axis.
@@ -139,7 +139,7 @@ extern abstract class Font extends godot.Resource {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("DrawChar")
-	public function drawChar(canvasItem:godot.RID, position:godot.Vector2, char:Int, ?next:Int, ?modulate:Nullable1<godot.Color>, ?outline:Bool):Single;
+	public function drawChar(canvasItem:godot.RID, position:godot.Vector2, char:Int, ?next:Int, ?modulate:Null<godot.Color>, ?outline:Bool):Single;
 	#else
 	/**		
 		Draw character `char` into a canvas item using the font at a given position, with `modulate` color, and optionally kerning if `next` is passed. clipping the width. `position` specifies the baseline, not the top. To draw from the top, ascent must be added to the Y axis. The width used by the character is returned, making this function useful for drawing strings character by character.

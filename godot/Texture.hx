@@ -59,7 +59,7 @@ extern abstract class Texture extends godot.Resource {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("Draw")
-	public function draw(canvasItem:godot.RID, position:godot.Vector2, ?modulate:Nullable1<godot.Color>, ?transpose:Bool, ?normalMap:godot.Texture):Void;
+	public function draw(canvasItem:godot.RID, position:godot.Vector2, ?modulate:Null<godot.Color>, ?transpose:Bool, ?normalMap:godot.Texture):Void;
 	#else
 	/**		
 		Draws the texture using a `godot.CanvasItem` with the `godot.VisualServer` API at the specified `position`. Equivalent to `godot.VisualServer.canvasItemAddTextureRect` with a rect at `position` and the size of this `godot.Texture`.
@@ -101,7 +101,7 @@ extern abstract class Texture extends godot.Resource {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("DrawRect")
-	public function drawRect(canvasItem:godot.RID, rect:godot.Rect2, tile:Bool, ?modulate:Nullable1<godot.Color>, ?transpose:Bool, ?normalMap:godot.Texture):Void;
+	public function drawRect(canvasItem:godot.RID, rect:godot.Rect2, tile:Bool, ?modulate:Null<godot.Color>, ?transpose:Bool, ?normalMap:godot.Texture):Void;
 	#else
 	/**		
 		Draws the texture using a `godot.CanvasItem` with the `godot.VisualServer` API. Equivalent to `godot.VisualServer.canvasItemAddTextureRect`.
@@ -143,7 +143,7 @@ extern abstract class Texture extends godot.Resource {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("DrawRectRegion")
-	public function drawRectRegion(canvasItem:godot.RID, rect:godot.Rect2, srcRect:godot.Rect2, ?modulate:Nullable1<godot.Color>, ?transpose:Bool, ?normalMap:godot.Texture, ?clipUv:Bool):Void;
+	public function drawRectRegion(canvasItem:godot.RID, rect:godot.Rect2, srcRect:godot.Rect2, ?modulate:Null<godot.Color>, ?transpose:Bool, ?normalMap:godot.Texture, ?clipUv:Bool):Void;
 	#else
 	/**		
 		Draws a part of the texture using a `godot.CanvasItem` with the `godot.VisualServer` API. Equivalent to `godot.VisualServer.canvasItemAddTextureRectRegion`.

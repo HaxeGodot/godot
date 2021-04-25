@@ -12,6 +12,14 @@ Skeleton2D parents a hierarchy of `godot.Bone2D` objects. It is a requirement of
 @:native("Godot.Skeleton2D")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Skeleton2D extends godot.Node2D {
+	/**
+		`bone_setup_changed` signal.
+	**/
+	public var onBoneSetupChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onBoneSetupChanged():Signal<Void->Void> {
+		return new Signal(this, "bone_setup_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	@:native("new")
 	public function new():Void;
 

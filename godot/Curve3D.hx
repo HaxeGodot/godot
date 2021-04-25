@@ -48,7 +48,7 @@ extern class Curve3D extends godot.Resource {
 		@param out If the parameter is null, then the default value is new Vector3(0, 0, 0)
 	**/
 	@:native("AddPoint")
-	public function addPoint(position:godot.Vector3, ?in_:Nullable1<godot.Vector3>, ?out:Nullable1<godot.Vector3>, ?atPosition:Int):Void;
+	public function addPoint(position:godot.Vector3, ?in_:Null<godot.Vector3>, ?out:Null<godot.Vector3>, ?atPosition:Int):Void;
 	#else
 	/**		
 		Adds a point to a curve at `position`, with control points `in` and `out`.

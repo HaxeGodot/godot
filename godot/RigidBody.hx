@@ -20,6 +20,59 @@ With Bullet physics (the default), the center of mass is the RigidBody3D center.
 @:native("Godot.RigidBody")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class RigidBody extends godot.PhysicsBody {
+	/**
+		`body_entered` signal.
+		
+		Emitted when a body enters into contact with this one. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
+	**/
+	public var onBodyEntered(get, never):Signal<(body:Node)->Void>;
+	@:dox(hide) inline function get_onBodyEntered():Signal<(body:Node)->Void> {
+		return new Signal(this, "body_entered", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
+	}
+
+	/**
+		`body_exited` signal.
+		
+		Emitted when a body shape exits contact with this one. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
+	**/
+	public var onBodyExited(get, never):Signal<(body:Node)->Void>;
+	@:dox(hide) inline function get_onBodyExited():Signal<(body:Node)->Void> {
+		return new Signal(this, "body_exited", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
+	}
+
+	/**
+		`body_shape_entered` signal.
+		
+		Emitted when a body enters into contact with this one. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
+		This signal not only receives the body that collided with this one, but also its `RID` (`body_id`), the shape index from the colliding body (`body_shape`), and the shape index from this body (`local_shape`) the other body collided with.
+	**/
+	public var onBodyShapeEntered(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
+	@:dox(hide) inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
+		return new Signal(this, "body_shape_entered", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	}
+
+	/**
+		`body_shape_exited` signal.
+		
+		Emitted when a body shape exits contact with this one. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
+		This signal not only receives the body that stopped colliding with this one, but also its `RID` (`body_id`), the shape index from the colliding body (`body_shape`), and the shape index from this body (`local_shape`) the other body stopped colliding with.
+	**/
+	public var onBodyShapeExited(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
+	@:dox(hide) inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
+		return new Signal(this, "body_shape_exited", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	}
+
+	/**
+		`sleeping_state_changed` signal.
+		
+		Emitted when the physics engine changes the body's sleeping state.
+		`b`Note:`/b` Changing the value `sleeping` will not trigger this signal. It is only emitted if the sleeping state is changed by the physics engine or `emit_signal("sleeping_state_changed")` is used.
+	**/
+	public var onSleepingStateChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onSleepingStateChanged():Signal<Void->Void> {
+		return new Signal(this, "sleeping_state_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		Damps RigidBody's rotational forces.
 	**/

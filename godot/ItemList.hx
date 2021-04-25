@@ -16,6 +16,70 @@ Item text only supports single-line strings, newline characters (e.g. `\n`) in t
 @:native("Godot.ItemList")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ItemList extends godot.Control {
+	/**
+		`item_activated` signal.
+		
+		Triggered when specified list item is activated via double-clicking or by pressing Enter.
+	**/
+	public var onItemActivated(get, never):Signal<(index:Int)->Void>;
+	@:dox(hide) inline function get_onItemActivated():Signal<(index:Int)->Void> {
+		return new Signal(this, "item_activated", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
+	/**
+		`item_rmb_selected` signal.
+		
+		Triggered when specified list item has been selected via right mouse clicking.
+		The click position is also provided to allow appropriate popup of context menus at the correct location.
+		`allowRmbSelect` must be enabled.
+	**/
+	public var onItemRmbSelected(get, never):Signal<(index:Int, atPosition:Vector2)->Void>;
+	@:dox(hide) inline function get_onItemRmbSelected():Signal<(index:Int, atPosition:Vector2)->Void> {
+		return new Signal(this, "item_rmb_selected", Signal.SignalHandlerIntVector2Void.connectSignal, Signal.SignalHandlerIntVector2Void.disconnectSignal, Signal.SignalHandlerIntVector2Void.isSignalConnected);
+	}
+
+	/**
+		`item_selected` signal.
+		
+		Triggered when specified item has been selected.
+		`allowReselect` must be enabled to reselect an item.
+	**/
+	public var onItemSelected(get, never):Signal<(index:Int)->Void>;
+	@:dox(hide) inline function get_onItemSelected():Signal<(index:Int)->Void> {
+		return new Signal(this, "item_selected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
+	/**
+		`multi_selected` signal.
+		
+		Triggered when a multiple selection is altered on a list allowing multiple selection.
+	**/
+	public var onMultiSelected(get, never):Signal<(index:Int, selected:Bool)->Void>;
+	@:dox(hide) inline function get_onMultiSelected():Signal<(index:Int, selected:Bool)->Void> {
+		return new Signal(this, "multi_selected", Signal.SignalHandlerIntBoolVoid.connectSignal, Signal.SignalHandlerIntBoolVoid.disconnectSignal, Signal.SignalHandlerIntBoolVoid.isSignalConnected);
+	}
+
+	/**
+		`nothing_selected` signal.
+		
+		Triggered when a left mouse click is issued within the rect of the list but on empty space.
+	**/
+	public var onNothingSelected(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onNothingSelected():Signal<Void->Void> {
+		return new Signal(this, "nothing_selected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`rmb_clicked` signal.
+		
+		Triggered when a right mouse click is issued within the rect of the list but on empty space.
+		`allowRmbSelect` must be enabled.
+	**/
+	public var onRmbClicked(get, never):Signal<(atPosition:Vector2)->Void>;
+	@:dox(hide) inline function get_onRmbClicked():Signal<(atPosition:Vector2)->Void> {
+		return new Signal(this, "rmb_clicked", Signal.SignalHandlerVector2Void.connectSignal, Signal.SignalHandlerVector2Void.disconnectSignal, Signal.SignalHandlerVector2Void.isSignalConnected);
+	}
+
 	/**		
 		The size all icons will be adjusted to.
 		

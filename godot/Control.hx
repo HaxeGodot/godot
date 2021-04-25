@@ -26,6 +26,96 @@ Note: Theme items are not `godot.Object` properties. This means you can't access
 @:native("Godot.Control")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Control extends godot.CanvasItem {
+	/**
+		`focus_entered` signal.
+		
+		Emitted when the node gains keyboard focus.
+	**/
+	public var onFocusEntered(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onFocusEntered():Signal<Void->Void> {
+		return new Signal(this, "focus_entered", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`focus_exited` signal.
+		
+		Emitted when the node loses keyboard focus.
+	**/
+	public var onFocusExited(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onFocusExited():Signal<Void->Void> {
+		return new Signal(this, "focus_exited", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`gui_input` signal.
+		
+		Emitted when the node receives an `InputEvent`.
+	**/
+	public var onGuiInput(get, never):Signal<(event:InputEvent)->Void>;
+	@:dox(hide) inline function get_onGuiInput():Signal<(event:InputEvent)->Void> {
+		return new Signal(this, "gui_input", Signal.SignalHandlerInputEventVoid.connectSignal, Signal.SignalHandlerInputEventVoid.disconnectSignal, Signal.SignalHandlerInputEventVoid.isSignalConnected);
+	}
+
+	/**
+		`minimum_size_changed` signal.
+		
+		Emitted when the node's minimum size changes.
+	**/
+	public var onMinimumSizeChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onMinimumSizeChanged():Signal<Void->Void> {
+		return new Signal(this, "minimum_size_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`modal_closed` signal.
+		
+		Emitted when a modal `Control` is closed. See `showModal`.
+	**/
+	public var onModalClosed(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onModalClosed():Signal<Void->Void> {
+		return new Signal(this, "modal_closed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`mouse_entered` signal.
+		
+		Emitted when the mouse enters the control's `Rect` area, provided its `mouseFilter` lets the event reach it.
+	**/
+	public var onMouseEntered(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onMouseEntered():Signal<Void->Void> {
+		return new Signal(this, "mouse_entered", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`mouse_exited` signal.
+		
+		Emitted when the mouse leaves the control's `Rect` area, provided its `mouseFilter` lets the event reach it.
+	**/
+	public var onMouseExited(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onMouseExited():Signal<Void->Void> {
+		return new Signal(this, "mouse_exited", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`resized` signal.
+		
+		Emitted when the control changes size.
+	**/
+	public var onResized(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onResized():Signal<Void->Void> {
+		return new Signal(this, "resized", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`size_flags_changed` signal.
+		
+		Emitted when one of the size flags changes. See `sizeFlagsHorizontal` and `sizeFlagsVertical`.
+	**/
+	public var onSizeFlagsChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onSizeFlagsChanged():Signal<Void->Void> {
+		return new Signal(this, "size_flags_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		Changing this property replaces the current `godot.Theme` resource this node and all its `godot.Control` children use.
 	**/
@@ -1220,7 +1310,7 @@ extern class Control extends godot.CanvasItem {
 		@param atPosition If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("GetTooltip")
-	public function getTooltip(?atPosition:Nullable1<godot.Vector2>):std.String;
+	public function getTooltip(?atPosition:Null<godot.Vector2>):std.String;
 	#else
 	/**		
 		Returns the tooltip, which will appear when the cursor is resting over this control. See `godot.Control.hintTooltip`.
@@ -1252,7 +1342,7 @@ extern class Control extends godot.CanvasItem {
 		@param position If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("GetCursorShape")
-	public function getCursorShape(?position:Nullable1<godot.Vector2>):godot.Control_CursorShape;
+	public function getCursorShape(?position:Null<godot.Vector2>):godot.Control_CursorShape;
 	#else
 	/**		
 		Returns the mouse cursor shape the control displays on mouse hover. See `godot.Control_CursorShape`.

@@ -12,6 +12,26 @@ A ScrollContainer node meant to contain a `godot.Control` child. ScrollContainer
 @:native("Godot.ScrollContainer")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ScrollContainer extends godot.Container {
+	/**
+		`scroll_ended` signal.
+		
+		Emitted when scrolling stops.
+	**/
+	public var onScrollEnded(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onScrollEnded():Signal<Void->Void> {
+		return new Signal(this, "scroll_ended", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`scroll_started` signal.
+		
+		Emitted when scrolling is started.
+	**/
+	public var onScrollStarted(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onScrollStarted():Signal<Void->Void> {
+		return new Signal(this, "scroll_started", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	@:native("ScrollDeadzone")
 	public var scrollDeadzone:Int;
 

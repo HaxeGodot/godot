@@ -12,6 +12,36 @@ FileDialog is a preset dialog used to choose files and directories in the filesy
 @:native("Godot.FileDialog")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class FileDialog extends godot.ConfirmationDialog {
+	/**
+		`dir_selected` signal.
+		
+		Emitted when the user selects a directory.
+	**/
+	public var onDirSelected(get, never):Signal<(dir:std.String)->Void>;
+	@:dox(hide) inline function get_onDirSelected():Signal<(dir:std.String)->Void> {
+		return new Signal(this, "dir_selected", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
+	}
+
+	/**
+		`file_selected` signal.
+		
+		Emitted when the user selects a file by double-clicking it or pressing the `b`OK`/b` button.
+	**/
+	public var onFileSelected(get, never):Signal<(path:std.String)->Void>;
+	@:dox(hide) inline function get_onFileSelected():Signal<(path:std.String)->Void> {
+		return new Signal(this, "file_selected", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
+	}
+
+	/**
+		`files_selected` signal.
+		
+		Emitted when the user selects multiple files.
+	**/
+	public var onFilesSelected(get, never):Signal<(paths:std.Array<std.String>)->Void>;
+	@:dox(hide) inline function get_onFilesSelected():Signal<(paths:std.Array<std.String>)->Void> {
+		return new Signal(this, "files_selected", Signal.SignalHandlerPoolStringArrayVoid.connectSignal, Signal.SignalHandlerPoolStringArrayVoid.disconnectSignal, Signal.SignalHandlerPoolStringArrayVoid.isSignalConnected);
+	}
+
 	/**		
 		The currently selected file path of the file dialog.
 	**/

@@ -85,7 +85,7 @@ extern class BitmapFont extends godot.Font {
 		@param align If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("AddChar")
-	public function addChar(character:Int, texture:Int, rect:godot.Rect2, ?align:Nullable1<godot.Vector2>, ?advance:Single):Void;
+	public function addChar(character:Int, texture:Int, rect:godot.Rect2, ?align:Null<godot.Vector2>, ?advance:Single):Void;
 	#else
 	/**		
 		Adds a character to the font, where `character` is the Unicode value, `texture` is the texture index, `rect` is the region in the texture (in pixels!), `align` is the (optional) alignment for the character and `advance` is the (optional) advance.

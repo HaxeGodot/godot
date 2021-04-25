@@ -28,6 +28,26 @@ In 2D, all visible objects are some form of canvas item. In order to be visible,
 @:native("Godot.VisualServer")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualServer {
+	/**
+		`frame_post_draw` signal.
+		
+		Emitted at the end of the frame, after the VisualServer has finished updating all the Viewports.
+	**/
+	public static var onFramePostDraw(get, never):Signal<Void->Void>;
+	@:dox(hide) inline static function get_onFramePostDraw():Signal<Void->Void> {
+		return new Signal(SINGLETON, "frame_post_draw", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`frame_pre_draw` signal.
+		
+		Emitted at the beginning of the frame, before the VisualServer updates all the Viewports.
+	**/
+	public static var onFramePreDraw(get, never):Signal<Void->Void>;
+	@:dox(hide) inline static function get_onFramePreDraw():Signal<Void->Void> {
+		return new Signal(SINGLETON, "frame_pre_draw", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	@:native("Singleton")
 	public static var SINGLETON(default, never):godot.Object;
 
@@ -1574,7 +1594,7 @@ extern class VisualServer {
 		@param rect If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
 	**/
 	@:native("ViewportAttachToScreen")
-	public static function viewportAttachToScreen(viewport:godot.RID, ?rect:Nullable1<godot.Rect2>, ?screen:Int):Void;
+	public static function viewportAttachToScreen(viewport:godot.RID, ?rect:Null<godot.Rect2>, ?screen:Int):Void;
 	#else
 	/**		
 		Copies viewport to a region of the screen specified by `rect`. If `godot.Viewport.renderDirectToScreen` is `true`, then viewport does not use a framebuffer and the contents of the viewport are rendered directly to screen. However, note that the root viewport is drawn last, therefore it will draw over the screen. Accordingly, you must set the root viewport to an area that does not cover the area that you have attached this viewport to.
@@ -2236,7 +2256,7 @@ extern class VisualServer {
 		@param rect If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
 	**/
 	@:native("CanvasItemSetCustomRect")
-	public static function canvasItemSetCustomRect(item:godot.RID, useCustomRect:Bool, ?rect:Nullable1<godot.Rect2>):Void;
+	public static function canvasItemSetCustomRect(item:godot.RID, useCustomRect:Bool, ?rect:Null<godot.Rect2>):Void;
 	#else
 	/**		
 		Defines a custom drawing rectangle for the `godot.CanvasItem`.
@@ -2344,7 +2364,7 @@ extern class VisualServer {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("CanvasItemAddTextureRect")
-	public static function canvasItemAddTextureRect(item:godot.RID, rect:godot.Rect2, texture:godot.RID, ?tile:Bool, ?modulate:Nullable1<godot.Color>, ?transpose:Bool, ?normalMap:godot.RID):Void;
+	public static function canvasItemAddTextureRect(item:godot.RID, rect:godot.Rect2, texture:godot.RID, ?tile:Bool, ?modulate:Null<godot.Color>, ?transpose:Bool, ?normalMap:godot.RID):Void;
 	#else
 	/**		
 		Adds a textured rect to the `godot.CanvasItem`'s draw commands.
@@ -2394,7 +2414,7 @@ extern class VisualServer {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("CanvasItemAddTextureRectRegion")
-	public static function canvasItemAddTextureRectRegion(item:godot.RID, rect:godot.Rect2, texture:godot.RID, srcRect:godot.Rect2, ?modulate:Nullable1<godot.Color>, ?transpose:Bool, ?normalMap:godot.RID, ?clipUv:Bool):Void;
+	public static function canvasItemAddTextureRectRegion(item:godot.RID, rect:godot.Rect2, texture:godot.RID, srcRect:godot.Rect2, ?modulate:Null<godot.Color>, ?transpose:Bool, ?normalMap:godot.RID, ?clipUv:Bool):Void;
 	#else
 	/**		
 		Adds a texture rect with region setting to the `godot.CanvasItem`'s draw commands.
@@ -2446,7 +2466,7 @@ extern class VisualServer {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("CanvasItemAddNinePatch")
-	public static function canvasItemAddNinePatch(item:godot.RID, rect:godot.Rect2, source:godot.Rect2, texture:godot.RID, topleft:godot.Vector2, bottomright:godot.Vector2, ?xAxisMode:godot.VisualServer_NinePatchAxisMode, ?yAxisMode:godot.VisualServer_NinePatchAxisMode, ?drawCenter:Bool, ?modulate:Nullable1<godot.Color>, ?normalMap:godot.RID):Void;
+	public static function canvasItemAddNinePatch(item:godot.RID, rect:godot.Rect2, source:godot.Rect2, texture:godot.RID, topleft:godot.Vector2, bottomright:godot.Vector2, ?xAxisMode:godot.VisualServer_NinePatchAxisMode, ?yAxisMode:godot.VisualServer_NinePatchAxisMode, ?drawCenter:Bool, ?modulate:Null<godot.Color>, ?normalMap:godot.RID):Void;
 	#else
 	/**		
 		Adds a nine patch image to the `godot.CanvasItem`'s draw commands.
@@ -2695,7 +2715,7 @@ extern class VisualServer {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("CanvasItemAddMesh")
-	public static function canvasItemAddMesh(item:godot.RID, mesh:godot.RID, ?transform:Nullable1<godot.Transform2D>, ?modulate:Nullable1<godot.Color>, ?texture:godot.RID, ?normalMap:godot.RID):Void;
+	public static function canvasItemAddMesh(item:godot.RID, mesh:godot.RID, ?transform:Null<godot.Transform2D>, ?modulate:Null<godot.Color>, ?texture:godot.RID, ?normalMap:godot.RID):Void;
 	#else
 	/**		
 		Adds a mesh command to the `godot.CanvasItem`'s draw commands.

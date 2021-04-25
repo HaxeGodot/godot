@@ -32,6 +32,56 @@ Networking with nodes: After connecting to a server (or making one, see `godot.N
 @:native("Godot.Node")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Node extends godot.Object {
+	/**
+		`ready` signal.
+		
+		Emitted when the node is ready.
+	**/
+	public var onReady(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onReady():Signal<Void->Void> {
+		return new Signal(this, "ready", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`renamed` signal.
+		
+		Emitted when the node is renamed.
+	**/
+	public var onRenamed(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onRenamed():Signal<Void->Void> {
+		return new Signal(this, "renamed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`tree_entered` signal.
+		
+		Emitted when the node enters the tree.
+	**/
+	public var onTreeEntered(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onTreeEntered():Signal<Void->Void> {
+		return new Signal(this, "tree_entered", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`tree_exited` signal.
+		
+		Emitted after the node exits the tree and is no longer active.
+	**/
+	public var onTreeExited(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onTreeExited():Signal<Void->Void> {
+		return new Signal(this, "tree_exited", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`tree_exiting` signal.
+		
+		Emitted when the node is still active but about to exit the tree. This is the right place for de-initialization (or a "destructor", if you will).
+	**/
+	public var onTreeExiting(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onTreeExiting():Signal<Void->Void> {
+		return new Signal(this, "tree_exiting", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The node's priority in the execution order of the enabled processing callbacks (i.e. ,  and their internal counterparts). Nodes whose process priority value is lower will have their processing callbacks executed first.
 	**/

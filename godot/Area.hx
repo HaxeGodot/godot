@@ -12,6 +12,90 @@ import cs.system.*;
 @:native("Godot.Area")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Area extends godot.CollisionObject {
+	/**
+		`area_entered` signal.
+		
+		Emitted when another area enters.
+	**/
+	public var onAreaEntered(get, never):Signal<(area:Area)->Void>;
+	@:dox(hide) inline function get_onAreaEntered():Signal<(area:Area)->Void> {
+		return new Signal(this, "area_entered", Signal.SignalHandlerAreaVoid.connectSignal, Signal.SignalHandlerAreaVoid.disconnectSignal, Signal.SignalHandlerAreaVoid.isSignalConnected);
+	}
+
+	/**
+		`area_exited` signal.
+		
+		Emitted when another area exits.
+	**/
+	public var onAreaExited(get, never):Signal<(area:Area)->Void>;
+	@:dox(hide) inline function get_onAreaExited():Signal<(area:Area)->Void> {
+		return new Signal(this, "area_exited", Signal.SignalHandlerAreaVoid.connectSignal, Signal.SignalHandlerAreaVoid.disconnectSignal, Signal.SignalHandlerAreaVoid.isSignalConnected);
+	}
+
+	/**
+		`area_shape_entered` signal.
+		
+		Emitted when another area enters, reporting which areas overlapped. `shape_owner_get_owner(shape_find_owner(shape))` returns the parent object of the owner of the `shape`.
+	**/
+	public var onAreaShapeEntered(get, never):Signal<(areaId:Int, area:Area, areaShape:Int, selfShape:Int)->Void>;
+	@:dox(hide) inline function get_onAreaShapeEntered():Signal<(areaId:Int, area:Area, areaShape:Int, selfShape:Int)->Void> {
+		return new Signal(this, "area_shape_entered", Signal.SignalHandlerIntAreaIntIntVoid.connectSignal, Signal.SignalHandlerIntAreaIntIntVoid.disconnectSignal, Signal.SignalHandlerIntAreaIntIntVoid.isSignalConnected);
+	}
+
+	/**
+		`area_shape_exited` signal.
+		
+		Emitted when another area exits, reporting which areas were overlapping.
+	**/
+	public var onAreaShapeExited(get, never):Signal<(areaId:Int, area:Area, areaShape:Int, selfShape:Int)->Void>;
+	@:dox(hide) inline function get_onAreaShapeExited():Signal<(areaId:Int, area:Area, areaShape:Int, selfShape:Int)->Void> {
+		return new Signal(this, "area_shape_exited", Signal.SignalHandlerIntAreaIntIntVoid.connectSignal, Signal.SignalHandlerIntAreaIntIntVoid.disconnectSignal, Signal.SignalHandlerIntAreaIntIntVoid.isSignalConnected);
+	}
+
+	/**
+		`body_entered` signal.
+		
+		Emitted when a physics body enters.
+		The `body` argument can either be a `PhysicsBody` or a `GridMap` instance (while GridMaps are not physics body themselves, they register their tiles with collision shapes as a virtual physics body).
+	**/
+	public var onBodyEntered(get, never):Signal<(body:Node)->Void>;
+	@:dox(hide) inline function get_onBodyEntered():Signal<(body:Node)->Void> {
+		return new Signal(this, "body_entered", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
+	}
+
+	/**
+		`body_exited` signal.
+		
+		Emitted when a physics body exits.
+		The `body` argument can either be a `PhysicsBody` or a `GridMap` instance (while GridMaps are not physics body themselves, they register their tiles with collision shapes as a virtual physics body).
+	**/
+	public var onBodyExited(get, never):Signal<(body:Node)->Void>;
+	@:dox(hide) inline function get_onBodyExited():Signal<(body:Node)->Void> {
+		return new Signal(this, "body_exited", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
+	}
+
+	/**
+		`body_shape_entered` signal.
+		
+		Emitted when a physics body enters, reporting which shapes overlapped.
+		The `body` argument can either be a `PhysicsBody` or a `GridMap` instance (while GridMaps are not physics body themselves, they register their tiles with collision shapes as a virtual physics body).
+	**/
+	public var onBodyShapeEntered(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, areaShape:Int)->Void>;
+	@:dox(hide) inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, areaShape:Int)->Void> {
+		return new Signal(this, "body_shape_entered", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	}
+
+	/**
+		`body_shape_exited` signal.
+		
+		Emitted when a physics body exits, reporting which shapes were overlapping.
+		The `body` argument can either be a `PhysicsBody` or a `GridMap` instance (while GridMaps are not physics body themselves, they register their tiles with collision shapes as a virtual physics body).
+	**/
+	public var onBodyShapeExited(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, areaShape:Int)->Void>;
+	@:dox(hide) inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, areaShape:Int)->Void> {
+		return new Signal(this, "body_shape_exited", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	}
+
 	/**		
 		The degree to which this area's reverb is a uniform effect. Ranges from `0` to `1` with `0.1` precision.
 	**/

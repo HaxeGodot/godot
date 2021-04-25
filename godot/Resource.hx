@@ -12,6 +12,16 @@ Resource is the base class for all Godot-specific resource types, serving primar
 @:native("Godot.Resource")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Resource extends godot.Reference {
+	/**
+		`changed` signal.
+		
+		Emitted whenever the resource changes.
+	**/
+	public var onChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onChanged():Signal<Void->Void> {
+		return new Signal(this, "changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The name of the resource. This is an optional identifier.
 	**/

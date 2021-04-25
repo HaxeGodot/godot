@@ -16,6 +16,14 @@ You are most likely to use this class via the Visual Script editor or when writi
 @:native("Godot.VisualScript")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualScript extends godot.Script {
+	/**
+		`node_ports_changed` signal.
+	**/
+	public var onNodePortsChanged(get, never):Signal<(function_:std.String, id:Int)->Void>;
+	@:dox(hide) inline function get_onNodePortsChanged():Signal<(function_:std.String, id:Int)->Void> {
+		return new Signal(this, "node_ports_changed", Signal.SignalHandlerStringIntVoid.connectSignal, Signal.SignalHandlerStringIntVoid.disconnectSignal, Signal.SignalHandlerStringIntVoid.isSignalConnected);
+	}
+
 	@:native("Data")
 	public var data:godot.collections.Dictionary;
 
@@ -65,7 +73,7 @@ extern class VisualScript extends godot.Script {
 		@param position If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("AddNode")
-	public function addNode(func:std.String, id:Int, node:godot.VisualScriptNode, ?position:Nullable1<godot.Vector2>):Void;
+	public function addNode(func:std.String, id:Int, node:godot.VisualScriptNode, ?position:Null<godot.Vector2>):Void;
 	#else
 	/**		
 		Add a node to a function of the VisualScript.

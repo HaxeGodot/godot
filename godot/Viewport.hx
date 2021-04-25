@@ -22,6 +22,26 @@ Finally, viewports can also behave as render targets, in which case they will no
 @:native("Godot.Viewport")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Viewport extends godot.Node {
+	/**
+		`gui_focus_changed` signal.
+		
+		Emitted when a Control node grabs keyboard focus.
+	**/
+	public var onGuiFocusChanged(get, never):Signal<(node:Control)->Void>;
+	@:dox(hide) inline function get_onGuiFocusChanged():Signal<(node:Control)->Void> {
+		return new Signal(this, "gui_focus_changed", Signal.SignalHandlerControlVoid.connectSignal, Signal.SignalHandlerControlVoid.disconnectSignal, Signal.SignalHandlerControlVoid.isSignalConnected);
+	}
+
+	/**
+		`size_changed` signal.
+		
+		Emitted when the size of the viewport is changed, whether by `setSizeOverride`, resize of window, or some other means.
+	**/
+	public var onSizeChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onSizeChanged():Signal<Void->Void> {
+		return new Signal(this, "size_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The global canvas transform of the viewport. The canvas transform is relative to this.
 	**/
@@ -282,7 +302,7 @@ extern class Viewport extends godot.Node {
 		@param margin If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("SetSizeOverride")
-	public function setSizeOverride(enable:Bool, ?size:Nullable1<godot.Vector2>, ?margin:Nullable1<godot.Vector2>):Void;
+	public function setSizeOverride(enable:Bool, ?size:Null<godot.Vector2>, ?margin:Null<godot.Vector2>):Void;
 	#else
 	/**		
 		Sets the size override of the viewport. If the `enable` parameter is `true` the override is used, otherwise it uses the default size. If the size parameter is `(-1, -1)`, it won't update the size.

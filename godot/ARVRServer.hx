@@ -12,6 +12,46 @@ The AR/VR server is the heart of our Advanced and Virtual Reality solution and h
 @:native("Godot.ARVRServer")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ARVRServer {
+	/**
+		`interface_added` signal.
+		
+		Emitted when a new interface has been added.
+	**/
+	public static var onInterfaceAdded(get, never):Signal<(interfaceName:std.String)->Void>;
+	@:dox(hide) inline static function get_onInterfaceAdded():Signal<(interfaceName:std.String)->Void> {
+		return new Signal(SINGLETON, "interface_added", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
+	}
+
+	/**
+		`interface_removed` signal.
+		
+		Emitted when an interface is removed.
+	**/
+	public static var onInterfaceRemoved(get, never):Signal<(interfaceName:std.String)->Void>;
+	@:dox(hide) inline static function get_onInterfaceRemoved():Signal<(interfaceName:std.String)->Void> {
+		return new Signal(SINGLETON, "interface_removed", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
+	}
+
+	/**
+		`tracker_added` signal.
+		
+		Emitted when a new tracker has been added. If you don't use a fixed number of controllers or if you're using `ARVRAnchor`s for an AR solution, it is important to react to this signal to add the appropriate `ARVRController` or `ARVRAnchor` nodes related to this new tracker.
+	**/
+	public static var onTrackerAdded(get, never):Signal<(trackerName:std.String, type:Int, id:Int)->Void>;
+	@:dox(hide) inline static function get_onTrackerAdded():Signal<(trackerName:std.String, type:Int, id:Int)->Void> {
+		return new Signal(SINGLETON, "tracker_added", Signal.SignalHandlerStringIntIntVoid.connectSignal, Signal.SignalHandlerStringIntIntVoid.disconnectSignal, Signal.SignalHandlerStringIntIntVoid.isSignalConnected);
+	}
+
+	/**
+		`tracker_removed` signal.
+		
+		Emitted when a tracker is removed. You should remove any `ARVRController` or `ARVRAnchor` points if applicable. This is not mandatory, the nodes simply become inactive and will be made active again when a new tracker becomes available (i.e. a new controller is switched on that takes the place of the previous one).
+	**/
+	public static var onTrackerRemoved(get, never):Signal<(trackerName:std.String, type:Int, id:Int)->Void>;
+	@:dox(hide) inline static function get_onTrackerRemoved():Signal<(trackerName:std.String, type:Int, id:Int)->Void> {
+		return new Signal(SINGLETON, "tracker_removed", Signal.SignalHandlerStringIntIntVoid.connectSignal, Signal.SignalHandlerStringIntIntVoid.disconnectSignal, Signal.SignalHandlerStringIntIntVoid.isSignalConnected);
+	}
+
 	@:native("Singleton")
 	public static var SINGLETON(default, never):godot.Object;
 

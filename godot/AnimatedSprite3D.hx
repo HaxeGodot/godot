@@ -12,6 +12,16 @@ Animations are created using a `godot.SpriteFrames` resource, which can be confi
 @:native("Godot.AnimatedSprite3D")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class AnimatedSprite3D extends godot.SpriteBase3D {
+	/**
+		`frame_changed` signal.
+		
+		Emitted when `frame` changed.
+	**/
+	public var onFrameChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onFrameChanged():Signal<Void->Void> {
+		return new Signal(this, "frame_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		If `true`, the `godot.AnimatedSprite3D.animation` is currently playing.
 	**/

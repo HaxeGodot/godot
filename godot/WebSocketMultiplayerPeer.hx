@@ -12,6 +12,14 @@ Base class for WebSocket server and client, allowing them to be used as network 
 @:native("Godot.WebSocketMultiplayerPeer")
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class WebSocketMultiplayerPeer extends godot.NetworkedMultiplayerPeer {
+	/**
+		`peer_packet` signal.
+	**/
+	public var onPeerPacket(get, never):Signal<(peerSource:Int)->Void>;
+	@:dox(hide) inline function get_onPeerPacket():Signal<(peerSource:Int)->Void> {
+		return new Signal(this, "peer_packet", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
+	}
+
 	/**		
 		Configures the buffer sizes for this WebSocket peer. Default values can be specified in the Project Settings under `network/limits`. For server, values are meant per connected peer.
 		

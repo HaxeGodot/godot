@@ -108,7 +108,7 @@ extern class KinematicBody extends godot.PhysicsBody {
 		@param upDirection If the parameter is null, then the default value is new Vector3(0, 0, 0)
 	**/
 	@:native("MoveAndSlide")
-	public function moveAndSlide(linearVelocity:godot.Vector3, ?upDirection:Nullable1<godot.Vector3>, ?stopOnSlope:Bool, ?maxSlides:Int, ?floorMaxAngle:Single, ?infiniteInertia:Bool):godot.Vector3;
+	public function moveAndSlide(linearVelocity:godot.Vector3, ?upDirection:Null<godot.Vector3>, ?stopOnSlope:Bool, ?maxSlides:Int, ?floorMaxAngle:Single, ?infiniteInertia:Bool):godot.Vector3;
 	#else
 	/**		
 		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving or rotating platforms, or to make nodes push other nodes.
@@ -264,7 +264,7 @@ extern class KinematicBody extends godot.PhysicsBody {
 		@param upDirection If the parameter is null, then the default value is new Vector3(0, 0, 0)
 	**/
 	@:native("MoveAndSlideWithSnap")
-	public function moveAndSlideWithSnap(linearVelocity:godot.Vector3, snap:godot.Vector3, ?upDirection:Nullable1<godot.Vector3>, ?stopOnSlope:Bool, ?maxSlides:Int, ?floorMaxAngle:Single, ?infiniteInertia:Bool):godot.Vector3;
+	public function moveAndSlideWithSnap(linearVelocity:godot.Vector3, snap:godot.Vector3, ?upDirection:Null<godot.Vector3>, ?stopOnSlope:Bool, ?maxSlides:Int, ?floorMaxAngle:Single, ?infiniteInertia:Bool):godot.Vector3;
 	#else
 	/**		
 		Moves the body while keeping it attached to slopes. Similar to `godot.KinematicBody.moveAndSlide`.

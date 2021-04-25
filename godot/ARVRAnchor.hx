@@ -16,6 +16,16 @@ Keep in mind that, as long as plane detection is enabled, the size, placing and 
 @:native("Godot.ARVRAnchor")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ARVRAnchor extends godot.Spatial {
+	/**
+		`mesh_updated` signal.
+		
+		Emitted when the mesh associated with the anchor changes or when one becomes available. This is especially important for topology that is constantly being `mesh_updated`.
+	**/
+	public var onMeshUpdated(get, never):Signal<(mesh:Mesh)->Void>;
+	@:dox(hide) inline function get_onMeshUpdated():Signal<(mesh:Mesh)->Void> {
+		return new Signal(this, "mesh_updated", Signal.SignalHandlerMeshVoid.connectSignal, Signal.SignalHandlerMeshVoid.disconnectSignal, Signal.SignalHandlerMeshVoid.isSignalConnected);
+	}
+
 	/**		
 		The anchor's ID. You can set this before the anchor itself exists. The first anchor gets an ID of `1`, the second an ID of `2`, etc. When anchors get removed, the engine can then assign the corresponding ID to new anchors. The most common situation where anchors "disappear" is when the AR server identifies that two anchors represent different parts of the same plane and merges them.
 	**/

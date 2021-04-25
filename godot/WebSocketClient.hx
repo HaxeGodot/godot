@@ -18,6 +18,46 @@ You will receive appropriate signals when connecting, disconnecting, or when new
 @:native("Godot.WebSocketClient")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
+	/**
+		`connection_closed` signal.
+	**/
+	public var onConnectionClosed(get, never):Signal<(wasCleanClose:Bool)->Void>;
+	@:dox(hide) inline function get_onConnectionClosed():Signal<(wasCleanClose:Bool)->Void> {
+		return new Signal(this, "connection_closed", Signal.SignalHandlerBoolVoid.connectSignal, Signal.SignalHandlerBoolVoid.disconnectSignal, Signal.SignalHandlerBoolVoid.isSignalConnected);
+	}
+
+	/**
+		`connection_error` signal.
+	**/
+	public var onConnectionError(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onConnectionError():Signal<Void->Void> {
+		return new Signal(this, "connection_error", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`connection_established` signal.
+	**/
+	public var onConnectionEstablished(get, never):Signal<(protocol:std.String)->Void>;
+	@:dox(hide) inline function get_onConnectionEstablished():Signal<(protocol:std.String)->Void> {
+		return new Signal(this, "connection_established", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
+	}
+
+	/**
+		`data_received` signal.
+	**/
+	public var onDataReceived(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onDataReceived():Signal<Void->Void> {
+		return new Signal(this, "data_received", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`server_close_request` signal.
+	**/
+	public var onServerCloseRequest(get, never):Signal<(code:Int, reason:std.String)->Void>;
+	@:dox(hide) inline function get_onServerCloseRequest():Signal<(code:Int, reason:std.String)->Void> {
+		return new Signal(this, "server_close_request", Signal.SignalHandlerIntStringVoid.connectSignal, Signal.SignalHandlerIntStringVoid.disconnectSignal, Signal.SignalHandlerIntStringVoid.isSignalConnected);
+	}
+
 	/**		
 		If specified, this `godot.X509Certificate` will be the only one accepted when connecting to an SSL host. Any other certificate provided by the server will be regarded as invalid.
 		

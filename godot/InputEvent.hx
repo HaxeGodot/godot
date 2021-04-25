@@ -109,7 +109,7 @@ extern abstract class InputEvent extends godot.Resource {
 		@param localOfs If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("XformedBy")
-	public function xformedBy(xform:godot.Transform2D, ?localOfs:Nullable1<godot.Vector2>):godot.InputEvent;
+	public function xformedBy(xform:godot.Transform2D, ?localOfs:Null<godot.Vector2>):godot.InputEvent;
 	#else
 	/**		
 		Returns a copy of the given input event which has been offset by `local_ofs` and transformed by `xform`. Relevant for events of type `godot.InputEventMouseButton`, `godot.InputEventMouseMotion`, `godot.InputEventScreenTouch`, `godot.InputEventScreenDrag`, `godot.InputEventMagnifyGesture` and `godot.InputEventPanGesture`.

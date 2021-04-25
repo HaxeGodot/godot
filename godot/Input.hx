@@ -12,6 +12,16 @@ A singleton that deals with inputs. This includes key presses, mouse buttons and
 @:native("Godot.Input")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Input {
+	/**
+		`joy_connection_changed` signal.
+		
+		Emitted when a joypad device has been connected or disconnected.
+	**/
+	public static var onJoyConnectionChanged(get, never):Signal<(device:Int, connected:Bool)->Void>;
+	@:dox(hide) inline static function get_onJoyConnectionChanged():Signal<(device:Int, connected:Bool)->Void> {
+		return new Signal(SINGLETON, "joy_connection_changed", Signal.SignalHandlerIntBoolVoid.connectSignal, Signal.SignalHandlerIntBoolVoid.disconnectSignal, Signal.SignalHandlerIntBoolVoid.isSignalConnected);
+	}
+
 	@:native("Singleton")
 	public static var SINGLETON(default, never):godot.Object;
 
@@ -372,7 +382,7 @@ extern class Input {
 		@param hotspot If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("SetCustomMouseCursor")
-	public static function setCustomMouseCursor(image:godot.Resource, ?shape:godot.Input_CursorShape, ?hotspot:Nullable1<godot.Vector2>):Void;
+	public static function setCustomMouseCursor(image:godot.Resource, ?shape:godot.Input_CursorShape, ?hotspot:Null<godot.Vector2>):Void;
 	#else
 	/**		
 		Sets a custom mouse cursor image, which is only visible inside the game window. The hotspot can also be specified. Passing `null` to the image parameter resets to the system cursor. See `godot.Input_CursorShape` for the list of shapes.

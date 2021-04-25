@@ -16,6 +16,26 @@ You can configure TouchScreenButton to be visible only on touch devices, helping
 @:native("Godot.TouchScreenButton")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class TouchScreenButton extends godot.Node2D {
+	/**
+		`pressed` signal.
+		
+		Emitted when the button is pressed (down).
+	**/
+	public var onPressed(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onPressed():Signal<Void->Void> {
+		return new Signal(this, "pressed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`released` signal.
+		
+		Emitted when the button is released (up).
+	**/
+	public var onReleased(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onReleased():Signal<Void->Void> {
+		return new Signal(this, "released", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		The button's visibility mode. See `godot.TouchScreenButton_VisibilityModeEnum` for possible values.
 	**/

@@ -14,6 +14,16 @@ By default, audio is heard from the camera position. This can be changed by addi
 @:native("Godot.AudioStreamPlayer3D")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class AudioStreamPlayer3D extends godot.Spatial {
+	/**
+		`finished` signal.
+		
+		Emitted when the audio stops playing.
+	**/
+	public var onFinished(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onFinished():Signal<Void->Void> {
+		return new Signal(this, "finished", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		Decides in which step the Doppler effect should be calculated.
 	**/

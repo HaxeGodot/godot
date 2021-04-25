@@ -9,6 +9,16 @@ import cs.system.*;
 @:native("Godot.AnimationNodeStateMachineTransition")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class AnimationNodeStateMachineTransition extends godot.Resource {
+	/**
+		`advance_condition_changed` signal.
+		
+		Emitted when `advanceCondition` is changed.
+	**/
+	public var onAdvanceConditionChanged(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onAdvanceConditionChanged():Signal<Void->Void> {
+		return new Signal(this, "advance_condition_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	/**		
 		Don't use this transition during `godot.AnimationNodeStateMachinePlayback.travel` or `godot.AnimationNodeStateMachineTransition.autoAdvance`.
 	**/
