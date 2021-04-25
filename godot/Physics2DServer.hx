@@ -94,7 +94,7 @@ extern class Physics2DServer {
 	public static function spaceGetDirectState(space:godot.RID):godot.Physics2DDirectSpaceState;
 
 	/**		
-		Creates an `godot.Area2D`.
+		Creates an `godot.Area2D`. After creating an `godot.Area2D` with this method, assign it to a space using `godot.Physics2DServer.areaSetSpace` to use the created `godot.Area2D` in the physics world.
 	**/
 	@:native("AreaCreate")
 	public static function areaCreate():godot.RID;

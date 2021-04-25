@@ -25,6 +25,8 @@ return min(0, abs(u - v) - 1)
 ```
 
 `godot.AStar._EstimateCost` should return a lower bound of the distance, i.e. `_estimate_cost(u, v) &lt;= _compute_cost(u, v)`. This serves as a hint to the algorithm because the custom `_compute_cost` might be computation-heavy. If this is not the case, make `godot.AStar._EstimateCost` return the same value as `godot.AStar._ComputeCost` to provide the algorithm with the most accurate information.
+
+If the default `godot.AStar._EstimateCost` and `godot.AStar._ComputeCost` methods are used, or if the supplied `godot.AStar._EstimateCost` method returns a lower bound of the cost, then the paths returned by A* will be the lowest cost paths. Here, the cost of a path equals to the sum of the `godot.AStar._ComputeCost` results of all segments in the path multiplied by the `weight_scale`s of the end points of the respective segments. If the default methods are used and the `weight_scale`s of all points are set to `1.0`, then this equals to the sum of Euclidean distances of all segments in the path.
 **/
 @:libType
 @:csNative
@@ -58,7 +60,9 @@ extern class AStar extends godot.Reference {
 
 	#if doc_gen
 	/**		
-		Adds a new point at the given position with the given identifier. The algorithm prefers points with lower `weight_scale` to form a path. The `id` must be 0 or larger, and the `weight_scale` must be 1 or larger.
+		Adds a new point at the given position with the given identifier. The `id` must be 0 or larger, and the `weight_scale` must be 1 or larger.
+		
+		The `weight_scale` is multiplied by the result of `godot.AStar._ComputeCost` when determining the overall cost of traveling across a segment from a neighboring point to this point. Thus, all else being equal, the algorithm prefers points with lower `weight_scale`s to form a path.
 		
 		```
 		
@@ -73,7 +77,9 @@ extern class AStar extends godot.Reference {
 	public function addPoint(id:Int, position:godot.Vector3, ?weightScale:Single):Void;
 	#else
 	/**		
-		Adds a new point at the given position with the given identifier. The algorithm prefers points with lower `weight_scale` to form a path. The `id` must be 0 or larger, and the `weight_scale` must be 1 or larger.
+		Adds a new point at the given position with the given identifier. The `id` must be 0 or larger, and the `weight_scale` must be 1 or larger.
+		
+		The `weight_scale` is multiplied by the result of `godot.AStar._ComputeCost` when determining the overall cost of traveling across a segment from a neighboring point to this point. Thus, all else being equal, the algorithm prefers points with lower `weight_scale`s to form a path.
 		
 		```
 		
@@ -88,7 +94,9 @@ extern class AStar extends godot.Reference {
 	public overload function addPoint(id:Int, position:godot.Vector3):Void;
 
 	/**		
-		Adds a new point at the given position with the given identifier. The algorithm prefers points with lower `weight_scale` to form a path. The `id` must be 0 or larger, and the `weight_scale` must be 1 or larger.
+		Adds a new point at the given position with the given identifier. The `id` must be 0 or larger, and the `weight_scale` must be 1 or larger.
+		
+		The `weight_scale` is multiplied by the result of `godot.AStar._ComputeCost` when determining the overall cost of traveling across a segment from a neighboring point to this point. Thus, all else being equal, the algorithm prefers points with lower `weight_scale`s to form a path.
 		
 		```
 		
@@ -122,7 +130,7 @@ extern class AStar extends godot.Reference {
 	public function getPointWeightScale(id:Int):Single;
 
 	/**		
-		Sets the `weight_scale` for the point with the given `id`.
+		Sets the `weight_scale` for the point with the given `id`. The `weight_scale` is multiplied by the result of `godot.AStar._ComputeCost` when determining the overall cost of traveling across a segment from a neighboring point to this point.
 	**/
 	@:native("SetPointWeightScale")
 	public function setPointWeightScale(id:Int, weightScale:Single):Void;
@@ -349,6 +357,8 @@ extern class AStar extends godot.Reference {
 
 	/**		
 		Returns an array with the points that are in the path found by AStar between the given points. The array is ordered from the starting point to the ending point of the path.
+		
+		Note: This method is not thread-safe. If called from a `godot.Thread`, it will return an empty `godot.Vector3` and will print an error message.
 	**/
 	@:native("GetPointPath")
 	public function getPointPath(fromId:Int, toId:Int):cs.NativeArray<godot.Vector3>;

@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-A Visual Script virtual class that defines the shape and the default behaviour of the nodes that have to be in-graph editable nodes.
+A Visual Script virtual class that defines the shape and the default behavior of the nodes that have to be in-graph editable nodes.
 **/
 @:libType
 @:csNative

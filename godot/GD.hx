@@ -9,6 +9,9 @@ import cs.system.*;
 @:native("Godot.GD")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class GD {
+	@:native("UnhandledException") @:keep @:skipReflection
+	public static var UNHANDLED_EXCEPTION:cs.system.EventHandler_1<godot.UnhandledExceptionArgs>;
+
 	/**		
 		Scancodes with this bit applied are non-printable.
 	**/
@@ -123,4 +126,10 @@ extern class GD {
 
 	@:native("Var2Str")
 	public static function var2Str(var_:Dynamic):std.String;
+
+	@:native("add_UnhandledException")
+	public static function add_UnhandledException(value:cs.system.EventHandler_1<godot.UnhandledExceptionArgs>):Void;
+
+	@:native("remove_UnhandledException")
+	public static function remove_UnhandledException(value:cs.system.EventHandler_1<godot.UnhandledExceptionArgs>):Void;
 }

@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-A HingeJoint normally uses the Z axis of body A as the hinge axis, another axis can be specified when adding it manually though.
+A HingeJoint normally uses the Z axis of body A as the hinge axis, another axis can be specified when adding it manually though. See also `godot.Generic6DOFJoint`.
 **/
 @:libType
 @:csNative

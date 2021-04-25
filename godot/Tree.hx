@@ -361,16 +361,32 @@ extern class Tree extends godot.Control {
 	public function getColumns():Int;
 
 	/**		
-		Returns the currently edited item. This is only available for custom cell mode.
+		Returns the currently edited item. Can be used with `item_edited` to get the item that was modified.
+		
+		```
+		
+		func _ready():
+		$Tree.item_edited.connect(on_Tree_item_edited)
+		
+		func on_Tree_item_edited():
+		print($Tree.get_edited()) # This item just got edited (e.g. checked).
+		
+		```
 	**/
 	@:native("GetEdited")
 	public function getEdited():godot.TreeItem;
 
 	/**		
-		Returns the column for the currently edited item. This is only available for custom cell mode.
+		Returns the column for the currently edited item.
 	**/
 	@:native("GetEditedColumn")
 	public function getEditedColumn():Int;
+
+	/**		
+		Edits the selected tree item as if it was clicked. The item must be set editable with `godot.TreeItem.setEditable`. Returns `true` if the item could be edited. Fails if no item is selected.
+	**/
+	@:native("EditSelected")
+	public function editSelected():Bool;
 
 	/**		
 		Returns the rectangle for custom popups. Helper to create custom cell controls that display a popup. See `godot.TreeItem.setCellMode`.
@@ -459,6 +475,9 @@ extern class Tree extends godot.Control {
 	**/
 	@:native("GetScroll")
 	public function getScroll():godot.Vector2;
+
+	@:native("ScrollToItem")
+	public function scrollToItem(item:godot.Object):Void;
 
 	@:native("SetHideFolding")
 	public function setHideFolding(hide:Bool):Void;

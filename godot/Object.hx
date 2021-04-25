@@ -30,6 +30,8 @@ The `in` operator will evaluate to `true` as long as the key exists, even if the
 Objects also receive notifications. Notifications are a simple way to notify the object about different events, so they can all be handled together. See `godot.Object._Notification`.
 
 Note: Unlike references to a `godot.Reference`, references to an Object stored in a variable can become invalid without warning. Therefore, it's recommended to use `godot.Reference` for data classes instead of `godot.Object`.
+
+Note: Due to a bug, you can't create a "plain" Object using `Object.new()`. Instead, use `ClassDB.instance("Object")`. This bug only applies to Object itself, not any of its descendents like `godot.Reference`.
 **/
 @:libType
 @:csNative
@@ -146,7 +148,9 @@ extern class Object implements cs.system.IDisposable {
 	public function _Set(property:std.String, value:Dynamic):Bool;
 
 	/**		
-		Deletes the object from memory. Any pre-existing reference to the freed object will become invalid, e.g. `is_instance_valid(object)` will return `false`.
+		Deletes the object from memory immediately. For `godot.Node`s, you may want to use `godot.Node.queueFree` to queue the node for safe deletion at the end of the current frame.
+		
+		Important: If you have a variable pointing to an object, it will not be assigned to `null` once the object is freed. Instead, it will point to a previously freed instance and you should validate it with `@GDScript.is_instance_valid` before attempting to call its methods or access its properties.
 	**/
 	@:native("Free")
 	public function free():Void;

@@ -49,7 +49,7 @@ extern abstract class SpriteBase3D extends godot.GeometryInstance {
 	public var pixelSize:Single;
 
 	/**		
-		The objects visibility on a scale from `0` fully invisible to `1` fully visible.
+		The objects' visibility on a scale from `0` fully invisible to `1` fully visible.
 	**/
 	@:native("Opacity")
 	public var opacity:Single;

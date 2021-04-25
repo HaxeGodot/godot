@@ -6,6 +6,8 @@ import cs.system.*;
 
 /**
 Encapsulates a `godot.ColorPicker` making it accessible by pressing a button. Pressing the button will toggle the `godot.ColorPicker` visibility.
+
+See also `godot.BaseButton` which contains common properties and methods associated with this node.
 **/
 @:libType
 @:csNative

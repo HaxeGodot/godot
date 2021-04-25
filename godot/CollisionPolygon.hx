@@ -13,6 +13,12 @@ Allows editing a collision polygon's vertices on a selected plane. Can also set 
 @:autoBuild(godot.Godot.buildUserClass())
 extern class CollisionPolygon extends godot.Spatial {
 	/**		
+		The collision margin for the generated `godot.Shape`. See `godot.Shape.margin` for more details.
+	**/
+	@:native("Margin")
+	public var margin:Single;
+
+	/**		
 		Array of vertices which define the polygon.
 		
 		Note: The returned value is a copy of the original. Methods which mutate the size or properties of the return value will not impact the original polygon. To change properties of the polygon, assign it to a temporary variable and make changes before reassigning the `polygon` member.
@@ -52,4 +58,10 @@ extern class CollisionPolygon extends godot.Spatial {
 
 	@:native("IsDisabled")
 	public function isDisabled():Bool;
+
+	@:native("SetMargin")
+	public function setMargin(margin:Single):Void;
+
+	@:native("GetMargin")
+	public function getMargin():Single;
 }

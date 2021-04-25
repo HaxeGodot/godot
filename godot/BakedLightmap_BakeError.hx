@@ -26,7 +26,19 @@ extern enum BakedLightmap_BakeError {
 	CantCreateImage;
 
 	/**		
+		The size of the generated lightmaps is too large.
+	**/
+	LightmapSize;
+
+	/**		
+		Some mesh contains UV2 values outside the `[0,1]` range.
+	**/
+	InvalidMesh;
+
+	/**		
 		Returns if user cancels baking.
 	**/
 	UserAborted;
+
+	NoLightmapper;
 }

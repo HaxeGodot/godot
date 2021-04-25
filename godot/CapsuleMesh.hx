@@ -25,7 +25,9 @@ extern class CapsuleMesh extends godot.PrimitiveMesh {
 	public var radialSegments:Int;
 
 	/**		
-		Height of the capsule mesh from the center point.
+		Height of the middle cylindrical part of the capsule (without the hemispherical ends).
+		
+		Note: The capsule's total height is equal to `godot.CapsuleMesh.midHeight` + 2 * `godot.CapsuleMesh.radius`.
 	**/
 	@:native("MidHeight")
 	public var midHeight:Single;

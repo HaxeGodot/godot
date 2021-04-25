@@ -102,25 +102,25 @@ extern class Curve2D extends godot.Resource {
 	public function getPointPosition(idx:Int):godot.Vector2;
 
 	/**		
-		Sets the position of the control point leading to the vertex `idx`. If the index is out of bounds, the function sends an error to the console.
+		Sets the position of the control point leading to the vertex `idx`. If the index is out of bounds, the function sends an error to the console. The position is relative to the vertex.
 	**/
 	@:native("SetPointIn")
 	public function setPointIn(idx:Int, position:godot.Vector2):Void;
 
 	/**		
-		Returns the position of the control point leading to the vertex `idx`. If the index is out of bounds, the function sends an error to the console, and returns `(0, 0)`.
+		Returns the position of the control point leading to the vertex `idx`. The returned position is relative to the vertex `idx`. If the index is out of bounds, the function sends an error to the console, and returns `(0, 0)`.
 	**/
 	@:native("GetPointIn")
 	public function getPointIn(idx:Int):godot.Vector2;
 
 	/**		
-		Sets the position of the control point leading out of the vertex `idx`. If the index is out of bounds, the function sends an error to the console.
+		Sets the position of the control point leading out of the vertex `idx`. If the index is out of bounds, the function sends an error to the console. The position is relative to the vertex.
 	**/
 	@:native("SetPointOut")
 	public function setPointOut(idx:Int, position:godot.Vector2):Void;
 
 	/**		
-		Returns the position of the control point leading out of the vertex `idx`. If the index is out of bounds, the function sends an error to the console, and returns `(0, 0)`.
+		Returns the position of the control point leading out of the vertex `idx`. The returned position is relative to the vertex `idx`. If the index is out of bounds, the function sends an error to the console, and returns `(0, 0)`.
 	**/
 	@:native("GetPointOut")
 	public function getPointOut(idx:Int):godot.Vector2;
@@ -202,7 +202,7 @@ extern class Curve2D extends godot.Resource {
 	public function getBakedPoints():cs.NativeArray<godot.Vector2>;
 
 	/**		
-		Returns the closest point (in curve's local space) to `to_point`.
+		Returns the closest baked point (in curve's local space) to `to_point`.
 		
 		`to_point` must be in this curve's local space.
 	**/

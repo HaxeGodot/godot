@@ -45,6 +45,18 @@ extern abstract class GeometryInstance extends godot.VisualInstance {
 	public var lodMinDistance:Single;
 
 	/**		
+		Scale factor for the generated baked lightmap. Useful for adding detail to certain mesh instances.
+	**/
+	@:native("LightmapScale")
+	public var lightmapScale:godot.GeometryInstance_LightmapScaleEnum;
+
+	/**		
+		When disabled, the mesh will be taken into account when computing indirect lighting, but the resulting lightmap will not be saved. Useful for emissive only materials or shadow casters.
+	**/
+	@:native("GenerateLightmap")
+	public var generateLightmap:Bool;
+
+	/**		
 		If `true`, this GeometryInstance will be used when baking lights using a `godot.GIProbe` or `godot.BakedLightmap`.
 	**/
 	@:native("UseInBakedLight")
@@ -93,6 +105,18 @@ extern abstract class GeometryInstance extends godot.VisualInstance {
 
 	@:native("GetCastShadowsSetting")
 	public function getCastShadowsSetting():godot.GeometryInstance_ShadowCastingSetting;
+
+	@:native("SetGenerateLightmap")
+	public function setGenerateLightmap(enabled:Bool):Void;
+
+	@:native("GetGenerateLightmap")
+	public function getGenerateLightmap():Bool;
+
+	@:native("SetLightmapScale")
+	public function setLightmapScale(scale:godot.GeometryInstance_LightmapScaleEnum):Void;
+
+	@:native("GetLightmapScale")
+	public function getLightmapScale():godot.GeometryInstance_LightmapScaleEnum;
 
 	@:native("SetLodMaxHysteresis")
 	public function setLodMaxHysteresis(mode:Single):Void;

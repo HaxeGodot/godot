@@ -6,6 +6,8 @@ import cs.system.*;
 
 /**
 Node for 2D tile-based maps. Tilemaps use a `godot.TileSet` which contain a list of tiles (textures plus optional collision, navigation, and/or occluder shapes) which are used to create grid-based maps.
+
+When doing physics queries against the tilemap, the cell coordinates are encoded as `metadata` for each detected collision shape returned by methods such as `godot.Physics2DDirectSpaceState.intersectShape`, `godot.Physics2DDirectBodyState.getContactColliderShapeMetadata`, etc.
 **/
 @:libType
 @:csNative
@@ -29,13 +31,13 @@ extern class TileMap extends godot.Node2D {
 	public var occluderLightMask:Int;
 
 	/**		
-		The collision mask(s) for all colliders in the TileMap. See [https://docs.godotengine.org/en/latest/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The collision mask(s) for all colliders in the TileMap. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionMask")
 	public var collisionMask:UInt;
 
 	/**		
-		The collision layer(s) for all colliders in the TileMap. See [https://docs.godotengine.org/en/latest/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The collision layer(s) for all colliders in the TileMap. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionLayer")
 	public var collisionLayer:UInt;
@@ -89,7 +91,13 @@ extern class TileMap extends godot.Node2D {
 	public var compatibilityMode:Bool;
 
 	/**		
-		If `true`, the TileMap's children will be drawn in order of their Y coordinate.
+		If `true`, collision shapes are shown in the editor and at run-time. Requires Visible Collision Shapes to be enabled in the Debug menu for collision shapes to be visible at run-time.
+	**/
+	@:native("ShowCollision")
+	public var showCollision:Bool;
+
+	/**		
+		If `true`, the TileMap's direct children will be drawn in order of their Y coordinate.
 	**/
 	@:native("CellYSort")
 	public var cellYSort:Bool;
@@ -205,6 +213,12 @@ extern class TileMap extends godot.Node2D {
 	@:native("IsCompatibilityModeEnabled")
 	public function isCompatibilityModeEnabled():Bool;
 
+	@:native("SetShowCollision")
+	public function setShowCollision(enable:Bool):Void;
+
+	@:native("IsShowCollisionEnabled")
+	public function isShowCollisionEnabled():Bool;
+
 	@:native("SetCenteredTextures")
 	public function setCenteredTextures(enable:Bool):Void;
 
@@ -293,7 +307,7 @@ extern class TileMap extends godot.Node2D {
 		
 		```
 		
-		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2())
+		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2()):
 		# Write your custom logic here.
 		# To call the default method:
 		.set_cell(x, y, tile, flip_x, flip_y, transpose, autotile_coord)
@@ -320,7 +334,7 @@ extern class TileMap extends godot.Node2D {
 		
 		```
 		
-		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2())
+		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2()):
 		# Write your custom logic here.
 		# To call the default method:
 		.set_cell(x, y, tile, flip_x, flip_y, transpose, autotile_coord)
@@ -347,7 +361,7 @@ extern class TileMap extends godot.Node2D {
 		
 		```
 		
-		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2())
+		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2()):
 		# Write your custom logic here.
 		# To call the default method:
 		.set_cell(x, y, tile, flip_x, flip_y, transpose, autotile_coord)
@@ -374,7 +388,7 @@ extern class TileMap extends godot.Node2D {
 		
 		```
 		
-		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2())
+		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2()):
 		# Write your custom logic here.
 		# To call the default method:
 		.set_cell(x, y, tile, flip_x, flip_y, transpose, autotile_coord)
@@ -401,7 +415,7 @@ extern class TileMap extends godot.Node2D {
 		
 		```
 		
-		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2())
+		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2()):
 		# Write your custom logic here.
 		# To call the default method:
 		.set_cell(x, y, tile, flip_x, flip_y, transpose, autotile_coord)
@@ -428,7 +442,7 @@ extern class TileMap extends godot.Node2D {
 		
 		```
 		
-		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2())
+		func set_cell(x, y, tile, flip_x=false, flip_y=false, transpose=false, autotile_coord=Vector2()):
 		# Write your custom logic here.
 		# To call the default method:
 		.set_cell(x, y, tile, flip_x, flip_y, transpose, autotile_coord)
@@ -581,7 +595,16 @@ extern class TileMap extends godot.Node2D {
 
 	#if doc_gen
 	/**		
-		Returns the global position corresponding to the given tilemap (grid-based) coordinates.
+		Returns the local position of the top left corner of the cell corresponding to the given tilemap (grid-based) coordinates.
+		
+		To get the global position, use `godot.Node2D.toGlobal`:
+		
+		```
+		
+		var local_position = my_tilemap.map_to_world(map_position)
+		var global_position = my_tilemap.to_global(local_position)
+		
+		```
 		
 		Optionally, the tilemap's half offset can be ignored.
 	**/
@@ -589,7 +612,16 @@ extern class TileMap extends godot.Node2D {
 	public function mapToWorld(mapPosition:godot.Vector2, ?ignoreHalfOfs:Bool):godot.Vector2;
 	#else
 	/**		
-		Returns the global position corresponding to the given tilemap (grid-based) coordinates.
+		Returns the local position of the top left corner of the cell corresponding to the given tilemap (grid-based) coordinates.
+		
+		To get the global position, use `godot.Node2D.toGlobal`:
+		
+		```
+		
+		var local_position = my_tilemap.map_to_world(map_position)
+		var global_position = my_tilemap.to_global(local_position)
+		
+		```
 		
 		Optionally, the tilemap's half offset can be ignored.
 	**/
@@ -597,7 +629,16 @@ extern class TileMap extends godot.Node2D {
 	public overload function mapToWorld(mapPosition:godot.Vector2):godot.Vector2;
 
 	/**		
-		Returns the global position corresponding to the given tilemap (grid-based) coordinates.
+		Returns the local position of the top left corner of the cell corresponding to the given tilemap (grid-based) coordinates.
+		
+		To get the global position, use `godot.Node2D.toGlobal`:
+		
+		```
+		
+		var local_position = my_tilemap.map_to_world(map_position)
+		var global_position = my_tilemap.to_global(local_position)
+		
+		```
 		
 		Optionally, the tilemap's half offset can be ignored.
 	**/
@@ -607,6 +648,15 @@ extern class TileMap extends godot.Node2D {
 
 	/**		
 		Returns the tilemap (grid-based) coordinates corresponding to the given local position.
+		
+		To use this with a global position, first determine the local position with `godot.Node2D.toLocal`:
+		
+		```
+		
+		var local_position = my_tilemap.to_local(global_position)
+		var map_position = my_tilemap.world_to_map(local_position)
+		
+		```
 	**/
 	@:native("WorldToMap")
 	public function worldToMap(worldPosition:godot.Vector2):godot.Vector2;

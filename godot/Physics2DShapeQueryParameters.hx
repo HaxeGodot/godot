@@ -55,7 +55,7 @@ extern class Physics2DShapeQueryParameters extends godot.Reference {
 	public var exclude:godot.collections.Array;
 
 	/**		
-		The physics layer(s) the query will take into account (as a bitmask). See [https://docs.godotengine.org/en/latest/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The physics layer(s) the query will take into account (as a bitmask). See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionLayer")
 	public var collisionLayer:Int;

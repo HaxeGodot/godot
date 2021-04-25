@@ -88,7 +88,7 @@ extern class Geometry {
 	public static function lineIntersectsLine2d(fromA:godot.Vector2, dirA:godot.Vector2, fromB:godot.Vector2, dirB:godot.Vector2):Dynamic;
 
 	/**		
-		Given the two 2D segments (`p1`, `p2`) and (`q1`, `q2`), finds those two points on the two segments that are closest to each other. Returns a `godot.Vector2` that contains this point on (`p1`, `p2`) as well the accompanying point on (`q1`, `q2`).
+		Given the two 2D segments (`p1`, `q1`) and (`p2`, `q2`), finds those two points on the two segments that are closest to each other. Returns a `godot.Vector2` that contains this point on (`p1`, `q1`) as well the accompanying point on (`p2`, `q2`).
 	**/
 	@:native("GetClosestPointsBetweenSegments2d")
 	public static function getClosestPointsBetweenSegments2d(p1:godot.Vector2, q1:godot.Vector2, p2:godot.Vector2, q2:godot.Vector2):cs.NativeArray<godot.Vector2>;
@@ -204,7 +204,7 @@ extern class Geometry {
 	/**		
 		Merges (combines) `polygon_a` and `polygon_b` and returns an array of merged polygons. This performs  between polygons.
 		
-		The operation may result in an outer polygon (boundary) and inner polygon (hole) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
+		The operation may result in an outer polygon (boundary) and multiple inner polygons (holes) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
 	@:native("MergePolygons2d")
 	public static function mergePolygons2d(polygonA:cs.NativeArray<godot.Vector2>, polygonB:haxe.Rest<godot.Vector2>):godot.collections.Array;
@@ -212,7 +212,7 @@ extern class Geometry {
 	/**		
 		Clips `polygon_a` against `polygon_b` and returns an array of clipped polygons. This performs  between polygons. Returns an empty array if `polygon_b` completely overlaps `polygon_a`.
 		
-		If `polygon_b` is enclosed by `polygon_a`, returns an outer polygon (boundary) and inner polygon (hole) which could be distiguished by calling `godot.Geometry.isPolygonClockwise`.
+		If `polygon_b` is enclosed by `polygon_a`, returns an outer polygon (boundary) and inner polygon (hole) which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
 	@:native("ClipPolygons2d")
 	public static function clipPolygons2d(polygonA:cs.NativeArray<godot.Vector2>, polygonB:haxe.Rest<godot.Vector2>):godot.collections.Array;
@@ -228,7 +228,7 @@ extern class Geometry {
 	/**		
 		Mutually excludes common area defined by intersection of `polygon_a` and `polygon_b` (see `godot.Geometry.intersectPolygons2d`) and returns an array of excluded polygons. This performs  between polygons. In other words, returns all but common area between polygons.
 		
-		The operation may result in an outer polygon (boundary) and inner polygon (hole) produced which could be distiguished by calling `godot.Geometry.isPolygonClockwise`.
+		The operation may result in an outer polygon (boundary) and inner polygon (hole) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
 	@:native("ExcludePolygons2d")
 	public static function excludePolygons2d(polygonA:cs.NativeArray<godot.Vector2>, polygonB:haxe.Rest<godot.Vector2>):godot.collections.Array;

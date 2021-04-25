@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-Translates to `deteminant(x)` in the shader language.
+Translates to `determinant(x)` in the shader language.
 **/
 @:libType
 @:csNative

@@ -23,7 +23,8 @@ extern class RigidBody extends godot.PhysicsBody {
 	/**
 		`body_entered` signal.
 		
-		Emitted when a body enters into contact with this one. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
+		Emitted when a collision with another `PhysicsBody` or `GridMap` occurs. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
+		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
 	**/
 	public var onBodyEntered(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) inline function get_onBodyEntered():Signal<(body:Node)->Void> {
@@ -33,7 +34,8 @@ extern class RigidBody extends godot.PhysicsBody {
 	/**
 		`body_exited` signal.
 		
-		Emitted when a body shape exits contact with this one. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
+		Emitted when the collision with another `PhysicsBody` or `GridMap` ends. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
+		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
 	**/
 	public var onBodyExited(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) inline function get_onBodyExited():Signal<(body:Node)->Void> {
@@ -43,8 +45,12 @@ extern class RigidBody extends godot.PhysicsBody {
 	/**
 		`body_shape_entered` signal.
 		
-		Emitted when a body enters into contact with this one. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
-		This signal not only receives the body that collided with this one, but also its `RID` (`body_id`), the shape index from the colliding body (`body_shape`), and the shape index from this body (`local_shape`) the other body collided with.
+		Emitted when one of this RigidBody's `Shape`s collides with another `PhysicsBody` or `GridMap`'s `Shape`s. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
+		`body_id` the `RID` of the other `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`.
+		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
+		`body_shape` the index of the `Shape` of the other `PhysicsBody` or `GridMap` used by the `PhysicsServer`.
+		`local_shape` the index of the `Shape` of this RigidBody used by the `PhysicsServer`.
+		`b`Note:`/b` Bullet physics cannot identify the shape index when using a `ConcavePolygonShape`. Don't use multiple `CollisionShape`s when using a `ConcavePolygonShape` with Bullet physics if you need shape indices.
 	**/
 	public var onBodyShapeEntered(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
 	@:dox(hide) inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
@@ -54,8 +60,12 @@ extern class RigidBody extends godot.PhysicsBody {
 	/**
 		`body_shape_exited` signal.
 		
-		Emitted when a body shape exits contact with this one. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions.
-		This signal not only receives the body that stopped colliding with this one, but also its `RID` (`body_id`), the shape index from the colliding body (`body_shape`), and the shape index from this body (`local_shape`) the other body stopped colliding with.
+		Emitted when the collision between one of this RigidBody's `Shape`s and another `PhysicsBody` or `GridMap`'s `Shape`s ends. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
+		`body_id` the `RID` of the other `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`. `GridMap`s are detected if the Meshes have `Shape`s.
+		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
+		`body_shape` the index of the `Shape` of the other `PhysicsBody` or `GridMap` used by the `PhysicsServer`.
+		`local_shape` the index of the `Shape` of this RigidBody used by the `PhysicsServer`.
+		`b`Note:`/b` Bullet physics cannot identify the shape index when using a `ConcavePolygonShape`. Don't use multiple `CollisionShape`s when using a `ConcavePolygonShape` with Bullet physics if you need shape indices.
 	**/
 	public var onBodyShapeExited(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
 	@:dox(hide) inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
@@ -75,6 +85,8 @@ extern class RigidBody extends godot.PhysicsBody {
 
 	/**		
 		Damps RigidBody's rotational forces.
+		
+		See  for more details about damping.
 	**/
 	@:native("AngularDamp")
 	public var angularDamp:Single;
@@ -87,6 +99,8 @@ extern class RigidBody extends godot.PhysicsBody {
 
 	/**		
 		The body's linear damp. Cannot be less than -1.0. If this value is different from -1.0, any linear damp derived from the world or areas will be overridden.
+		
+		See  for more details about damping.
 	**/
 	@:native("LinearDamp")
 	public var linearDamp:Single;

@@ -426,6 +426,46 @@ extern class TextEdit extends godot.Control {
 	public function isSelectingEnabled():Bool;
 
 	/**		
+		Returns `true` when the specified `line` is marked as safe.
+	**/
+	@:native("IsLineSetAsSafe")
+	public function isLineSetAsSafe(line:Int):Bool;
+
+	/**		
+		If `true`, marks the `line` as safe.
+		
+		This will show the line number with the color provided in the `safe_line_number_color` theme property.
+	**/
+	@:native("SetLineAsSafe")
+	public function setLineAsSafe(line:Int, safe:Bool):Void;
+
+	/**		
+		Returns `true` when the specified `line` is bookmarked.
+	**/
+	@:native("IsLineSetAsBookmark")
+	public function isLineSetAsBookmark(line:Int):Bool;
+
+	/**		
+		Bookmarks the `line` if `bookmark` is true. Deletes the bookmark if `bookmark` is false.
+		
+		Bookmarks are shown in the `godot.TextEdit.breakpointGutter`.
+	**/
+	@:native("SetLineAsBookmark")
+	public function setLineAsBookmark(line:Int, bookmark:Bool):Void;
+
+	/**		
+		Adds or removes the breakpoint in `line`. Breakpoints are shown in the `godot.TextEdit.breakpointGutter`.
+	**/
+	@:native("SetLineAsBreakpoint")
+	public function setLineAsBreakpoint(line:Int, breakpoint:Bool):Void;
+
+	/**		
+		Returns `true` when the specified `line` has a breakpoint.
+	**/
+	@:native("IsLineSetAsBreakpoint")
+	public function isLineSetAsBreakpoint(line:Int):Bool;
+
+	/**		
 		Cut's the current selection.
 	**/
 	@:native("Cut")
@@ -502,7 +542,7 @@ extern class TextEdit extends godot.Control {
 	public function getSelectionText():std.String;
 
 	/**		
-		Returns a `String` text with the word under the mouse cursor location.
+		Returns a `String` text with the word under the caret (text cursor) location.
 	**/
 	@:native("GetWordUnderCursor")
 	public function getWordUnderCursor():std.String;

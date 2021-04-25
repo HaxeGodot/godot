@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-Plays a sound effect with directed sound effects, dampens with distance if needed, generates effect of hearable position in space.
+Plays a sound effect with directed sound effects, dampens with distance if needed, generates effect of hearable position in space. For greater realism, a low-pass filter is automatically applied to distant sounds. This can be disabled by setting `godot.AudioStreamPlayer3D.attenuationFilterCutoffHz` to `20500`.
 
 By default, audio is heard from the camera position. This can be changed by adding a `godot.Listener` node to the scene and enabling it by calling `godot.Listener.makeCurrent` on it.
 **/
@@ -31,19 +31,19 @@ extern class AudioStreamPlayer3D extends godot.Spatial {
 	public var dopplerTracking:godot.AudioStreamPlayer3D_DopplerTrackingEnum;
 
 	/**		
-		Amount how much the filter affects the loudness, in dB.
+		Amount how much the filter affects the loudness, in decibels.
 	**/
 	@:native("AttenuationFilterDb")
 	public var attenuationFilterDb:Single;
 
 	/**		
-		Dampens audio above this frequency, in Hz.
+		Dampens audio using a low-pass filter above this frequency, in Hz. To disable the dampening effect entirely, set this to `20500` as this frequency is above the human hearing limit.
 	**/
 	@:native("AttenuationFilterCutoffHz")
 	public var attenuationFilterCutoffHz:Single;
 
 	/**		
-		Dampens audio if camera is outside of `godot.AudioStreamPlayer3D.emissionAngleDegrees` and `godot.AudioStreamPlayer3D.emissionAngleEnabled` is set by this factor, in dB.
+		Dampens audio if camera is outside of `godot.AudioStreamPlayer3D.emissionAngleDegrees` and `godot.AudioStreamPlayer3D.emissionAngleEnabled` is set by this factor, in decibels.
 	**/
 	@:native("EmissionAngleFilterAttenuationDb")
 	public var emissionAngleFilterAttenuationDb:Single;
@@ -67,7 +67,7 @@ extern class AudioStreamPlayer3D extends godot.Spatial {
 	public var areaMask:UInt;
 
 	/**		
-		Bus on which this audio is playing.
+		The bus on which this audio is playing.
 	**/
 	@:native("Bus")
 	public var bus:std.String;
@@ -85,13 +85,13 @@ extern class AudioStreamPlayer3D extends godot.Spatial {
 	public var maxDistance:Single;
 
 	/**		
-		If `true`, the playback is paused. You can resume it by setting `stream_paused` to `false`.
+		If `true`, the playback is paused. You can resume it by setting `godot.AudioStreamPlayer3D.streamPaused` to `false`.
 	**/
 	@:native("StreamPaused")
 	public var streamPaused:Bool;
 
 	/**		
-		If `true`, audio plays when added to scene tree.
+		If `true`, audio plays when the AudioStreamPlayer3D node is added to scene tree.
 	**/
 	@:native("Autoplay")
 	public var autoplay:Bool;
@@ -109,19 +109,19 @@ extern class AudioStreamPlayer3D extends godot.Spatial {
 	public var pitchScale:Single;
 
 	/**		
-		Sets the absolute maximum of the soundlevel, in dB.
+		Sets the absolute maximum of the soundlevel, in decibels.
 	**/
 	@:native("MaxDb")
 	public var maxDb:Single;
 
 	/**		
-		Factor for the attenuation effect.
+		The factor for the attenuation effect. Higher values make the sound audible over a larger distance.
 	**/
 	@:native("UnitSize")
 	public var unitSize:Single;
 
 	/**		
-		Base sound level unaffected by dampening, in dB.
+		The base sound level unaffected by dampening, in decibels.
 	**/
 	@:native("UnitDb")
 	public var unitDb:Single;
@@ -133,7 +133,7 @@ extern class AudioStreamPlayer3D extends godot.Spatial {
 	public var attenuationModel:godot.AudioStreamPlayer3D_AttenuationModelEnum;
 
 	/**		
-		The `godot.AudioStream` object to be played.
+		The `godot.AudioStream` resource to be played.
 	**/
 	@:native("Stream")
 	public var stream:godot.AudioStream;

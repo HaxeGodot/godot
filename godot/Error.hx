@@ -14,10 +14,10 @@ extern enum Error {
 		
 		var err = method_that_returns_error()
 		if err != OK:
-		print("Failure!)
+		print("Failure!")
 		# Or, equivalent:
 		if err:
-		print("Still failing!)
+		print("Still failing!")
 		
 		```
 	**/

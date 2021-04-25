@@ -43,7 +43,7 @@ extern class Animation extends godot.Resource {
 	public var step:Single;
 
 	/**		
-		A flag indicating that the animation must loop. This is uses for correct interpolation of animation cycles, and for hinting the player that it must restart the animation.
+		A flag indicating that the animation must loop. This is used for correct interpolation of animation cycles, and for hinting the player that it must restart the animation.
 	**/
 	@:native("Loop")
 	public var loop:Bool;
@@ -314,6 +314,12 @@ extern class Animation extends godot.Resource {
 	public function valueTrackGetKeyIndices(trackIdx:Int, timeSec:Single, delta:Single):cs.NativeArray<Int>;
 
 	/**		
+		Returns the interpolated value at the given time (in seconds). The `track_idx` must be the index of a value track.
+	**/
+	@:native("ValueTrackInterpolate")
+	public function valueTrackInterpolate(trackIdx:Int, timeSec:Single):Dynamic;
+
+	/**		
 		Returns all the key indices of a method track, given a position and delta time.
 	**/
 	@:native("MethodTrackGetKeyIndices")
@@ -454,7 +460,7 @@ extern class Animation extends godot.Resource {
 	#end
 
 	/**		
-		Sets the stream of the key identified by `key_idx` to value `offset`. The `track_idx` must be the index of an Audio Track.
+		Sets the stream of the key identified by `key_idx` to value `stream`. The `track_idx` must be the index of an Audio Track.
 	**/
 	@:native("AudioTrackSetKeyStream")
 	public function audioTrackSetKeyStream(trackIdx:Int, keyIdx:Int, stream:godot.Resource):Void;

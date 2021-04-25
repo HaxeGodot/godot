@@ -13,6 +13,16 @@ Animations are created using a `godot.SpriteFrames` resource, which can be confi
 @:autoBuild(godot.Godot.buildUserClass())
 extern class AnimatedSprite3D extends godot.SpriteBase3D {
 	/**
+		`animation_finished` signal.
+		
+		Emitted when the animation is finished (when it plays the last frame). If the animation is looping, this signal is emitted every time the last frame is drawn.
+	**/
+	public var onAnimationFinished(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onAnimationFinished():Signal<Void->Void> {
+		return new Signal(this, "animation_finished", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
 		`frame_changed` signal.
 		
 		Emitted when `frame` changed.

@@ -303,6 +303,12 @@ extern class LineEdit extends godot.Control {
 	@:native("GetCursorPosition")
 	public function getCursorPosition():Int;
 
+	/**		
+		Returns the scroll offset due to `godot.LineEdit.caretPosition`, as a number of characters.
+	**/
+	@:native("GetScrollOffset")
+	public function getScrollOffset():Int;
+
 	@:native("SetExpandToTextLength")
 	public function setExpandToTextLength(enabled:Bool):Void;
 

@@ -28,7 +28,7 @@ extern abstract Color(Color_) from Color_ to Color_ {
 #end
 	#if !doc_gen
 	/**		
-		Constructs a color from RGBA values on the range of 0 to 1.
+		Constructs a color from RGBA values, typically on the range of 0 to 1.
 		
 		@param r The color's red component, typically on the range of 0 to 1.
 		@param g The color's green component, typically on the range of 0 to 1.
@@ -54,8 +54,8 @@ extern abstract Color(Color_) from Color_ to Color_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a color from a 32-bit integer
-		(each byte represents a component of the RGBA profile).
+		Constructs a color from a 32-bit integer in RGBA format
+		(each byte represents a color channel).
 		
 		@param rgba The int representing the color.
 	**/
@@ -66,8 +66,8 @@ extern abstract Color(Color_) from Color_ to Color_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a color from a 64-bit integer
-		(each word represents a component of the RGBA profile).
+		Constructs a color from a 64-bit integer in RGBA format
+		(each word represents a color channel).
 		
 		@param rgba The long representing the color.
 	**/
@@ -423,8 +423,8 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function linearInterpolate(to:godot.Color, weight:godot.Color):godot.Color;
 
 	/**		
-		Returns the color's 32-bit integer in ABGR format
-		(each byte represents a component of the ABGR profile).
+		Returns the color converted to a 32-bit integer in ABGR
+		format (each byte represents a color channel).
 		ABGR is the reversed version of the default format.
 		
 		@returns An int representing this color in ABGR32 format.
@@ -433,8 +433,8 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public function toAbgr32():Int;
 
 	/**		
-		Returns the color's 64-bit integer in ABGR format
-		(each byte represents a component of the ABGR profile).
+		Returns the color converted to a 64-bit integer in ABGR
+		format (each word represents a color channel).
 		ABGR is the reversed version of the default format.
 		
 		@returns An int representing this color in ABGR64 format.
@@ -443,8 +443,8 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public function toAbgr64():haxe.Int64;
 
 	/**		
-		Returns the color's 32-bit integer in ARGB format
-		(each byte represents a component of the ARGB profile).
+		Returns the color converted to a 32-bit integer in ARGB
+		format (each byte represents a color channel).
 		ARGB is more compatible with DirectX, but not used much in Godot.
 		
 		@returns An int representing this color in ARGB32 format.
@@ -453,8 +453,8 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public function toArgb32():Int;
 
 	/**		
-		Returns the color's 64-bit integer in ARGB format
-		(each word represents a component of the ARGB profile).
+		Returns the color converted to a 64-bit integer in ARGB
+		format (each word represents a color channel).
 		ARGB is more compatible with DirectX, but not used much in Godot.
 		
 		@returns A long representing this color in ARGB64 format.
@@ -463,8 +463,8 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public function toArgb64():haxe.Int64;
 
 	/**		
-		Returns the color's 32-bit integer in RGBA format
-		(each byte represents a component of the RGBA profile).
+		Returns the color converted to a 32-bit integer in RGBA
+		format (each byte represents a color channel).
 		RGBA is Godot's default and recommended format.
 		
 		@returns An int representing this color in RGBA32 format.
@@ -473,8 +473,8 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public function toRgba32():Int;
 
 	/**		
-		Returns the color's 64-bit integer in RGBA format
-		(each word represents a component of the RGBA profile).
+		Returns the color converted to a 64-bit integer in RGBA
+		format (each word represents a color channel).
 		RGBA is Godot's default and recommended format.
 		
 		@returns A long representing this color in RGBA64 format.
@@ -513,7 +513,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 
 	#if doc_gen
 	/**		
-		Constructs a color from RGBA values on the range of 0 to 1.
+		Constructs a color from RGBA values, typically on the range of 0 to 1.
 		
 		@param r The color's red component, typically on the range of 0 to 1.
 		@param g The color's green component, typically on the range of 0 to 1.
@@ -524,7 +524,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function new(r:Single, g:Single, b:Single, ?a:Single):Void;
 	#else
 	/**		
-		Constructs a color from RGBA values on the range of 0 to 1.
+		Constructs a color from RGBA values, typically on the range of 0 to 1.
 		
 		@param r The color's red component, typically on the range of 0 to 1.
 		@param g The color's green component, typically on the range of 0 to 1.
@@ -535,7 +535,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function new(r:Single, g:Single, b:Single):Void;
 
 	/**		
-		Constructs a color from RGBA values on the range of 0 to 1.
+		Constructs a color from RGBA values, typically on the range of 0 to 1.
 		
 		@param r The color's red component, typically on the range of 0 to 1.
 		@param g The color's green component, typically on the range of 0 to 1.
@@ -576,8 +576,8 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	#end
 
 	/**		
-		Constructs a color from a 32-bit integer
-		(each byte represents a component of the RGBA profile).
+		Constructs a color from a 32-bit integer in RGBA format
+		(each byte represents a color channel).
 		
 		@param rgba The int representing the color.
 	**/
@@ -585,8 +585,8 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function new(rgba:Int):Void;
 
 	/**		
-		Constructs a color from a 64-bit integer
-		(each word represents a component of the RGBA profile).
+		Constructs a color from a 64-bit integer in RGBA format
+		(each word represents a color channel).
 		
 		@param rgba The long representing the color.
 	**/

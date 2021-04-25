@@ -13,6 +13,14 @@ MeshInstance is a node that takes a `godot.Mesh` resource and adds it to the cur
 @:autoBuild(godot.Godot.buildUserClass())
 extern class MeshInstance extends godot.GeometryInstance {
 	/**		
+		If `true`, normals are transformed when software skinning is used. Set to `false` when normals are not needed for better performance.
+		
+		See  for details about how software skinning is enabled.
+	**/
+	@:native("SoftwareSkinningTransformNormals")
+	public var softwareSkinningTransformNormals:Bool;
+
+	/**		
 		`godot.NodePath` to the `godot.Skeleton` associated with the instance.
 	**/
 	@:native("Skeleton")
@@ -68,6 +76,18 @@ extern class MeshInstance extends godot.GeometryInstance {
 	**/
 	@:native("GetSurfaceMaterial")
 	public function getSurfaceMaterial(surface:Int):godot.Material;
+
+	/**		
+		Returns the `godot.Material` that will be used by the `godot.Mesh` when drawing. This can return the `godot.GeometryInstance.materialOverride`, the surface override `godot.Material` defined in this `godot.MeshInstance`, or the surface `godot.Material` defined in the `godot.Mesh`. For example, if `godot.GeometryInstance.materialOverride` is used, all surfaces will return the override material.
+	**/
+	@:native("GetActiveMaterial")
+	public function getActiveMaterial(surface:Int):godot.Material;
+
+	@:native("SetSoftwareSkinningTransformNormals")
+	public function setSoftwareSkinningTransformNormals(enabled:Bool):Void;
+
+	@:native("IsSoftwareSkinningTransformNormalsEnabled")
+	public function isSoftwareSkinningTransformNormalsEnabled():Bool;
 
 	/**		
 		This helper creates a `godot.StaticBody` child node with a `godot.ConcavePolygonShape` collision shape calculated from the mesh geometry. It's mainly used for testing.

@@ -6,8 +6,6 @@ import cs.system.*;
 
 /**
 Baked lightmaps are an alternative workflow for adding indirect (or baked) lighting to a scene. Unlike the `godot.GIProbe` approach, baked lightmaps work fine on low-end PCs and mobile devices as they consume almost no resources in run-time.
-
-Note: This node has many known bugs and will be [https://godotengine.org/article/godot-40-will-get-new-modernized-lightmapper](rewritten for Godot 4.0). See [https://github.com/godotengine/godot/issues/30929](GitHub issue #30929).
 **/
 @:libType
 @:csNative
@@ -21,64 +19,132 @@ extern class BakedLightmap extends godot.VisualInstance {
 	public var lightData:godot.BakedLightmapData;
 
 	/**		
-		The location where lightmaps will be saved.
+		Deprecated, in previous versions it determined the location where lightmaps were be saved.
 	**/
 	@:native("ImagePath")
 	public var imagePath:std.String;
 
 	/**		
-		Grid size used for real-time capture information on dynamic objects. Cannot be larger than `godot.BakedLightmap.bakeCellSize`.
+		Bias value to reduce the amount of light proagation in the captured octree.
+	**/
+	@:native("CapturePropagation")
+	public var capturePropagation:Single;
+
+	/**		
+		Bake quality of the capture data.
+	**/
+	@:native("CaptureQuality")
+	public var captureQuality:godot.BakedLightmap_BakeQuality;
+
+	/**		
+		Grid size used for real-time capture information on dynamic objects.
 	**/
 	@:native("CaptureCellSize")
 	public var captureCellSize:Single;
 
 	/**		
-		If a `godot.Mesh.lightmapSizeHint` isn't specified, the lightmap baker will dynamically set the lightmap size using this value. This value is measured in texels per world unit. The maximum lightmap texture size is 4096x4096.
+		When enabled, an octree containing the scene's lighting information will be computed. This octree will then be used to light dynamic objects in the scene.
 	**/
-	@:native("BakeDefaultTexelsPerUnit")
-	public var bakeDefaultTexelsPerUnit:Single;
+	@:native("CaptureEnabled")
+	public var captureEnabled:Bool;
 
 	/**		
-		The size of the affected area.
+		Minimum ambient light for all the lightmap texels. This doesn't take into account any occlusion from the scene's geometry, it simply ensures a minimum amount of light on all the lightmap texels. Can be used for artistic control on shadow color.
 	**/
-	@:native("BakeExtents")
-	public var bakeExtents:godot.Vector3;
+	@:native("EnvironmentMinLight")
+	public var environmentMinLight:godot.Color;
 
 	/**		
-		If `true`, the lightmap can capture light values greater than `1.0`. Turning this off will result in a smaller file size.
+		The energy scaling factor when when `godot.BakedLightmap.environmentMode` is set to  or .
 	**/
-	@:native("BakeHdr")
-	public var bakeHdr:Bool;
+	@:native("EnvironmentCustomEnergy")
+	public var environmentCustomEnergy:Single;
 
 	/**		
-		Multiplies the light sources' intensity by this value. For instance, if the value is set to 2, lights will be twice as bright. If the value is set to 0.5, lights will be half as bright.
+		The environment color when `godot.BakedLightmap.environmentMode` is set to .
 	**/
-	@:native("BakeEnergy")
-	public var bakeEnergy:Single;
+	@:native("EnvironmentCustomColor")
+	public var environmentCustomColor:godot.Color;
 
 	/**		
-		Defines how far the light will travel before it is no longer effective. The higher the number, the farther the light will travel. For instance, if the value is set to 2, the light will go twice as far. If the value is set to 0.5, the light will only go half as far.
+		The rotation of the baked custom sky.
 	**/
-	@:native("BakePropagation")
-	public var bakePropagation:Single;
+	@:native("EnvironmentCustomSkyRotationDegrees")
+	public var environmentCustomSkyRotationDegrees:godot.Vector3;
 
 	/**		
-		Lightmapping mode. See `godot.BakedLightmap_BakeModeEnum`.
+		The `godot.Sky` resource to use when `godot.BakedLightmap.environmentMode` is set o .
 	**/
-	@:native("BakeMode")
-	public var bakeMode:godot.BakedLightmap_BakeModeEnum;
+	@:native("EnvironmentCustomSky")
+	public var environmentCustomSky:godot.Sky;
 
 	/**		
-		Three quality modes are available. Higher quality requires more rendering time. See `godot.BakedLightmap_BakeQualityEnum`.
+		Decides which environment to use during baking.
 	**/
-	@:native("BakeQuality")
-	public var bakeQuality:godot.BakedLightmap_BakeQualityEnum;
+	@:native("EnvironmentMode")
+	public var environmentMode:godot.BakedLightmap_EnvironmentModeEnum;
 
 	/**		
-		Grid subdivision size for lightmapper calculation. The default value will work for most cases. Increase for better lighting on small details or if your scene is very large.
+		Maximum size of each lightmap layer, only used when `godot.BakedLightmap.atlasGenerate` is enabled.
 	**/
-	@:native("BakeCellSize")
-	public var bakeCellSize:Single;
+	@:native("AtlasMaxSize")
+	public var atlasMaxSize:Int;
+
+	/**		
+		When enabled, the lightmapper will merge the textures for all meshes into a single large layered texture. Not supported in GLES2.
+	**/
+	@:native("AtlasGenerate")
+	public var atlasGenerate:Bool;
+
+	/**		
+		If a baked mesh doesn't have a UV2 size hint, this value will be used to roughly compute a suitable lightmap size.
+	**/
+	@:native("DefaultTexelsPerUnit")
+	public var defaultTexelsPerUnit:Single;
+
+	/**		
+		Raycasting bias used during baking to avoid floating point precission issues.
+	**/
+	@:native("Bias")
+	public var bias:Single;
+
+	/**		
+		Store full color values in the lightmap textures. When disabled, lightmap textures will store a single brightness channel. Can be disabled to reduce disk usage if the scene contains only white lights or you don't mind losing color information in indirect lighting.
+	**/
+	@:native("UseColor")
+	public var useColor:Bool;
+
+	/**		
+		If `true`, stores the lightmap textures in a high dynamic range format (EXR). If `false`, stores the lightmap texture in a low dynamic range PNG image. This can be set to `false` to reduce disk usage, but light values over 1.0 will be clamped and you may see banding caused by the reduced precision.
+		
+		Note: Setting `godot.BakedLightmap.useHdr` to `true` will decrease lightmap banding even when using the GLES2 backend or if  is `false`.
+	**/
+	@:native("UseHdr")
+	public var useHdr:Bool;
+
+	/**		
+		When enabled, a lightmap denoiser will be used to reduce the noise inherent to Monte Carlo based global illumination.
+	**/
+	@:native("UseDenoiser")
+	public var useDenoiser:Bool;
+
+	/**		
+		Number of light bounces that are taken into account during baking.
+	**/
+	@:native("Bounces")
+	public var bounces:Int;
+
+	/**		
+		Determines the amount of samples per texel used in indrect light baking. The amount of samples for each quality level can be configured in the project settings.
+	**/
+	@:native("Quality")
+	public var quality:godot.BakedLightmap_BakeQuality;
+
+	/**		
+		Size of the baked lightmap. Only meshes inside this region will be included in the baked lightmap, also used as the bounds of the captured region for dynamic lighting.
+	**/
+	@:native("Extents")
+	public var extents:godot.Vector3;
 
 	@:native("new")
 	public function new():Void;
@@ -89,29 +155,95 @@ extern class BakedLightmap extends godot.VisualInstance {
 	@:native("GetLightData")
 	public function getLightData():godot.BakedLightmapData;
 
-	@:native("SetBakeCellSize")
-	public function setBakeCellSize(bakeCellSize:Single):Void;
-
-	@:native("GetBakeCellSize")
-	public function getBakeCellSize():Single;
-
-	@:native("SetCaptureCellSize")
-	public function setCaptureCellSize(captureCellSize:Single):Void;
-
-	@:native("GetCaptureCellSize")
-	public function getCaptureCellSize():Single;
-
 	@:native("SetBakeQuality")
-	public function setBakeQuality(bakeQuality:godot.BakedLightmap_BakeQualityEnum):Void;
+	public function setBakeQuality(quality:godot.BakedLightmap_BakeQuality):Void;
 
 	@:native("GetBakeQuality")
-	public function getBakeQuality():godot.BakedLightmap_BakeQualityEnum;
+	public function getBakeQuality():godot.BakedLightmap_BakeQuality;
 
-	@:native("SetBakeMode")
-	public function setBakeMode(bakeMode:godot.BakedLightmap_BakeModeEnum):Void;
+	@:native("SetBounces")
+	public function setBounces(bounces:Int):Void;
 
-	@:native("GetBakeMode")
-	public function getBakeMode():godot.BakedLightmap_BakeModeEnum;
+	@:native("GetBounces")
+	public function getBounces():Int;
+
+	@:native("SetBias")
+	public function setBias(bias:Single):Void;
+
+	@:native("GetBias")
+	public function getBias():Single;
+
+	@:native("SetEnvironmentMode")
+	public function setEnvironmentMode(mode:godot.BakedLightmap_EnvironmentModeEnum):Void;
+
+	@:native("GetEnvironmentMode")
+	public function getEnvironmentMode():godot.BakedLightmap_EnvironmentModeEnum;
+
+	@:native("SetEnvironmentCustomSky")
+	public function setEnvironmentCustomSky(sky:godot.Sky):Void;
+
+	@:native("GetEnvironmentCustomSky")
+	public function getEnvironmentCustomSky():godot.Sky;
+
+	@:native("SetEnvironmentCustomSkyRotationDegrees")
+	public function setEnvironmentCustomSkyRotationDegrees(rotation:godot.Vector3):Void;
+
+	@:native("GetEnvironmentCustomSkyRotationDegrees")
+	public function getEnvironmentCustomSkyRotationDegrees():godot.Vector3;
+
+	@:native("SetEnvironmentCustomColor")
+	public function setEnvironmentCustomColor(color:godot.Color):Void;
+
+	@:native("GetEnvironmentCustomColor")
+	public function getEnvironmentCustomColor():godot.Color;
+
+	@:native("SetEnvironmentCustomEnergy")
+	public function setEnvironmentCustomEnergy(energy:Single):Void;
+
+	@:native("GetEnvironmentCustomEnergy")
+	public function getEnvironmentCustomEnergy():Single;
+
+	@:native("SetEnvironmentMinLight")
+	public function setEnvironmentMinLight(minLight:godot.Color):Void;
+
+	@:native("GetEnvironmentMinLight")
+	public function getEnvironmentMinLight():godot.Color;
+
+	@:native("SetUseDenoiser")
+	public function setUseDenoiser(useDenoiser:Bool):Void;
+
+	@:native("IsUsingDenoiser")
+	public function isUsingDenoiser():Bool;
+
+	@:native("SetUseHdr")
+	public function setUseHdr(useDenoiser:Bool):Void;
+
+	@:native("IsUsingHdr")
+	public function isUsingHdr():Bool;
+
+	@:native("SetUseColor")
+	public function setUseColor(useDenoiser:Bool):Void;
+
+	@:native("IsUsingColor")
+	public function isUsingColor():Bool;
+
+	@:native("SetGenerateAtlas")
+	public function setGenerateAtlas(enabled:Bool):Void;
+
+	@:native("IsGenerateAtlasEnabled")
+	public function isGenerateAtlasEnabled():Bool;
+
+	@:native("SetMaxAtlasSize")
+	public function setMaxAtlasSize(maxAtlasSize:Int):Void;
+
+	@:native("GetMaxAtlasSize")
+	public function getMaxAtlasSize():Int;
+
+	@:native("SetCaptureQuality")
+	public function setCaptureQuality(captureQuality:godot.BakedLightmap_BakeQuality):Void;
+
+	@:native("GetCaptureQuality")
+	public function getCaptureQuality():godot.BakedLightmap_BakeQuality;
 
 	@:native("SetExtents")
 	public function setExtents(extents:godot.Vector3):Void;
@@ -119,29 +251,29 @@ extern class BakedLightmap extends godot.VisualInstance {
 	@:native("GetExtents")
 	public function getExtents():godot.Vector3;
 
-	@:native("SetBakeDefaultTexelsPerUnit")
-	public function setBakeDefaultTexelsPerUnit(texels:Single):Void;
+	@:native("SetDefaultTexelsPerUnit")
+	public function setDefaultTexelsPerUnit(texels:Single):Void;
 
-	@:native("GetBakeDefaultTexelsPerUnit")
-	public function getBakeDefaultTexelsPerUnit():Single;
+	@:native("GetDefaultTexelsPerUnit")
+	public function getDefaultTexelsPerUnit():Single;
 
-	@:native("SetPropagation")
-	public function setPropagation(propagation:Single):Void;
+	@:native("SetCapturePropagation")
+	public function setCapturePropagation(propagation:Single):Void;
 
-	@:native("GetPropagation")
-	public function getPropagation():Single;
+	@:native("GetCapturePropagation")
+	public function getCapturePropagation():Single;
 
-	@:native("SetEnergy")
-	public function setEnergy(energy:Single):Void;
+	@:native("SetCaptureEnabled")
+	public function setCaptureEnabled(enabled:Bool):Void;
 
-	@:native("GetEnergy")
-	public function getEnergy():Single;
+	@:native("GetCaptureEnabled")
+	public function getCaptureEnabled():Bool;
 
-	@:native("SetHdr")
-	public function setHdr(hdr:Bool):Void;
+	@:native("SetCaptureCellSize")
+	public function setCaptureCellSize(captureCellSize:Single):Void;
 
-	@:native("IsHdr")
-	public function isHdr():Bool;
+	@:native("GetCaptureCellSize")
+	public function getCaptureCellSize():Single;
 
 	@:native("SetImagePath")
 	public function setImagePath(imagePath:std.String):Void;
@@ -151,33 +283,27 @@ extern class BakedLightmap extends godot.VisualInstance {
 
 	#if doc_gen
 	/**		
-		Bakes the lightmaps within the currently edited scene. Returns a `godot.BakedLightmap_BakeError` to signify if the bake was successful, or if unsuccessful, how the bake failed.
+		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
 	**/
 	@:native("Bake")
-	public function bake(?fromNode:godot.Node, ?createVisualDebug:Bool):godot.BakedLightmap_BakeError;
+	public function bake(?fromNode:godot.Node, ?dataSavePath:std.String):godot.BakedLightmap_BakeError;
 	#else
 	/**		
-		Bakes the lightmaps within the currently edited scene. Returns a `godot.BakedLightmap_BakeError` to signify if the bake was successful, or if unsuccessful, how the bake failed.
+		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
 	**/
 	@:native("Bake")
 	public overload function bake():godot.BakedLightmap_BakeError;
 
 	/**		
-		Bakes the lightmaps within the currently edited scene. Returns a `godot.BakedLightmap_BakeError` to signify if the bake was successful, or if unsuccessful, how the bake failed.
+		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
 	**/
 	@:native("Bake")
 	public overload function bake(fromNode:godot.Node):godot.BakedLightmap_BakeError;
 
 	/**		
-		Bakes the lightmaps within the currently edited scene. Returns a `godot.BakedLightmap_BakeError` to signify if the bake was successful, or if unsuccessful, how the bake failed.
+		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
 	**/
 	@:native("Bake")
-	public overload function bake(fromNode:godot.Node, createVisualDebug:Bool):godot.BakedLightmap_BakeError;
+	public overload function bake(fromNode:godot.Node, dataSavePath:std.String):godot.BakedLightmap_BakeError;
 	#end
-
-	/**		
-		Executes a dry run bake of lightmaps within the currently edited scene.
-	**/
-	@:native("DebugBake")
-	public function debugBake():Void;
 }

@@ -7,7 +7,7 @@ import cs.system.*;
 /**
 As one of the most important classes, the `godot.SceneTree` manages the hierarchy of nodes in a scene as well as scenes themselves. Nodes can be added, retrieved and removed. The whole scene tree (and thus the current scene) can be paused. Scenes can be loaded, switched and reloaded.
 
-You can also use the `godot.SceneTree` to organize your nodes into groups: every node can be assigned as many groups as you want to create, e.g. a "enemy" group. You can then iterate these groups or even call methods and set properties on all the group's members at once.
+You can also use the `godot.SceneTree` to organize your nodes into groups: every node can be assigned as many groups as you want to create, e.g. an "enemy" group. You can then iterate these groups or even call methods and set properties on all the group's members at once.
 
 `godot.SceneTree` is the default `godot.MainLoop` implementation used by scenes, and is thus in charge of the game loop.
 **/
@@ -316,6 +316,8 @@ extern class SceneTree extends godot.MainLoop {
 		print("end")
 		
 		```
+		
+		The timer will be automatically freed after its time elapses.
 	**/
 	@:native("CreateTimer")
 	public function createTimer(timeSec:Single, ?pauseModeProcess:Bool):godot.SceneTreeTimer;
@@ -333,6 +335,8 @@ extern class SceneTree extends godot.MainLoop {
 		print("end")
 		
 		```
+		
+		The timer will be automatically freed after its time elapses.
 	**/
 	@:native("CreateTimer")
 	public overload function createTimer(timeSec:Single):godot.SceneTreeTimer;
@@ -350,6 +354,8 @@ extern class SceneTree extends godot.MainLoop {
 		print("end")
 		
 		```
+		
+		The timer will be automatically freed after its time elapses.
 	**/
 	@:native("CreateTimer")
 	public overload function createTimer(timeSec:Single, pauseModeProcess:Bool):godot.SceneTreeTimer;
@@ -369,19 +375,19 @@ extern class SceneTree extends godot.MainLoop {
 
 	#if doc_gen
 	/**		
-		Quits the application. A process `exit_code` can optionally be passed as an argument. If this argument is `0` or greater, it will override the `godot.OS.exitCode` defined before quitting the application.
+		Quits the application at the end of the current iteration. A process `exit_code` can optionally be passed as an argument. If this argument is `0` or greater, it will override the `godot.OS.exitCode` defined before quitting the application.
 	**/
 	@:native("Quit")
 	public function quit(?exitCode:Int):Void;
 	#else
 	/**		
-		Quits the application. A process `exit_code` can optionally be passed as an argument. If this argument is `0` or greater, it will override the `godot.OS.exitCode` defined before quitting the application.
+		Quits the application at the end of the current iteration. A process `exit_code` can optionally be passed as an argument. If this argument is `0` or greater, it will override the `godot.OS.exitCode` defined before quitting the application.
 	**/
 	@:native("Quit")
 	public overload function quit():Void;
 
 	/**		
-		Quits the application. A process `exit_code` can optionally be passed as an argument. If this argument is `0` or greater, it will override the `godot.OS.exitCode` defined before quitting the application.
+		Quits the application at the end of the current iteration. A process `exit_code` can optionally be passed as an argument. If this argument is `0` or greater, it will override the `godot.OS.exitCode` defined before quitting the application.
 	**/
 	@:native("Quit")
 	public overload function quit(exitCode:Int):Void;
@@ -414,7 +420,9 @@ extern class SceneTree extends godot.MainLoop {
 	public function queueDelete(obj:godot.Object):Void;
 
 	/**		
-		Calls `method` on each member of the given group, respecting the given `godot.SceneTree_GroupCallFlags`.
+		Calls `method` on each member of the given group, respecting the given `godot.SceneTree_GroupCallFlags`. You can pass arguments to `method` by specifying them at the end of the method call.
+		
+		Note: `method` may only have 5 arguments at most (8 arguments passed to this method in total).
 	**/
 	@:native("CallGroupFlags")
 	public function callGroupFlags(flags:Int, group:std.String, method:std.String, args:haxe.Rest<Dynamic>):Dynamic;
@@ -432,7 +440,9 @@ extern class SceneTree extends godot.MainLoop {
 	public function setGroupFlags(callFlags:UInt, group:std.String, property:std.String, value:Dynamic):Void;
 
 	/**		
-		Calls `method` on each member of the given group.
+		Calls `method` on each member of the given group. You can pass arguments to `method` by specifying them at the end of the method call.
+		
+		Note: `method` may only have 5 arguments at most (7 arguments passed to this method in total).
 	**/
 	@:native("CallGroup")
 	public function callGroup(group:std.String, method:std.String, args:haxe.Rest<Dynamic>):Dynamic;
@@ -465,6 +475,8 @@ extern class SceneTree extends godot.MainLoop {
 		Changes the running scene to the one at the given `path`, after loading it into a `godot.PackedScene` and creating a new instance.
 		
 		Returns  on success,  if the `path` cannot be loaded into a `godot.PackedScene`, or  if that scene cannot be instantiated.
+		
+		Note: The scene change is deferred, which means that the new scene node is added on the next idle frame. You won't be able to access it immediately after the `godot.SceneTree.changeScene` call.
 	**/
 	@:native("ChangeScene")
 	public function changeScene(path:std.String):godot.Error;
@@ -473,6 +485,8 @@ extern class SceneTree extends godot.MainLoop {
 		Changes the running scene to a new instance of the given `godot.PackedScene`.
 		
 		Returns  on success or  if the scene cannot be instantiated.
+		
+		Note: The scene change is deferred, which means that the new scene node is added on the next idle frame. You won't be able to access it immediately after the `godot.SceneTree.changeSceneTo` call.
 	**/
 	@:native("ChangeSceneTo")
 	public function changeSceneTo(packedScene:godot.PackedScene):godot.Error;

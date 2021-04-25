@@ -219,7 +219,7 @@ extern class MainLoop extends godot.Object {
 	public function _InputText(text:std.String):Void;
 
 	/**		
-		Called each physics frame with the time since the last physics frame as argument (in seconds). Equivalent to `godot.Node._PhysicsProcess`.
+		Called each physics frame with the time since the last physics frame as argument (`delta`, in seconds). Equivalent to `godot.Node._PhysicsProcess`.
 		
 		If implemented, the method must return a boolean value. `true` ends the main loop, while `false` lets it proceed to the next frame.
 	**/

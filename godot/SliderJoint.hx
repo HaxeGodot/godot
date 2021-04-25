@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-Slides across the X axis of the pivot object.
+Slides across the X axis of the pivot object. See also `godot.Generic6DOFJoint`.
 **/
 @:libType
 @:csNative

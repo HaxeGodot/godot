@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-Displays a colored rectangle.
+Displays a rectangle filled with a solid `godot.ColorRect.color`. If you need to display the border alone, consider using `godot.ReferenceRect` instead.
 **/
 @:libType
 @:csNative

@@ -5,9 +5,11 @@ package godot;
 import cs.system.*;
 
 /**
-Native image datatype. Contains image data, which can be converted to a `godot.Texture`, and several functions to interact with it. The maximum width and height for an `godot.Image` are  and .
+Native image datatype. Contains image data which can be converted to an `godot.ImageTexture` and provides commonly used image processing methods. The maximum width and height for an `godot.Image` are  and .
 
-Note: The maximum image size is 16384×16384 pixels due to graphics hardware limitations. Larger images will fail to import.
+An `godot.Image` cannot be assigned to a `texture` property of an object directly (such as `godot.Sprite`), and has to be converted manually to an `godot.ImageTexture` first.
+
+Note: The maximum image size is 16384×16384 pixels due to graphics hardware limitations. Larger images may fail to import.
 **/
 @:libType
 @:csNative
@@ -15,7 +17,7 @@ Note: The maximum image size is 16384×16384 pixels due to graphics hardware lim
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Image extends godot.Resource {
 	/**		
-		Holds all of the image's color data in a given format. See `godot.Image_Format` constants.
+		Holds all the image's color data in a given format. See `godot.Image_Format` constants.
 	**/
 	@:native("Data")
 	public var data:godot.collections.Dictionary;
@@ -85,39 +87,45 @@ extern class Image extends godot.Resource {
 
 	#if doc_gen
 	/**		
-		Resizes the image to the nearest power of 2 for the width and height. If `square` is `true` then set width and height to be the same.
+		Resizes the image to the nearest power of 2 for the width and height. If `square` is `true` then set width and height to be the same. New pixels are calculated using the `interpolation` mode defined via `godot.Image_Interpolation` constants.
 	**/
 	@:native("ResizeToPo2")
-	public function resizeToPo2(?square:Bool):Void;
+	public function resizeToPo2(?square:Bool, ?interpolation:godot.Image_Interpolation):Void;
 	#else
 	/**		
-		Resizes the image to the nearest power of 2 for the width and height. If `square` is `true` then set width and height to be the same.
+		Resizes the image to the nearest power of 2 for the width and height. If `square` is `true` then set width and height to be the same. New pixels are calculated using the `interpolation` mode defined via `godot.Image_Interpolation` constants.
 	**/
 	@:native("ResizeToPo2")
 	public overload function resizeToPo2():Void;
 
 	/**		
-		Resizes the image to the nearest power of 2 for the width and height. If `square` is `true` then set width and height to be the same.
+		Resizes the image to the nearest power of 2 for the width and height. If `square` is `true` then set width and height to be the same. New pixels are calculated using the `interpolation` mode defined via `godot.Image_Interpolation` constants.
 	**/
 	@:native("ResizeToPo2")
 	public overload function resizeToPo2(square:Bool):Void;
+
+	/**		
+		Resizes the image to the nearest power of 2 for the width and height. If `square` is `true` then set width and height to be the same. New pixels are calculated using the `interpolation` mode defined via `godot.Image_Interpolation` constants.
+	**/
+	@:native("ResizeToPo2")
+	public overload function resizeToPo2(square:Bool, interpolation:godot.Image_Interpolation):Void;
 	#end
 
 	#if doc_gen
 	/**		
-		Resizes the image to the given `width` and `height`. New pixels are calculated using `interpolation`. See `interpolation` constants.
+		Resizes the image to the given `width` and `height`. New pixels are calculated using the `interpolation` mode defined via `godot.Image_Interpolation` constants.
 	**/
 	@:native("Resize")
 	public function resize(width:Int, height:Int, ?interpolation:godot.Image_Interpolation):Void;
 	#else
 	/**		
-		Resizes the image to the given `width` and `height`. New pixels are calculated using `interpolation`. See `interpolation` constants.
+		Resizes the image to the given `width` and `height`. New pixels are calculated using the `interpolation` mode defined via `godot.Image_Interpolation` constants.
 	**/
 	@:native("Resize")
 	public overload function resize(width:Int, height:Int):Void;
 
 	/**		
-		Resizes the image to the given `width` and `height`. New pixels are calculated using `interpolation`. See `interpolation` constants.
+		Resizes the image to the given `width` and `height`. New pixels are calculated using the `interpolation` mode defined via `godot.Image_Interpolation` constants.
 	**/
 	@:native("Resize")
 	public overload function resize(width:Int, height:Int, interpolation:godot.Image_Interpolation):Void;
@@ -155,19 +163,19 @@ extern class Image extends godot.Resource {
 
 	#if doc_gen
 	/**		
-		Generates mipmaps for the image. Mipmaps are pre-calculated and lower resolution copies of the image. Mipmaps are automatically used if the image needs to be scaled down when rendered. This improves image quality and the performance of the rendering. Returns an error if the image is compressed, in a custom format or if the image's width/height is 0.
+		Generates mipmaps for the image. Mipmaps are precalculated and lower resolution copies of the image. Mipmaps are automatically used if the image needs to be scaled down when rendered. This improves image quality and the performance of the rendering. Returns an error if the image is compressed, in a custom format or if the image's width/height is 0.
 	**/
 	@:native("GenerateMipmaps")
 	public function generateMipmaps(?renormalize:Bool):godot.Error;
 	#else
 	/**		
-		Generates mipmaps for the image. Mipmaps are pre-calculated and lower resolution copies of the image. Mipmaps are automatically used if the image needs to be scaled down when rendered. This improves image quality and the performance of the rendering. Returns an error if the image is compressed, in a custom format or if the image's width/height is 0.
+		Generates mipmaps for the image. Mipmaps are precalculated and lower resolution copies of the image. Mipmaps are automatically used if the image needs to be scaled down when rendered. This improves image quality and the performance of the rendering. Returns an error if the image is compressed, in a custom format or if the image's width/height is 0.
 	**/
 	@:native("GenerateMipmaps")
 	public overload function generateMipmaps():godot.Error;
 
 	/**		
-		Generates mipmaps for the image. Mipmaps are pre-calculated and lower resolution copies of the image. Mipmaps are automatically used if the image needs to be scaled down when rendered. This improves image quality and the performance of the rendering. Returns an error if the image is compressed, in a custom format or if the image's width/height is 0.
+		Generates mipmaps for the image. Mipmaps are precalculated and lower resolution copies of the image. Mipmaps are automatically used if the image needs to be scaled down when rendered. This improves image quality and the performance of the rendering. Returns an error if the image is compressed, in a custom format or if the image's width/height is 0.
 	**/
 	@:native("GenerateMipmaps")
 	public overload function generateMipmaps(renormalize:Bool):godot.Error;
@@ -198,7 +206,11 @@ extern class Image extends godot.Resource {
 	public function isEmpty():Bool;
 
 	/**		
-		Loads an image from file `path`. See [https://docs.godotengine.org/en/latest/getting_started/workflow/assets/importing_images.html#supported-image-formats](Supported image formats) for a list of supported image formats and limitations.
+		Loads an image from file `path`. See [https://docs.godotengine.org/en/3.3/getting_started/workflow/assets/importing_images.html#supported-image-formats](Supported image formats) for a list of supported image formats and limitations.
+		
+		Warning: This method should only be used in the editor or in cases when you need to load external images at run-time, such as images located at the `user://` directory, and may not work in exported projects.
+		
+		See also `godot.ImageTexture` description for usage examples.
 	**/
 	@:native("Load")
 	public function load(path:std.String):godot.Error;
@@ -441,4 +453,12 @@ extern class Image extends godot.Resource {
 	**/
 	@:native("LoadTgaFromBuffer")
 	public function loadTgaFromBuffer(buffer:haxe.Rest<cs.types.UInt8>):godot.Error;
+
+	/**		
+		Loads an image from the binary contents of a BMP file.
+		
+		Note: Godot's BMP module doesn't support 16-bit per pixel images. Only 1-bit, 4-bit, 8-bit, 24-bit, and 32-bit per pixel images are supported.
+	**/
+	@:native("LoadBmpFromBuffer")
+	public function loadBmpFromBuffer(buffer:haxe.Rest<cs.types.UInt8>):godot.Error;
 }

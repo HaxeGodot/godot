@@ -6,6 +6,8 @@ import cs.system.*;
 
 /**
 This kind of button is primarily used when the interaction with the button causes a context change (like linking to a web page).
+
+See also `godot.BaseButton` which contains common properties and methods associated with this node.
 **/
 @:libType
 @:csNative

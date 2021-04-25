@@ -16,7 +16,7 @@ Can also be accessed as array of 3D vectors. These vectors are normally
 orthogonal to each other, but are not necessarily normalized (due to scaling).
 
 For more information, read this documentation article:
-https://docs.godotengine.org/en/latest/tutorials/math/matrices_and_transforms.html
+https://docs.godotengine.org/en/3.3/tutorials/math/matrices_and_transforms.html
 **/
 #if doc_gen
 @:struct
@@ -226,6 +226,9 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 	**/
 	@:native("Row0")
 	public var row0:godot.Vector3;
+
+	@:native("RotationQuat")
+	public function rotationQuat():godot.Quat;
 
 	/**		
 		Returns the determinant of the basis matrix. If the basis is

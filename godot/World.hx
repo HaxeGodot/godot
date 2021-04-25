@@ -13,7 +13,7 @@ Class that has everything pertaining to a world. A physics space, a visual scena
 @:autoBuild(godot.Godot.buildUserClass())
 extern class World extends godot.Resource {
 	/**		
-		Direct access to the world's physics 3D space state. Used for querying current and potential collisions. Must only be accessed from within `_physics_process(delta)`.
+		Direct access to the world's physics 3D space state. Used for querying current and potential collisions.
 	**/
 	@:native("DirectSpaceState")
 	public var directSpaceState(default, never):godot.PhysicsDirectSpaceState;

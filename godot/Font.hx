@@ -96,26 +96,26 @@ extern abstract class Font extends godot.Resource {
 
 	#if doc_gen
 	/**		
-		Returns the size of a character, optionally taking kerning into account if the next character is provided.
+		Returns the size of a character, optionally taking kerning into account if the next character is provided. Note that the height returned is the font height (see `godot.Font.getHeight`) and has no relation to the glyph height.
 	**/
 	@:native("GetCharSize")
 	public function getCharSize(char:Int, ?next:Int):godot.Vector2;
 	#else
 	/**		
-		Returns the size of a character, optionally taking kerning into account if the next character is provided.
+		Returns the size of a character, optionally taking kerning into account if the next character is provided. Note that the height returned is the font height (see `godot.Font.getHeight`) and has no relation to the glyph height.
 	**/
 	@:native("GetCharSize")
 	public overload function getCharSize(char:Int):godot.Vector2;
 
 	/**		
-		Returns the size of a character, optionally taking kerning into account if the next character is provided.
+		Returns the size of a character, optionally taking kerning into account if the next character is provided. Note that the height returned is the font height (see `godot.Font.getHeight`) and has no relation to the glyph height.
 	**/
 	@:native("GetCharSize")
 	public overload function getCharSize(char:Int, next:Int):godot.Vector2;
 	#end
 
 	/**		
-		Returns the size of a string, taking kerning and advance into account.
+		Returns the size of a string, taking kerning and advance into account. Note that the height returned is the font height (see `godot.Font.getHeight`) and has no relation to the string.
 	**/
 	@:native("GetStringSize")
 	public function getStringSize(string:std.String):godot.Vector2;

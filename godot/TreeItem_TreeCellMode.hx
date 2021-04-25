@@ -11,7 +11,7 @@ extern enum TreeItem_TreeCellMode {
 	String;
 
 	/**		
-		Cell can be checked.
+		Cell contains a checkbox.
 	**/
 	Check;
 

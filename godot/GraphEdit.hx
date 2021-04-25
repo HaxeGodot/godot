@@ -153,6 +153,24 @@ extern class GraphEdit extends godot.Control {
 	}
 
 	/**		
+		The opacity of the minimap rectangle.
+	**/
+	@:native("MinimapOpacity")
+	public var minimapOpacity:Single;
+
+	/**		
+		The size of the minimap rectangle. The map itself is based on the size of the grid area and is scaled to fit this rectangle.
+	**/
+	@:native("MinimapSize")
+	public var minimapSize:godot.Vector2;
+
+	/**		
+		If `true`, the minimap is visible.
+	**/
+	@:native("MinimapEnabled")
+	public var minimapEnabled:Bool;
+
+	/**		
 		The current zoom value.
 	**/
 	@:native("Zoom")
@@ -287,6 +305,24 @@ extern class GraphEdit extends godot.Control {
 	@:native("IsUsingSnap")
 	public function isUsingSnap():Bool;
 
+	@:native("SetMinimapSize")
+	public function setMinimapSize(pSize:godot.Vector2):Void;
+
+	@:native("GetMinimapSize")
+	public function getMinimapSize():godot.Vector2;
+
+	@:native("SetMinimapOpacity")
+	public function setMinimapOpacity(pOpacity:Single):Void;
+
+	@:native("GetMinimapOpacity")
+	public function getMinimapOpacity():Single;
+
+	@:native("SetMinimapEnabled")
+	public function setMinimapEnabled(enable:Bool):Void;
+
+	@:native("IsMinimapEnabled")
+	public function isMinimapEnabled():Bool;
+
 	@:native("SetRightDisconnects")
 	public function setRightDisconnects(enable:Bool):Void;
 
@@ -296,7 +332,7 @@ extern class GraphEdit extends godot.Control {
 	/**		
 		Gets the `godot.HBoxContainer` that contains the zooming and grid snap controls in the top left of the graph.
 		
-		Warning: The intended usage of this function is to allow you to reposition or add your own custom controls to the container. This is an internal control and as such should not be freed. If you wish to hide this or any of it's children use their `godot.CanvasItem.visible` property instead.
+		Warning: The intended usage of this function is to allow you to reposition or add your own custom controls to the container. This is an internal control and as such should not be freed. If you wish to hide this or any of its children, use their `godot.CanvasItem.visible` property instead.
 	**/
 	@:native("GetZoomHbox")
 	public function getZoomHbox():godot.HBoxContainer;

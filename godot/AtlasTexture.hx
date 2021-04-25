@@ -5,7 +5,11 @@ package godot;
 import cs.system.*;
 
 /**
-`godot.Texture` resource aimed at managing big textures files that pack multiple smaller textures. Consists of a `godot.Texture`, a margin that defines the border width, and a region that defines the actual area of the AtlasTexture.
+`godot.Texture` resource that crops out one part of the `godot.AtlasTexture.atlas` texture, defined by `godot.AtlasTexture.region`. The main use case is cropping out textures from a texture atlas, which is a big texture file that packs multiple smaller textures. Consists of a `godot.Texture` for the `godot.AtlasTexture.atlas`, a `godot.AtlasTexture.region` that defines the area of `godot.AtlasTexture.atlas` to use, and a `godot.AtlasTexture.margin` that defines the border width.
+
+`godot.AtlasTexture` cannot be used in an `godot.AnimatedTexture`, cannot be tiled in nodes such as `godot.TextureRect`, and does not work properly if used inside of other `godot.AtlasTexture` resources. Multiple `godot.AtlasTexture` resources can be used to crop multiple textures from the atlas. Using a texture atlas helps to optimize video memory costs and render calls compared to using multiple small files.
+
+Note: AtlasTextures don't support repetition. The  and  flags are ignored when using an AtlasTexture.
 **/
 @:libType
 @:csNative

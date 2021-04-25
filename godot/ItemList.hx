@@ -318,13 +318,6 @@ extern class ItemList extends godot.Control {
 
 	/**		
 		Sets the background color of the item specified by `idx` index to the specified `godot.Color`.
-		
-		```
-		
-		var some_string = "Some text"
-		some_string.set_item_custom_bg_color(0,Color(1, 0, 0, 1) # This will set the background color of the first item of the control to red.
-		
-		```
 	**/
 	@:native("SetItemCustomBgColor")
 	public function setItemCustomBgColor(idx:Int, customBgColor:godot.Color):Void;
@@ -337,13 +330,6 @@ extern class ItemList extends godot.Control {
 
 	/**		
 		Sets the foreground color of the item specified by `idx` index to the specified `godot.Color`.
-		
-		```
-		
-		var some_string = "Some text"
-		some_string.set_item_custom_fg_color(0,Color(1, 0, 0, 1) # This will set the foreground color of the first item of the control to red.
-		
-		```
 	**/
 	@:native("SetItemCustomFgColor")
 	public function setItemCustomFgColor(idx:Int, customFgColor:godot.Color):Void;

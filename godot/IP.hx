@@ -86,7 +86,7 @@ extern class IP {
 	public static function eraseResolveItem(id:Int):Void;
 
 	/**		
-		Returns all of the user's current IPv4 and IPv6 addresses as an array.
+		Returns all the user's current IPv4 and IPv6 addresses as an array.
 	**/
 	@:native("GetLocalAddresses")
 	public static function getLocalAddresses():godot.collections.Array;

@@ -22,7 +22,7 @@ extern class StreamPeerTCP extends godot.StreamPeer {
 	public function connectToHost(host:std.String, port:Int):godot.Error;
 
 	/**		
-		Returns `true` if this peer is currently connected to a host, `false` otherwise.
+		Returns `true` if this peer is currently connected or is connecting to a host, `false` otherwise.
 	**/
 	@:native("IsConnectedToHost")
 	public function isConnectedToHost():Bool;
@@ -52,9 +52,9 @@ extern class StreamPeerTCP extends godot.StreamPeer {
 	public function disconnectFromHost():Void;
 
 	/**		
-		Disables Nagle's algorithm to improve latency for small packets.
+		If `enabled` is `true`, packets will be sent immediately. If `enabled` is `false` (the default), packet transfers will be delayed and combined using [https://en.wikipedia.org/wiki/Nagle%27s_algorithm](Nagle's algorithm).
 		
-		Note: For applications that send large packets or need to transfer a lot of data, this can decrease the total available bandwidth.
+		Note: It's recommended to leave this disabled for applications that send large packets or need to transfer a lot of data, as enabling this can decrease the total available bandwidth.
 	**/
 	@:native("SetNoDelay")
 	public function setNoDelay(enabled:Bool):Void;

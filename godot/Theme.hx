@@ -24,180 +24,184 @@ extern class Theme extends godot.Resource {
 	public function new():Void;
 
 	/**		
-		Sets the theme's icon `godot.Texture` to `texture` at `name` in `type`.
+		Sets the theme's icon `godot.Texture` to `texture` at `name` in `node_type`.
 		
-		Does nothing if the theme does not have `type`.
+		Does nothing if the theme does not have `node_type`.
 	**/
 	@:native("SetIcon")
-	public function setIcon(name:std.String, type:std.String, texture:godot.Texture):Void;
+	public function setIcon(name:std.String, nodeType:std.String, texture:godot.Texture):Void;
 
 	/**		
-		Returns the icon `godot.Texture` at `name` if the theme has `type`.
+		Returns the icon `godot.Texture` at `name` if the theme has `node_type`.
 	**/
 	@:native("GetIcon")
-	public function getIcon(name:std.String, type:std.String):godot.Texture;
+	public function getIcon(name:std.String, nodeType:std.String):godot.Texture;
 
 	/**		
-		Returns `true` if icon `godot.Texture` with `name` is in `type`.
+		Returns `true` if icon `godot.Texture` with `name` is in `node_type`.
 		
-		Returns `false` if the theme does not have `type`.
+		Returns `false` if the theme does not have `node_type`.
 	**/
 	@:native("HasIcon")
-	public function hasIcon(name:std.String, type:std.String):Bool;
+	public function hasIcon(name:std.String, nodeType:std.String):Bool;
 
 	/**		
-		Clears the icon at `name` if the theme has `type`.
+		Clears the icon at `name` if the theme has `node_type`.
 	**/
 	@:native("ClearIcon")
-	public function clearIcon(name:std.String, type:std.String):Void;
+	public function clearIcon(name:std.String, nodeType:std.String):Void;
 
 	/**		
-		Returns all the icons as a `String` filled with each `godot.Texture`'s name, for use in `godot.Theme.getIcon`, if the theme has `type`.
+		Returns all the icons as a `String` filled with each `godot.Texture`'s name, for use in `godot.Theme.getIcon`, if the theme has `node_type`.
 	**/
 	@:native("GetIconList")
-	public function getIconList(type:std.String):cs.NativeArray<std.String>;
+	public function getIconList(nodeType:std.String):cs.NativeArray<std.String>;
 
 	/**		
-		Sets theme's `godot.StyleBox` to `stylebox` at `name` in `type`.
+		Sets theme's `godot.StyleBox` to `stylebox` at `name` in `node_type`.
 		
-		Does nothing if the theme does not have `type`.
+		Does nothing if the theme does not have `node_type`.
 	**/
 	@:native("SetStylebox")
-	public function setStylebox(name:std.String, type:std.String, texture:godot.StyleBox):Void;
+	public function setStylebox(name:std.String, nodeType:std.String, texture:godot.StyleBox):Void;
 
 	/**		
-		Returns the icon `godot.StyleBox` at `name` if the theme has `type`.
+		Returns the `godot.StyleBox` at `name` if the theme has `node_type`.
+		
+		Valid `name`s may be found using `godot.Theme.getStyleboxList`. Valid `node_type`s may be found using `godot.Theme.getStyleboxTypes`.
 	**/
 	@:native("GetStylebox")
-	public function getStylebox(name:std.String, type:std.String):godot.StyleBox;
+	public function getStylebox(name:std.String, nodeType:std.String):godot.StyleBox;
 
 	/**		
-		Returns `true` if `godot.StyleBox` with `name` is in `type`.
+		Returns `true` if `godot.StyleBox` with `name` is in `node_type`.
 		
-		Returns `false` if the theme does not have `type`.
+		Returns `false` if the theme does not have `node_type`.
 	**/
 	@:native("HasStylebox")
-	public function hasStylebox(name:std.String, type:std.String):Bool;
+	public function hasStylebox(name:std.String, nodeType:std.String):Bool;
 
 	/**		
-		Clears `godot.StyleBox` at `name` if the theme has `type`.
+		Clears `godot.StyleBox` at `name` if the theme has `node_type`.
 	**/
 	@:native("ClearStylebox")
-	public function clearStylebox(name:std.String, type:std.String):Void;
+	public function clearStylebox(name:std.String, nodeType:std.String):Void;
 
 	/**		
-		Returns all the `godot.StyleBox`s as a `String` filled with each `godot.StyleBox`'s name, for use in `godot.Theme.getStylebox`, if the theme has `type`.
+		Returns all the `godot.StyleBox`s as a `String` filled with each `godot.StyleBox`'s name, for use in `godot.Theme.getStylebox`, if the theme has `node_type`.
+		
+		Valid `node_type`s may be found using `godot.Theme.getStyleboxTypes`.
 	**/
 	@:native("GetStyleboxList")
-	public function getStyleboxList(type:std.String):cs.NativeArray<std.String>;
+	public function getStyleboxList(nodeType:std.String):cs.NativeArray<std.String>;
 
 	/**		
-		Returns all the `godot.StyleBox` types as a `String` filled with each `godot.StyleBox`'s type, for use in `godot.Theme.getStylebox` and/or `godot.Theme.getStyleboxList`, if the theme has `type`.
+		Returns all the `godot.StyleBox` types as a `String` filled with each `godot.StyleBox`'s type, for use in `godot.Theme.getStylebox` and/or `godot.Theme.getStyleboxList`, if the theme has `node_type`.
 	**/
 	@:native("GetStyleboxTypes")
 	public function getStyleboxTypes():cs.NativeArray<std.String>;
 
 	/**		
-		Sets the theme's `godot.Font` to `font` at `name` in `type`.
+		Sets the theme's `godot.Font` to `font` at `name` in `node_type`.
 		
-		Does nothing if the theme does not have `type`.
+		Does nothing if the theme does not have `node_type`.
 	**/
 	@:native("SetFont")
-	public function setFont(name:std.String, type:std.String, font:godot.Font):Void;
+	public function setFont(name:std.String, nodeType:std.String, font:godot.Font):Void;
 
 	/**		
-		Returns the `godot.Font` at `name` if the theme has `type`.
+		Returns the `godot.Font` at `name` if the theme has `node_type`.
 	**/
 	@:native("GetFont")
-	public function getFont(name:std.String, type:std.String):godot.Font;
+	public function getFont(name:std.String, nodeType:std.String):godot.Font;
 
 	/**		
-		Returns `true` if `godot.Font` with `name` is in `type`.
+		Returns `true` if `godot.Font` with `name` is in `node_type`.
 		
-		Returns `false` if the theme does not have `type`.
+		Returns `false` if the theme does not have `node_type`.
 	**/
 	@:native("HasFont")
-	public function hasFont(name:std.String, type:std.String):Bool;
+	public function hasFont(name:std.String, nodeType:std.String):Bool;
 
 	/**		
-		Clears the `godot.Font` at `name` if the theme has `type`.
+		Clears the `godot.Font` at `name` if the theme has `node_type`.
 	**/
 	@:native("ClearFont")
-	public function clearFont(name:std.String, type:std.String):Void;
+	public function clearFont(name:std.String, nodeType:std.String):Void;
 
 	/**		
-		Returns all the `godot.Font`s as a `String` filled with each `godot.Font`'s name, for use in `godot.Theme.getFont`, if the theme has `type`.
+		Returns all the `godot.Font`s as a `String` filled with each `godot.Font`'s name, for use in `godot.Theme.getFont`, if the theme has `node_type`.
 	**/
 	@:native("GetFontList")
-	public function getFontList(type:std.String):cs.NativeArray<std.String>;
+	public function getFontList(nodeType:std.String):cs.NativeArray<std.String>;
 
 	/**		
-		Sets the theme's `godot.Color` to `color` at `name` in `type`.
+		Sets the theme's `godot.Color` to `color` at `name` in `node_type`.
 		
-		Does nothing if the theme does not have `type`.
+		Does nothing if the theme does not have `node_type`.
 	**/
 	@:native("SetColor")
-	public function setColor(name:std.String, type:std.String, color:godot.Color):Void;
+	public function setColor(name:std.String, nodeType:std.String, color:godot.Color):Void;
 
 	/**		
-		Returns the `godot.Color` at `name` if the theme has `type`.
+		Returns the `godot.Color` at `name` if the theme has `node_type`.
 	**/
 	@:native("GetColor")
-	public function getColor(name:std.String, type:std.String):godot.Color;
+	public function getColor(name:std.String, nodeType:std.String):godot.Color;
 
 	/**		
-		Returns `true` if `godot.Color` with `name` is in `type`.
+		Returns `true` if `godot.Color` with `name` is in `node_type`.
 		
-		Returns `false` if the theme does not have `type`.
+		Returns `false` if the theme does not have `node_type`.
 	**/
 	@:native("HasColor")
-	public function hasColor(name:std.String, type:std.String):Bool;
+	public function hasColor(name:std.String, nodeType:std.String):Bool;
 
 	/**		
-		Clears the `godot.Color` at `name` if the theme has `type`.
+		Clears the `godot.Color` at `name` if the theme has `node_type`.
 	**/
 	@:native("ClearColor")
-	public function clearColor(name:std.String, type:std.String):Void;
+	public function clearColor(name:std.String, nodeType:std.String):Void;
 
 	/**		
-		Returns all the `godot.Color`s as a `String` filled with each `godot.Color`'s name, for use in `godot.Theme.getColor`, if the theme has `type`.
+		Returns all the `godot.Color`s as a `String` filled with each `godot.Color`'s name, for use in `godot.Theme.getColor`, if the theme has `node_type`.
 	**/
 	@:native("GetColorList")
-	public function getColorList(type:std.String):cs.NativeArray<std.String>;
+	public function getColorList(nodeType:std.String):cs.NativeArray<std.String>;
 
 	/**		
-		Sets the theme's constant to `constant` at `name` in `type`.
+		Sets the theme's constant to `constant` at `name` in `node_type`.
 		
-		Does nothing if the theme does not have `type`.
+		Does nothing if the theme does not have `node_type`.
 	**/
 	@:native("SetConstant")
-	public function setConstant(name:std.String, type:std.String, constant:Int):Void;
+	public function setConstant(name:std.String, nodeType:std.String, constant:Int):Void;
 
 	/**		
-		Returns the constant at `name` if the theme has `type`.
+		Returns the constant at `name` if the theme has `node_type`.
 	**/
 	@:native("GetConstant")
-	public function getConstant(name:std.String, type:std.String):Int;
+	public function getConstant(name:std.String, nodeType:std.String):Int;
 
 	/**		
-		Returns `true` if constant with `name` is in `type`.
+		Returns `true` if constant with `name` is in `node_type`.
 		
-		Returns `false` if the theme does not have `type`.
+		Returns `false` if the theme does not have `node_type`.
 	**/
 	@:native("HasConstant")
-	public function hasConstant(name:std.String, type:std.String):Bool;
+	public function hasConstant(name:std.String, nodeType:std.String):Bool;
 
 	/**		
-		Clears the constant at `name` if the theme has `type`.
+		Clears the constant at `name` if the theme has `node_type`.
 	**/
 	@:native("ClearConstant")
-	public function clearConstant(name:std.String, type:std.String):Void;
+	public function clearConstant(name:std.String, nodeType:std.String):Void;
 
 	/**		
-		Returns all the constants as a `String` filled with each constant's name, for use in `godot.Theme.getConstant`, if the theme has `type`.
+		Returns all the constants as a `String` filled with each constant's name, for use in `godot.Theme.getConstant`, if the theme has `node_type`.
 	**/
 	@:native("GetConstantList")
-	public function getConstantList(type:std.String):cs.NativeArray<std.String>;
+	public function getConstantList(nodeType:std.String):cs.NativeArray<std.String>;
 
 	/**		
 		Clears all values on the theme.
@@ -212,10 +216,10 @@ extern class Theme extends godot.Resource {
 	public function getDefaultFont():godot.Font;
 
 	/**		
-		Returns all the types in `type` as a `String` for use in any of the `get_*` functions, if the theme has `type`.
+		Returns all the types in `node_type` as a `String` for use in any of the `get_*` functions, if the theme has `node_type`.
 	**/
 	@:native("GetTypeList")
-	public function getTypeList(type:std.String):cs.NativeArray<std.String>;
+	public function getTypeList(nodeType:std.String):cs.NativeArray<std.String>;
 
 	/**		
 		Sets the theme's values to a copy of the default theme values.

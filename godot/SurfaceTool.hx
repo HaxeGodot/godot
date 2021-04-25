@@ -48,43 +48,45 @@ extern class SurfaceTool extends godot.Reference {
 	public function addVertex(vertex:godot.Vector3):Void;
 
 	/**		
-		Specifies a `godot.Color` for the next vertex to use.
+		Specifies a `godot.Color` to use for the next vertex. If every vertex needs to have this information set and you fail to submit it for the first vertex, this information may not be used at all.
+		
+		Note: The material must have `godot.SpatialMaterial.vertexColorUseAsAlbedo` enabled for the vertex color to be visible.
 	**/
 	@:native("AddColor")
 	public function addColor(color:godot.Color):Void;
 
 	/**		
-		Specifies a normal for the next vertex to use.
+		Specifies a normal to use for the next vertex. If every vertex needs to have this information set and you fail to submit it for the first vertex, this information may not be used at all.
 	**/
 	@:native("AddNormal")
 	public function addNormal(normal:godot.Vector3):Void;
 
 	/**		
-		Specifies a tangent for the next vertex to use.
+		Specifies a tangent to use for the next vertex. If every vertex needs to have this information set and you fail to submit it for the first vertex, this information may not be used at all.
 	**/
 	@:native("AddTangent")
 	public function addTangent(tangent:godot.Plane):Void;
 
 	/**		
-		Specifies a set of UV coordinates to use for the next vertex.
+		Specifies a set of UV coordinates to use for the next vertex. If every vertex needs to have this information set and you fail to submit it for the first vertex, this information may not be used at all.
 	**/
 	@:native("AddUv")
 	public function addUv(uv:godot.Vector2):Void;
 
 	/**		
-		Specifies an optional second set of UV coordinates to use for the next vertex.
+		Specifies an optional second set of UV coordinates to use for the next vertex. If every vertex needs to have this information set and you fail to submit it for the first vertex, this information may not be used at all.
 	**/
 	@:native("AddUv2")
 	public function addUv2(uv2:godot.Vector2):Void;
 
 	/**		
-		Adds an array of bones for the next vertex to use. `bones` must contain 4 integers.
+		Specifies an array of bones to use for the next vertex. `bones` must contain 4 integers.
 	**/
 	@:native("AddBones")
 	public function addBones(bones:haxe.Rest<Int>):Void;
 
 	/**		
-		Specifies weight values for next vertex to use. `weights` must contain 4 values.
+		Specifies weight values to use for the next vertex. `weights` must contain 4 values. If every vertex needs to have this information set and you fail to submit it for the first vertex, this information may not be used at all.
 	**/
 	@:native("AddWeights")
 	public function addWeights(weights:haxe.Rest<Single>):Void;
@@ -202,7 +204,7 @@ extern class SurfaceTool extends godot.Reference {
 	public function addIndex(index:Int):Void;
 
 	/**		
-		Shrinks the vertex array by creating an index array (avoids reusing vertices).
+		Shrinks the vertex array by creating an index array. This can improve performance by avoiding vertex reuse.
 	**/
 	@:native("Index")
 	public function index():Void;
@@ -215,25 +217,25 @@ extern class SurfaceTool extends godot.Reference {
 
 	#if doc_gen
 	/**		
-		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted.
+		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted. `godot.SurfaceTool.generateNormals` should be called after generating geometry and before committing the mesh using `godot.SurfaceTool.commit` or `godot.SurfaceTool.commitToArrays`.
 		
-		Requires the primitive type to be set to .
+		Note: `godot.SurfaceTool.generateNormals` only works if the primitive type to be set to .
 	**/
 	@:native("GenerateNormals")
 	public function generateNormals(?flip:Bool):Void;
 	#else
 	/**		
-		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted.
+		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted. `godot.SurfaceTool.generateNormals` should be called after generating geometry and before committing the mesh using `godot.SurfaceTool.commit` or `godot.SurfaceTool.commitToArrays`.
 		
-		Requires the primitive type to be set to .
+		Note: `godot.SurfaceTool.generateNormals` only works if the primitive type to be set to .
 	**/
 	@:native("GenerateNormals")
 	public overload function generateNormals():Void;
 
 	/**		
-		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted.
+		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted. `godot.SurfaceTool.generateNormals` should be called after generating geometry and before committing the mesh using `godot.SurfaceTool.commit` or `godot.SurfaceTool.commitToArrays`.
 		
-		Requires the primitive type to be set to .
+		Note: `godot.SurfaceTool.generateNormals` only works if the primitive type to be set to .
 	**/
 	@:native("GenerateNormals")
 	public overload function generateNormals(flip:Bool):Void;

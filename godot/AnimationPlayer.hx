@@ -113,7 +113,7 @@ extern class AnimationPlayer extends godot.Node {
 	/**		
 		The name of the currently playing animation. If no animation is playing, the property's value is an empty string. Changing this value does not restart the animation. See `godot.AnimationPlayer.play` for more information on playing animations.
 		
-		Note: while this property appears in the inspector, it's not meant to be edited and it's not saved in the scene. This property is mainly used to get the currently playing animation, and internally for animation playback tracks. For more information, see `godot.Animation`.
+		Note: while this property appears in the inspector, it's not meant to be edited, and it's not saved in the scene. This property is mainly used to get the currently playing animation, and internally for animation playback tracks. For more information, see `godot.Animation`.
 	**/
 	@:native("CurrentAnimation")
 	public var currentAnimation:std.String;

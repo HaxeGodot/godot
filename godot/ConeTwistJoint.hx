@@ -9,7 +9,7 @@ The joint can rotate the bodies across an axis defined by the local x-axes of th
 
 The twist axis is initiated as the X axis of the `godot.Joint`.
 
-Once the Bodies swing, the twist axis is calculated as the middle of the x-axes of the Joint in the local space of the two Bodies.
+Once the Bodies swing, the twist axis is calculated as the middle of the x-axes of the Joint in the local space of the two Bodies. See also `godot.Generic6DOFJoint`.
 **/
 @:libType
 @:csNative

@@ -8,6 +8,8 @@ import cs.system.*;
 CPU-based 2D particle node used to create a variety of particle systems and effects.
 
 See also `godot.Particles2D`, which provides the same functionality with hardware acceleration, but may not run on older devices.
+
+Note: Unlike `godot.Particles2D`, the visibility rect is generated on-the-fly and doesn't need to be configured by the user.
 **/
 @:libType
 @:csNative
@@ -371,13 +373,15 @@ extern class CPUParticles2D extends godot.Node2D {
 	public var oneShot:Bool;
 
 	/**		
-		Amount of time each particle will exist.
+		The amount of time each particle will exist (in seconds).
 	**/
 	@:native("Lifetime")
 	public var lifetime:Single;
 
 	/**		
-		Number of particles emitted in one emission cycle.
+		The number of particles emitted in one emission cycle (corresponding to the `godot.CPUParticles2D.lifetime`).
+		
+		Note: Changing `godot.CPUParticles2D.amount` will reset the particle emission, therefore removing all particles that were already emitted before changing `godot.CPUParticles2D.amount`.
 	**/
 	@:native("Amount")
 	public var amount:Int;

@@ -7,7 +7,11 @@ import cs.system.*;
 /**
 Control node for playing video streams using `godot.VideoStream` resources.
 
-Supported video formats are [https://www.webmproject.org/](WebM) (`godot.VideoStreamWebm`), [https://www.theora.org/](Ogg Theora) (`godot.VideoStreamTheora`), and any format exposed via a GDNative plugin using `godot.VideoStreamGDNative`.
+Supported video formats are [https://www.webmproject.org/](WebM) (`.webm`, `godot.VideoStreamWebm`), [https://www.theora.org/](Ogg Theora) (`.ogv`, `godot.VideoStreamTheora`), and any format exposed via a GDNative plugin using `godot.VideoStreamGDNative`.
+
+Note: Due to a bug, VideoPlayer does not support localization remapping yet.
+
+Warning: On HTML5, video playback will perform poorly due to missing architecture-specific assembly optimizations, especially for VP8/VP9.
 **/
 @:libType
 @:csNative
@@ -32,6 +36,8 @@ extern class VideoPlayer extends godot.Control {
 
 	/**		
 		The current position of the stream, in seconds.
+		
+		Note: Changing this value won't have any effect as seeking is not implemented yet, except in video formats implemented by a GDNative add-on.
 	**/
 	@:native("StreamPosition")
 	public var streamPosition:Single;

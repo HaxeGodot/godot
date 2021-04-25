@@ -12,6 +12,8 @@ GridMaps use a `godot.MeshLibrary` which contains a list of tiles. Each tile is 
 A GridMap contains a collection of cells. Each grid cell refers to a tile in the `godot.MeshLibrary`. All cells in the map have the same dimensions.
 
 Internally, a GridMap is split into a sparse collection of octants for efficient rendering and physics processing. Every octant has the same dimensions and can contain several cells.
+
+Note: GridMap doesn't extend `godot.VisualInstance` and therefore can't be hidden or cull masked based on `godot.VisualInstance.layers`. If you make a light not affect the first layer, the whole GridMap won't be lit by the light in question.
 **/
 @:libType
 @:csNative
@@ -27,7 +29,7 @@ extern class GridMap extends godot.Spatial {
 	}
 
 	/**		
-		The physics layers this GridMap detects collisions in. See [https://docs.godotengine.org/en/latest/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The physics layers this GridMap detects collisions in. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionMask")
 	public var collisionMask:UInt;
@@ -79,6 +81,12 @@ extern class GridMap extends godot.Spatial {
 	**/
 	@:native("CellSize")
 	public var cellSize:godot.Vector3;
+
+	/**		
+		Controls whether this GridMap will be baked in a `godot.BakedLightmap` or not.
+	**/
+	@:native("UseInBakedLight")
+	public var useInBakedLight:Bool;
 
 	/**		
 		The assigned `godot.MeshLibrary`.
@@ -269,6 +277,9 @@ extern class GridMap extends godot.Spatial {
 	@:native("GetMeshes")
 	public function getMeshes():godot.collections.Array;
 
+	/**		
+		Returns an array of `godot.ArrayMesh`es and `godot.Transform` references of all bake meshes that exist within the current GridMap.
+	**/
 	@:native("GetBakeMeshes")
 	public function getBakeMeshes():godot.collections.Array;
 
@@ -291,4 +302,10 @@ extern class GridMap extends godot.Spatial {
 	@:native("MakeBakedMeshes")
 	public overload function makeBakedMeshes(genLightmapUv:Bool, lightmapUvTexelSize:Single):Void;
 	#end
+
+	@:native("SetUseInBakedLight")
+	public function setUseInBakedLight(useInBakedLight:Bool):Void;
+
+	@:native("GetUseInBakedLight")
+	public function getUseInBakedLight():Bool;
 }

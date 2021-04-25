@@ -6,6 +6,10 @@ import cs.system.*;
 
 /**
 A PacketPeer implementation that should be passed to `godot.SceneTree.networkPeer` after being initialized as either a client or server. Events can then be handled by connecting to `godot.SceneTree` signals.
+
+ENet's purpose is to provide a relatively thin, simple and robust network communication layer on top of UDP (User Datagram Protocol).
+
+Note: ENet only uses UDP, not TCP. When forwarding the server port to make your server accessible on the public Internet, you only need to forward the server port in UDP. You can use the `godot.UPNP` class to try to forward the server port automatically when starting the server.
 **/
 @:libType
 @:csNative
@@ -21,7 +25,7 @@ extern class NetworkedMultiplayerENet extends godot.NetworkedMultiplayerPeer {
 	public var useDtls:Bool;
 
 	/**		
-		Enable or disable certiticate verification when `godot.NetworkedMultiplayerENet.useDtls` `true`.
+		Enable or disable certificate verification when `godot.NetworkedMultiplayerENet.useDtls` `true`.
 	**/
 	@:native("DtlsVerify")
 	public var dtlsVerify:Bool;
@@ -210,6 +214,14 @@ extern class NetworkedMultiplayerENet extends godot.NetworkedMultiplayerPeer {
 	**/
 	@:native("GetPeerPort")
 	public function getPeerPort(id:Int):Int;
+
+	/**		
+		Sets the timeout parameters for a peer.The timeout parameters control how and when a peer will timeout from a failure to acknowledge reliable traffic. Timeout values are expressed in milliseconds.
+		
+		The `timeout_limit` is a factor that, multiplied by a value based on the avarage round trip time, will determine the timeout limit for a reliable packet. When that limit is reached, the timeout will be doubled, and the peer will be disconnected if that limit has reached `timeout_min`. The `timeout_max` parameter, on the other hand, defines a fixed timeout for which any packet must be acknowledged or the peer will be dropped.
+	**/
+	@:native("SetPeerTimeout")
+	public function setPeerTimeout(id:Int, timeoutLimit:Int, timeoutMin:Int, timeoutMax:Int):Void;
 
 	/**		
 		Returns the channel of the next packet that will be retrieved via `godot.PacketPeer.getPacket`.

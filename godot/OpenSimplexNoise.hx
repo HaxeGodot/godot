@@ -96,13 +96,15 @@ extern class OpenSimplexNoise extends godot.Resource {
 	public function getLacunarity():Single;
 
 	/**		
-		Generate a noise image with the requested `width` and `height`, based on the current noise parameters.
+		Generate a noise image in  format with the requested `width` and `height`, based on the current noise parameters.
 	**/
 	@:native("GetImage")
 	public function getImage(width:Int, height:Int):godot.Image;
 
 	/**		
-		Generate a tileable noise image, based on the current noise parameters. Generated seamless images are always square (`size` × `size`).
+		Generate a tileable noise image in  format, based on the current noise parameters. Generated seamless images are always square (`size` × `size`).
+		
+		Note: Seamless noise has a lower contrast compared to non-seamless noise. This is due to the way noise uses higher dimensions for generating seamless noise.
 	**/
 	@:native("GetSeamlessImage")
 	public function getSeamlessImage(size:Int):godot.Image;

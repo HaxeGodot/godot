@@ -10,7 +10,7 @@ It can represent transformations such as translation, rotation, or scaling.
 It consists of a three `godot.Vector2` values: x, y, and the origin.
 
 For more information, read this documentation article:
-https://docs.godotengine.org/en/latest/tutorials/math/matrices_and_transforms.html
+https://docs.godotengine.org/en/3.3/tutorials/math/matrices_and_transforms.html
 **/
 #if doc_gen
 @:struct

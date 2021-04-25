@@ -23,13 +23,13 @@ extern class NinePatchRect extends godot.Control {
 	}
 
 	/**		
-		Doesn't do anything at the time of writing.
+		The stretch mode to use for vertical stretching/tiling. See `godot.NinePatchRect_AxisStretchMode` for possible values.
 	**/
 	@:native("AxisStretchVertical")
 	public var axisStretchVertical:godot.NinePatchRect_AxisStretchMode;
 
 	/**		
-		Doesn't do anything at the time of writing.
+		The stretch mode to use for horizontal stretching/tiling. See `godot.NinePatchRect_AxisStretchMode` for possible values.
 	**/
 	@:native("AxisStretchHorizontal")
 	public var axisStretchHorizontal:godot.NinePatchRect_AxisStretchMode;
@@ -41,19 +41,19 @@ extern class NinePatchRect extends godot.Control {
 	public var patchMarginBottom:Int;
 
 	/**		
-		The height of the 9-slice's right column.
+		The width of the 9-slice's right column. A margin of 16 means the 9-slice's right corners and side will have a width of 16 pixels. You can set all 4 margin values individually to create panels with non-uniform borders.
 	**/
 	@:native("PatchMarginRight")
 	public var patchMarginRight:Int;
 
 	/**		
-		The height of the 9-slice's top row.
+		The height of the 9-slice's top row. A margin of 16 means the 9-slice's top corners and side will have a height of 16 pixels. You can set all 4 margin values individually to create panels with non-uniform borders.
 	**/
 	@:native("PatchMarginTop")
 	public var patchMarginTop:Int;
 
 	/**		
-		The height of the 9-slice's left column.
+		The width of the 9-slice's left column. A margin of 16 means the 9-slice's left corners and side will have a width of 16 pixels. You can set all 4 margin values individually to create panels with non-uniform borders.
 	**/
 	@:native("PatchMarginLeft")
 	public var patchMarginLeft:Int;

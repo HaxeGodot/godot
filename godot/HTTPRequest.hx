@@ -28,7 +28,7 @@ push_error("An error occurred in the HTTP request.")
 # Note: Don't make simultaneous requests using a single HTTPRequest node.
 # The snippet below is provided for reference only.
 var body = {"name": "Godette"}
-var error = http_request.request("https://httpbin.org/post", [], true, HTTPClient.METHOD_POST, body)
+error = http_request.request("https://httpbin.org/post", [], true, HTTPClient.METHOD_POST, body)
 if error != OK:
 push_error("An error occurred in the HTTP request.")
 
@@ -74,6 +74,8 @@ texture_rect.texture = texture
 ```
 
 Note: When performing HTTP requests from a project exported to HTML5, keep in mind the remote server may not allow requests from foreign origins due to [https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS](CORS). If you host the server in question, you should modify its backend to allow requests from foreign origins by adding the `Access-Control-Allow-Origin: *` HTTP header.
+
+Note: SSL/TLS support is currently limited to TLS 1.0, TLS 1.1, and TLS 1.2. Attempting to connect to a TLS 1.3-only server will return an error.
 **/
 @:libType
 @:csNative
@@ -114,7 +116,7 @@ extern class HTTPRequest extends godot.Node {
 	/**		
 		The size of the buffer used and maximum bytes to read per iteration. See `godot.HTTPClient.readChunkSize`.
 		
-		Set this to a higher value (e.g. 65536 for 64 KiB) when downloading large files to achieve better speeds at the cost of memory.
+		Set this to a lower value (e.g. 4096 for 4 KiB) when downloading small files to decrease memory usage at the cost of download speeds.
 	**/
 	@:native("DownloadChunkSize")
 	public var downloadChunkSize:Int;

@@ -43,7 +43,7 @@ extern class PopupMenu extends godot.Popup {
 	}
 
 	/**		
-		If `true`, allows to navigate `godot.PopupMenu` with letter keys.
+		If `true`, allows navigating `godot.PopupMenu` with letter keys.
 	**/
 	@:native("AllowSearch")
 	public var allowSearch:Bool;
@@ -691,7 +691,7 @@ extern class PopupMenu extends godot.Popup {
 	#end
 
 	/**		
-		Sets the state of an multistate item. See `godot.PopupMenu.addMultistateItem` for details.
+		Sets the state of a multistate item. See `godot.PopupMenu.addMultistateItem` for details.
 	**/
 	@:native("SetItemMultistate")
 	public function setItemMultistate(idx:Int, state:Int):Void;
@@ -709,7 +709,7 @@ extern class PopupMenu extends godot.Popup {
 	public function toggleItemChecked(idx:Int):Void;
 
 	/**		
-		Cycle to the next state of an multistate item. See `godot.PopupMenu.addMultistateItem` for details.
+		Cycle to the next state of a multistate item. See `godot.PopupMenu.addMultistateItem` for details.
 	**/
 	@:native("ToggleItemMultistate")
 	public function toggleItemMultistate(idx:Int):Void;
@@ -829,22 +829,36 @@ extern class PopupMenu extends godot.Popup {
 
 	#if doc_gen
 	/**		
-		Adds a separator between items. Separators also occupy an index.
+		Adds a separator between items. Separators also occupy an index, which you can set by using the `id` parameter.
+		
+		A `label` can optionally be provided, which will appear at the center of the separator.
 	**/
 	@:native("AddSeparator")
-	public function addSeparator(?label:std.String):Void;
+	public function addSeparator(?label:std.String, ?id:Int):Void;
 	#else
 	/**		
-		Adds a separator between items. Separators also occupy an index.
+		Adds a separator between items. Separators also occupy an index, which you can set by using the `id` parameter.
+		
+		A `label` can optionally be provided, which will appear at the center of the separator.
 	**/
 	@:native("AddSeparator")
 	public overload function addSeparator():Void;
 
 	/**		
-		Adds a separator between items. Separators also occupy an index.
+		Adds a separator between items. Separators also occupy an index, which you can set by using the `id` parameter.
+		
+		A `label` can optionally be provided, which will appear at the center of the separator.
 	**/
 	@:native("AddSeparator")
 	public overload function addSeparator(label:std.String):Void;
+
+	/**		
+		Adds a separator between items. Separators also occupy an index, which you can set by using the `id` parameter.
+		
+		A `label` can optionally be provided, which will appear at the center of the separator.
+	**/
+	@:native("AddSeparator")
+	public overload function addSeparator(label:std.String, id:Int):Void;
 	#end
 
 	/**		

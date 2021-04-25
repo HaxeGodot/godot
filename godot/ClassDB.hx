@@ -144,18 +144,24 @@ extern class ClassDB {
 	#if doc_gen
 	/**		
 		Returns an array with all the methods of `class` or its ancestry if `no_inheritance` is `false`. Every element of the array is a `godot.Collections_Dictionary` with the following keys: `args`, `default_args`, `flags`, `id`, `name`, `return: (class_name, hint, hint_string, name, type, usage)`.
+		
+		Note: In exported release builds the debug info is not available, so the returned dictionaries will contain only method names.
 	**/
 	@:native("ClassGetMethodList")
 	public static function classGetMethodList(class_:std.String, ?noInheritance:Bool):godot.collections.Array;
 	#else
 	/**		
 		Returns an array with all the methods of `class` or its ancestry if `no_inheritance` is `false`. Every element of the array is a `godot.Collections_Dictionary` with the following keys: `args`, `default_args`, `flags`, `id`, `name`, `return: (class_name, hint, hint_string, name, type, usage)`.
+		
+		Note: In exported release builds the debug info is not available, so the returned dictionaries will contain only method names.
 	**/
 	@:native("ClassGetMethodList")
 	public static overload function classGetMethodList(class_:std.String):godot.collections.Array;
 
 	/**		
 		Returns an array with all the methods of `class` or its ancestry if `no_inheritance` is `false`. Every element of the array is a `godot.Collections_Dictionary` with the following keys: `args`, `default_args`, `flags`, `id`, `name`, `return: (class_name, hint, hint_string, name, type, usage)`.
+		
+		Note: In exported release builds the debug info is not available, so the returned dictionaries will contain only method names.
 	**/
 	@:native("ClassGetMethodList")
 	public static overload function classGetMethodList(class_:std.String, noInheritance:Bool):godot.collections.Array;

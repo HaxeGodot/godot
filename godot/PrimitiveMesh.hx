@@ -21,7 +21,7 @@ extern abstract class PrimitiveMesh extends godot.Mesh {
 	public var flipFaces:Bool;
 
 	/**		
-		Overrides the `godot.AABB` with one defined by user for use with frustum culling. Especially useful to avoid unnexpected culling when  using a shader to offset vertices.
+		Overrides the `godot.AABB` with one defined by user for use with frustum culling. Especially useful to avoid unexpected culling when  using a shader to offset vertices.
 	**/
 	@:native("CustomAabb")
 	public var customAabb:godot.AABB;

@@ -17,7 +17,7 @@ All objects are drawn to a viewport. You can use the `godot.Viewport` attached t
 
 In 3D, all visual objects must be associated with a scenario. The scenario is a visual representation of the world. If accessing the visual server from a running game, the scenario can be accessed from the scene tree from any `godot.Spatial` node with `godot.Spatial.getWorld`. Otherwise, a scenario can be created with `godot.VisualServer.scenarioCreate`.
 
-Similarly in 2D, a canvas is needed to draw all canvas items.
+Similarly, in 2D, a canvas is needed to draw all canvas items.
 
 In 3D, all visible objects are comprised of a resource and an instance. A resource can be a mesh, a particle system, a light, or any other 3D object. In order to be visible resources must be attached to an instance using `godot.VisualServer.instanceSetBase`. The instance must also be attached to the scenario using `godot.VisualServer.instanceSetScenario` in order to be visible.
 
@@ -1022,10 +1022,16 @@ extern class VisualServer {
 	public static function lightSetReverseCullFaceMode(light:godot.RID, enabled:Bool):Void;
 
 	/**		
-		Sets whether GI probes capture light information from this light.
+		Sets whether GI probes capture light information from this light. Deprecated method. Use `godot.VisualServer.lightSetBakeMode` instead. This method is only kept for compatibility reasons and calls `godot.VisualServer.lightSetBakeMode` internally, setting the bake mode to  or  depending on the given parameter.
 	**/
 	@:native("LightSetUseGi")
 	public static function lightSetUseGi(light:godot.RID, enabled:Bool):Void;
+
+	/**		
+		Sets the bake mode for this light, see `godot.VisualServer_LightBakeMode` for options. The bake mode affects how the light will be baked in `godot.BakedLightmap`s and `godot.GIProbe`s.
+	**/
+	@:native("LightSetBakeMode")
+	public static function lightSetBakeMode(light:godot.RID, bakeMode:godot.VisualServer_LightBakeMode):Void;
 
 	/**		
 		Sets whether to use a dual paraboloid or a cubemap for the shadow map. Dual paraboloid is faster but may suffer from artifacts. Equivalent to `godot.OmniLight.omniShadowMode`.
@@ -1352,6 +1358,18 @@ extern class VisualServer {
 	public static function lightmapCaptureGetEnergy(capture:godot.RID):Single;
 
 	/**		
+		Sets the "interior" mode for this lightmap capture. Equivalent to `godot.BakedLightmapData.interior`.
+	**/
+	@:native("LightmapCaptureSetInterior")
+	public static function lightmapCaptureSetInterior(capture:godot.RID, interior:Bool):Void;
+
+	/**		
+		Returns `true` if capture is in "interior" mode.
+	**/
+	@:native("LightmapCaptureIsInterior")
+	public static function lightmapCaptureIsInterior(capture:godot.RID):Bool;
+
+	/**		
 		Creates a particle system and adds it to the VisualServer. It can be accessed with the RID that is returned. This RID will be used in all `particles_*` VisualServer functions.
 		
 		Once finished with your RID, you will want to free the RID using the VisualServer's `godot.VisualServer.freeRid` static method.
@@ -1392,7 +1410,7 @@ extern class VisualServer {
 	public static function particlesSetOneShot(particles:godot.RID, oneShot:Bool):Void;
 
 	/**		
-		Sets the preprocess time for the particles animation. This lets you delay starting an animation until after the particles have begun emitting. Equivalent to `godot.Particles.preprocess`.
+		Sets the preprocess time for the particles' animation. This lets you delay starting an animation until after the particles have begun emitting. Equivalent to `godot.Particles.preprocess`.
 	**/
 	@:native("ParticlesSetPreProcessTime")
 	public static function particlesSetPreProcessTime(particles:godot.RID, time:Single):Void;
@@ -1788,6 +1806,20 @@ extern class VisualServer {
 	public static function viewportSetMsaa(viewport:godot.RID, msaa:godot.VisualServer_ViewportMSAA):Void;
 
 	/**		
+		Enables fast approximate antialiasing for this viewport. FXAA is a popular screen-space antialiasing method, which is fast but will make the image look blurry, especially at lower resolutions. It can still work relatively well at large resolutions such as 1440p and 4K.
+	**/
+	@:native("ViewportSetUseFxaa")
+	public static function viewportSetUseFxaa(viewport:godot.RID, fxaa:Bool):Void;
+
+	/**		
+		If `true`, uses a fast post-processing filter to make banding significantly less visible. In some cases, debanding may introduce a slightly noticeable dithering pattern. It's recommended to enable debanding only when actually needed since the dithering pattern will make lossless-compressed screenshots larger.
+		
+		Note: Only available on the GLES3 backend. `godot.Viewport.hdr` must also be `true` for debanding to be effective.
+	**/
+	@:native("ViewportSetUseDebanding")
+	public static function viewportSetUseDebanding(viewport:godot.RID, debanding:Bool):Void;
+
+	/**		
 		If `true`, the viewport renders to hdr.
 	**/
 	@:native("ViewportSetHdr")
@@ -2047,11 +2079,39 @@ extern class VisualServer {
 	@:native("InstanceSetVisible")
 	public static function instanceSetVisible(instance:godot.RID, visible:Bool):Void;
 
+	#if doc_gen
 	/**		
 		Sets the lightmap to use with this instance.
+		
+		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(0, 0, 1, 1)
 	**/
 	@:native("InstanceSetUseLightmap")
-	public static function instanceSetUseLightmap(instance:godot.RID, lightmapInstance:godot.RID, lightmap:godot.RID):Void;
+	public static function instanceSetUseLightmap(instance:godot.RID, lightmapInstance:godot.RID, lightmap:godot.RID, ?lightmapSlice:Int, ?lightmapUvRect:Null<godot.Rect2>):Void;
+	#else
+	/**		
+		Sets the lightmap to use with this instance.
+		
+		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(0, 0, 1, 1)
+	**/
+	@:native("InstanceSetUseLightmap")
+	public static overload function instanceSetUseLightmap(instance:godot.RID, lightmapInstance:godot.RID, lightmap:godot.RID):Void;
+
+	/**		
+		Sets the lightmap to use with this instance.
+		
+		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(0, 0, 1, 1)
+	**/
+	@:native("InstanceSetUseLightmap")
+	public static overload function instanceSetUseLightmap(instance:godot.RID, lightmapInstance:godot.RID, lightmap:godot.RID, lightmapSlice:Int):Void;
+
+	/**		
+		Sets the lightmap to use with this instance.
+		
+		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(0, 0, 1, 1)
+	**/
+	@:native("InstanceSetUseLightmap")
+	public static overload function instanceSetUseLightmap(instance:godot.RID, lightmapInstance:godot.RID, lightmap:godot.RID, lightmapSlice:Int, lightmapUvRect:Nullable1<godot.Rect2>):Void;
+	#end
 
 	/**		
 		Sets a custom AABB to use when culling objects from the view frustum. Equivalent to `godot.GeometryInstance.setCustomAabb`.
@@ -2072,7 +2132,7 @@ extern class VisualServer {
 	public static function instanceSetExterior(instance:godot.RID, enabled:Bool):Void;
 
 	/**		
-		Sets a margin to increase the size of the AABB when culling objects from the view frustum. This allows you avoid culling objects that fall outside the view frustum. Equivalent to `godot.GeometryInstance.extraCullMargin`.
+		Sets a margin to increase the size of the AABB when culling objects from the view frustum. This allows you to avoid culling objects that fall outside the view frustum. Equivalent to `godot.GeometryInstance.extraCullMargin`.
 	**/
 	@:native("InstanceSetExtraVisibilityMargin")
 	public static function instanceSetExtraVisibilityMargin(instance:godot.RID, margin:Single):Void;
@@ -3091,7 +3151,7 @@ extern class VisualServer {
 		Returns a certain information, see `godot.VisualServer_RenderInfo` for options.
 	**/
 	@:native("GetRenderInfo")
-	public static function getRenderInfo(info:godot.VisualServer_RenderInfo):Int;
+	public static function getRenderInfo(info:godot.VisualServer_RenderInfo):cs.types.UInt64;
 
 	/**		
 		Returns the name of the video adapter (e.g. "GeForce GTX 1080/PCIe/SSE2").
@@ -3174,7 +3234,9 @@ extern class VisualServer {
 	public static function hasFeature(feature:godot.VisualServer_Features):Bool;
 
 	/**		
-		Returns `true` if the OS supports a certain feature. Features might be `s3tc`, `etc`, `etc2` and `pvrtc`.
+		Returns `true` if the OS supports a certain feature. Features might be `s3tc`, `etc`, `etc2`, `pvrtc` and `skinning_fallback`.
+		
+		When rendering with GLES2, returns `true` with `skinning_fallback` in case the hardware doesn't support the default GPU skinning process.
 	**/
 	@:native("HasOsFeature")
 	public static function hasOsFeature(feature:std.String):Bool;

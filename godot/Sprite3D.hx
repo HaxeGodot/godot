@@ -35,28 +35,28 @@ extern class Sprite3D extends godot.SpriteBase3D {
 	public var regionEnabled:Bool;
 
 	/**		
-		Coordinates of the frame to display from sprite sheet. This is as an alias for the `godot.Sprite3D.frame` property. `godot.Sprite3D.vframes` or `godot.Sprite3D.hframes` must be greater than 1.
+		Coordinates of the frame to display from sprite sheet. This is as an alias for the `godot.Sprite3D.frame` property. `godot.Sprite3D.hframes` or `godot.Sprite3D.vframes` must be greater than 1.
 	**/
 	@:native("FrameCoords")
 	public var frameCoords:godot.Vector2;
 
 	/**		
-		Current frame to display from sprite sheet. `godot.Sprite3D.vframes` or `godot.Sprite3D.hframes` must be greater than 1.
+		Current frame to display from sprite sheet. `godot.Sprite3D.hframes` or `godot.Sprite3D.vframes` must be greater than 1.
 	**/
 	@:native("Frame")
 	public var frame:Int;
-
-	/**		
-		The number of columns in the sprite sheet.
-	**/
-	@:native("Hframes")
-	public var hframes:Int;
 
 	/**		
 		The number of rows in the sprite sheet.
 	**/
 	@:native("Vframes")
 	public var vframes:Int;
+
+	/**		
+		The number of columns in the sprite sheet.
+	**/
+	@:native("Hframes")
+	public var hframes:Int;
 
 	/**		
 		`godot.Texture` object to draw. If `godot.GeometryInstance.materialOverride` is used, this will be overridden.

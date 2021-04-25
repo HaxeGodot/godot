@@ -7,7 +7,7 @@ import cs.system.*;
 /**
 A simplified interface to a scene file. Provides access to operations and checks that can be performed on the scene resource itself.
 
-Can be used to save a node to a file. When saving, the node as well as all the node it owns get saved (see `owner` property on `godot.Node`).
+Can be used to save a node to a file. When saving, the node as well as all the nodes it owns get saved (see `owner` property on `godot.Node`).
 
 Note: The node doesn't need to own itself.
 
@@ -60,6 +60,17 @@ extern class PackedScene extends godot.Resource {
 	**/
 	@:native("_Bundled")
 	public var _Bundled:godot.collections.Dictionary;
+
+	#if doc_gen
+	@:native("InstanceOrNull")
+	public function instanceOrNull<M0>(?editState:godot.PackedScene_GenEditState):M0;
+	#else
+	@:native("InstanceOrNull")
+	public overload function instanceOrNull<M0>():M0;
+
+	@:native("InstanceOrNull")
+	public overload function instanceOrNull<M0>(editState:godot.PackedScene_GenEditState):M0;
+	#end
 
 	@:native("new")
 	public function new():Void;

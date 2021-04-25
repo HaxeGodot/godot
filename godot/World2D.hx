@@ -13,7 +13,7 @@ Class that has everything pertaining to a 2D world. A physics space, a visual sc
 @:autoBuild(godot.Godot.buildUserClass())
 extern class World2D extends godot.Resource {
 	/**		
-		Direct access to the world's physics 2D space state. Used for querying current and potential collisions. Must only be accessed from the main thread within `_physics_process(delta)`.
+		Direct access to the world's physics 2D space state. Used for querying current and potential collisions. When using multi-threaded physics, access is limited to `_physics_process(delta)` in the main thread.
 	**/
 	@:native("DirectSpaceState")
 	public var directSpaceState(default, never):godot.Physics2DDirectSpaceState;

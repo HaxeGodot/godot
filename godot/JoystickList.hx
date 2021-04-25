@@ -351,6 +351,66 @@ extern enum JoystickList {
 	DpadRight;
 
 	/**		
+		Gamepad button 16.
+	**/
+	Button16;
+
+	/**		
+		Gamepad SDL miscellaneous button.
+	**/
+	Misc1;
+
+	/**		
+		Gamepad button 17.
+	**/
+	Button17;
+
+	/**		
+		Gamepad SDL paddle 1 button.
+	**/
+	Paddle1;
+
+	/**		
+		Gamepad button 18.
+	**/
+	Button18;
+
+	/**		
+		Gamepad SDL paddle 2 button.
+	**/
+	Paddle2;
+
+	/**		
+		Gamepad button 19.
+	**/
+	Button19;
+
+	/**		
+		Gamepad SDL paddle 3 button.
+	**/
+	Paddle3;
+
+	/**		
+		Gamepad button 20.
+	**/
+	Button20;
+
+	/**		
+		Gamepad SDL paddle 4 button.
+	**/
+	Paddle4;
+
+	/**		
+		Gamepad button 21.
+	**/
+	Button21;
+
+	/**		
+		Gamepad SDL touchpad button.
+	**/
+	Touchpad;
+
+	/**		
 		Represents the maximum number of joystick buttons supported.
 	**/
 	ButtonMax;

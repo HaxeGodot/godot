@@ -4,11 +4,56 @@ package godot.collections;
 
 import cs.system.*;
 
+#if doc_gen
 @:libType
 @:csNative
 @:native("Godot.Collections.Array`1")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Array_1<T0> implements cs.system.collections.generic.IList_1<T0> implements cs.system.collections.generic.ICollection_1<T0> implements cs.system.collections.generic.IEnumerable_1<T0> implements cs.system.collections.IEnumerable {
+#else
+@:forward
+@:forwardStatics
+extern abstract Array_1<T0>(Array_1<T0>_) from Array_1<T0>_ to Array_1<T0>_ {
+#end
+	#if !doc_gen
+	public overload inline function new() {
+		this = new Array_1<T0>_();
+	}
+	#end
+
+	#if !doc_gen
+	public overload inline function new(collection:cs.system.collections.generic.IEnumerable_1<T0>) {
+		this = new Array_1<T0>_(collection);
+	}
+	#end
+
+	#if !doc_gen
+	public overload inline function new(array:cs.NativeArray<T0>) {
+		this = new Array_1<T0>_(array);
+	}
+	#end
+
+	#if !doc_gen
+	public overload inline function new(array:godot.collections.Array) {
+		this = new Array_1<T0>_(array);
+	}
+	#end
+
+	/**
+		Operator overload for `godot.collections.Array_1<Dynamic>` + `godot.collections.Array_1<Dynamic>`.
+	**/
+	@:op(A + B) static inline function op_Addition(left:godot.collections.Array_1<Dynamic>, right:godot.collections.Array_1<Dynamic>):godot.collections.Array_1<Dynamic> {
+		return cs.Syntax.code("{0} + {1}", left, right);
+	}
+#if !doc_gen
+}
+
+@:libType
+@:csNative
+@:native("Godot.Collections.Array`1")
+@:autoBuild(godot.Godot.buildUserClass())
+extern class Array_1<T0>_ implements cs.system.collections.generic.IList_1<T0> implements cs.system.collections.generic.ICollection_1<T0> implements cs.system.collections.generic.IEnumerable_1<T0> implements cs.system.collections.IEnumerable {
+#end
 	@:native("IsReadOnly")
 	public var isReadOnly(default, never):Bool;
 
@@ -20,6 +65,9 @@ extern class Array_1<T0> implements cs.system.collections.generic.IList_1<T0> im
 
 	@:native("new")
 	public overload function new(collection:cs.system.collections.generic.IEnumerable_1<T0>):Void;
+
+	@:native("new")
+	public overload function new(array:cs.NativeArray<T0>):Void;
 
 	@:native("new")
 	public overload function new(array:godot.collections.Array):Void;
@@ -37,6 +85,9 @@ extern class Array_1<T0> implements cs.system.collections.generic.IList_1<T0> im
 
 	@:native("Resize")
 	public function resize(newSize:Int):godot.Error;
+
+	@:native("Shuffle")
+	public function shuffle():Void;
 
 	@:native("IndexOf")
 	public function indexOf(item:T0):Int;

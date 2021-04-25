@@ -10,4 +10,6 @@ extern enum VisualScriptPropertyGet_CallMode {
 	NodePath;
 
 	Instance;
+
+	BasicType;
 }

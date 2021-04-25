@@ -6,6 +6,8 @@ import cs.system.*;
 
 /**
 OptionButton is a type button that provides a selectable list of items when pressed. The item selected becomes the "current" item and is displayed as the button text.
+
+See also `godot.BaseButton` which contains common properties and methods associated with this node.
 **/
 @:libType
 @:csNative

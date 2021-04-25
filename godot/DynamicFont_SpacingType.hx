@@ -16,12 +16,12 @@ extern enum DynamicFont_SpacingType {
 	Bottom;
 
 	/**		
-		Character spacing.
+		Spacing for each character.
 	**/
 	Char;
 
 	/**		
-		Space spacing.
+		Spacing for the space character.
 	**/
 	Space;
 }

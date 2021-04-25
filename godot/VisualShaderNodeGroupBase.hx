@@ -34,7 +34,7 @@ extern class VisualShaderNodeGroupBase extends godot.VisualShaderNode {
 	public function setInputs(inputs:std.String):Void;
 
 	/**		
-		Returns a `String` description of the input ports as as colon-separated list using the format `id,type,name;` (see `godot.VisualShaderNodeGroupBase.addInputPort`).
+		Returns a `String` description of the input ports as a colon-separated list using the format `id,type,name;` (see `godot.VisualShaderNodeGroupBase.addInputPort`).
 	**/
 	@:native("GetInputs")
 	public function getInputs():std.String;
@@ -46,7 +46,7 @@ extern class VisualShaderNodeGroupBase extends godot.VisualShaderNode {
 	public function setOutputs(outputs:std.String):Void;
 
 	/**		
-		Returns a `String` description of the output ports as as colon-separated list using the format `id,type,name;` (see `godot.VisualShaderNodeGroupBase.addOutputPort`).
+		Returns a `String` description of the output ports as a colon-separated list using the format `id,type,name;` (see `godot.VisualShaderNodeGroupBase.addOutputPort`).
 	**/
 	@:native("GetOutputs")
 	public function getOutputs():std.String;

@@ -118,7 +118,7 @@ extern class ConfigFile extends godot.Reference {
 	public function load(path:std.String):godot.Error;
 
 	/**		
-		Parses the the passed string as the contents of a config file. The string is parsed and loaded in the ConfigFile object which the method was called on.
+		Parses the passed string as the contents of a config file. The string is parsed and loaded in the ConfigFile object which the method was called on.
 		
 		Returns one of the `godot.Error` code constants (`OK` on success).
 	**/
@@ -164,4 +164,7 @@ extern class ConfigFile extends godot.Reference {
 	**/
 	@:native("SaveEncryptedPass")
 	public function saveEncryptedPass(path:std.String, password:std.String):godot.Error;
+
+	@:native("Clear")
+	public function clear():Void;
 }

@@ -15,8 +15,8 @@ extern class ProximityGroup extends godot.Spatial {
 	/**
 		`broadcast` signal.
 	**/
-	public var onBroadcast(get, never):Signal<(groupName:std.String, parameters:godot.collections.Array)->Void>;
-	@:dox(hide) inline function get_onBroadcast():Signal<(groupName:std.String, parameters:godot.collections.Array)->Void> {
+	public var onBroadcast(get, never):Signal<(method:std.String, parameters:godot.collections.Array)->Void>;
+	@:dox(hide) inline function get_onBroadcast():Signal<(method:std.String, parameters:godot.collections.Array)->Void> {
 		return new Signal(this, "broadcast", Signal.SignalHandlerStringArrayVoid.connectSignal, Signal.SignalHandlerStringArrayVoid.disconnectSignal, Signal.SignalHandlerStringArrayVoid.isSignalConnected);
 	}
 
@@ -51,5 +51,5 @@ extern class ProximityGroup extends godot.Spatial {
 	public function getGridRadius():godot.Vector3;
 
 	@:native("Broadcast")
-	public function broadcast(name:std.String, parameters:Dynamic):Void;
+	public function broadcast(method:std.String, parameters:Dynamic):Void;
 }

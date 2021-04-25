@@ -55,6 +55,15 @@ extern class AnimationNodeStateMachinePlayback extends godot.Resource {
 	public function getCurrentNode():std.String;
 
 	/**		
+		Returns the playback position within the current animation state.
+	**/
+	@:native("GetCurrentPlayPosition")
+	public function getCurrentPlayPosition():Single;
+
+	@:native("GetCurrentLength")
+	public function getCurrentLength():Single;
+
+	/**		
 		Returns the current travel path as computed internally by the A* algorithm.
 	**/
 	@:native("GetTravelPath")

@@ -51,28 +51,28 @@ extern class Sprite extends godot.Node2D {
 	public var regionEnabled:Bool;
 
 	/**		
-		Coordinates of the frame to display from sprite sheet. This is as an alias for the `godot.Sprite.frame` property. `godot.Sprite.vframes` or `godot.Sprite.hframes` must be greater than 1.
+		Coordinates of the frame to display from sprite sheet. This is as an alias for the `godot.Sprite.frame` property. `godot.Sprite.hframes` or `godot.Sprite.vframes` must be greater than 1.
 	**/
 	@:native("FrameCoords")
 	public var frameCoords:godot.Vector2;
 
 	/**		
-		Current frame to display from sprite sheet. `godot.Sprite.vframes` or `godot.Sprite.hframes` must be greater than 1.
+		Current frame to display from sprite sheet. `godot.Sprite.hframes` or `godot.Sprite.vframes` must be greater than 1.
 	**/
 	@:native("Frame")
 	public var frame:Int;
-
-	/**		
-		The number of columns in the sprite sheet.
-	**/
-	@:native("Hframes")
-	public var hframes:Int;
 
 	/**		
 		The number of rows in the sprite sheet.
 	**/
 	@:native("Vframes")
 	public var vframes:Int;
+
+	/**		
+		The number of columns in the sprite sheet.
+	**/
+	@:native("Hframes")
+	public var hframes:Int;
 
 	/**		
 		If `true`, texture is flipped vertically.

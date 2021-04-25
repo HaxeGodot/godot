@@ -18,6 +18,17 @@ extern class StringExtensions {
 	@:native("Bigrams")
 	public static function bigrams(instance:std.String):cs.NativeArray<std.String>;
 
+	/**		
+		Converts a string containing a binary number into an integer.
+		Binary strings can either be prefixed with `0b` or not,
+		and they can also start with a `-` before the optional prefix.
+		
+		@param instance The string to convert.
+		@returns The converted string.
+	**/
+	@:native("BinToInt")
+	public static function binToInt(instance:std.String):Int;
+
 	#if doc_gen
 	@:native("Count")
 	public static function count(instance:std.String, what:std.String, ?caseSensitive:Bool, ?from:Int, ?to:Int):Int;
@@ -75,7 +86,7 @@ extern class StringExtensions {
 		@returns The starting position of the substring, or -1 if not found.
 	**/
 	@:native("Find")
-	public static function find(instance:std.String, what:std.String, ?from:Int, ?caseSensitive:Bool):Int;
+	public static overload function find(instance:std.String, what:std.String, ?from:Int, ?caseSensitive:Bool):Int;
 	#else
 	/**		Find the first occurrence of a substring. Optionally, the search starting position can be passed.
 		@returns The starting position of the substring, or -1 if not found.
@@ -94,6 +105,20 @@ extern class StringExtensions {
 	**/
 	@:native("Find")
 	public static overload function find(instance:std.String, what:std.String, from:Int, caseSensitive:Bool):Int;
+	#end
+
+	#if doc_gen
+	@:native("Find")
+	public static overload function find(instance:std.String, what:cs.types.Char16, ?from:Int, ?caseSensitive:Bool):Int;
+	#else
+	@:native("Find")
+	public static overload function find(instance:std.String, what:cs.types.Char16):Int;
+
+	@:native("Find")
+	public static overload function find(instance:std.String, what:cs.types.Char16, from:Int):Int;
+
+	@:native("Find")
+	public static overload function find(instance:std.String, what:cs.types.Char16, from:Int, caseSensitive:Bool):Int;
 	#end
 
 	#if doc_gen
@@ -162,9 +187,53 @@ extern class StringExtensions {
 	@:native("GetFile")
 	public static function getFile(instance:std.String):std.String;
 
-	@:native("Hash")
-	public static function hash(instance:std.String):Int;
+	/**		
+		Converts the given byte array of ASCII encoded text to a string.
+		Faster alternative to `godot.StringExtensions.getStringFromUTF8` if the
+		content is ASCII-only. Unlike the UTF-8 function this function
+		maps every byte to a character in the array. Multibyte sequences
+		will not be interpreted correctly. For parsing user input always
+		use `godot.StringExtensions.getStringFromUTF8`.
+		
+		@param bytes A byte array of ASCII characters (on the range of 0-127).
+		@returns A string created from the bytes.
+	**/
+	@:native("GetStringFromASCII")
+	public static function getStringFromASCII(bytes:haxe.Rest<cs.types.UInt8>):std.String;
 
+	/**		
+		Converts the given byte array of UTF-8 encoded text to a string.
+		Slower than `godot.StringExtensions.getStringFromASCII` but supports UTF-8
+		encoded data. Use this function if you are unsure about the
+		source of the data. For user input this function
+		should always be preferred.
+		
+		@param bytes A byte array of UTF-8 characters (a character may take up multiple bytes).
+		@returns A string created from the bytes.
+	**/
+	@:native("GetStringFromUTF8")
+	public static function getStringFromUTF8(bytes:haxe.Rest<cs.types.UInt8>):std.String;
+
+	@:native("Hash")
+	public static function hash(instance:std.String):UInt;
+
+	/**		
+		Returns a hexadecimal representation of this byte array as a string.
+		
+		@param bytes The byte array to encode.
+		@returns The hexadecimal representation of this byte array.
+	**/
+	@:native("HexEncode")
+	public static function hexEncode(bytes:haxe.Rest<cs.types.UInt8>):std.String;
+
+	/**		
+		Converts a string containing a hexadecimal number into an integer.
+		Hexadecimal strings can either be prefixed with `0x` or not,
+		and they can also start with a `-` before the optional prefix.
+		
+		@param instance The string to convert.
+		@returns The converted string.
+	**/
 	@:native("HexToInt")
 	public static function hexToInt(instance:std.String):Int;
 
@@ -218,20 +287,39 @@ extern class StringExtensions {
 	@:native("Length")
 	public static function length(instance:std.String):Int;
 
-	@:native("ExprMatch")
-	public static function exprMatch(instance:std.String, expr:std.String, caseSensitive:Bool):Bool;
+	/**		
+		Returns a copy of the string with characters removed from the left.
+		
+		@param instance The string to remove characters from.
+		@param chars The characters to be removed.
+		@returns A copy of the string with characters removed from the left.
+	**/
+	@:native("LStrip")
+	public static function lStrip(instance:std.String, chars:std.String):std.String;
 
 	#if doc_gen
+	/**		
+		Do a simple case sensitive expression match, using ? and * wildcards (see [method expr_match]).
+	**/
 	@:native("Match")
 	public static function match(instance:std.String, expr:std.String, ?caseSensitive:Bool):Bool;
 	#else
+	/**		
+		Do a simple case sensitive expression match, using ? and * wildcards (see [method expr_match]).
+	**/
 	@:native("Match")
 	public static overload function match(instance:std.String, expr:std.String):Bool;
 
+	/**		
+		Do a simple case sensitive expression match, using ? and * wildcards (see [method expr_match]).
+	**/
 	@:native("Match")
 	public static overload function match(instance:std.String, expr:std.String, caseSensitive:Bool):Bool;
 	#end
 
+	/**		
+		Do a simple case insensitive expression match, using ? and * wildcards (see [method expr_match]).
+	**/
 	@:native("MatchN")
 	public static function matchN(instance:std.String, expr:std.String):Bool;
 
@@ -292,6 +380,16 @@ extern class StringExtensions {
 
 	@:native("Right")
 	public static function right(instance:std.String, pos:Int):std.String;
+
+	/**		
+		Returns a copy of the string with characters removed from the right.
+		
+		@param instance The string to remove characters from.
+		@param chars The characters to be removed.
+		@returns A copy of the string with characters removed from the right.
+	**/
+	@:native("RStrip")
+	public static function rStrip(instance:std.String, chars:std.String):std.String;
 
 	@:native("SHA256Buffer")
 	public static function sHA256Buffer(instance:std.String):cs.NativeArray<cs.types.UInt8>;

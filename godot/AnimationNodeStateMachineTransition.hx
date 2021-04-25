@@ -38,7 +38,7 @@ extern class AnimationNodeStateMachineTransition extends godot.Resource {
 	public var xfadeTime:Single;
 
 	/**		
-		Turn on auto advance when this condition is set. The provided name will become a boolean parameter on the `godot.AnimationTree` that can be controlled from code (see [https://docs.godotengine.org/en/latest/tutorials/animation/animation_tree.html#controlling-from-code]()). For example, if `godot.AnimationTree.treeRoot` is an `godot.AnimationNodeStateMachine` and `godot.AnimationNodeStateMachineTransition.advanceCondition` is set to `"idle"`:
+		Turn on auto advance when this condition is set. The provided name will become a boolean parameter on the `godot.AnimationTree` that can be controlled from code (see [https://docs.godotengine.org/en/3.3/tutorials/animation/animation_tree.html#controlling-from-code]()). For example, if `godot.AnimationTree.treeRoot` is an `godot.AnimationNodeStateMachine` and `godot.AnimationNodeStateMachineTransition.advanceCondition` is set to `"idle"`:
 		
 		```
 		

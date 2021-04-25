@@ -45,7 +45,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**
 		`item_rect_changed` signal.
 		
-		Emitted when the item rect has changed.
+		Emitted when the item's `Rect2` boundaries (position or size) have changed, or when an action is taking place that may have impacted these boundaries (e.g. changing `sprite.texture`).
 	**/
 	public var onItemRectChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) inline function get_onItemRectChanged():Signal<Void->Void> {
@@ -706,7 +706,7 @@ extern abstract class CanvasItem extends godot.Node {
 
 	#if doc_gen
 	/**		
-		Draws `text` using the specified `font` at the `position` (top-left corner). The text will have its color multiplied by `modulate`. If `clip_w` is greater than or equal to 0, the text will be clipped if it exceeds the specified width.
+		Draws `text` using the specified `font` at the `position` (bottom-left corner using the baseline of the font). The text will have its color multiplied by `modulate`. If `clip_w` is greater than or equal to 0, the text will be clipped if it exceeds the specified width.
 		
 		Example using the default project font:
 		
@@ -728,7 +728,7 @@ extern abstract class CanvasItem extends godot.Node {
 	public function drawString(font:godot.Font, position:godot.Vector2, text:std.String, ?modulate:Null<godot.Color>, ?clipW:Int):Void;
 	#else
 	/**		
-		Draws `text` using the specified `font` at the `position` (top-left corner). The text will have its color multiplied by `modulate`. If `clip_w` is greater than or equal to 0, the text will be clipped if it exceeds the specified width.
+		Draws `text` using the specified `font` at the `position` (bottom-left corner using the baseline of the font). The text will have its color multiplied by `modulate`. If `clip_w` is greater than or equal to 0, the text will be clipped if it exceeds the specified width.
 		
 		Example using the default project font:
 		
@@ -750,7 +750,7 @@ extern abstract class CanvasItem extends godot.Node {
 	public overload function drawString(font:godot.Font, position:godot.Vector2, text:std.String):Void;
 
 	/**		
-		Draws `text` using the specified `font` at the `position` (top-left corner). The text will have its color multiplied by `modulate`. If `clip_w` is greater than or equal to 0, the text will be clipped if it exceeds the specified width.
+		Draws `text` using the specified `font` at the `position` (bottom-left corner using the baseline of the font). The text will have its color multiplied by `modulate`. If `clip_w` is greater than or equal to 0, the text will be clipped if it exceeds the specified width.
 		
 		Example using the default project font:
 		
@@ -772,7 +772,7 @@ extern abstract class CanvasItem extends godot.Node {
 	public overload function drawString(font:godot.Font, position:godot.Vector2, text:std.String, modulate:Nullable1<godot.Color>):Void;
 
 	/**		
-		Draws `text` using the specified `font` at the `position` (top-left corner). The text will have its color multiplied by `modulate`. If `clip_w` is greater than or equal to 0, the text will be clipped if it exceeds the specified width.
+		Draws `text` using the specified `font` at the `position` (bottom-left corner using the baseline of the font). The text will have its color multiplied by `modulate`. If `clip_w` is greater than or equal to 0, the text will be clipped if it exceeds the specified width.
 		
 		Example using the default project font:
 		

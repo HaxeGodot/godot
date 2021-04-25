@@ -32,13 +32,17 @@ extern class DynamicFont extends godot.Font {
 	public var fontData:godot.DynamicFontData;
 
 	/**		
-		Extra space spacing in pixels.
+		Extra spacing for the space character (in addition to `godot.DynamicFont.extraSpacingChar`) in pixels.
+		
+		This can be a negative number to make the distance between words smaller.
 	**/
 	@:native("ExtraSpacingSpace")
 	public var extraSpacingSpace:Int;
 
 	/**		
-		Extra character spacing in pixels.
+		Extra spacing for each character in pixels.
+		
+		This can be a negative number to make the distance between characters smaller.
 	**/
 	@:native("ExtraSpacingChar")
 	public var extraSpacingChar:Int;

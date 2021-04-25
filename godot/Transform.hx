@@ -11,7 +11,7 @@ It consists of a `godot.Basis` (first 3 columns) and a
 `godot.Vector3` for the origin (last column).
 
 For more information, read this documentation article:
-https://docs.godotengine.org/en/latest/tutorials/math/matrices_and_transforms.html
+https://docs.godotengine.org/en/3.3/tutorials/math/matrices_and_transforms.html
 **/
 #if doc_gen
 @:struct

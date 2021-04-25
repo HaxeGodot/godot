@@ -33,7 +33,7 @@ extern class RayCast2D extends godot.Node2D {
 	public var collideWithAreas:Bool;
 
 	/**		
-		The ray's collision mask. Only objects in at least one collision layer enabled in the mask will be detected. See [https://docs.godotengine.org/en/latest/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The ray's collision mask. Only objects in at least one collision layer enabled in the mask will be detected. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionMask")
 	public var collisionMask:UInt;

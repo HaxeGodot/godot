@@ -122,25 +122,25 @@ extern class Curve3D extends godot.Resource {
 	public function getPointTilt(idx:Int):Single;
 
 	/**		
-		Sets the position of the control point leading to the vertex `idx`. If the index is out of bounds, the function sends an error to the console.
+		Sets the position of the control point leading to the vertex `idx`. If the index is out of bounds, the function sends an error to the console. The position is relative to the vertex.
 	**/
 	@:native("SetPointIn")
 	public function setPointIn(idx:Int, position:godot.Vector3):Void;
 
 	/**		
-		Returns the position of the control point leading to the vertex `idx`. If the index is out of bounds, the function sends an error to the console, and returns `(0, 0, 0)`.
+		Returns the position of the control point leading to the vertex `idx`. The returned position is relative to the vertex `idx`. If the index is out of bounds, the function sends an error to the console, and returns `(0, 0, 0)`.
 	**/
 	@:native("GetPointIn")
 	public function getPointIn(idx:Int):godot.Vector3;
 
 	/**		
-		Sets the position of the control point leading out of the vertex `idx`. If the index is out of bounds, the function sends an error to the console.
+		Sets the position of the control point leading out of the vertex `idx`. If the index is out of bounds, the function sends an error to the console. The position is relative to the vertex.
 	**/
 	@:native("SetPointOut")
 	public function setPointOut(idx:Int, position:godot.Vector3):Void;
 
 	/**		
-		Returns the position of the control point leading out of the vertex `idx`. If the index is out of bounds, the function sends an error to the console, and returns `(0, 0, 0)`.
+		Returns the position of the control point leading out of the vertex `idx`. The returned position is relative to the vertex `idx`. If the index is out of bounds, the function sends an error to the console, and returns `(0, 0, 0)`.
 	**/
 	@:native("GetPointOut")
 	public function getPointOut(idx:Int):godot.Vector3;
@@ -191,7 +191,7 @@ extern class Curve3D extends godot.Resource {
 
 	#if doc_gen
 	/**		
-		Returns a point within the curve at position `offset`, where `offset` is measured as a pixel distance along the curve.
+		Returns a point within the curve at position `offset`, where `offset` is measured as a distance in 3D units along the curve.
 		
 		To do that, it finds the two cached points where the `offset` lies between, then interpolates the values. This interpolation is cubic if `cubic` is set to `true`, or linear if set to `false`.
 		
@@ -201,7 +201,7 @@ extern class Curve3D extends godot.Resource {
 	public function interpolateBaked(offset:Single, ?cubic:Bool):godot.Vector3;
 	#else
 	/**		
-		Returns a point within the curve at position `offset`, where `offset` is measured as a pixel distance along the curve.
+		Returns a point within the curve at position `offset`, where `offset` is measured as a distance in 3D units along the curve.
 		
 		To do that, it finds the two cached points where the `offset` lies between, then interpolates the values. This interpolation is cubic if `cubic` is set to `true`, or linear if set to `false`.
 		
@@ -211,7 +211,7 @@ extern class Curve3D extends godot.Resource {
 	public overload function interpolateBaked(offset:Single):godot.Vector3;
 
 	/**		
-		Returns a point within the curve at position `offset`, where `offset` is measured as a pixel distance along the curve.
+		Returns a point within the curve at position `offset`, where `offset` is measured as a distance in 3D units along the curve.
 		
 		To do that, it finds the two cached points where the `offset` lies between, then interpolates the values. This interpolation is cubic if `cubic` is set to `true`, or linear if set to `false`.
 		
@@ -274,7 +274,7 @@ extern class Curve3D extends godot.Resource {
 	public function getBakedUpVectors():cs.NativeArray<godot.Vector3>;
 
 	/**		
-		Returns the closest point (in curve's local space) to `to_point`.
+		Returns the closest baked point (in curve's local space) to `to_point`.
 		
 		`to_point` must be in this curve's local space.
 	**/

@@ -12,6 +12,8 @@ extern enum Texture_FlagsEnum {
 
 	/**		
 		Repeats the texture (instead of clamp to edge).
+		
+		Note: Ignored when using an `godot.AtlasTexture` as these don't support repetition.
 	**/
 	Repeat;
 
@@ -39,6 +41,8 @@ extern enum Texture_FlagsEnum {
 
 	/**		
 		Repeats the texture with alternate sections mirrored.
+		
+		Note: Ignored when using an `godot.AtlasTexture` as these don't support repetition.
 	**/
 	MirroredRepeat;
 

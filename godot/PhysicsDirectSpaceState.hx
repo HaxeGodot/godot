@@ -209,9 +209,11 @@ extern abstract class PhysicsDirectSpaceState extends godot.Object {
 	#end
 
 	/**		
-		Checks whether the shape can travel to a point. The method will return an array with two floats between 0 and 1, both representing a fraction of `motion`. The first is how far the shape can move without triggering a collision, and the second is the point at which a collision will occur. If no collision is detected, the returned array will be `[1, 1]`.
+		Checks how far a `godot.Shape` can move without colliding. All the parameters for the query, including the shape, are supplied through a `godot.PhysicsShapeQueryParameters` object.
 		
-		If the shape can not move, the returned array will be `[0, 0]` under Bullet, and empty under GodotPhysics.
+		Returns an array with the safe and unsafe proportions (between 0 and 1) of the motion. The safe proportion is the maximum fraction of the motion that can be made without a collision. The unsafe proportion is the minimum fraction of the distance that must be moved for a collision. If no collision is detected a result of `[1.0, 1.0]` will be returned.
+		
+		Note: Any `godot.Shape`s that the shape is already colliding with e.g. inside of, will be ignored. Use `godot.PhysicsDirectSpaceState.collideShape` to determine the `godot.Shape`s that the shape is already colliding with.
 	**/
 	@:native("CastMotion")
 	public function castMotion(shape:godot.PhysicsShapeQueryParameters, motion:godot.Vector3):godot.collections.Array;

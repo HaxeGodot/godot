@@ -8,6 +8,8 @@ import cs.system.*;
 CPU-based 3D particle node used to create a variety of particle systems and effects.
 
 See also `godot.Particles`, which provides the same functionality with hardware acceleration, but may not run on older devices.
+
+Note: Unlike `godot.Particles`, the visibility rect is generated on-the-fly and doesn't need to be configured by the user.
 **/
 @:libType
 @:csNative
@@ -383,13 +385,15 @@ extern class CPUParticles extends godot.GeometryInstance {
 	public var oneShot:Bool;
 
 	/**		
-		Amount of time each particle will exist.
+		The amount of time each particle will exist (in seconds).
 	**/
 	@:native("Lifetime")
 	public var lifetime:Single;
 
 	/**		
-		Number of particles emitted in one emission cycle.
+		The number of particles emitted in one emission cycle (corresponding to the `godot.CPUParticles.lifetime`).
+		
+		Note: Changing `godot.CPUParticles.amount` will reset the particle emission, therefore removing all particles that were already emitted before changing `godot.CPUParticles.amount`.
 	**/
 	@:native("Amount")
 	public var amount:Int;

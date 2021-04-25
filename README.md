@@ -7,7 +7,7 @@
 [![Haxelib Downloads](https://badgen.net/haxelib/d/godot?color=blue)](https://lib.haxe.org/p/godot)
 [![Haxelib License](https://badgen.net/haxelib/license/godot)](LICENSE.md)
 
-# Haxe/C# externs for Godot 3.2.3
+# Haxe/C# externs for Godot 3.3.0
 
 Use the Godot engine with Haxe scripting, using the Haxe/C# target.
 
@@ -33,6 +33,9 @@ Godot will show many warnings about the Haxe generated C# code, this is because 
 * Mark deprecated functions
 * Array access on `Vector2`, `Vector3`, `Transform`, `Transform2D`, `Quat`, `Color` and `Basis`
 * Missing types `Godot.DynamicGodotObject` and `Godot.MarshalUtils`
+* Explicit constructors
+* Function with type parameters on `PackedScene.Instance`, `PackedScene.InstanceOrNull`
+* `cs.system.EventHandler_1` on `GD.UnhandledException`
 
 ## License
 

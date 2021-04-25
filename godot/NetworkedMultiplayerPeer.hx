@@ -5,7 +5,9 @@ package godot;
 import cs.system.*;
 
 /**
-Manages the connection to network peers. Assigns unique IDs to each client connected to the server.
+Manages the connection to network peers. Assigns unique IDs to each client connected to the server. See also `godot.MultiplayerAPI`.
+
+Note: The high-level multiplayer API protocol is an implementation detail and isn't meant to be used by non-Godot servers. It may change without notice.
 **/
 @:libType
 @:csNative

@@ -38,6 +38,16 @@ extern class Camera extends godot.Spatial {
 
 	/**		
 		The camera's field of view angle (in degrees). Only applicable in perspective mode. Since `godot.Camera.keepAspect` locks one axis, `fov` sets the other axis' field of view angle.
+		
+		For reference, the default vertical field of view value (`75.0`) is equivalent to a horizontal FOV of:
+		
+		- ~91.31 degrees in a 4:3 viewport
+		
+		- ~101.67 degrees in a 16:10 viewport
+		
+		- ~107.51 degrees in a 16:9 viewport
+		
+		- ~121.63 degrees in a 21:9 viewport
 	**/
 	@:native("Fov")
 	public var fov:Single;
@@ -113,6 +123,17 @@ extern class Camera extends godot.Spatial {
 
 	/**		
 		Returns the 2D coordinate in the `godot.Viewport` rectangle that maps to the given 3D point in worldspace.
+		
+		Note: When using this to position GUI elements over a 3D viewport, use `godot.Camera.isPositionBehind` to prevent them from appearing if the 3D point is behind the camera:
+		
+		```
+		
+		# This code block is part of a script that inherits from Spatial.
+		# `control` is a reference to a node inheriting from Control.
+		control.visible = not get_viewport().get_camera().is_position_behind(global_transform.origin)
+		control.rect_position = get_viewport().get_camera().unproject_position(global_transform.origin)
+		
+		```
 	**/
 	@:native("UnprojectPosition")
 	public function unprojectPosition(worldPoint:godot.Vector3):godot.Vector2;

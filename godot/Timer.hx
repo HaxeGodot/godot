@@ -7,7 +7,7 @@ import cs.system.*;
 /**
 Counts down a specified interval and emits a signal on reaching 0. Can be set to repeat or "one-shot" mode.
 
-Note: To create an one-shot timer without instantiating a node, use `godot.SceneTree.createTimer`.
+Note: To create a one-shot timer without instantiating a node, use `godot.SceneTree.createTimer`.
 **/
 @:libType
 @:csNative

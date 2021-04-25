@@ -2,9 +2,9 @@
 // MIT licensed, see LICENSE.md
 package godot;
 
-@:native("Godot.BakedLightmap.BakeQualityEnum")
+@:native("Godot.BakedLightmap.BakeQuality")
 @:csNative
-extern enum BakedLightmap_BakeQualityEnum {
+extern enum BakedLightmap_BakeQuality {
 	/**		
 		The lowest bake quality mode. Fastest to calculate.
 	**/
@@ -16,7 +16,12 @@ extern enum BakedLightmap_BakeQualityEnum {
 	Medium;
 
 	/**		
-		The highest bake quality mode. Takes longer to calculate.
+		A higher bake quality mode. Takes longer to calculate.
 	**/
 	High;
+
+	/**		
+		The highest bake quality mode. Takes the longest to calculate.
+	**/
+	Ultra;
 }

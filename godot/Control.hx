@@ -141,6 +141,14 @@ extern class Control extends godot.CanvasItem {
 	public var sizeFlagsHorizontal:Int;
 
 	/**		
+		Enables whether input should propagate when you close the control as modal.
+		
+		If `false`, stops event handling at the viewport input event handling. The viewport first hides the modal and after marks the input as handled.
+	**/
+	@:native("InputPassOnModalCloseClick")
+	public var inputPassOnModalCloseClick:Bool;
+
+	/**		
 		The default cursor shape for this control. Useful for Godot plugins and applications or games that use the system's mouse cursors.
 		
 		Note: On Linux, shapes may vary depending on the cursor theme of the system.
@@ -202,6 +210,19 @@ extern class Control extends godot.CanvasItem {
 
 	/**		
 		Changes the tooltip text. The tooltip appears when the user's mouse cursor stays idle over this control for a few moments, provided that the `godot.Control.mouseFilter` property is not . You can change the time required for the tooltip to appear with `gui/timers/tooltip_delay_sec` option in Project Settings.
+		
+		The tooltip popup will use either a default implementation, or a custom one that you can provide by overriding `godot.Control._MakeCustomTooltip`. The default tooltip includes a `godot.PopupPanel` and `godot.Label` whose theme properties can be customized using `godot.Theme` methods with the `"TooltipPanel"` and `"TooltipLabel"` respectively. For example:
+		
+		```
+		
+		var style_box = StyleBoxFlat.new()
+		style_box.set_bg_color(Color(1, 1, 0))
+		style_box.set_border_width_all(2)
+		# We assume here that the `theme` property has been assigned a custom Theme beforehand.
+		theme.set_stylebox("panel", "TooltipPanel", style_box)
+		theme.set_color("font_color", "TooltipLabel", Color(0, 1, 1))
+		
+		```
 	**/
 	@:native("HintTooltip")
 	public var hintTooltip:std.String;
@@ -221,7 +242,7 @@ extern class Control extends godot.CanvasItem {
 	/**		
 		The node's scale, relative to its `godot.Control.rectSize`. Change this property to scale the node around its `godot.Control.rectPivotOffset`. The Control's `godot.Control.hintTooltip` will also scale according to this value.
 		
-		Note: This property is mainly intended to be used for animation purposes. Text inside the Control will look pixelated or blurry when the Control is scaled. To support multiple resolutions in your project, use an appropriate viewport stretch mode as described in the [https://docs.godotengine.org/en/latest/tutorials/viewports/multiple_resolutions.html](documentation) instead of scaling Controls individually.
+		Note: This property is mainly intended to be used for animation purposes. Text inside the Control will look pixelated or blurry when the Control is scaled. To support multiple resolutions in your project, use an appropriate viewport stretch mode as described in the [https://docs.godotengine.org/en/3.3/tutorials/viewports/multiple_resolutions.html](documentation) instead of scaling Controls individually.
 		
 		Note: If the Control node is a child of a `godot.Container` node, the scale will be reset to `Vector2(1, 1)` when the scene is instanced. To set the Control's scale when it's instanced, wait for one frame using `yield(get_tree(), "idle_frame")` then set its `godot.Control.rectScale` property.
 	**/
@@ -429,13 +450,15 @@ extern class Control extends godot.CanvasItem {
 	public function _GuiInput(event:godot.InputEvent):Void;
 
 	/**		
-		Virtual method to be implemented by the user. Returns a `godot.Control` node that should be used as a tooltip instead of the default one. Use `for_text` parameter to determine what text the tooltip should contain (likely the contents of `godot.Control.hintTooltip`).
+		Virtual method to be implemented by the user. Returns a `godot.Control` node that should be used as a tooltip instead of the default one. The `for_text` includes the contents of the `godot.Control.hintTooltip` property.
 		
-		The returned node must be of type `godot.Control` or Control-derieved. It can have child nodes of any type. It is freed when the tooltip disappears, so make sure you always provide a new instance, not e.g. a node from scene. When `null` or non-Control node is returned, the default tooltip will be used instead.
+		The returned node must be of type `godot.Control` or Control-derived. It can have child nodes of any type. It is freed when the tooltip disappears, so make sure you always provide a new instance (if you want to use a pre-existing node from your scene tree, you can duplicate it and pass the duplicated instance).When `null` or a non-Control node is returned, the default tooltip will be used instead.
+		
+		The returned node will be added as child to a `godot.PopupPanel`, so you should only provide the contents of that panel. That `godot.PopupPanel` can be themed using `godot.Theme.setStylebox` for the type `"TooltipPanel"` (see `godot.Control.hintTooltip` for an example).
 		
 		Note: The tooltip is shrunk to minimal size. If you want to ensure it's fully visible, you might want to set its `godot.Control.rectMinSize` to some non-zero value.
 		
-		Example of usage with custom-constructed node:
+		Example of usage with a custom-constructed node:
 		
 		```
 		
@@ -446,19 +469,19 @@ extern class Control extends godot.CanvasItem {
 		
 		```
 		
-		Example of usage with custom scene instance:
+		Example of usage with a custom scene instance:
 		
 		```
 		
 		func _make_custom_tooltip(for_text):
-		var tooltip = preload("SomeTooltipScene.tscn").instance()
+		var tooltip = preload("res://SomeTooltipScene.tscn").instance()
 		tooltip.get_node("Label").text = for_text
 		return tooltip
 		
 		```
 	**/
 	@:native("_MakeCustomTooltip")
-	public function _MakeCustomTooltip(forText:std.String):godot.Object;
+	public function _MakeCustomTooltip(forText:std.String):godot.Control;
 
 	/**		
 		Godot calls this method to test if `data` from a control's `godot.Control.getDragData` can be dropped at `position`. `position` is local to this control.
@@ -928,6 +951,18 @@ extern class Control extends godot.CanvasItem {
 	public function releaseFocus():Void;
 
 	/**		
+		Finds the previous (above in the tree) `godot.Control` that can receive the focus.
+	**/
+	@:native("FindPrevValidFocus")
+	public function findPrevValidFocus():godot.Control;
+
+	/**		
+		Finds the next (below in the tree) `godot.Control` that can receive the focus.
+	**/
+	@:native("FindNextValidFocus")
+	public function findNextValidFocus():godot.Control;
+
+	/**		
 		Returns the control that has the keyboard focus or `null` if none.
 	**/
 	@:native("GetFocusOwner")
@@ -1027,67 +1062,67 @@ extern class Control extends godot.CanvasItem {
 
 	#if doc_gen
 	/**		
-		Returns an icon from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns an icon from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetIcon")
-	public function getIcon(name:std.String, ?type:std.String):godot.Texture;
+	public function getIcon(name:std.String, ?nodeType:std.String):godot.Texture;
 	#else
 	/**		
-		Returns an icon from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns an icon from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetIcon")
 	public overload function getIcon(name:std.String):godot.Texture;
 
 	/**		
-		Returns an icon from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns an icon from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetIcon")
-	public overload function getIcon(name:std.String, type:std.String):godot.Texture;
+	public overload function getIcon(name:std.String, nodeType:std.String):godot.Texture;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns a `godot.StyleBox` from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a `godot.StyleBox` from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetStylebox")
-	public function getStylebox(name:std.String, ?type:std.String):godot.StyleBox;
+	public function getStylebox(name:std.String, ?nodeType:std.String):godot.StyleBox;
 	#else
 	/**		
-		Returns a `godot.StyleBox` from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a `godot.StyleBox` from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetStylebox")
 	public overload function getStylebox(name:std.String):godot.StyleBox;
 
 	/**		
-		Returns a `godot.StyleBox` from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a `godot.StyleBox` from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetStylebox")
-	public overload function getStylebox(name:std.String, type:std.String):godot.StyleBox;
+	public overload function getStylebox(name:std.String, nodeType:std.String):godot.StyleBox;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns a font from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a font from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetFont")
-	public function getFont(name:std.String, ?type:std.String):godot.Font;
+	public function getFont(name:std.String, ?nodeType:std.String):godot.Font;
 	#else
 	/**		
-		Returns a font from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a font from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetFont")
 	public overload function getFont(name:std.String):godot.Font;
 
 	/**		
-		Returns a font from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a font from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetFont")
-	public overload function getFont(name:std.String, type:std.String):godot.Font;
+	public overload function getFont(name:std.String, nodeType:std.String):godot.Font;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns a color from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a color from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 		
 		```
 		
@@ -1097,10 +1132,10 @@ extern class Control extends godot.CanvasItem {
 		```
 	**/
 	@:native("GetColor")
-	public function getColor(name:std.String, ?type:std.String):godot.Color;
+	public function getColor(name:std.String, ?nodeType:std.String):godot.Color;
 	#else
 	/**		
-		Returns a color from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a color from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 		
 		```
 		
@@ -1113,7 +1148,7 @@ extern class Control extends godot.CanvasItem {
 	public overload function getColor(name:std.String):godot.Color;
 
 	/**		
-		Returns a color from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a color from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 		
 		```
 		
@@ -1123,27 +1158,27 @@ extern class Control extends godot.CanvasItem {
 		```
 	**/
 	@:native("GetColor")
-	public overload function getColor(name:std.String, type:std.String):godot.Color;
+	public overload function getColor(name:std.String, nodeType:std.String):godot.Color;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns a constant from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a constant from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetConstant")
-	public function getConstant(name:std.String, ?type:std.String):Int;
+	public function getConstant(name:std.String, ?nodeType:std.String):Int;
 	#else
 	/**		
-		Returns a constant from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a constant from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetConstant")
 	public overload function getConstant(name:std.String):Int;
 
 	/**		
-		Returns a constant from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `type`.
+		Returns a constant from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
 	**/
 	@:native("GetConstant")
-	public overload function getConstant(name:std.String, type:std.String):Int;
+	public overload function getConstant(name:std.String, nodeType:std.String):Int;
 	#end
 
 	/**		
@@ -1184,102 +1219,102 @@ extern class Control extends godot.CanvasItem {
 
 	#if doc_gen
 	/**		
-		Returns `true` if icon with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if icon with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasIcon")
-	public function hasIcon(name:std.String, ?type:std.String):Bool;
+	public function hasIcon(name:std.String, ?nodeType:std.String):Bool;
 	#else
 	/**		
-		Returns `true` if icon with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if icon with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasIcon")
 	public overload function hasIcon(name:std.String):Bool;
 
 	/**		
-		Returns `true` if icon with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if icon with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasIcon")
-	public overload function hasIcon(name:std.String, type:std.String):Bool;
+	public overload function hasIcon(name:std.String, nodeType:std.String):Bool;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns `true` if `godot.StyleBox` with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if `godot.StyleBox` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasStylebox")
-	public function hasStylebox(name:std.String, ?type:std.String):Bool;
+	public function hasStylebox(name:std.String, ?nodeType:std.String):Bool;
 	#else
 	/**		
-		Returns `true` if `godot.StyleBox` with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if `godot.StyleBox` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasStylebox")
 	public overload function hasStylebox(name:std.String):Bool;
 
 	/**		
-		Returns `true` if `godot.StyleBox` with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if `godot.StyleBox` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasStylebox")
-	public overload function hasStylebox(name:std.String, type:std.String):Bool;
+	public overload function hasStylebox(name:std.String, nodeType:std.String):Bool;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns `true` if font with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if font with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasFont")
-	public function hasFont(name:std.String, ?type:std.String):Bool;
+	public function hasFont(name:std.String, ?nodeType:std.String):Bool;
 	#else
 	/**		
-		Returns `true` if font with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if font with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasFont")
 	public overload function hasFont(name:std.String):Bool;
 
 	/**		
-		Returns `true` if font with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if font with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasFont")
-	public overload function hasFont(name:std.String, type:std.String):Bool;
+	public overload function hasFont(name:std.String, nodeType:std.String):Bool;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns `true` if `godot.Color` with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if `godot.Color` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasColor")
-	public function hasColor(name:std.String, ?type:std.String):Bool;
+	public function hasColor(name:std.String, ?nodeType:std.String):Bool;
 	#else
 	/**		
-		Returns `true` if `godot.Color` with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if `godot.Color` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasColor")
 	public overload function hasColor(name:std.String):Bool;
 
 	/**		
-		Returns `true` if `godot.Color` with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if `godot.Color` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasColor")
-	public overload function hasColor(name:std.String, type:std.String):Bool;
+	public overload function hasColor(name:std.String, nodeType:std.String):Bool;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns `true` if constant with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if constant with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasConstant")
-	public function hasConstant(name:std.String, ?type:std.String):Bool;
+	public function hasConstant(name:std.String, ?nodeType:std.String):Bool;
 	#else
 	/**		
-		Returns `true` if constant with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if constant with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasConstant")
 	public overload function hasConstant(name:std.String):Bool;
 
 	/**		
-		Returns `true` if constant with given `name` and associated with `godot.Control` of given `type` exists in assigned `godot.Theme`.
+		Returns `true` if constant with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
 	**/
 	@:native("HasConstant")
-	public overload function hasConstant(name:std.String, type:std.String):Bool;
+	public overload function hasConstant(name:std.String, nodeType:std.String):Bool;
 	#end
 
 	/**		
@@ -1399,6 +1434,12 @@ extern class Control extends godot.CanvasItem {
 	@:native("GetMouseFilter")
 	public function getMouseFilter():godot.Control_MouseFilterEnum;
 
+	@:native("SetPassOnModalCloseClick")
+	public function setPassOnModalCloseClick(enabled:Bool):Void;
+
+	@:native("GetPassOnModalCloseClick")
+	public function getPassOnModalCloseClick():Bool;
+
 	@:native("SetClipContents")
 	public function setClipContents(enable:Bool):Void;
 
@@ -1452,7 +1493,7 @@ extern class Control extends godot.CanvasItem {
 	public function setDragForwarding(target:godot.Control):Void;
 
 	/**		
-		Shows the given control at the mouse pointer. A good time to call this method is in `godot.Control.getDragData`. The control must not be in the scene tree.
+		Shows the given control at the mouse pointer. A good time to call this method is in `godot.Control.getDragData`. The control must not be in the scene tree. You should not free the control, and you should not keep a reference to the control beyond the duration of the drag. It will be deleted automatically after the drag has ended.
 		
 		```
 		

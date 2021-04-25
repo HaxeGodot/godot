@@ -56,6 +56,9 @@ extern abstract class TreeItem extends godot.Object {
 	@:native("IsChecked")
 	public function isChecked(column:Int):Bool;
 
+	/**		
+		Sets the given column's text value.
+	**/
 	@:native("SetText")
 	public function setText(column:Int, text:std.String):Void;
 
@@ -65,9 +68,15 @@ extern abstract class TreeItem extends godot.Object {
 	@:native("GetText")
 	public function getText(column:Int):std.String;
 
+	/**		
+		Sets a string to be shown after a column's value (for example, a unit abbreviation).
+	**/
 	@:native("SetSuffix")
 	public function setSuffix(column:Int, text:std.String):Void;
 
+	/**		
+		Gets the suffix string shown after the column value.
+	**/
 	@:native("GetSuffix")
 	public function getSuffix(column:Int):std.String;
 
@@ -119,29 +128,59 @@ extern abstract class TreeItem extends godot.Object {
 	@:native("GetIconModulate")
 	public function getIconModulate(column:Int):godot.Color;
 
+	/**		
+		Sets the value of a  column.
+	**/
 	@:native("SetRange")
 	public function setRange(column:Int, value:Float):Void;
 
+	/**		
+		Returns the value of a  column.
+	**/
 	@:native("GetRange")
 	public function getRange(column:Int):Float;
 
 	#if doc_gen
+	/**		
+		Sets the range of accepted values for a column. The column must be in the  mode.
+		
+		If `expr` is `true`, the edit mode slider will use an exponential scale as with `godot.Range.expEdit`.
+	**/
 	@:native("SetRangeConfig")
 	public function setRangeConfig(column:Int, min:Float, max:Float, step:Float, ?expr:Bool):Void;
 	#else
+	/**		
+		Sets the range of accepted values for a column. The column must be in the  mode.
+		
+		If `expr` is `true`, the edit mode slider will use an exponential scale as with `godot.Range.expEdit`.
+	**/
 	@:native("SetRangeConfig")
 	public overload function setRangeConfig(column:Int, min:Float, max:Float, step:Float):Void;
 
+	/**		
+		Sets the range of accepted values for a column. The column must be in the  mode.
+		
+		If `expr` is `true`, the edit mode slider will use an exponential scale as with `godot.Range.expEdit`.
+	**/
 	@:native("SetRangeConfig")
 	public overload function setRangeConfig(column:Int, min:Float, max:Float, step:Float, expr:Bool):Void;
 	#end
 
+	/**		
+		Returns a dictionary containing the range parameters for a given column. The keys are "min", "max", "step", and "expr".
+	**/
 	@:native("GetRangeConfig")
 	public function getRangeConfig(column:Int):godot.collections.Dictionary;
 
+	/**		
+		Sets the metadata value for the given column, which can be retrieved later using `godot.TreeItem.getMetadata`. This can be used, for example, to store a reference to the original data.
+	**/
 	@:native("SetMetadata")
 	public function setMetadata(column:Int, meta:Dynamic):Void;
 
+	/**		
+		Returns the metadata value that was set for the given column using `godot.TreeItem.setMetadata`.
+	**/
 	@:native("GetMetadata")
 	public function getMetadata(column:Int):Dynamic;
 

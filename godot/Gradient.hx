@@ -34,10 +34,10 @@ extern class Gradient extends godot.Resource {
 	public function addPoint(offset:Single, color:godot.Color):Void;
 
 	/**		
-		Removes the color at the index `offset`.
+		Removes the color at the index `point`.
 	**/
 	@:native("RemovePoint")
-	public function removePoint(offset:Int):Void;
+	public function removePoint(point:Int):Void;
 
 	/**		
 		Sets the offset for the ramp color at index `point`.

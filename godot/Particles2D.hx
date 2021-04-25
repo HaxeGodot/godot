@@ -8,6 +8,12 @@ import cs.system.*;
 2D particle node used to create a variety of particle systems and effects. `godot.Particles2D` features an emitter that generates some number of particles at a given rate.
 
 Use the `process_material` property to add a `godot.ParticlesMaterial` to configure particle appearance and behavior. Alternatively, you can add a `godot.ShaderMaterial` which will be applied to all particles.
+
+Note: `godot.Particles2D` only work when using the GLES3 renderer. If using the GLES2 renderer, use `godot.CPUParticles2D` instead. You can convert `godot.Particles2D` to `godot.CPUParticles2D` by selecting the node, clicking the Particles menu at the top of the 2D editor viewport then choosing Convert to CPUParticles2D.
+
+Note: After working on a Particles node, remember to update its `godot.Particles2D.visibilityRect` by selecting it, clicking the Particles menu at the top of the 2D editor viewport then choose Generate Visibility Rect. Otherwise, particles may suddenly disappear depending on the camera position and angle.
+
+Note: Unlike `godot.CPUParticles2D`, `godot.Particles2D` currently ignore the texture region defined in `godot.AtlasTexture`s.
 **/
 @:libType
 @:csNative
@@ -47,7 +53,9 @@ extern class Particles2D extends godot.Node2D {
 	public var localCoords:Bool;
 
 	/**		
-		Editor visibility helper.
+		The `godot.Rect2` that determines the node's region which needs to be visible on screen for the particle system to be active.
+		
+		Grow the rect if particles suddenly appear/disappear when the node enters/exits the screen. The `godot.Rect2` can be grown via code or with the Particles → Generate Visibility Rect editor tool.
 	**/
 	@:native("VisibilityRect")
 	public var visibilityRect:godot.Rect2;
@@ -95,13 +103,15 @@ extern class Particles2D extends godot.Node2D {
 	public var oneShot:Bool;
 
 	/**		
-		Amount of time each particle will exist.
+		The amount of time each particle will exist (in seconds).
 	**/
 	@:native("Lifetime")
 	public var lifetime:Single;
 
 	/**		
-		Number of particles emitted in one emission cycle.
+		The number of particles emitted in one emission cycle (corresponding to the `godot.Particles2D.lifetime`).
+		
+		Note: Changing `godot.Particles2D.amount` will reset the particle emission, therefore removing all particles that were already emitted before changing `godot.Particles2D.amount`.
 	**/
 	@:native("Amount")
 	public var amount:Int;

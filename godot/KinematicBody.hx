@@ -9,7 +9,7 @@ Kinematic bodies are special types of bodies that are meant to be user-controlle
 
 Simulated motion: When these bodies are moved manually, either from code or from an `godot.AnimationPlayer` (with `godot.AnimationPlayer.playbackProcessMode` set to "physics"), the physics will automatically compute an estimate of their linear and angular velocity. This makes them very useful for moving platforms or other AnimationPlayer-controlled objects (like a door, a bridge that opens, etc).
 
-Kinematic characters: KinematicBody also has an API for moving objects (the `godot.KinematicBody.moveAndCollide` and `godot.KinematicBody.moveAndSlide` methods) while performing collision tests. This makes them really useful to implement characters that collide against a world, but that don't require advanced physics.
+Kinematic characters: KinematicBody also has an API for moving objects (the `godot.KinematicBody.moveAndCollide` and `godot.KinematicBody.moveAndSlide` methods) while performing collision tests. This makes them really useful to implement characters that collide against a world, but don't require advanced physics.
 **/
 @:libType
 @:csNative
@@ -17,7 +17,13 @@ Kinematic characters: KinematicBody also has an API for moving objects (the `god
 @:autoBuild(godot.Godot.buildUserClass())
 extern class KinematicBody extends godot.PhysicsBody {
 	/**		
-		If the body is at least this close to another body, this body will consider them to be colliding.
+		Extra margin used for collision recovery in motion functions (see `godot.KinematicBody.moveAndCollide`, `godot.KinematicBody.moveAndSlide`, `godot.KinematicBody.moveAndSlideWithSnap`).
+		
+		If the body is at least this close to another body, it will consider them to be colliding and will be pushed away before performing the actual motion.
+		
+		A higher value means it's more flexible for detecting collision, which helps with consistently detecting walls and floors.
+		
+		A lower value forces the collision algorithm to use more exact detection, so it can be used in cases that specifically require precision, e.g at very low scale to avoid visible jittering, or for stability with a stack of kinematic bodies.
 	**/
 	@:native("Collision__safeMargin")
 	public var collision__safeMargin:Single;
@@ -87,7 +93,7 @@ extern class KinematicBody extends godot.PhysicsBody {
 
 	#if doc_gen
 	/**		
-		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving or rotating platforms, or to make nodes push other nodes.
+		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving and rotating platforms, or to make nodes push other nodes.
 		
 		This method should be used in `godot.Node._PhysicsProcess` (or in a method called by `godot.Node._PhysicsProcess`), as it uses the physics step's `delta` value automatically in calculations. Otherwise, the simulation will run at an incorrect speed.
 		
@@ -111,7 +117,7 @@ extern class KinematicBody extends godot.PhysicsBody {
 	public function moveAndSlide(linearVelocity:godot.Vector3, ?upDirection:Null<godot.Vector3>, ?stopOnSlope:Bool, ?maxSlides:Int, ?floorMaxAngle:Single, ?infiniteInertia:Bool):godot.Vector3;
 	#else
 	/**		
-		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving or rotating platforms, or to make nodes push other nodes.
+		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving and rotating platforms, or to make nodes push other nodes.
 		
 		This method should be used in `godot.Node._PhysicsProcess` (or in a method called by `godot.Node._PhysicsProcess`), as it uses the physics step's `delta` value automatically in calculations. Otherwise, the simulation will run at an incorrect speed.
 		
@@ -135,7 +141,7 @@ extern class KinematicBody extends godot.PhysicsBody {
 	public overload function moveAndSlide(linearVelocity:godot.Vector3):godot.Vector3;
 
 	/**		
-		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving or rotating platforms, or to make nodes push other nodes.
+		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving and rotating platforms, or to make nodes push other nodes.
 		
 		This method should be used in `godot.Node._PhysicsProcess` (or in a method called by `godot.Node._PhysicsProcess`), as it uses the physics step's `delta` value automatically in calculations. Otherwise, the simulation will run at an incorrect speed.
 		
@@ -159,7 +165,7 @@ extern class KinematicBody extends godot.PhysicsBody {
 	public overload function moveAndSlide(linearVelocity:godot.Vector3, upDirection:Nullable1<godot.Vector3>):godot.Vector3;
 
 	/**		
-		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving or rotating platforms, or to make nodes push other nodes.
+		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving and rotating platforms, or to make nodes push other nodes.
 		
 		This method should be used in `godot.Node._PhysicsProcess` (or in a method called by `godot.Node._PhysicsProcess`), as it uses the physics step's `delta` value automatically in calculations. Otherwise, the simulation will run at an incorrect speed.
 		
@@ -183,7 +189,7 @@ extern class KinematicBody extends godot.PhysicsBody {
 	public overload function moveAndSlide(linearVelocity:godot.Vector3, upDirection:Nullable1<godot.Vector3>, stopOnSlope:Bool):godot.Vector3;
 
 	/**		
-		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving or rotating platforms, or to make nodes push other nodes.
+		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving and rotating platforms, or to make nodes push other nodes.
 		
 		This method should be used in `godot.Node._PhysicsProcess` (or in a method called by `godot.Node._PhysicsProcess`), as it uses the physics step's `delta` value automatically in calculations. Otherwise, the simulation will run at an incorrect speed.
 		
@@ -207,7 +213,7 @@ extern class KinematicBody extends godot.PhysicsBody {
 	public overload function moveAndSlide(linearVelocity:godot.Vector3, upDirection:Nullable1<godot.Vector3>, stopOnSlope:Bool, maxSlides:Int):godot.Vector3;
 
 	/**		
-		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving or rotating platforms, or to make nodes push other nodes.
+		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving and rotating platforms, or to make nodes push other nodes.
 		
 		This method should be used in `godot.Node._PhysicsProcess` (or in a method called by `godot.Node._PhysicsProcess`), as it uses the physics step's `delta` value automatically in calculations. Otherwise, the simulation will run at an incorrect speed.
 		
@@ -231,7 +237,7 @@ extern class KinematicBody extends godot.PhysicsBody {
 	public overload function moveAndSlide(linearVelocity:godot.Vector3, upDirection:Nullable1<godot.Vector3>, stopOnSlope:Bool, maxSlides:Int, floorMaxAngle:Single):godot.Vector3;
 
 	/**		
-		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving or rotating platforms, or to make nodes push other nodes.
+		Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a `godot.KinematicBody` or `godot.RigidBody`, it will also be affected by the motion of the other body. You can use this to make moving and rotating platforms, or to make nodes push other nodes.
 		
 		This method should be used in `godot.Node._PhysicsProcess` (or in a method called by `godot.Node._PhysicsProcess`), as it uses the physics step's `delta` value automatically in calculations. Otherwise, the simulation will run at an incorrect speed.
 		
@@ -348,19 +354,19 @@ extern class KinematicBody extends godot.PhysicsBody {
 	#end
 
 	/**		
-		Returns `true` if the body is on the floor. Only updates when calling `godot.KinematicBody.moveAndSlide`.
+		Returns `true` if the body is on the floor. Only updates when calling `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap`.
 	**/
 	@:native("IsOnFloor")
 	public function isOnFloor():Bool;
 
 	/**		
-		Returns `true` if the body is on the ceiling. Only updates when calling `godot.KinematicBody.moveAndSlide`.
+		Returns `true` if the body is on the ceiling. Only updates when calling `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap`.
 	**/
 	@:native("IsOnCeiling")
 	public function isOnCeiling():Bool;
 
 	/**		
-		Returns `true` if the body is on a wall. Only updates when calling `godot.KinematicBody.moveAndSlide`.
+		Returns `true` if the body is on a wall. Only updates when calling `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap`.
 	**/
 	@:native("IsOnWall")
 	public function isOnWall():Bool;
@@ -396,13 +402,13 @@ extern class KinematicBody extends godot.PhysicsBody {
 	public function getSafeMargin():Single;
 
 	/**		
-		Returns the number of times the body collided and changed direction during the last call to `godot.KinematicBody.moveAndSlide`.
+		Returns the number of times the body collided and changed direction during the last call to `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap`.
 	**/
 	@:native("GetSlideCount")
 	public function getSlideCount():Int;
 
 	/**		
-		Returns a `godot.KinematicCollision`, which contains information about a collision that occurred during the last `godot.KinematicBody.moveAndSlide` call. Since the body can collide several times in a single call to `godot.KinematicBody.moveAndSlide`, you must specify the index of the collision in the range 0 to (`godot.KinematicBody.getSlideCount` - 1).
+		Returns a `godot.KinematicCollision`, which contains information about a collision that occurred during the last call to `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap`. Since the body can collide several times in a single call to `godot.KinematicBody.moveAndSlide`, you must specify the index of the collision in the range 0 to (`godot.KinematicBody.getSlideCount` - 1).
 	**/
 	@:native("GetSlideCollision")
 	public function getSlideCollision(slideIdx:Int):godot.KinematicCollision;

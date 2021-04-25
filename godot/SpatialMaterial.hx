@@ -13,13 +13,17 @@ This provides a default material with a wide variety of rendering features and p
 @:autoBuild(godot.Godot.buildUserClass())
 extern class SpatialMaterial extends godot.Material {
 	/**		
-		Distance at which the object fades fully and is no longer visible.
+		Distance at which the object appears fully opaque.
+		
+		Note: If `distance_fade_max_distance` is less than `distance_fade_min_distance`, the behavior will be reversed. The object will start to fade away at `distance_fade_max_distance` and will fully disappear once it reaches `distance_fade_min_distance`.
 	**/
 	@:native("DistanceFadeMaxDistance")
 	public var distanceFadeMaxDistance:Single;
 
 	/**		
-		Distance at which the object starts to fade. If the object is less than this distance away it will appear normal.
+		Distance at which the object starts to become visible. If the object is less than this distance away, it will be invisible.
+		
+		Note: If `distance_fade_min_distance` is greater than `distance_fade_max_distance`, the behavior will be reversed. The object will start to fade away at `distance_fade_max_distance` and will fully disappear once it reaches `distance_fade_min_distance`.
 	**/
 	@:native("DistanceFadeMinDistance")
 	public var distanceFadeMinDistance:Single;
@@ -232,6 +236,8 @@ extern class SpatialMaterial extends godot.Material {
 
 	/**		
 		If `true`, depth mapping is enabled (also called "parallax mapping" or "height mapping"). See also `godot.SpatialMaterial.normalEnabled`.
+		
+		Note: Depth mapping is not supported if triplanar mapping is used on the same material. The value of `godot.SpatialMaterial.depthEnabled` will be ignored if `godot.SpatialMaterial.uv1Triplanar` is enabled.
 	**/
 	@:native("DepthEnabled")
 	public var depthEnabled:Bool;
@@ -494,6 +500,8 @@ extern class SpatialMaterial extends godot.Material {
 
 	/**		
 		Controls how the object faces the camera. See `godot.SpatialMaterial_BillboardMode`.
+		
+		Note: Billboard mode is not suitable for VR because the left-right vector of the camera is not horizontal when the screen is attached to your head instead of on the table. See [https://github.com/godotengine/godot/issues/41567](GitHub issue #41567) for details.
 	**/
 	@:native("ParamsBillboardMode")
 	public var paramsBillboardMode:godot.SpatialMaterial_BillboardMode;

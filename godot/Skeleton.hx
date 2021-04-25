@@ -16,6 +16,14 @@ Note that "global pose" below refers to the overall transform of the bone with r
 @:native("Godot.Skeleton")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Skeleton extends godot.Spatial {
+	/**
+		`skeleton_updated` signal.
+	**/
+	public var onSkeletonUpdated(get, never):Signal<Void->Void>;
+	@:dox(hide) inline function get_onSkeletonUpdated():Signal<Void->Void> {
+		return new Signal(this, "skeleton_updated", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
 	@:native("NotificationUpdateSkeleton")
 	public static var NOTIFICATION_UPDATE_SKELETON(default, never):Int;
 

@@ -97,7 +97,7 @@ extern class Spatial extends godot.Node {
 	/**		
 		Spatial nodes receives this notification when their global transform changes. This means that either the current or a parent node changed its transform.
 		
-		In order for  to work, users first need to ask for it, with `godot.Spatial.setNotifyTransform`.
+		In order for  to work, users first need to ask for it, with `godot.Spatial.setNotifyTransform`. The notification is also sent if the node is in the editor context and it has a valid gizmo.
 	**/
 	@:native("NotificationTransformChanged")
 	public static var NOTIFICATION_TRANSFORM_CHANGED(default, never):Int;
@@ -238,7 +238,7 @@ extern class Spatial extends godot.Node {
 	public function isLocalTransformNotificationEnabled():Bool;
 
 	/**		
-		Sets whether the node notifies about its global and local transformation changes. `godot.Spatial` will not propagate this by default.
+		Sets whether the node notifies about its global and local transformation changes. `godot.Spatial` will not propagate this by default, unless it is in the editor context and it has a valid gizmo.
 	**/
 	@:native("SetNotifyTransform")
 	public function setNotifyTransform(enable:Bool):Void;

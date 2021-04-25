@@ -26,15 +26,27 @@ extern abstract class InstancePlaceholder extends godot.Node {
 	#end
 
 	#if doc_gen
+	/**		
+		Not thread-safe. Use `godot.Object.callDeferred` if calling from a thread.
+	**/
 	@:native("CreateInstance")
 	public function createInstance(?replace:Bool, ?customScene:godot.PackedScene):godot.Node;
 	#else
+	/**		
+		Not thread-safe. Use `godot.Object.callDeferred` if calling from a thread.
+	**/
 	@:native("CreateInstance")
 	public overload function createInstance():godot.Node;
 
+	/**		
+		Not thread-safe. Use `godot.Object.callDeferred` if calling from a thread.
+	**/
 	@:native("CreateInstance")
 	public overload function createInstance(replace:Bool):godot.Node;
 
+	/**		
+		Not thread-safe. Use `godot.Object.callDeferred` if calling from a thread.
+	**/
 	@:native("CreateInstance")
 	public overload function createInstance(replace:Bool, customScene:godot.PackedScene):godot.Node;
 	#end
@@ -60,7 +72,7 @@ extern abstract class InstancePlaceholder extends godot.Node {
 	#end
 
 	/**		
-		Gets the path to the `godot.PackedScene` resource file that is loaded by default when calling `godot.InstancePlaceholder.replaceByInstance`.
+		Gets the path to the `godot.PackedScene` resource file that is loaded by default when calling `godot.InstancePlaceholder.replaceByInstance`. Not thread-safe. Use `godot.Object.callDeferred` if calling from a thread.
 	**/
 	@:native("GetInstancePath")
 	public function getInstancePath():std.String;

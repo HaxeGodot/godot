@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-A rectangle box that displays only a `godot.ReferenceRect.borderColor` border color around its rectangle. `godot.ReferenceRect` has no fill `godot.Color`.
+A rectangle box that displays only a `godot.ReferenceRect.borderColor` border color around its rectangle. `godot.ReferenceRect` has no fill `godot.Color`. If you need to display a rectangle filled with a solid color, consider using `godot.ColorRect` instead.
 **/
 @:libType
 @:csNative
@@ -17,6 +17,12 @@ extern class ReferenceRect extends godot.Control {
 	**/
 	@:native("EditorOnly")
 	public var editorOnly:Bool;
+
+	/**		
+		Sets the border width of the `godot.ReferenceRect`. The border grows both inwards and outwards with respect to the rectangle box.
+	**/
+	@:native("BorderWidth")
+	public var borderWidth:Single;
 
 	/**		
 		Sets the border `godot.Color` of the `godot.ReferenceRect`.
@@ -32,6 +38,12 @@ extern class ReferenceRect extends godot.Control {
 
 	@:native("SetBorderColor")
 	public function setBorderColor(color:godot.Color):Void;
+
+	@:native("GetBorderWidth")
+	public function getBorderWidth():Single;
+
+	@:native("SetBorderWidth")
+	public function setBorderWidth(width:Single):Void;
 
 	@:native("GetEditorOnly")
 	public function getEditorOnly():Bool;

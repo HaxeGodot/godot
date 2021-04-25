@@ -14,17 +14,23 @@ However, by creating a `godot.FuncRef` using the `@GDScript.funcref` function, a
 @:native("Godot.FuncRef")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class FuncRef extends godot.Reference {
+	/**		
+		The name of the referenced function.
+	**/
+	@:native("Function")
+	public var function_:std.String;
+
 	@:native("new")
 	public function new():Void;
 
 	/**		
-		Calls the referenced function previously set by `godot.FuncRef.setFunction` or `@GDScript.funcref`.
+		Calls the referenced function previously set in `godot.FuncRef.function` or `@GDScript.funcref`.
 	**/
 	@:native("CallFunc")
 	public function callFunc(args:haxe.Rest<Dynamic>):Dynamic;
 
 	/**		
-		Calls the referenced function previously set by `godot.FuncRef.setFunction` or `@GDScript.funcref`. Contrarily to `godot.FuncRef.callFunc`, this method does not support a variable number of arguments but expects all parameters to be passed via a single `godot.Collections_Array`.
+		Calls the referenced function previously set in `godot.FuncRef.function` or `@GDScript.funcref`. Contrarily to `godot.FuncRef.callFunc`, this method does not support a variable number of arguments but expects all parameters to be passed via a single `godot.Collections_Array`.
 	**/
 	@:native("CallFuncv")
 	public function callFuncv(argArray:godot.collections.Array):Dynamic;
@@ -36,14 +42,14 @@ extern class FuncRef extends godot.Reference {
 	public function setInstance(instance:godot.Object):Void;
 
 	/**		
-		The name of the referenced function to call on the object, without parentheses or any parameters.
-	**/
-	@:native("SetFunction")
-	public function setFunction(name:std.String):Void;
-
-	/**		
 		Returns whether the object still exists and has the function assigned.
 	**/
 	@:native("IsValid")
 	public function isValid():Bool;
+
+	@:native("SetFunction")
+	public function setFunction(name:std.String):Void;
+
+	@:native("GetFunction")
+	public function getFunction():std.String;
 }

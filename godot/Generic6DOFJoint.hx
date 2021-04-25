@@ -12,9 +12,6 @@ The first 3 DOF axes are linear axes, which represent translation of Bodies, and
 @:native("Godot.Generic6DOFJoint")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Generic6DOFJoint extends godot.Joint {
-	@:native("Precision")
-	public var precision:Int;
-
 	@:native("AngularSpringZ__equilibriumPoint")
 	public var angularSpringZ__equilibriumPoint:Single;
 
@@ -487,10 +484,4 @@ extern class Generic6DOFJoint extends godot.Joint {
 
 	@:native("GetFlagZ")
 	public function getFlagZ(flag:godot.Generic6DOFJoint_Flag):Bool;
-
-	@:native("SetPrecision")
-	public function setPrecision(precision:Int):Void;
-
-	@:native("GetPrecision")
-	public function getPrecision():Int;
 }

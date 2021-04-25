@@ -93,7 +93,7 @@ extern class Viewport extends godot.Node {
 	public var guiSnapControlsToPixels:Bool;
 
 	/**		
-		If `true`, the viewport will not receive input event.
+		If `true`, the viewport will not receive input events.
 	**/
 	@:native("GuiDisableInput")
 	public var guiDisableInput:Bool;
@@ -173,6 +173,20 @@ extern class Viewport extends godot.Node {
 	**/
 	@:native("Hdr")
 	public var hdr:Bool;
+
+	/**		
+		If `true`, uses a fast post-processing filter to make banding significantly less visible. In some cases, debanding may introduce a slightly noticeable dithering pattern. It's recommended to enable debanding only when actually needed since the dithering pattern will make lossless-compressed screenshots larger.
+		
+		Note: Only available on the GLES3 backend. `godot.Viewport.hdr` must also be `true` for debanding to be effective.
+	**/
+	@:native("Debanding")
+	public var debanding:Bool;
+
+	/**		
+		Enables fast approximate antialiasing. FXAA is a popular screen-space antialiasing method, which is fast but will make the image look blurry, especially at lower resolutions. It can still work relatively well at large resolutions such as 1440p and 4K.
+	**/
+	@:native("Fxaa")
+	public var fxaa:Bool;
 
 	/**		
 		The multisample anti-aliasing mode. A higher number results in smoother edges at the cost of significantly worse performance. A value of 4 is best unless targeting very high-end systems.
@@ -373,6 +387,18 @@ extern class Viewport extends godot.Node {
 
 	@:native("GetMsaa")
 	public function getMsaa():godot.Viewport_MSAA;
+
+	@:native("SetUseFxaa")
+	public function setUseFxaa(enable:Bool):Void;
+
+	@:native("GetUseFxaa")
+	public function getUseFxaa():Bool;
+
+	@:native("SetUseDebanding")
+	public function setUseDebanding(enable:Bool):Void;
+
+	@:native("GetUseDebanding")
+	public function getUseDebanding():Bool;
 
 	@:native("SetHdr")
 	public function setHdr(enable:Bool):Void;

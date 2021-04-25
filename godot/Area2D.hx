@@ -15,7 +15,8 @@ extern class Area2D extends godot.CollisionObject2D {
 	/**
 		`area_entered` signal.
 		
-		Emitted when another area enters.
+		Emitted when another Area2D enters this Area2D. Requires `monitoring` to be set to `true`.
+		`area` the other Area2D.
 	**/
 	public var onAreaEntered(get, never):Signal<(area:Area2D)->Void>;
 	@:dox(hide) inline function get_onAreaEntered():Signal<(area:Area2D)->Void> {
@@ -25,7 +26,8 @@ extern class Area2D extends godot.CollisionObject2D {
 	/**
 		`area_exited` signal.
 		
-		Emitted when another area exits.
+		Emitted when another Area2D exits this Area2D. Requires `monitoring` to be set to `true`.
+		`area` the other Area2D.
 	**/
 	public var onAreaExited(get, never):Signal<(area:Area2D)->Void>;
 	@:dox(hide) inline function get_onAreaExited():Signal<(area:Area2D)->Void> {
@@ -35,28 +37,36 @@ extern class Area2D extends godot.CollisionObject2D {
 	/**
 		`area_shape_entered` signal.
 		
-		Emitted when another area enters, reporting which shapes overlapped. `shape_owner_get_owner(shape_find_owner(shape))` returns the parent object of the owner of the `shape`.
+		Emitted when one of another Area2D's `Shape2D`s enters one of this Area2D's `Shape2D`s. Requires `monitoring` to be set to `true`.
+		`area_id` the `RID` of the other Area2D's `CollisionObject2D` used by the `Physics2DServer`.
+		`area` the other Area2D.
+		`area_shape` the index of the `Shape2D` of the other Area2D used by the `Physics2DServer`.
+		`local_shape` the index of the `Shape2D` of this Area2D used by the `Physics2DServer`.
 	**/
-	public var onAreaShapeEntered(get, never):Signal<(areaId:Int, area:Area2D, areaShape:Int, selfShape:Int)->Void>;
-	@:dox(hide) inline function get_onAreaShapeEntered():Signal<(areaId:Int, area:Area2D, areaShape:Int, selfShape:Int)->Void> {
+	public var onAreaShapeEntered(get, never):Signal<(areaId:Int, area:Area2D, areaShape:Int, localShape:Int)->Void>;
+	@:dox(hide) inline function get_onAreaShapeEntered():Signal<(areaId:Int, area:Area2D, areaShape:Int, localShape:Int)->Void> {
 		return new Signal(this, "area_shape_entered", Signal.SignalHandlerIntArea2DIntIntVoid.connectSignal, Signal.SignalHandlerIntArea2DIntIntVoid.disconnectSignal, Signal.SignalHandlerIntArea2DIntIntVoid.isSignalConnected);
 	}
 
 	/**
 		`area_shape_exited` signal.
 		
-		Emitted when another area exits, reporting which shapes were overlapping.
+		Emitted when one of another Area2D's `Shape2D`s exits one of this Area2D's `Shape2D`s. Requires `monitoring` to be set to `true`.
+		`area_id` the `RID` of the other Area2D's `CollisionObject2D` used by the `Physics2DServer`.
+		`area` the other Area2D.
+		`area_shape` the index of the `Shape2D` of the other Area2D used by the `Physics2DServer`.
+		`local_shape` the index of the `Shape2D` of this Area2D used by the `Physics2DServer`.
 	**/
-	public var onAreaShapeExited(get, never):Signal<(areaId:Int, area:Area2D, areaShape:Int, selfShape:Int)->Void>;
-	@:dox(hide) inline function get_onAreaShapeExited():Signal<(areaId:Int, area:Area2D, areaShape:Int, selfShape:Int)->Void> {
+	public var onAreaShapeExited(get, never):Signal<(areaId:Int, area:Area2D, areaShape:Int, localShape:Int)->Void>;
+	@:dox(hide) inline function get_onAreaShapeExited():Signal<(areaId:Int, area:Area2D, areaShape:Int, localShape:Int)->Void> {
 		return new Signal(this, "area_shape_exited", Signal.SignalHandlerIntArea2DIntIntVoid.connectSignal, Signal.SignalHandlerIntArea2DIntIntVoid.disconnectSignal, Signal.SignalHandlerIntArea2DIntIntVoid.isSignalConnected);
 	}
 
 	/**
 		`body_entered` signal.
 		
-		Emitted when a physics body enters.
-		The `body` argument can either be a `PhysicsBody2D` or a `TileMap` instance (while TileMaps are not physics body themselves, they register their tiles with collision shapes as a virtual physics body).
+		Emitted when a `PhysicsBody2D` or `TileMap` enters this Area2D. Requires `monitoring` to be set to `true`. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
+		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
 	**/
 	public var onBodyEntered(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) inline function get_onBodyEntered():Signal<(body:Node)->Void> {
@@ -66,8 +76,8 @@ extern class Area2D extends godot.CollisionObject2D {
 	/**
 		`body_exited` signal.
 		
-		Emitted when a physics body exits.
-		The `body` argument can either be a `PhysicsBody2D` or a `TileMap` instance (while TileMaps are not physics body themselves, they register their tiles with collision shapes as a virtual physics body).
+		Emitted when a `PhysicsBody2D` or `TileMap` exits this Area2D. Requires `monitoring` to be set to `true`. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
+		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
 	**/
 	public var onBodyExited(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) inline function get_onBodyExited():Signal<(body:Node)->Void> {
@@ -77,22 +87,28 @@ extern class Area2D extends godot.CollisionObject2D {
 	/**
 		`body_shape_entered` signal.
 		
-		Emitted when a physics body enters, reporting which shapes overlapped.
-		The `body` argument can either be a `PhysicsBody2D` or a `TileMap` instance (while TileMaps are not physics body themselves, they register their tiles with collision shapes as a virtual physics body).
+		Emitted when one of a `PhysicsBody2D` or `TileMap`'s `Shape2D`s enters one of this Area2D's `Shape2D`s. Requires `monitoring` to be set to `true`. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
+		`body_id` the `RID` of the `PhysicsBody2D` or `TileSet`'s `CollisionObject2D` used by the `Physics2DServer`.
+		`body` the `Node`, if it exists in the tree, of the `PhysicsBody2D` or `TileMap`.
+		`body_shape` the index of the `Shape2D` of the `PhysicsBody2D` or `TileMap` used by the `Physics2DServer`.
+		`local_shape` the index of the `Shape2D` of this Area2D used by the `Physics2DServer`.
 	**/
-	public var onBodyShapeEntered(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, areaShape:Int)->Void>;
-	@:dox(hide) inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, areaShape:Int)->Void> {
+	public var onBodyShapeEntered(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
+	@:dox(hide) inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
 		return new Signal(this, "body_shape_entered", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
 	}
 
 	/**
 		`body_shape_exited` signal.
 		
-		Emitted when a physics body exits, reporting which shapes were overlapping.
-		The `body` argument can either be a `PhysicsBody2D` or a `TileMap` instance (while TileMaps are not physics body themselves, they register their tiles with collision shapes as a virtual physics body).
+		Emitted when one of a `PhysicsBody2D` or `TileMap`'s `Shape2D`s exits one of this Area2D's `Shape2D`s. Requires `monitoring` to be set to `true`. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
+		`body_id` the `RID` of the `PhysicsBody2D` or `TileSet`'s `CollisionObject2D` used by the `Physics2DServer`.
+		`body` the `Node`, if it exists in the tree, of the `PhysicsBody2D` or `TileMap`.
+		`body_shape` the index of the `Shape2D` of the `PhysicsBody2D` or `TileMap` used by the `Physics2DServer`.
+		`local_shape` the index of the `Shape2D` of this Area2D used by the `Physics2DServer`.
 	**/
-	public var onBodyShapeExited(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, areaShape:Int)->Void>;
-	@:dox(hide) inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, areaShape:Int)->Void> {
+	public var onBodyShapeExited(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
+	@:dox(hide) inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
 		return new Signal(this, "body_shape_exited", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
 	}
 
@@ -109,13 +125,13 @@ extern class Area2D extends godot.CollisionObject2D {
 	public var audioBusOverride:Bool;
 
 	/**		
-		The physics layers this area scans to determine collision detection. See [https://docs.godotengine.org/en/latest/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The physics layers this area scans to determine collision detection. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionMask")
 	public var collisionMask:UInt;
 
 	/**		
-		The area's physics layer(s). Collidable objects can exist in any of 32 different layers. A contact is detected if object A is in any of the layers that object B scans, or object B is in any layers that object A scans. See also `godot.Area2D.collisionMask`. See [https://docs.godotengine.org/en/latest/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The area's physics layer(s). Collidable objects can exist in any of 32 different layers. A contact is detected if object A is in any of the layers that object B scans, or object B is in any layers that object A scans. See also `godot.Area2D.collisionMask`. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionLayer")
 	public var collisionLayer:UInt;
@@ -139,13 +155,17 @@ extern class Area2D extends godot.CollisionObject2D {
 	public var priority:Single;
 
 	/**		
-		The rate at which objects stop spinning in this area. Represents the angular velocity lost per second. Values range from `0` (no damping) to `1` (full damping).
+		The rate at which objects stop spinning in this area. Represents the angular velocity lost per second.
+		
+		See  for more details about damping.
 	**/
 	@:native("AngularDamp")
 	public var angularDamp:Single;
 
 	/**		
-		The rate at which objects stop moving in this area. Represents the linear velocity lost per second. Values range from `0` (no damping) to `1` (full damping).
+		The rate at which objects stop moving in this area. Represents the linear velocity lost per second.
+		
+		See  for more details about damping.
 	**/
 	@:native("LinearDamp")
 	public var linearDamp:Single;

@@ -23,6 +23,10 @@ print("Hello world!")
 ```
 
 Buttons (like all Control nodes) can also be created in the editor, but some situations may require creating them from code.
+
+See also `godot.BaseButton` which contains common properties and methods associated with this node.
+
+Note: Buttons do not interpret touch input and therefore don't support multitouch, since mouse emulation can only press one button at a given time. Use `godot.TouchScreenButton` for buttons that trigger gameplay movement or actions, as `godot.TouchScreenButton` supports multitouch.
 **/
 @:libType
 @:csNative

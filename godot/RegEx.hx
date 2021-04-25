@@ -61,8 +61,8 @@ Example of splitting a string using a RegEx:
 var regex = RegEx.new()
 regex.compile("\\S+") # Negated whitespace character class.
 var results = []
-for match in regex.search_all("One  Two \n\tThree"):
-results.push_back(match.get_string())
+for result in regex.search_all("One  Two \n\tThree"):
+results.push_back(result.get_string())
 # The `results` array now contains "One", "Two", "Three".
 
 ```

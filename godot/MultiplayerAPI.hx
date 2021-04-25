@@ -5,11 +5,13 @@ package godot;
 import cs.system.*;
 
 /**
-This class implements most of the logic behind the high-level multiplayer API.
+This class implements most of the logic behind the high-level multiplayer API. See also `godot.NetworkedMultiplayerPeer`.
 
 By default, `godot.SceneTree` has a reference to this class that is used to provide multiplayer capabilities (i.e. RPC/RSET) across the whole scene.
 
 It is possible to override the MultiplayerAPI instance used by specific Nodes by setting the `godot.Node.customMultiplayer` property, effectively allowing to run both client and server in the same scene.
+
+Note: The high-level multiplayer API protocol is an implementation detail and isn't meant to be used by non-Godot servers. It may change without notice.
 **/
 @:libType
 @:csNative
@@ -77,6 +79,14 @@ extern class MultiplayerAPI extends godot.Reference {
 	}
 
 	/**		
+		The root node to use for RPCs. Instead of an absolute path, a relative path will be used to find the node upon which the RPC should be executed.
+		
+		This effectively allows to have different branches of the scene tree to be managed by different MultiplayerAPI, allowing for example to run both client and server in the same scene.
+	**/
+	@:native("RootNode")
+	public var rootNode:godot.Node;
+
+	/**		
 		The peer object to handle the RPC system (effectively enabling networking when set). Depending on the peer itself, the MultiplayerAPI will become a network server (check with `godot.MultiplayerAPI.isNetworkServer`) and will set root node's network mode to master, or it will become a regular peer with root node set to puppet. All child nodes are set to inherit the network mode by default. Handling of networking-related events (connection, disconnection, new clients) is done by connecting to MultiplayerAPI's signals.
 	**/
 	@:native("NetworkPeer")
@@ -99,13 +109,11 @@ extern class MultiplayerAPI extends godot.Reference {
 	@:native("new")
 	public function new():Void;
 
-	/**		
-		Sets the base root node to use for RPCs. Instead of an absolute path, a relative path will be used to find the node upon which the RPC should be executed.
-		
-		This effectively allows to have different branches of the scene tree to be managed by different MultiplayerAPI, allowing for example to run both client and server in the same scene.
-	**/
 	@:native("SetRootNode")
 	public function setRootNode(node:godot.Node):Void;
+
+	@:native("GetRootNode")
+	public function getRootNode():godot.Node;
 
 	#if doc_gen
 	/**		

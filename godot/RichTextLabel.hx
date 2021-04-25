@@ -9,6 +9,8 @@ Rich text can contain custom text, fonts, images and some basic formatting. The 
 
 Note: Assignments to `godot.RichTextLabel.bbcodeText` clear the tag stack and reconstruct it from the property's contents. Any edits made to `godot.RichTextLabel.bbcodeText` will erase previous edits made from other manual sources such as `godot.RichTextLabel.appendBbcode` and the `push_*` / `godot.RichTextLabel.pop` methods.
 
+Note: RichTextLabel doesn't support entangled BBCode tags. For example, instead of using `[b]bold[i]bold italic[/b]italic[/i]`, use `[b]bold[i]bold italic[/i][/b][i]italic[/i]`.
+
 Note: Unlike `godot.Label`, RichTextLabel doesn't have a property to horizontally align text to the center. Instead, enable `godot.RichTextLabel.bbcodeEnabled` and surround the text in a `[center]` tag as follows: `[center]Example[/center]`. There is currently no built-in way to vertically align text either, but this can be emulated by relying on anchors/containers and the `godot.RichTextLabel.fitContentHeight` property.
 **/
 @:libType
@@ -116,6 +118,8 @@ extern class RichTextLabel extends godot.Control {
 
 	/**		
 		The restricted number of characters to display in the label. If `-1`, all characters will be displayed.
+		
+		Note: Setting this property updates `godot.RichTextLabel.percentVisible` based on current `godot.RichTextLabel.getTotalCharacterCount`.
 	**/
 	@:native("VisibleCharacters")
 	public var visibleCharacters:Int;
@@ -123,13 +127,15 @@ extern class RichTextLabel extends godot.Control {
 	/**		
 		The label's text in BBCode format. Is not representative of manual modifications to the internal tag stack. Erases changes made by other methods when edited.
 		
-		Note: It is unadvised to use `+=` operator with `bbcode_text` (e.g. `bbcode_text += "some string"`) as it replaces the whole text and can cause slowdowns. Use `godot.RichTextLabel.appendBbcode` for adding text instead.
+		Note: It is unadvised to use the `+=` operator with `bbcode_text` (e.g. `bbcode_text += "some string"`) as it replaces the whole text and can cause slowdowns. Use `godot.RichTextLabel.appendBbcode` for adding text instead, unless you absolutely need to close a tag that was opened in an earlier method call.
 	**/
 	@:native("BbcodeText")
 	public var bbcodeText:std.String;
 
 	/**		
 		If `true`, the label uses BBCode formatting.
+		
+		Note: Trying to alter the `godot.RichTextLabel`'s text with `godot.RichTextLabel.addText` will reset this to `false`. Use instead `godot.RichTextLabel.appendBbcode` to preserve BBCode formatting.
 	**/
 	@:native("BbcodeEnabled")
 	public var bbcodeEnabled:Bool;
@@ -371,6 +377,8 @@ extern class RichTextLabel extends godot.Control {
 
 	/**		
 		Parses `bbcode` and adds tags to the tag stack as needed. Returns the result of the parsing,  if successful.
+		
+		Note: Using this method, you can't close a tag that was opened in a previous `godot.RichTextLabel.appendBbcode` call. This is done to improve performance, especially when updating large RichTextLabels since rebuilding the whole BBCode every time would be slower. If you absolutely need to close a tag in a future method call, append the `godot.RichTextLabel.bbcodeText` instead of using `godot.RichTextLabel.appendBbcode`.
 	**/
 	@:native("AppendBbcode")
 	public function appendBbcode(bbcode:std.String):godot.Error;

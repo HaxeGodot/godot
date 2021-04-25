@@ -205,7 +205,7 @@ extern class Input {
 	/**		
 		Vibrate Android and iOS devices.
 		
-		Note: It needs VIBRATE permission for Android at export settings. iOS does not support duration.
+		Note: It needs `VIBRATE` permission for Android at export settings. iOS does not support duration.
 	**/
 	@:native("VibrateHandheld")
 	public static function vibrateHandheld(?durationMs:Int):Void;
@@ -213,7 +213,7 @@ extern class Input {
 	/**		
 		Vibrate Android and iOS devices.
 		
-		Note: It needs VIBRATE permission for Android at export settings. iOS does not support duration.
+		Note: It needs `VIBRATE` permission for Android at export settings. iOS does not support duration.
 	**/
 	@:native("VibrateHandheld")
 	public static overload function vibrateHandheld():Void;
@@ -221,42 +221,42 @@ extern class Input {
 	/**		
 		Vibrate Android and iOS devices.
 		
-		Note: It needs VIBRATE permission for Android at export settings. iOS does not support duration.
+		Note: It needs `VIBRATE` permission for Android at export settings. iOS does not support duration.
 	**/
 	@:native("VibrateHandheld")
 	public static overload function vibrateHandheld(durationMs:Int):Void;
 	#end
 
 	/**		
-		Returns the gravity of the device's accelerometer, if the device has one. Otherwise, the method returns .
+		Returns the gravity of the device's accelerometer sensor, if the device has one. Otherwise, the method returns .
 		
-		Note: This method only works on Android and iOS. On other platforms, it always returns .
+		Note: This method only works on Android and iOS. On other platforms, it always returns . On Android the unit of measurement for each axis is m/s² while on iOS it's a multiple of the Earth's gravitational acceleration `g` (~9.81 m/s²).
 	**/
 	@:native("GetGravity")
 	public static function getGravity():godot.Vector3;
 
 	/**		
-		Returns the acceleration of the device's accelerometer, if the device has one. Otherwise, the method returns .
+		Returns the acceleration of the device's accelerometer sensor, if the device has one. Otherwise, the method returns .
 		
 		Note this method returns an empty `godot.Vector3` when running from the editor even when your device has an accelerometer. You must export your project to a supported device to read values from the accelerometer.
 		
-		Note: This method only works on iOS, Android, and UWP. On other platforms, it always returns .
+		Note: This method only works on iOS, Android, and UWP. On other platforms, it always returns . On Android the unit of measurement for each axis is m/s² while on iOS and UWP it's a multiple of the Earth's gravitational acceleration `g` (~9.81 m/s²).
 	**/
 	@:native("GetAccelerometer")
 	public static function getAccelerometer():godot.Vector3;
 
 	/**		
-		Returns the the magnetic field strength in micro-Tesla for all axes of the device's magnetometer, if the device has one. Otherwise, the method returns .
+		Returns the magnetic field strength in micro-Tesla for all axes of the device's magnetometer sensor, if the device has one. Otherwise, the method returns .
 		
-		Note: This method only works on Android and UWP. On other platforms, it always returns .
+		Note: This method only works on Android, iOS and UWP. On other platforms, it always returns .
 	**/
 	@:native("GetMagnetometer")
 	public static function getMagnetometer():godot.Vector3;
 
 	/**		
-		Returns the rotation rate in rad/s around a device's X, Y, and Z axes of the gyroscope, if the device has one. Otherwise, the method returns .
+		Returns the rotation rate in rad/s around a device's X, Y, and Z axes of the gyroscope sensor, if the device has one. Otherwise, the method returns .
 		
-		Note: This method only works on Android. On other platforms, it always returns .
+		Note: This method only works on Android and iOS. On other platforms, it always returns .
 	**/
 	@:native("GetGyroscope")
 	public static function getGyroscope():godot.Vector3;

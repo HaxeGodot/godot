@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-Pin joint for 3D rigid bodies. It pins 2 bodies (rigid or static) together.
+Pin joint for 3D rigid bodies. It pins 2 bodies (rigid or static) together. See also `godot.Generic6DOFJoint`.
 **/
 @:libType
 @:csNative

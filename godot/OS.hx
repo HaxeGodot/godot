@@ -144,7 +144,7 @@ extern class OS {
 	public static var CLIPBOARD:std.String;
 
 	/**		
-		The current tablet drvier in use.
+		The current tablet driver in use.
 	**/
 	@:native("TabletDriver")
 	public static var TABLET_DRIVER:std.String;
@@ -299,7 +299,9 @@ extern class OS {
 	/**		
 		Returns the dots per inch density of the specified screen. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
 		
-		On Android devices, the actual screen densities are grouped into six generalized densities:
+		Note: On macOS, returned value is inaccurate if fractional display scaling mode is used.
+		
+		Note: On Android devices, the actual screen densities are grouped into six generalized densities:
 		
 		```
 		
@@ -320,7 +322,9 @@ extern class OS {
 	/**		
 		Returns the dots per inch density of the specified screen. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
 		
-		On Android devices, the actual screen densities are grouped into six generalized densities:
+		Note: On macOS, returned value is inaccurate if fractional display scaling mode is used.
+		
+		Note: On Android devices, the actual screen densities are grouped into six generalized densities:
 		
 		```
 		
@@ -341,7 +345,9 @@ extern class OS {
 	/**		
 		Returns the dots per inch density of the specified screen. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
 		
-		On Android devices, the actual screen densities are grouped into six generalized densities:
+		Note: On macOS, returned value is inaccurate if fractional display scaling mode is used.
+		
+		Note: On Android devices, the actual screen densities are grouped into six generalized densities:
 		
 		```
 		
@@ -506,6 +512,14 @@ extern class OS {
 	@:native("MoveWindowToForeground")
 	public static function moveWindowToForeground():Void;
 
+	/**		
+		Returns internal structure pointers for use in GDNative plugins.
+		
+		Note: This method is implemented on Linux and Windows (other OSs will soon be supported).
+	**/
+	@:native("GetNativeHandle")
+	public static function getNativeHandle(handleType:godot.OS_HandleType):haxe.Int64;
+
 	@:native("SetBorderlessWindow")
 	public static function setBorderlessWindow(borderless:Bool):Void;
 
@@ -587,6 +601,31 @@ extern class OS {
 	**/
 	@:native("SetWindowTitle")
 	public static function setWindowTitle(title:std.String):Void;
+
+	/**		
+		Sets a polygonal region of the window which accepts mouse events. Mouse events outside the region will be passed through.
+		
+		Passing an empty array will disable passthrough support (all mouse events will be intercepted by the window, which is the default behavior).
+		
+		```
+		
+		# Set region, using Path2D node.
+		OS.set_window_mouse_passthrough($Path2D.curve.get_baked_points())
+		
+		# Set region, using Polygon2D node.
+		OS.set_window_mouse_passthrough($Polygon2D.polygon)
+		
+		# Reset region to default.
+		OS.set_window_mouse_passthrough([])
+		
+		```
+		
+		Note: On Windows, the portion of a window that lies outside the region is not drawn, while on Linux and macOS it is.
+		
+		Note: This method is implemented on Linux, macOS and Windows.
+	**/
+	@:native("SetWindowMousePassthrough")
+	public static function setWindowMousePassthrough(region:haxe.Rest<godot.Vector2>):Void;
 
 	@:native("SetLowProcessorUsageMode")
 	public static function setLowProcessorUsageMode(enable:Bool):Void;
@@ -874,16 +913,28 @@ extern class OS {
 	public static function getProcessId():Int;
 
 	/**		
-		Returns an environment variable.
+		Returns the value of an environment variable. Returns an empty string if the environment variable doesn't exist.
+		
+		Note: Double-check the casing of `variable`. Environment variable names are case-sensitive on all platforms except Windows.
 	**/
 	@:native("GetEnvironment")
-	public static function getEnvironment(environment:std.String):std.String;
+	public static function getEnvironment(variable:std.String):std.String;
 
 	/**		
-		Returns `true` if an environment variable exists.
+		Sets the value of the environment variable `variable` to `value`. The environment variable will be set for the Godot process and any process executed with `godot.OS.execute` after running `godot.OS.setEnvironment`. The environment variable will not persist to processes run after the Godot process was terminated.
+		
+		Note: Double-check the casing of `variable`. Environment variable names are case-sensitive on all platforms except Windows.
+	**/
+	@:native("SetEnvironment")
+	public static function setEnvironment(variable:std.String, value:std.String):Bool;
+
+	/**		
+		Returns `true` if the environment variable with the name `variable` exists.
+		
+		Note: Double-check the casing of `variable`. Environment variable names are case-sensitive on all platforms except Windows.
 	**/
 	@:native("HasEnvironment")
-	public static function hasEnvironment(environment:std.String):Bool;
+	public static function hasEnvironment(variable:std.String):Bool;
 
 	/**		
 		Returns the name of the host OS. Possible values are: `"Android"`, `"iOS"`, `"HTML5"`, `"OSX"`, `"Server"`, `"Windows"`, `"UWP"`, `"X11"`.
@@ -982,7 +1033,9 @@ extern class OS {
 	public static function getTimeZoneInfo():godot.collections.Dictionary;
 
 	/**		
-		Returns the current UNIX epoch timestamp.
+		Returns the current UNIX epoch timestamp in seconds.
+		
+		Important: This is the system clock that the user can manully set. Never use this method for precise time calculation since its results are also subject to automatic adjustments by the operating system. Always use `godot.OS.getTicksUsec` or `godot.OS.getTicksMsec` for precise time calculation instead, since they are guaranteed to be monotonic (i.e. never decrease).
 	**/
 	@:native("GetUnixTime")
 	public static function getUnixTime():cs.types.UInt64;
@@ -999,6 +1052,8 @@ extern class OS {
 		Gets an epoch time value from a dictionary of time values.
 		
 		`datetime` must be populated with the following keys: `year`, `month`, `day`, `hour`, `minute`, `second`.
+		
+		If the dictionary is empty `0` is returned.
 		
 		You can pass the output from `godot.OS.getDatetimeFromUnixTime` directly into this function. Daylight Savings Time (`dst`), if present, is ignored.
 	**/
@@ -1044,16 +1099,16 @@ extern class OS {
 	public static function setExitCode(code:Int):Void;
 
 	/**		
-		Delay execution of the current thread by `usec` microseconds.
+		Delay execution of the current thread by `usec` microseconds. `usec` must be greater than or equal to `0`. Otherwise, `godot.OS.delayUsec` will do nothing and will print an error message.
 	**/
 	@:native("DelayUsec")
-	public static function delayUsec(usec:UInt):Void;
+	public static function delayUsec(usec:Int):Void;
 
 	/**		
-		Delay execution of the current thread by `msec` milliseconds.
+		Delay execution of the current thread by `msec` milliseconds. `usec` must be greater than or equal to `0`. Otherwise, `godot.OS.delayMsec` will do nothing and will print an error message.
 	**/
 	@:native("DelayMsec")
-	public static function delayMsec(msec:UInt):Void;
+	public static function delayMsec(msec:Int):Void;
 
 	/**		
 		Returns the amount of time passed in milliseconds since the engine started.
@@ -1455,6 +1510,14 @@ extern class OS {
 	@:native("SetThreadName")
 	public static function setThreadName(name:std.String):godot.Error;
 
+	/**		
+		Returns the ID of the current thread. This can be used in logs to ease debugging of multi-threaded applications.
+		
+		Note: Thread IDs are not deterministic and may be reused across application restarts.
+	**/
+	@:native("GetThreadCallerId")
+	public static function getThreadCallerId():cs.types.UInt64;
+
 	@:native("SetUseVsync")
 	public static function setUseVsync(enable:Bool):Void;
 
@@ -1468,7 +1531,7 @@ extern class OS {
 	public static function isVsyncViaCompositorEnabled():Bool;
 
 	/**		
-		Returns `true` if the feature for the given feature tag is supported in the currently running instance, depending on platform, build etc. Can be used to check whether you're currently running a debug build, on a certain platform or arch, etc. Refer to the [https://docs.godotengine.org/en/latest/getting_started/workflow/export/feature_tags.html](Feature Tags) documentation for more details.
+		Returns `true` if the feature for the given feature tag is supported in the currently running instance, depending on platform, build etc. Can be used to check whether you're currently running a debug build, on a certain platform or arch, etc. Refer to the [https://docs.godotengine.org/en/3.3/getting_started/workflow/export/feature_tags.html](Feature Tags) documentation for more details.
 		
 		Note: Tag names are case-sensitive.
 	**/

@@ -61,6 +61,12 @@ extern class TabContainer extends godot.Container {
 	public var dragToRearrangeEnabled:Bool;
 
 	/**		
+		If `true`, all tabs are drawn in front of the panel. If `false`, inactive tabs are drawn behind the panel.
+	**/
+	@:native("AllTabsInFront")
+	public var allTabsInFront:Bool;
+
+	/**		
 		If `true`, tabs are visible. If `false`, tabs' content and titles are hidden.
 	**/
 	@:native("TabsVisible")
@@ -122,6 +128,12 @@ extern class TabContainer extends godot.Container {
 
 	@:native("AreTabsVisible")
 	public function areTabsVisible():Bool;
+
+	@:native("SetAllTabsInFront")
+	public function setAllTabsInFront(isFront:Bool):Void;
+
+	@:native("IsAllTabsInFront")
+	public function isAllTabsInFront():Bool;
 
 	/**		
 		Sets a title for the tab at index `tab_idx`. Tab titles default to the name of the indexed child node, but this can be overridden with `godot.TabContainer.setTabTitle`.

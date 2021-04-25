@@ -15,6 +15,15 @@ extern class BakedLightmapData extends godot.Resource {
 	@:native("Octree")
 	public var octree:cs.NativeArray<cs.types.UInt8>;
 
+	/**		
+		Controls whether dynamic capture objects receive environment lighting or not.
+	**/
+	@:native("Interior")
+	public var interior:Bool;
+
+	/**		
+		Global energy multiplier for baked and dynamic capture objects.
+	**/
 	@:native("Energy")
 	public var energy:Single;
 
@@ -60,8 +69,14 @@ extern class BakedLightmapData extends godot.Resource {
 	@:native("GetEnergy")
 	public function getEnergy():Single;
 
+	@:native("SetInterior")
+	public function setInterior(interior:Bool):Void;
+
+	@:native("IsInterior")
+	public function isInterior():Bool;
+
 	@:native("AddUser")
-	public function addUser(path:godot.NodePath, lightmap:godot.Texture, instance:Int):Void;
+	public function addUser(path:godot.NodePath, lightmap:godot.Resource, lightmapSlice:Int, lightmapUvRect:godot.Rect2, instance:Int):Void;
 
 	@:native("GetUserCount")
 	public function getUserCount():Int;
@@ -70,8 +85,11 @@ extern class BakedLightmapData extends godot.Resource {
 	public function getUserPath(userIdx:Int):godot.NodePath;
 
 	@:native("GetUserLightmap")
-	public function getUserLightmap(userIdx:Int):godot.Texture;
+	public function getUserLightmap(userIdx:Int):godot.Resource;
 
 	@:native("ClearUsers")
 	public function clearUsers():Void;
+
+	@:native("ClearData")
+	public function clearData():Void;
 }

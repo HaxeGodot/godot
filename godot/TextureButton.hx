@@ -8,6 +8,8 @@ import cs.system.*;
 `godot.TextureButton` has the same functionality as `godot.Button`, except it uses sprites instead of Godot's `godot.Theme` resource. It is faster to create, but it doesn't support localization like more complex `godot.Control`s.
 
 The "normal" state must contain a texture (`godot.TextureButton.textureNormal`); other textures are optional.
+
+See also `godot.BaseButton` which contains common properties and methods associated with this node.
 **/
 @:libType
 @:csNative

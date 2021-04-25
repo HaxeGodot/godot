@@ -74,7 +74,7 @@ extern abstract class BaseButton extends godot.Control {
 	public var keepPressedOutside:Bool;
 
 	/**		
-		Focus access mode to use when switching between enabled/disabled (see `godot.Control.focusMode` and `godot.BaseButton.disabled`).
+		Deprecated. This property has been deprecated due to redundancy and no longer has any effect when set. Please use `godot.Control.focusMode` instead.
 	**/
 	@:native("EnabledFocusMode")
 	public var enabledFocusMode:godot.Control_FocusModeEnum;

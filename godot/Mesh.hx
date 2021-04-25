@@ -13,7 +13,7 @@ Mesh is a type of `godot.Resource` that contains vertex array-based geometry, di
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class Mesh extends godot.Resource {
 	/**		
-		Sets a hint to be used for lightmap resolution in `godot.BakedLightmap`. Overrides `godot.BakedLightmap.bakeDefaultTexelsPerUnit`.
+		Sets a hint to be used for lightmap resolution in `godot.BakedLightmap`. Overrides `godot.BakedLightmap.defaultTexelsPerUnit`.
 	**/
 	@:native("LightmapSizeHint")
 	public var lightmapSizeHint:godot.Vector2;

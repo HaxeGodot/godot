@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-Simple tabs control, similar to `godot.TabContainer` but is only in charge of drawing tabs, not interact with children.
+Simple tabs control, similar to `godot.TabContainer` but is only in charge of drawing tabs, not interacting with children.
 **/
 @:libType
 @:csNative
@@ -79,7 +79,7 @@ extern class Tabs extends godot.Control {
 	public var dragToRearrangeEnabled:Bool;
 
 	/**		
-		if `true`, the mouse's scroll wheel cab be used to navigate the scroll view.
+		if `true`, the mouse's scroll wheel can be used to navigate the scroll view.
 	**/
 	@:native("ScrollingEnabled")
 	public var scrollingEnabled:Bool;
@@ -116,6 +116,12 @@ extern class Tabs extends godot.Control {
 
 	@:native("GetCurrentTab")
 	public function getCurrentTab():Int;
+
+	/**		
+		Returns the previously active tab index.
+	**/
+	@:native("GetPreviousTab")
+	public function getPreviousTab():Int;
 
 	/**		
 		Sets a `title` for the tab at index `tab_idx`.

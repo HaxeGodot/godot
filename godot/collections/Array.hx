@@ -4,11 +4,50 @@ package godot.collections;
 
 import cs.system.*;
 
+#if doc_gen
 @:libType
 @:csNative
 @:native("Godot.Collections.Array")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Array implements cs.system.collections.IList implements cs.system.collections.ICollection implements cs.system.collections.IEnumerable implements cs.system.IDisposable {
+#else
+@:forward
+@:forwardStatics
+extern abstract Array(Array_) from Array_ to Array_ {
+#end
+	#if !doc_gen
+	public overload inline function new() {
+		this = new Array_();
+	}
+	#end
+
+	#if !doc_gen
+	public overload inline function new(collection:cs.system.collections.IEnumerable) {
+		this = new Array_(collection);
+	}
+	#end
+
+	#if !doc_gen
+	public overload inline function new(array:cs.NativeArray<Dynamic>) {
+		this = new Array_(array);
+	}
+	#end
+
+	/**
+		Operator overload for `godot.collections.Array` + `godot.collections.Array`.
+	**/
+	@:op(A + B) static inline function op_Addition(left:godot.collections.Array, right:godot.collections.Array):godot.collections.Array {
+		return cs.Syntax.code("{0} + {1}", left, right);
+	}
+#if !doc_gen
+}
+
+@:libType
+@:csNative
+@:native("Godot.Collections.Array")
+@:autoBuild(godot.Godot.buildUserClass())
+extern class Array_ implements cs.system.collections.IList implements cs.system.collections.ICollection implements cs.system.collections.IEnumerable implements cs.system.IDisposable {
+#end
 	@:native("IsSynchronized")
 	public var isSynchronized(default, never):Bool;
 
@@ -30,6 +69,9 @@ extern class Array implements cs.system.collections.IList implements cs.system.c
 	@:native("new")
 	public overload function new(collection:cs.system.collections.IEnumerable):Void;
 
+	@:native("new")
+	public overload function new(array:cs.NativeArray<Dynamic>):Void;
+
 	#if doc_gen
 	@:native("Duplicate")
 	public function duplicate(?deep:Bool):godot.collections.Array;
@@ -43,6 +85,9 @@ extern class Array implements cs.system.collections.IList implements cs.system.c
 
 	@:native("Resize")
 	public function resize(newSize:Int):godot.Error;
+
+	@:native("Shuffle")
+	public function shuffle():Void;
 
 	@:native("Dispose")
 	public function dispose():Void;
