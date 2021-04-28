@@ -27,6 +27,8 @@ Godot will show many warnings about the Haxe generated C# code, this is because 
 * Typesafe signals with lambda support, for improved safety and dce support
   * `signal_name` become a `onSignalName` variable of type `Signal` with `connect`/`disconnect`/`isConnected` functions
   * Replace `mynode.connect("the_signal", myHandler, "myFunction")` with `mynode.onTheSignal.connect(myHandler.myFunction)`
+  * This prevent typos on signal name, function name, and mismatch signature on the connected function or on the `emitSignal` function
+  * Define your own signals with `CustomSignal<FunctionType>` and use it with the same api as the built-in signals
 
 ## TODOs
 
