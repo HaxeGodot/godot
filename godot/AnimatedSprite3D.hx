@@ -18,7 +18,7 @@ extern class AnimatedSprite3D extends godot.SpriteBase3D {
 		Emitted when the animation is finished (when it plays the last frame). If the animation is looping, this signal is emitted every time the last frame is drawn.
 	**/
 	public var onAnimationFinished(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onAnimationFinished():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onAnimationFinished():Signal<Void->Void> {
 		return new Signal(this, "animation_finished", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -28,7 +28,7 @@ extern class AnimatedSprite3D extends godot.SpriteBase3D {
 		Emitted when `frame` changed.
 	**/
 	public var onFrameChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onFrameChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onFrameChanged():Signal<Void->Void> {
 		return new Signal(this, "frame_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

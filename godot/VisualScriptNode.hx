@@ -16,7 +16,7 @@ extern abstract class VisualScriptNode extends godot.Resource {
 		`ports_changed` signal.
 	**/
 	public var onPortsChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onPortsChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onPortsChanged():Signal<Void->Void> {
 		return new Signal(this, "ports_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

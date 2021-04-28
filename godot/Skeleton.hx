@@ -20,7 +20,7 @@ extern class Skeleton extends godot.Spatial {
 		`skeleton_updated` signal.
 	**/
 	public var onSkeletonUpdated(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onSkeletonUpdated():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSkeletonUpdated():Signal<Void->Void> {
 		return new Signal(this, "skeleton_updated", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

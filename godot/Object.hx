@@ -44,7 +44,7 @@ extern class Object implements cs.system.IDisposable {
 		Emitted whenever the object's script is changed.
 	**/
 	public var onScriptChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onScriptChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onScriptChanged():Signal<Void->Void> {
 		return new Signal(this, "script_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

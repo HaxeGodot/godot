@@ -22,7 +22,7 @@ extern class ARVRController extends godot.Spatial {
 		Emitted when a button on this controller is pressed.
 	**/
 	public var onButtonPressed(get, never):Signal<(button:Int)->Void>;
-	@:dox(hide) inline function get_onButtonPressed():Signal<(button:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onButtonPressed():Signal<(button:Int)->Void> {
 		return new Signal(this, "button_pressed", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -32,7 +32,7 @@ extern class ARVRController extends godot.Spatial {
 		Emitted when a button on this controller is released.
 	**/
 	public var onButtonRelease(get, never):Signal<(button:Int)->Void>;
-	@:dox(hide) inline function get_onButtonRelease():Signal<(button:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onButtonRelease():Signal<(button:Int)->Void> {
 		return new Signal(this, "button_release", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -42,7 +42,7 @@ extern class ARVRController extends godot.Spatial {
 		Emitted when the mesh associated with the controller changes or when one becomes available. Generally speaking this will be a static mesh after becoming available.
 	**/
 	public var onMeshUpdated(get, never):Signal<(mesh:Mesh)->Void>;
-	@:dox(hide) inline function get_onMeshUpdated():Signal<(mesh:Mesh)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onMeshUpdated():Signal<(mesh:Mesh)->Void> {
 		return new Signal(this, "mesh_updated", Signal.SignalHandlerMeshVoid.connectSignal, Signal.SignalHandlerMeshVoid.disconnectSignal, Signal.SignalHandlerMeshVoid.isSignalConnected);
 	}
 

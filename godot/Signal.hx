@@ -4,6 +4,9 @@ package godot;
 	Typesafe signal.
 **/
 @:nativeGen
+#if !doc_gen
+@:using(godot.SignalUsings)
+#end
 class Signal<T> {
 	final from:Object;
 	final signal:String;
@@ -46,10 +49,21 @@ class Signal<T> {
 	public function isConnected(callback:T):Bool {
 		return isConnectedFn(from, signal, callback);
 	}
+
+	#if doc_gen
+	/**
+		Emit the signal.
+
+		The arguments type and number are checked at compile time.
+	**/
+	public function emitSignal(args:haxe.Rest<Any>):Void {
+	}
+	#end
 }
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandler {
 	public static function isSignalConnected<T>(refs:Map<String, Map<Object, Array<T>>>, source:Object, signal:String, callback:T):Bool {
 		final key = '${source.getInstanceId()}-$signal';
@@ -113,6 +127,7 @@ class SignalHandler {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerVoidVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Void->Void>>>();
 
@@ -150,6 +165,7 @@ class SignalHandlerVoidVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerViewportVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Viewport->Void>>>();
 
@@ -187,6 +203,7 @@ class SignalHandlerViewportVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerVector3Void extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Vector3->Void>>>();
 
@@ -224,6 +241,7 @@ class SignalHandlerVector3Void extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerVector2Void extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Vector2->Void>>>();
 
@@ -261,6 +279,7 @@ class SignalHandlerVector2Void extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerVector2Vector2Void extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Vector2->Vector2->Void>>>();
 
@@ -298,6 +317,7 @@ class SignalHandlerVector2Vector2Void extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerVariantVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Any->Void>>>();
 
@@ -335,6 +355,7 @@ class SignalHandlerVariantVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerTreeItemVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<TreeItem->Void>>>();
 
@@ -372,6 +393,7 @@ class SignalHandlerTreeItemVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerTreeItemIntIntVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<TreeItem->Int->Int->Void>>>();
 
@@ -409,6 +431,7 @@ class SignalHandlerTreeItemIntIntVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerTreeItemIntBoolVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<TreeItem->Int->Bool->Void>>>();
 
@@ -446,6 +469,7 @@ class SignalHandlerTreeItemIntBoolVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerStringVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.String->Void>>>();
 
@@ -483,6 +507,7 @@ class SignalHandlerStringVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerStringVariantVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.String->Any->Void>>>();
 
@@ -520,6 +545,7 @@ class SignalHandlerStringVariantVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerStringStringVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.String->std.String->Void>>>();
 
@@ -557,6 +583,7 @@ class SignalHandlerStringStringVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerStringResourceVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.String->Resource->Void>>>();
 
@@ -594,6 +621,7 @@ class SignalHandlerStringResourceVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerStringIntVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.String->Int->Void>>>();
 
@@ -631,6 +659,7 @@ class SignalHandlerStringIntVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerStringIntVector2Void extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.String->Int->Vector2->Void>>>();
 
@@ -668,6 +697,7 @@ class SignalHandlerStringIntVector2Void extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerStringIntStringVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.String->Int->std.String->Void>>>();
 
@@ -705,6 +735,7 @@ class SignalHandlerStringIntStringVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerStringIntStringIntVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.String->Int->std.String->Int->Void>>>();
 
@@ -742,6 +773,7 @@ class SignalHandlerStringIntStringIntVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerStringIntIntVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.String->Int->Int->Void>>>();
 
@@ -779,6 +811,7 @@ class SignalHandlerStringIntIntVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerStringBoolVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.String->Bool->Void>>>();
 
@@ -816,6 +849,7 @@ class SignalHandlerStringBoolVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerStringArrayVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.String->godot.collections.Array->Void>>>();
 
@@ -853,6 +887,7 @@ class SignalHandlerStringArrayVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerScriptVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Script->Void>>>();
 
@@ -890,6 +925,7 @@ class SignalHandlerScriptVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerResourceVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Resource->Void>>>();
 
@@ -927,6 +963,7 @@ class SignalHandlerResourceVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerPoolStringArrayVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.Array<std.String>->Void>>>();
 
@@ -964,6 +1001,7 @@ class SignalHandlerPoolStringArrayVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerPoolStringArrayIntVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.Array<std.String>->Int->Void>>>();
 
@@ -1001,6 +1039,7 @@ class SignalHandlerPoolStringArrayIntVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerPoolStringArrayArrayVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.Array<std.String>->godot.collections.Array->Void>>>();
 
@@ -1038,6 +1077,7 @@ class SignalHandlerPoolStringArrayArrayVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerObjectVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<godot.Object->Void>>>();
 
@@ -1075,6 +1115,7 @@ class SignalHandlerObjectVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerObjectStringVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<godot.Object->std.String->Void>>>();
 
@@ -1112,6 +1153,7 @@ class SignalHandlerObjectStringVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerObjectNodePathVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<godot.Object->NodePath->Void>>>();
 
@@ -1149,6 +1191,7 @@ class SignalHandlerObjectNodePathVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerObjectNodePathFloatObjectVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<godot.Object->NodePath->Float->godot.Object->Void>>>();
 
@@ -1186,6 +1229,7 @@ class SignalHandlerObjectNodePathFloatObjectVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerNodeVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Node->Void>>>();
 
@@ -1223,6 +1267,7 @@ class SignalHandlerNodeVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerNodeInputEventVector3Vector3IntVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Node->InputEvent->Vector3->Vector3->Int->Void>>>();
 
@@ -1260,6 +1305,7 @@ class SignalHandlerNodeInputEventVector3Vector3IntVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerNodeInputEventIntVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Node->InputEvent->Int->Void>>>();
 
@@ -1297,6 +1343,7 @@ class SignalHandlerNodeInputEventIntVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerMeshVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Mesh->Void>>>();
 
@@ -1334,6 +1381,7 @@ class SignalHandlerMeshVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerIntVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Int->Void>>>();
 
@@ -1371,6 +1419,7 @@ class SignalHandlerIntVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerIntVector2Void extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Int->Vector2->Void>>>();
 
@@ -1408,6 +1457,7 @@ class SignalHandlerIntVector2Void extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerIntStringVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Int->std.String->Void>>>();
 
@@ -1445,6 +1495,7 @@ class SignalHandlerIntStringVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerIntPoolByteArrayVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Int->std.Array<cs.types.UInt8>->Void>>>();
 
@@ -1482,6 +1533,7 @@ class SignalHandlerIntPoolByteArrayVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerIntNodeIntIntVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Int->Node->Int->Int->Void>>>();
 
@@ -1519,6 +1571,7 @@ class SignalHandlerIntNodeIntIntVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerIntIntStringVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Int->Int->std.String->Void>>>();
 
@@ -1556,6 +1609,7 @@ class SignalHandlerIntIntStringVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerIntIntPoolStringArrayPoolByteArrayVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Int->Int->std.Array<std.String>->std.Array<cs.types.UInt8>->Void>>>();
 
@@ -1593,6 +1647,7 @@ class SignalHandlerIntIntPoolStringArrayPoolByteArrayVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerIntBoolVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Int->Bool->Void>>>();
 
@@ -1630,6 +1685,7 @@ class SignalHandlerIntBoolVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerIntAreaIntIntVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Int->Area->Int->Int->Void>>>();
 
@@ -1667,6 +1723,7 @@ class SignalHandlerIntAreaIntIntVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerIntArea2DIntIntVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Int->Area2D->Int->Int->Void>>>();
 
@@ -1704,6 +1761,7 @@ class SignalHandlerIntArea2DIntIntVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerInputEventVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<InputEvent->Void>>>();
 
@@ -1741,6 +1799,7 @@ class SignalHandlerInputEventVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerFloatVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Float->Void>>>();
 
@@ -1778,6 +1837,7 @@ class SignalHandlerFloatVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerControlVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Control->Void>>>();
 
@@ -1815,6 +1875,7 @@ class SignalHandlerControlVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerColorVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Color->Void>>>();
 
@@ -1852,6 +1913,7 @@ class SignalHandlerColorVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerCameraVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Camera->Void>>>();
 
@@ -1889,6 +1951,7 @@ class SignalHandlerCameraVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerBoolVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Bool->Void>>>();
 
@@ -1926,6 +1989,7 @@ class SignalHandlerBoolVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerAreaVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Area->Void>>>();
 
@@ -1963,6 +2027,7 @@ class SignalHandlerAreaVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerArea2DVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Area2D->Void>>>();
 
@@ -2000,6 +2065,7 @@ class SignalHandlerArea2DVoid extends Reference {
 
 @:nativeGen
 @:dox(hide)
+@:noCompletion
 class SignalHandlerAnyAnyVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Any->Any->Void>>>();
 

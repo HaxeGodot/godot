@@ -18,7 +18,7 @@ extern abstract class ScrollBar extends godot.Range {
 		Emitted when the scrollbar is being scrolled.
 	**/
 	public var onScrolling(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onScrolling():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onScrolling():Signal<Void->Void> {
 		return new Signal(this, "scrolling", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

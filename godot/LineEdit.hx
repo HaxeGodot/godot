@@ -56,7 +56,7 @@ extern class LineEdit extends godot.Control {
 		Emitted when trying to append text that would overflow the `maxLength`.
 	**/
 	public var onTextChangeRejected(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onTextChangeRejected():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTextChangeRejected():Signal<Void->Void> {
 		return new Signal(this, "text_change_rejected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -66,7 +66,7 @@ extern class LineEdit extends godot.Control {
 		Emitted when the text changes.
 	**/
 	public var onTextChanged(get, never):Signal<(newText:std.String)->Void>;
-	@:dox(hide) inline function get_onTextChanged():Signal<(newText:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTextChanged():Signal<(newText:std.String)->Void> {
 		return new Signal(this, "text_changed", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
 	}
 
@@ -76,7 +76,7 @@ extern class LineEdit extends godot.Control {
 		Emitted when the user presses `KEY_ENTER` on the `LineEdit`.
 	**/
 	public var onTextEntered(get, never):Signal<(newText:std.String)->Void>;
-	@:dox(hide) inline function get_onTextEntered():Signal<(newText:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTextEntered():Signal<(newText:std.String)->Void> {
 		return new Signal(this, "text_entered", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
 	}
 

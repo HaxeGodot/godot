@@ -18,7 +18,7 @@ extern class ScrollContainer extends godot.Container {
 		Emitted when scrolling stops.
 	**/
 	public var onScrollEnded(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onScrollEnded():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onScrollEnded():Signal<Void->Void> {
 		return new Signal(this, "scroll_ended", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -28,7 +28,7 @@ extern class ScrollContainer extends godot.Container {
 		Emitted when scrolling is started.
 	**/
 	public var onScrollStarted(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onScrollStarted():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onScrollStarted():Signal<Void->Void> {
 		return new Signal(this, "scroll_started", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

@@ -22,7 +22,7 @@ extern class Spatial extends godot.Node {
 		Emitted when node visibility changes.
 	**/
 	public var onVisibilityChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onVisibilityChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onVisibilityChanged():Signal<Void->Void> {
 		return new Signal(this, "visibility_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

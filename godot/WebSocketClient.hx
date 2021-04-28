@@ -22,7 +22,7 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		`connection_closed` signal.
 	**/
 	public var onConnectionClosed(get, never):Signal<(wasCleanClose:Bool)->Void>;
-	@:dox(hide) inline function get_onConnectionClosed():Signal<(wasCleanClose:Bool)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onConnectionClosed():Signal<(wasCleanClose:Bool)->Void> {
 		return new Signal(this, "connection_closed", Signal.SignalHandlerBoolVoid.connectSignal, Signal.SignalHandlerBoolVoid.disconnectSignal, Signal.SignalHandlerBoolVoid.isSignalConnected);
 	}
 
@@ -30,7 +30,7 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		`connection_error` signal.
 	**/
 	public var onConnectionError(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onConnectionError():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onConnectionError():Signal<Void->Void> {
 		return new Signal(this, "connection_error", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -38,7 +38,7 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		`connection_established` signal.
 	**/
 	public var onConnectionEstablished(get, never):Signal<(protocol:std.String)->Void>;
-	@:dox(hide) inline function get_onConnectionEstablished():Signal<(protocol:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onConnectionEstablished():Signal<(protocol:std.String)->Void> {
 		return new Signal(this, "connection_established", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
 	}
 
@@ -46,7 +46,7 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		`data_received` signal.
 	**/
 	public var onDataReceived(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onDataReceived():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onDataReceived():Signal<Void->Void> {
 		return new Signal(this, "data_received", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -54,7 +54,7 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		`server_close_request` signal.
 	**/
 	public var onServerCloseRequest(get, never):Signal<(code:Int, reason:std.String)->Void>;
-	@:dox(hide) inline function get_onServerCloseRequest():Signal<(code:Int, reason:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onServerCloseRequest():Signal<(code:Int, reason:std.String)->Void> {
 		return new Signal(this, "server_close_request", Signal.SignalHandlerIntStringVoid.connectSignal, Signal.SignalHandlerIntStringVoid.disconnectSignal, Signal.SignalHandlerIntStringVoid.isSignalConnected);
 	}
 

@@ -32,7 +32,7 @@ extern class Animation extends godot.Resource {
 		Emitted when there's a change in the list of tracks, e.g. tracks are added, moved or have changed paths.
 	**/
 	public var onTracksChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onTracksChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTracksChanged():Signal<Void->Void> {
 		return new Signal(this, "tracks_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

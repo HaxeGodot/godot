@@ -38,7 +38,7 @@ extern class Tween extends godot.Node {
 		Emitted when all processes in a tween end.
 	**/
 	public var onTweenAllCompleted(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onTweenAllCompleted():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTweenAllCompleted():Signal<Void->Void> {
 		return new Signal(this, "tween_all_completed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -48,7 +48,7 @@ extern class Tween extends godot.Node {
 		Emitted when a tween ends.
 	**/
 	public var onTweenCompleted(get, never):Signal<(object:godot.Object, key:NodePath)->Void>;
-	@:dox(hide) inline function get_onTweenCompleted():Signal<(object:godot.Object, key:NodePath)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTweenCompleted():Signal<(object:godot.Object, key:NodePath)->Void> {
 		return new Signal(this, "tween_completed", Signal.SignalHandlerObjectNodePathVoid.connectSignal, Signal.SignalHandlerObjectNodePathVoid.disconnectSignal, Signal.SignalHandlerObjectNodePathVoid.isSignalConnected);
 	}
 
@@ -58,7 +58,7 @@ extern class Tween extends godot.Node {
 		Emitted when a tween starts.
 	**/
 	public var onTweenStarted(get, never):Signal<(object:godot.Object, key:NodePath)->Void>;
-	@:dox(hide) inline function get_onTweenStarted():Signal<(object:godot.Object, key:NodePath)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTweenStarted():Signal<(object:godot.Object, key:NodePath)->Void> {
 		return new Signal(this, "tween_started", Signal.SignalHandlerObjectNodePathVoid.connectSignal, Signal.SignalHandlerObjectNodePathVoid.disconnectSignal, Signal.SignalHandlerObjectNodePathVoid.isSignalConnected);
 	}
 
@@ -68,7 +68,7 @@ extern class Tween extends godot.Node {
 		Emitted at each step of the animation.
 	**/
 	public var onTweenStep(get, never):Signal<(object:godot.Object, key:NodePath, elapsed:Float, value:godot.Object)->Void>;
-	@:dox(hide) inline function get_onTweenStep():Signal<(object:godot.Object, key:NodePath, elapsed:Float, value:godot.Object)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTweenStep():Signal<(object:godot.Object, key:NodePath, elapsed:Float, value:godot.Object)->Void> {
 		return new Signal(this, "tween_step", Signal.SignalHandlerObjectNodePathFloatObjectVoid.connectSignal, Signal.SignalHandlerObjectNodePathFloatObjectVoid.disconnectSignal, Signal.SignalHandlerObjectNodePathFloatObjectVoid.isSignalConnected);
 	}
 

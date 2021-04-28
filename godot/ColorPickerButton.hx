@@ -20,7 +20,7 @@ extern class ColorPickerButton extends godot.Button {
 		Emitted when the color changes.
 	**/
 	public var onColorChanged(get, never):Signal<(color:Color)->Void>;
-	@:dox(hide) inline function get_onColorChanged():Signal<(color:Color)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onColorChanged():Signal<(color:Color)->Void> {
 		return new Signal(this, "color_changed", Signal.SignalHandlerColorVoid.connectSignal, Signal.SignalHandlerColorVoid.disconnectSignal, Signal.SignalHandlerColorVoid.isSignalConnected);
 	}
 
@@ -30,7 +30,7 @@ extern class ColorPickerButton extends godot.Button {
 		Emitted when the `ColorPicker` is created (the button is pressed for the first time).
 	**/
 	public var onPickerCreated(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onPickerCreated():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onPickerCreated():Signal<Void->Void> {
 		return new Signal(this, "picker_created", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -40,7 +40,7 @@ extern class ColorPickerButton extends godot.Button {
 		Emitted when the `ColorPicker` is closed.
 	**/
 	public var onPopupClosed(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onPopupClosed():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onPopupClosed():Signal<Void->Void> {
 		return new Signal(this, "popup_closed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

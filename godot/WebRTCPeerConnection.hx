@@ -26,7 +26,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 		`data_channel_received` signal.
 	**/
 	public var onDataChannelReceived(get, never):Signal<(channel:godot.Object)->Void>;
-	@:dox(hide) inline function get_onDataChannelReceived():Signal<(channel:godot.Object)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onDataChannelReceived():Signal<(channel:godot.Object)->Void> {
 		return new Signal(this, "data_channel_received", Signal.SignalHandlerObjectVoid.connectSignal, Signal.SignalHandlerObjectVoid.disconnectSignal, Signal.SignalHandlerObjectVoid.isSignalConnected);
 	}
 
@@ -34,7 +34,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 		`ice_candidate_created` signal.
 	**/
 	public var onIceCandidateCreated(get, never):Signal<(media:std.String, index:Int, name:std.String)->Void>;
-	@:dox(hide) inline function get_onIceCandidateCreated():Signal<(media:std.String, index:Int, name:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onIceCandidateCreated():Signal<(media:std.String, index:Int, name:std.String)->Void> {
 		return new Signal(this, "ice_candidate_created", Signal.SignalHandlerStringIntStringVoid.connectSignal, Signal.SignalHandlerStringIntStringVoid.disconnectSignal, Signal.SignalHandlerStringIntStringVoid.isSignalConnected);
 	}
 
@@ -42,7 +42,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 		`session_description_created` signal.
 	**/
 	public var onSessionDescriptionCreated(get, never):Signal<(type:std.String, sdp:std.String)->Void>;
-	@:dox(hide) inline function get_onSessionDescriptionCreated():Signal<(type:std.String, sdp:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSessionDescriptionCreated():Signal<(type:std.String, sdp:std.String)->Void> {
 		return new Signal(this, "session_description_created", Signal.SignalHandlerStringStringVoid.connectSignal, Signal.SignalHandlerStringStringVoid.disconnectSignal, Signal.SignalHandlerStringStringVoid.isSignalConnected);
 	}
 

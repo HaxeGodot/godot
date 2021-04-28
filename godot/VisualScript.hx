@@ -20,7 +20,7 @@ extern class VisualScript extends godot.Script {
 		`node_ports_changed` signal.
 	**/
 	public var onNodePortsChanged(get, never):Signal<(function_:std.String, id:Int)->Void>;
-	@:dox(hide) inline function get_onNodePortsChanged():Signal<(function_:std.String, id:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onNodePortsChanged():Signal<(function_:std.String, id:Int)->Void> {
 		return new Signal(this, "node_ports_changed", Signal.SignalHandlerStringIntVoid.connectSignal, Signal.SignalHandlerStringIntVoid.disconnectSignal, Signal.SignalHandlerStringIntVoid.isSignalConnected);
 	}
 

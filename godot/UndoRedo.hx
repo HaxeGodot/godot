@@ -47,7 +47,7 @@ extern class UndoRedo extends godot.Object {
 		Called when `undo` or `redo` was called.
 	**/
 	public var onVersionChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onVersionChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onVersionChanged():Signal<Void->Void> {
 		return new Signal(this, "version_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

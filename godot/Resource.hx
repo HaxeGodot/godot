@@ -21,7 +21,7 @@ extern class Resource extends godot.Reference {
 		`b`Note:`/b` This signal is not emitted automatically for custom resources, which means that you need to create a setter and emit the signal yourself.
 	**/
 	public var onChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onChanged():Signal<Void->Void> {
 		return new Signal(this, "changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

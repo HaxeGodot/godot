@@ -22,7 +22,7 @@ extern class AnimationPlayer extends godot.Node {
 		If the currently being played animation changes, this signal will notify of such change.
 	**/
 	public var onAnimationChanged(get, never):Signal<(oldName:std.String, newName:std.String)->Void>;
-	@:dox(hide) inline function get_onAnimationChanged():Signal<(oldName:std.String, newName:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onAnimationChanged():Signal<(oldName:std.String, newName:std.String)->Void> {
 		return new Signal(this, "animation_changed", Signal.SignalHandlerStringStringVoid.connectSignal, Signal.SignalHandlerStringStringVoid.disconnectSignal, Signal.SignalHandlerStringStringVoid.isSignalConnected);
 	}
 
@@ -32,7 +32,7 @@ extern class AnimationPlayer extends godot.Node {
 		Notifies when an animation finished playing.
 	**/
 	public var onAnimationFinished(get, never):Signal<(animName:std.String)->Void>;
-	@:dox(hide) inline function get_onAnimationFinished():Signal<(animName:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onAnimationFinished():Signal<(animName:std.String)->Void> {
 		return new Signal(this, "animation_finished", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
 	}
 
@@ -42,7 +42,7 @@ extern class AnimationPlayer extends godot.Node {
 		Notifies when an animation starts playing.
 	**/
 	public var onAnimationStarted(get, never):Signal<(animName:std.String)->Void>;
-	@:dox(hide) inline function get_onAnimationStarted():Signal<(animName:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onAnimationStarted():Signal<(animName:std.String)->Void> {
 		return new Signal(this, "animation_started", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
 	}
 
@@ -52,7 +52,7 @@ extern class AnimationPlayer extends godot.Node {
 		Notifies when the caches have been cleared, either automatically, or manually via `clearCaches`.
 	**/
 	public var onCachesCleared(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onCachesCleared():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onCachesCleared():Signal<Void->Void> {
 		return new Signal(this, "caches_cleared", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

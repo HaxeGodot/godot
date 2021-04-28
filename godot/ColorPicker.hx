@@ -18,7 +18,7 @@ extern class ColorPicker extends godot.BoxContainer {
 		Emitted when the color is changed.
 	**/
 	public var onColorChanged(get, never):Signal<(color:Color)->Void>;
-	@:dox(hide) inline function get_onColorChanged():Signal<(color:Color)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onColorChanged():Signal<(color:Color)->Void> {
 		return new Signal(this, "color_changed", Signal.SignalHandlerColorVoid.connectSignal, Signal.SignalHandlerColorVoid.disconnectSignal, Signal.SignalHandlerColorVoid.isSignalConnected);
 	}
 
@@ -28,7 +28,7 @@ extern class ColorPicker extends godot.BoxContainer {
 		Emitted when a preset is added.
 	**/
 	public var onPresetAdded(get, never):Signal<(color:Color)->Void>;
-	@:dox(hide) inline function get_onPresetAdded():Signal<(color:Color)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onPresetAdded():Signal<(color:Color)->Void> {
 		return new Signal(this, "preset_added", Signal.SignalHandlerColorVoid.connectSignal, Signal.SignalHandlerColorVoid.disconnectSignal, Signal.SignalHandlerColorVoid.isSignalConnected);
 	}
 
@@ -38,7 +38,7 @@ extern class ColorPicker extends godot.BoxContainer {
 		Emitted when a preset is removed.
 	**/
 	public var onPresetRemoved(get, never):Signal<(color:Color)->Void>;
-	@:dox(hide) inline function get_onPresetRemoved():Signal<(color:Color)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onPresetRemoved():Signal<(color:Color)->Void> {
 		return new Signal(this, "preset_removed", Signal.SignalHandlerColorVoid.connectSignal, Signal.SignalHandlerColorVoid.disconnectSignal, Signal.SignalHandlerColorVoid.isSignalConnected);
 	}
 

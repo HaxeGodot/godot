@@ -24,7 +24,7 @@ extern class GridMap extends godot.Spatial {
 		`cell_size_changed` signal.
 	**/
 	public var onCellSizeChanged(get, never):Signal<(cellSize:Vector3)->Void>;
-	@:dox(hide) inline function get_onCellSizeChanged():Signal<(cellSize:Vector3)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onCellSizeChanged():Signal<(cellSize:Vector3)->Void> {
 		return new Signal(this, "cell_size_changed", Signal.SignalHandlerVector3Void.connectSignal, Signal.SignalHandlerVector3Void.disconnectSignal, Signal.SignalHandlerVector3Void.isSignalConnected);
 	}
 

@@ -20,7 +20,7 @@ extern class Path extends godot.Spatial {
 		Emitted when the `curve` changes.
 	**/
 	public var onCurveChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onCurveChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onCurveChanged():Signal<Void->Void> {
 		return new Signal(this, "curve_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

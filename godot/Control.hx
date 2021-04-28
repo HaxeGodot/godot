@@ -32,7 +32,7 @@ extern class Control extends godot.CanvasItem {
 		Emitted when the node gains keyboard focus.
 	**/
 	public var onFocusEntered(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onFocusEntered():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onFocusEntered():Signal<Void->Void> {
 		return new Signal(this, "focus_entered", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -42,7 +42,7 @@ extern class Control extends godot.CanvasItem {
 		Emitted when the node loses keyboard focus.
 	**/
 	public var onFocusExited(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onFocusExited():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onFocusExited():Signal<Void->Void> {
 		return new Signal(this, "focus_exited", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -52,7 +52,7 @@ extern class Control extends godot.CanvasItem {
 		Emitted when the node receives an `InputEvent`.
 	**/
 	public var onGuiInput(get, never):Signal<(event:InputEvent)->Void>;
-	@:dox(hide) inline function get_onGuiInput():Signal<(event:InputEvent)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onGuiInput():Signal<(event:InputEvent)->Void> {
 		return new Signal(this, "gui_input", Signal.SignalHandlerInputEventVoid.connectSignal, Signal.SignalHandlerInputEventVoid.disconnectSignal, Signal.SignalHandlerInputEventVoid.isSignalConnected);
 	}
 
@@ -62,7 +62,7 @@ extern class Control extends godot.CanvasItem {
 		Emitted when the node's minimum size changes.
 	**/
 	public var onMinimumSizeChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onMinimumSizeChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onMinimumSizeChanged():Signal<Void->Void> {
 		return new Signal(this, "minimum_size_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -72,7 +72,7 @@ extern class Control extends godot.CanvasItem {
 		Emitted when a modal `Control` is closed. See `showModal`.
 	**/
 	public var onModalClosed(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onModalClosed():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onModalClosed():Signal<Void->Void> {
 		return new Signal(this, "modal_closed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -82,7 +82,7 @@ extern class Control extends godot.CanvasItem {
 		Emitted when the mouse enters the control's `Rect` area, provided its `mouseFilter` lets the event reach it.
 	**/
 	public var onMouseEntered(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onMouseEntered():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onMouseEntered():Signal<Void->Void> {
 		return new Signal(this, "mouse_entered", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -92,7 +92,7 @@ extern class Control extends godot.CanvasItem {
 		Emitted when the mouse leaves the control's `Rect` area, provided its `mouseFilter` lets the event reach it.
 	**/
 	public var onMouseExited(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onMouseExited():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onMouseExited():Signal<Void->Void> {
 		return new Signal(this, "mouse_exited", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -102,7 +102,7 @@ extern class Control extends godot.CanvasItem {
 		Emitted when the control changes size.
 	**/
 	public var onResized(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onResized():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onResized():Signal<Void->Void> {
 		return new Signal(this, "resized", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -112,7 +112,7 @@ extern class Control extends godot.CanvasItem {
 		Emitted when one of the size flags changes. See `sizeFlagsHorizontal` and `sizeFlagsVertical`.
 	**/
 	public var onSizeFlagsChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onSizeFlagsChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSizeFlagsChanged():Signal<Void->Void> {
 		return new Signal(this, "size_flags_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

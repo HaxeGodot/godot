@@ -1,9 +1,17 @@
 package godot;
 
-import haxe.Constraints.Function;
+/**
+	User custom signal with the same api as the built-in signals.
 
-// TODO doc class and methods
-class CustomSignal<T:Function> {
+	Naming the function signature arguments, if any, is recommended for improved error messages:
+	```haxe
+	final myCustomSignal = new CustomSignal<(name:String) -> Void>("myCustomSignal");
+	```
+**/
+#if !doc_gen
+@:using(godot.CustomSignalUsings)
+#end
+class CustomSignal<T> {
 	final callbacks:Array<T>;
 	final name:String;
 
@@ -17,12 +25,12 @@ class CustomSignal<T:Function> {
 		this.name = name;
 	}
 
+	/**
+		Connects the custom signal to the `callback`.
 
-	public function isConnected(callback:T):Bool {
-		return callbacks.indexOf(callback) != -1;
-	}
-
-	// TODO flags
+		A signal can only be connected once to a `callback`. It will throw an error if already connected.
+		To avoid this, first, use `isConnected` to check for existing connections.
+	**/
 	public function connect(callback:T#if !doc_gen, ?pos:haxe.PosInfos#end) {
 		#if !doc_gen
 		if (isConnected(callback)) {
@@ -33,6 +41,12 @@ class CustomSignal<T:Function> {
 		#end
 	}
 
+	/**
+		Disconnects the custom signal from the `callback`.
+
+		If you try to disconnect a connection that does not exist, the method will throw an error.
+		Use `isConnected` to ensure that the connection exists.
+	**/
 	public function disconnect(callback:T#if !doc_gen, ?pos:haxe.PosInfos#end) {
 		#if !doc_gen
 		if (!isConnected(callback)) {
@@ -43,10 +57,20 @@ class CustomSignal<T:Function> {
 		#end
 	}
 
-	// TODO find typesafe way, macro?
-	public function emit(arguments:Array<Any>) {
-		for (callback in callbacks) {
-			Reflect.callMethod(null, callback, arguments);
-		}
+	/**
+		Returns `true` if a connection exists between this custom signal and the `callback`.
+	**/
+	public function isConnected(callback:T):Bool {
+		return callbacks.indexOf(callback) != -1;
 	}
+
+	#if doc_gen
+	/**
+		Emit the custom signal.
+
+		The arguments type and number are checked at compile time.
+	**/
+	public function emitSignal(args:haxe.Rest<Any>):Void {
+	}
+	#end
 }

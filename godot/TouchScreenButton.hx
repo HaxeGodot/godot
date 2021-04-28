@@ -22,7 +22,7 @@ extern class TouchScreenButton extends godot.Node2D {
 		Emitted when the button is pressed (down).
 	**/
 	public var onPressed(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onPressed():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onPressed():Signal<Void->Void> {
 		return new Signal(this, "pressed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -32,7 +32,7 @@ extern class TouchScreenButton extends godot.Node2D {
 		Emitted when the button is released (up).
 	**/
 	public var onReleased(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onReleased():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onReleased():Signal<Void->Void> {
 		return new Signal(this, "released", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

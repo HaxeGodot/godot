@@ -18,7 +18,7 @@ extern class AudioStreamPlayer extends godot.Node {
 		Emitted when the audio stops playing.
 	**/
 	public var onFinished(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onFinished():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onFinished():Signal<Void->Void> {
 		return new Signal(this, "finished", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

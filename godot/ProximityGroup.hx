@@ -16,7 +16,7 @@ extern class ProximityGroup extends godot.Spatial {
 		`broadcast` signal.
 	**/
 	public var onBroadcast(get, never):Signal<(method:std.String, parameters:godot.collections.Array)->Void>;
-	@:dox(hide) inline function get_onBroadcast():Signal<(method:std.String, parameters:godot.collections.Array)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onBroadcast():Signal<(method:std.String, parameters:godot.collections.Array)->Void> {
 		return new Signal(this, "broadcast", Signal.SignalHandlerStringArrayVoid.connectSignal, Signal.SignalHandlerStringArrayVoid.disconnectSignal, Signal.SignalHandlerStringArrayVoid.isSignalConnected);
 	}
 

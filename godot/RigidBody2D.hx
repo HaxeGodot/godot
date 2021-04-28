@@ -29,7 +29,7 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
 	**/
 	public var onBodyEntered(get, never):Signal<(body:Node)->Void>;
-	@:dox(hide) inline function get_onBodyEntered():Signal<(body:Node)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onBodyEntered():Signal<(body:Node)->Void> {
 		return new Signal(this, "body_entered", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
 	}
 
@@ -40,7 +40,7 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
 	**/
 	public var onBodyExited(get, never):Signal<(body:Node)->Void>;
-	@:dox(hide) inline function get_onBodyExited():Signal<(body:Node)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onBodyExited():Signal<(body:Node)->Void> {
 		return new Signal(this, "body_exited", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
 	}
 
@@ -54,7 +54,7 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 		`local_shape` the index of the `Shape2D` of this RigidBody2D used by the `Physics2DServer`.
 	**/
 	public var onBodyShapeEntered(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
-	@:dox(hide) inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
 		return new Signal(this, "body_shape_entered", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
 	}
 
@@ -68,7 +68,7 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 		`local_shape` the index of the `Shape2D` of this RigidBody2D used by the `Physics2DServer`.
 	**/
 	public var onBodyShapeExited(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
-	@:dox(hide) inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
 		return new Signal(this, "body_shape_exited", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
 	}
 
@@ -79,7 +79,7 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 		`b`Note:`/b` Changing the value `sleeping` will not trigger this signal. It is only emitted if the sleeping state is changed by the physics engine or `emit_signal("sleeping_state_changed")` is used.
 	**/
 	public var onSleepingStateChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onSleepingStateChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSleepingStateChanged():Signal<Void->Void> {
 		return new Signal(this, "sleeping_state_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

@@ -18,7 +18,7 @@ extern class Tabs extends godot.Control {
 		Emitted when the active tab is rearranged via mouse drag. See `dragToRearrangeEnabled`.
 	**/
 	public var onRepositionActiveTabRequest(get, never):Signal<(idxTo:Int)->Void>;
-	@:dox(hide) inline function get_onRepositionActiveTabRequest():Signal<(idxTo:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onRepositionActiveTabRequest():Signal<(idxTo:Int)->Void> {
 		return new Signal(this, "reposition_active_tab_request", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -28,7 +28,7 @@ extern class Tabs extends godot.Control {
 		Emitted when a tab is right-clicked.
 	**/
 	public var onRightButtonPressed(get, never):Signal<(tab:Int)->Void>;
-	@:dox(hide) inline function get_onRightButtonPressed():Signal<(tab:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onRightButtonPressed():Signal<(tab:Int)->Void> {
 		return new Signal(this, "right_button_pressed", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -38,7 +38,7 @@ extern class Tabs extends godot.Control {
 		Emitted when switching to another tab.
 	**/
 	public var onTabChanged(get, never):Signal<(tab:Int)->Void>;
-	@:dox(hide) inline function get_onTabChanged():Signal<(tab:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTabChanged():Signal<(tab:Int)->Void> {
 		return new Signal(this, "tab_changed", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -48,7 +48,7 @@ extern class Tabs extends godot.Control {
 		Emitted when a tab is clicked, even if it is the current tab.
 	**/
 	public var onTabClicked(get, never):Signal<(tab:Int)->Void>;
-	@:dox(hide) inline function get_onTabClicked():Signal<(tab:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTabClicked():Signal<(tab:Int)->Void> {
 		return new Signal(this, "tab_clicked", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -58,7 +58,7 @@ extern class Tabs extends godot.Control {
 		Emitted when a tab is closed.
 	**/
 	public var onTabClose(get, never):Signal<(tab:Int)->Void>;
-	@:dox(hide) inline function get_onTabClose():Signal<(tab:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTabClose():Signal<(tab:Int)->Void> {
 		return new Signal(this, "tab_close", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -68,7 +68,7 @@ extern class Tabs extends godot.Control {
 		Emitted when a tab is hovered by the mouse.
 	**/
 	public var onTabHover(get, never):Signal<(tab:Int)->Void>;
-	@:dox(hide) inline function get_onTabHover():Signal<(tab:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTabHover():Signal<(tab:Int)->Void> {
 		return new Signal(this, "tab_hover", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 

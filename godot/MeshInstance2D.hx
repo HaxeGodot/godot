@@ -18,7 +18,7 @@ extern class MeshInstance2D extends godot.Node2D {
 		Emitted when the `texture` is changed.
 	**/
 	public var onTextureChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onTextureChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTextureChanged():Signal<Void->Void> {
 		return new Signal(this, "texture_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

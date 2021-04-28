@@ -16,7 +16,7 @@ extern class VisualShaderNodeInput extends godot.VisualShaderNode {
 		`input_type_changed` signal.
 	**/
 	public var onInputTypeChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onInputTypeChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onInputTypeChanged():Signal<Void->Void> {
 		return new Signal(this, "input_type_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

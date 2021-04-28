@@ -16,7 +16,7 @@ extern class Skeleton2D extends godot.Node2D {
 		`bone_setup_changed` signal.
 	**/
 	public var onBoneSetupChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onBoneSetupChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onBoneSetupChanged():Signal<Void->Void> {
 		return new Signal(this, "bone_setup_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

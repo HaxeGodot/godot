@@ -18,7 +18,7 @@ extern class Sprite3D extends godot.SpriteBase3D {
 		Emitted when the `frame` changes.
 	**/
 	public var onFrameChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onFrameChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onFrameChanged():Signal<Void->Void> {
 		return new Signal(this, "frame_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

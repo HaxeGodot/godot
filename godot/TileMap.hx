@@ -20,7 +20,7 @@ extern class TileMap extends godot.Node2D {
 		Emitted when a tilemap setting has changed.
 	**/
 	public var onSettingsChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onSettingsChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSettingsChanged():Signal<Void->Void> {
 		return new Signal(this, "settings_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

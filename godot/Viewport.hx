@@ -28,7 +28,7 @@ extern class Viewport extends godot.Node {
 		Emitted when a Control node grabs keyboard focus.
 	**/
 	public var onGuiFocusChanged(get, never):Signal<(node:Control)->Void>;
-	@:dox(hide) inline function get_onGuiFocusChanged():Signal<(node:Control)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onGuiFocusChanged():Signal<(node:Control)->Void> {
 		return new Signal(this, "gui_focus_changed", Signal.SignalHandlerControlVoid.connectSignal, Signal.SignalHandlerControlVoid.disconnectSignal, Signal.SignalHandlerControlVoid.isSignalConnected);
 	}
 
@@ -38,7 +38,7 @@ extern class Viewport extends godot.Node {
 		Emitted when the size of the viewport is changed, whether by `setSizeOverride`, resize of window, or some other means.
 	**/
 	public var onSizeChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onSizeChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSizeChanged():Signal<Void->Void> {
 		return new Signal(this, "size_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

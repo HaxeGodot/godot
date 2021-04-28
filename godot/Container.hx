@@ -20,7 +20,7 @@ extern class Container extends godot.Control {
 		Emitted when sorting the children is needed.
 	**/
 	public var onSortChildren(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onSortChildren():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSortChildren():Signal<Void->Void> {
 		return new Signal(this, "sort_children", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

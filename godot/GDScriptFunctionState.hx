@@ -16,7 +16,7 @@ extern abstract class GDScriptFunctionState extends godot.Reference {
 		`completed` signal.
 	**/
 	public var onCompleted(get, never):Signal<(result:Any)->Void>;
-	@:dox(hide) inline function get_onCompleted():Signal<(result:Any)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onCompleted():Signal<(result:Any)->Void> {
 		return new Signal(this, "completed", Signal.SignalHandlerVariantVoid.connectSignal, Signal.SignalHandlerVariantVoid.disconnectSignal, Signal.SignalHandlerVariantVoid.isSignalConnected);
 	}
 

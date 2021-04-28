@@ -112,7 +112,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`reference_space_reset` signal.
 	**/
 	public var onReferenceSpaceReset(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onReferenceSpaceReset():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onReferenceSpaceReset():Signal<Void->Void> {
 		return new Signal(this, "reference_space_reset", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -120,7 +120,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`select` signal.
 	**/
 	public var onSelect(get, never):Signal<(controllerId:Int)->Void>;
-	@:dox(hide) inline function get_onSelect():Signal<(controllerId:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSelect():Signal<(controllerId:Int)->Void> {
 		return new Signal(this, "select", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -128,7 +128,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`selectend` signal.
 	**/
 	public var onSelectend(get, never):Signal<(controllerId:Int)->Void>;
-	@:dox(hide) inline function get_onSelectend():Signal<(controllerId:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSelectend():Signal<(controllerId:Int)->Void> {
 		return new Signal(this, "selectend", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -136,7 +136,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`selectstart` signal.
 	**/
 	public var onSelectstart(get, never):Signal<(controllerId:Int)->Void>;
-	@:dox(hide) inline function get_onSelectstart():Signal<(controllerId:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSelectstart():Signal<(controllerId:Int)->Void> {
 		return new Signal(this, "selectstart", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -144,7 +144,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`session_ended` signal.
 	**/
 	public var onSessionEnded(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onSessionEnded():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSessionEnded():Signal<Void->Void> {
 		return new Signal(this, "session_ended", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -152,7 +152,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`session_failed` signal.
 	**/
 	public var onSessionFailed(get, never):Signal<(message:std.String)->Void>;
-	@:dox(hide) inline function get_onSessionFailed():Signal<(message:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSessionFailed():Signal<(message:std.String)->Void> {
 		return new Signal(this, "session_failed", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
 	}
 
@@ -160,7 +160,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`session_started` signal.
 	**/
 	public var onSessionStarted(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onSessionStarted():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSessionStarted():Signal<Void->Void> {
 		return new Signal(this, "session_started", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -168,7 +168,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`session_supported` signal.
 	**/
 	public var onSessionSupported(get, never):Signal<(sessionMode:std.String, supported:Bool)->Void>;
-	@:dox(hide) inline function get_onSessionSupported():Signal<(sessionMode:std.String, supported:Bool)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSessionSupported():Signal<(sessionMode:std.String, supported:Bool)->Void> {
 		return new Signal(this, "session_supported", Signal.SignalHandlerStringBoolVoid.connectSignal, Signal.SignalHandlerStringBoolVoid.disconnectSignal, Signal.SignalHandlerStringBoolVoid.isSignalConnected);
 	}
 
@@ -176,7 +176,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`squeeze` signal.
 	**/
 	public var onSqueeze(get, never):Signal<(controllerId:Int)->Void>;
-	@:dox(hide) inline function get_onSqueeze():Signal<(controllerId:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSqueeze():Signal<(controllerId:Int)->Void> {
 		return new Signal(this, "squeeze", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -184,7 +184,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`squeezeend` signal.
 	**/
 	public var onSqueezeend(get, never):Signal<(controllerId:Int)->Void>;
-	@:dox(hide) inline function get_onSqueezeend():Signal<(controllerId:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSqueezeend():Signal<(controllerId:Int)->Void> {
 		return new Signal(this, "squeezeend", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -192,7 +192,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`squeezestart` signal.
 	**/
 	public var onSqueezestart(get, never):Signal<(controllerId:Int)->Void>;
-	@:dox(hide) inline function get_onSqueezestart():Signal<(controllerId:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSqueezestart():Signal<(controllerId:Int)->Void> {
 		return new Signal(this, "squeezestart", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -200,7 +200,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		`visibility_state_changed` signal.
 	**/
 	public var onVisibilityStateChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onVisibilityStateChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onVisibilityStateChanged():Signal<Void->Void> {
 		return new Signal(this, "visibility_state_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

@@ -22,7 +22,7 @@ extern class ItemList extends godot.Control {
 		Triggered when specified list item is activated via double-clicking or by pressing Enter.
 	**/
 	public var onItemActivated(get, never):Signal<(index:Int)->Void>;
-	@:dox(hide) inline function get_onItemActivated():Signal<(index:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onItemActivated():Signal<(index:Int)->Void> {
 		return new Signal(this, "item_activated", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -34,7 +34,7 @@ extern class ItemList extends godot.Control {
 		`allowRmbSelect` must be enabled.
 	**/
 	public var onItemRmbSelected(get, never):Signal<(index:Int, atPosition:Vector2)->Void>;
-	@:dox(hide) inline function get_onItemRmbSelected():Signal<(index:Int, atPosition:Vector2)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onItemRmbSelected():Signal<(index:Int, atPosition:Vector2)->Void> {
 		return new Signal(this, "item_rmb_selected", Signal.SignalHandlerIntVector2Void.connectSignal, Signal.SignalHandlerIntVector2Void.disconnectSignal, Signal.SignalHandlerIntVector2Void.isSignalConnected);
 	}
 
@@ -45,7 +45,7 @@ extern class ItemList extends godot.Control {
 		`allowReselect` must be enabled to reselect an item.
 	**/
 	public var onItemSelected(get, never):Signal<(index:Int)->Void>;
-	@:dox(hide) inline function get_onItemSelected():Signal<(index:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onItemSelected():Signal<(index:Int)->Void> {
 		return new Signal(this, "item_selected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -55,7 +55,7 @@ extern class ItemList extends godot.Control {
 		Triggered when a multiple selection is altered on a list allowing multiple selection.
 	**/
 	public var onMultiSelected(get, never):Signal<(index:Int, selected:Bool)->Void>;
-	@:dox(hide) inline function get_onMultiSelected():Signal<(index:Int, selected:Bool)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onMultiSelected():Signal<(index:Int, selected:Bool)->Void> {
 		return new Signal(this, "multi_selected", Signal.SignalHandlerIntBoolVoid.connectSignal, Signal.SignalHandlerIntBoolVoid.disconnectSignal, Signal.SignalHandlerIntBoolVoid.isSignalConnected);
 	}
 
@@ -65,7 +65,7 @@ extern class ItemList extends godot.Control {
 		Triggered when a left mouse click is issued within the rect of the list but on empty space.
 	**/
 	public var onNothingSelected(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onNothingSelected():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onNothingSelected():Signal<Void->Void> {
 		return new Signal(this, "nothing_selected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -76,7 +76,7 @@ extern class ItemList extends godot.Control {
 		`allowRmbSelect` must be enabled.
 	**/
 	public var onRmbClicked(get, never):Signal<(atPosition:Vector2)->Void>;
-	@:dox(hide) inline function get_onRmbClicked():Signal<(atPosition:Vector2)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onRmbClicked():Signal<(atPosition:Vector2)->Void> {
 		return new Signal(this, "rmb_clicked", Signal.SignalHandlerVector2Void.connectSignal, Signal.SignalHandlerVector2Void.disconnectSignal, Signal.SignalHandlerVector2Void.isSignalConnected);
 	}
 

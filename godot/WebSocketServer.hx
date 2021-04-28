@@ -20,7 +20,7 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 		`client_close_request` signal.
 	**/
 	public var onClientCloseRequest(get, never):Signal<(id:Int, code:Int, reason:std.String)->Void>;
-	@:dox(hide) inline function get_onClientCloseRequest():Signal<(id:Int, code:Int, reason:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onClientCloseRequest():Signal<(id:Int, code:Int, reason:std.String)->Void> {
 		return new Signal(this, "client_close_request", Signal.SignalHandlerIntIntStringVoid.connectSignal, Signal.SignalHandlerIntIntStringVoid.disconnectSignal, Signal.SignalHandlerIntIntStringVoid.isSignalConnected);
 	}
 
@@ -28,7 +28,7 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 		`client_connected` signal.
 	**/
 	public var onClientConnected(get, never):Signal<(id:Int, protocol:std.String)->Void>;
-	@:dox(hide) inline function get_onClientConnected():Signal<(id:Int, protocol:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onClientConnected():Signal<(id:Int, protocol:std.String)->Void> {
 		return new Signal(this, "client_connected", Signal.SignalHandlerIntStringVoid.connectSignal, Signal.SignalHandlerIntStringVoid.disconnectSignal, Signal.SignalHandlerIntStringVoid.isSignalConnected);
 	}
 
@@ -36,7 +36,7 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 		`client_disconnected` signal.
 	**/
 	public var onClientDisconnected(get, never):Signal<(id:Int, wasCleanClose:Bool)->Void>;
-	@:dox(hide) inline function get_onClientDisconnected():Signal<(id:Int, wasCleanClose:Bool)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onClientDisconnected():Signal<(id:Int, wasCleanClose:Bool)->Void> {
 		return new Signal(this, "client_disconnected", Signal.SignalHandlerIntBoolVoid.connectSignal, Signal.SignalHandlerIntBoolVoid.disconnectSignal, Signal.SignalHandlerIntBoolVoid.isSignalConnected);
 	}
 
@@ -44,7 +44,7 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 		`data_received` signal.
 	**/
 	public var onDataReceived(get, never):Signal<(id:Int)->Void>;
-	@:dox(hide) inline function get_onDataReceived():Signal<(id:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onDataReceived():Signal<(id:Int)->Void> {
 		return new Signal(this, "data_received", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 

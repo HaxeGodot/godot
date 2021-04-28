@@ -20,7 +20,7 @@ extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 		Emitted when a connection attempt fails.
 	**/
 	public var onConnectionFailed(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onConnectionFailed():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onConnectionFailed():Signal<Void->Void> {
 		return new Signal(this, "connection_failed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -30,7 +30,7 @@ extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 		Emitted when a connection attempt succeeds.
 	**/
 	public var onConnectionSucceeded(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onConnectionSucceeded():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onConnectionSucceeded():Signal<Void->Void> {
 		return new Signal(this, "connection_succeeded", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -40,7 +40,7 @@ extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 		Emitted by the server when a client connects.
 	**/
 	public var onPeerConnected(get, never):Signal<(id:Int)->Void>;
-	@:dox(hide) inline function get_onPeerConnected():Signal<(id:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onPeerConnected():Signal<(id:Int)->Void> {
 		return new Signal(this, "peer_connected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -50,7 +50,7 @@ extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 		Emitted by the server when a client disconnects.
 	**/
 	public var onPeerDisconnected(get, never):Signal<(id:Int)->Void>;
-	@:dox(hide) inline function get_onPeerDisconnected():Signal<(id:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onPeerDisconnected():Signal<(id:Int)->Void> {
 		return new Signal(this, "peer_disconnected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -60,7 +60,7 @@ extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 		Emitted by clients when the server disconnects.
 	**/
 	public var onServerDisconnected(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onServerDisconnected():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onServerDisconnected():Signal<Void->Void> {
 		return new Signal(this, "server_disconnected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

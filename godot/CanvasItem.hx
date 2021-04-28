@@ -28,7 +28,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Emitted when the `CanvasItem` must redraw. This can only be connected realtime, as deferred will not allow drawing.
 	**/
 	public var onDraw(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onDraw():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onDraw():Signal<Void->Void> {
 		return new Signal(this, "draw", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -38,7 +38,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Emitted when becoming hidden.
 	**/
 	public var onHide(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onHide():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onHide():Signal<Void->Void> {
 		return new Signal(this, "hide", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -48,7 +48,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Emitted when the item's `Rect2` boundaries (position or size) have changed, or when an action is taking place that may have impacted these boundaries (e.g. changing `sprite.texture`).
 	**/
 	public var onItemRectChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onItemRectChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onItemRectChanged():Signal<Void->Void> {
 		return new Signal(this, "item_rect_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -58,7 +58,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Emitted when the visibility (hidden/visible) changes.
 	**/
 	public var onVisibilityChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onVisibilityChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onVisibilityChanged():Signal<Void->Void> {
 		return new Signal(this, "visibility_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

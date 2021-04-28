@@ -18,7 +18,7 @@ extern class Input {
 		Emitted when a joypad device has been connected or disconnected.
 	**/
 	public static var onJoyConnectionChanged(get, never):Signal<(device:Int, connected:Bool)->Void>;
-	@:dox(hide) inline static function get_onJoyConnectionChanged():Signal<(device:Int, connected:Bool)->Void> {
+	@:dox(hide) @:noCompletion inline static function get_onJoyConnectionChanged():Signal<(device:Int, connected:Bool)->Void> {
 		return new Signal(SINGLETON, "joy_connection_changed", Signal.SignalHandlerIntBoolVoid.connectSignal, Signal.SignalHandlerIntBoolVoid.disconnectSignal, Signal.SignalHandlerIntBoolVoid.isSignalConnected);
 	}
 

@@ -20,7 +20,7 @@ extern class AnimationNode extends godot.Resource {
 		Called when the node was removed from the graph.
 	**/
 	public var onRemovedFromGraph(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onRemovedFromGraph():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onRemovedFromGraph():Signal<Void->Void> {
 		return new Signal(this, "removed_from_graph", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -30,7 +30,7 @@ extern class AnimationNode extends godot.Resource {
 		Emitted by nodes that inherit from this class and that have an internal tree when one of their nodes changes. The nodes that emit this signal are `AnimationNodeBlendSpace1D`, `AnimationNodeBlendSpace2D`, `AnimationNodeStateMachine`, and `AnimationNodeBlendTree`.
 	**/
 	public var onTreeChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onTreeChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTreeChanged():Signal<Void->Void> {
 		return new Signal(this, "tree_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

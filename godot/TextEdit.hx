@@ -18,7 +18,7 @@ extern class TextEdit extends godot.Control {
 		Emitted when a breakpoint is placed via the breakpoint gutter.
 	**/
 	public var onBreakpointToggled(get, never):Signal<(row:Int)->Void>;
-	@:dox(hide) inline function get_onBreakpointToggled():Signal<(row:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onBreakpointToggled():Signal<(row:Int)->Void> {
 		return new Signal(this, "breakpoint_toggled", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -28,7 +28,7 @@ extern class TextEdit extends godot.Control {
 		Emitted when the cursor changes.
 	**/
 	public var onCursorChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onCursorChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onCursorChanged():Signal<Void->Void> {
 		return new Signal(this, "cursor_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -38,7 +38,7 @@ extern class TextEdit extends godot.Control {
 		Emitted when the info icon is clicked.
 	**/
 	public var onInfoClicked(get, never):Signal<(row:Int, info:std.String)->Void>;
-	@:dox(hide) inline function get_onInfoClicked():Signal<(row:Int, info:std.String)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onInfoClicked():Signal<(row:Int, info:std.String)->Void> {
 		return new Signal(this, "info_clicked", Signal.SignalHandlerIntStringVoid.connectSignal, Signal.SignalHandlerIntStringVoid.disconnectSignal, Signal.SignalHandlerIntStringVoid.isSignalConnected);
 	}
 
@@ -46,7 +46,7 @@ extern class TextEdit extends godot.Control {
 		`request_completion` signal.
 	**/
 	public var onRequestCompletion(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onRequestCompletion():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onRequestCompletion():Signal<Void->Void> {
 		return new Signal(this, "request_completion", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -54,7 +54,7 @@ extern class TextEdit extends godot.Control {
 		`symbol_lookup` signal.
 	**/
 	public var onSymbolLookup(get, never):Signal<(symbol:std.String, row:Int, column:Int)->Void>;
-	@:dox(hide) inline function get_onSymbolLookup():Signal<(symbol:std.String, row:Int, column:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSymbolLookup():Signal<(symbol:std.String, row:Int, column:Int)->Void> {
 		return new Signal(this, "symbol_lookup", Signal.SignalHandlerStringIntIntVoid.connectSignal, Signal.SignalHandlerStringIntIntVoid.disconnectSignal, Signal.SignalHandlerStringIntIntVoid.isSignalConnected);
 	}
 
@@ -64,7 +64,7 @@ extern class TextEdit extends godot.Control {
 		Emitted when the text changes.
 	**/
 	public var onTextChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onTextChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTextChanged():Signal<Void->Void> {
 		return new Signal(this, "text_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

@@ -22,7 +22,7 @@ extern class VisibilityNotifier extends godot.Spatial {
 		Emitted when the VisibilityNotifier enters a `Camera`'s view.
 	**/
 	public var onCameraEntered(get, never):Signal<(camera:Camera)->Void>;
-	@:dox(hide) inline function get_onCameraEntered():Signal<(camera:Camera)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onCameraEntered():Signal<(camera:Camera)->Void> {
 		return new Signal(this, "camera_entered", Signal.SignalHandlerCameraVoid.connectSignal, Signal.SignalHandlerCameraVoid.disconnectSignal, Signal.SignalHandlerCameraVoid.isSignalConnected);
 	}
 
@@ -32,7 +32,7 @@ extern class VisibilityNotifier extends godot.Spatial {
 		Emitted when the VisibilityNotifier exits a `Camera`'s view.
 	**/
 	public var onCameraExited(get, never):Signal<(camera:Camera)->Void>;
-	@:dox(hide) inline function get_onCameraExited():Signal<(camera:Camera)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onCameraExited():Signal<(camera:Camera)->Void> {
 		return new Signal(this, "camera_exited", Signal.SignalHandlerCameraVoid.connectSignal, Signal.SignalHandlerCameraVoid.disconnectSignal, Signal.SignalHandlerCameraVoid.isSignalConnected);
 	}
 
@@ -42,7 +42,7 @@ extern class VisibilityNotifier extends godot.Spatial {
 		Emitted when the VisibilityNotifier enters the screen.
 	**/
 	public var onScreenEntered(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onScreenEntered():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onScreenEntered():Signal<Void->Void> {
 		return new Signal(this, "screen_entered", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -52,7 +52,7 @@ extern class VisibilityNotifier extends godot.Spatial {
 		Emitted when the VisibilityNotifier exits the screen.
 	**/
 	public var onScreenExited(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onScreenExited():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onScreenExited():Signal<Void->Void> {
 		return new Signal(this, "screen_exited", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

@@ -20,7 +20,7 @@ extern class CameraServer {
 		Emitted when a `CameraFeed` is added (e.g. webcam is plugged in).
 	**/
 	public static var onCameraFeedAdded(get, never):Signal<(id:Int)->Void>;
-	@:dox(hide) inline static function get_onCameraFeedAdded():Signal<(id:Int)->Void> {
+	@:dox(hide) @:noCompletion inline static function get_onCameraFeedAdded():Signal<(id:Int)->Void> {
 		return new Signal(SINGLETON, "camera_feed_added", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -30,7 +30,7 @@ extern class CameraServer {
 		Emitted when a `CameraFeed` is removed (e.g. webcam is unplugged).
 	**/
 	public static var onCameraFeedRemoved(get, never):Signal<(id:Int)->Void>;
-	@:dox(hide) inline static function get_onCameraFeedRemoved():Signal<(id:Int)->Void> {
+	@:dox(hide) @:noCompletion inline static function get_onCameraFeedRemoved():Signal<(id:Int)->Void> {
 		return new Signal(SINGLETON, "camera_feed_removed", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 

@@ -18,7 +18,7 @@ extern class StyleBoxTexture extends godot.StyleBox {
 		Emitted when the stylebox's texture is changed.
 	**/
 	public var onTextureChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onTextureChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTextureChanged():Signal<Void->Void> {
 		return new Signal(this, "texture_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

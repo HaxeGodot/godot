@@ -18,7 +18,7 @@ extern abstract class Range extends godot.Control {
 		Emitted when `minValue`, `maxValue`, `page`, or `step` change.
 	**/
 	public var onChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onChanged():Signal<Void->Void> {
 		return new Signal(this, "changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -28,7 +28,7 @@ extern abstract class Range extends godot.Control {
 		Emitted when `value` changes.
 	**/
 	public var onValueChanged(get, never):Signal<(value:Float)->Void>;
-	@:dox(hide) inline function get_onValueChanged():Signal<(value:Float)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onValueChanged():Signal<(value:Float)->Void> {
 		return new Signal(this, "value_changed", Signal.SignalHandlerFloatVoid.connectSignal, Signal.SignalHandlerFloatVoid.disconnectSignal, Signal.SignalHandlerFloatVoid.isSignalConnected);
 	}
 

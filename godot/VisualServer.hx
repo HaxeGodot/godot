@@ -34,7 +34,7 @@ extern class VisualServer {
 		Emitted at the end of the frame, after the VisualServer has finished updating all the Viewports.
 	**/
 	public static var onFramePostDraw(get, never):Signal<Void->Void>;
-	@:dox(hide) inline static function get_onFramePostDraw():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline static function get_onFramePostDraw():Signal<Void->Void> {
 		return new Signal(SINGLETON, "frame_post_draw", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -44,7 +44,7 @@ extern class VisualServer {
 		Emitted at the beginning of the frame, before the VisualServer updates all the Viewports.
 	**/
 	public static var onFramePreDraw(get, never):Signal<Void->Void>;
-	@:dox(hide) inline static function get_onFramePreDraw():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline static function get_onFramePreDraw():Signal<Void->Void> {
 		return new Signal(SINGLETON, "frame_pre_draw", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

@@ -18,7 +18,7 @@ extern abstract class SplitContainer extends godot.Container {
 		Emitted when the dragger is dragged by user.
 	**/
 	public var onDragged(get, never):Signal<(offset:Int)->Void>;
-	@:dox(hide) inline function get_onDragged():Signal<(offset:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onDragged():Signal<(offset:Int)->Void> {
 		return new Signal(this, "dragged", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 

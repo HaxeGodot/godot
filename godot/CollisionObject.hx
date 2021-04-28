@@ -18,7 +18,7 @@ extern abstract class CollisionObject extends godot.Spatial {
 		Emitted when `InputEvent` receives an event. See its description for details.
 	**/
 	public var onInputEvent(get, never):Signal<(camera:Node, event:InputEvent, clickPosition:Vector3, clickNormal:Vector3, shapeIdx:Int)->Void>;
-	@:dox(hide) inline function get_onInputEvent():Signal<(camera:Node, event:InputEvent, clickPosition:Vector3, clickNormal:Vector3, shapeIdx:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onInputEvent():Signal<(camera:Node, event:InputEvent, clickPosition:Vector3, clickNormal:Vector3, shapeIdx:Int)->Void> {
 		return new Signal(this, "input_event", Signal.SignalHandlerNodeInputEventVector3Vector3IntVoid.connectSignal, Signal.SignalHandlerNodeInputEventVector3Vector3IntVoid.disconnectSignal, Signal.SignalHandlerNodeInputEventVector3Vector3IntVoid.isSignalConnected);
 	}
 
@@ -28,7 +28,7 @@ extern abstract class CollisionObject extends godot.Spatial {
 		Emitted when the mouse pointer enters any of this object's shapes.
 	**/
 	public var onMouseEntered(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onMouseEntered():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onMouseEntered():Signal<Void->Void> {
 		return new Signal(this, "mouse_entered", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -38,7 +38,7 @@ extern abstract class CollisionObject extends godot.Spatial {
 		Emitted when the mouse pointer exits all this object's shapes.
 	**/
 	public var onMouseExited(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onMouseExited():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onMouseExited():Signal<Void->Void> {
 		return new Signal(this, "mouse_exited", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

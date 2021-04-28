@@ -18,7 +18,7 @@ extern abstract class CollisionObject2D extends godot.Node2D {
 		Emitted when an input event occurs. Requires `inputPickable` to be `true` and at least one `collision_layer` bit to be set. See `InputEvent` for details.
 	**/
 	public var onInputEvent(get, never):Signal<(viewport:Node, event:InputEvent, shapeIdx:Int)->Void>;
-	@:dox(hide) inline function get_onInputEvent():Signal<(viewport:Node, event:InputEvent, shapeIdx:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onInputEvent():Signal<(viewport:Node, event:InputEvent, shapeIdx:Int)->Void> {
 		return new Signal(this, "input_event", Signal.SignalHandlerNodeInputEventIntVoid.connectSignal, Signal.SignalHandlerNodeInputEventIntVoid.disconnectSignal, Signal.SignalHandlerNodeInputEventIntVoid.isSignalConnected);
 	}
 
@@ -28,7 +28,7 @@ extern abstract class CollisionObject2D extends godot.Node2D {
 		Emitted when the mouse pointer enters any of this object's shapes. Requires `inputPickable` to be `true` and at least one `collision_layer` bit to be set.
 	**/
 	public var onMouseEntered(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onMouseEntered():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onMouseEntered():Signal<Void->Void> {
 		return new Signal(this, "mouse_entered", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -38,7 +38,7 @@ extern abstract class CollisionObject2D extends godot.Node2D {
 		Emitted when the mouse pointer exits all this object's shapes. Requires `inputPickable` to be `true` and at least one `collision_layer` bit to be set.
 	**/
 	public var onMouseExited(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onMouseExited():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onMouseExited():Signal<Void->Void> {
 		return new Signal(this, "mouse_exited", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

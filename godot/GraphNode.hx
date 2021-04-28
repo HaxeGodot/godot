@@ -22,7 +22,7 @@ extern class GraphNode extends godot.Container {
 		Emitted when the GraphNode is requested to be closed. Happens on clicking the close button (see `showClose`).
 	**/
 	public var onCloseRequest(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onCloseRequest():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onCloseRequest():Signal<Void->Void> {
 		return new Signal(this, "close_request", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -32,7 +32,7 @@ extern class GraphNode extends godot.Container {
 		Emitted when the GraphNode is dragged.
 	**/
 	public var onDragged(get, never):Signal<(from:Vector2, to:Vector2)->Void>;
-	@:dox(hide) inline function get_onDragged():Signal<(from:Vector2, to:Vector2)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onDragged():Signal<(from:Vector2, to:Vector2)->Void> {
 		return new Signal(this, "dragged", Signal.SignalHandlerVector2Vector2Void.connectSignal, Signal.SignalHandlerVector2Vector2Void.disconnectSignal, Signal.SignalHandlerVector2Vector2Void.isSignalConnected);
 	}
 
@@ -42,7 +42,7 @@ extern class GraphNode extends godot.Container {
 		Emitted when the GraphNode is moved.
 	**/
 	public var onOffsetChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onOffsetChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onOffsetChanged():Signal<Void->Void> {
 		return new Signal(this, "offset_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -52,7 +52,7 @@ extern class GraphNode extends godot.Container {
 		Emitted when the GraphNode is requested to be displayed over other ones. Happens on focusing (clicking into) the GraphNode.
 	**/
 	public var onRaiseRequest(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onRaiseRequest():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onRaiseRequest():Signal<Void->Void> {
 		return new Signal(this, "raise_request", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -62,7 +62,7 @@ extern class GraphNode extends godot.Container {
 		Emitted when the GraphNode is requested to be resized. Happens on dragging the resizer handle (see `resizable`).
 	**/
 	public var onResizeRequest(get, never):Signal<(newMinsize:Vector2)->Void>;
-	@:dox(hide) inline function get_onResizeRequest():Signal<(newMinsize:Vector2)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onResizeRequest():Signal<(newMinsize:Vector2)->Void> {
 		return new Signal(this, "resize_request", Signal.SignalHandlerVector2Void.connectSignal, Signal.SignalHandlerVector2Void.disconnectSignal, Signal.SignalHandlerVector2Void.isSignalConnected);
 	}
 
@@ -72,7 +72,7 @@ extern class GraphNode extends godot.Container {
 		Emitted when any GraphNode's slot is updated.
 	**/
 	public var onSlotUpdated(get, never):Signal<(idx:Int)->Void>;
-	@:dox(hide) inline function get_onSlotUpdated():Signal<(idx:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onSlotUpdated():Signal<(idx:Int)->Void> {
 		return new Signal(this, "slot_updated", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 

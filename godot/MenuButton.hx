@@ -22,7 +22,7 @@ extern class MenuButton extends godot.Button {
 		Emitted when `PopupMenu` of this MenuButton is about to show.
 	**/
 	public var onAboutToShow(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onAboutToShow():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onAboutToShow():Signal<Void->Void> {
 		return new Signal(this, "about_to_show", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

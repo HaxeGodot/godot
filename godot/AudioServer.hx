@@ -18,7 +18,7 @@ extern class AudioServer {
 		Emitted when the `AudioBusLayout` changes.
 	**/
 	public static var onBusLayoutChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline static function get_onBusLayoutChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline static function get_onBusLayoutChanged():Signal<Void->Void> {
 		return new Signal(SINGLETON, "bus_layout_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

@@ -19,7 +19,7 @@ extern class Area extends godot.CollisionObject {
 		`area` the other Area.
 	**/
 	public var onAreaEntered(get, never):Signal<(area:Area)->Void>;
-	@:dox(hide) inline function get_onAreaEntered():Signal<(area:Area)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onAreaEntered():Signal<(area:Area)->Void> {
 		return new Signal(this, "area_entered", Signal.SignalHandlerAreaVoid.connectSignal, Signal.SignalHandlerAreaVoid.disconnectSignal, Signal.SignalHandlerAreaVoid.isSignalConnected);
 	}
 
@@ -30,7 +30,7 @@ extern class Area extends godot.CollisionObject {
 		`area` the other Area.
 	**/
 	public var onAreaExited(get, never):Signal<(area:Area)->Void>;
-	@:dox(hide) inline function get_onAreaExited():Signal<(area:Area)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onAreaExited():Signal<(area:Area)->Void> {
 		return new Signal(this, "area_exited", Signal.SignalHandlerAreaVoid.connectSignal, Signal.SignalHandlerAreaVoid.disconnectSignal, Signal.SignalHandlerAreaVoid.isSignalConnected);
 	}
 
@@ -44,7 +44,7 @@ extern class Area extends godot.CollisionObject {
 		`local_shape` the index of the `Shape` of this Area used by the `PhysicsServer`.
 	**/
 	public var onAreaShapeEntered(get, never):Signal<(areaId:Int, area:Area, areaShape:Int, localShape:Int)->Void>;
-	@:dox(hide) inline function get_onAreaShapeEntered():Signal<(areaId:Int, area:Area, areaShape:Int, localShape:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onAreaShapeEntered():Signal<(areaId:Int, area:Area, areaShape:Int, localShape:Int)->Void> {
 		return new Signal(this, "area_shape_entered", Signal.SignalHandlerIntAreaIntIntVoid.connectSignal, Signal.SignalHandlerIntAreaIntIntVoid.disconnectSignal, Signal.SignalHandlerIntAreaIntIntVoid.isSignalConnected);
 	}
 
@@ -58,7 +58,7 @@ extern class Area extends godot.CollisionObject {
 		`local_shape` the index of the `Shape` of this Area used by the `PhysicsServer`.
 	**/
 	public var onAreaShapeExited(get, never):Signal<(areaId:Int, area:Area, areaShape:Int, localShape:Int)->Void>;
-	@:dox(hide) inline function get_onAreaShapeExited():Signal<(areaId:Int, area:Area, areaShape:Int, localShape:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onAreaShapeExited():Signal<(areaId:Int, area:Area, areaShape:Int, localShape:Int)->Void> {
 		return new Signal(this, "area_shape_exited", Signal.SignalHandlerIntAreaIntIntVoid.connectSignal, Signal.SignalHandlerIntAreaIntIntVoid.disconnectSignal, Signal.SignalHandlerIntAreaIntIntVoid.isSignalConnected);
 	}
 
@@ -69,7 +69,7 @@ extern class Area extends godot.CollisionObject {
 		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
 	**/
 	public var onBodyEntered(get, never):Signal<(body:Node)->Void>;
-	@:dox(hide) inline function get_onBodyEntered():Signal<(body:Node)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onBodyEntered():Signal<(body:Node)->Void> {
 		return new Signal(this, "body_entered", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
 	}
 
@@ -80,7 +80,7 @@ extern class Area extends godot.CollisionObject {
 		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
 	**/
 	public var onBodyExited(get, never):Signal<(body:Node)->Void>;
-	@:dox(hide) inline function get_onBodyExited():Signal<(body:Node)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onBodyExited():Signal<(body:Node)->Void> {
 		return new Signal(this, "body_exited", Signal.SignalHandlerNodeVoid.connectSignal, Signal.SignalHandlerNodeVoid.disconnectSignal, Signal.SignalHandlerNodeVoid.isSignalConnected);
 	}
 
@@ -94,7 +94,7 @@ extern class Area extends godot.CollisionObject {
 		`local_shape` the index of the `Shape` of this Area used by the `PhysicsServer`.
 	**/
 	public var onBodyShapeEntered(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
-	@:dox(hide) inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
 		return new Signal(this, "body_shape_entered", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
 	}
 
@@ -108,7 +108,7 @@ extern class Area extends godot.CollisionObject {
 		`local_shape` the index of the `Shape` of this Area used by the `PhysicsServer`.
 	**/
 	public var onBodyShapeExited(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
-	@:dox(hide) inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
 		return new Signal(this, "body_shape_exited", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
 	}
 

@@ -18,7 +18,7 @@ extern class Popup extends godot.Control {
 		Emitted when a popup is about to be shown. This is often used in `PopupMenu` to clear the list of options then create a new one according to the current context.
 	**/
 	public var onAboutToShow(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onAboutToShow():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onAboutToShow():Signal<Void->Void> {
 		return new Signal(this, "about_to_show", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -28,7 +28,7 @@ extern class Popup extends godot.Control {
 		Emitted when a popup is hidden.
 	**/
 	public var onPopupHide(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onPopupHide():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onPopupHide():Signal<Void->Void> {
 		return new Signal(this, "popup_hide", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

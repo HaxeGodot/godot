@@ -16,7 +16,7 @@ extern abstract class WebSocketMultiplayerPeer extends godot.NetworkedMultiplaye
 		`peer_packet` signal.
 	**/
 	public var onPeerPacket(get, never):Signal<(peerSource:Int)->Void>;
-	@:dox(hide) inline function get_onPeerPacket():Signal<(peerSource:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onPeerPacket():Signal<(peerSource:Int)->Void> {
 		return new Signal(this, "peer_packet", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 

@@ -15,7 +15,7 @@ extern abstract class VisualShaderNode extends godot.Resource {
 		Emitted when the node requests an editor refresh. Currently called only in setter of `visualShaderNodeTexture.source`, `VisualShaderNodeTexture`, and `VisualShaderNodeCubeMap` (and their derivatives).
 	**/
 	public var onEditorRefreshRequest(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onEditorRefreshRequest():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onEditorRefreshRequest():Signal<Void->Void> {
 		return new Signal(this, "editor_refresh_request", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

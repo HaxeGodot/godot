@@ -18,7 +18,7 @@ extern class NinePatchRect extends godot.Control {
 		Emitted when the node's texture changes.
 	**/
 	public var onTextureChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onTextureChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTextureChanged():Signal<Void->Void> {
 		return new Signal(this, "texture_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

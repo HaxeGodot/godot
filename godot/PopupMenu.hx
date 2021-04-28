@@ -18,7 +18,7 @@ extern class PopupMenu extends godot.Popup {
 		Emitted when user navigated to an item of some `id` using `ui_up` or `ui_down` action.
 	**/
 	public var onIdFocused(get, never):Signal<(id:Int)->Void>;
-	@:dox(hide) inline function get_onIdFocused():Signal<(id:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onIdFocused():Signal<(id:Int)->Void> {
 		return new Signal(this, "id_focused", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -28,7 +28,7 @@ extern class PopupMenu extends godot.Popup {
 		Emitted when an item of some `id` is pressed or its accelerator is activated.
 	**/
 	public var onIdPressed(get, never):Signal<(id:Int)->Void>;
-	@:dox(hide) inline function get_onIdPressed():Signal<(id:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onIdPressed():Signal<(id:Int)->Void> {
 		return new Signal(this, "id_pressed", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -38,7 +38,7 @@ extern class PopupMenu extends godot.Popup {
 		Emitted when an item of some `index` is pressed or its accelerator is activated.
 	**/
 	public var onIndexPressed(get, never):Signal<(index:Int)->Void>;
-	@:dox(hide) inline function get_onIndexPressed():Signal<(index:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onIndexPressed():Signal<(index:Int)->Void> {
 		return new Signal(this, "index_pressed", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 

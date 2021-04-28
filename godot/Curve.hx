@@ -18,7 +18,7 @@ extern class Curve extends godot.Resource {
 		Emitted when `maxValue` or `minValue` is changed.
 	**/
 	public var onRangeChanged(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onRangeChanged():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onRangeChanged():Signal<Void->Void> {
 		return new Signal(this, "range_changed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 

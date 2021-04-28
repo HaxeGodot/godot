@@ -88,7 +88,7 @@ extern class HTTPRequest extends godot.Node {
 		Emitted when a request is completed.
 	**/
 	public var onRequestCompleted(get, never):Signal<(result:Int, responseCode:Int, headers:std.Array<std.String>, body:std.Array<cs.types.UInt8>)->Void>;
-	@:dox(hide) inline function get_onRequestCompleted():Signal<(result:Int, responseCode:Int, headers:std.Array<std.String>, body:std.Array<cs.types.UInt8>)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onRequestCompleted():Signal<(result:Int, responseCode:Int, headers:std.Array<std.String>, body:std.Array<cs.types.UInt8>)->Void> {
 		return new Signal(this, "request_completed", Signal.SignalHandlerIntIntPoolStringArrayPoolByteArrayVoid.connectSignal, Signal.SignalHandlerIntIntPoolStringArrayPoolByteArrayVoid.disconnectSignal, Signal.SignalHandlerIntIntPoolStringArrayPoolByteArrayVoid.isSignalConnected);
 	}
 

@@ -24,7 +24,7 @@ extern class TabContainer extends godot.Container {
 		Emitted when the `TabContainer`'s `Popup` button is clicked. See `setPopup` for details.
 	**/
 	public var onPrePopupPressed(get, never):Signal<Void->Void>;
-	@:dox(hide) inline function get_onPrePopupPressed():Signal<Void->Void> {
+	@:dox(hide) @:noCompletion inline function get_onPrePopupPressed():Signal<Void->Void> {
 		return new Signal(this, "pre_popup_pressed", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
@@ -34,7 +34,7 @@ extern class TabContainer extends godot.Container {
 		Emitted when switching to another tab.
 	**/
 	public var onTabChanged(get, never):Signal<(tab:Int)->Void>;
-	@:dox(hide) inline function get_onTabChanged():Signal<(tab:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTabChanged():Signal<(tab:Int)->Void> {
 		return new Signal(this, "tab_changed", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
@@ -44,7 +44,7 @@ extern class TabContainer extends godot.Container {
 		Emitted when a tab is selected, even if it is the current tab.
 	**/
 	public var onTabSelected(get, never):Signal<(tab:Int)->Void>;
-	@:dox(hide) inline function get_onTabSelected():Signal<(tab:Int)->Void> {
+	@:dox(hide) @:noCompletion inline function get_onTabSelected():Signal<(tab:Int)->Void> {
 		return new Signal(this, "tab_selected", Signal.SignalHandlerIntVoid.connectSignal, Signal.SignalHandlerIntVoid.disconnectSignal, Signal.SignalHandlerIntVoid.isSignalConnected);
 	}
 
