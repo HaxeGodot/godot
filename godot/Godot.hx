@@ -11,8 +11,9 @@ using StringTools;
 class Godot {
 	static function buildUserClass() {
 		final fields = Context.getBuildFields();
-		final onReadyNodes = [];
+
 		var onReady = null;
+		final onReadyExprs = [];
 
 		for (field in fields) {
 			if (field.name == "_Ready") {
@@ -25,6 +26,13 @@ class Godot {
 						meta.name = ":meta";
 						meta.params = [macro "Godot.Export"].concat(meta.params);
 
+					case ":onReady":
+						if (meta.params.length == 1) {
+							onReadyExprs.push(macro $i{field.name} = ${meta.params[0]});
+						} else {
+							Context.error("@:onReady metadata requires one expression as argument", meta.pos);
+						}
+
 					case ":onReadyNode":
 						final type = switch (field.kind) {
 							case FVar(type, _) if (type != null):
@@ -36,11 +44,7 @@ class Godot {
 
 						switch (meta.params) {
 							case [{expr: EConst(CString(path))}]:
-								onReadyNodes.push({
-									name: field.name,
-									path: path,
-									type: type,
-								});
+								onReadyExprs.push(macro $i{field.name} = cast(getNode($v{path}), $type));
 
 							default:
 								Context.error("@:onReadyNode metadata requires one argument of type String", meta.pos);
@@ -51,20 +55,15 @@ class Godot {
 			}
 		}
 
-		if (onReadyNodes.length == 0) {
+		if (onReadyExprs.length == 0) {
 			return fields;
 		}
-
-		final onReadyNodesExpr = onReadyNodes.map(node -> {
-			final type = node.type;
-			return macro $i{node.name} = cast(getNode($v{node.path}), $type);
-		});
 
 		if (onReady != null) {
 			switch (onReady.kind) {
 				case FFun(f):
 					f.expr = macro {
-						$b{onReadyNodesExpr}
+						$b{onReadyExprs}
 						$e{f.expr}
 					};
 
@@ -77,7 +76,7 @@ class Godot {
 				pos: Context.currentPos(),
 				access: [AOverride],
 				kind: FFun({
-					expr: macro $b{onReadyNodesExpr},
+					expr: macro $b{onReadyExprs},
 					args: [],
 				})
 			});
