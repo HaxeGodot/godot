@@ -34,6 +34,45 @@ extern abstract Vector3(Vector3_) from Vector3_ to Vector3_ {
 
 	#if !doc_gen
 	/**		
+		Constructs a new `godot.Vector3` with the given components.
+		
+		@param x The vector's X component.
+		@param y The vector's Y component.
+		@param z The vector's Z component.
+	**/
+	public overload inline function new() {
+		this = new Vector3_(0, 0, 0);
+	}
+	#end
+
+	#if !doc_gen
+	/**		
+		Constructs a new `godot.Vector3` with the given components.
+		
+		@param x The vector's X component.
+		@param y The vector's Y component.
+		@param z The vector's Z component.
+	**/
+	public overload inline function new(x:Single) {
+		this = new Vector3_(x, 0, 0);
+	}
+	#end
+
+	#if !doc_gen
+	/**		
+		Constructs a new `godot.Vector3` with the given components.
+		
+		@param x The vector's X component.
+		@param y The vector's Y component.
+		@param z The vector's Z component.
+	**/
+	public overload inline function new(x:Single, y:Single) {
+		this = new Vector3_(x, y, 0);
+	}
+	#end
+
+	#if !doc_gen
+	/**		
 		Constructs a new `godot.Vector3` from an existing `godot.Vector3`.
 		
 		@param v The existing `godot.Vector3`.
@@ -592,7 +631,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		@param z The vector's Z component.
 	**/
 	@:native("new")
-	public overload function new(x:Single, y:Single, z:Single):Void;
+	public overload function new(x:Single#if doc_gen = 0 #end, y:Single#if doc_gen = 0 #end, z:Single#if doc_gen = 0 #end):Void;
 
 	/**		
 		Constructs a new `godot.Vector3` from an existing `godot.Vector3`.

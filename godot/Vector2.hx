@@ -33,6 +33,30 @@ extern abstract Vector2(Vector2_) from Vector2_ to Vector2_ {
 
 	#if !doc_gen
 	/**		
+		Constructs a new `godot.Vector2` with the given components.
+		
+		@param x The vector's X component.
+		@param y The vector's Y component.
+	**/
+	public overload inline function new() {
+		this = new Vector2_(0, 0);
+	}
+	#end
+
+	#if !doc_gen
+	/**		
+		Constructs a new `godot.Vector2` with the given components.
+		
+		@param x The vector's X component.
+		@param y The vector's Y component.
+	**/
+	public overload inline function new(x:Single) {
+		this = new Vector2_(x, 0);
+	}
+	#end
+
+	#if !doc_gen
+	/**		
 		Constructs a new `godot.Vector2` from an existing `godot.Vector2`.
 		
 		@param v The existing `godot.Vector2`.
@@ -597,7 +621,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 		@param y The vector's Y component.
 	**/
 	@:native("new")
-	public overload function new(x:Single, y:Single):Void;
+	public overload function new(x:Single#if doc_gen = 0 #end, y:Single#if doc_gen = 0 #end):Void;
 
 	/**		
 		Constructs a new `godot.Vector2` from an existing `godot.Vector2`.
