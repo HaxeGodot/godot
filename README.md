@@ -32,7 +32,7 @@ Godot will show many warnings about the Haxe generated C# code, this is because 
 * Typesafe actions
   * The `project.godot` file is read for its input action list and used to populate the `godot.Action` enum
   * You can pass an `Action` to functions like `Input.isActionPressed` eg `Input.isActionPressed(MoveLeft)` instead of `Input.isActionPressed("MoveLeft")`
-  * This prevents typos on actions
+  * This prevents typos on actions and give you autocompletion of the actions
   * Note: the patched functions still accept strings as normal
 * Set node variable using `@:onReadyNode("Path/To/Node") var myNode:Spatial;` it is equivalent to doing `myNode = cast(getNode("Path/To/Node), Spatial);` in `_Ready`
 
