@@ -11,14 +11,76 @@ using StringTools;
 class Godot {
 	static function buildUserClass() {
 		final fields = Context.getBuildFields();
+		final onReadyNodes = [];
+		var onReady = null;
 
 		for (field in fields) {
+			if (field.name == "_Ready") {
+				onReady = field;
+			}
+
 			for (meta in field.meta) {
-				if (meta.name == ":export") {
-					meta.name = ":meta";
-					meta.params = [macro "Godot.Export"].concat(meta.params);
+				switch (meta.name) {
+					case ":export":
+						meta.name = ":meta";
+						meta.params = [macro "Godot.Export"].concat(meta.params);
+
+					case ":onReadyNode":
+						final type = switch (field.kind) {
+							case FVar(type, _) if (type != null):
+								type;
+
+							default:
+								Context.error("@:onReadyNode metadata only works on typed variables", meta.pos);
+						};
+
+						switch (meta.params) {
+							case [{expr: EConst(CString(path))}]:
+								onReadyNodes.push({
+									name: field.name,
+									path: path,
+									type: type,
+								});
+
+							default:
+								Context.error("@:onReadyNode metadata requires one argument of type String", meta.pos);
+						}
+
+					default:
 				}
 			}
+		}
+
+		if (onReadyNodes.length == 0) {
+			return fields;
+		}
+
+		final onReadyNodesExpr = onReadyNodes.map(node -> {
+			final type = node.type;
+			return macro $i{node.name} = cast(getNode($v{node.path}), $type);
+		});
+
+		if (onReady != null) {
+			switch (onReady.kind) {
+				case FFun(f):
+					f.expr = macro {
+						$b{onReadyNodesExpr}
+						$e{f.expr}
+					};
+
+				default:
+					Context.error("_Ready is not a function", onReady.pos);
+			}
+		} else {
+			fields.push({
+				name: "_Ready",
+				pos: Context.currentPos(),
+				access: [AOverride],
+				kind: FFun({
+					expr: macro $b{onReadyNodesExpr},
+					args: [],
+				})
+			});
 		}
 
 		return fields;
