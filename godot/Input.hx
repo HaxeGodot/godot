@@ -47,7 +47,7 @@ extern class Input {
 		Returns `true` if you are pressing the action event. Note that if an action has multiple buttons assigned and more than one of them is pressed, releasing one button will release the action, even if some other button assigned to this action is still pressed.
 	**/
 	@:native("IsActionPressed")
-	public static function isActionPressed(action:std.String):Bool;
+	public static function isActionPressed(action:godot.Action):Bool;
 
 	/**		
 		Returns `true` when the user starts pressing the action event, meaning it's `true` only on the frame that the user pressed down the button.
@@ -55,19 +55,19 @@ extern class Input {
 		This is useful for code that needs to run only once when an action is pressed, instead of every frame while it's pressed.
 	**/
 	@:native("IsActionJustPressed")
-	public static function isActionJustPressed(action:std.String):Bool;
+	public static function isActionJustPressed(action:godot.Action):Bool;
 
 	/**		
 		Returns `true` when the user stops pressing the action event, meaning it's `true` only on the frame that the user released the button.
 	**/
 	@:native("IsActionJustReleased")
-	public static function isActionJustReleased(action:std.String):Bool;
+	public static function isActionJustReleased(action:godot.Action):Bool;
 
 	/**		
 		Returns a value between 0 and 1 representing the intensity of the given action. In a joypad, for example, the further away the axis (analog sticks or L2, R2 triggers) is from the dead zone, the closer the value will be to 1. If the action is mapped to a control that has no axis as the keyboard, the value returned will be 0 or 1.
 	**/
 	@:native("GetActionStrength")
-	public static function getActionStrength(action:std.String):Single;
+	public static function getActionStrength(action:godot.Action):Single;
 
 	#if doc_gen
 	/**		
@@ -310,7 +310,7 @@ extern class Input {
 		Note: This method will not cause any `godot.Node._Input` calls. It is intended to be used with `godot.Input.isActionPressed` and `godot.Input.isActionJustPressed`. If you want to simulate `_input`, use `godot.Input.parseInputEvent` instead.
 	**/
 	@:native("ActionPress")
-	public static overload function actionPress(action:std.String):Void;
+	public static overload function actionPress(action:godot.Action):Void;
 
 	/**		
 		This will simulate pressing the specified action.
@@ -320,14 +320,14 @@ extern class Input {
 		Note: This method will not cause any `godot.Node._Input` calls. It is intended to be used with `godot.Input.isActionPressed` and `godot.Input.isActionJustPressed`. If you want to simulate `_input`, use `godot.Input.parseInputEvent` instead.
 	**/
 	@:native("ActionPress")
-	public static overload function actionPress(action:std.String, strength:Single):Void;
+	public static overload function actionPress(action:godot.Action, strength:Single):Void;
 	#end
 
 	/**		
 		If the specified action is already pressed, this will release it.
 	**/
 	@:native("ActionRelease")
-	public static function actionRelease(action:std.String):Void;
+	public static function actionRelease(action:godot.Action):Void;
 
 	#if doc_gen
 	/**		
