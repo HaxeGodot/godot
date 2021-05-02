@@ -29,6 +29,12 @@ Godot will show many warnings about the Haxe generated C# code, this is because 
   * Replace `mynode.connect("the_signal", myHandler, "myFunction")` with `mynode.onTheSignal.connect(myHandler.myFunction)`
   * This prevent typos on signal name, function name, and mismatch signature on the connected function or on the `emitSignal` function
   * Define your own signals with `CustomSignal<FunctionType>` and use it with the same api as the built-in signals
+* Typesafe actions
+  * The `project.godot` file is read for its input action list and used to populate the `godot.Action` enum
+  * You can pass an `Action` to functions like `Input.isActionPressed` eg `Input.isActionPressed(MoveLeft)` instead of `Input.isActionPressed("MoveLeft")`
+  * This prevents typos on actions
+  * Note: the patched functions still accept strings as normal
+* Set node variable using `@:onReadyNode("Path/To/Node") var myNode:Spatial;` it is equivalent to doing `myNode = cast(getNode("Path/To/Node), Spatial);` in `_Ready`
 
 ## TODOs
 
