@@ -10,6 +10,14 @@ using StringTools;
 
 class Godot {
 	static function buildUserClass() {
+		final cls = Context.getLocalClass().get();
+		final classMetas = cls.meta;
+
+		if (classMetas.has(":tool")) {
+			classMetas.remove(":tool");
+			classMetas.add(":meta", [macro "Godot.Tool"], cls.pos);
+		}
+
 		final fields = Context.getBuildFields();
 
 		var onReady = null;
