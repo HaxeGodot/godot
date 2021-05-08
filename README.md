@@ -23,6 +23,7 @@ Godot will show many warnings about the Haxe generated C# code, this is because 
   * Constants use ALL_CAPS
   * Due to Haxe's module handling C# subtypes like `Godot.Animation.InterpolationType` are `godot.Animation_InterpolationType`
 * Export meta for variables is `@:export`, C# is `[Export]`
+* Tool meta for classes is `@:tool`, C# is `[Tool]`
 * Haxe has different keywords than C#, if the C# API use an Haxe keyword it'll be suffixed with a `_`
 * Typesafe signals with lambda support, for improved safety and dce support
   * `signal_name` become a `onSignalName` variable of type `Signal` with `connect`/`disconnect`/`isConnected` functions
