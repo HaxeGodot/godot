@@ -95,22 +95,13 @@ class Godot {
 		}
 	}
 
-	static function listScripts(filename:String):Array<String> {
-		final scripts = [];
-		final ext = '[ext_resource path="res://${Compiler.getOutput()}/src/';
-
-		for (line in File.getContent(filename).split("\n")) {
-			if (line.startsWith(ext)) {
-				scripts.push(line.substring(ext.length, line.indexOf('.cs" type="Script" id=')).replace("/", "."));
-			}
-		}
-
-		return scripts;
-	}
-
 	static function buildProject() {
 		final scripts = new Map<String, Bool>();
-		recFind(".", "tscn", path -> for (script in listScripts(path)) scripts.set(script, true));
+		recFind("scripts", "hx", path -> {
+			if (!path.endsWith("/import.hx")) {
+				scripts.set(path.substring(8, path.length - 3).replace("/", "."), true);
+			}
+		});
 
 		for (script => _ in scripts) {
 			Context.getType(script);
