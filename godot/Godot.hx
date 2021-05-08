@@ -34,28 +34,18 @@ class Godot {
 						meta.name = ":meta";
 						meta.params = [macro "Godot.Export"].concat(meta.params);
 
-					case ":onReady":
-						if (meta.params.length == 1) {
-							onReadyExprs.push(macro $i{field.name} = ${meta.params[0]});
-						} else {
-							Context.error("@:onReady metadata requires one expression as argument", meta.pos);
-						}
+					case ":onready":
+						switch (field.kind) {
+							case FVar(_, null):
+							// Nothing to do
 
-					case ":onReadyNode":
-						final type = switch (field.kind) {
-							case FVar(type, _) if (type != null):
-								type;
+							case FVar(t, e):
+								onReadyExprs.push(macro $i{field.name} = $e);
+								field.kind = FVar(t, macro false ? $e : null);
+								field.meta.remove(meta);
 
 							default:
-								Context.error("@:onReadyNode metadata only works on typed variables", meta.pos);
-						};
-
-						switch (meta.params) {
-							case [{expr: EConst(CString(path))}]:
-								onReadyExprs.push(macro $i{field.name} = cast(getNode($v{path}), $type));
-
-							default:
-								Context.error("@:onReadyNode metadata requires one argument of type String", meta.pos);
+								Context.error("@:onready only works on variables", meta.pos);
 						}
 
 					default:

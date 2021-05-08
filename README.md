@@ -35,8 +35,7 @@ Godot will show many warnings about the Haxe generated C# code, this is because 
   * This prevents typos on actions and give you autocompletion of the actions
   * Note: the patched functions still accept strings as normal
 * The `as` operator is a function on godot object, if using `godot.Utils`
-* Set value when the node is ready using `@:onReadyNode(expr) var myvar` it is equivalent to doing `myvar = expr;` in `_Ready`
-* Set node variable using `@:onReadyNode("Path/To/Node") var myNode:Spatial;` it is equivalent to doing `myNode = getNode("Path/To/Node).as(Spatial);` in `_Ready`
+* Similar to GDScript you can delay a variable initialization until the node is ready by using `@:onready var myNode = getNode("Path/To/Node).as(Spatial);`, and `myNode` will only call `getNode` once `_Ready` is called
 
 ## TODOs
 
