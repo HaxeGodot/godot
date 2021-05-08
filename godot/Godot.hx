@@ -101,7 +101,7 @@ class Godot {
 
 		for (line in File.getContent(filename).split("\n")) {
 			if (line.startsWith(ext)) {
-				scripts.push(line.substring(ext.length, line.indexOf('.cs" type="Script" id=')));
+				scripts.push(line.substring(ext.length, line.indexOf('.cs" type="Script" id=')).replace("/", "."));
 			}
 		}
 
