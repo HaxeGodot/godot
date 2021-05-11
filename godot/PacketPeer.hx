@@ -79,8 +79,9 @@ extern abstract class PacketPeer extends godot.Reference {
 	/**		
 		Gets a raw packet.
 	**/
-	@:native("GetPacket")
-	public function getPacket():cs.NativeArray<cs.types.UInt8>;
+	public extern inline function getPacket():std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetPacket()", this));
+	}
 
 	/**		
 		Sends a raw packet.

@@ -62,8 +62,9 @@ extern class VisualShader extends godot.Shader {
 	/**		
 		Returns the list of all nodes in the shader with the specified type.
 	**/
-	@:native("GetNodeList")
-	public function getNodeList(type:godot.VisualShader_Type):cs.NativeArray<Int>;
+	public extern inline function getNodeList(type:godot.VisualShader_Type):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetNodeList({1})", this, type));
+	}
 
 	@:native("GetValidNodeId")
 	public function getValidNodeId(type:godot.VisualShader_Type):Int;

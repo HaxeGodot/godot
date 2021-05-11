@@ -30,8 +30,9 @@ extern class ResourceFormatLoader extends godot.Reference {
 	/**		
 		Gets the list of extensions for files this loader is able to read.
 	**/
-	@:native("GetRecognizedExtensions")
-	public function getRecognizedExtensions():cs.NativeArray<std.String>;
+	public extern inline function getRecognizedExtensions():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetRecognizedExtensions()", this));
+	}
 
 	/**		
 		Gets the class name of the resource associated with the given path. If the loader cannot handle it, it should return `""`.

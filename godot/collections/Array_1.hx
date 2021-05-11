@@ -108,7 +108,7 @@ extern class Array_1<T0>_ implements cs.system.collections.generic.IList_1<T0> i
 	public function contains(item:T0):Bool;
 
 	@:native("CopyTo")
-	public function copyTo(array:cs.NativeArray<T0>, arrayIndex:Int):Void;
+	public function copyTo(array:HaxeArray<T0>, arrayIndex:Int):Void;
 
 	@:native("Remove")
 	public function remove(item:T0):Bool;

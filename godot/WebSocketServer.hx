@@ -94,7 +94,7 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 		@param protocols If the parameter is null, then the default value is new string[] {}
 	**/
 	@:native("Listen")
-	public function listen(port:Int, ?protocols:cs.NativeArray<std.String>, ?gdMpApi:Bool):godot.Error;
+	public function listen(port:Int, ?protocols:std.Array<std.String>, ?gdMpApi:Bool):godot.Error;
 	#else
 	/**		
 		Starts listening on the given port.
@@ -122,7 +122,7 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 		@param protocols If the parameter is null, then the default value is new string[] {}
 	**/
 	@:native("Listen")
-	public overload function listen(port:Int, protocols:cs.NativeArray<std.String>):godot.Error;
+	public overload function listen(port:Int, protocols:HaxeArray<std.String>):godot.Error;
 
 	/**		
 		Starts listening on the given port.
@@ -136,7 +136,7 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 		@param protocols If the parameter is null, then the default value is new string[] {}
 	**/
 	@:native("Listen")
-	public overload function listen(port:Int, protocols:cs.NativeArray<std.String>, gdMpApi:Bool):godot.Error;
+	public overload function listen(port:Int, protocols:HaxeArray<std.String>, gdMpApi:Bool):godot.Error;
 	#end
 
 	/**		

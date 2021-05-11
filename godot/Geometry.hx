@@ -90,14 +90,16 @@ extern class Geometry {
 	/**		
 		Given the two 2D segments (`p1`, `q1`) and (`p2`, `q2`), finds those two points on the two segments that are closest to each other. Returns a `godot.Vector2` that contains this point on (`p1`, `q1`) as well the accompanying point on (`p2`, `q2`).
 	**/
-	@:native("GetClosestPointsBetweenSegments2d")
-	public static function getClosestPointsBetweenSegments2d(p1:godot.Vector2, q1:godot.Vector2, p2:godot.Vector2, q2:godot.Vector2):cs.NativeArray<godot.Vector2>;
+	public static extern inline function getClosestPointsBetweenSegments2d(p1:godot.Vector2, q1:godot.Vector2, p2:godot.Vector2, q2:godot.Vector2):std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("GetClosestPointsBetweenSegments2d({0}, {1}, {2}, {3})", p1, q1, p2, q2));
+	}
 
 	/**		
 		Given the two 3D segments (`p1`, `p2`) and (`q1`, `q2`), finds those two points on the two segments that are closest to each other. Returns a `godot.Vector3` that contains this point on (`p1`, `p2`) as well the accompanying point on (`q1`, `q2`).
 	**/
-	@:native("GetClosestPointsBetweenSegments")
-	public static function getClosestPointsBetweenSegments(p1:godot.Vector3, p2:godot.Vector3, q1:godot.Vector3, q2:godot.Vector3):cs.NativeArray<godot.Vector3>;
+	public static extern inline function getClosestPointsBetweenSegments(p1:godot.Vector3, p2:godot.Vector3, q1:godot.Vector3, q2:godot.Vector3):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("GetClosestPointsBetweenSegments({0}, {1}, {2}, {3})", p1, p2, q1, q2));
+	}
 
 	/**		
 		Returns the 2D point on the 2D segment (`s1`, `s2`) that is closest to `point`. The returned point will always be inside the specified segment.
@@ -144,20 +146,23 @@ extern class Geometry {
 	/**		
 		Checks if the segment (`from`, `to`) intersects the sphere that is located at `sphere_position` and has radius `sphere_radius`. If no, returns an empty `godot.Vector3`. If yes, returns a `godot.Vector3` containing the point of intersection and the sphere's normal at the point of intersection.
 	**/
-	@:native("SegmentIntersectsSphere")
-	public static function segmentIntersectsSphere(from:godot.Vector3, to:godot.Vector3, spherePosition:godot.Vector3, sphereRadius:Single):cs.NativeArray<godot.Vector3>;
+	public static extern inline function segmentIntersectsSphere(from:godot.Vector3, to:godot.Vector3, spherePosition:godot.Vector3, sphereRadius:Single):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("SegmentIntersectsSphere({0}, {1}, {2}, {3})", from, to, spherePosition, sphereRadius));
+	}
 
 	/**		
 		Checks if the segment (`from`, `to`) intersects the cylinder with height `height` that is centered at the origin and has radius `radius`. If no, returns an empty `godot.Vector3`. If an intersection takes place, the returned array contains the point of intersection and the cylinder's normal at the point of intersection.
 	**/
-	@:native("SegmentIntersectsCylinder")
-	public static function segmentIntersectsCylinder(from:godot.Vector3, to:godot.Vector3, height:Single, radius:Single):cs.NativeArray<godot.Vector3>;
+	public static extern inline function segmentIntersectsCylinder(from:godot.Vector3, to:godot.Vector3, height:Single, radius:Single):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("SegmentIntersectsCylinder({0}, {1}, {2}, {3})", from, to, height, radius));
+	}
 
 	/**		
 		Given a convex hull defined though the `godot.Plane`s in the array `planes`, tests if the segment (`from`, `to`) intersects with that hull. If an intersection is found, returns a `godot.Vector3` containing the point the intersection and the hull's normal. If no intersecion is found, an the returned array is empty.
 	**/
-	@:native("SegmentIntersectsConvex")
-	public static function segmentIntersectsConvex(from:godot.Vector3, to:godot.Vector3, planes:godot.collections.Array):cs.NativeArray<godot.Vector3>;
+	public static extern inline function segmentIntersectsConvex(from:godot.Vector3, to:godot.Vector3, planes:godot.collections.Array):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("SegmentIntersectsConvex({0}, {1}, {2})", from, to, planes));
+	}
 
 	/**		
 		Returns if `point` is inside the triangle specified by `a`, `b` and `c`.
@@ -180,26 +185,30 @@ extern class Geometry {
 	/**		
 		Triangulates the polygon specified by the points in `polygon`. Returns a `Int` where each triangle consists of three consecutive point indices into `polygon` (i.e. the returned array will have `n * 3` elements, with `n` being the number of found triangles). If the triangulation did not succeed, an empty `Int` is returned.
 	**/
-	@:native("TriangulatePolygon")
-	public static function triangulatePolygon(polygon:haxe.Rest<godot.Vector2>):cs.NativeArray<Int>;
+	public static extern inline function triangulatePolygon(polygon:haxe.Rest<godot.Vector2>):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("TriangulatePolygon({0})", polygon));
+	}
 
 	/**		
 		Triangulates the area specified by discrete set of `points` such that no point is inside the circumcircle of any resulting triangle. Returns a `Int` where each triangle consists of three consecutive point indices into `points` (i.e. the returned array will have `n * 3` elements, with `n` being the number of found triangles). If the triangulation did not succeed, an empty `Int` is returned.
 	**/
-	@:native("TriangulateDelaunay2d")
-	public static function triangulateDelaunay2d(points:haxe.Rest<godot.Vector2>):cs.NativeArray<Int>;
+	public static extern inline function triangulateDelaunay2d(points:haxe.Rest<godot.Vector2>):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("TriangulateDelaunay2d({0})", points));
+	}
 
 	/**		
 		Given an array of `godot.Vector2`s, returns the convex hull as a list of points in counterclockwise order. The last point is the same as the first one.
 	**/
-	@:native("ConvexHull2d")
-	public static function convexHull2d(points:haxe.Rest<godot.Vector2>):cs.NativeArray<godot.Vector2>;
+	public static extern inline function convexHull2d(points:haxe.Rest<godot.Vector2>):std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("ConvexHull2d({0})", points));
+	}
 
 	/**		
 		Clips the polygon defined by the points in `points` against the `plane` and returns the points of the clipped polygon.
 	**/
-	@:native("ClipPolygon")
-	public static function clipPolygon(points:cs.NativeArray<godot.Vector3>, plane:godot.Plane):cs.NativeArray<godot.Vector3>;
+	public static extern inline function clipPolygon(points:HaxeArray<godot.Vector3>, plane:godot.Plane):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("ClipPolygon({0}, {1})", points, plane));
+	}
 
 	/**		
 		Merges (combines) `polygon_a` and `polygon_b` and returns an array of merged polygons. This performs  between polygons.
@@ -207,7 +216,7 @@ extern class Geometry {
 		The operation may result in an outer polygon (boundary) and multiple inner polygons (holes) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
 	@:native("MergePolygons2d")
-	public static function mergePolygons2d(polygonA:cs.NativeArray<godot.Vector2>, polygonB:haxe.Rest<godot.Vector2>):godot.collections.Array;
+	public static function mergePolygons2d(polygonA:HaxeArray<godot.Vector2>, polygonB:haxe.Rest<godot.Vector2>):godot.collections.Array;
 
 	/**		
 		Clips `polygon_a` against `polygon_b` and returns an array of clipped polygons. This performs  between polygons. Returns an empty array if `polygon_b` completely overlaps `polygon_a`.
@@ -215,7 +224,7 @@ extern class Geometry {
 		If `polygon_b` is enclosed by `polygon_a`, returns an outer polygon (boundary) and inner polygon (hole) which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
 	@:native("ClipPolygons2d")
-	public static function clipPolygons2d(polygonA:cs.NativeArray<godot.Vector2>, polygonB:haxe.Rest<godot.Vector2>):godot.collections.Array;
+	public static function clipPolygons2d(polygonA:HaxeArray<godot.Vector2>, polygonB:haxe.Rest<godot.Vector2>):godot.collections.Array;
 
 	/**		
 		Intersects `polygon_a` with `polygon_b` and returns an array of intersected polygons. This performs  between polygons. In other words, returns common area shared by polygons. Returns an empty array if no intersection occurs.
@@ -223,7 +232,7 @@ extern class Geometry {
 		The operation may result in an outer polygon (boundary) and inner polygon (hole) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
 	@:native("IntersectPolygons2d")
-	public static function intersectPolygons2d(polygonA:cs.NativeArray<godot.Vector2>, polygonB:haxe.Rest<godot.Vector2>):godot.collections.Array;
+	public static function intersectPolygons2d(polygonA:HaxeArray<godot.Vector2>, polygonB:haxe.Rest<godot.Vector2>):godot.collections.Array;
 
 	/**		
 		Mutually excludes common area defined by intersection of `polygon_a` and `polygon_b` (see `godot.Geometry.intersectPolygons2d`) and returns an array of excluded polygons. This performs  between polygons. In other words, returns all but common area between polygons.
@@ -231,19 +240,19 @@ extern class Geometry {
 		The operation may result in an outer polygon (boundary) and inner polygon (hole) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
 	@:native("ExcludePolygons2d")
-	public static function excludePolygons2d(polygonA:cs.NativeArray<godot.Vector2>, polygonB:haxe.Rest<godot.Vector2>):godot.collections.Array;
+	public static function excludePolygons2d(polygonA:HaxeArray<godot.Vector2>, polygonB:haxe.Rest<godot.Vector2>):godot.collections.Array;
 
 	/**		
 		Clips `polyline` against `polygon` and returns an array of clipped polylines. This performs  between the polyline and the polygon. This operation can be thought of as cutting a line with a closed shape.
 	**/
 	@:native("ClipPolylineWithPolygon2d")
-	public static function clipPolylineWithPolygon2d(polyline:cs.NativeArray<godot.Vector2>, polygon:haxe.Rest<godot.Vector2>):godot.collections.Array;
+	public static function clipPolylineWithPolygon2d(polyline:HaxeArray<godot.Vector2>, polygon:haxe.Rest<godot.Vector2>):godot.collections.Array;
 
 	/**		
 		Intersects `polyline` with `polygon` and returns an array of intersected polylines. This performs  between the polyline and the polygon. This operation can be thought of as chopping a line with a closed shape.
 	**/
 	@:native("IntersectPolylineWithPolygon2d")
-	public static function intersectPolylineWithPolygon2d(polyline:cs.NativeArray<godot.Vector2>, polygon:haxe.Rest<godot.Vector2>):godot.collections.Array;
+	public static function intersectPolylineWithPolygon2d(polyline:HaxeArray<godot.Vector2>, polygon:haxe.Rest<godot.Vector2>):godot.collections.Array;
 
 	#if doc_gen
 	/**		
@@ -265,7 +274,7 @@ extern class Geometry {
 		```
 	**/
 	@:native("OffsetPolygon2d")
-	public static function offsetPolygon2d(polygon:cs.NativeArray<godot.Vector2>, delta:Single, ?joinType:godot.Geometry_PolyJoinType):godot.collections.Array;
+	public static function offsetPolygon2d(polygon:std.Array<godot.Vector2>, delta:Single, ?joinType:godot.Geometry_PolyJoinType):godot.collections.Array;
 	#else
 	/**		
 		Inflates or deflates `polygon` by `delta` units (pixels). If `delta` is positive, makes the polygon grow outward. If `delta` is negative, shrinks the polygon inward. Returns an array of polygons because inflating/deflating may result in multiple discrete polygons. Returns an empty array if `delta` is negative and the absolute value of it approximately exceeds the minimum bounding rectangle dimensions of the polygon.
@@ -286,7 +295,7 @@ extern class Geometry {
 		```
 	**/
 	@:native("OffsetPolygon2d")
-	public static overload function offsetPolygon2d(polygon:cs.NativeArray<godot.Vector2>, delta:Single):godot.collections.Array;
+	public static overload function offsetPolygon2d(polygon:HaxeArray<godot.Vector2>, delta:Single):godot.collections.Array;
 
 	/**		
 		Inflates or deflates `polygon` by `delta` units (pixels). If `delta` is positive, makes the polygon grow outward. If `delta` is negative, shrinks the polygon inward. Returns an array of polygons because inflating/deflating may result in multiple discrete polygons. Returns an empty array if `delta` is negative and the absolute value of it approximately exceeds the minimum bounding rectangle dimensions of the polygon.
@@ -307,7 +316,7 @@ extern class Geometry {
 		```
 	**/
 	@:native("OffsetPolygon2d")
-	public static overload function offsetPolygon2d(polygon:cs.NativeArray<godot.Vector2>, delta:Single, joinType:godot.Geometry_PolyJoinType):godot.collections.Array;
+	public static overload function offsetPolygon2d(polygon:HaxeArray<godot.Vector2>, delta:Single, joinType:godot.Geometry_PolyJoinType):godot.collections.Array;
 	#end
 
 	#if doc_gen
@@ -321,7 +330,7 @@ extern class Geometry {
 		The operation may result in an outer polygon (boundary) and inner polygon (hole) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
 	@:native("OffsetPolyline2d")
-	public static function offsetPolyline2d(polyline:cs.NativeArray<godot.Vector2>, delta:Single, ?joinType:godot.Geometry_PolyJoinType, ?endType:godot.Geometry_PolyEndType):godot.collections.Array;
+	public static function offsetPolyline2d(polyline:std.Array<godot.Vector2>, delta:Single, ?joinType:godot.Geometry_PolyJoinType, ?endType:godot.Geometry_PolyEndType):godot.collections.Array;
 	#else
 	/**		
 		Inflates or deflates `polyline` by `delta` units (pixels), producing polygons. If `delta` is positive, makes the polyline grow outward. Returns an array of polygons because inflating/deflating may result in multiple discrete polygons. If `delta` is negative, returns an empty array.
@@ -333,7 +342,7 @@ extern class Geometry {
 		The operation may result in an outer polygon (boundary) and inner polygon (hole) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
 	@:native("OffsetPolyline2d")
-	public static overload function offsetPolyline2d(polyline:cs.NativeArray<godot.Vector2>, delta:Single):godot.collections.Array;
+	public static overload function offsetPolyline2d(polyline:HaxeArray<godot.Vector2>, delta:Single):godot.collections.Array;
 
 	/**		
 		Inflates or deflates `polyline` by `delta` units (pixels), producing polygons. If `delta` is positive, makes the polyline grow outward. Returns an array of polygons because inflating/deflating may result in multiple discrete polygons. If `delta` is negative, returns an empty array.
@@ -345,7 +354,7 @@ extern class Geometry {
 		The operation may result in an outer polygon (boundary) and inner polygon (hole) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
 	@:native("OffsetPolyline2d")
-	public static overload function offsetPolyline2d(polyline:cs.NativeArray<godot.Vector2>, delta:Single, joinType:godot.Geometry_PolyJoinType):godot.collections.Array;
+	public static overload function offsetPolyline2d(polyline:HaxeArray<godot.Vector2>, delta:Single, joinType:godot.Geometry_PolyJoinType):godot.collections.Array;
 
 	/**		
 		Inflates or deflates `polyline` by `delta` units (pixels), producing polygons. If `delta` is positive, makes the polyline grow outward. Returns an array of polygons because inflating/deflating may result in multiple discrete polygons. If `delta` is negative, returns an empty array.
@@ -357,7 +366,7 @@ extern class Geometry {
 		The operation may result in an outer polygon (boundary) and inner polygon (hole) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
 	@:native("OffsetPolyline2d")
-	public static overload function offsetPolyline2d(polyline:cs.NativeArray<godot.Vector2>, delta:Single, joinType:godot.Geometry_PolyJoinType, endType:godot.Geometry_PolyEndType):godot.collections.Array;
+	public static overload function offsetPolyline2d(polyline:HaxeArray<godot.Vector2>, delta:Single, joinType:godot.Geometry_PolyJoinType, endType:godot.Geometry_PolyEndType):godot.collections.Array;
 	#end
 
 	/**		

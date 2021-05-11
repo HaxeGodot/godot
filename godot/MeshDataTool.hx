@@ -170,8 +170,9 @@ extern class MeshDataTool extends godot.Reference {
 	/**		
 		Returns the bones of the given vertex.
 	**/
-	@:native("GetVertexBones")
-	public function getVertexBones(idx:Int):cs.NativeArray<Int>;
+	public extern inline function getVertexBones(idx:Int):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetVertexBones({1})", this, idx));
+	}
 
 	/**		
 		Sets the bone weights of the given vertex.
@@ -182,8 +183,9 @@ extern class MeshDataTool extends godot.Reference {
 	/**		
 		Returns bone weights of the given vertex.
 	**/
-	@:native("GetVertexWeights")
-	public function getVertexWeights(idx:Int):cs.NativeArray<Single>;
+	public extern inline function getVertexWeights(idx:Int):std.Array<Single> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetVertexWeights({1})", this, idx));
+	}
 
 	/**		
 		Sets the metadata associated with the given vertex.
@@ -200,14 +202,16 @@ extern class MeshDataTool extends godot.Reference {
 	/**		
 		Returns an array of edges that share the given vertex.
 	**/
-	@:native("GetVertexEdges")
-	public function getVertexEdges(idx:Int):cs.NativeArray<Int>;
+	public extern inline function getVertexEdges(idx:Int):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetVertexEdges({1})", this, idx));
+	}
 
 	/**		
 		Returns an array of faces that share the given vertex.
 	**/
-	@:native("GetVertexFaces")
-	public function getVertexFaces(idx:Int):cs.NativeArray<Int>;
+	public extern inline function getVertexFaces(idx:Int):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetVertexFaces({1})", this, idx));
+	}
 
 	/**		
 		Returns index of specified vertex connected to given edge.
@@ -220,8 +224,9 @@ extern class MeshDataTool extends godot.Reference {
 	/**		
 		Returns array of faces that touch given edge.
 	**/
-	@:native("GetEdgeFaces")
-	public function getEdgeFaces(idx:Int):cs.NativeArray<Int>;
+	public extern inline function getEdgeFaces(idx:Int):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetEdgeFaces({1})", this, idx));
+	}
 
 	/**		
 		Sets the metadata of the given edge.

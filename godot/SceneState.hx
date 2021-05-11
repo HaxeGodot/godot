@@ -87,8 +87,9 @@ extern abstract class SceneState extends godot.Reference {
 	/**		
 		Returns the list of group names associated with the node at `idx`.
 	**/
-	@:native("GetNodeGroups")
-	public function getNodeGroups(idx:Int):cs.NativeArray<std.String>;
+	public extern inline function getNodeGroups(idx:Int):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetNodeGroups({1})", this, idx));
+	}
 
 	/**		
 		Returns the node's index, which is its position relative to its siblings. This is only relevant and saved in scenes for cases where new nodes are added to an instanced or inherited scene among siblings from the base scene. Despite the name, this index is not related to the `idx` argument used here and in other methods.

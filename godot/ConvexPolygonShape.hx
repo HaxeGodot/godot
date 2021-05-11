@@ -24,6 +24,7 @@ extern class ConvexPolygonShape extends godot.Shape {
 	@:native("SetPoints")
 	public function setPoints(points:haxe.Rest<godot.Vector3>):Void;
 
-	@:native("GetPoints")
-	public function getPoints():cs.NativeArray<godot.Vector3>;
+	public extern inline function getPoints():std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetPoints()", this));
+	}
 }

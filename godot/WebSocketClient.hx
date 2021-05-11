@@ -94,7 +94,7 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		@param customHeaders If the parameter is null, then the default value is new string[] {}
 	**/
 	@:native("ConnectToUrl")
-	public function connectToUrl(url:std.String, protocols:cs.NativeArray<std.String>, gdMpApi:Bool, customHeaders:haxe.Rest<std.String>):godot.Error;
+	public function connectToUrl(url:std.String, protocols:HaxeArray<std.String>, gdMpApi:Bool, customHeaders:haxe.Rest<std.String>):godot.Error;
 
 	#if doc_gen
 	/**		

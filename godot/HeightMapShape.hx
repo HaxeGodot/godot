@@ -48,6 +48,7 @@ extern class HeightMapShape extends godot.Shape {
 	@:native("SetMapData")
 	public function setMapData(data:haxe.Rest<Single>):Void;
 
-	@:native("GetMapData")
-	public function getMapData():cs.NativeArray<Single>;
+	public extern inline function getMapData():std.Array<Single> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetMapData()", this));
+	}
 }

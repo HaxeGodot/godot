@@ -112,8 +112,9 @@ extern class ResourceLoader {
 	/**		
 		Returns the list of recognized extensions for a resource type.
 	**/
-	@:native("GetRecognizedExtensionsForType")
-	public static function getRecognizedExtensionsForType(type:std.String):cs.NativeArray<std.String>;
+	public static extern inline function getRecognizedExtensionsForType(type:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("GetRecognizedExtensionsForType({0})", type));
+	}
 
 	/**		
 		Changes the behavior on missing sub-resources. The default behavior is to abort loading.
@@ -124,8 +125,9 @@ extern class ResourceLoader {
 	/**		
 		Returns the dependencies for the resource at the given `path`.
 	**/
-	@:native("GetDependencies")
-	public static function getDependencies(path:std.String):cs.NativeArray<std.String>;
+	public static extern inline function getDependencies(path:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("GetDependencies({0})", path));
+	}
 
 	/**		
 		Returns whether a cached resource is available for the given `path`.

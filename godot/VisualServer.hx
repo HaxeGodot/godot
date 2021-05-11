@@ -588,14 +588,16 @@ extern class VisualServer {
 	/**		
 		Returns a mesh's surface's vertex buffer.
 	**/
-	@:native("MeshSurfaceGetArray")
-	public static function meshSurfaceGetArray(mesh:godot.RID, surface:Int):cs.NativeArray<cs.types.UInt8>;
+	public static extern inline function meshSurfaceGetArray(mesh:godot.RID, surface:Int):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("MeshSurfaceGetArray({0}, {1})", mesh, surface));
+	}
 
 	/**		
 		Returns a mesh's surface's index buffer.
 	**/
-	@:native("MeshSurfaceGetIndexArray")
-	public static function meshSurfaceGetIndexArray(mesh:godot.RID, surface:Int):cs.NativeArray<cs.types.UInt8>;
+	public static extern inline function meshSurfaceGetIndexArray(mesh:godot.RID, surface:Int):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("MeshSurfaceGetIndexArray({0}, {1})", mesh, surface));
+	}
 
 	/**		
 		Returns a mesh's surface's buffer arrays.
@@ -1200,8 +1202,9 @@ extern class VisualServer {
 	/**		
 		Returns the data used by the GI probe.
 	**/
-	@:native("GiProbeGetDynamicData")
-	public static function giProbeGetDynamicData(probe:godot.RID):cs.NativeArray<Int>;
+	public static extern inline function giProbeGetDynamicData(probe:godot.RID):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("GiProbeGetDynamicData({0})", probe));
+	}
 
 	/**		
 		Sets the dynamic range of the GI probe. Dynamic range sets the limit for how bright lights can be. A smaller range captures greater detail but limits how bright lights can be. Equivalent to `godot.GIProbe.dynamicRange`.
@@ -1342,8 +1345,9 @@ extern class VisualServer {
 	/**		
 		Returns the octree used by the lightmap capture.
 	**/
-	@:native("LightmapCaptureGetOctree")
-	public static function lightmapCaptureGetOctree(capture:godot.RID):cs.NativeArray<cs.types.UInt8>;
+	public static extern inline function lightmapCaptureGetOctree(capture:godot.RID):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("LightmapCaptureGetOctree({0})", capture));
+	}
 
 	/**		
 		Sets the energy multiplier for this lightmap capture. Equivalent to `godot.BakedLightmapData.energy`.
@@ -2384,25 +2388,25 @@ extern class VisualServer {
 		Adds a polyline, which is a line from multiple points with a width, to the `godot.CanvasItem`'s draw commands.
 	**/
 	@:native("CanvasItemAddPolyline")
-	public static function canvasItemAddPolyline(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, ?width:Single, ?antialiased:Bool):Void;
+	public static function canvasItemAddPolyline(item:godot.RID, points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
 		Adds a polyline, which is a line from multiple points with a width, to the `godot.CanvasItem`'s draw commands.
 	**/
 	@:native("CanvasItemAddPolyline")
-	public static overload function canvasItemAddPolyline(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>):Void;
+	public static overload function canvasItemAddPolyline(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
 
 	/**		
 		Adds a polyline, which is a line from multiple points with a width, to the `godot.CanvasItem`'s draw commands.
 	**/
 	@:native("CanvasItemAddPolyline")
-	public static overload function canvasItemAddPolyline(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, width:Single):Void;
+	public static overload function canvasItemAddPolyline(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, width:Single):Void;
 
 	/**		
 		Adds a polyline, which is a line from multiple points with a width, to the `godot.CanvasItem`'s draw commands.
 	**/
 	@:native("CanvasItemAddPolyline")
-	public static overload function canvasItemAddPolyline(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, width:Single, antialiased:Bool):Void;
+	public static overload function canvasItemAddPolyline(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, width:Single, antialiased:Bool):Void;
 	#end
 
 	/**		
@@ -2594,25 +2598,25 @@ extern class VisualServer {
 		Adds a primitive to the `godot.CanvasItem`'s draw commands.
 	**/
 	@:native("CanvasItemAddPrimitive")
-	public static function canvasItemAddPrimitive(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.RID, ?width:Single, ?normalMap:godot.RID):Void;
+	public static function canvasItemAddPrimitive(item:godot.RID, points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, uvs:std.Array<godot.Vector2>, texture:godot.RID, ?width:Single, ?normalMap:godot.RID):Void;
 	#else
 	/**		
 		Adds a primitive to the `godot.CanvasItem`'s draw commands.
 	**/
 	@:native("CanvasItemAddPrimitive")
-	public static overload function canvasItemAddPrimitive(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.RID):Void;
+	public static overload function canvasItemAddPrimitive(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.RID):Void;
 
 	/**		
 		Adds a primitive to the `godot.CanvasItem`'s draw commands.
 	**/
 	@:native("CanvasItemAddPrimitive")
-	public static overload function canvasItemAddPrimitive(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.RID, width:Single):Void;
+	public static overload function canvasItemAddPrimitive(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.RID, width:Single):Void;
 
 	/**		
 		Adds a primitive to the `godot.CanvasItem`'s draw commands.
 	**/
 	@:native("CanvasItemAddPrimitive")
-	public static overload function canvasItemAddPrimitive(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.RID, width:Single, normalMap:godot.RID):Void;
+	public static overload function canvasItemAddPrimitive(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.RID, width:Single, normalMap:godot.RID):Void;
 	#end
 
 	#if doc_gen
@@ -2622,7 +2626,7 @@ extern class VisualServer {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("CanvasItemAddPolygon")
-	public static function canvasItemAddPolygon(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, ?uvs:cs.NativeArray<godot.Vector2>, ?texture:godot.RID, ?normalMap:godot.RID, ?antialiased:Bool):Void;
+	public static function canvasItemAddPolygon(item:godot.RID, points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?uvs:std.Array<godot.Vector2>, ?texture:godot.RID, ?normalMap:godot.RID, ?antialiased:Bool):Void;
 	#else
 	/**		
 		Adds a polygon to the `godot.CanvasItem`'s draw commands.
@@ -2630,7 +2634,7 @@ extern class VisualServer {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("CanvasItemAddPolygon")
-	public static overload function canvasItemAddPolygon(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>):Void;
+	public static overload function canvasItemAddPolygon(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
 
 	/**		
 		Adds a polygon to the `godot.CanvasItem`'s draw commands.
@@ -2638,7 +2642,7 @@ extern class VisualServer {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("CanvasItemAddPolygon")
-	public static overload function canvasItemAddPolygon(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>):Void;
+	public static overload function canvasItemAddPolygon(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>):Void;
 
 	/**		
 		Adds a polygon to the `godot.CanvasItem`'s draw commands.
@@ -2646,7 +2650,7 @@ extern class VisualServer {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("CanvasItemAddPolygon")
-	public static overload function canvasItemAddPolygon(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.RID):Void;
+	public static overload function canvasItemAddPolygon(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.RID):Void;
 
 	/**		
 		Adds a polygon to the `godot.CanvasItem`'s draw commands.
@@ -2654,7 +2658,7 @@ extern class VisualServer {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("CanvasItemAddPolygon")
-	public static overload function canvasItemAddPolygon(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.RID, normalMap:godot.RID):Void;
+	public static overload function canvasItemAddPolygon(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.RID, normalMap:godot.RID):Void;
 
 	/**		
 		Adds a polygon to the `godot.CanvasItem`'s draw commands.
@@ -2662,7 +2666,7 @@ extern class VisualServer {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("CanvasItemAddPolygon")
-	public static overload function canvasItemAddPolygon(item:godot.RID, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.RID, normalMap:godot.RID, antialiased:Bool):Void;
+	public static overload function canvasItemAddPolygon(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.RID, normalMap:godot.RID, antialiased:Bool):Void;
 	#end
 
 	#if doc_gen
@@ -2674,7 +2678,7 @@ extern class VisualServer {
 		@param weights If the parameter is null, then the default value is new float[] {}
 	**/
 	@:native("CanvasItemAddTriangleArray")
-	public static function canvasItemAddTriangleArray(item:godot.RID, indices:cs.NativeArray<Int>, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, ?uvs:cs.NativeArray<godot.Vector2>, ?bones:cs.NativeArray<Int>, ?weights:cs.NativeArray<Single>, ?texture:godot.RID, ?count:Int, ?normalMap:godot.RID, ?antialiased:Bool, ?antialiasingUseIndices:Bool):Void;
+	public static function canvasItemAddTriangleArray(item:godot.RID, indices:std.Array<Int>, points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?uvs:std.Array<godot.Vector2>, ?bones:std.Array<Int>, ?weights:std.Array<Single>, ?texture:godot.RID, ?count:Int, ?normalMap:godot.RID, ?antialiased:Bool, ?antialiasingUseIndices:Bool):Void;
 	#else
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
@@ -2684,7 +2688,7 @@ extern class VisualServer {
 		@param weights If the parameter is null, then the default value is new float[] {}
 	**/
 	@:native("CanvasItemAddTriangleArray")
-	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:cs.NativeArray<Int>, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>):Void;
+	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
 
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
@@ -2694,7 +2698,7 @@ extern class VisualServer {
 		@param weights If the parameter is null, then the default value is new float[] {}
 	**/
 	@:native("CanvasItemAddTriangleArray")
-	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:cs.NativeArray<Int>, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>):Void;
+	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>):Void;
 
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
@@ -2704,7 +2708,7 @@ extern class VisualServer {
 		@param weights If the parameter is null, then the default value is new float[] {}
 	**/
 	@:native("CanvasItemAddTriangleArray")
-	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:cs.NativeArray<Int>, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, bones:cs.NativeArray<Int>):Void;
+	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>):Void;
 
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
@@ -2714,7 +2718,7 @@ extern class VisualServer {
 		@param weights If the parameter is null, then the default value is new float[] {}
 	**/
 	@:native("CanvasItemAddTriangleArray")
-	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:cs.NativeArray<Int>, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, bones:cs.NativeArray<Int>, weights:cs.NativeArray<Single>):Void;
+	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>):Void;
 
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
@@ -2724,7 +2728,7 @@ extern class VisualServer {
 		@param weights If the parameter is null, then the default value is new float[] {}
 	**/
 	@:native("CanvasItemAddTriangleArray")
-	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:cs.NativeArray<Int>, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, bones:cs.NativeArray<Int>, weights:cs.NativeArray<Single>, texture:godot.RID):Void;
+	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>, texture:godot.RID):Void;
 
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
@@ -2734,7 +2738,7 @@ extern class VisualServer {
 		@param weights If the parameter is null, then the default value is new float[] {}
 	**/
 	@:native("CanvasItemAddTriangleArray")
-	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:cs.NativeArray<Int>, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, bones:cs.NativeArray<Int>, weights:cs.NativeArray<Single>, texture:godot.RID, count:Int):Void;
+	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>, texture:godot.RID, count:Int):Void;
 
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
@@ -2744,7 +2748,7 @@ extern class VisualServer {
 		@param weights If the parameter is null, then the default value is new float[] {}
 	**/
 	@:native("CanvasItemAddTriangleArray")
-	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:cs.NativeArray<Int>, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, bones:cs.NativeArray<Int>, weights:cs.NativeArray<Single>, texture:godot.RID, count:Int, normalMap:godot.RID):Void;
+	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>, texture:godot.RID, count:Int, normalMap:godot.RID):Void;
 
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
@@ -2754,7 +2758,7 @@ extern class VisualServer {
 		@param weights If the parameter is null, then the default value is new float[] {}
 	**/
 	@:native("CanvasItemAddTriangleArray")
-	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:cs.NativeArray<Int>, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, bones:cs.NativeArray<Int>, weights:cs.NativeArray<Single>, texture:godot.RID, count:Int, normalMap:godot.RID, antialiased:Bool):Void;
+	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>, texture:godot.RID, count:Int, normalMap:godot.RID, antialiased:Bool):Void;
 
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
@@ -2764,7 +2768,7 @@ extern class VisualServer {
 		@param weights If the parameter is null, then the default value is new float[] {}
 	**/
 	@:native("CanvasItemAddTriangleArray")
-	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:cs.NativeArray<Int>, points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, bones:cs.NativeArray<Int>, weights:cs.NativeArray<Single>, texture:godot.RID, count:Int, normalMap:godot.RID, antialiased:Bool, antialiasingUseIndices:Bool):Void;
+	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>, texture:godot.RID, count:Int, normalMap:godot.RID, antialiased:Bool, antialiasingUseIndices:Bool):Void;
 	#end
 
 	#if doc_gen
@@ -3089,7 +3093,7 @@ extern class VisualServer {
 		Sets the shape of the occluder polygon.
 	**/
 	@:native("CanvasOccluderPolygonSetShape")
-	public static function canvasOccluderPolygonSetShape(occluderPolygon:godot.RID, shape:cs.NativeArray<godot.Vector2>, closed:Bool):Void;
+	public static function canvasOccluderPolygonSetShape(occluderPolygon:godot.RID, shape:HaxeArray<godot.Vector2>, closed:Bool):Void;
 
 	/**		
 		Sets the shape of the occluder polygon as lines.

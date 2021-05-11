@@ -53,6 +53,7 @@ extern class ResourcePreloader extends godot.Node {
 	/**		
 		Returns the list of resources inside the preloader.
 	**/
-	@:native("GetResourceList")
-	public function getResourceList():cs.NativeArray<std.String>;
+	public extern inline function getResourceList():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetResourceList()", this));
+	}
 }

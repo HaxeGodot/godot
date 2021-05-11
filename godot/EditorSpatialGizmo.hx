@@ -64,7 +64,7 @@ extern class EditorSpatialGizmo extends godot.SpatialGizmo {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("AddLines")
-	public function addLines(lines:cs.NativeArray<godot.Vector3>, material:godot.Material, ?billboard:Bool, ?modulate:Null<godot.Color>):Void;
+	public function addLines(lines:std.Array<godot.Vector3>, material:godot.Material, ?billboard:Bool, ?modulate:Null<godot.Color>):Void;
 	#else
 	/**		
 		Adds lines to the gizmo (as sets of 2 points), with a given material. The lines are used for visualizing the gizmo. Call this function during `godot.EditorSpatialGizmo.redraw`.
@@ -72,7 +72,7 @@ extern class EditorSpatialGizmo extends godot.SpatialGizmo {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("AddLines")
-	public overload function addLines(lines:cs.NativeArray<godot.Vector3>, material:godot.Material):Void;
+	public overload function addLines(lines:HaxeArray<godot.Vector3>, material:godot.Material):Void;
 
 	/**		
 		Adds lines to the gizmo (as sets of 2 points), with a given material. The lines are used for visualizing the gizmo. Call this function during `godot.EditorSpatialGizmo.redraw`.
@@ -80,7 +80,7 @@ extern class EditorSpatialGizmo extends godot.SpatialGizmo {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("AddLines")
-	public overload function addLines(lines:cs.NativeArray<godot.Vector3>, material:godot.Material, billboard:Bool):Void;
+	public overload function addLines(lines:HaxeArray<godot.Vector3>, material:godot.Material, billboard:Bool):Void;
 
 	/**		
 		Adds lines to the gizmo (as sets of 2 points), with a given material. The lines are used for visualizing the gizmo. Call this function during `godot.EditorSpatialGizmo.redraw`.
@@ -88,7 +88,7 @@ extern class EditorSpatialGizmo extends godot.SpatialGizmo {
 		@param modulate If the parameter is null, then the default value is new Color(1, 1, 1, 1)
 	**/
 	@:native("AddLines")
-	public overload function addLines(lines:cs.NativeArray<godot.Vector3>, material:godot.Material, billboard:Bool, modulate:Nullable1<godot.Color>):Void;
+	public overload function addLines(lines:HaxeArray<godot.Vector3>, material:godot.Material, billboard:Bool, modulate:Nullable1<godot.Color>):Void;
 	#end
 
 	#if doc_gen
@@ -176,7 +176,7 @@ extern class EditorSpatialGizmo extends godot.SpatialGizmo {
 		There are virtual functions which will be called upon editing of these handles. Call this function during `godot.EditorSpatialGizmo.redraw`.
 	**/
 	@:native("AddHandles")
-	public function addHandles(handles:cs.NativeArray<godot.Vector3>, material:godot.Material, ?billboard:Bool, ?secondary:Bool):Void;
+	public function addHandles(handles:std.Array<godot.Vector3>, material:godot.Material, ?billboard:Bool, ?secondary:Bool):Void;
 	#else
 	/**		
 		Adds a list of handles (points) which can be used to deform the object being edited.
@@ -184,7 +184,7 @@ extern class EditorSpatialGizmo extends godot.SpatialGizmo {
 		There are virtual functions which will be called upon editing of these handles. Call this function during `godot.EditorSpatialGizmo.redraw`.
 	**/
 	@:native("AddHandles")
-	public overload function addHandles(handles:cs.NativeArray<godot.Vector3>, material:godot.Material):Void;
+	public overload function addHandles(handles:HaxeArray<godot.Vector3>, material:godot.Material):Void;
 
 	/**		
 		Adds a list of handles (points) which can be used to deform the object being edited.
@@ -192,7 +192,7 @@ extern class EditorSpatialGizmo extends godot.SpatialGizmo {
 		There are virtual functions which will be called upon editing of these handles. Call this function during `godot.EditorSpatialGizmo.redraw`.
 	**/
 	@:native("AddHandles")
-	public overload function addHandles(handles:cs.NativeArray<godot.Vector3>, material:godot.Material, billboard:Bool):Void;
+	public overload function addHandles(handles:HaxeArray<godot.Vector3>, material:godot.Material, billboard:Bool):Void;
 
 	/**		
 		Adds a list of handles (points) which can be used to deform the object being edited.
@@ -200,7 +200,7 @@ extern class EditorSpatialGizmo extends godot.SpatialGizmo {
 		There are virtual functions which will be called upon editing of these handles. Call this function during `godot.EditorSpatialGizmo.redraw`.
 	**/
 	@:native("AddHandles")
-	public overload function addHandles(handles:cs.NativeArray<godot.Vector3>, material:godot.Material, billboard:Bool, secondary:Bool):Void;
+	public overload function addHandles(handles:HaxeArray<godot.Vector3>, material:godot.Material, billboard:Bool, secondary:Bool):Void;
 	#end
 
 	/**		

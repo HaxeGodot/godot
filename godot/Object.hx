@@ -294,8 +294,9 @@ extern class Object implements cs.system.IDisposable {
 	/**		
 		Returns the object's metadata as a `String`.
 	**/
-	@:native("GetMetaList")
-	public function getMetaList():cs.NativeArray<std.String>;
+	public extern inline function getMetaList():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetMetaList()", this));
+	}
 
 	#if doc_gen
 	/**		

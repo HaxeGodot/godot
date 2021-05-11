@@ -52,6 +52,7 @@ extern class ResourceSaver {
 	/**		
 		Returns the list of extensions available for saving a resource of a given type.
 	**/
-	@:native("GetRecognizedExtensions")
-	public static function getRecognizedExtensions(type:godot.Resource):cs.NativeArray<std.String>;
+	public static extern inline function getRecognizedExtensions(type:godot.Resource):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("GetRecognizedExtensions({0})", type));
+	}
 }

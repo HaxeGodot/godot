@@ -310,8 +310,9 @@ extern class Animation extends godot.Resource {
 	/**		
 		Returns all the key indices of a value track, given a position and delta time.
 	**/
-	@:native("ValueTrackGetKeyIndices")
-	public function valueTrackGetKeyIndices(trackIdx:Int, timeSec:Single, delta:Single):cs.NativeArray<Int>;
+	public extern inline function valueTrackGetKeyIndices(trackIdx:Int, timeSec:Single, delta:Single):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.ValueTrackGetKeyIndices({1}, {2}, {3})", this, trackIdx, timeSec, delta));
+	}
 
 	/**		
 		Returns the interpolated value at the given time (in seconds). The `track_idx` must be the index of a value track.
@@ -322,8 +323,9 @@ extern class Animation extends godot.Resource {
 	/**		
 		Returns all the key indices of a method track, given a position and delta time.
 	**/
-	@:native("MethodTrackGetKeyIndices")
-	public function methodTrackGetKeyIndices(trackIdx:Int, timeSec:Single, delta:Single):cs.NativeArray<Int>;
+	public extern inline function methodTrackGetKeyIndices(trackIdx:Int, timeSec:Single, delta:Single):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.MethodTrackGetKeyIndices({1}, {2}, {3})", this, trackIdx, timeSec, delta));
+	}
 
 	/**		
 		Returns the method name of a method track.

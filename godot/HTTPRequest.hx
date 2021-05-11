@@ -141,7 +141,7 @@ extern class HTTPRequest extends godot.Node {
 		@param customHeaders If the parameter is null, then the default value is new string[] {}
 	**/
 	@:native("Request")
-	public function request(url:std.String, ?customHeaders:cs.NativeArray<std.String>, ?sslValidateDomain:Bool, ?method:godot.HTTPClient_Method, ?requestData:std.String):godot.Error;
+	public function request(url:std.String, ?customHeaders:std.Array<std.String>, ?sslValidateDomain:Bool, ?method:godot.HTTPClient_Method, ?requestData:std.String):godot.Error;
 	#else
 	/**		
 		Creates request on the underlying `godot.HTTPClient`. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
@@ -165,7 +165,7 @@ extern class HTTPRequest extends godot.Node {
 		@param customHeaders If the parameter is null, then the default value is new string[] {}
 	**/
 	@:native("Request")
-	public overload function request(url:std.String, customHeaders:cs.NativeArray<std.String>):godot.Error;
+	public overload function request(url:std.String, customHeaders:HaxeArray<std.String>):godot.Error;
 
 	/**		
 		Creates request on the underlying `godot.HTTPClient`. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
@@ -177,7 +177,7 @@ extern class HTTPRequest extends godot.Node {
 		@param customHeaders If the parameter is null, then the default value is new string[] {}
 	**/
 	@:native("Request")
-	public overload function request(url:std.String, customHeaders:cs.NativeArray<std.String>, sslValidateDomain:Bool):godot.Error;
+	public overload function request(url:std.String, customHeaders:HaxeArray<std.String>, sslValidateDomain:Bool):godot.Error;
 
 	/**		
 		Creates request on the underlying `godot.HTTPClient`. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
@@ -189,7 +189,7 @@ extern class HTTPRequest extends godot.Node {
 		@param customHeaders If the parameter is null, then the default value is new string[] {}
 	**/
 	@:native("Request")
-	public overload function request(url:std.String, customHeaders:cs.NativeArray<std.String>, sslValidateDomain:Bool, method:godot.HTTPClient_Method):godot.Error;
+	public overload function request(url:std.String, customHeaders:HaxeArray<std.String>, sslValidateDomain:Bool, method:godot.HTTPClient_Method):godot.Error;
 
 	/**		
 		Creates request on the underlying `godot.HTTPClient`. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
@@ -201,7 +201,7 @@ extern class HTTPRequest extends godot.Node {
 		@param customHeaders If the parameter is null, then the default value is new string[] {}
 	**/
 	@:native("Request")
-	public overload function request(url:std.String, customHeaders:cs.NativeArray<std.String>, sslValidateDomain:Bool, method:godot.HTTPClient_Method, requestData:std.String):godot.Error;
+	public overload function request(url:std.String, customHeaders:HaxeArray<std.String>, sslValidateDomain:Bool, method:godot.HTTPClient_Method, requestData:std.String):godot.Error;
 	#end
 
 	/**		

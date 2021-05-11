@@ -51,20 +51,23 @@ extern class Navigation2D extends godot.Node2D {
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the path is smoothed by merging path segments where possible.
 	**/
-	@:native("GetSimplePath")
-	public function getSimplePath(start:godot.Vector2, end:godot.Vector2, ?optimize:Bool):cs.NativeArray<godot.Vector2>;
+	public extern inline function getSimplePath(start:godot.Vector2, end:godot.Vector2, ?optimize:Bool):std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2}, {3})", this, start, end, optimize));
+	}
 	#else
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the path is smoothed by merging path segments where possible.
 	**/
-	@:native("GetSimplePath")
-	public overload function getSimplePath(start:godot.Vector2, end:godot.Vector2):cs.NativeArray<godot.Vector2>;
+	public overload extern inline function getSimplePath(start:godot.Vector2, end:godot.Vector2):std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2})", this, start, end));
+	}
 
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the path is smoothed by merging path segments where possible.
 	**/
-	@:native("GetSimplePath")
-	public overload function getSimplePath(start:godot.Vector2, end:godot.Vector2, optimize:Bool):cs.NativeArray<godot.Vector2>;
+	public overload extern inline function getSimplePath(start:godot.Vector2, end:godot.Vector2, optimize:Bool):std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2}, {3})", this, start, end, optimize));
+	}
 	#end
 
 	/**		

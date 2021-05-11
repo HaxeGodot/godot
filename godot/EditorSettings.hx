@@ -168,8 +168,9 @@ extern abstract class EditorSettings extends godot.Resource {
 	/**		
 		Returns the list of favorite files and directories for this project.
 	**/
-	@:native("GetFavorites")
-	public function getFavorites():cs.NativeArray<std.String>;
+	public extern inline function getFavorites():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetFavorites()", this));
+	}
 
 	/**		
 		Sets the list of recently visited folders in the file dialog for this project.
@@ -180,6 +181,7 @@ extern abstract class EditorSettings extends godot.Resource {
 	/**		
 		Returns the list of recently visited folders in the file dialog for this project.
 	**/
-	@:native("GetRecentDirs")
-	public function getRecentDirs():cs.NativeArray<std.String>;
+	public extern inline function getRecentDirs():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetRecentDirs()", this));
+	}
 }

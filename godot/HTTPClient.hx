@@ -119,7 +119,7 @@ extern class HTTPClient extends godot.Reference {
 		Sends the body data raw, as a byte array and does not encode it in any way.
 	**/
 	@:native("RequestRaw")
-	public function requestRaw(method:godot.HTTPClient_Method, url:std.String, headers:cs.NativeArray<std.String>, body:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function requestRaw(method:godot.HTTPClient_Method, url:std.String, headers:HaxeArray<std.String>, body:haxe.Rest<cs.types.UInt8>):godot.Error;
 
 	#if doc_gen
 	/**		
@@ -141,7 +141,7 @@ extern class HTTPClient extends godot.Reference {
 		Note: The `request_data` parameter is ignored if `method` is . This is because GET methods can't contain request data. As a workaround, you can pass request data as a query string in the URL. See `String.http_escape` for an example.
 	**/
 	@:native("Request")
-	public function request(method:godot.HTTPClient_Method, url:std.String, headers:cs.NativeArray<std.String>, ?body:std.String):godot.Error;
+	public function request(method:godot.HTTPClient_Method, url:std.String, headers:std.Array<std.String>, ?body:std.String):godot.Error;
 	#else
 	/**		
 		Sends a request to the connected host. The URL parameter is just the part after the host, so for `http://somehost.com/index.php`, it is `index.php`.
@@ -162,7 +162,7 @@ extern class HTTPClient extends godot.Reference {
 		Note: The `request_data` parameter is ignored if `method` is . This is because GET methods can't contain request data. As a workaround, you can pass request data as a query string in the URL. See `String.http_escape` for an example.
 	**/
 	@:native("Request")
-	public overload function request(method:godot.HTTPClient_Method, url:std.String, headers:cs.NativeArray<std.String>):godot.Error;
+	public overload function request(method:godot.HTTPClient_Method, url:std.String, headers:HaxeArray<std.String>):godot.Error;
 
 	/**		
 		Sends a request to the connected host. The URL parameter is just the part after the host, so for `http://somehost.com/index.php`, it is `index.php`.
@@ -183,7 +183,7 @@ extern class HTTPClient extends godot.Reference {
 		Note: The `request_data` parameter is ignored if `method` is . This is because GET methods can't contain request data. As a workaround, you can pass request data as a query string in the URL. See `String.http_escape` for an example.
 	**/
 	@:native("Request")
-	public overload function request(method:godot.HTTPClient_Method, url:std.String, headers:cs.NativeArray<std.String>, body:std.String):godot.Error;
+	public overload function request(method:godot.HTTPClient_Method, url:std.String, headers:HaxeArray<std.String>, body:std.String):godot.Error;
 	#end
 
 	/**		
@@ -213,8 +213,9 @@ extern class HTTPClient extends godot.Reference {
 	/**		
 		Returns the response headers.
 	**/
-	@:native("GetResponseHeaders")
-	public function getResponseHeaders():cs.NativeArray<std.String>;
+	public extern inline function getResponseHeaders():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetResponseHeaders()", this));
+	}
 
 	/**		
 		Returns all response headers as a Dictionary of structure `{ "key": "value1; value2" }` where the case-sensitivity of the keys and values is kept like the server delivers it. A value is a simple String, this string can have more than one value where "; " is used as separator.
@@ -244,8 +245,9 @@ extern class HTTPClient extends godot.Reference {
 	/**		
 		Reads one chunk from the response.
 	**/
-	@:native("ReadResponseBodyChunk")
-	public function readResponseBodyChunk():cs.NativeArray<cs.types.UInt8>;
+	public extern inline function readResponseBodyChunk():std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.ReadResponseBodyChunk()", this));
+	}
 
 	@:native("SetReadChunkSize")
 	public function setReadChunkSize(bytes:Int):Void;

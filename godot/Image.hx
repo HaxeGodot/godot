@@ -70,8 +70,9 @@ extern class Image extends godot.Resource {
 	/**		
 		Returns a copy of the image's raw data.
 	**/
-	@:native("GetData")
-	public function getData():cs.NativeArray<cs.types.UInt8>;
+	public extern inline function getData():std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetData()", this));
+	}
 
 	/**		
 		Converts the image's format. See `godot.Image_Format` constants.
@@ -221,8 +222,9 @@ extern class Image extends godot.Resource {
 	@:native("SavePng")
 	public function savePng(path:std.String):godot.Error;
 
-	@:native("SavePngToBuffer")
-	public function savePngToBuffer():cs.NativeArray<cs.types.UInt8>;
+	public extern inline function savePngToBuffer():std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.SavePngToBuffer()", this));
+	}
 
 	#if doc_gen
 	/**		

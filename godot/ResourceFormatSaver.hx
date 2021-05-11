@@ -20,8 +20,9 @@ extern class ResourceFormatSaver extends godot.Reference {
 	/**		
 		Returns the list of extensions available for saving the resource object, provided it is recognized (see `godot.ResourceFormatSaver.recognize`).
 	**/
-	@:native("GetRecognizedExtensions")
-	public function getRecognizedExtensions(resource:godot.Resource):cs.NativeArray<std.String>;
+	public extern inline function getRecognizedExtensions(resource:godot.Resource):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetRecognizedExtensions({1})", this, resource));
+	}
 
 	/**		
 		Returns whether the given resource object can be saved by this saver.

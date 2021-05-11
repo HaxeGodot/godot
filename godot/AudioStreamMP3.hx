@@ -36,8 +36,9 @@ extern class AudioStreamMP3 extends godot.AudioStream {
 	@:native("SetData")
 	public function setData(data:haxe.Rest<cs.types.UInt8>):Void;
 
-	@:native("GetData")
-	public function getData():cs.NativeArray<cs.types.UInt8>;
+	public extern inline function getData():std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetData()", this));
+	}
 
 	@:native("SetLoop")
 	public function setLoop(enable:Bool):Void;

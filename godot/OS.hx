@@ -224,8 +224,9 @@ extern class OS {
 		
 		Note: This method is implemented on Linux, macOS and Windows.
 	**/
-	@:native("GetConnectedMidiInputs")
-	public static function getConnectedMidiInputs():cs.NativeArray<std.String>;
+	public static extern inline function getConnectedMidiInputs():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("GetConnectedMidiInputs()"));
+	}
 
 	/**		
 		Initialises the singleton for the system MIDI driver.
@@ -695,7 +696,7 @@ extern class OS {
 		@param output If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("Execute")
-	public static function execute(path:std.String, arguments:cs.NativeArray<std.String>, ?blocking:Bool, ?output:godot.collections.Array, ?readStderr:Bool):Int;
+	public static function execute(path:std.String, arguments:std.Array<std.String>, ?blocking:Bool, ?output:godot.collections.Array, ?readStderr:Bool):Int;
 	#else
 	/**		
 		Execute the file at the given path with the arguments passed as an array of strings. Platform path resolution will take place. The resolved file must exist and be executable.
@@ -740,7 +741,7 @@ extern class OS {
 		@param output If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("Execute")
-	public static overload function execute(path:std.String, arguments:cs.NativeArray<std.String>):Int;
+	public static overload function execute(path:std.String, arguments:HaxeArray<std.String>):Int;
 
 	/**		
 		Execute the file at the given path with the arguments passed as an array of strings. Platform path resolution will take place. The resolved file must exist and be executable.
@@ -785,7 +786,7 @@ extern class OS {
 		@param output If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("Execute")
-	public static overload function execute(path:std.String, arguments:cs.NativeArray<std.String>, blocking:Bool):Int;
+	public static overload function execute(path:std.String, arguments:HaxeArray<std.String>, blocking:Bool):Int;
 
 	/**		
 		Execute the file at the given path with the arguments passed as an array of strings. Platform path resolution will take place. The resolved file must exist and be executable.
@@ -830,7 +831,7 @@ extern class OS {
 		@param output If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("Execute")
-	public static overload function execute(path:std.String, arguments:cs.NativeArray<std.String>, blocking:Bool, output:godot.collections.Array):Int;
+	public static overload function execute(path:std.String, arguments:HaxeArray<std.String>, blocking:Bool, output:godot.collections.Array):Int;
 
 	/**		
 		Execute the file at the given path with the arguments passed as an array of strings. Platform path resolution will take place. The resolved file must exist and be executable.
@@ -875,7 +876,7 @@ extern class OS {
 		@param output If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("Execute")
-	public static overload function execute(path:std.String, arguments:cs.NativeArray<std.String>, blocking:Bool, output:godot.collections.Array, readStderr:Bool):Int;
+	public static overload function execute(path:std.String, arguments:HaxeArray<std.String>, blocking:Bool, output:godot.collections.Array, readStderr:Bool):Int;
 	#end
 
 	/**		
@@ -963,8 +964,9 @@ extern class OS {
 		
 		```
 	**/
-	@:native("GetCmdlineArgs")
-	public static function getCmdlineArgs():cs.NativeArray<std.String>;
+	public static extern inline function getCmdlineArgs():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("GetCmdlineArgs()"));
+	}
 
 	#if doc_gen
 	/**		
@@ -1581,8 +1583,9 @@ extern class OS {
 		
 		Note: This method is implemented on Android.
 	**/
-	@:native("GetGrantedPermissions")
-	public static function getGrantedPermissions():cs.NativeArray<std.String>;
+	public static extern inline function getGrantedPermissions():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("GetGrantedPermissions()"));
+	}
 
 	/**		
 		Returns the total number of available tablet drivers.

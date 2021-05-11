@@ -120,25 +120,25 @@ extern class MultiplayerAPI extends godot.Reference {
 		Sends the given raw `bytes` to a specific peer identified by `id` (see `godot.NetworkedMultiplayerPeer.setTargetPeer`). Default ID is `0`, i.e. broadcast to all peers.
 	**/
 	@:native("SendBytes")
-	public function sendBytes(bytes:cs.NativeArray<cs.types.UInt8>, ?id:Int, ?mode:godot.NetworkedMultiplayerPeer_TransferModeEnum):godot.Error;
+	public function sendBytes(bytes:std.Array<cs.types.UInt8>, ?id:Int, ?mode:godot.NetworkedMultiplayerPeer_TransferModeEnum):godot.Error;
 	#else
 	/**		
 		Sends the given raw `bytes` to a specific peer identified by `id` (see `godot.NetworkedMultiplayerPeer.setTargetPeer`). Default ID is `0`, i.e. broadcast to all peers.
 	**/
 	@:native("SendBytes")
-	public overload function sendBytes(bytes:cs.NativeArray<cs.types.UInt8>):godot.Error;
+	public overload function sendBytes(bytes:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	/**		
 		Sends the given raw `bytes` to a specific peer identified by `id` (see `godot.NetworkedMultiplayerPeer.setTargetPeer`). Default ID is `0`, i.e. broadcast to all peers.
 	**/
 	@:native("SendBytes")
-	public overload function sendBytes(bytes:cs.NativeArray<cs.types.UInt8>, id:Int):godot.Error;
+	public overload function sendBytes(bytes:HaxeArray<cs.types.UInt8>, id:Int):godot.Error;
 
 	/**		
 		Sends the given raw `bytes` to a specific peer identified by `id` (see `godot.NetworkedMultiplayerPeer.setTargetPeer`). Default ID is `0`, i.e. broadcast to all peers.
 	**/
 	@:native("SendBytes")
-	public overload function sendBytes(bytes:cs.NativeArray<cs.types.UInt8>, id:Int, mode:godot.NetworkedMultiplayerPeer_TransferModeEnum):godot.Error;
+	public overload function sendBytes(bytes:HaxeArray<cs.types.UInt8>, id:Int, mode:godot.NetworkedMultiplayerPeer_TransferModeEnum):godot.Error;
 	#end
 
 	/**		
@@ -190,8 +190,9 @@ extern class MultiplayerAPI extends godot.Reference {
 	/**		
 		Returns the peer IDs of all connected peers of this MultiplayerAPI's `godot.MultiplayerAPI.networkPeer`.
 	**/
-	@:native("GetNetworkConnectedPeers")
-	public function getNetworkConnectedPeers():cs.NativeArray<Int>;
+	public extern inline function getNetworkConnectedPeers():std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetNetworkConnectedPeers()", this));
+	}
 
 	@:native("SetRefuseNewNetworkConnections")
 	public function setRefuseNewNetworkConnections(refuse:Bool):Void;

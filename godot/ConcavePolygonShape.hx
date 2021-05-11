@@ -29,6 +29,7 @@ extern class ConcavePolygonShape extends godot.Shape {
 	/**		
 		Returns the faces (an array of triangles).
 	**/
-	@:native("GetFaces")
-	public function getFaces():cs.NativeArray<godot.Vector3>;
+	public extern inline function getFaces():std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetFaces()", this));
+	}
 }

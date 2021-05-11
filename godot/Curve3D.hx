@@ -256,22 +256,25 @@ extern class Curve3D extends godot.Resource {
 	/**		
 		Returns the cache of points as a `godot.Vector3`.
 	**/
-	@:native("GetBakedPoints")
-	public function getBakedPoints():cs.NativeArray<godot.Vector3>;
+	public extern inline function getBakedPoints():std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetBakedPoints()", this));
+	}
 
 	/**		
 		Returns the cache of tilts as a `Single`.
 	**/
-	@:native("GetBakedTilts")
-	public function getBakedTilts():cs.NativeArray<Single>;
+	public extern inline function getBakedTilts():std.Array<Single> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetBakedTilts()", this));
+	}
 
 	/**		
 		Returns the cache of up vectors as a `godot.Vector3`.
 		
 		If `godot.Curve3D.upVectorEnabled` is `false`, the cache will be empty.
 	**/
-	@:native("GetBakedUpVectors")
-	public function getBakedUpVectors():cs.NativeArray<godot.Vector3>;
+	public extern inline function getBakedUpVectors():std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetBakedUpVectors()", this));
+	}
 
 	/**		
 		Returns the closest baked point (in curve's local space) to `to_point`.
@@ -299,8 +302,9 @@ extern class Curve3D extends godot.Resource {
 		
 		`tolerance_degrees` controls how many degrees the midpoint of a segment may deviate from the real curve, before the segment has to be subdivided.
 	**/
-	@:native("Tessellate")
-	public function tessellate(?maxStages:Int, ?toleranceDegrees:Single):cs.NativeArray<godot.Vector3>;
+	public extern inline function tessellate(?maxStages:Int, ?toleranceDegrees:Single):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.Tessellate({1}, {2})", this, maxStages, toleranceDegrees));
+	}
 	#else
 	/**		
 		Returns a list of points along the curve, with a curvature controlled point density. That is, the curvier parts will have more points than the straighter parts.
@@ -311,8 +315,9 @@ extern class Curve3D extends godot.Resource {
 		
 		`tolerance_degrees` controls how many degrees the midpoint of a segment may deviate from the real curve, before the segment has to be subdivided.
 	**/
-	@:native("Tessellate")
-	public overload function tessellate():cs.NativeArray<godot.Vector3>;
+	public overload extern inline function tessellate():std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.Tessellate()", this));
+	}
 
 	/**		
 		Returns a list of points along the curve, with a curvature controlled point density. That is, the curvier parts will have more points than the straighter parts.
@@ -323,8 +328,9 @@ extern class Curve3D extends godot.Resource {
 		
 		`tolerance_degrees` controls how many degrees the midpoint of a segment may deviate from the real curve, before the segment has to be subdivided.
 	**/
-	@:native("Tessellate")
-	public overload function tessellate(maxStages:Int):cs.NativeArray<godot.Vector3>;
+	public overload extern inline function tessellate(maxStages:Int):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.Tessellate({1})", this, maxStages));
+	}
 
 	/**		
 		Returns a list of points along the curve, with a curvature controlled point density. That is, the curvier parts will have more points than the straighter parts.
@@ -335,7 +341,8 @@ extern class Curve3D extends godot.Resource {
 		
 		`tolerance_degrees` controls how many degrees the midpoint of a segment may deviate from the real curve, before the segment has to be subdivided.
 	**/
-	@:native("Tessellate")
-	public overload function tessellate(maxStages:Int, toleranceDegrees:Single):cs.NativeArray<godot.Vector3>;
+	public overload extern inline function tessellate(maxStages:Int, toleranceDegrees:Single):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.Tessellate({1}, {2})", this, maxStages, toleranceDegrees));
+	}
 	#end
 }

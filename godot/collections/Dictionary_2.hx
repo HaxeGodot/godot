@@ -63,7 +63,7 @@ extern class Dictionary_2<T0, T1> implements cs.system.collections.generic.IDict
 	public function contains(item:cs.system.collections.generic.KeyValuePair_2<T0, T1>):Bool;
 
 	@:native("CopyTo")
-	public function copyTo(array:cs.NativeArray<cs.system.collections.generic.KeyValuePair_2<T0, T1>>, arrayIndex:Int):Void;
+	public function copyTo(array:HaxeArray<cs.system.collections.generic.KeyValuePair_2<T0, T1>>, arrayIndex:Int):Void;
 
 	@:native("Remove")
 	public overload function remove(item:cs.system.collections.generic.KeyValuePair_2<T0, T1>):Bool;

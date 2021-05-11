@@ -66,8 +66,9 @@ extern class GIProbeData extends godot.Resource {
 	@:native("SetDynamicData")
 	public function setDynamicData(dynamicData:haxe.Rest<Int>):Void;
 
-	@:native("GetDynamicData")
-	public function getDynamicData():cs.NativeArray<Int>;
+	public extern inline function getDynamicData():std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetDynamicData()", this));
+	}
 
 	@:native("SetDynamicRange")
 	public function setDynamicRange(dynamicRange:Int):Void;

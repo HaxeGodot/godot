@@ -532,8 +532,9 @@ extern class SceneTree extends godot.MainLoop {
 	/**		
 		Returns the peer IDs of all connected peers of this `godot.SceneTree`'s `godot.SceneTree.networkPeer`.
 	**/
-	@:native("GetNetworkConnectedPeers")
-	public function getNetworkConnectedPeers():cs.NativeArray<Int>;
+	public extern inline function getNetworkConnectedPeers():std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetNetworkConnectedPeers()", this));
+	}
 
 	/**		
 		Returns the unique peer ID of this `godot.SceneTree`'s `godot.SceneTree.networkPeer`.

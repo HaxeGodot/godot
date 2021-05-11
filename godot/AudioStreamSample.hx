@@ -64,8 +64,9 @@ extern class AudioStreamSample extends godot.AudioStream {
 	@:native("SetData")
 	public function setData(data:haxe.Rest<cs.types.UInt8>):Void;
 
-	@:native("GetData")
-	public function getData():cs.NativeArray<cs.types.UInt8>;
+	public extern inline function getData():std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetData()", this));
+	}
 
 	@:native("SetFormat")
 	public function setFormat(format:godot.AudioStreamSample_FormatEnum):Void;

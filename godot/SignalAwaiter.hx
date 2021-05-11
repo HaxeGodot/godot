@@ -18,8 +18,9 @@ extern class SignalAwaiter implements godot.IAwaiter_1<cs.NativeArray<Dynamic>> 
 	@:native("OnCompleted")
 	public function onCompleted(action:cs.system.Action):Void;
 
-	@:native("GetResult")
-	public function getResult():cs.NativeArray<Dynamic>;
+	public extern inline function getResult():std.Array<Dynamic> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetResult()", this));
+	}
 
 	@:native("GetAwaiter")
 	public function getAwaiter():godot.IAwaiter_1<cs.NativeArray<Dynamic>>;

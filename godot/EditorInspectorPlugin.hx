@@ -73,5 +73,5 @@ extern class EditorInspectorPlugin extends godot.Reference {
 		Adds an editor that allows modifying multiple properties, this must inherit `godot.EditorProperty`.
 	**/
 	@:native("AddPropertyEditorForMultipleProperties")
-	public function addPropertyEditorForMultipleProperties(label:std.String, properties:cs.NativeArray<std.String>, editor:godot.Control):Void;
+	public function addPropertyEditorForMultipleProperties(label:std.String, properties:HaxeArray<std.String>, editor:godot.Control):Void;
 }

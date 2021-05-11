@@ -36,6 +36,7 @@ extern class GDScript extends godot.Script {
 	/**		
 		Returns byte code for the script source code.
 	**/
-	@:native("GetAsByteCode")
-	public function getAsByteCode():cs.NativeArray<cs.types.UInt8>;
+	public extern inline function getAsByteCode():std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetAsByteCode()", this));
+	}
 }

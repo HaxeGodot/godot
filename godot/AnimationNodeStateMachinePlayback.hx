@@ -66,6 +66,7 @@ extern class AnimationNodeStateMachinePlayback extends godot.Resource {
 	/**		
 		Returns the current travel path as computed internally by the A* algorithm.
 	**/
-	@:native("GetTravelPath")
-	public function getTravelPath():cs.NativeArray<std.String>;
+	public extern inline function getTravelPath():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetTravelPath()", this));
+	}
 }

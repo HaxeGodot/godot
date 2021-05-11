@@ -411,8 +411,9 @@ extern class ItemList extends godot.Control {
 	/**		
 		Returns an array with the indexes of the selected items.
 	**/
-	@:native("GetSelectedItems")
-	public function getSelectedItems():cs.NativeArray<Int>;
+	public extern inline function getSelectedItems():std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetSelectedItems()", this));
+	}
 
 	/**		
 		Moves item from index `from_idx` to `to_idx`.

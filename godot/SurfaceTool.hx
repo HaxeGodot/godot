@@ -110,7 +110,7 @@ extern class SurfaceTool extends godot.Reference {
 		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("AddTriangleFan")
-	public function addTriangleFan(vertices:cs.NativeArray<godot.Vector3>, ?uvs:cs.NativeArray<godot.Vector2>, ?colors:cs.NativeArray<godot.Color>, ?uv2s:cs.NativeArray<godot.Vector2>, ?normals:cs.NativeArray<godot.Vector3>, ?tangents:godot.collections.Array):Void;
+	public function addTriangleFan(vertices:std.Array<godot.Vector3>, ?uvs:std.Array<godot.Vector2>, ?colors:std.Array<godot.Color>, ?uv2s:std.Array<godot.Vector2>, ?normals:std.Array<godot.Vector3>, ?tangents:godot.collections.Array):Void;
 	#else
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
@@ -124,7 +124,7 @@ extern class SurfaceTool extends godot.Reference {
 		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("AddTriangleFan")
-	public overload function addTriangleFan(vertices:cs.NativeArray<godot.Vector3>):Void;
+	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>):Void;
 
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
@@ -138,7 +138,7 @@ extern class SurfaceTool extends godot.Reference {
 		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("AddTriangleFan")
-	public overload function addTriangleFan(vertices:cs.NativeArray<godot.Vector3>, uvs:cs.NativeArray<godot.Vector2>):Void;
+	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>, uvs:HaxeArray<godot.Vector2>):Void;
 
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
@@ -152,7 +152,7 @@ extern class SurfaceTool extends godot.Reference {
 		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("AddTriangleFan")
-	public overload function addTriangleFan(vertices:cs.NativeArray<godot.Vector3>, uvs:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>):Void;
+	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>, uvs:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
 
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
@@ -166,7 +166,7 @@ extern class SurfaceTool extends godot.Reference {
 		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("AddTriangleFan")
-	public overload function addTriangleFan(vertices:cs.NativeArray<godot.Vector3>, uvs:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uv2s:cs.NativeArray<godot.Vector2>):Void;
+	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>, uvs:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uv2s:HaxeArray<godot.Vector2>):Void;
 
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
@@ -180,7 +180,7 @@ extern class SurfaceTool extends godot.Reference {
 		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("AddTriangleFan")
-	public overload function addTriangleFan(vertices:cs.NativeArray<godot.Vector3>, uvs:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uv2s:cs.NativeArray<godot.Vector2>, normals:cs.NativeArray<godot.Vector3>):Void;
+	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>, uvs:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uv2s:HaxeArray<godot.Vector2>, normals:HaxeArray<godot.Vector3>):Void;
 
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
@@ -194,7 +194,7 @@ extern class SurfaceTool extends godot.Reference {
 		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
 	**/
 	@:native("AddTriangleFan")
-	public overload function addTriangleFan(vertices:cs.NativeArray<godot.Vector3>, uvs:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uv2s:cs.NativeArray<godot.Vector2>, normals:cs.NativeArray<godot.Vector3>, tangents:godot.collections.Array):Void;
+	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>, uvs:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uv2s:HaxeArray<godot.Vector2>, normals:HaxeArray<godot.Vector3>, tangents:godot.collections.Array):Void;
 	#end
 
 	/**		

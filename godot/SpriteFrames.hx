@@ -53,8 +53,9 @@ extern class SpriteFrames extends godot.Resource {
 	/**		
 		Returns an array containing the names associated to each animation. Values are placed in alphabetical order.
 	**/
-	@:native("GetAnimationNames")
-	public function getAnimationNames():cs.NativeArray<std.String>;
+	public extern inline function getAnimationNames():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetAnimationNames()", this));
+	}
 
 	/**		
 		The animation's speed in frames per second.

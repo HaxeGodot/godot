@@ -34,8 +34,9 @@ extern class AudioEffectCapture extends godot.AudioEffect {
 		
 		Returns a `godot.Vector2` containing exactly `frames` audio samples if available, or an empty `godot.Vector2` if insufficient data was available.
 	**/
-	@:native("GetBuffer")
-	public function getBuffer(frames:Int):cs.NativeArray<godot.Vector2>;
+	public extern inline function getBuffer(frames:Int):std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetBuffer({1})", this, frames));
+	}
 
 	/**		
 		Clears the internal ring buffer.

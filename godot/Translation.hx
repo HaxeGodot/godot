@@ -51,8 +51,9 @@ extern class Translation extends godot.Resource {
 	/**		
 		Returns all the messages (keys).
 	**/
-	@:native("GetMessageList")
-	public function getMessageList():cs.NativeArray<std.String>;
+	public extern inline function getMessageList():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetMessageList()", this));
+	}
 
 	/**		
 		Returns the number of existing messages.

@@ -165,8 +165,9 @@ extern class AStar extends godot.Reference {
 		
 		```
 	**/
-	@:native("GetPointConnections")
-	public function getPointConnections(id:Int):cs.NativeArray<Int>;
+	public extern inline function getPointConnections(id:Int):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetPointConnections({1})", this, id));
+	}
 
 	/**		
 		Returns an array of all points.
@@ -360,8 +361,9 @@ extern class AStar extends godot.Reference {
 		
 		Note: This method is not thread-safe. If called from a `godot.Thread`, it will return an empty `godot.Vector3` and will print an error message.
 	**/
-	@:native("GetPointPath")
-	public function getPointPath(fromId:Int, toId:Int):cs.NativeArray<godot.Vector3>;
+	public extern inline function getPointPath(fromId:Int, toId:Int):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetPointPath({1}, {2})", this, fromId, toId));
+	}
 
 	/**		
 		Returns an array with the IDs of the points that form the path found by AStar between the given points. The array is ordered from the starting point to the ending point of the path.
@@ -385,6 +387,7 @@ extern class AStar extends godot.Reference {
 		
 		If you change the 2nd point's weight to 3, then the result will be `[1, 4, 3]` instead, because now even though the distance is longer, it's "easier" to get through point 4 than through point 2.
 	**/
-	@:native("GetIdPath")
-	public function getIdPath(fromId:Int, toId:Int):cs.NativeArray<Int>;
+	public extern inline function getIdPath(fromId:Int, toId:Int):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetIdPath({1}, {2})", this, fromId, toId));
+	}
 }

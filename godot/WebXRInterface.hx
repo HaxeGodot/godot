@@ -338,6 +338,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 	@:native("GetVisibilityState")
 	public function getVisibilityState():std.String;
 
-	@:native("GetBoundsGeometry")
-	public function getBoundsGeometry():cs.NativeArray<godot.Vector3>;
+	public extern inline function getBoundsGeometry():std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetBoundsGeometry()", this));
+	}
 }

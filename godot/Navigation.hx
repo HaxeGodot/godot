@@ -57,20 +57,23 @@ extern class Navigation extends godot.Spatial {
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the agent properties associated with each `godot.NavigationMesh` (radius, height, etc.) are considered in the path calculation, otherwise they are ignored.
 	**/
-	@:native("GetSimplePath")
-	public function getSimplePath(start:godot.Vector3, end:godot.Vector3, ?optimize:Bool):cs.NativeArray<godot.Vector3>;
+	public extern inline function getSimplePath(start:godot.Vector3, end:godot.Vector3, ?optimize:Bool):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2}, {3})", this, start, end, optimize));
+	}
 	#else
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the agent properties associated with each `godot.NavigationMesh` (radius, height, etc.) are considered in the path calculation, otherwise they are ignored.
 	**/
-	@:native("GetSimplePath")
-	public overload function getSimplePath(start:godot.Vector3, end:godot.Vector3):cs.NativeArray<godot.Vector3>;
+	public overload extern inline function getSimplePath(start:godot.Vector3, end:godot.Vector3):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2})", this, start, end));
+	}
 
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the agent properties associated with each `godot.NavigationMesh` (radius, height, etc.) are considered in the path calculation, otherwise they are ignored.
 	**/
-	@:native("GetSimplePath")
-	public overload function getSimplePath(start:godot.Vector3, end:godot.Vector3, optimize:Bool):cs.NativeArray<godot.Vector3>;
+	public overload extern inline function getSimplePath(start:godot.Vector3, end:godot.Vector3, optimize:Bool):std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2}, {3})", this, start, end, optimize));
+	}
 	#end
 
 	#if doc_gen

@@ -58,8 +58,9 @@ extern class NavigationPolygon extends godot.Resource {
 	/**		
 		Returns a `godot.Vector2` containing all the vertices being used to create the polygons.
 	**/
-	@:native("GetVertices")
-	public function getVertices():cs.NativeArray<godot.Vector2>;
+	public extern inline function getVertices():std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetVertices()", this));
+	}
 
 	/**		
 		Adds a polygon using the indices of the vertices you get when calling `godot.NavigationPolygon.getVertices`.
@@ -76,8 +77,9 @@ extern class NavigationPolygon extends godot.Resource {
 	/**		
 		Returns a `Int` containing the indices of the vertices of a created polygon.
 	**/
-	@:native("GetPolygon")
-	public function getPolygon(idx:Int):cs.NativeArray<Int>;
+	public extern inline function getPolygon(idx:Int):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetPolygon({1})", this, idx));
+	}
 
 	/**		
 		Clears the array of polygons, but it doesn't clear the array of outlines and vertices.
@@ -95,7 +97,7 @@ extern class NavigationPolygon extends godot.Resource {
 		Adds a `godot.Vector2` that contains the vertices of an outline to the internal array that contains all the outlines at a fixed position. You have to call `godot.NavigationPolygon.makePolygonsFromOutlines` in order for this array to be converted to polygons that the engine will use.
 	**/
 	@:native("AddOutlineAtIndex")
-	public function addOutlineAtIndex(outline:cs.NativeArray<godot.Vector2>, index:Int):Void;
+	public function addOutlineAtIndex(outline:HaxeArray<godot.Vector2>, index:Int):Void;
 
 	/**		
 		Returns the number of outlines that were created in the editor or by script.
@@ -112,8 +114,9 @@ extern class NavigationPolygon extends godot.Resource {
 	/**		
 		Returns a `godot.Vector2` containing the vertices of an outline that was created in the editor or by script.
 	**/
-	@:native("GetOutline")
-	public function getOutline(idx:Int):cs.NativeArray<godot.Vector2>;
+	public extern inline function getOutline(idx:Int):std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetOutline({1})", this, idx));
+	}
 
 	/**		
 		Removes an outline created in the editor or by script. You have to call `godot.NavigationPolygon.makePolygonsFromOutlines` for the polygons to update.

@@ -50,6 +50,7 @@ extern class OccluderPolygon2D extends godot.Resource {
 	@:native("SetPolygon")
 	public function setPolygon(polygon:haxe.Rest<godot.Vector2>):Void;
 
-	@:native("GetPolygon")
-	public function getPolygon():cs.NativeArray<godot.Vector2>;
+	public extern inline function getPolygon():std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetPolygon()", this));
+	}
 }

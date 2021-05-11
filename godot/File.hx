@@ -219,8 +219,9 @@ extern class File extends godot.Reference {
 	/**		
 		Returns next `len` bytes of the file as a `cs.UInt8`.
 	**/
-	@:native("GetBuffer")
-	public function getBuffer(len:Int):cs.NativeArray<cs.types.UInt8>;
+	public extern inline function getBuffer(len:Int):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetBuffer({1})", this, len));
+	}
 
 	/**		
 		Returns the next line of the file as a `String`.
@@ -236,24 +237,27 @@ extern class File extends godot.Reference {
 		
 		Text is interpreted as being UTF-8 encoded.
 	**/
-	@:native("GetCsvLine")
-	public function getCsvLine(?delim:std.String):cs.NativeArray<std.String>;
+	public extern inline function getCsvLine(?delim:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetCsvLine({1})", this, delim));
+	}
 	#else
 	/**		
 		Returns the next value of the file in CSV (Comma-Separated Values) format. You can pass a different delimiter `delim` to use other than the default `","` (comma). This delimiter must be one-character long.
 		
 		Text is interpreted as being UTF-8 encoded.
 	**/
-	@:native("GetCsvLine")
-	public overload function getCsvLine():cs.NativeArray<std.String>;
+	public overload extern inline function getCsvLine():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetCsvLine()", this));
+	}
 
 	/**		
 		Returns the next value of the file in CSV (Comma-Separated Values) format. You can pass a different delimiter `delim` to use other than the default `","` (comma). This delimiter must be one-character long.
 		
 		Text is interpreted as being UTF-8 encoded.
 	**/
-	@:native("GetCsvLine")
-	public overload function getCsvLine(delim:std.String):cs.NativeArray<std.String>;
+	public overload extern inline function getCsvLine(delim:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetCsvLine({1})", this, delim));
+	}
 	#end
 
 	/**		
@@ -410,7 +414,7 @@ extern class File extends godot.Reference {
 		Text will be encoded as UTF-8.
 	**/
 	@:native("StoreCsvLine")
-	public function storeCsvLine(values:cs.NativeArray<std.String>, ?delim:std.String):Void;
+	public function storeCsvLine(values:std.Array<std.String>, ?delim:std.String):Void;
 	#else
 	/**		
 		Store the given `String` in the file as a line formatted in the CSV (Comma-Separated Values) format. You can pass a different delimiter `delim` to use other than the default `","` (comma). This delimiter must be one-character long.
@@ -418,7 +422,7 @@ extern class File extends godot.Reference {
 		Text will be encoded as UTF-8.
 	**/
 	@:native("StoreCsvLine")
-	public overload function storeCsvLine(values:cs.NativeArray<std.String>):Void;
+	public overload function storeCsvLine(values:HaxeArray<std.String>):Void;
 
 	/**		
 		Store the given `String` in the file as a line formatted in the CSV (Comma-Separated Values) format. You can pass a different delimiter `delim` to use other than the default `","` (comma). This delimiter must be one-character long.
@@ -426,7 +430,7 @@ extern class File extends godot.Reference {
 		Text will be encoded as UTF-8.
 	**/
 	@:native("StoreCsvLine")
-	public overload function storeCsvLine(values:cs.NativeArray<std.String>, delim:std.String):Void;
+	public overload function storeCsvLine(values:HaxeArray<std.String>, delim:std.String):Void;
 	#end
 
 	/**		

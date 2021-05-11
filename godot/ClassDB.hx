@@ -18,14 +18,16 @@ extern class ClassDB {
 	/**		
 		Returns the names of all the classes available.
 	**/
-	@:native("GetClassList")
-	public static function getClassList():cs.NativeArray<std.String>;
+	public static extern inline function getClassList():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("GetClassList()"));
+	}
 
 	/**		
 		Returns the names of all the classes that directly or indirectly inherit from `class`.
 	**/
-	@:native("GetInheritersFromClass")
-	public static function getInheritersFromClass(class_:std.String):cs.NativeArray<std.String>;
+	public static extern inline function getInheritersFromClass(class_:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("GetInheritersFromClass({0})", class_));
+	}
 
 	/**		
 		Returns the parent class of `class`.
@@ -171,20 +173,23 @@ extern class ClassDB {
 	/**		
 		Returns an array with the names all the integer constants of `class` or its ancestry.
 	**/
-	@:native("ClassGetIntegerConstantList")
-	public static function classGetIntegerConstantList(class_:std.String, ?noInheritance:Bool):cs.NativeArray<std.String>;
+	public static extern inline function classGetIntegerConstantList(class_:std.String, ?noInheritance:Bool):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("ClassGetIntegerConstantList({0}, {1})", class_, noInheritance));
+	}
 	#else
 	/**		
 		Returns an array with the names all the integer constants of `class` or its ancestry.
 	**/
-	@:native("ClassGetIntegerConstantList")
-	public static overload function classGetIntegerConstantList(class_:std.String):cs.NativeArray<std.String>;
+	public static overload extern inline function classGetIntegerConstantList(class_:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("ClassGetIntegerConstantList({0})", class_));
+	}
 
 	/**		
 		Returns an array with the names all the integer constants of `class` or its ancestry.
 	**/
-	@:native("ClassGetIntegerConstantList")
-	public static overload function classGetIntegerConstantList(class_:std.String, noInheritance:Bool):cs.NativeArray<std.String>;
+	public static overload extern inline function classGetIntegerConstantList(class_:std.String, noInheritance:Bool):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("ClassGetIntegerConstantList({0}, {1})", class_, noInheritance));
+	}
 	#end
 
 	/**		

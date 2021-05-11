@@ -20,13 +20,13 @@ extern class GD {
 
 	#if doc_gen
 	@:native("Bytes2Var")
-	public static function bytes2Var(bytes:cs.NativeArray<cs.types.UInt8>, ?allow_objects:Bool):Dynamic;
+	public static function bytes2Var(bytes:std.Array<cs.types.UInt8>, ?allow_objects:Bool):Dynamic;
 	#else
 	@:native("Bytes2Var")
-	public static overload function bytes2Var(bytes:cs.NativeArray<cs.types.UInt8>):Dynamic;
+	public static overload function bytes2Var(bytes:HaxeArray<cs.types.UInt8>):Dynamic;
 
 	@:native("Bytes2Var")
-	public static overload function bytes2Var(bytes:cs.NativeArray<cs.types.UInt8>, allow_objects:Bool):Dynamic;
+	public static overload function bytes2Var(bytes:HaxeArray<cs.types.UInt8>, allow_objects:Bool):Dynamic;
 	#end
 
 	@:native("Convert")
@@ -114,14 +114,17 @@ extern class GD {
 	public static function typeExists(type:std.String):Bool;
 
 	#if doc_gen
-	@:native("Var2Bytes")
-	public static function var2Bytes(var_:Dynamic, ?full_objects:Bool):cs.NativeArray<cs.types.UInt8>;
+	public static extern inline function var2Bytes(var_:Dynamic, ?full_objects:Bool):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("Var2Bytes({0}, {1})", var_, full_objects));
+	}
 	#else
-	@:native("Var2Bytes")
-	public static overload function var2Bytes(var_:Dynamic):cs.NativeArray<cs.types.UInt8>;
+	public static overload extern inline function var2Bytes(var_:Dynamic):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("Var2Bytes({0})", var_));
+	}
 
-	@:native("Var2Bytes")
-	public static overload function var2Bytes(var_:Dynamic, full_objects:Bool):cs.NativeArray<cs.types.UInt8>;
+	public static overload extern inline function var2Bytes(var_:Dynamic, full_objects:Bool):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("Var2Bytes({0}, {1})", var_, full_objects));
+	}
 	#end
 
 	@:native("Var2Str")

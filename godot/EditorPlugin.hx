@@ -210,8 +210,9 @@ extern class EditorPlugin extends godot.Node {
 	/**		
 		This is for editors that edit script-based objects. You can return a list of breakpoints in the format (`script:line`), for example: `res://path_to_script.gd:25`.
 	**/
-	@:native("GetBreakpoints")
-	public function getBreakpoints():cs.NativeArray<std.String>;
+	public extern inline function getBreakpoints():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetBreakpoints()", this));
+	}
 
 	/**		
 		Override this method in your plugin to return a `godot.Texture` in order to give it an icon.

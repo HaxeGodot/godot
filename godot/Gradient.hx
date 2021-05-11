@@ -78,12 +78,14 @@ extern class Gradient extends godot.Resource {
 	@:native("SetOffsets")
 	public function setOffsets(offsets:haxe.Rest<Single>):Void;
 
-	@:native("GetOffsets")
-	public function getOffsets():cs.NativeArray<Single>;
+	public extern inline function getOffsets():std.Array<Single> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetOffsets()", this));
+	}
 
 	@:native("SetColors")
 	public function setColors(colors:haxe.Rest<godot.Color>):Void;
 
-	@:native("GetColors")
-	public function getColors():cs.NativeArray<godot.Color>;
+	public extern inline function getColors():std.Array<godot.Color> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetColors()", this));
+	}
 }

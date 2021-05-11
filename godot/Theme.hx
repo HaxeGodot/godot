@@ -54,8 +54,9 @@ extern class Theme extends godot.Resource {
 	/**		
 		Returns all the icons as a `String` filled with each `godot.Texture`'s name, for use in `godot.Theme.getIcon`, if the theme has `node_type`.
 	**/
-	@:native("GetIconList")
-	public function getIconList(nodeType:std.String):cs.NativeArray<std.String>;
+	public extern inline function getIconList(nodeType:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetIconList({1})", this, nodeType));
+	}
 
 	/**		
 		Sets theme's `godot.StyleBox` to `stylebox` at `name` in `node_type`.
@@ -92,14 +93,16 @@ extern class Theme extends godot.Resource {
 		
 		Valid `node_type`s may be found using `godot.Theme.getStyleboxTypes`.
 	**/
-	@:native("GetStyleboxList")
-	public function getStyleboxList(nodeType:std.String):cs.NativeArray<std.String>;
+	public extern inline function getStyleboxList(nodeType:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetStyleboxList({1})", this, nodeType));
+	}
 
 	/**		
 		Returns all the `godot.StyleBox` types as a `String` filled with each `godot.StyleBox`'s type, for use in `godot.Theme.getStylebox` and/or `godot.Theme.getStyleboxList`, if the theme has `node_type`.
 	**/
-	@:native("GetStyleboxTypes")
-	public function getStyleboxTypes():cs.NativeArray<std.String>;
+	public extern inline function getStyleboxTypes():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetStyleboxTypes()", this));
+	}
 
 	/**		
 		Sets the theme's `godot.Font` to `font` at `name` in `node_type`.
@@ -132,8 +135,9 @@ extern class Theme extends godot.Resource {
 	/**		
 		Returns all the `godot.Font`s as a `String` filled with each `godot.Font`'s name, for use in `godot.Theme.getFont`, if the theme has `node_type`.
 	**/
-	@:native("GetFontList")
-	public function getFontList(nodeType:std.String):cs.NativeArray<std.String>;
+	public extern inline function getFontList(nodeType:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetFontList({1})", this, nodeType));
+	}
 
 	/**		
 		Sets the theme's `godot.Color` to `color` at `name` in `node_type`.
@@ -166,8 +170,9 @@ extern class Theme extends godot.Resource {
 	/**		
 		Returns all the `godot.Color`s as a `String` filled with each `godot.Color`'s name, for use in `godot.Theme.getColor`, if the theme has `node_type`.
 	**/
-	@:native("GetColorList")
-	public function getColorList(nodeType:std.String):cs.NativeArray<std.String>;
+	public extern inline function getColorList(nodeType:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetColorList({1})", this, nodeType));
+	}
 
 	/**		
 		Sets the theme's constant to `constant` at `name` in `node_type`.
@@ -200,8 +205,9 @@ extern class Theme extends godot.Resource {
 	/**		
 		Returns all the constants as a `String` filled with each constant's name, for use in `godot.Theme.getConstant`, if the theme has `node_type`.
 	**/
-	@:native("GetConstantList")
-	public function getConstantList(nodeType:std.String):cs.NativeArray<std.String>;
+	public extern inline function getConstantList(nodeType:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetConstantList({1})", this, nodeType));
+	}
 
 	/**		
 		Clears all values on the theme.
@@ -218,8 +224,9 @@ extern class Theme extends godot.Resource {
 	/**		
 		Returns all the types in `node_type` as a `String` for use in any of the `get_*` functions, if the theme has `node_type`.
 	**/
-	@:native("GetTypeList")
-	public function getTypeList(nodeType:std.String):cs.NativeArray<std.String>;
+	public extern inline function getTypeList(nodeType:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetTypeList({1})", this, nodeType));
+	}
 
 	/**		
 		Sets the theme's values to a copy of the default theme values.

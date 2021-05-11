@@ -406,8 +406,9 @@ extern class AnimationTreePlayer extends godot.Node {
 	/**		
 		Returns a `String` containing the name of all nodes.
 	**/
-	@:native("GetNodeList")
-	public function getNodeList():cs.NativeArray<std.String>;
+	public extern inline function getNodeList():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetNodeList()", this));
+	}
 
 	@:native("SetAnimationProcessMode")
 	public function setAnimationProcessMode(mode:godot.AnimationTreePlayer_AnimationProcessMode):Void;

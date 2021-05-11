@@ -160,8 +160,9 @@ extern class AnimationPlayer extends godot.Node {
 	/**		
 		Returns the list of stored animation names.
 	**/
-	@:native("GetAnimationList")
-	public function getAnimationList():cs.NativeArray<std.String>;
+	public extern inline function getAnimationList():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetAnimationList()", this));
+	}
 
 	/**		
 		Triggers the `anim_to` animation when the `anim_from` animation completes.
@@ -344,8 +345,9 @@ extern class AnimationPlayer extends godot.Node {
 	/**		
 		Returns a list of the animation names that are currently queued to play.
 	**/
-	@:native("GetQueue")
-	public function getQueue():cs.NativeArray<std.String>;
+	public extern inline function getQueue():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetQueue()", this));
+	}
 
 	/**		
 		Clears all queued, unplayed animations.

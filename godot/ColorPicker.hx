@@ -150,6 +150,7 @@ extern class ColorPicker extends godot.BoxContainer {
 	/**		
 		Returns the list of colors in the presets of the color picker.
 	**/
-	@:native("GetPresets")
-	public function getPresets():cs.NativeArray<godot.Color>;
+	public extern inline function getPresets():std.Array<godot.Color> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetPresets()", this));
+	}
 }

@@ -15,8 +15,9 @@ extern class StringExtensions {
 	@:native("BeginsWith")
 	public static function beginsWith(instance:std.String, text:std.String):Bool;
 
-	@:native("Bigrams")
-	public static function bigrams(instance:std.String):cs.NativeArray<std.String>;
+	public static extern inline function bigrams(instance:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("Bigrams({0})", instance));
+	}
 
 	/**		
 		Converts a string containing a binary number into an integer.
@@ -323,8 +324,9 @@ extern class StringExtensions {
 	@:native("MatchN")
 	public static function matchN(instance:std.String, expr:std.String):Bool;
 
-	@:native("MD5Buffer")
-	public static function mD5Buffer(instance:std.String):cs.NativeArray<cs.types.UInt8>;
+	public static extern inline function mD5Buffer(instance:std.String):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("MD5Buffer({0})", instance));
+	}
 
 	@:native("MD5Text")
 	public static function mD5Text(instance:std.String):std.String;
@@ -391,8 +393,9 @@ extern class StringExtensions {
 	@:native("RStrip")
 	public static function rStrip(instance:std.String, chars:std.String):std.String;
 
-	@:native("SHA256Buffer")
-	public static function sHA256Buffer(instance:std.String):cs.NativeArray<cs.types.UInt8>;
+	public static extern inline function sHA256Buffer(instance:std.String):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("SHA256Buffer({0})", instance));
+	}
 
 	@:native("SHA256Text")
 	public static function sHA256Text(instance:std.String):std.String;
@@ -401,25 +404,31 @@ extern class StringExtensions {
 	public static function similarity(instance:std.String, text:std.String):Single;
 
 	#if doc_gen
-	@:native("Split")
-	public static function split(instance:std.String, divisor:std.String, ?allowEmpty:Bool):cs.NativeArray<std.String>;
+	public static extern inline function split(instance:std.String, divisor:std.String, ?allowEmpty:Bool):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("Split({0}, {1}, {2})", instance, divisor, allowEmpty));
+	}
 	#else
-	@:native("Split")
-	public static overload function split(instance:std.String, divisor:std.String):cs.NativeArray<std.String>;
+	public static overload extern inline function split(instance:std.String, divisor:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("Split({0}, {1})", instance, divisor));
+	}
 
-	@:native("Split")
-	public static overload function split(instance:std.String, divisor:std.String, allowEmpty:Bool):cs.NativeArray<std.String>;
+	public static overload extern inline function split(instance:std.String, divisor:std.String, allowEmpty:Bool):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("Split({0}, {1}, {2})", instance, divisor, allowEmpty));
+	}
 	#end
 
 	#if doc_gen
-	@:native("SplitFloats")
-	public static function splitFloats(instance:std.String, divisor:std.String, ?allowEmpty:Bool):cs.NativeArray<Single>;
+	public static extern inline function splitFloats(instance:std.String, divisor:std.String, ?allowEmpty:Bool):std.Array<Single> {
+		return cs.Lib.array(cs.Syntax.code("SplitFloats({0}, {1}, {2})", instance, divisor, allowEmpty));
+	}
 	#else
-	@:native("SplitFloats")
-	public static overload function splitFloats(instance:std.String, divisor:std.String):cs.NativeArray<Single>;
+	public static overload extern inline function splitFloats(instance:std.String, divisor:std.String):std.Array<Single> {
+		return cs.Lib.array(cs.Syntax.code("SplitFloats({0}, {1})", instance, divisor));
+	}
 
-	@:native("SplitFloats")
-	public static overload function splitFloats(instance:std.String, divisor:std.String, allowEmpty:Bool):cs.NativeArray<Single>;
+	public static overload extern inline function splitFloats(instance:std.String, divisor:std.String, allowEmpty:Bool):std.Array<Single> {
+		return cs.Lib.array(cs.Syntax.code("SplitFloats({0}, {1}, {2})", instance, divisor, allowEmpty));
+	}
 	#end
 
 	#if doc_gen
@@ -439,8 +448,9 @@ extern class StringExtensions {
 	@:native("Substr")
 	public static function substr(instance:std.String, from:Int, len:Int):std.String;
 
-	@:native("ToAscii")
-	public static function toAscii(instance:std.String):cs.NativeArray<cs.types.UInt8>;
+	public static extern inline function toAscii(instance:std.String):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("ToAscii({0})", instance));
+	}
 
 	@:native("ToFloat")
 	public static function toFloat(instance:std.String):Single;
@@ -454,8 +464,9 @@ extern class StringExtensions {
 	@:native("ToUpper")
 	public static function toUpper(instance:std.String):std.String;
 
-	@:native("ToUTF8")
-	public static function toUTF8(instance:std.String):cs.NativeArray<cs.types.UInt8>;
+	public static extern inline function toUTF8(instance:std.String):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("ToUTF8({0})", instance));
+	}
 
 	@:native("XMLEscape")
 	public static function xMLEscape(instance:std.String):std.String;

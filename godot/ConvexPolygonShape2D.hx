@@ -32,6 +32,7 @@ extern class ConvexPolygonShape2D extends godot.Shape2D {
 	@:native("SetPoints")
 	public function setPoints(points:haxe.Rest<godot.Vector2>):Void;
 
-	@:native("GetPoints")
-	public function getPoints():cs.NativeArray<godot.Vector2>;
+	public extern inline function getPoints():std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetPoints()", this));
+	}
 }

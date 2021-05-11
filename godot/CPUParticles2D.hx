@@ -584,20 +584,23 @@ extern class CPUParticles2D extends godot.Node2D {
 	@:native("SetEmissionPoints")
 	public function setEmissionPoints(array:haxe.Rest<godot.Vector2>):Void;
 
-	@:native("GetEmissionPoints")
-	public function getEmissionPoints():cs.NativeArray<godot.Vector2>;
+	public extern inline function getEmissionPoints():std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetEmissionPoints()", this));
+	}
 
 	@:native("SetEmissionNormals")
 	public function setEmissionNormals(array:haxe.Rest<godot.Vector2>):Void;
 
-	@:native("GetEmissionNormals")
-	public function getEmissionNormals():cs.NativeArray<godot.Vector2>;
+	public extern inline function getEmissionNormals():std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetEmissionNormals()", this));
+	}
 
 	@:native("SetEmissionColors")
 	public function setEmissionColors(array:haxe.Rest<godot.Color>):Void;
 
-	@:native("GetEmissionColors")
-	public function getEmissionColors():cs.NativeArray<godot.Color>;
+	public extern inline function getEmissionColors():std.Array<godot.Color> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetEmissionColors()", this));
+	}
 
 	@:native("GetGravity")
 	public function getGravity():godot.Vector2;

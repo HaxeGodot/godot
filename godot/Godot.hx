@@ -2,8 +2,6 @@ package godot;
 
 #if macro
 import haxe.macro.Context;
-import haxe.macro.Compiler;
-import sys.io.File;
 import sys.FileSystem;
 
 using StringTools;

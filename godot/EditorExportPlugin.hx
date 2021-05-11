@@ -19,7 +19,7 @@ extern class EditorExportPlugin extends godot.Reference {
 		Virtual method to be overridden by the user. It is called when the export starts and provides all information about the export. `features` is the list of features for the export, `is_debug` is `true` for debug builds, `path` is the target path for the exported project. `flags` is only used when running a runnable profile, e.g. when using native run on Android.
 	**/
 	@:native("_ExportBegin")
-	public function _ExportBegin(features:cs.NativeArray<std.String>, isDebug:Bool, path:std.String, flags:Int):Void;
+	public function _ExportBegin(features:HaxeArray<std.String>, isDebug:Bool, path:std.String, flags:Int):Void;
 
 	/**		
 		Virtual method to be overridden by the user. Called when the export is finished.
@@ -51,7 +51,7 @@ extern class EditorExportPlugin extends godot.Reference {
 		Adds a custom file to be exported. `path` is the virtual path that can be used to load the file, `file` is the binary data of the file. If `remap` is `true`, file will not be exported, but instead remapped to the given `path`.
 	**/
 	@:native("AddFile")
-	public function addFile(path:std.String, file:cs.NativeArray<cs.types.UInt8>, remap:Bool):Void;
+	public function addFile(path:std.String, file:HaxeArray<cs.types.UInt8>, remap:Bool):Void;
 
 	/**		
 		Adds a static library (*.a) or dynamic library (*.dylib, *.framework) to Linking Phase in iOS's Xcode project.

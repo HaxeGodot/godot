@@ -48,8 +48,9 @@ extern class CollisionPolygon2D extends godot.Node2D {
 	@:native("SetPolygon")
 	public function setPolygon(polygon:haxe.Rest<godot.Vector2>):Void;
 
-	@:native("GetPolygon")
-	public function getPolygon():cs.NativeArray<godot.Vector2>;
+	public extern inline function getPolygon():std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetPolygon()", this));
+	}
 
 	@:native("SetBuildMode")
 	public function setBuildMode(buildMode:godot.CollisionPolygon2D_BuildModeEnum):Void;

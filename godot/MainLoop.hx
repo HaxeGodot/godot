@@ -178,7 +178,7 @@ extern class MainLoop extends godot.Object {
 		Called when files are dragged from the OS file manager and dropped in the game window. The arguments are a list of file paths and the identifier of the screen where the drag originated.
 	**/
 	@:native("_DropFiles")
-	public function _DropFiles(files:cs.NativeArray<std.String>, fromScreen:Int):Void;
+	public function _DropFiles(files:HaxeArray<std.String>, fromScreen:Int):Void;
 
 	/**		
 		Called before the program exits.

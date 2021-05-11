@@ -562,8 +562,9 @@ extern class TextEdit extends godot.Control {
 		
 		```
 	**/
-	@:native("Search")
-	public function search(key:std.String, flags:UInt, fromLine:Int, fromColumn:Int):cs.NativeArray<Int>;
+	public extern inline function search(key:std.String, flags:UInt, fromLine:Int, fromColumn:Int):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.Search({1}, {2}, {3}, {4})", this, key, flags, fromLine, fromColumn));
+	}
 
 	/**		
 		Perform undo operation.

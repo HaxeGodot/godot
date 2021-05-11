@@ -85,8 +85,9 @@ extern abstract class Mesh extends godot.Resource {
 	/**		
 		Returns all the vertices that make up the faces of the mesh. Each three vertices represent one triangle.
 	**/
-	@:native("GetFaces")
-	public function getFaces():cs.NativeArray<godot.Vector3>;
+	public extern inline function getFaces():std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetFaces()", this));
+	}
 
 	/**		
 		Generate a `godot.TriangleMesh` from the mesh.

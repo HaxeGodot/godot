@@ -68,8 +68,9 @@ extern class GDNativeLibrary extends godot.Resource {
 	/**		
 		Returns paths to all dependency libraries for the current platform and architecture.
 	**/
-	@:native("GetCurrentDependencies")
-	public function getCurrentDependencies():cs.NativeArray<std.String>;
+	public extern inline function getCurrentDependencies():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetCurrentDependencies()", this));
+	}
 
 	@:native("ShouldLoadOnce")
 	public function shouldLoadOnce():Bool;

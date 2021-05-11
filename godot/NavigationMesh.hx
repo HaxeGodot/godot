@@ -234,8 +234,9 @@ extern class NavigationMesh extends godot.Resource {
 	@:native("SetVertices")
 	public function setVertices(vertices:haxe.Rest<godot.Vector3>):Void;
 
-	@:native("GetVertices")
-	public function getVertices():cs.NativeArray<godot.Vector3>;
+	public extern inline function getVertices():std.Array<godot.Vector3> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetVertices()", this));
+	}
 
 	@:native("AddPolygon")
 	public function addPolygon(polygon:haxe.Rest<Int>):Void;
@@ -243,8 +244,9 @@ extern class NavigationMesh extends godot.Resource {
 	@:native("GetPolygonCount")
 	public function getPolygonCount():Int;
 
-	@:native("GetPolygon")
-	public function getPolygon(idx:Int):cs.NativeArray<Int>;
+	public extern inline function getPolygon(idx:Int):std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetPolygon({1})", this, idx));
+	}
 
 	@:native("ClearPolygons")
 	public function clearPolygons():Void;

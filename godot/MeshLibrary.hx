@@ -122,8 +122,9 @@ extern class MeshLibrary extends godot.Resource {
 	/**		
 		Returns the list of item IDs in use.
 	**/
-	@:native("GetItemList")
-	public function getItemList():cs.NativeArray<Int>;
+	public extern inline function getItemList():std.Array<Int> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetItemList()", this));
+	}
 
 	/**		
 		Gets an unused ID for a new item.

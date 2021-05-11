@@ -30,8 +30,9 @@ extern class StreamPeerBuffer extends godot.StreamPeer {
 	@:native("SetDataArray")
 	public function setDataArray(data:haxe.Rest<cs.types.UInt8>):Void;
 
-	@:native("GetDataArray")
-	public function getDataArray():cs.NativeArray<cs.types.UInt8>;
+	public extern inline function getDataArray():std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetDataArray()", this));
+	}
 
 	@:native("Clear")
 	public function clear():Void;

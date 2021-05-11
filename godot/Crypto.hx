@@ -41,8 +41,9 @@ extern class Crypto extends godot.Reference {
 	/**		
 		Generates a `cs.UInt8` of cryptographically secure random bytes with given `size`.
 	**/
-	@:native("GenerateRandomBytes")
-	public function generateRandomBytes(size:Int):cs.NativeArray<cs.types.UInt8>;
+	public extern inline function generateRandomBytes(size:Int):std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GenerateRandomBytes({1})", this, size));
+	}
 
 	/**		
 		Generates an RSA `godot.CryptoKey` that can be used for creating self-signed certificates and passed to `godot.StreamPeerSSL.acceptStream`.

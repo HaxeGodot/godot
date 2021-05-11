@@ -88,14 +88,16 @@ extern class ConfigFile extends godot.Reference {
 	/**		
 		Returns an array of all defined section identifiers.
 	**/
-	@:native("GetSections")
-	public function getSections():cs.NativeArray<std.String>;
+	public extern inline function getSections():std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetSections()", this));
+	}
 
 	/**		
 		Returns an array of all defined key identifiers in the specified section. Raises an error and returns an empty array if the section does not exist.
 	**/
-	@:native("GetSectionKeys")
-	public function getSectionKeys(section:std.String):cs.NativeArray<std.String>;
+	public extern inline function getSectionKeys(section:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetSectionKeys({1})", this, section));
+	}
 
 	/**		
 		Deletes the specified section along with all the key-value pairs inside. Raises an error if the section does not exist.

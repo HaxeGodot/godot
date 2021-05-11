@@ -251,25 +251,25 @@ extern abstract class CanvasItem extends godot.Node {
 		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing.
 	**/
 	@:native("DrawPolyline")
-	public function drawPolyline(points:cs.NativeArray<godot.Vector2>, color:godot.Color, ?width:Single, ?antialiased:Bool):Void;
+	public function drawPolyline(points:std.Array<godot.Vector2>, color:godot.Color, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
 		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing.
 	**/
 	@:native("DrawPolyline")
-	public overload function drawPolyline(points:cs.NativeArray<godot.Vector2>, color:godot.Color):Void;
+	public overload function drawPolyline(points:HaxeArray<godot.Vector2>, color:godot.Color):Void;
 
 	/**		
 		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing.
 	**/
 	@:native("DrawPolyline")
-	public overload function drawPolyline(points:cs.NativeArray<godot.Vector2>, color:godot.Color, width:Single):Void;
+	public overload function drawPolyline(points:HaxeArray<godot.Vector2>, color:godot.Color, width:Single):Void;
 
 	/**		
 		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing.
 	**/
 	@:native("DrawPolyline")
-	public overload function drawPolyline(points:cs.NativeArray<godot.Vector2>, color:godot.Color, width:Single, antialiased:Bool):Void;
+	public overload function drawPolyline(points:HaxeArray<godot.Vector2>, color:godot.Color, width:Single, antialiased:Bool):Void;
 	#end
 
 	#if doc_gen
@@ -277,25 +277,25 @@ extern abstract class CanvasItem extends godot.Node {
 		Draws interconnected line segments with a uniform `width`, segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`.
 	**/
 	@:native("DrawPolylineColors")
-	public function drawPolylineColors(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, ?width:Single, ?antialiased:Bool):Void;
+	public function drawPolylineColors(points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
 		Draws interconnected line segments with a uniform `width`, segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`.
 	**/
 	@:native("DrawPolylineColors")
-	public overload function drawPolylineColors(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>):Void;
+	public overload function drawPolylineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
 
 	/**		
 		Draws interconnected line segments with a uniform `width`, segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`.
 	**/
 	@:native("DrawPolylineColors")
-	public overload function drawPolylineColors(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, width:Single):Void;
+	public overload function drawPolylineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, width:Single):Void;
 
 	/**		
 		Draws interconnected line segments with a uniform `width`, segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`.
 	**/
 	@:native("DrawPolylineColors")
-	public overload function drawPolylineColors(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, width:Single, antialiased:Bool):Void;
+	public overload function drawPolylineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, width:Single, antialiased:Bool):Void;
 	#end
 
 	#if doc_gen
@@ -331,7 +331,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Note: `width` and `antialiased` are currently not implemented and have no effect.
 	**/
 	@:native("DrawMultiline")
-	public function drawMultiline(points:cs.NativeArray<godot.Vector2>, color:godot.Color, ?width:Single, ?antialiased:Bool):Void;
+	public function drawMultiline(points:std.Array<godot.Vector2>, color:godot.Color, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
 		Draws multiple, parallel lines with a uniform `color`.
@@ -339,7 +339,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Note: `width` and `antialiased` are currently not implemented and have no effect.
 	**/
 	@:native("DrawMultiline")
-	public overload function drawMultiline(points:cs.NativeArray<godot.Vector2>, color:godot.Color):Void;
+	public overload function drawMultiline(points:HaxeArray<godot.Vector2>, color:godot.Color):Void;
 
 	/**		
 		Draws multiple, parallel lines with a uniform `color`.
@@ -347,7 +347,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Note: `width` and `antialiased` are currently not implemented and have no effect.
 	**/
 	@:native("DrawMultiline")
-	public overload function drawMultiline(points:cs.NativeArray<godot.Vector2>, color:godot.Color, width:Single):Void;
+	public overload function drawMultiline(points:HaxeArray<godot.Vector2>, color:godot.Color, width:Single):Void;
 
 	/**		
 		Draws multiple, parallel lines with a uniform `color`.
@@ -355,7 +355,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Note: `width` and `antialiased` are currently not implemented and have no effect.
 	**/
 	@:native("DrawMultiline")
-	public overload function drawMultiline(points:cs.NativeArray<godot.Vector2>, color:godot.Color, width:Single, antialiased:Bool):Void;
+	public overload function drawMultiline(points:HaxeArray<godot.Vector2>, color:godot.Color, width:Single, antialiased:Bool):Void;
 	#end
 
 	#if doc_gen
@@ -365,7 +365,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Note: `width` and `antialiased` are currently not implemented and have no effect.
 	**/
 	@:native("DrawMultilineColors")
-	public function drawMultilineColors(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, ?width:Single, ?antialiased:Bool):Void;
+	public function drawMultilineColors(points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
 		Draws multiple, parallel lines with a uniform `width` and segment-by-segment coloring. Colors assigned to line segments match by index between `points` and `colors`.
@@ -373,7 +373,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Note: `width` and `antialiased` are currently not implemented and have no effect.
 	**/
 	@:native("DrawMultilineColors")
-	public overload function drawMultilineColors(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>):Void;
+	public overload function drawMultilineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
 
 	/**		
 		Draws multiple, parallel lines with a uniform `width` and segment-by-segment coloring. Colors assigned to line segments match by index between `points` and `colors`.
@@ -381,7 +381,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Note: `width` and `antialiased` are currently not implemented and have no effect.
 	**/
 	@:native("DrawMultilineColors")
-	public overload function drawMultilineColors(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, width:Single):Void;
+	public overload function drawMultilineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, width:Single):Void;
 
 	/**		
 		Draws multiple, parallel lines with a uniform `width` and segment-by-segment coloring. Colors assigned to line segments match by index between `points` and `colors`.
@@ -389,7 +389,7 @@ extern abstract class CanvasItem extends godot.Node {
 		Note: `width` and `antialiased` are currently not implemented and have no effect.
 	**/
 	@:native("DrawMultilineColors")
-	public overload function drawMultilineColors(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, width:Single, antialiased:Bool):Void;
+	public overload function drawMultilineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, width:Single, antialiased:Bool):Void;
 	#end
 
 	#if doc_gen
@@ -577,31 +577,31 @@ extern abstract class CanvasItem extends godot.Node {
 		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle and 4 points for a quad.
 	**/
 	@:native("DrawPrimitive")
-	public function drawPrimitive(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, ?texture:godot.Texture, ?width:Single, ?normalMap:godot.Texture):Void;
+	public function drawPrimitive(points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, uvs:std.Array<godot.Vector2>, ?texture:godot.Texture, ?width:Single, ?normalMap:godot.Texture):Void;
 	#else
 	/**		
 		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle and 4 points for a quad.
 	**/
 	@:native("DrawPrimitive")
-	public overload function drawPrimitive(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>):Void;
+	public overload function drawPrimitive(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>):Void;
 
 	/**		
 		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle and 4 points for a quad.
 	**/
 	@:native("DrawPrimitive")
-	public overload function drawPrimitive(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.Texture):Void;
+	public overload function drawPrimitive(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture):Void;
 
 	/**		
 		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle and 4 points for a quad.
 	**/
 	@:native("DrawPrimitive")
-	public overload function drawPrimitive(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.Texture, width:Single):Void;
+	public overload function drawPrimitive(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, width:Single):Void;
 
 	/**		
 		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle and 4 points for a quad.
 	**/
 	@:native("DrawPrimitive")
-	public overload function drawPrimitive(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.Texture, width:Single, normalMap:godot.Texture):Void;
+	public overload function drawPrimitive(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, width:Single, normalMap:godot.Texture):Void;
 	#end
 
 	#if doc_gen
@@ -611,7 +611,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawPolygon")
-	public function drawPolygon(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, ?uvs:cs.NativeArray<godot.Vector2>, ?texture:godot.Texture, ?normalMap:godot.Texture, ?antialiased:Bool):Void;
+	public function drawPolygon(points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?uvs:std.Array<godot.Vector2>, ?texture:godot.Texture, ?normalMap:godot.Texture, ?antialiased:Bool):Void;
 	#else
 	/**		
 		Draws a polygon of any amount of points, convex or concave.
@@ -619,7 +619,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawPolygon")
-	public overload function drawPolygon(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>):Void;
+	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
 
 	/**		
 		Draws a polygon of any amount of points, convex or concave.
@@ -627,7 +627,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawPolygon")
-	public overload function drawPolygon(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>):Void;
+	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>):Void;
 
 	/**		
 		Draws a polygon of any amount of points, convex or concave.
@@ -635,7 +635,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawPolygon")
-	public overload function drawPolygon(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.Texture):Void;
+	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture):Void;
 
 	/**		
 		Draws a polygon of any amount of points, convex or concave.
@@ -643,7 +643,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawPolygon")
-	public overload function drawPolygon(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture):Void;
+	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture):Void;
 
 	/**		
 		Draws a polygon of any amount of points, convex or concave.
@@ -651,7 +651,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawPolygon")
-	public overload function drawPolygon(points:cs.NativeArray<godot.Vector2>, colors:cs.NativeArray<godot.Color>, uvs:cs.NativeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture, antialiased:Bool):Void;
+	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture, antialiased:Bool):Void;
 	#end
 
 	#if doc_gen
@@ -661,7 +661,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawColoredPolygon")
-	public function drawColoredPolygon(points:cs.NativeArray<godot.Vector2>, color:godot.Color, ?uvs:cs.NativeArray<godot.Vector2>, ?texture:godot.Texture, ?normalMap:godot.Texture, ?antialiased:Bool):Void;
+	public function drawColoredPolygon(points:std.Array<godot.Vector2>, color:godot.Color, ?uvs:std.Array<godot.Vector2>, ?texture:godot.Texture, ?normalMap:godot.Texture, ?antialiased:Bool):Void;
 	#else
 	/**		
 		Draws a colored polygon of any amount of points, convex or concave.
@@ -669,7 +669,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawColoredPolygon")
-	public overload function drawColoredPolygon(points:cs.NativeArray<godot.Vector2>, color:godot.Color):Void;
+	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color):Void;
 
 	/**		
 		Draws a colored polygon of any amount of points, convex or concave.
@@ -677,7 +677,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawColoredPolygon")
-	public overload function drawColoredPolygon(points:cs.NativeArray<godot.Vector2>, color:godot.Color, uvs:cs.NativeArray<godot.Vector2>):Void;
+	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color, uvs:HaxeArray<godot.Vector2>):Void;
 
 	/**		
 		Draws a colored polygon of any amount of points, convex or concave.
@@ -685,7 +685,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawColoredPolygon")
-	public overload function drawColoredPolygon(points:cs.NativeArray<godot.Vector2>, color:godot.Color, uvs:cs.NativeArray<godot.Vector2>, texture:godot.Texture):Void;
+	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture):Void;
 
 	/**		
 		Draws a colored polygon of any amount of points, convex or concave.
@@ -693,7 +693,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawColoredPolygon")
-	public overload function drawColoredPolygon(points:cs.NativeArray<godot.Vector2>, color:godot.Color, uvs:cs.NativeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture):Void;
+	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture):Void;
 
 	/**		
 		Draws a colored polygon of any amount of points, convex or concave.
@@ -701,7 +701,7 @@ extern abstract class CanvasItem extends godot.Node {
 		@param uvs If the parameter is null, then the default value is new Vector2[] {}
 	**/
 	@:native("DrawColoredPolygon")
-	public overload function drawColoredPolygon(points:cs.NativeArray<godot.Vector2>, color:godot.Color, uvs:cs.NativeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture, antialiased:Bool):Void;
+	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture, antialiased:Bool):Void;
 	#end
 
 	#if doc_gen

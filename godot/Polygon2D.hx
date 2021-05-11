@@ -112,14 +112,16 @@ extern class Polygon2D extends godot.Node2D {
 	@:native("SetPolygon")
 	public function setPolygon(polygon:haxe.Rest<godot.Vector2>):Void;
 
-	@:native("GetPolygon")
-	public function getPolygon():cs.NativeArray<godot.Vector2>;
+	public extern inline function getPolygon():std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetPolygon()", this));
+	}
 
 	@:native("SetUv")
 	public function setUv(uv:haxe.Rest<godot.Vector2>):Void;
 
-	@:native("GetUv")
-	public function getUv():cs.NativeArray<godot.Vector2>;
+	public extern inline function getUv():std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetUv()", this));
+	}
 
 	@:native("SetColor")
 	public function setColor(color:godot.Color):Void;
@@ -136,8 +138,9 @@ extern class Polygon2D extends godot.Node2D {
 	@:native("SetVertexColors")
 	public function setVertexColors(vertexColors:haxe.Rest<godot.Color>):Void;
 
-	@:native("GetVertexColors")
-	public function getVertexColors():cs.NativeArray<godot.Color>;
+	public extern inline function getVertexColors():std.Array<godot.Color> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetVertexColors()", this));
+	}
 
 	@:native("SetTexture")
 	public function setTexture(texture:godot.Texture):Void;
@@ -214,8 +217,9 @@ extern class Polygon2D extends godot.Node2D {
 	/**		
 		Returns the height values of the specified bone.
 	**/
-	@:native("GetBoneWeights")
-	public function getBoneWeights(index:Int):cs.NativeArray<Single>;
+	public extern inline function getBoneWeights(index:Int):std.Array<Single> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetBoneWeights({1})", this, index));
+	}
 
 	/**		
 		Removes the specified bone from this `godot.Polygon2D`.

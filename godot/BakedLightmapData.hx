@@ -60,8 +60,9 @@ extern class BakedLightmapData extends godot.Resource {
 	@:native("SetOctree")
 	public function setOctree(octree:haxe.Rest<cs.types.UInt8>):Void;
 
-	@:native("GetOctree")
-	public function getOctree():cs.NativeArray<cs.types.UInt8>;
+	public extern inline function getOctree():std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetOctree()", this));
+	}
 
 	@:native("SetEnergy")
 	public function setEnergy(energy:Single):Void;

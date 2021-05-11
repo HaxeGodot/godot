@@ -58,6 +58,7 @@ extern class HashingContext extends godot.Reference {
 	/**		
 		Closes the current context, and return the computed hash.
 	**/
-	@:native("Finish")
-	public function finish():cs.NativeArray<cs.types.UInt8>;
+	public extern inline function finish():std.Array<cs.types.UInt8> {
+		return cs.Lib.array(cs.Syntax.code("{0}.Finish()", this));
+	}
 }

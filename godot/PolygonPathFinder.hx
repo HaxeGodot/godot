@@ -16,13 +16,15 @@ extern class PolygonPathFinder extends godot.Resource {
 	public function new():Void;
 
 	@:native("Setup")
-	public function setup(points:cs.NativeArray<godot.Vector2>, connections:haxe.Rest<Int>):Void;
+	public function setup(points:HaxeArray<godot.Vector2>, connections:haxe.Rest<Int>):Void;
 
-	@:native("FindPath")
-	public function findPath(from:godot.Vector2, to:godot.Vector2):cs.NativeArray<godot.Vector2>;
+	public extern inline function findPath(from:godot.Vector2, to:godot.Vector2):std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.FindPath({1}, {2})", this, from, to));
+	}
 
-	@:native("GetIntersections")
-	public function getIntersections(from:godot.Vector2, to:godot.Vector2):cs.NativeArray<godot.Vector2>;
+	public extern inline function getIntersections(from:godot.Vector2, to:godot.Vector2):std.Array<godot.Vector2> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetIntersections({1}, {2})", this, from, to));
+	}
 
 	@:native("GetClosestPoint")
 	public function getClosestPoint(point:godot.Vector2):godot.Vector2;
