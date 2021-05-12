@@ -21,5 +21,5 @@ extern class CSharpScript extends godot.Script {
 		Returns a new instance of the script.
 	**/
 	@:native("New")
-	public function new_(args:haxe.Rest<Dynamic>):Dynamic;
+	public function new_(args:HaxeArray<Dynamic>):Dynamic;
 }

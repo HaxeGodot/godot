@@ -64,7 +64,7 @@ extern class GIProbeData extends godot.Resource {
 	public function getToCellXform():godot.Transform;
 
 	@:native("SetDynamicData")
-	public function setDynamicData(dynamicData:haxe.Rest<Int>):Void;
+	public function setDynamicData(dynamicData:HaxeArray<Int>):Void;
 
 	public extern inline function getDynamicData():std.Array<Int> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetDynamicData()", this));

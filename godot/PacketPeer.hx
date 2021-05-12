@@ -87,7 +87,7 @@ extern abstract class PacketPeer extends godot.Reference {
 		Sends a raw packet.
 	**/
 	@:native("PutPacket")
-	public function putPacket(buffer:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function putPacket(buffer:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	/**		
 		Returns the error state of the last packet received (via `godot.PacketPeer.getPacket` and `godot.PacketPeer.getVar`).

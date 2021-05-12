@@ -48,7 +48,7 @@ extern class OccluderPolygon2D extends godot.Resource {
 	public function getCullMode():godot.OccluderPolygon2D_CullModeEnum;
 
 	@:native("SetPolygon")
-	public function setPolygon(polygon:haxe.Rest<godot.Vector2>):Void;
+	public function setPolygon(polygon:HaxeArray<godot.Vector2>):Void;
 
 	public extern inline function getPolygon():std.Array<godot.Vector2> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetPolygon()", this));

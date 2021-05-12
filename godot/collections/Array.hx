@@ -70,7 +70,7 @@ extern class Array_ implements cs.system.collections.IList implements cs.system.
 	public overload function new(collection:cs.system.collections.IEnumerable):Void;
 
 	@:native("new")
-	public overload function new(array:cs.NativeArray<Dynamic>):Void;
+	public overload function new(array:HaxeArray<Dynamic>):Void;
 
 	#if doc_gen
 	@:native("Duplicate")

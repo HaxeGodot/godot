@@ -1197,25 +1197,25 @@ extern class Node extends godot.Object {
 		Note: You can only safely use RPCs on clients after you received the `connected_to_server` signal from the `godot.SceneTree`. You also need to keep track of the connection state, either by the `godot.SceneTree` signals like `server_disconnected` or by checking `SceneTree.network_peer.get_connection_status() == CONNECTION_CONNECTED`.
 	**/
 	@:native("Rpc")
-	public function rpc(method:std.String, args:haxe.Rest<Dynamic>):Dynamic;
+	public function rpc(method:std.String, args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
 		Sends a `godot.Node.rpc` using an unreliable protocol. Returns an empty `Variant`.
 	**/
 	@:native("RpcUnreliable")
-	public function rpcUnreliable(method:std.String, args:haxe.Rest<Dynamic>):Dynamic;
+	public function rpcUnreliable(method:std.String, args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
 		Sends a `godot.Node.rpc` to a specific peer identified by `peer_id` (see `godot.NetworkedMultiplayerPeer.setTargetPeer`). Returns an empty `Variant`.
 	**/
 	@:native("RpcId")
-	public function rpcId(peerId:Int, method:std.String, args:haxe.Rest<Dynamic>):Dynamic;
+	public function rpcId(peerId:Int, method:std.String, args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
 		Sends a `godot.Node.rpc` to a specific peer identified by `peer_id` using an unreliable protocol (see `godot.NetworkedMultiplayerPeer.setTargetPeer`). Returns an empty `Variant`.
 	**/
 	@:native("RpcUnreliableId")
-	public function rpcUnreliableId(peerId:Int, method:std.String, args:haxe.Rest<Dynamic>):Dynamic;
+	public function rpcUnreliableId(peerId:Int, method:std.String, args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
 		Remotely changes a property's value on other peers (and locally). Behaviour depends on the RPC configuration for the given property, see `godot.Node.rsetConfig`. See also `godot.Node.rpc` for RPCs for methods, most information applies to this method as well.

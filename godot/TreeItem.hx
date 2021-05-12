@@ -516,5 +516,5 @@ extern abstract class TreeItem extends godot.Object {
 		Calls the `method` on the actual TreeItem and its children recursively. Pass parameters as a comma separated list.
 	**/
 	@:native("CallRecursive")
-	public function callRecursive(method:std.String, args:haxe.Rest<Dynamic>):Dynamic;
+	public function callRecursive(method:std.String, args:HaxeArray<Dynamic>):Dynamic;
 }

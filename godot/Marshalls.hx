@@ -65,7 +65,7 @@ extern class Marshalls {
 		Returns a Base64-encoded string of a given `cs.UInt8`.
 	**/
 	@:native("RawToBase64")
-	public static function rawToBase64(array:haxe.Rest<cs.types.UInt8>):std.String;
+	public static function rawToBase64(array:HaxeArray<cs.types.UInt8>):std.String;
 
 	/**		
 		Returns a decoded `cs.UInt8` corresponding to the Base64-encoded string `base64_str`.

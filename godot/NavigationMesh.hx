@@ -232,14 +232,14 @@ extern class NavigationMesh extends godot.Resource {
 	public function getFilterWalkableLowHeightSpans():Bool;
 
 	@:native("SetVertices")
-	public function setVertices(vertices:haxe.Rest<godot.Vector3>):Void;
+	public function setVertices(vertices:HaxeArray<godot.Vector3>):Void;
 
 	public extern inline function getVertices():std.Array<godot.Vector3> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetVertices()", this));
 	}
 
 	@:native("AddPolygon")
-	public function addPolygon(polygon:haxe.Rest<Int>):Void;
+	public function addPolygon(polygon:HaxeArray<Int>):Void;
 
 	@:native("GetPolygonCount")
 	public function getPolygonCount():Int;

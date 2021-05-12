@@ -67,7 +67,7 @@ extern class Array_1<T0>_ implements cs.system.collections.generic.IList_1<T0> i
 	public overload function new(collection:cs.system.collections.generic.IEnumerable_1<T0>):Void;
 
 	@:native("new")
-	public overload function new(array:cs.NativeArray<T0>):Void;
+	public overload function new(array:HaxeArray<T0>):Void;
 
 	@:native("new")
 	public overload function new(array:godot.collections.Array):Void;

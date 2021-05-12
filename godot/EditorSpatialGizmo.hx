@@ -127,7 +127,7 @@ extern class EditorSpatialGizmo extends godot.SpatialGizmo {
 		Adds the specified `segments` to the gizmo's collision shape for picking. Call this function during `godot.EditorSpatialGizmo.redraw`.
 	**/
 	@:native("AddCollisionSegments")
-	public function addCollisionSegments(segments:haxe.Rest<godot.Vector3>):Void;
+	public function addCollisionSegments(segments:HaxeArray<godot.Vector3>):Void;
 
 	/**		
 		Adds collision triangles to the gizmo for picking. A `godot.TriangleMesh` can be generated from a regular `godot.Mesh` too. Call this function during `godot.EditorSpatialGizmo.redraw`.

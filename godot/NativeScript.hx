@@ -78,5 +78,5 @@ extern class NativeScript extends godot.Script {
 		Note: Any arguments passed to this function will be ignored and not passed to the native constructor function. This will change with in a future API extension.
 	**/
 	@:native("New")
-	public function new_(args:haxe.Rest<Dynamic>):Dynamic;
+	public function new_(args:HaxeArray<Dynamic>):Dynamic;
 }

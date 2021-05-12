@@ -425,7 +425,7 @@ extern class SceneTree extends godot.MainLoop {
 		Note: `method` may only have 5 arguments at most (8 arguments passed to this method in total).
 	**/
 	@:native("CallGroupFlags")
-	public function callGroupFlags(flags:Int, group:std.String, method:std.String, args:haxe.Rest<Dynamic>):Dynamic;
+	public function callGroupFlags(flags:Int, group:std.String, method:std.String, args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
 		Sends the given notification to all members of the `group`, respecting the given `godot.SceneTree_GroupCallFlags`.
@@ -445,7 +445,7 @@ extern class SceneTree extends godot.MainLoop {
 		Note: `method` may only have 5 arguments at most (7 arguments passed to this method in total).
 	**/
 	@:native("CallGroup")
-	public function callGroup(group:std.String, method:std.String, args:haxe.Rest<Dynamic>):Dynamic;
+	public function callGroup(group:std.String, method:std.String, args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
 		Sends the given notification to all members of the `group`.

@@ -37,6 +37,7 @@ extern class Expression extends godot.Reference {
 	@:native("new")
 	public function new():Void;
 
+	#if doc_gen
 	/**		
 		Parses the expression and returns an `godot.Error` code.
 		
@@ -45,7 +46,28 @@ extern class Expression extends godot.Reference {
 		@param inputNames If the parameter is null, then the default value is new string[] {}
 	**/
 	@:native("Parse")
-	public function parse(expression:std.String, inputNames:haxe.Rest<std.String>):godot.Error;
+	public function parse(expression:std.String, ?inputNames:std.Array<std.String>):godot.Error;
+	#else
+	/**		
+		Parses the expression and returns an `godot.Error` code.
+		
+		You can optionally specify names of variables that may appear in the expression with `input_names`, so that you can bind them when it gets executed.
+		
+		@param inputNames If the parameter is null, then the default value is new string[] {}
+	**/
+	@:native("Parse")
+	public overload function parse(expression:std.String):godot.Error;
+
+	/**		
+		Parses the expression and returns an `godot.Error` code.
+		
+		You can optionally specify names of variables that may appear in the expression with `input_names`, so that you can bind them when it gets executed.
+		
+		@param inputNames If the parameter is null, then the default value is new string[] {}
+	**/
+	@:native("Parse")
+	public overload function parse(expression:std.String, inputNames:HaxeArray<std.String>):godot.Error;
+	#end
 
 	#if doc_gen
 	/**		

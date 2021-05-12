@@ -341,7 +341,7 @@ extern class Object implements cs.system.IDisposable {
 		```
 	**/
 	@:native("EmitSignal")
-	public function emitSignal(signal:std.String, args:haxe.Rest<Dynamic>):Void;
+	public function emitSignal(signal:std.String, args:HaxeArray<Dynamic>):Void;
 
 	/**		
 		Calls the `method` on the object and returns the result. This method supports a variable number of arguments, so parameters are passed as a comma separated list. Example:
@@ -355,7 +355,7 @@ extern class Object implements cs.system.IDisposable {
 		Note: In C#, the method name must be specified as snake_case if it is defined by a built-in Godot node. This doesn't apply to user-defined methods where you should use the same convention as in the C# source (typically PascalCase).
 	**/
 	@:native("Call")
-	public function call(method:std.String, args:haxe.Rest<Dynamic>):Dynamic;
+	public function call(method:std.String, args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
 		Calls the `method` on the object during idle time. This method supports a variable number of arguments, so parameters are passed as a comma separated list. Example:
@@ -369,7 +369,7 @@ extern class Object implements cs.system.IDisposable {
 		Note: In C#, the method name must be specified as snake_case if it is defined by a built-in Godot node. This doesn't apply to user-defined methods where you should use the same convention as in the C# source (typically PascalCase).
 	**/
 	@:native("CallDeferred")
-	public function callDeferred(method:std.String, args:haxe.Rest<Dynamic>):Void;
+	public function callDeferred(method:std.String, args:HaxeArray<Dynamic>):Void;
 
 	/**		
 		Assigns a new value to the given property, after the current frame's physics step. This is equivalent to calling `godot.Object.set` via `godot.Object.callDeferred`, i.e. `call_deferred("set", property, value)`.

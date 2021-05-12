@@ -77,6 +77,7 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 	@:native("new")
 	public function new():Void;
 
+	#if doc_gen
 	/**		
 		Connects to the given URL requesting one of the given `protocols` as sub-protocol. If the list empty (default), no sub-protocol will be requested.
 		
@@ -94,7 +95,84 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		@param customHeaders If the parameter is null, then the default value is new string[] {}
 	**/
 	@:native("ConnectToUrl")
-	public function connectToUrl(url:std.String, protocols:HaxeArray<std.String>, gdMpApi:Bool, customHeaders:haxe.Rest<std.String>):godot.Error;
+	public function connectToUrl(url:std.String, ?protocols:std.Array<std.String>, ?gdMpApi:Bool, ?customHeaders:std.Array<std.String>):godot.Error;
+	#else
+	/**		
+		Connects to the given URL requesting one of the given `protocols` as sub-protocol. If the list empty (default), no sub-protocol will be requested.
+		
+		If `true` is passed as `gd_mp_api`, the client will behave like a network peer for the `godot.MultiplayerAPI`, connections to non-Godot servers will not work, and `data_received` will not be emitted.
+		
+		If `false` is passed instead (default), you must call `godot.PacketPeer` functions (`put_packet`, `get_packet`, etc.) on the `godot.WebSocketPeer` returned via `get_peer(1)` and not on this object directly (e.g. `get_peer(1).put_packet(data)`).
+		
+		You can optionally pass a list of `custom_headers` to be added to the handshake HTTP request.
+		
+		Note: To avoid mixed content warnings or errors in HTML5, you may have to use a `url` that starts with `wss://` (secure) instead of `ws://`. When doing so, make sure to use the fully qualified domain name that matches the one defined in the server's SSL certificate. Do not connect directly via the IP address for `wss://` connections, as it won't match with the SSL certificate.
+		
+		Note: Specifying `custom_headers` is not supported in HTML5 exports due to browsers restrictions.
+		
+		@param protocols If the parameter is null, then the default value is new string[] {}
+		@param customHeaders If the parameter is null, then the default value is new string[] {}
+	**/
+	@:native("ConnectToUrl")
+	public overload function connectToUrl(url:std.String):godot.Error;
+
+	/**		
+		Connects to the given URL requesting one of the given `protocols` as sub-protocol. If the list empty (default), no sub-protocol will be requested.
+		
+		If `true` is passed as `gd_mp_api`, the client will behave like a network peer for the `godot.MultiplayerAPI`, connections to non-Godot servers will not work, and `data_received` will not be emitted.
+		
+		If `false` is passed instead (default), you must call `godot.PacketPeer` functions (`put_packet`, `get_packet`, etc.) on the `godot.WebSocketPeer` returned via `get_peer(1)` and not on this object directly (e.g. `get_peer(1).put_packet(data)`).
+		
+		You can optionally pass a list of `custom_headers` to be added to the handshake HTTP request.
+		
+		Note: To avoid mixed content warnings or errors in HTML5, you may have to use a `url` that starts with `wss://` (secure) instead of `ws://`. When doing so, make sure to use the fully qualified domain name that matches the one defined in the server's SSL certificate. Do not connect directly via the IP address for `wss://` connections, as it won't match with the SSL certificate.
+		
+		Note: Specifying `custom_headers` is not supported in HTML5 exports due to browsers restrictions.
+		
+		@param protocols If the parameter is null, then the default value is new string[] {}
+		@param customHeaders If the parameter is null, then the default value is new string[] {}
+	**/
+	@:native("ConnectToUrl")
+	public overload function connectToUrl(url:std.String, protocols:HaxeArray<std.String>):godot.Error;
+
+	/**		
+		Connects to the given URL requesting one of the given `protocols` as sub-protocol. If the list empty (default), no sub-protocol will be requested.
+		
+		If `true` is passed as `gd_mp_api`, the client will behave like a network peer for the `godot.MultiplayerAPI`, connections to non-Godot servers will not work, and `data_received` will not be emitted.
+		
+		If `false` is passed instead (default), you must call `godot.PacketPeer` functions (`put_packet`, `get_packet`, etc.) on the `godot.WebSocketPeer` returned via `get_peer(1)` and not on this object directly (e.g. `get_peer(1).put_packet(data)`).
+		
+		You can optionally pass a list of `custom_headers` to be added to the handshake HTTP request.
+		
+		Note: To avoid mixed content warnings or errors in HTML5, you may have to use a `url` that starts with `wss://` (secure) instead of `ws://`. When doing so, make sure to use the fully qualified domain name that matches the one defined in the server's SSL certificate. Do not connect directly via the IP address for `wss://` connections, as it won't match with the SSL certificate.
+		
+		Note: Specifying `custom_headers` is not supported in HTML5 exports due to browsers restrictions.
+		
+		@param protocols If the parameter is null, then the default value is new string[] {}
+		@param customHeaders If the parameter is null, then the default value is new string[] {}
+	**/
+	@:native("ConnectToUrl")
+	public overload function connectToUrl(url:std.String, protocols:HaxeArray<std.String>, gdMpApi:Bool):godot.Error;
+
+	/**		
+		Connects to the given URL requesting one of the given `protocols` as sub-protocol. If the list empty (default), no sub-protocol will be requested.
+		
+		If `true` is passed as `gd_mp_api`, the client will behave like a network peer for the `godot.MultiplayerAPI`, connections to non-Godot servers will not work, and `data_received` will not be emitted.
+		
+		If `false` is passed instead (default), you must call `godot.PacketPeer` functions (`put_packet`, `get_packet`, etc.) on the `godot.WebSocketPeer` returned via `get_peer(1)` and not on this object directly (e.g. `get_peer(1).put_packet(data)`).
+		
+		You can optionally pass a list of `custom_headers` to be added to the handshake HTTP request.
+		
+		Note: To avoid mixed content warnings or errors in HTML5, you may have to use a `url` that starts with `wss://` (secure) instead of `ws://`. When doing so, make sure to use the fully qualified domain name that matches the one defined in the server's SSL certificate. Do not connect directly via the IP address for `wss://` connections, as it won't match with the SSL certificate.
+		
+		Note: Specifying `custom_headers` is not supported in HTML5 exports due to browsers restrictions.
+		
+		@param protocols If the parameter is null, then the default value is new string[] {}
+		@param customHeaders If the parameter is null, then the default value is new string[] {}
+	**/
+	@:native("ConnectToUrl")
+	public overload function connectToUrl(url:std.String, protocols:HaxeArray<std.String>, gdMpApi:Bool, customHeaders:HaxeArray<std.String>):godot.Error;
+	#end
 
 	#if doc_gen
 	/**		

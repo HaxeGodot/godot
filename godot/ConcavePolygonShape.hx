@@ -24,7 +24,7 @@ extern class ConcavePolygonShape extends godot.Shape {
 		Sets the faces (an array of triangles).
 	**/
 	@:native("SetFaces")
-	public function setFaces(faces:haxe.Rest<godot.Vector3>):Void;
+	public function setFaces(faces:HaxeArray<godot.Vector3>):Void;
 
 	/**		
 		Returns the faces (an array of triangles).

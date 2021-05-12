@@ -96,13 +96,13 @@ extern class UndoRedo extends godot.Object {
 		Register a method that will be called when the action is committed.
 	**/
 	@:native("AddDoMethod")
-	public function addDoMethod(object:godot.Object, method:std.String, args:haxe.Rest<Dynamic>):Void;
+	public function addDoMethod(object:godot.Object, method:std.String, args:HaxeArray<Dynamic>):Void;
 
 	/**		
 		Register a method that will be called when the action is undone.
 	**/
 	@:native("AddUndoMethod")
-	public function addUndoMethod(object:godot.Object, method:std.String, args:haxe.Rest<Dynamic>):Void;
+	public function addUndoMethod(object:godot.Object, method:std.String, args:HaxeArray<Dynamic>):Void;
 
 	/**		
 		Register a property value change for "do".

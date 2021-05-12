@@ -165,7 +165,7 @@ extern class ArrayMesh extends godot.Mesh {
 		Warning: Only use if you know what you are doing. You can easily cause crashes by calling this function with improper arguments.
 	**/
 	@:native("SurfaceUpdateRegion")
-	public function surfaceUpdateRegion(surfIdx:Int, offset:Int, data:haxe.Rest<cs.types.UInt8>):Void;
+	public function surfaceUpdateRegion(surfIdx:Int, offset:Int, data:HaxeArray<cs.types.UInt8>):Void;
 
 	/**		
 		Returns the length in vertices of the vertex array in the requested surface (see `godot.ArrayMesh.addSurfaceFromArrays`).

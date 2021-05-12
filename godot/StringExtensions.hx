@@ -200,7 +200,7 @@ extern class StringExtensions {
 		@returns A string created from the bytes.
 	**/
 	@:native("GetStringFromASCII")
-	public static function getStringFromASCII(bytes:haxe.Rest<cs.types.UInt8>):std.String;
+	public static function getStringFromASCII(bytes:HaxeArray<cs.types.UInt8>):std.String;
 
 	/**		
 		Converts the given byte array of UTF-8 encoded text to a string.
@@ -213,7 +213,7 @@ extern class StringExtensions {
 		@returns A string created from the bytes.
 	**/
 	@:native("GetStringFromUTF8")
-	public static function getStringFromUTF8(bytes:haxe.Rest<cs.types.UInt8>):std.String;
+	public static function getStringFromUTF8(bytes:HaxeArray<cs.types.UInt8>):std.String;
 
 	@:native("Hash")
 	public static function hash(instance:std.String):UInt;
@@ -225,7 +225,7 @@ extern class StringExtensions {
 		@returns The hexadecimal representation of this byte array.
 	**/
 	@:native("HexEncode")
-	public static function hexEncode(bytes:haxe.Rest<cs.types.UInt8>):std.String;
+	public static function hexEncode(bytes:HaxeArray<cs.types.UInt8>):std.String;
 
 	/**		
 		Converts a string containing a hexadecimal number into an integer.

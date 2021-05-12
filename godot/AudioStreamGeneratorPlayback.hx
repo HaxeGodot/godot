@@ -16,7 +16,7 @@ extern abstract class AudioStreamGeneratorPlayback extends godot.AudioStreamPlay
 	public function canPushBuffer(amount:Int):Bool;
 
 	@:native("PushBuffer")
-	public function pushBuffer(frames:haxe.Rest<godot.Vector2>):Bool;
+	public function pushBuffer(frames:HaxeArray<godot.Vector2>):Bool;
 
 	@:native("GetFramesAvailable")
 	public function getFramesAvailable():Int;

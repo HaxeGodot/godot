@@ -31,7 +31,7 @@ extern class GDScript extends godot.Script {
 		```
 	**/
 	@:native("New")
-	public function new_(args:haxe.Rest<Dynamic>):Dynamic;
+	public function new_(args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
 		Returns byte code for the script source code.

@@ -56,7 +56,7 @@ extern class File extends godot.Reference {
 		Note: The provided key must be 32 bytes long.
 	**/
 	@:native("OpenEncrypted")
-	public function openEncrypted(path:std.String, modeFlags:godot.File_ModeFlags, key:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function openEncrypted(path:std.String, modeFlags:godot.File_ModeFlags, key:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	/**		
 		Opens an encrypted file in write or read mode. You need to pass a password to encrypt/decrypt it.
@@ -399,7 +399,7 @@ extern class File extends godot.Reference {
 		Stores the given array of bytes in the file.
 	**/
 	@:native("StoreBuffer")
-	public function storeBuffer(buffer:haxe.Rest<cs.types.UInt8>):Void;
+	public function storeBuffer(buffer:HaxeArray<cs.types.UInt8>):Void;
 
 	/**		
 		Appends `line` to the file followed by a line return character (`\n`), encoding the text as UTF-8.

@@ -27,10 +27,10 @@ extern class ConvexPolygonShape2D extends godot.Shape2D {
 		Based on the set of points provided, this creates and assigns the `godot.ConvexPolygonShape2D.points` property using the convex hull algorithm. Removing all unneeded points. See `godot.Geometry.convexHull2d` for details.
 	**/
 	@:native("SetPointCloud")
-	public function setPointCloud(pointCloud:haxe.Rest<godot.Vector2>):Void;
+	public function setPointCloud(pointCloud:HaxeArray<godot.Vector2>):Void;
 
 	@:native("SetPoints")
-	public function setPoints(points:haxe.Rest<godot.Vector2>):Void;
+	public function setPoints(points:HaxeArray<godot.Vector2>):Void;
 
 	public extern inline function getPoints():std.Array<godot.Vector2> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetPoints()", this));

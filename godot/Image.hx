@@ -198,7 +198,7 @@ extern class Image extends godot.Resource {
 		Creates a new image of given size and format. See `godot.Image_Format` constants. Fills the image with the given raw data. If `use_mipmaps` is `true` then loads mipmaps for this image from `data`. See `godot.Image.generateMipmaps`.
 	**/
 	@:native("CreateFromData")
-	public function createFromData(width:Int, height:Int, useMipmaps:Bool, format:godot.Image_Format, data:haxe.Rest<cs.types.UInt8>):Void;
+	public function createFromData(width:Int, height:Int, useMipmaps:Bool, format:godot.Image_Format, data:HaxeArray<cs.types.UInt8>):Void;
 
 	/**		
 		Returns `true` if the image has no data.
@@ -436,25 +436,25 @@ extern class Image extends godot.Resource {
 		Loads an image from the binary contents of a PNG file.
 	**/
 	@:native("LoadPngFromBuffer")
-	public function loadPngFromBuffer(buffer:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function loadPngFromBuffer(buffer:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	/**		
 		Loads an image from the binary contents of a JPEG file.
 	**/
 	@:native("LoadJpgFromBuffer")
-	public function loadJpgFromBuffer(buffer:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function loadJpgFromBuffer(buffer:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	/**		
 		Loads an image from the binary contents of a WebP file.
 	**/
 	@:native("LoadWebpFromBuffer")
-	public function loadWebpFromBuffer(buffer:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function loadWebpFromBuffer(buffer:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	/**		
 		Loads an image from the binary contents of a TGA file.
 	**/
 	@:native("LoadTgaFromBuffer")
-	public function loadTgaFromBuffer(buffer:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function loadTgaFromBuffer(buffer:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	/**		
 		Loads an image from the binary contents of a BMP file.
@@ -462,5 +462,5 @@ extern class Image extends godot.Resource {
 		Note: Godot's BMP module doesn't support 16-bit per pixel images. Only 1-bit, 4-bit, 8-bit, 24-bit, and 32-bit per pixel images are supported.
 	**/
 	@:native("LoadBmpFromBuffer")
-	public function loadBmpFromBuffer(buffer:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function loadBmpFromBuffer(buffer:HaxeArray<cs.types.UInt8>):godot.Error;
 }

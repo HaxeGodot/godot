@@ -94,7 +94,7 @@ extern class CSGPolygon extends godot.CSGPrimitive {
 	public function new():Void;
 
 	@:native("SetPolygon")
-	public function setPolygon(polygon:haxe.Rest<godot.Vector2>):Void;
+	public function setPolygon(polygon:HaxeArray<godot.Vector2>):Void;
 
 	public extern inline function getPolygon():std.Array<godot.Vector2> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetPolygon()", this));

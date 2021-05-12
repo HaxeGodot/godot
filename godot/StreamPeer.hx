@@ -22,13 +22,13 @@ extern abstract class StreamPeer extends godot.Reference {
 		Sends a chunk of data through the connection, blocking if necessary until the data is done sending. This function returns an `godot.Error` code.
 	**/
 	@:native("PutData")
-	public function putData(data:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function putData(data:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	/**		
 		Sends a chunk of data through the connection. If all the data could not be sent at once, only part of it will. This function returns two values, an `godot.Error` code and an integer, describing how much data was actually sent.
 	**/
 	@:native("PutPartialData")
-	public function putPartialData(data:haxe.Rest<cs.types.UInt8>):godot.collections.Array;
+	public function putPartialData(data:HaxeArray<cs.types.UInt8>):godot.collections.Array;
 
 	/**		
 		Returns a chunk data with the received bytes. The amount of bytes to be received can be requested in the `bytes` argument. If not enough bytes are available, the function will block until the desired amount is received. This function returns two values, an `godot.Error` code and a data array.

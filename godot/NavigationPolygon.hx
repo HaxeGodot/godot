@@ -53,7 +53,7 @@ extern class NavigationPolygon extends godot.Resource {
 		Sets the vertices that can be then indexed to create polygons with the `godot.NavigationPolygon.addPolygon` method.
 	**/
 	@:native("SetVertices")
-	public function setVertices(vertices:haxe.Rest<godot.Vector2>):Void;
+	public function setVertices(vertices:HaxeArray<godot.Vector2>):Void;
 
 	/**		
 		Returns a `godot.Vector2` containing all the vertices being used to create the polygons.
@@ -66,7 +66,7 @@ extern class NavigationPolygon extends godot.Resource {
 		Adds a polygon using the indices of the vertices you get when calling `godot.NavigationPolygon.getVertices`.
 	**/
 	@:native("AddPolygon")
-	public function addPolygon(polygon:haxe.Rest<Int>):Void;
+	public function addPolygon(polygon:HaxeArray<Int>):Void;
 
 	/**		
 		Returns the count of all polygons.
@@ -91,7 +91,7 @@ extern class NavigationPolygon extends godot.Resource {
 		Appends a `godot.Vector2` that contains the vertices of an outline to the internal array that contains all the outlines. You have to call `godot.NavigationPolygon.makePolygonsFromOutlines` in order for this array to be converted to polygons that the engine will use.
 	**/
 	@:native("AddOutline")
-	public function addOutline(outline:haxe.Rest<godot.Vector2>):Void;
+	public function addOutline(outline:HaxeArray<godot.Vector2>):Void;
 
 	/**		
 		Adds a `godot.Vector2` that contains the vertices of an outline to the internal array that contains all the outlines at a fixed position. You have to call `godot.NavigationPolygon.makePolygonsFromOutlines` in order for this array to be converted to polygons that the engine will use.
@@ -109,7 +109,7 @@ extern class NavigationPolygon extends godot.Resource {
 		Changes an outline created in the editor or by script. You have to call `godot.NavigationPolygon.makePolygonsFromOutlines` for the polygons to update.
 	**/
 	@:native("SetOutline")
-	public function setOutline(idx:Int, outline:haxe.Rest<godot.Vector2>):Void;
+	public function setOutline(idx:Int, outline:HaxeArray<godot.Vector2>):Void;
 
 	/**		
 		Returns a `godot.Vector2` containing the vertices of an outline that was created in the editor or by script.

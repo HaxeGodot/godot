@@ -435,7 +435,7 @@ extern class RichTextLabel extends godot.Control {
 		Parses BBCode parameter `expressions` into a dictionary.
 	**/
 	@:native("ParseExpressionsForValues")
-	public function parseExpressionsForValues(expressions:haxe.Rest<std.String>):godot.collections.Dictionary;
+	public function parseExpressionsForValues(expressions:HaxeArray<std.String>):godot.collections.Dictionary;
 
 	@:native("SetEffects")
 	public function setEffects(effects:godot.collections.Array):Void;

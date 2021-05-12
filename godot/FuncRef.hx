@@ -27,7 +27,7 @@ extern class FuncRef extends godot.Reference {
 		Calls the referenced function previously set in `godot.FuncRef.function` or `@GDScript.funcref`.
 	**/
 	@:native("CallFunc")
-	public function callFunc(args:haxe.Rest<Dynamic>):Dynamic;
+	public function callFunc(args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
 		Calls the referenced function previously set in `godot.FuncRef.function` or `@GDScript.funcref`. Contrarily to `godot.FuncRef.callFunc`, this method does not support a variable number of arguments but expects all parameters to be passed via a single `godot.Collections_Array`.

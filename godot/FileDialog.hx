@@ -108,7 +108,7 @@ extern class FileDialog extends godot.ConfirmationDialog {
 	public function addFilter(filter:std.String):Void;
 
 	@:native("SetFilters")
-	public function setFilters(filters:haxe.Rest<std.String>):Void;
+	public function setFilters(filters:HaxeArray<std.String>):Void;
 
 	public extern inline function getFilters():std.Array<std.String> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetFilters()", this));

@@ -119,7 +119,7 @@ extern class HTTPClient extends godot.Reference {
 		Sends the body data raw, as a byte array and does not encode it in any way.
 	**/
 	@:native("RequestRaw")
-	public function requestRaw(method:godot.HTTPClient_Method, url:std.String, headers:HaxeArray<std.String>, body:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function requestRaw(method:godot.HTTPClient_Method, url:std.String, headers:HaxeArray<std.String>, body:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	#if doc_gen
 	/**		

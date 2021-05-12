@@ -110,14 +110,14 @@ extern class Polygon2D extends godot.Node2D {
 	public function new():Void;
 
 	@:native("SetPolygon")
-	public function setPolygon(polygon:haxe.Rest<godot.Vector2>):Void;
+	public function setPolygon(polygon:HaxeArray<godot.Vector2>):Void;
 
 	public extern inline function getPolygon():std.Array<godot.Vector2> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetPolygon()", this));
 	}
 
 	@:native("SetUv")
-	public function setUv(uv:haxe.Rest<godot.Vector2>):Void;
+	public function setUv(uv:HaxeArray<godot.Vector2>):Void;
 
 	public extern inline function getUv():std.Array<godot.Vector2> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetUv()", this));
@@ -136,7 +136,7 @@ extern class Polygon2D extends godot.Node2D {
 	public function getPolygons():godot.collections.Array;
 
 	@:native("SetVertexColors")
-	public function setVertexColors(vertexColors:haxe.Rest<godot.Color>):Void;
+	public function setVertexColors(vertexColors:HaxeArray<godot.Color>):Void;
 
 	public extern inline function getVertexColors():std.Array<godot.Color> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetVertexColors()", this));
@@ -200,7 +200,7 @@ extern class Polygon2D extends godot.Node2D {
 		Adds a bone with the specified `path` and `weights`.
 	**/
 	@:native("AddBone")
-	public function addBone(path:godot.NodePath, weights:haxe.Rest<Single>):Void;
+	public function addBone(path:godot.NodePath, weights:HaxeArray<Single>):Void;
 
 	/**		
 		Returns the number of bones in this `godot.Polygon2D`.
@@ -243,7 +243,7 @@ extern class Polygon2D extends godot.Node2D {
 		Sets the weight values for the specified bone.
 	**/
 	@:native("SetBoneWeights")
-	public function setBoneWeights(index:Int, weights:haxe.Rest<Single>):Void;
+	public function setBoneWeights(index:Int, weights:HaxeArray<Single>):Void;
 
 	@:native("SetSkeleton")
 	public function setSkeleton(skeleton:godot.NodePath):Void;

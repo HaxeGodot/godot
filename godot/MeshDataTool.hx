@@ -165,7 +165,7 @@ extern class MeshDataTool extends godot.Reference {
 		Sets the bones of the given vertex.
 	**/
 	@:native("SetVertexBones")
-	public function setVertexBones(idx:Int, bones:haxe.Rest<Int>):Void;
+	public function setVertexBones(idx:Int, bones:HaxeArray<Int>):Void;
 
 	/**		
 		Returns the bones of the given vertex.
@@ -178,7 +178,7 @@ extern class MeshDataTool extends godot.Reference {
 		Sets the bone weights of the given vertex.
 	**/
 	@:native("SetVertexWeights")
-	public function setVertexWeights(idx:Int, weights:haxe.Rest<Single>):Void;
+	public function setVertexWeights(idx:Int, weights:HaxeArray<Single>):Void;
 
 	/**		
 		Returns bone weights of the given vertex.

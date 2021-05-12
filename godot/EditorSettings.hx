@@ -163,7 +163,7 @@ extern abstract class EditorSettings extends godot.Resource {
 		Sets the list of favorite files and directories for this project.
 	**/
 	@:native("SetFavorites")
-	public function setFavorites(dirs:haxe.Rest<std.String>):Void;
+	public function setFavorites(dirs:HaxeArray<std.String>):Void;
 
 	/**		
 		Returns the list of favorite files and directories for this project.
@@ -176,7 +176,7 @@ extern abstract class EditorSettings extends godot.Resource {
 		Sets the list of recently visited folders in the file dialog for this project.
 	**/
 	@:native("SetRecentDirs")
-	public function setRecentDirs(dirs:haxe.Rest<std.String>):Void;
+	public function setRecentDirs(dirs:HaxeArray<std.String>):Void;
 
 	/**		
 		Returns the list of recently visited folders in the file dialog for this project.

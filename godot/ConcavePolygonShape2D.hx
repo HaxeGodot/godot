@@ -24,7 +24,7 @@ extern class ConcavePolygonShape2D extends godot.Shape2D {
 	public function new():Void;
 
 	@:native("SetSegments")
-	public function setSegments(segments:haxe.Rest<godot.Vector2>):Void;
+	public function setSegments(segments:HaxeArray<godot.Vector2>):Void;
 
 	public extern inline function getSegments():std.Array<godot.Vector2> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetSegments()", this));

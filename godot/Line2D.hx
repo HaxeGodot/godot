@@ -96,7 +96,7 @@ extern class Line2D extends godot.Node2D {
 	public function new():Void;
 
 	@:native("SetPoints")
-	public function setPoints(points:haxe.Rest<godot.Vector2>):Void;
+	public function setPoints(points:HaxeArray<godot.Vector2>):Void;
 
 	public extern inline function getPoints():std.Array<godot.Vector2> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetPoints()", this));

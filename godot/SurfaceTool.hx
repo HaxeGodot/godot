@@ -83,13 +83,13 @@ extern class SurfaceTool extends godot.Reference {
 		Specifies an array of bones to use for the next vertex. `bones` must contain 4 integers.
 	**/
 	@:native("AddBones")
-	public function addBones(bones:haxe.Rest<Int>):Void;
+	public function addBones(bones:HaxeArray<Int>):Void;
 
 	/**		
 		Specifies weight values to use for the next vertex. `weights` must contain 4 values. If every vertex needs to have this information set and you fail to submit it for the first vertex, this information may not be used at all.
 	**/
 	@:native("AddWeights")
-	public function addWeights(weights:haxe.Rest<Single>):Void;
+	public function addWeights(weights:HaxeArray<Single>):Void;
 
 	/**		
 		Specifies whether the current vertex (if using only vertex arrays) or current index (if also using index arrays) should use smooth normals for normal calculation.

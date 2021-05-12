@@ -141,7 +141,7 @@ extern class ConfigFile extends godot.Reference {
 		Returns one of the `godot.Error` code constants (`OK` on success).
 	**/
 	@:native("LoadEncrypted")
-	public function loadEncrypted(path:std.String, key:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function loadEncrypted(path:std.String, key:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	/**		
 		Loads the encrypted config file specified as a parameter, using the provided `password` to decrypt it. The file's contents are parsed and loaded in the `godot.ConfigFile` object which the method was called on.
@@ -157,7 +157,7 @@ extern class ConfigFile extends godot.Reference {
 		Returns one of the `godot.Error` code constants (`OK` on success).
 	**/
 	@:native("SaveEncrypted")
-	public function saveEncrypted(path:std.String, key:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function saveEncrypted(path:std.String, key:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	/**		
 		Saves the contents of the `godot.ConfigFile` object to the AES-256 encrypted file specified as a parameter, using the provided `password` to encrypt it. The output file uses an INI-style structure.

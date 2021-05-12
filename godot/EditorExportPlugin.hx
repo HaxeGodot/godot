@@ -33,13 +33,13 @@ extern class EditorExportPlugin extends godot.Reference {
 		Calling `godot.EditorExportPlugin.skip` inside this callback will make the file not included in the export.
 	**/
 	@:native("_ExportFile")
-	public function _ExportFile(path:std.String, type:std.String, features:haxe.Rest<std.String>):Void;
+	public function _ExportFile(path:std.String, type:std.String, features:HaxeArray<std.String>):Void;
 
 	/**		
 		Adds a shared object with the given `tags` and destination `path`.
 	**/
 	@:native("AddSharedObject")
-	public function addSharedObject(path:std.String, tags:haxe.Rest<std.String>):Void;
+	public function addSharedObject(path:std.String, tags:HaxeArray<std.String>):Void;
 
 	/**		
 		Adds a static lib from the given `path` to the iOS project.

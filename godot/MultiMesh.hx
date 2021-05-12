@@ -163,7 +163,7 @@ extern class MultiMesh extends godot.Resource {
 		`godot.Transform` is stored as 12 floats, `godot.Transform2D` is stored as 8 floats, `COLOR_8BIT` / `CUSTOM_DATA_8BIT` is stored as 1 float (4 bytes as is) and `COLOR_FLOAT` / `CUSTOM_DATA_FLOAT` is stored as 4 floats.
 	**/
 	@:native("SetAsBulkArray")
-	public function setAsBulkArray(array:haxe.Rest<Single>):Void;
+	public function setAsBulkArray(array:HaxeArray<Single>):Void;
 
 	/**		
 		Returns the visibility axis-aligned bounding box in local space. See also `godot.VisualInstance.getTransformedAabb`.

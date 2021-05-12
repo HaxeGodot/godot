@@ -58,7 +58,7 @@ extern class BakedLightmapData extends godot.Resource {
 	public function getCellSubdiv():Int;
 
 	@:native("SetOctree")
-	public function setOctree(octree:haxe.Rest<cs.types.UInt8>):Void;
+	public function setOctree(octree:HaxeArray<cs.types.UInt8>):Void;
 
 	public extern inline function getOctree():std.Array<cs.types.UInt8> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetOctree()", this));

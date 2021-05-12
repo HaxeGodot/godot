@@ -115,5 +115,5 @@ extern class XMLParser extends godot.Reference {
 		Opens an XML raw buffer for parsing. This returns an error code.
 	**/
 	@:native("OpenBuffer")
-	public function openBuffer(buffer:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function openBuffer(buffer:HaxeArray<cs.types.UInt8>):godot.Error;
 }

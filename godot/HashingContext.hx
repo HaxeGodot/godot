@@ -53,7 +53,7 @@ extern class HashingContext extends godot.Reference {
 		Updates the computation with the given `chunk` of data.
 	**/
 	@:native("Update")
-	public function update(chunk:haxe.Rest<cs.types.UInt8>):godot.Error;
+	public function update(chunk:HaxeArray<cs.types.UInt8>):godot.Error;
 
 	/**		
 		Closes the current context, and return the computed hash.

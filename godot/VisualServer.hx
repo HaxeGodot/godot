@@ -559,7 +559,7 @@ extern class VisualServer {
 		Updates a specific region of a vertex buffer for the specified surface. Warning: this function alters the vertex buffer directly with no safety mechanisms, you can easily corrupt your mesh.
 	**/
 	@:native("MeshSurfaceUpdateRegion")
-	public static function meshSurfaceUpdateRegion(mesh:godot.RID, surface:Int, offset:Int, data:haxe.Rest<cs.types.UInt8>):Void;
+	public static function meshSurfaceUpdateRegion(mesh:godot.RID, surface:Int, offset:Int, data:HaxeArray<cs.types.UInt8>):Void;
 
 	/**		
 		Sets a mesh's surface's material.
@@ -789,7 +789,7 @@ extern class VisualServer {
 		`godot.Transform` is stored as 12 floats, `godot.Transform2D` is stored as 8 floats, `COLOR_8BIT` / `CUSTOM_DATA_8BIT` is stored as 1 float (4 bytes as is) and `COLOR_FLOAT` / `CUSTOM_DATA_FLOAT` is stored as 4 floats.
 	**/
 	@:native("MultimeshSetAsBulkArray")
-	public static function multimeshSetAsBulkArray(multimesh:godot.RID, array:haxe.Rest<Single>):Void;
+	public static function multimeshSetAsBulkArray(multimesh:godot.RID, array:HaxeArray<Single>):Void;
 
 	/**		
 		Creates an immediate geometry and adds it to the VisualServer. It can be accessed with the RID that is returned. This RID will be used in all `immediate_*` VisualServer functions.
@@ -1197,7 +1197,7 @@ extern class VisualServer {
 		Sets the data to be used in the GI probe for lighting calculations. Normally this is created and called internally within the `godot.GIProbe` node. You should not try to set this yourself.
 	**/
 	@:native("GiProbeSetDynamicData")
-	public static function giProbeSetDynamicData(probe:godot.RID, data:haxe.Rest<Int>):Void;
+	public static function giProbeSetDynamicData(probe:godot.RID, data:HaxeArray<Int>):Void;
 
 	/**		
 		Returns the data used by the GI probe.
@@ -1316,7 +1316,7 @@ extern class VisualServer {
 		Sets the octree to be used by this lightmap capture. This function is normally used by the `godot.BakedLightmap` node. Equivalent to `godot.BakedLightmapData.octree`.
 	**/
 	@:native("LightmapCaptureSetOctree")
-	public static function lightmapCaptureSetOctree(capture:godot.RID, octree:haxe.Rest<cs.types.UInt8>):Void;
+	public static function lightmapCaptureSetOctree(capture:godot.RID, octree:HaxeArray<cs.types.UInt8>):Void;
 
 	/**		
 		Sets the octree cell transform for this lightmap capture's octree. Equivalent to `godot.BakedLightmapData.cellSpaceTransform`.
@@ -3099,7 +3099,7 @@ extern class VisualServer {
 		Sets the shape of the occluder polygon as lines.
 	**/
 	@:native("CanvasOccluderPolygonSetShapeAsLines")
-	public static function canvasOccluderPolygonSetShapeAsLines(occluderPolygon:godot.RID, shape:haxe.Rest<godot.Vector2>):Void;
+	public static function canvasOccluderPolygonSetShapeAsLines(occluderPolygon:godot.RID, shape:HaxeArray<godot.Vector2>):Void;
 
 	/**		
 		Sets an occluder polygons cull mode. See `godot.VisualServer_CanvasOccluderPolygonCullMode` constants.

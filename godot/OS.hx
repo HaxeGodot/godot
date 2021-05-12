@@ -626,7 +626,7 @@ extern class OS {
 		Note: This method is implemented on Linux, macOS and Windows.
 	**/
 	@:native("SetWindowMousePassthrough")
-	public static function setWindowMousePassthrough(region:haxe.Rest<godot.Vector2>):Void;
+	public static function setWindowMousePassthrough(region:HaxeArray<godot.Vector2>):Void;
 
 	@:native("SetLowProcessorUsageMode")
 	public static function setLowProcessorUsageMode(enable:Bool):Void;
@@ -1418,7 +1418,7 @@ extern class OS {
 		Shows the number of resources loaded by the game of the given types.
 	**/
 	@:native("PrintResourcesByType")
-	public static function printResourcesByType(types:haxe.Rest<std.String>):Void;
+	public static function printResourcesByType(types:HaxeArray<std.String>):Void;
 
 	/**		
 		Plays native video from the specified path, at the given volume and with audio and subtitle tracks.
