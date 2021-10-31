@@ -48,6 +48,10 @@ extern abstract Array(Array_) from Array_ to Array_ {
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Array_ implements cs.system.collections.IList implements cs.system.collections.ICollection implements cs.system.collections.IEnumerable implements cs.system.IDisposable {
 #end
+	inline function iterator():Iterator<Any> {
+		return new godot.ArrayIterator(this);
+	}
+
 	@:native("IsSynchronized")
 	public var isSynchronized(default, never):Bool;
 
