@@ -1,13 +1,11 @@
 package godot;
 
-import godot.collections.Array;
-
-class ArrayIterator {
+class GodotArrayIterator {
 	final handle:cs.system.collections.IEnumerator;
 	var hasValue = true;
 
 	@:allow(godot.collections.Array)
-	function new(array:Array) {
+	function new(array:godot.collections.Array) {
 		handle = array.getEnumerator();
 	}
 

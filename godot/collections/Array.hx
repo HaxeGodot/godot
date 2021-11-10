@@ -49,7 +49,7 @@ extern abstract Array(Array_) from Array_ to Array_ {
 extern class Array_ implements cs.system.collections.IList implements cs.system.collections.ICollection implements cs.system.collections.IEnumerable implements cs.system.IDisposable {
 #end
 	inline function iterator():Iterator<Any> {
-		return new godot.ArrayIterator(this);
+		return new godot.GodotArrayIterator(this);
 	}
 
 	@:native("IsSynchronized")
