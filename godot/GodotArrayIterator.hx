@@ -6,8 +6,7 @@ class GodotArrayIterator {
 	final handle:cs.system.collections.IEnumerator;
 	var hasValue = true;
 
-	@:allow(godot.collections.Array)
-	function new(array:godot.collections.Array) {
+	public function new(array:godot.collections.Array) {
 		handle = array.getEnumerator();
 	}
 
