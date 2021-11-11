@@ -16,7 +16,7 @@ extern class StreamPeerTCP extends godot.StreamPeer {
 	public function new():Void;
 
 	/**		
-		Connects to the specified `host:port` pair. A hostname will be resolved if valid. Returns  on success or  on failure.
+		Connects to the specified `host:port` pair. A hostname will be resolved if valid. Returns `OK` on success or `FAILED` on failure.
 	**/
 	@:native("ConnectToHost")
 	public function connectToHost(host:std.String, port:Int):godot.Error;

@@ -11,19 +11,19 @@ extern enum Image_Interpolation {
 	Nearest;
 
 	/**		
-		Performs bilinear interpolation. If the image is resized, it will be blurry. This mode is faster than , but it results in lower quality.
+		Performs bilinear interpolation. If the image is resized, it will be blurry. This mode is faster than `godot.Image_Interpolation.cubic`, but it results in lower quality.
 	**/
 	Bilinear;
 
 	/**		
-		Performs cubic interpolation. If the image is resized, it will be blurry. This mode often gives better results compared to , at the cost of being slower.
+		Performs cubic interpolation. If the image is resized, it will be blurry. This mode often gives better results compared to `godot.Image_Interpolation.bilinear`, at the cost of being slower.
 	**/
 	Cubic;
 
 	/**		
 		Performs bilinear separately on the two most-suited mipmap levels, then linearly interpolates between them.
 		
-		It's slower than , but produces higher-quality results with much less aliasing artifacts.
+		It's slower than `godot.Image_Interpolation.bilinear`, but produces higher-quality results with far fewer aliasing artifacts.
 		
 		If the image does not have mipmaps, they will be generated and used internally, but no mipmaps will be generated on the resulting image.
 		

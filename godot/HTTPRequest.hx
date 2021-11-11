@@ -9,6 +9,8 @@ A node with the ability to send HTTP requests. Uses `godot.HTTPClient` internall
 
 Can be used to make HTTP requests, i.e. download or upload files or web content via HTTP.
 
+Warning: See the notes and warnings on `godot.HTTPClient` for limitations, especially regarding SSL security.
+
 Example of contacting a REST API and printing one of its returned fields:
 
 ```
@@ -72,10 +74,6 @@ add_child(texture_rect)
 texture_rect.texture = texture
 
 ```
-
-Note: When performing HTTP requests from a project exported to HTML5, keep in mind the remote server may not allow requests from foreign origins due to [https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS](CORS). If you host the server in question, you should modify its backend to allow requests from foreign origins by adding the `Access-Control-Allow-Origin: *` HTTP header.
-
-Note: SSL/TLS support is currently limited to TLS 1.0, TLS 1.1, and TLS 1.2. Attempting to connect to a TLS 1.3-only server will return an error.
 **/
 @:libType
 @:csNative
@@ -132,13 +130,81 @@ extern class HTTPRequest extends godot.Node {
 
 	#if doc_gen
 	/**		
+		Creates request on the underlying `godot.HTTPClient` using a raw array of bytes for the request body. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
+		
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
+		
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
+		@param requestDataRaw If the parameter is null, then the default value is Array.Empty&lt;byte&gt;()
+	**/
+	@:native("RequestRaw")
+	public function requestRaw(url:std.String, ?customHeaders:std.Array<std.String>, ?sslValidateDomain:Bool, ?method:godot.HTTPClient_Method, ?requestDataRaw:std.Array<cs.types.UInt8>):godot.Error;
+	#else
+	/**		
+		Creates request on the underlying `godot.HTTPClient` using a raw array of bytes for the request body. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
+		
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
+		
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
+		@param requestDataRaw If the parameter is null, then the default value is Array.Empty&lt;byte&gt;()
+	**/
+	@:native("RequestRaw")
+	public overload function requestRaw(url:std.String):godot.Error;
+
+	/**		
+		Creates request on the underlying `godot.HTTPClient` using a raw array of bytes for the request body. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
+		
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
+		
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
+		@param requestDataRaw If the parameter is null, then the default value is Array.Empty&lt;byte&gt;()
+	**/
+	@:native("RequestRaw")
+	public overload function requestRaw(url:std.String, customHeaders:HaxeArray<std.String>):godot.Error;
+
+	/**		
+		Creates request on the underlying `godot.HTTPClient` using a raw array of bytes for the request body. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
+		
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
+		
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
+		@param requestDataRaw If the parameter is null, then the default value is Array.Empty&lt;byte&gt;()
+	**/
+	@:native("RequestRaw")
+	public overload function requestRaw(url:std.String, customHeaders:HaxeArray<std.String>, sslValidateDomain:Bool):godot.Error;
+
+	/**		
+		Creates request on the underlying `godot.HTTPClient` using a raw array of bytes for the request body. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
+		
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
+		
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
+		@param requestDataRaw If the parameter is null, then the default value is Array.Empty&lt;byte&gt;()
+	**/
+	@:native("RequestRaw")
+	public overload function requestRaw(url:std.String, customHeaders:HaxeArray<std.String>, sslValidateDomain:Bool, method:godot.HTTPClient_Method):godot.Error;
+
+	/**		
+		Creates request on the underlying `godot.HTTPClient` using a raw array of bytes for the request body. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
+		
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
+		
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
+		@param requestDataRaw If the parameter is null, then the default value is Array.Empty&lt;byte&gt;()
+	**/
+	@:native("RequestRaw")
+	public overload function requestRaw(url:std.String, customHeaders:HaxeArray<std.String>, sslValidateDomain:Bool, method:godot.HTTPClient_Method, requestDataRaw:HaxeArray<cs.types.UInt8>):godot.Error;
+	#end
+
+	#if doc_gen
+	/**		
 		Creates request on the underlying `godot.HTTPClient`. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
 		
-		Returns  if request is successfully created. (Does not imply that the server has responded),  if not in the tree,  if still processing previous request,  if given string is not a valid URL format, or  if not using thread and the `godot.HTTPClient` cannot connect to host.
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
 		
-		Note: The `request_data` parameter is ignored if `method` is . This is because GET methods can't contain request data. As a workaround, you can pass request data as a query string in the URL. See `String.http_escape` for an example.
+		Note: When `method` is `godot.HTTPClient_Method.get`, the payload sent via `request_data` might be ignored by the server or even cause the server to reject the request (check [https://datatracker.ietf.org/doc/html/rfc7231#section-4.3.1](RFC 7231 section 4.3.1) for more details). As a workaround, you can send data as a query string in the URL. See `String.http_escape` for an example.
 		
-		@param customHeaders If the parameter is null, then the default value is new string[] {}
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Request")
 	public function request(url:std.String, ?customHeaders:std.Array<std.String>, ?sslValidateDomain:Bool, ?method:godot.HTTPClient_Method, ?requestData:std.String):godot.Error;
@@ -146,11 +212,11 @@ extern class HTTPRequest extends godot.Node {
 	/**		
 		Creates request on the underlying `godot.HTTPClient`. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
 		
-		Returns  if request is successfully created. (Does not imply that the server has responded),  if not in the tree,  if still processing previous request,  if given string is not a valid URL format, or  if not using thread and the `godot.HTTPClient` cannot connect to host.
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
 		
-		Note: The `request_data` parameter is ignored if `method` is . This is because GET methods can't contain request data. As a workaround, you can pass request data as a query string in the URL. See `String.http_escape` for an example.
+		Note: When `method` is `godot.HTTPClient_Method.get`, the payload sent via `request_data` might be ignored by the server or even cause the server to reject the request (check [https://datatracker.ietf.org/doc/html/rfc7231#section-4.3.1](RFC 7231 section 4.3.1) for more details). As a workaround, you can send data as a query string in the URL. See `String.http_escape` for an example.
 		
-		@param customHeaders If the parameter is null, then the default value is new string[] {}
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Request")
 	public overload function request(url:std.String):godot.Error;
@@ -158,11 +224,11 @@ extern class HTTPRequest extends godot.Node {
 	/**		
 		Creates request on the underlying `godot.HTTPClient`. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
 		
-		Returns  if request is successfully created. (Does not imply that the server has responded),  if not in the tree,  if still processing previous request,  if given string is not a valid URL format, or  if not using thread and the `godot.HTTPClient` cannot connect to host.
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
 		
-		Note: The `request_data` parameter is ignored if `method` is . This is because GET methods can't contain request data. As a workaround, you can pass request data as a query string in the URL. See `String.http_escape` for an example.
+		Note: When `method` is `godot.HTTPClient_Method.get`, the payload sent via `request_data` might be ignored by the server or even cause the server to reject the request (check [https://datatracker.ietf.org/doc/html/rfc7231#section-4.3.1](RFC 7231 section 4.3.1) for more details). As a workaround, you can send data as a query string in the URL. See `String.http_escape` for an example.
 		
-		@param customHeaders If the parameter is null, then the default value is new string[] {}
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Request")
 	public overload function request(url:std.String, customHeaders:HaxeArray<std.String>):godot.Error;
@@ -170,11 +236,11 @@ extern class HTTPRequest extends godot.Node {
 	/**		
 		Creates request on the underlying `godot.HTTPClient`. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
 		
-		Returns  if request is successfully created. (Does not imply that the server has responded),  if not in the tree,  if still processing previous request,  if given string is not a valid URL format, or  if not using thread and the `godot.HTTPClient` cannot connect to host.
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
 		
-		Note: The `request_data` parameter is ignored if `method` is . This is because GET methods can't contain request data. As a workaround, you can pass request data as a query string in the URL. See `String.http_escape` for an example.
+		Note: When `method` is `godot.HTTPClient_Method.get`, the payload sent via `request_data` might be ignored by the server or even cause the server to reject the request (check [https://datatracker.ietf.org/doc/html/rfc7231#section-4.3.1](RFC 7231 section 4.3.1) for more details). As a workaround, you can send data as a query string in the URL. See `String.http_escape` for an example.
 		
-		@param customHeaders If the parameter is null, then the default value is new string[] {}
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Request")
 	public overload function request(url:std.String, customHeaders:HaxeArray<std.String>, sslValidateDomain:Bool):godot.Error;
@@ -182,11 +248,11 @@ extern class HTTPRequest extends godot.Node {
 	/**		
 		Creates request on the underlying `godot.HTTPClient`. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
 		
-		Returns  if request is successfully created. (Does not imply that the server has responded),  if not in the tree,  if still processing previous request,  if given string is not a valid URL format, or  if not using thread and the `godot.HTTPClient` cannot connect to host.
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
 		
-		Note: The `request_data` parameter is ignored if `method` is . This is because GET methods can't contain request data. As a workaround, you can pass request data as a query string in the URL. See `String.http_escape` for an example.
+		Note: When `method` is `godot.HTTPClient_Method.get`, the payload sent via `request_data` might be ignored by the server or even cause the server to reject the request (check [https://datatracker.ietf.org/doc/html/rfc7231#section-4.3.1](RFC 7231 section 4.3.1) for more details). As a workaround, you can send data as a query string in the URL. See `String.http_escape` for an example.
 		
-		@param customHeaders If the parameter is null, then the default value is new string[] {}
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Request")
 	public overload function request(url:std.String, customHeaders:HaxeArray<std.String>, sslValidateDomain:Bool, method:godot.HTTPClient_Method):godot.Error;
@@ -194,11 +260,11 @@ extern class HTTPRequest extends godot.Node {
 	/**		
 		Creates request on the underlying `godot.HTTPClient`. If there is no configuration errors, it tries to connect using `godot.HTTPClient.connectToHost` and passes parameters onto `godot.HTTPClient.request`.
 		
-		Returns  if request is successfully created. (Does not imply that the server has responded),  if not in the tree,  if still processing previous request,  if given string is not a valid URL format, or  if not using thread and the `godot.HTTPClient` cannot connect to host.
+		Returns `OK` if request is successfully created. (Does not imply that the server has responded), `ERR_UNCONFIGURED` if not in the tree, `ERR_BUSY` if still processing previous request, `ERR_INVALID_PARAMETER` if given string is not a valid URL format, or `ERR_CANT_CONNECT` if not using thread and the `godot.HTTPClient` cannot connect to host.
 		
-		Note: The `request_data` parameter is ignored if `method` is . This is because GET methods can't contain request data. As a workaround, you can pass request data as a query string in the URL. See `String.http_escape` for an example.
+		Note: When `method` is `godot.HTTPClient_Method.get`, the payload sent via `request_data` might be ignored by the server or even cause the server to reject the request (check [https://datatracker.ietf.org/doc/html/rfc7231#section-4.3.1](RFC 7231 section 4.3.1) for more details). As a workaround, you can send data as a query string in the URL. See `String.http_escape` for an example.
 		
-		@param customHeaders If the parameter is null, then the default value is new string[] {}
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Request")
 	public overload function request(url:std.String, customHeaders:HaxeArray<std.String>, sslValidateDomain:Bool, method:godot.HTTPClient_Method, requestData:std.String):godot.Error;

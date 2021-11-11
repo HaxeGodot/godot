@@ -15,14 +15,14 @@ extern enum Tree_DropModeFlagsEnum {
 	/**		
 		Enables the "on item" drop section. This drop section covers the entire item.
 		
-		When combined with , this drop section halves the height and stays centered vertically.
+		When combined with `godot.Tree_DropModeFlagsEnum.inbetween`, this drop section halves the height and stays centered vertically.
 	**/
 	OnItem;
 
 	/**		
 		Enables "above item" and "below item" drop sections. The "above item" drop section covers the top half of the item, and the "below item" drop section covers the bottom half.
 		
-		When combined with , these drop sections halves the height and stays on top / bottom accordingly.
+		When combined with `godot.Tree_DropModeFlagsEnum.onItem`, these drop sections halves the height and stays on top / bottom accordingly.
 	**/
 	Inbetween;
 }

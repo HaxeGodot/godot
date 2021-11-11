@@ -4,35 +4,62 @@ package godot;
 
 import cs.system.*;
 
+/**
+`godot.VisualScriptPropertySet` can set the value of any property from the current object or other objects.
+**/
 @:libType
 @:csNative
 @:native("Godot.VisualScriptPropertySet")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualScriptPropertySet extends godot.VisualScriptNode {
+	/**		
+		The additional operation to perform when assigning. See `godot.VisualScriptPropertySet_AssignOpEnum` for options.
+	**/
 	@:native("AssignOp")
 	public var assignOp:godot.VisualScriptPropertySet_AssignOpEnum;
 
+	/**		
+		The indexed name of the property to set. See `godot.Object.setIndexed` for details.
+	**/
 	@:native("Index")
 	public var index:std.String;
 
+	/**		
+		The name of the property to set. Changing this will clear `godot.VisualScriptPropertySet.index`.
+	**/
 	@:native("Property")
 	public var property:std.String;
 
+	/**		
+		The node path to use when `godot.VisualScriptPropertySet.setMode` is set to `godot.VisualScriptPropertySet_CallMode.nodePath`.
+	**/
 	@:native("NodePath")
 	public var nodePath:godot.NodePath;
 
+	/**		
+		The type to be used when `godot.VisualScriptPropertySet.setMode` is set to `godot.VisualScriptPropertySet_CallMode.basicType`.
+	**/
 	@:native("BasicType")
 	public var basicType:godot.Variant_Type;
 
 	@:native("TypeCache")
 	public var typeCache:godot.collections.Dictionary;
 
+	/**		
+		The script to be used when `godot.VisualScriptPropertySet.setMode` is set to `godot.VisualScriptPropertySet_CallMode.instance`.
+	**/
 	@:native("BaseScript")
 	public var baseScript:std.String;
 
+	/**		
+		The base type to be used when `godot.VisualScriptPropertySet.setMode` is set to `godot.VisualScriptPropertySet_CallMode.instance`.
+	**/
 	@:native("BaseType")
 	public var baseType:std.String;
 
+	/**		
+		`set_mode` determines the target object on which the property will be set. See `godot.VisualScriptPropertySet_CallMode` for options.
+	**/
 	@:native("SetMode")
 	public var setMode:godot.VisualScriptPropertySet_CallMode;
 

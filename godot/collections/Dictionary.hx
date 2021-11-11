@@ -12,18 +12,6 @@ extern class Dictionary implements cs.system.collections.IDictionary implements 
 	@:native("Count")
 	public var count(default, never):Int;
 
-	@:native("IsSynchronized")
-	public var isSynchronized(default, never):Bool;
-
-	@:native("SyncRoot")
-	public var syncRoot(default, never):Dynamic;
-
-	@:native("IsReadOnly")
-	public var isReadOnly(default, never):Bool;
-
-	@:native("IsFixedSize")
-	public var isFixedSize(default, never):Bool;
-
 	@:native("Values")
 	public var values(default, never):cs.system.collections.ICollection;
 

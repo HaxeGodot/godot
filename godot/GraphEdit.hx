@@ -171,6 +171,30 @@ extern class GraphEdit extends godot.Control {
 	public var minimapEnabled:Bool;
 
 	/**		
+		If `true`, makes a label with the current zoom level visible. The zoom value is displayed in percents.
+	**/
+	@:native("ShowZoomLabel")
+	public var showZoomLabel:Bool;
+
+	/**		
+		The step of each zoom level.
+	**/
+	@:native("ZoomStep")
+	public var zoomStep:Single;
+
+	/**		
+		The upper zoom limit.
+	**/
+	@:native("ZoomMax")
+	public var zoomMax:Single;
+
+	/**		
+		The lower zoom limit.
+	**/
+	@:native("ZoomMin")
+	public var zoomMin:Single;
+
+	/**		
 		The current zoom value.
 	**/
 	@:native("Zoom")
@@ -293,6 +317,30 @@ extern class GraphEdit extends godot.Control {
 	@:native("GetZoom")
 	public function getZoom():Single;
 
+	@:native("SetZoomMin")
+	public function setZoomMin(zoomMin:Single):Void;
+
+	@:native("GetZoomMin")
+	public function getZoomMin():Single;
+
+	@:native("SetZoomMax")
+	public function setZoomMax(zoomMax:Single):Void;
+
+	@:native("GetZoomMax")
+	public function getZoomMax():Single;
+
+	@:native("SetZoomStep")
+	public function setZoomStep(zoomStep:Single):Void;
+
+	@:native("GetZoomStep")
+	public function getZoomStep():Single;
+
+	@:native("SetShowZoomLabel")
+	public function setShowZoomLabel(enable:Bool):Void;
+
+	@:native("IsShowingZoomLabel")
+	public function isShowingZoomLabel():Bool;
+
 	@:native("SetSnap")
 	public function setSnap(pixels:Int):Void;
 
@@ -330,9 +378,9 @@ extern class GraphEdit extends godot.Control {
 	public function isRightDisconnectsEnabled():Bool;
 
 	/**		
-		Gets the `godot.HBoxContainer` that contains the zooming and grid snap controls in the top left of the graph.
+		Gets the `godot.HBoxContainer` that contains the zooming and grid snap controls in the top left of the graph. You can use this method to reposition the toolbar or to add your own custom controls to it.
 		
-		Warning: The intended usage of this function is to allow you to reposition or add your own custom controls to the container. This is an internal control and as such should not be freed. If you wish to hide this or any of its children, use their `godot.CanvasItem.visible` property instead.
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetZoomHbox")
 	public function getZoomHbox():godot.HBoxContainer;

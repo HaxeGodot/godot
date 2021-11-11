@@ -133,7 +133,7 @@ extern class SpatialMaterial extends godot.Material {
 	public var detailEnabled:Bool;
 
 	/**		
-		Specifies the channel of the `godot.SpatialMaterial.aoTexture` in which the ambient occlusion information is stored. This is useful when you store the information for multiple effects in a single texture. For example if you stored metallic in the red channel, roughness in the blue, and ambient occlusion in the green you could reduce the number of textures you use.
+		Specifies the channel of the `godot.SpatialMaterial.refractionTexture` in which the refraction information is stored. This is useful when you store the information for multiple effects in a single texture. For example if you stored metallic in the red channel, roughness in the blue, and ambient occlusion in the green you could reduce the number of textures you use.
 	**/
 	@:native("RefractionTextureChannel")
 	public var refractionTextureChannel:godot.SpatialMaterial_TextureChannel;
@@ -145,13 +145,13 @@ extern class SpatialMaterial extends godot.Material {
 	public var refractionTexture:godot.Texture;
 
 	/**		
-		The strength of the refraction effect.
+		The strength of the refraction effect. Higher values result in a more distorted appearance for the refraction.
 	**/
 	@:native("RefractionScale")
 	public var refractionScale:Single;
 
 	/**		
-		If `true`, the refraction effect is enabled. Distorts transparency based on light from behind the object.
+		If `true`, the refraction effect is enabled. Refraction distorts transparency based on light from behind the object. When using the GLES3 backend, the material's roughness value will affect the blurriness of the refraction. Higher roughness values will make the refraction look blurrier.
 	**/
 	@:native("RefractionEnabled")
 	public var refractionEnabled:Bool;
@@ -310,6 +310,8 @@ extern class SpatialMaterial extends godot.Material {
 
 	/**		
 		If `true`, clearcoat rendering is enabled. Adds a secondary transparent pass to the lighting calculation resulting in an added specular blob. This makes materials appear as if they have a clear layer on them that can be either glossy or rough.
+		
+		Note: Clearcoat rendering is not visible if the material has `godot.SpatialMaterial.flagsUnshaded` set to `true`.
 	**/
 	@:native("ClearcoatEnabled")
 	public var clearcoatEnabled:Bool;
@@ -334,12 +336,16 @@ extern class SpatialMaterial extends godot.Material {
 
 	/**		
 		If `true`, rim effect is enabled. Rim lighting increases the brightness at glancing angles on an object.
+		
+		Note: Rim lighting is not visible if the material has `godot.SpatialMaterial.flagsUnshaded` set to `true`.
 	**/
 	@:native("RimEnabled")
 	public var rimEnabled:Bool;
 
 	/**		
-		Texture used to specify the normal at a given pixel. The `normal_texture` only uses the red and green channels. The normal read from `normal_texture` is oriented around the surface normal provided by the `godot.Mesh`.
+		Texture used to specify the normal at a given pixel. The `normal_texture` only uses the red and green channels; the blue and alpha channels are ignored. The normal read from `normal_texture` is oriented around the surface normal provided by the `godot.Mesh`.
+		
+		Note: The mesh must have both normals and tangents defined in its vertex data. Otherwise, the normal map won't render correctly and will only appear to darken the whole surface. If creating geometry with `godot.SurfaceTool`, you can use `godot.SurfaceTool.generateNormals` and `godot.SurfaceTool.generateTangents` to automatically generate normals and tangents respectively.
 		
 		Note: Godot expects the normal map to use X+, Y-, and Z+ coordinates. See [http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#Common_Swizzle_Coordinates](this page) for a comparison of normal map coordinates expected by popular engines.
 	**/
@@ -427,7 +433,7 @@ extern class SpatialMaterial extends godot.Material {
 	/**		
 		Sets the size of the specular lobe. The specular lobe is the bright spot that is reflected from light sources.
 		
-		Note: unlike `godot.SpatialMaterial.metallic`, this is not energy-conserving, so it should be left at `0.5` in most cases. See also `godot.SpatialMaterial.roughness`.
+		Note: Unlike `godot.SpatialMaterial.metallic`, this is not energy-conserving, so it should be left at `0.5` in most cases. See also `godot.SpatialMaterial.roughness`.
 	**/
 	@:native("MetallicSpecular")
 	public var metallicSpecular:Single;
@@ -451,19 +457,19 @@ extern class SpatialMaterial extends godot.Material {
 	public var albedoColor:godot.Color;
 
 	/**		
-		If `true`, particle animations are looped. Only enabled when using . See `godot.SpatialMaterial.paramsBillboardMode`.
+		If `true`, particle animations are looped. Only enabled when using `godot.SpatialMaterial_BillboardMode.particles`. See `godot.SpatialMaterial.paramsBillboardMode`.
 	**/
 	@:native("ParticlesAnimLoop")
 	public var particlesAnimLoop:Bool;
 
 	/**		
-		The number of vertical frames in the particle sprite sheet. Only enabled when using . See `godot.SpatialMaterial.paramsBillboardMode`.
+		The number of vertical frames in the particle sprite sheet. Only enabled when using `godot.SpatialMaterial_BillboardMode.particles`. See `godot.SpatialMaterial.paramsBillboardMode`.
 	**/
 	@:native("ParticlesAnimVFrames")
 	public var particlesAnimVFrames:Int;
 
 	/**		
-		The number of horizontal frames in the particle sprite sheet. Only enabled when using . See `godot.SpatialMaterial.paramsBillboardMode`.
+		The number of horizontal frames in the particle sprite sheet. Only enabled when using `godot.SpatialMaterial_BillboardMode.particles`. See `godot.SpatialMaterial.paramsBillboardMode`.
 	**/
 	@:native("ParticlesAnimHFrames")
 	public var particlesAnimHFrames:Int;
@@ -493,7 +499,7 @@ extern class SpatialMaterial extends godot.Material {
 	public var paramsGrow:Bool;
 
 	/**		
-		If `true`, the shader will keep the scale set for the mesh. Otherwise the scale is lost when billboarding. Only applies when `godot.SpatialMaterial.paramsBillboardMode` is .
+		If `true`, the shader will keep the scale set for the mesh. Otherwise the scale is lost when billboarding. Only applies when `godot.SpatialMaterial.paramsBillboardMode` is `godot.SpatialMaterial_BillboardMode.enabled`.
 	**/
 	@:native("ParamsBillboardKeepScale")
 	public var paramsBillboardKeepScale:Bool;
@@ -601,7 +607,7 @@ extern class SpatialMaterial extends godot.Material {
 	/**		
 		If `true`, render point size can be changed.
 		
-		Note: this is only effective for objects whose geometry is point-based rather than triangle-based. See also `godot.SpatialMaterial.paramsPointSize`.
+		Note: This is only effective for objects whose geometry is point-based rather than triangle-based. See also `godot.SpatialMaterial.paramsPointSize`.
 	**/
 	@:native("FlagsUsePointSize")
 	public var flagsUsePointSize:Bool;

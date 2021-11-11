@@ -17,18 +17,24 @@ extern class Mutex extends godot.Reference {
 
 	/**		
 		Locks this `godot.Mutex`, blocks until it is unlocked by the current owner.
+		
+		Note: This function returns without blocking if the thread already has ownership of the mutex.
 	**/
 	@:native("Lock")
 	public function lock():Void;
 
 	/**		
-		Tries locking this `godot.Mutex`, but does not block. Returns  on success,  otherwise.
+		Tries locking this `godot.Mutex`, but does not block. Returns `OK` on success, `ERR_BUSY` otherwise.
+		
+		Note: This function returns `OK` if the thread already has ownership of the mutex.
 	**/
 	@:native("TryLock")
 	public function tryLock():godot.Error;
 
 	/**		
 		Unlocks this `godot.Mutex`, leaving it to other threads.
+		
+		Note: If a thread called `godot.Mutex.lock` or `godot.Mutex.tryLock` multiple times while already having ownership of the mutex, it must also call `godot.Mutex.unlock` the same number of times in order to unlock it correctly.
 	**/
 	@:native("Unlock")
 	public function unlock():Void;

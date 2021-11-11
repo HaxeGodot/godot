@@ -6,12 +6,12 @@ package godot;
 @:csNative
 extern enum NetworkedMultiplayerPeer_TransferModeEnum {
 	/**		
-		Packets are not acknowledged, no resend attempts are made for lost packets. Packets may arrive in any order. Potentially faster than . Use for non-critical data, and always consider whether the order matters.
+		Packets are not acknowledged, no resend attempts are made for lost packets. Packets may arrive in any order. Potentially faster than `godot.NetworkedMultiplayerPeer_TransferModeEnum.unreliableOrdered`. Use for non-critical data, and always consider whether the order matters.
 	**/
 	Unreliable;
 
 	/**		
-		Packets are not acknowledged, no resend attempts are made for lost packets. Packets are received in the order they were sent in. Potentially faster than . Use for non-critical data or data that would be outdated if received late due to resend attempt(s) anyway, for example movement and positional data.
+		Packets are not acknowledged, no resend attempts are made for lost packets. Packets are received in the order they were sent in. Potentially faster than `godot.NetworkedMultiplayerPeer_TransferModeEnum.reliable`. Use for non-critical data or data that would be outdated if received late due to resend attempt(s) anyway, for example movement and positional data.
 	**/
 	UnreliableOrdered;
 

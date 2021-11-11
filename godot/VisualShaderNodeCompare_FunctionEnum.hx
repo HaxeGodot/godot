@@ -16,22 +16,22 @@ extern enum VisualShaderNodeCompare_FunctionEnum {
 	NotEqual;
 
 	/**		
-		Comparison for greater than (`a &gt; b`). Cannot be used if `godot.VisualShaderNodeCompare.type` set to  or .
+		Comparison for greater than (`a &gt; b`). Cannot be used if `godot.VisualShaderNodeCompare.type` set to `godot.VisualShaderNodeCompare_ComparisonType.boolean` or `godot.VisualShaderNodeCompare_ComparisonType.transform`.
 	**/
 	GreaterThan;
 
 	/**		
-		Comparison for greater than or equal (`a &gt;= b`). Cannot be used if `godot.VisualShaderNodeCompare.type` set to  or .
+		Comparison for greater than or equal (`a &gt;= b`). Cannot be used if `godot.VisualShaderNodeCompare.type` set to `godot.VisualShaderNodeCompare_ComparisonType.boolean` or `godot.VisualShaderNodeCompare_ComparisonType.transform`.
 	**/
 	GreaterThanEqual;
 
 	/**		
-		Comparison for less than (`a &lt; b`). Cannot be used if `godot.VisualShaderNodeCompare.type` set to  or .
+		Comparison for less than (`a &lt; b`). Cannot be used if `godot.VisualShaderNodeCompare.type` set to `godot.VisualShaderNodeCompare_ComparisonType.boolean` or `godot.VisualShaderNodeCompare_ComparisonType.transform`.
 	**/
 	LessThan;
 
 	/**		
-		Comparison for less than or equal (`a &lt; b`). Cannot be used if `godot.VisualShaderNodeCompare.type` set to  or .
+		Comparison for less than or equal (`a &lt; b`). Cannot be used if `godot.VisualShaderNodeCompare.type` set to `godot.VisualShaderNodeCompare_ComparisonType.boolean` or `godot.VisualShaderNodeCompare_ComparisonType.transform`.
 	**/
 	LessThanEqual;
 }

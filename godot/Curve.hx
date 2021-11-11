@@ -54,37 +54,37 @@ extern class Curve extends godot.Resource {
 
 	#if doc_gen
 	/**		
-		Adds a point to the curve. For each side, if the `*_mode` is , the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to .
+		Adds a point to the curve. For each side, if the `*_mode` is `godot.Curve_TangentMode.linear`, the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to `godot.Curve_TangentMode.free`.
 	**/
 	@:native("AddPoint")
 	public function addPoint(position:godot.Vector2, ?leftTangent:Single, ?rightTangent:Single, ?leftMode:godot.Curve_TangentMode, ?rightMode:godot.Curve_TangentMode):Int;
 	#else
 	/**		
-		Adds a point to the curve. For each side, if the `*_mode` is , the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to .
+		Adds a point to the curve. For each side, if the `*_mode` is `godot.Curve_TangentMode.linear`, the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to `godot.Curve_TangentMode.free`.
 	**/
 	@:native("AddPoint")
 	public overload function addPoint(position:godot.Vector2):Int;
 
 	/**		
-		Adds a point to the curve. For each side, if the `*_mode` is , the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to .
+		Adds a point to the curve. For each side, if the `*_mode` is `godot.Curve_TangentMode.linear`, the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to `godot.Curve_TangentMode.free`.
 	**/
 	@:native("AddPoint")
 	public overload function addPoint(position:godot.Vector2, leftTangent:Single):Int;
 
 	/**		
-		Adds a point to the curve. For each side, if the `*_mode` is , the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to .
+		Adds a point to the curve. For each side, if the `*_mode` is `godot.Curve_TangentMode.linear`, the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to `godot.Curve_TangentMode.free`.
 	**/
 	@:native("AddPoint")
 	public overload function addPoint(position:godot.Vector2, leftTangent:Single, rightTangent:Single):Int;
 
 	/**		
-		Adds a point to the curve. For each side, if the `*_mode` is , the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to .
+		Adds a point to the curve. For each side, if the `*_mode` is `godot.Curve_TangentMode.linear`, the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to `godot.Curve_TangentMode.free`.
 	**/
 	@:native("AddPoint")
 	public overload function addPoint(position:godot.Vector2, leftTangent:Single, rightTangent:Single, leftMode:godot.Curve_TangentMode):Int;
 
 	/**		
-		Adds a point to the curve. For each side, if the `*_mode` is , the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to .
+		Adds a point to the curve. For each side, if the `*_mode` is `godot.Curve_TangentMode.linear`, the `*_tangent` angle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the `*_tangent` angle if `*_mode` is set to `godot.Curve_TangentMode.free`.
 	**/
 	@:native("AddPoint")
 	public overload function addPoint(position:godot.Vector2, leftTangent:Single, rightTangent:Single, leftMode:godot.Curve_TangentMode, rightMode:godot.Curve_TangentMode):Int;

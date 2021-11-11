@@ -116,25 +116,37 @@ extern class Resource extends godot.Reference {
 
 	#if doc_gen
 	/**		
-		Duplicates the resource, returning a new resource. By default, sub-resources are shared between resource copies for efficiency. This can be changed by passing `true` to the `subresources` argument which will copy the subresources.
+		Duplicates the resource, returning a new resource with the exported members copied. Note: To duplicate the resource the constructor is called without arguments. This method will error when the constructor doesn't have default values.
+		
+		By default, sub-resources are shared between resource copies for efficiency. This can be changed by passing `true` to the `subresources` argument which will copy the subresources.
 		
 		Note: If `subresources` is `true`, this method will only perform a shallow copy. Nested resources within subresources will not be duplicated and will still be shared.
+		
+		Note: When duplicating a resource, only `export`ed properties are copied. Other properties will be set to their default value in the new resource.
 	**/
 	@:native("Duplicate")
 	public function duplicate(?subresources:Bool):godot.Resource;
 	#else
 	/**		
-		Duplicates the resource, returning a new resource. By default, sub-resources are shared between resource copies for efficiency. This can be changed by passing `true` to the `subresources` argument which will copy the subresources.
+		Duplicates the resource, returning a new resource with the exported members copied. Note: To duplicate the resource the constructor is called without arguments. This method will error when the constructor doesn't have default values.
+		
+		By default, sub-resources are shared between resource copies for efficiency. This can be changed by passing `true` to the `subresources` argument which will copy the subresources.
 		
 		Note: If `subresources` is `true`, this method will only perform a shallow copy. Nested resources within subresources will not be duplicated and will still be shared.
+		
+		Note: When duplicating a resource, only `export`ed properties are copied. Other properties will be set to their default value in the new resource.
 	**/
 	@:native("Duplicate")
 	public overload function duplicate():godot.Resource;
 
 	/**		
-		Duplicates the resource, returning a new resource. By default, sub-resources are shared between resource copies for efficiency. This can be changed by passing `true` to the `subresources` argument which will copy the subresources.
+		Duplicates the resource, returning a new resource with the exported members copied. Note: To duplicate the resource the constructor is called without arguments. This method will error when the constructor doesn't have default values.
+		
+		By default, sub-resources are shared between resource copies for efficiency. This can be changed by passing `true` to the `subresources` argument which will copy the subresources.
 		
 		Note: If `subresources` is `true`, this method will only perform a shallow copy. Nested resources within subresources will not be duplicated and will still be shared.
+		
+		Note: When duplicating a resource, only `export`ed properties are copied. Other properties will be set to their default value in the new resource.
 	**/
 	@:native("Duplicate")
 	public overload function duplicate(subresources:Bool):godot.Resource;

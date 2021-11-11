@@ -19,7 +19,7 @@ extern abstract class Light extends godot.VisualInstance {
 	public var editorOnly:Bool;
 
 	/**		
-		If `true`, reverses the backface culling of the mesh. This can be useful when you have a flat mesh that has a light behind it. If you need to cast a shadow on both sides of the mesh, set the mesh to use double-sided shadows with .
+		If `true`, reverses the backface culling of the mesh. This can be useful when you have a flat mesh that has a light behind it. If you need to cast a shadow on both sides of the mesh, set the mesh to use double-sided shadows with `godot.GeometryInstance_ShadowCastingSetting.doubleSided`.
 	**/
 	@:native("ShadowReverseCullFace")
 	public var shadowReverseCullFace:Bool;
@@ -71,6 +71,12 @@ extern abstract class Light extends godot.VisualInstance {
 	**/
 	@:native("LightNegative")
 	public var lightNegative:Bool;
+
+	/**		
+		The size of the light in Godot units. Only considered in baked lightmaps and only if `godot.Light.lightBakeMode` is set to `godot.Light_BakeMode.all`. Increasing this value will make the shadows appear blurrier. This can be used to simulate area lights to an extent.
+	**/
+	@:native("LightSize")
+	public var lightSize:Single;
 
 	/**		
 		Secondary multiplier used with indirect light (light bounces). This works on both `godot.BakedLightmap` and `godot.GIProbe`.

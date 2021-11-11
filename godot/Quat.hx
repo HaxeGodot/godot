@@ -8,10 +8,10 @@ import cs.system.*;
 A unit quaternion used for representing 3D rotations.
 Quaternions need to be normalized to be used for rotation.
 
-It is similar to Basis, which implements matrix representation of
-rotations, and can be parametrized using both an axis-angle pair
-or Euler angles. Basis stores rotation, scale, and shearing,
-while Quat only stores rotation.
+It is similar to `godot.Basis`, which implements matrix
+representation of rotations, and can be parametrized using both
+an axis-angle pair or Euler angles. Basis stores rotation, scale,
+and shearing, while Quat only stores rotation.
 
 Due to its compactness and the way it is stored in memory, certain
 operations (obtaining axis-angle and performing SLERP, in particular)
@@ -31,7 +31,7 @@ extern abstract Quat(Quat_) from Quat_ to Quat_ {
 #end
 	#if !doc_gen
 	/**		
-		Constructs a quaternion defined by the given values.
+		Constructs a `godot.Quat` defined by the given values.
 		
 		@param x X component of the quaternion (imaginary `i` axis part).
 		@param y Y component of the quaternion (imaginary `j` axis part).
@@ -45,7 +45,7 @@ extern abstract Quat(Quat_) from Quat_ to Quat_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a quaternion from the given quaternion.
+		Constructs a `godot.Quat` from the given `godot.Quat`.
 		
 		@param q The existing quaternion.
 	**/
@@ -56,9 +56,9 @@ extern abstract Quat(Quat_) from Quat_ to Quat_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a quaternion from the given `godot.Basis`.
+		Constructs a `godot.Quat` from the given `godot.Basis`.
 		
-		@param basis The basis to construct from.
+		@param basis The `godot.Basis` to construct from.
 	**/
 	public overload inline function new(basis:godot.Basis) {
 		this = new Quat_(basis);
@@ -67,12 +67,11 @@ extern abstract Quat(Quat_) from Quat_ to Quat_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a quaternion that will perform a rotation specified by
-		Euler angles (in the YXZ convention: when decomposing,
-		first Z, then X, and Y last),
+		Constructs a `godot.Quat` that will perform a rotation specified by
+		Euler angles (in the YXZ convention: when decomposing, first Z, then X, and Y last),
 		given in the vector format as (X angle, Y angle, Z angle).
 		
-		@param eulerYXZ
+		@param eulerYXZ Euler angles that the quaternion will be rotated by.
 	**/
 	public overload inline function new(eulerYXZ:godot.Vector3) {
 		this = new Quat_(eulerYXZ);
@@ -81,7 +80,7 @@ extern abstract Quat(Quat_) from Quat_ to Quat_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a quaternion that will rotate around the given axis
+		Constructs a `godot.Quat` that will rotate around the given axis
 		by the specified angle. The axis must be a normalized vector.
 		
 		@param axis The axis to rotate around. Must be normalized.
@@ -200,7 +199,7 @@ extern class Quat_ extends cs.system.ValueType implements cs.system.IEquatable_1
 
 	/**		
 		Returns the length (magnitude) of the quaternion.
-		
+		@see `godot.Quat.lengthSquared`
 		Value: Equivalent to `Mathf.Sqrt(LengthSquared)`.
 	**/
 	@:native("Length")
@@ -235,17 +234,32 @@ extern class Quat_ extends cs.system.ValueType implements cs.system.IEquatable_1
 	public var x:Single;
 
 	/**		
-		Performs a cubic spherical interpolation between quaternions `preA`,
-		this vector, `b`, and `postB`, by the given amount `t`.
+		Returns the angle between this quaternion and `to`.
+		This is the magnitude of the angle you would need to rotate
+		by to get from one to the other.
+		
+		Note: This method has an abnormally high amount
+		of floating-point error, so methods such as
+		`godot.Mathf.isZeroApprox` will not work reliably.
+		
+		@param to The other quaternion.
+		@returns The angle between the quaternions.
+	**/
+	@:native("AngleTo")
+	public function angleTo(to:godot.Quat):Single;
+
+	/**		
+		Performs a cubic spherical interpolation between quaternions `preA`, this quaternion,
+		`b`, and `postB`, by the given amount `weight`.
 		
 		@param b The destination quaternion.
 		@param preA A quaternion before this quaternion.
 		@param postB A quaternion after `b`.
-		@param t A value on the range of 0.0 to 1.0, representing the amount of interpolation.
+		@param weight A value on the range of 0.0 to 1.0, representing the amount of interpolation.
 		@returns The interpolated quaternion.
 	**/
 	@:native("CubicSlerp")
-	public function cubicSlerp(b:godot.Quat, preA:godot.Quat, postB:godot.Quat, t:Single):godot.Quat;
+	public function cubicSlerp(b:godot.Quat, preA:godot.Quat, postB:godot.Quat, weight:Single):godot.Quat;
 
 	/**		
 		Returns the dot product of two quaternions.
@@ -278,7 +292,7 @@ extern class Quat_ extends cs.system.ValueType implements cs.system.IEquatable_1
 	/**		
 		Returns whether the quaternion is normalized or not.
 		
-		@returns A bool for whether the quaternion is normalized or not.
+		@returns A `bool` for whether the quaternion is normalized or not.
 	**/
 	@:native("IsNormalized")
 	public function isNormalized():Bool;
@@ -338,7 +352,7 @@ extern class Quat_ extends cs.system.ValueType implements cs.system.IEquatable_1
 	public function xform(v:godot.Vector3):godot.Vector3;
 
 	/**		
-		Constructs a quaternion defined by the given values.
+		Constructs a `godot.Quat` defined by the given values.
 		
 		@param x X component of the quaternion (imaginary `i` axis part).
 		@param y Y component of the quaternion (imaginary `j` axis part).
@@ -349,7 +363,7 @@ extern class Quat_ extends cs.system.ValueType implements cs.system.IEquatable_1
 	public overload function new(x:Single, y:Single, z:Single, w:Single):Void;
 
 	/**		
-		Constructs a quaternion from the given quaternion.
+		Constructs a `godot.Quat` from the given `godot.Quat`.
 		
 		@param q The existing quaternion.
 	**/
@@ -357,26 +371,25 @@ extern class Quat_ extends cs.system.ValueType implements cs.system.IEquatable_1
 	public overload function new(q:godot.Quat):Void;
 
 	/**		
-		Constructs a quaternion from the given `godot.Basis`.
+		Constructs a `godot.Quat` from the given `godot.Basis`.
 		
-		@param basis The basis to construct from.
+		@param basis The `godot.Basis` to construct from.
 	**/
 	@:native("new")
 	public overload function new(basis:godot.Basis):Void;
 
 	/**		
-		Constructs a quaternion that will perform a rotation specified by
-		Euler angles (in the YXZ convention: when decomposing,
-		first Z, then X, and Y last),
+		Constructs a `godot.Quat` that will perform a rotation specified by
+		Euler angles (in the YXZ convention: when decomposing, first Z, then X, and Y last),
 		given in the vector format as (X angle, Y angle, Z angle).
 		
-		@param eulerYXZ
+		@param eulerYXZ Euler angles that the quaternion will be rotated by.
 	**/
 	@:native("new")
 	public overload function new(eulerYXZ:godot.Vector3):Void;
 
 	/**		
-		Constructs a quaternion that will rotate around the given axis
+		Constructs a `godot.Quat` that will rotate around the given axis
 		by the specified angle. The axis must be a normalized vector.
 		
 		@param axis The axis to rotate around. Must be normalized.
@@ -386,8 +399,8 @@ extern class Quat_ extends cs.system.ValueType implements cs.system.IEquatable_1
 	public overload function new(axis:godot.Vector3, angle:Single):Void;
 
 	/**		
-		Returns true if this quaternion and `other` are approximately equal, by running
-		`godot.Mathf.isEqualApprox` on each component.
+		Returns `true` if this quaternion and `other` are approximately equal,
+		by running `godot.Mathf.isEqualApprox` on each component.
 		
 		@param other The other quaternion to compare.
 		@returns Whether or not the quaternions are approximately equal.
@@ -395,9 +408,19 @@ extern class Quat_ extends cs.system.ValueType implements cs.system.IEquatable_1
 	@:native("IsEqualApprox")
 	public function isEqualApprox(other:godot.Quat):Bool;
 
+	/**		
+		Converts this `godot.Quat` to a string.
+		
+		@returns A string representation of this quaternion.
+	**/
 	@:native("ToString")
 	public overload function toString():std.String;
 
+	/**		
+		Converts this `godot.Quat` to a string with the given `format`.
+		
+		@returns A string representation of this quaternion.
+	**/
 	@:native("ToString")
 	public overload function toString(format:std.String):std.String;
 }

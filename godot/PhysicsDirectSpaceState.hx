@@ -32,7 +32,7 @@ extern abstract class PhysicsDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public function intersectRay(from:godot.Vector3, to:godot.Vector3, ?exclude:godot.collections.Array, ?collisionMask:UInt, ?collideWithBodies:Bool, ?collideWithAreas:Bool):godot.collections.Dictionary;
@@ -56,7 +56,7 @@ extern abstract class PhysicsDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public overload function intersectRay(from:godot.Vector3, to:godot.Vector3):godot.collections.Dictionary;
@@ -80,7 +80,7 @@ extern abstract class PhysicsDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public overload function intersectRay(from:godot.Vector3, to:godot.Vector3, exclude:godot.collections.Array):godot.collections.Dictionary;
@@ -104,7 +104,7 @@ extern abstract class PhysicsDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public overload function intersectRay(from:godot.Vector3, to:godot.Vector3, exclude:godot.collections.Array, collisionMask:UInt):godot.collections.Dictionary;
@@ -128,7 +128,7 @@ extern abstract class PhysicsDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public overload function intersectRay(from:godot.Vector3, to:godot.Vector3, exclude:godot.collections.Array, collisionMask:UInt, collideWithBodies:Bool):godot.collections.Dictionary;
@@ -152,7 +152,7 @@ extern abstract class PhysicsDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public overload function intersectRay(from:godot.Vector3, to:godot.Vector3, exclude:godot.collections.Array, collisionMask:UInt, collideWithBodies:Bool, collideWithAreas:Bool):godot.collections.Dictionary;

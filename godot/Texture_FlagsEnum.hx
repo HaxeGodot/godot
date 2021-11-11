@@ -23,7 +23,7 @@ extern enum Texture_FlagsEnum {
 	Filter;
 
 	/**		
-		Default flags. ,  and  are enabled.
+		Default flags. `godot.Texture_FlagsEnum.mipmaps`, `godot.Texture_FlagsEnum.repeat` and `godot.Texture_FlagsEnum.filter` are enabled.
 	**/
 	Default;
 

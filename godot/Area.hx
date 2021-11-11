@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-3D area that detects `godot.CollisionObject` nodes overlapping, entering, or exiting. Can also alter or override local physics parameters (gravity, damping).
+3D area that detects `godot.CollisionObject` nodes overlapping, entering, or exiting. Can also alter or override local physics parameters (gravity, damping) and route audio to custom audio buses.
 **/
 @:libType
 @:csNative
@@ -38,28 +38,28 @@ extern class Area extends godot.CollisionObject {
 		`area_shape_entered` signal.
 		
 		Emitted when one of another Area's `Shape`s enters one of this Area's `Shape`s. Requires `monitoring` to be set to `true`.
-		`area_id` the `RID` of the other Area's `CollisionObject` used by the `PhysicsServer`.
+		`area_rid` the `RID` of the other Area's `CollisionObject` used by the `PhysicsServer`.
 		`area` the other Area.
-		`area_shape` the index of the `Shape` of the other Area used by the `PhysicsServer`.
-		`local_shape` the index of the `Shape` of this Area used by the `PhysicsServer`.
+		`area_shape_index` the index of the `Shape` of the other Area used by the `PhysicsServer`. Get the `CollisionShape` node with `area.shape_owner_get_owner(area_shape_index)`.
+		`local_shape_index` the index of the `Shape` of this Area used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
-	public var onAreaShapeEntered(get, never):Signal<(areaId:Int, area:Area, areaShape:Int, localShape:Int)->Void>;
-	@:dox(hide) @:noCompletion inline function get_onAreaShapeEntered():Signal<(areaId:Int, area:Area, areaShape:Int, localShape:Int)->Void> {
-		return new Signal(this, "area_shape_entered", Signal.SignalHandlerIntAreaIntIntVoid.connectSignal, Signal.SignalHandlerIntAreaIntIntVoid.disconnectSignal, Signal.SignalHandlerIntAreaIntIntVoid.isSignalConnected);
+	public var onAreaShapeEntered(get, never):Signal<(areaRid:RID, area:Area, areaShapeIndex:Int, localShapeIndex:Int)->Void>;
+	@:dox(hide) @:noCompletion inline function get_onAreaShapeEntered():Signal<(areaRid:RID, area:Area, areaShapeIndex:Int, localShapeIndex:Int)->Void> {
+		return new Signal(this, "area_shape_entered", Signal.SignalHandlerRIDAreaIntIntVoid.connectSignal, Signal.SignalHandlerRIDAreaIntIntVoid.disconnectSignal, Signal.SignalHandlerRIDAreaIntIntVoid.isSignalConnected);
 	}
 
 	/**
 		`area_shape_exited` signal.
 		
 		Emitted when one of another Area's `Shape`s enters one of this Area's `Shape`s. Requires `monitoring` to be set to `true`.
-		`area_id` the `RID` of the other Area's `CollisionObject` used by the `PhysicsServer`.
+		`area_rid` the `RID` of the other Area's `CollisionObject` used by the `PhysicsServer`.
 		`area` the other Area.
-		`area_shape` the index of the `Shape` of the other Area used by the `PhysicsServer`.
-		`local_shape` the index of the `Shape` of this Area used by the `PhysicsServer`.
+		`area_shape_index` the index of the `Shape` of the other Area used by the `PhysicsServer`. Get the `CollisionShape` node with `area.shape_owner_get_owner(area_shape_index)`.
+		`local_shape_index` the index of the `Shape` of this Area used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
-	public var onAreaShapeExited(get, never):Signal<(areaId:Int, area:Area, areaShape:Int, localShape:Int)->Void>;
-	@:dox(hide) @:noCompletion inline function get_onAreaShapeExited():Signal<(areaId:Int, area:Area, areaShape:Int, localShape:Int)->Void> {
-		return new Signal(this, "area_shape_exited", Signal.SignalHandlerIntAreaIntIntVoid.connectSignal, Signal.SignalHandlerIntAreaIntIntVoid.disconnectSignal, Signal.SignalHandlerIntAreaIntIntVoid.isSignalConnected);
+	public var onAreaShapeExited(get, never):Signal<(areaRid:RID, area:Area, areaShapeIndex:Int, localShapeIndex:Int)->Void>;
+	@:dox(hide) @:noCompletion inline function get_onAreaShapeExited():Signal<(areaRid:RID, area:Area, areaShapeIndex:Int, localShapeIndex:Int)->Void> {
+		return new Signal(this, "area_shape_exited", Signal.SignalHandlerRIDAreaIntIntVoid.connectSignal, Signal.SignalHandlerRIDAreaIntIntVoid.disconnectSignal, Signal.SignalHandlerRIDAreaIntIntVoid.isSignalConnected);
 	}
 
 	/**
@@ -88,28 +88,28 @@ extern class Area extends godot.CollisionObject {
 		`body_shape_entered` signal.
 		
 		Emitted when one of a `PhysicsBody` or `GridMap`'s `Shape`s enters one of this Area's `Shape`s. Requires `monitoring` to be set to `true`. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body_id` the `RID` of the `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`.
+		`body_rid` the `RID` of the `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`.
 		`body` the `Node`, if it exists in the tree, of the `PhysicsBody` or `GridMap`.
-		`body_shape` the index of the `Shape` of the `PhysicsBody` or `GridMap` used by the `PhysicsServer`.
-		`local_shape` the index of the `Shape` of this Area used by the `PhysicsServer`.
+		`body_shape_index` the index of the `Shape` of the `PhysicsBody` or `GridMap` used by the `PhysicsServer`. Get the `CollisionShape` node with `body.shape_owner_get_owner(body_shape_index)`.
+		`local_shape_index` the index of the `Shape` of this Area used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
-	public var onBodyShapeEntered(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
-	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
-		return new Signal(this, "body_shape_entered", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	public var onBodyShapeEntered(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
+	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
+		return new Signal(this, "body_shape_entered", Signal.SignalHandlerRIDNodeIntIntVoid.connectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.isSignalConnected);
 	}
 
 	/**
 		`body_shape_exited` signal.
 		
 		Emitted when one of a `PhysicsBody` or `GridMap`'s `Shape`s enters one of this Area's `Shape`s. Requires `monitoring` to be set to `true`. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body_id` the `RID` of the `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`.
+		`body_rid` the `RID` of the `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`.
 		`body` the `Node`, if it exists in the tree, of the `PhysicsBody` or `GridMap`.
-		`body_shape` the index of the `Shape` of the `PhysicsBody` or `GridMap` used by the `PhysicsServer`.
-		`local_shape` the index of the `Shape` of this Area used by the `PhysicsServer`.
+		`body_shape_index` the index of the `Shape` of the `PhysicsBody` or `GridMap` used by the `PhysicsServer`. Get the `CollisionShape` node with `body.shape_owner_get_owner(body_shape_index)`.
+		`local_shape_index` the index of the `Shape` of this Area used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
-	public var onBodyShapeExited(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
-	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
-		return new Signal(this, "body_shape_exited", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	public var onBodyShapeExited(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
+	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
+		return new Signal(this, "body_shape_exited", Signal.SignalHandlerRIDNodeIntIntVoid.connectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.isSignalConnected);
 	}
 
 	/**		
@@ -149,36 +149,6 @@ extern class Area extends godot.CollisionObject {
 	public var audioBusOverride:Bool;
 
 	/**		
-		The physics layers this area scans to determine collision detection. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
-	**/
-	@:native("CollisionMask")
-	public var collisionMask:UInt;
-
-	/**		
-		The area's physics layer(s). Collidable objects can exist in any of 32 different layers. A contact is detected if object A is in any of the layers that object B scans, or object B is in any layers that object A scans. See also `godot.Area.collisionMask`. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
-	**/
-	@:native("CollisionLayer")
-	public var collisionLayer:UInt;
-
-	/**		
-		If `true`, other monitoring areas can detect this area.
-	**/
-	@:native("Monitorable")
-	public var monitorable:Bool;
-
-	/**		
-		If `true`, the area detects bodies or areas entering and exiting it.
-	**/
-	@:native("Monitoring")
-	public var monitoring:Bool;
-
-	/**		
-		The area's priority. Higher priority areas are processed first.
-	**/
-	@:native("Priority")
-	public var priority:Single;
-
-	/**		
 		The rate at which objects stop spinning in this area. Represents the angular velocity lost per second.
 		
 		See  for more details about damping.
@@ -195,7 +165,7 @@ extern class Area extends godot.CollisionObject {
 	public var linearDamp:Single;
 
 	/**		
-		The area's gravity intensity (ranges from -1024 to 1024). This value multiplies the gravity vector. This is useful to alter the force of gravity without altering its direction.
+		The area's gravity intensity (in meters per second squared). This value multiplies the gravity vector. This is useful to alter the force of gravity without altering its direction.
 	**/
 	@:native("Gravity")
 	public var gravity:Single;
@@ -223,6 +193,24 @@ extern class Area extends godot.CollisionObject {
 	**/
 	@:native("SpaceOverride")
 	public var spaceOverride:godot.Area_SpaceOverrideEnum;
+
+	/**		
+		The area's priority. Higher priority areas are processed first.
+	**/
+	@:native("Priority")
+	public var priority:Single;
+
+	/**		
+		If `true`, other monitoring areas can detect this area.
+	**/
+	@:native("Monitorable")
+	public var monitorable:Bool;
+
+	/**		
+		If `true`, the area detects bodies or areas entering and exiting it.
+	**/
+	@:native("Monitoring")
+	public var monitoring:Bool;
 
 	@:native("new")
 	public function new():Void;
@@ -275,42 +263,6 @@ extern class Area extends godot.CollisionObject {
 	@:native("GetPriority")
 	public function getPriority():Single;
 
-	@:native("SetCollisionMask")
-	public function setCollisionMask(collisionMask:UInt):Void;
-
-	@:native("GetCollisionMask")
-	public function getCollisionMask():UInt;
-
-	@:native("SetCollisionLayer")
-	public function setCollisionLayer(collisionLayer:UInt):Void;
-
-	@:native("GetCollisionLayer")
-	public function getCollisionLayer():UInt;
-
-	/**		
-		Set/clear individual bits on the collision mask. This simplifies editing which `godot.Area` layers this `godot.Area` scans.
-	**/
-	@:native("SetCollisionMaskBit")
-	public function setCollisionMaskBit(bit:Int, value:Bool):Void;
-
-	/**		
-		Returns an individual bit on the collision mask.
-	**/
-	@:native("GetCollisionMaskBit")
-	public function getCollisionMaskBit(bit:Int):Bool;
-
-	/**		
-		Set/clear individual bits on the layer mask. This simplifies editing this `godot.Area`'s layers.
-	**/
-	@:native("SetCollisionLayerBit")
-	public function setCollisionLayerBit(bit:Int, value:Bool):Void;
-
-	/**		
-		Returns an individual bit on the layer mask.
-	**/
-	@:native("GetCollisionLayerBit")
-	public function getCollisionLayerBit(bit:Int):Bool;
-
 	@:native("SetMonitorable")
 	public function setMonitorable(enable:Bool):Void;
 
@@ -324,13 +276,17 @@ extern class Area extends godot.CollisionObject {
 	public function isMonitoring():Bool;
 
 	/**		
-		Returns a list of intersecting `godot.PhysicsBody`s. For performance reasons (collisions are all processed at the same time) this list is modified once during the physics step, not immediately after objects are moved. Consider using signals instead.
+		Returns a list of intersecting `godot.PhysicsBody`s. The overlapping body's `godot.CollisionObject.collisionLayer` must be part of this area's `godot.CollisionObject.collisionMask` in order to be detected.
+		
+		For performance reasons (collisions are all processed at the same time) this list is modified once during the physics step, not immediately after objects are moved. Consider using signals instead.
 	**/
 	@:native("GetOverlappingBodies")
 	public function getOverlappingBodies():godot.collections.Array;
 
 	/**		
-		Returns a list of intersecting `godot.Area`s. For performance reasons (collisions are all processed at the same time) this list is modified once during the physics step, not immediately after objects are moved. Consider using signals instead.
+		Returns a list of intersecting `godot.Area`s. The overlapping area's `godot.CollisionObject.collisionLayer` must be part of this area's `godot.CollisionObject.collisionMask` in order to be detected.
+		
+		For performance reasons (collisions are all processed at the same time) this list is modified once during the physics step, not immediately after objects are moved. Consider using signals instead.
 	**/
 	@:native("GetOverlappingAreas")
 	public function getOverlappingAreas():godot.collections.Array;

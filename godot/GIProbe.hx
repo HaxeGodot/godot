@@ -25,7 +25,7 @@ extern class GIProbe extends godot.VisualInstance {
 	public var data:godot.GIProbeData;
 
 	/**		
-		If `true`, the data for this `godot.GIProbe` will be compressed. Compression saves space, but results in far worse visual quality.
+		Deprecated. This property has been deprecated due to known bugs and no longer has any effect when enabled.
 	**/
 	@:native("Compress")
 	public var compress:Bool;
@@ -145,25 +145,25 @@ extern class GIProbe extends godot.VisualInstance {
 
 	#if doc_gen
 	/**		
-		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either  or . If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
+		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either `godot.Light_BakeMode.indirect` or `godot.Light_BakeMode.all`. If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
 	**/
 	@:native("Bake")
 	public function bake(?fromNode:godot.Node, ?createVisualDebug:Bool):Void;
 	#else
 	/**		
-		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either  or . If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
+		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either `godot.Light_BakeMode.indirect` or `godot.Light_BakeMode.all`. If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
 	**/
 	@:native("Bake")
 	public overload function bake():Void;
 
 	/**		
-		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either  or . If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
+		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either `godot.Light_BakeMode.indirect` or `godot.Light_BakeMode.all`. If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
 	**/
 	@:native("Bake")
 	public overload function bake(fromNode:godot.Node):Void;
 
 	/**		
-		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either  or . If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
+		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either `godot.Light_BakeMode.indirect` or `godot.Light_BakeMode.all`. If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
 	**/
 	@:native("Bake")
 	public overload function bake(fromNode:godot.Node, createVisualDebug:Bool):Void;

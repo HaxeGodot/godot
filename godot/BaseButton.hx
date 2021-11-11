@@ -74,7 +74,7 @@ extern abstract class BaseButton extends godot.Control {
 	public var keepPressedOutside:Bool;
 
 	/**		
-		Deprecated. This property has been deprecated due to redundancy and no longer has any effect when set. Please use `godot.Control.focusMode` instead.
+		Deprecated. This property has been deprecated due to redundancy and will be removed in Godot 4.0. This property no longer has any effect when set. Please use `godot.Control.focusMode` instead.
 	**/
 	@:native("EnabledFocusMode")
 	public var enabledFocusMode:godot.Control_FocusModeEnum;
@@ -94,7 +94,9 @@ extern abstract class BaseButton extends godot.Control {
 	public var actionMode:godot.BaseButton_ActionModeEnum;
 
 	/**		
-		If `true`, the button's state is pressed. Means the button is pressed down or toggled (if `godot.BaseButton.toggleMode` is active).
+		If `true`, the button's state is pressed. Means the button is pressed down or toggled (if `godot.BaseButton.toggleMode` is active). Only works if `godot.BaseButton.toggleMode` is `true`.
+		
+		Note: Setting `godot.BaseButton.pressed` will result in `toggled` to be emitted. If you want to change the pressed state without emitting that signal, use `godot.BaseButton.setPressedNoSignal`.
 	**/
 	@:native("Pressed")
 	public var pressed:Bool;
@@ -134,6 +136,14 @@ extern abstract class BaseButton extends godot.Control {
 
 	@:native("IsPressed")
 	public function isPressed():Bool;
+
+	/**		
+		Changes the `godot.BaseButton.pressed` state of the button, without emitting `toggled`. Use when you just want to change the state of the button without sending the pressed event (e.g. when initializing scene). Only works if `godot.BaseButton.toggleMode` is `true`.
+		
+		Note: This method doesn't unpress other buttons in its button `godot.BaseButton.group`.
+	**/
+	@:native("SetPressedNoSignal")
+	public function setPressedNoSignal(pressed:Bool):Void;
 
 	/**		
 		Returns `true` if the mouse has entered the button and has not left it yet.

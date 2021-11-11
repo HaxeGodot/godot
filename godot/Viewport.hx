@@ -155,7 +155,7 @@ extern class Viewport extends godot.Node {
 	public var usage:godot.Viewport_UsageEnum;
 
 	/**		
-		If `true`, the result after 3D rendering will not have a linear to sRGB color conversion applied. This is important when the viewport is used as a render target where the result is used as a texture on a 3D object rendered in another viewport. It is also important if the viewport is used to create data that is not color based (noise, heightmaps, pickmaps, etc.). Do not enable this when the viewport is used as a texture on a 2D object or if the viewport is your final output.
+		If `true`, the result after 3D rendering will not have a linear to sRGB color conversion applied. This is important when the viewport is used as a render target where the result is used as a texture on a 3D object rendered in another viewport. It is also important if the viewport is used to create data that is not color based (noise, heightmaps, pickmaps, etc.). Do not enable this when the viewport is used as a texture on a 2D object or if the viewport is your final output. For the GLES2 driver this will convert the sRGB output to linear, this should only be used for VR plugins that require input in linear color space!
 	**/
 	@:native("Keep3dLinear")
 	public var keep3dLinear:Bool;
@@ -169,10 +169,16 @@ extern class Viewport extends godot.Node {
 	/**		
 		If `true`, the viewport rendering will receive benefits from High Dynamic Range algorithm. High Dynamic Range allows the viewport to receive values that are outside the 0-1 range. In Godot HDR uses 16 bits, meaning it does not store the full range of a floating point number.
 		
-		Note: Requires `godot.Viewport.usage` to be set to  or , since HDR is not supported for 2D.
+		Note: Requires `godot.Viewport.usage` to be set to `godot.Viewport_UsageEnum.usage3d` or `godot.Viewport_UsageEnum.usage3dNoEffects`, since HDR is not supported for 2D.
 	**/
 	@:native("Hdr")
 	public var hdr:Bool;
+
+	/**		
+		If set to a value greater than `0.0`, contrast-adaptive sharpening will be applied to the 3D viewport. This has a low performance cost and can be used to recover some of the sharpness lost from using FXAA. Values around `0.5` generally give the best results. See also `godot.Viewport.fxaa`.
+	**/
+	@:native("SharpenIntensity")
+	public var sharpenIntensity:Single;
 
 	/**		
 		If `true`, uses a fast post-processing filter to make banding significantly less visible. In some cases, debanding may introduce a slightly noticeable dithering pattern. It's recommended to enable debanding only when actually needed since the dithering pattern will make lossless-compressed screenshots larger.
@@ -183,7 +189,7 @@ extern class Viewport extends godot.Node {
 	public var debanding:Bool;
 
 	/**		
-		Enables fast approximate antialiasing. FXAA is a popular screen-space antialiasing method, which is fast but will make the image look blurry, especially at lower resolutions. It can still work relatively well at large resolutions such as 1440p and 4K.
+		Enables fast approximate antialiasing. FXAA is a popular screen-space antialiasing method, which is fast but will make the image look blurry, especially at lower resolutions. It can still work relatively well at large resolutions such as 1440p and 4K. Some of the lost sharpness can be recovered by enabling contrast-adaptive sharpening (see `godot.Viewport.sharpenIntensity`).
 	**/
 	@:native("Fxaa")
 	public var fxaa:Bool;
@@ -228,7 +234,7 @@ extern class Viewport extends godot.Node {
 	public var sizeOverrideStretch:Bool;
 
 	/**		
-		The width and height of viewport.
+		The width and height of viewport. Must be set to a value greater than or equal to 2 pixels on both dimensions. Otherwise, nothing will be displayed.
 	**/
 	@:native("Size")
 	public var size:godot.Vector2;
@@ -399,6 +405,12 @@ extern class Viewport extends godot.Node {
 
 	@:native("GetUseDebanding")
 	public function getUseDebanding():Bool;
+
+	@:native("SetSharpenIntensity")
+	public function setSharpenIntensity(intensity:Single):Void;
+
+	@:native("GetSharpenIntensity")
+	public function getSharpenIntensity():Single;
 
 	@:native("SetHdr")
 	public function setHdr(enable:Bool):Void;

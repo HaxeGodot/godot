@@ -30,7 +30,9 @@ extern class ShaderMaterial extends godot.Material {
 	public function getShader():godot.Shader;
 
 	/**		
-		Changes the value set for this material of a uniform in the shader. Note: `param` must match the name of the uniform in the code exactly.
+		Changes the value set for this material of a uniform in the shader.
+		
+		Note: `param` must match the name of the uniform in the code exactly.
 	**/
 	@:native("SetShaderParam")
 	public function setShaderParam(param:std.String, value:Dynamic):Void;

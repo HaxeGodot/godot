@@ -38,6 +38,12 @@ extern class MeshLibrary extends godot.Resource {
 	public function setItemMesh(id:Int, mesh:godot.Mesh):Void;
 
 	/**		
+		Sets the transform to apply to the item's mesh.
+	**/
+	@:native("SetItemMeshTransform")
+	public function setItemMeshTransform(id:Int, meshTransform:godot.Transform):Void;
+
+	/**		
 		Sets the item's navigation mesh.
 	**/
 	@:native("SetItemNavmesh")
@@ -52,7 +58,7 @@ extern class MeshLibrary extends godot.Resource {
 	/**		
 		Sets an item's collision shapes.
 		
-		The array should consist of `godot.Shape` objects, each followed by a `godot.Transform` that will be applied to it. For shapes that should not have a transform, use .
+		The array should consist of `godot.Shape` objects, each followed by a `godot.Transform` that will be applied to it. For shapes that should not have a transform, use `Transform.IDENTITY`.
 	**/
 	@:native("SetItemShapes")
 	public function setItemShapes(id:Int, shapes:godot.collections.Array):Void;
@@ -74,6 +80,12 @@ extern class MeshLibrary extends godot.Resource {
 	**/
 	@:native("GetItemMesh")
 	public function getItemMesh(id:Int):godot.Mesh;
+
+	/**		
+		Returns the transform applied to the item's mesh.
+	**/
+	@:native("GetItemMeshTransform")
+	public function getItemMeshTransform(id:Int):godot.Transform;
 
 	/**		
 		Returns the item's navigation mesh.

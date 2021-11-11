@@ -21,7 +21,12 @@ extern enum Environment_ToneMapper {
 	Filmic;
 
 	/**		
-		Academy Color Encoding System tonemapper operator.
+		Academy Color Encoding System tonemapper operator. Performs an aproximation of the ACES tonemapping curve.
 	**/
 	Aces;
+
+	/**		
+		High quality Academy Color Encoding System tonemapper operator that matches the industry standard. Performs a more physically accurate curve fit which better simulates how light works in the real world. The color of lights and emissive materials will become lighter as the emissive energy increases, and will eventually become white if the light is bright enough to saturate the camera sensor.
+	**/
+	AcesFitted;
 }

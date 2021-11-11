@@ -59,7 +59,7 @@ extern class ResourceFormatLoader extends godot.Reference {
 	/**		
 		If implemented, renames dependencies within the given resource and saves it. `renames` is a dictionary `{ String =&gt; String }` mapping old dependency paths to new paths.
 		
-		Returns  on success, or an `godot.Error` constant in case of failure.
+		Returns `OK` on success, or an `godot.Error` constant in case of failure.
 	**/
 	@:native("RenameDependencies")
 	public function renameDependencies(path:std.String, renames:std.String):Int;

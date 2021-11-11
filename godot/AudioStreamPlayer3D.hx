@@ -8,6 +8,10 @@ import cs.system.*;
 Plays a sound effect with directed sound effects, dampens with distance if needed, generates effect of hearable position in space. For greater realism, a low-pass filter is automatically applied to distant sounds. This can be disabled by setting `godot.AudioStreamPlayer3D.attenuationFilterCutoffHz` to `20500`.
 
 By default, audio is heard from the camera position. This can be changed by adding a `godot.Listener` node to the scene and enabling it by calling `godot.Listener.makeCurrent` on it.
+
+See also `godot.AudioStreamPlayer` to play a sound non-positionally.
+
+Note: Hiding an `godot.AudioStreamPlayer3D` node does not disable its audio output. To temporarily disable an `godot.AudioStreamPlayer3D`'s audio output, set `godot.AudioStreamPlayer3D.unitDb` to a very low value like `-100` (which isn't audible to human hearing).
 **/
 @:libType
 @:csNative
@@ -25,7 +29,9 @@ extern class AudioStreamPlayer3D extends godot.Spatial {
 	}
 
 	/**		
-		Decides in which step the Doppler effect should be calculated.
+		Decides in which step the [https://en.wikipedia.org/wiki/Doppler_effect](Doppler effect) should be calculated.
+		
+		Note: Only effective if the current `godot.Camera`'s `godot.Camera.dopplerTracking` property is set to a value other than `godot.Camera_DopplerTrackingEnum.disabled`.
 	**/
 	@:native("DopplerTracking")
 	public var dopplerTracking:godot.AudioStreamPlayer3D_DopplerTrackingEnum;

@@ -11,12 +11,12 @@ extern enum VisualScriptCustomNode_StartMode {
 	BeginSequence;
 
 	/**		
-		The start mode used when `godot.VisualScriptCustomNode._Step` is called after coming back from a .
+		The start mode used when `godot.VisualScriptCustomNode._Step` is called after coming back from a `godot.VisualScriptCustomNode.stepPushStackBit`.
 	**/
 	ContinueSequence;
 
 	/**		
-		The start mode used when `godot.VisualScriptCustomNode._Step` is called after resuming from .
+		The start mode used when `godot.VisualScriptCustomNode._Step` is called after resuming from `godot.VisualScriptCustomNode.stepYieldBit`.
 	**/
 	ResumeYield;
 }

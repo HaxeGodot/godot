@@ -19,7 +19,8 @@ extern class AnimationPlayer extends godot.Node {
 	/**
 		`animation_changed` signal.
 		
-		If the currently being played animation changes, this signal will notify of such change.
+		Emitted when a queued animation plays after the previous animation was finished. See `queue`.
+		`b`Note:`/b` The signal is not emitted when the animation is changed via `play` or from `AnimationTree`.
 	**/
 	public var onAnimationChanged(get, never):Signal<(oldName:std.String, newName:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAnimationChanged():Signal<(oldName:std.String, newName:std.String)->Void> {
@@ -99,6 +100,14 @@ extern class AnimationPlayer extends godot.Node {
 	public var currentAnimationLength(default, never):Single;
 
 	/**		
+		This is used by the editor. If set to `true`, the scene will be saved with the effects of the reset animation applied (as if it had been seeked to time 0), then reverted after saving.
+		
+		In other words, the saved scene file will contain the "default pose", as defined by the reset animation, if any, with the editor keeping the values that the nodes had before saving.
+	**/
+	@:native("ResetOnSave")
+	public var resetOnSave:Bool;
+
+	/**		
 		The name of the animation to play when the scene loads.
 	**/
 	@:native("Autoplay")
@@ -113,7 +122,7 @@ extern class AnimationPlayer extends godot.Node {
 	/**		
 		The name of the currently playing animation. If no animation is playing, the property's value is an empty string. Changing this value does not restart the animation. See `godot.AnimationPlayer.play` for more information on playing animations.
 		
-		Note: while this property appears in the inspector, it's not meant to be edited, and it's not saved in the scene. This property is mainly used to get the currently playing animation, and internally for animation playback tracks. For more information, see `godot.Animation`.
+		Note: While this property appears in the inspector, it's not meant to be edited, and it's not saved in the scene. This property is mainly used to get the currently playing animation, and internally for animation playback tracks. For more information, see `godot.Animation`.
 	**/
 	@:native("CurrentAnimation")
 	public var currentAnimation:std.String;
@@ -378,6 +387,12 @@ extern class AnimationPlayer extends godot.Node {
 
 	@:native("GetAutoplay")
 	public function getAutoplay():std.String;
+
+	@:native("SetResetOnSaveEnabled")
+	public function setResetOnSaveEnabled(enabled:Bool):Void;
+
+	@:native("IsResetOnSaveEnabled")
+	public function isResetOnSaveEnabled():Bool;
 
 	@:native("SetRoot")
 	public function setRoot(path:godot.NodePath):Void;

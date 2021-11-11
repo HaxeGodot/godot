@@ -22,7 +22,9 @@ extern class BakedLightmapData extends godot.Resource {
 	public var interior:Bool;
 
 	/**		
-		Global energy multiplier for baked and dynamic capture objects.
+		Global energy multiplier for baked and dynamic capture objects. This can be changed at run-time without having to bake lightmaps again.
+		
+		To adjust only the energy of indirect lighting (without affecting direct lighting or emissive materials), adjust `godot.BakedLightmap.bounceIndirectEnergy` and bake lightmaps again.
 	**/
 	@:native("Energy")
 	public var energy:Single;

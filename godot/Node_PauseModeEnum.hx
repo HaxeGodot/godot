@@ -6,7 +6,7 @@ package godot;
 @:csNative
 extern enum Node_PauseModeEnum {
 	/**		
-		Inherits pause mode from the node's parent. For the root node, it is equivalent to . Default.
+		Inherits pause mode from the node's parent. For the root node, it is equivalent to `godot.Node_PauseModeEnum.stop`. Default.
 	**/
 	Inherit;
 

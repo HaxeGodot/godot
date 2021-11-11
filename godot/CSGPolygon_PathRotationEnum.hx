@@ -6,17 +6,21 @@ package godot;
 @:csNative
 extern enum CSGPolygon_PathRotationEnum {
 	/**		
-		Slice is not rotated.
+		The `godot.CSGPolygon.polygon` shape is not rotated.
+		
+		Note: Requires the path's Z coordinates to continually decrease to ensure viable shapes.
 	**/
 	Polygon;
 
 	/**		
-		Slice is rotated around the up vector of the path.
+		The `godot.CSGPolygon.polygon` shape is rotated along the path, but it is not rotated around the path axis.
+		
+		Note: Requires the path's Z coordinates to continually decrease to ensure viable shapes.
 	**/
 	Path;
 
 	/**		
-		Slice is rotate to match the path exactly.
+		The `godot.CSGPolygon.polygon` shape follows the path and its rotations around the path axis.
 	**/
 	PathFollow;
 }

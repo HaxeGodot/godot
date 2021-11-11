@@ -17,6 +17,26 @@ Note: Unless otherwise specified, all methods that have angle parameters must ha
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Spatial extends godot.Node {
 	/**
+		`gameplay_entered` signal.
+		
+		Emitted by portal system gameplay monitor when a node enters the gameplay area.
+	**/
+	public var onGameplayEntered(get, never):Signal<Void->Void>;
+	@:dox(hide) @:noCompletion inline function get_onGameplayEntered():Signal<Void->Void> {
+		return new Signal(this, "gameplay_entered", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
+		`gameplay_exited` signal.
+		
+		Emitted by portal system gameplay monitor when a node exits the gameplay area.
+	**/
+	public var onGameplayExited(get, never):Signal<Void->Void>;
+	@:dox(hide) @:noCompletion inline function get_onGameplayExited():Signal<Void->Void> {
+		return new Signal(this, "gameplay_exited", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	}
+
+	/**
 		`visibility_changed` signal.
 		
 		Emitted when node visibility changes.
@@ -77,6 +97,18 @@ extern class Spatial extends godot.Node {
 	public var globalTransform:godot.Transform;
 
 	/**		
+		Spatial nodes receives this notification if the portal system gameplay monitor detects they have exited the gameplay area.
+	**/
+	@:native("NotificationExitGameplay")
+	public static var NOTIFICATION_EXIT_GAMEPLAY(default, never):Int;
+
+	/**		
+		Spatial nodes receives this notification if the portal system gameplay monitor detects they have entered the gameplay area.
+	**/
+	@:native("NotificationEnterGameplay")
+	public static var NOTIFICATION_ENTER_GAMEPLAY(default, never):Int;
+
+	/**		
 		Spatial nodes receives this notification when their visibility changes.
 	**/
 	@:native("NotificationVisibilityChanged")
@@ -97,7 +129,7 @@ extern class Spatial extends godot.Node {
 	/**		
 		Spatial nodes receives this notification when their global transform changes. This means that either the current or a parent node changed its transform.
 		
-		In order for  to work, users first need to ask for it, with `godot.Spatial.setNotifyTransform`. The notification is also sent if the node is in the editor context and it has a valid gizmo.
+		In order for `godot.Spatial.notificationTransformChanged` to work, users first need to ask for it, with `godot.Spatial.setNotifyTransform`. The notification is also sent if the node is in the editor context and it has a valid gizmo.
 	**/
 	@:native("NotificationTransformChanged")
 	public static var NOTIFICATION_TRANSFORM_CHANGED(default, never):Int;

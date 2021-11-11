@@ -31,7 +31,7 @@ extern enum ResourceSaver_SaverFlags {
 	SaveBigEndian;
 
 	/**		
-		Compress the resource on save using . Only available for binary resource types.
+		Compress the resource on save using `godot.File_CompressionMode.zstd`. Only available for binary resource types.
 	**/
 	Compress;
 

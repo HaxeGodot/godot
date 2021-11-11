@@ -75,7 +75,7 @@ extern class BitMap extends godot.Resource {
 	public function getSize():godot.Vector2;
 
 	/**		
-		Applies morphological dilation to the bitmap. The first argument is the dilation amount, Rect2 is the area where the dilation will be applied.
+		Applies morphological dilation or erosion to the bitmap. If `pixels` is positive, dilation is applied to the bitmap. If `pixels` is negative, erosion is applied to the bitmap. `rect` defines the area where the morphological operation is applied. Pixels located outside the `rect` are unaffected by `godot.BitMap.growMask`.
 	**/
 	@:native("GrowMask")
 	public function growMask(pixels:Int, rect:godot.Rect2):Void;

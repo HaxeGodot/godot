@@ -7,7 +7,7 @@ import cs.system.*;
 /**
 This class constructs a full mesh of `godot.WebRTCPeerConnection` (one connection for each peer) that can be used as a `godot.MultiplayerAPI.networkPeer`.
 
-You can add each `godot.WebRTCPeerConnection` via `godot.WebRTCMultiplayer.addPeer` or remove them via `godot.WebRTCMultiplayer.removePeer`. Peers must be added in  state to allow it to create the appropriate channels. This class will not create offers nor set descriptions, it will only poll them, and notify connections and disconnections.
+You can add each `godot.WebRTCPeerConnection` via `godot.WebRTCMultiplayer.addPeer` or remove them via `godot.WebRTCMultiplayer.removePeer`. Peers must be added in `godot.WebRTCPeerConnection_ConnectionState.new` state to allow it to create the appropriate channels. This class will not create offers nor set descriptions, it will only poll them, and notify connections and disconnections.
 
 `NetworkedMultiplayerPeer.connection_succeeded` and `NetworkedMultiplayerPeer.server_disconnected` will not be emitted unless `server_compatibility` is `true` in `godot.WebRTCMultiplayer.initialize`. Beside that data transfer works like in a `godot.NetworkedMultiplayerPeer`.
 **/
@@ -23,9 +23,9 @@ extern class WebRTCMultiplayer extends godot.NetworkedMultiplayerPeer {
 	/**		
 		Initialize the multiplayer peer with the given `peer_id` (must be between 1 and 2147483647).
 		
-		If `server_compatibilty` is `false` (default), the multiplayer peer will be immediately in state  and `NetworkedMultiplayerPeer.connection_succeeded` will not be emitted.
+		If `server_compatibilty` is `false` (default), the multiplayer peer will be immediately in state `godot.NetworkedMultiplayerPeer_ConnectionStatus.connected` and `NetworkedMultiplayerPeer.connection_succeeded` will not be emitted.
 		
-		If `server_compatibilty` is `true` the peer will suppress all `NetworkedMultiplayerPeer.peer_connected` signals until a peer with id  connects and then emit `NetworkedMultiplayerPeer.connection_succeeded`. After that the signal `NetworkedMultiplayerPeer.peer_connected` will be emitted for every already connected peer, and any new peer that might connect. If the server peer disconnects after that, signal `NetworkedMultiplayerPeer.server_disconnected` will be emitted and state will become .
+		If `server_compatibilty` is `true` the peer will suppress all `NetworkedMultiplayerPeer.peer_connected` signals until a peer with id `godot.NetworkedMultiplayerPeer.targetPeerServer` connects and then emit `NetworkedMultiplayerPeer.connection_succeeded`. After that the signal `NetworkedMultiplayerPeer.peer_connected` will be emitted for every already connected peer, and any new peer that might connect. If the server peer disconnects after that, signal `NetworkedMultiplayerPeer.server_disconnected` will be emitted and state will become `godot.NetworkedMultiplayerPeer_ConnectionStatus.connected`.
 	**/
 	@:native("Initialize")
 	public function initialize(peerId:Int, ?serverCompatibility:Bool):godot.Error;
@@ -33,9 +33,9 @@ extern class WebRTCMultiplayer extends godot.NetworkedMultiplayerPeer {
 	/**		
 		Initialize the multiplayer peer with the given `peer_id` (must be between 1 and 2147483647).
 		
-		If `server_compatibilty` is `false` (default), the multiplayer peer will be immediately in state  and `NetworkedMultiplayerPeer.connection_succeeded` will not be emitted.
+		If `server_compatibilty` is `false` (default), the multiplayer peer will be immediately in state `godot.NetworkedMultiplayerPeer_ConnectionStatus.connected` and `NetworkedMultiplayerPeer.connection_succeeded` will not be emitted.
 		
-		If `server_compatibilty` is `true` the peer will suppress all `NetworkedMultiplayerPeer.peer_connected` signals until a peer with id  connects and then emit `NetworkedMultiplayerPeer.connection_succeeded`. After that the signal `NetworkedMultiplayerPeer.peer_connected` will be emitted for every already connected peer, and any new peer that might connect. If the server peer disconnects after that, signal `NetworkedMultiplayerPeer.server_disconnected` will be emitted and state will become .
+		If `server_compatibilty` is `true` the peer will suppress all `NetworkedMultiplayerPeer.peer_connected` signals until a peer with id `godot.NetworkedMultiplayerPeer.targetPeerServer` connects and then emit `NetworkedMultiplayerPeer.connection_succeeded`. After that the signal `NetworkedMultiplayerPeer.peer_connected` will be emitted for every already connected peer, and any new peer that might connect. If the server peer disconnects after that, signal `NetworkedMultiplayerPeer.server_disconnected` will be emitted and state will become `godot.NetworkedMultiplayerPeer_ConnectionStatus.connected`.
 	**/
 	@:native("Initialize")
 	public overload function initialize(peerId:Int):godot.Error;
@@ -43,9 +43,9 @@ extern class WebRTCMultiplayer extends godot.NetworkedMultiplayerPeer {
 	/**		
 		Initialize the multiplayer peer with the given `peer_id` (must be between 1 and 2147483647).
 		
-		If `server_compatibilty` is `false` (default), the multiplayer peer will be immediately in state  and `NetworkedMultiplayerPeer.connection_succeeded` will not be emitted.
+		If `server_compatibilty` is `false` (default), the multiplayer peer will be immediately in state `godot.NetworkedMultiplayerPeer_ConnectionStatus.connected` and `NetworkedMultiplayerPeer.connection_succeeded` will not be emitted.
 		
-		If `server_compatibilty` is `true` the peer will suppress all `NetworkedMultiplayerPeer.peer_connected` signals until a peer with id  connects and then emit `NetworkedMultiplayerPeer.connection_succeeded`. After that the signal `NetworkedMultiplayerPeer.peer_connected` will be emitted for every already connected peer, and any new peer that might connect. If the server peer disconnects after that, signal `NetworkedMultiplayerPeer.server_disconnected` will be emitted and state will become .
+		If `server_compatibilty` is `true` the peer will suppress all `NetworkedMultiplayerPeer.peer_connected` signals until a peer with id `godot.NetworkedMultiplayerPeer.targetPeerServer` connects and then emit `NetworkedMultiplayerPeer.connection_succeeded`. After that the signal `NetworkedMultiplayerPeer.peer_connected` will be emitted for every already connected peer, and any new peer that might connect. If the server peer disconnects after that, signal `NetworkedMultiplayerPeer.server_disconnected` will be emitted and state will become `godot.NetworkedMultiplayerPeer_ConnectionStatus.connected`.
 	**/
 	@:native("Initialize")
 	public overload function initialize(peerId:Int, serverCompatibility:Bool):godot.Error;
@@ -53,7 +53,7 @@ extern class WebRTCMultiplayer extends godot.NetworkedMultiplayerPeer {
 
 	#if doc_gen
 	/**		
-		Add a new peer to the mesh with the given `peer_id`. The `godot.WebRTCPeerConnection` must be in state .
+		Add a new peer to the mesh with the given `peer_id`. The `godot.WebRTCPeerConnection` must be in state `godot.WebRTCPeerConnection_ConnectionState.new`.
 		
 		Three channels will be created for reliable, unreliable, and ordered transport. The value of `unreliable_lifetime` will be passed to the `maxPacketLifetime` option when creating unreliable and ordered channels (see `godot.WebRTCPeerConnection.createDataChannel`).
 	**/
@@ -61,7 +61,7 @@ extern class WebRTCMultiplayer extends godot.NetworkedMultiplayerPeer {
 	public function addPeer(peer:godot.WebRTCPeerConnection, peerId:Int, ?unreliableLifetime:Int):godot.Error;
 	#else
 	/**		
-		Add a new peer to the mesh with the given `peer_id`. The `godot.WebRTCPeerConnection` must be in state .
+		Add a new peer to the mesh with the given `peer_id`. The `godot.WebRTCPeerConnection` must be in state `godot.WebRTCPeerConnection_ConnectionState.new`.
 		
 		Three channels will be created for reliable, unreliable, and ordered transport. The value of `unreliable_lifetime` will be passed to the `maxPacketLifetime` option when creating unreliable and ordered channels (see `godot.WebRTCPeerConnection.createDataChannel`).
 	**/
@@ -69,7 +69,7 @@ extern class WebRTCMultiplayer extends godot.NetworkedMultiplayerPeer {
 	public overload function addPeer(peer:godot.WebRTCPeerConnection, peerId:Int):godot.Error;
 
 	/**		
-		Add a new peer to the mesh with the given `peer_id`. The `godot.WebRTCPeerConnection` must be in state .
+		Add a new peer to the mesh with the given `peer_id`. The `godot.WebRTCPeerConnection` must be in state `godot.WebRTCPeerConnection_ConnectionState.new`.
 		
 		Three channels will be created for reliable, unreliable, and ordered transport. The value of `unreliable_lifetime` will be passed to the `maxPacketLifetime` option when creating unreliable and ordered channels (see `godot.WebRTCPeerConnection.createDataChannel`).
 	**/

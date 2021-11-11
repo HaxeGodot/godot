@@ -15,7 +15,7 @@ The `godot.ARVRController` and `godot.ARVRAnchor` both consume objects of this t
 @:csNative
 @:native("Godot.ARVRPositionalTracker")
 @:autoBuild(godot.Godot.buildUserClass())
-extern class ARVRPositionalTracker extends godot.Object {
+extern class ARVRPositionalTracker extends godot.Reference {
 	/**		
 		The degree to which the tracker rumbles. Ranges from `0.0` to `1.0` with precision `.01`.
 	**/

@@ -158,21 +158,35 @@ extern class EditorSpatialGizmoPlugin extends godot.Resource {
 	#if doc_gen
 	/**		
 		Creates a handle material with its variants (selected and/or editable) and adds them to the internal material list. They can then be accessed with `godot.EditorSpatialGizmoPlugin.getMaterial` and used in `godot.EditorSpatialGizmo.addHandles`. Should not be overridden.
+		
+		You can optionally provide a texture to use instead of the default icon.
 	**/
 	@:native("CreateHandleMaterial")
-	public function createHandleMaterial(name:std.String, ?billboard:Bool):Void;
+	public function createHandleMaterial(name:std.String, ?billboard:Bool, ?texture:godot.Texture):Void;
 	#else
 	/**		
 		Creates a handle material with its variants (selected and/or editable) and adds them to the internal material list. They can then be accessed with `godot.EditorSpatialGizmoPlugin.getMaterial` and used in `godot.EditorSpatialGizmo.addHandles`. Should not be overridden.
+		
+		You can optionally provide a texture to use instead of the default icon.
 	**/
 	@:native("CreateHandleMaterial")
 	public overload function createHandleMaterial(name:std.String):Void;
 
 	/**		
 		Creates a handle material with its variants (selected and/or editable) and adds them to the internal material list. They can then be accessed with `godot.EditorSpatialGizmoPlugin.getMaterial` and used in `godot.EditorSpatialGizmo.addHandles`. Should not be overridden.
+		
+		You can optionally provide a texture to use instead of the default icon.
 	**/
 	@:native("CreateHandleMaterial")
 	public overload function createHandleMaterial(name:std.String, billboard:Bool):Void;
+
+	/**		
+		Creates a handle material with its variants (selected and/or editable) and adds them to the internal material list. They can then be accessed with `godot.EditorSpatialGizmoPlugin.getMaterial` and used in `godot.EditorSpatialGizmo.addHandles`. Should not be overridden.
+		
+		You can optionally provide a texture to use instead of the default icon.
+	**/
+	@:native("CreateHandleMaterial")
+	public overload function createHandleMaterial(name:std.String, billboard:Bool, texture:godot.Texture):Void;
 	#end
 
 	/**		

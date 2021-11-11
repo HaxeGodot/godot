@@ -19,7 +19,7 @@ extern class InputEventScreenDrag extends godot.InputEvent {
 	public var speed:godot.Vector2;
 
 	/**		
-		The drag position relative to its start position.
+		The drag position relative to the previous position (position at the last frame).
 	**/
 	@:native("Relative")
 	public var relative:godot.Vector2;

@@ -13,62 +13,10 @@ PhysicsBody2D is an abstract base class for implementing a physics body. All *Bo
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class PhysicsBody2D extends godot.CollisionObject2D {
 	/**		
-		The physics layers this area scans for collisions. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
-	**/
-	@:native("CollisionMask")
-	public var collisionMask:UInt;
-
-	/**		
-		The physics layers this area is in.
-		
-		Collidable objects can exist in any of 32 different layers. These layers work like a tagging system, and are not visual. A collidable can use these layers to select with which objects it can collide, using the `godot.PhysicsBody2D.collisionMask` property.
-		
-		A contact is detected if object A is in any of the layers that object B scans, or object B is in any layer scanned by object A. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
-	**/
-	@:native("CollisionLayer")
-	public var collisionLayer:UInt;
-
-	/**		
-		Both `godot.PhysicsBody2D.collisionLayer` and `godot.PhysicsBody2D.collisionMask`. Returns `godot.PhysicsBody2D.collisionLayer` when accessed. Updates `godot.PhysicsBody2D.collisionLayer` and `godot.PhysicsBody2D.collisionMask` when modified.
+		Both collision_layer and collision_mask. Returns collision_layer when accessed. Updates collision_layer and collision_mask when modified.
 	**/
 	@:native("Layers")
 	public var layers:UInt;
-
-	@:native("SetCollisionLayer")
-	public function setCollisionLayer(layer:UInt):Void;
-
-	@:native("GetCollisionLayer")
-	public function getCollisionLayer():UInt;
-
-	@:native("SetCollisionMask")
-	public function setCollisionMask(mask:UInt):Void;
-
-	@:native("GetCollisionMask")
-	public function getCollisionMask():UInt;
-
-	/**		
-		Sets individual bits on the `godot.PhysicsBody2D.collisionMask` bitmask. Use this if you only need to change one layer's value.
-	**/
-	@:native("SetCollisionMaskBit")
-	public function setCollisionMaskBit(bit:Int, value:Bool):Void;
-
-	/**		
-		Returns an individual bit on the `godot.PhysicsBody2D.collisionMask`.
-	**/
-	@:native("GetCollisionMaskBit")
-	public function getCollisionMaskBit(bit:Int):Bool;
-
-	/**		
-		Sets individual bits on the `godot.PhysicsBody2D.collisionLayer` bitmask. Use this if you only need to change one layer's value.
-	**/
-	@:native("SetCollisionLayerBit")
-	public function setCollisionLayerBit(bit:Int, value:Bool):Void;
-
-	/**		
-		Returns an individual bit on the `godot.PhysicsBody2D.collisionLayer`.
-	**/
-	@:native("GetCollisionLayerBit")
-	public function getCollisionLayerBit(bit:Int):Bool;
 
 	/**		
 		Returns an array of nodes that were added as collision exceptions for this body.

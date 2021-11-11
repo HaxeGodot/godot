@@ -9,9 +9,6 @@ import cs.system.*;
 @:native("Godot.EditorSceneImporter")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class EditorSceneImporter extends godot.Reference {
-	@:native("ImportUseCompression")
-	public static var IMPORT_USE_COMPRESSION(default, never):Int;
-
 	@:native("ImportMaterialsInInstances")
 	public static var IMPORT_MATERIALS_IN_INSTANCES(default, never):Int;
 
@@ -55,7 +52,7 @@ extern class EditorSceneImporter extends godot.Reference {
 	public function _ImportScene(path:std.String, flags:Int, bakeFps:Int):godot.Node;
 
 	@:native("ImportSceneFromOtherImporter")
-	public function importSceneFromOtherImporter(path:std.String, flags:UInt, bakeFps:Int):godot.Node;
+	public function importSceneFromOtherImporter(path:std.String, flags:UInt, bakeFps:Int, compressFlags:UInt):godot.Node;
 
 	@:native("ImportAnimationFromOtherImporter")
 	public function importAnimationFromOtherImporter(path:std.String, flags:UInt, bakeFps:Int):godot.Animation;

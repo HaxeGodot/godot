@@ -16,7 +16,9 @@ extern class Engine {
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		
-		Controls how much physics ticks are synchronized with real time. For 0 or less, the ticks are synchronized. Such values are recommended for network games, where clock synchronization matters. Higher values cause higher deviation of in-game clock and real clock, but allows smoothing out framerate jitters. The default value of 0.5 should be fine for most; values above 2 could cause the game to react to dropped frames with a noticeable delay and are not recommended.
+		Controls how much physics ticks are synchronized with real time. For 0 or less, the ticks are synchronized. Such values are recommended for network games, where clock synchronization matters. Higher values cause higher deviation of the in-game clock and real clock but smooth out framerate jitters. The default value of 0.5 should be fine for most; values above 2 could cause the game to react to dropped frames with a noticeable delay and are not recommended.
+		
+		Note: For best results, when using a custom physics interpolation solution, the physics jitter fix should be disabled by setting `godot.Engine.physicsJitterFix` to `0`.
 	**/
 	@:native("PhysicsJitterFix")
 	public static var PHYSICS_JITTER_FIX:Single;
@@ -40,6 +42,16 @@ extern class Engine {
 	public static var ITERATIONS_PER_SECOND:Int;
 
 	/**		
+		If `false`, stops printing error and warning messages to the console and editor Output log. This can be used to hide error and warning messages during unit test suite runs. This property is equivalent to the  project setting.
+		
+		Warning: If you set this to `false` anywhere in the project, important error messages may be hidden even if they are emitted from other scripts. If this is set to `false` in a `@tool` script, this will also impact the editor itself. Do not report bugs before ensuring error messages are enabled (as they are by default).
+		
+		Note: This property does not impact the editor's Errors tab when running a project from the editor.
+	**/
+	@:native("PrintErrorMessages")
+	public static var PRINT_ERROR_MESSAGES:Bool;
+
+	/**		
 		If `true`, the script is currently running inside the editor. This is useful for `tool` scripts to conditionally draw editor helpers, or prevent accidentally running "game" code that would affect the scene state while in the editor:
 		
 		```
@@ -51,7 +63,7 @@ extern class Engine {
 		
 		```
 		
-		See [https://docs.godotengine.org/en/stable/tutorials/misc/running_code_in_the_editor.html](Running code in the editor) in the documentation for more information.
+		See [https://docs.godotengine.org/en/3.4/tutorials/misc/running_code_in_the_editor.html](Running code in the editor) in the documentation for more information.
 		
 		Note: To detect whether the script is run from an editor build (e.g. when pressing `F5`), use `godot.OS.hasFeature` with the `"editor"` argument instead. `OS.has_feature("editor")` will evaluate to `true` both when the code is running in the editor and when running the project from the editor, but it will evaluate to `false` when the code is run from an exported project.
 	**/
@@ -89,7 +101,7 @@ extern class Engine {
 	public static function getTimeScale():Single;
 
 	/**		
-		Returns the total number of frames drawn. If the render loop is disabled with `--disable-render-loop` via command line, this returns `0`. See also `godot.Engine.getIdleFrames`.
+		Returns the total number of frames drawn. On headless platforms, or if the render loop is disabled with `--disable-render-loop` via command line, `godot.Engine.getFramesDrawn` always returns `0`. See `godot.Engine.getIdleFrames`.
 	**/
 	@:native("GetFramesDrawn")
 	public static function getFramesDrawn():Int;
@@ -101,13 +113,33 @@ extern class Engine {
 	public static function getFramesPerSecond():Single;
 
 	/**		
-		Returns the total number of frames passed since engine initialization which is advanced on each physics frame.
+		Returns the total number of frames passed since engine initialization which is advanced on each physics frame. See also `godot.Engine.getIdleFrames`.
+		
+		`godot.Engine.getPhysicsFrames` can be used to run expensive logic less often without relying on a `godot.Timer`:
+		
+		```
+		
+		func _physics_process(_delta):
+		if Engine.get_physics_frames() % 2 == 0:
+		pass  # Run expensive logic only once every 2 physics frames here.
+		
+		```
 	**/
 	@:native("GetPhysicsFrames")
 	public static function getPhysicsFrames():cs.types.UInt64;
 
 	/**		
-		Returns the total number of frames passed since engine initialization which is advanced on each idle frame, regardless of whether the render loop is enabled. See also `godot.Engine.getFramesDrawn`.
+		Returns the total number of frames passed since engine initialization which is advanced on each idle frame, regardless of whether the render loop is enabled. See also `godot.Engine.getFramesDrawn` and `godot.Engine.getPhysicsFrames`.
+		
+		`godot.Engine.getIdleFrames` can be used to run expensive logic less often without relying on a `godot.Timer`:
+		
+		```
+		
+		func _process(_delta):
+		if Engine.get_idle_frames() % 2 == 0:
+		pass  # Run expensive logic only once every 2 idle (render) frames here.
+		
+		```
 	**/
 	@:native("GetIdleFrames")
 	public static function getIdleFrames():cs.types.UInt64;
@@ -220,4 +252,10 @@ extern class Engine {
 
 	@:native("IsEditorHint")
 	public static function isEditorHint():Bool;
+
+	@:native("SetPrintErrorMessages")
+	public static function setPrintErrorMessages(enabled:Bool):Void;
+
+	@:native("IsPrintingErrorMessages")
+	public static function isPrintingErrorMessages():Bool;
 }

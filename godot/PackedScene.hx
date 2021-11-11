@@ -83,19 +83,19 @@ extern class PackedScene extends godot.Resource {
 
 	#if doc_gen
 	/**		
-		Instantiates the scene's node hierarchy. Triggers child scene instantiation(s). Triggers a  notification on the root node.
+		Instantiates the scene's node hierarchy. Triggers child scene instantiation(s). Triggers a `godot.Node.notificationInstanced` notification on the root node.
 	**/
 	@:native("Instance")
 	public function instance(?editState:godot.PackedScene_GenEditState):godot.Node;
 	#else
 	/**		
-		Instantiates the scene's node hierarchy. Triggers child scene instantiation(s). Triggers a  notification on the root node.
+		Instantiates the scene's node hierarchy. Triggers child scene instantiation(s). Triggers a `godot.Node.notificationInstanced` notification on the root node.
 	**/
 	@:native("Instance")
 	public overload function instance():godot.Node;
 
 	/**		
-		Instantiates the scene's node hierarchy. Triggers child scene instantiation(s). Triggers a  notification on the root node.
+		Instantiates the scene's node hierarchy. Triggers child scene instantiation(s). Triggers a `godot.Node.notificationInstanced` notification on the root node.
 	**/
 	@:native("Instance")
 	public overload function instance(editState:godot.PackedScene_GenEditState):godot.Node;

@@ -6,6 +6,8 @@ import cs.system.*;
 
 /**
 Baked lightmaps are an alternative workflow for adding indirect (or baked) lighting to a scene. Unlike the `godot.GIProbe` approach, baked lightmaps work fine on low-end PCs and mobile devices as they consume almost no resources in run-time.
+
+Note: Due to how lightmaps work, most properties only have a visible effect once lightmaps are baked again.
 **/
 @:libType
 @:csNative
@@ -55,13 +57,13 @@ extern class BakedLightmap extends godot.VisualInstance {
 	public var environmentMinLight:godot.Color;
 
 	/**		
-		The energy scaling factor when when `godot.BakedLightmap.environmentMode` is set to  or .
+		The energy scaling factor when when `godot.BakedLightmap.environmentMode` is set to `godot.BakedLightmap_EnvironmentModeEnum.customColor` or `godot.BakedLightmap_EnvironmentModeEnum.customSky`.
 	**/
 	@:native("EnvironmentCustomEnergy")
 	public var environmentCustomEnergy:Single;
 
 	/**		
-		The environment color when `godot.BakedLightmap.environmentMode` is set to .
+		The environment color when `godot.BakedLightmap.environmentMode` is set to `godot.BakedLightmap_EnvironmentModeEnum.customColor`.
 	**/
 	@:native("EnvironmentCustomColor")
 	public var environmentCustomColor:godot.Color;
@@ -73,7 +75,7 @@ extern class BakedLightmap extends godot.VisualInstance {
 	public var environmentCustomSkyRotationDegrees:godot.Vector3;
 
 	/**		
-		The `godot.Sky` resource to use when `godot.BakedLightmap.environmentMode` is set o .
+		The `godot.Sky` resource to use when `godot.BakedLightmap.environmentMode` is set o `godot.BakedLightmap_EnvironmentModeEnum.customSky`.
 	**/
 	@:native("EnvironmentCustomSky")
 	public var environmentCustomSky:godot.Sky;
@@ -103,7 +105,7 @@ extern class BakedLightmap extends godot.VisualInstance {
 	public var defaultTexelsPerUnit:Single;
 
 	/**		
-		Raycasting bias used during baking to avoid floating point precission issues.
+		Raycasting bias used during baking to avoid floating point precision issues.
 	**/
 	@:native("Bias")
 	public var bias:Single;
@@ -129,7 +131,15 @@ extern class BakedLightmap extends godot.VisualInstance {
 	public var useDenoiser:Bool;
 
 	/**		
-		Number of light bounces that are taken into account during baking.
+		The energy multiplier for each bounce. Higher values will make indirect lighting brighter. A value of `1.0` represents physically accurate behavior, but higher values can be used to make indirect lighting propagate more visibly when using a low number of bounces. This can be used to speed up bake times by lowering the number of `godot.BakedLightmap.bounces` then increasing `godot.BakedLightmap.bounceIndirectEnergy`. Unlike `godot.BakedLightmapData.energy`, this property does not affect direct lighting emitted by light nodes, emissive materials and the environment.
+		
+		Note: `godot.BakedLightmap.bounceIndirectEnergy` only has an effect if `godot.BakedLightmap.bounces` is set to a value greater than or equal to `1`.
+	**/
+	@:native("BounceIndirectEnergy")
+	public var bounceIndirectEnergy:Single;
+
+	/**		
+		Number of light bounces that are taken into account during baking. See also `godot.BakedLightmap.bounceIndirectEnergy`.
 	**/
 	@:native("Bounces")
 	public var bounces:Int;
@@ -166,6 +176,12 @@ extern class BakedLightmap extends godot.VisualInstance {
 
 	@:native("GetBounces")
 	public function getBounces():Int;
+
+	@:native("SetBounceIndirectEnergy")
+	public function setBounceIndirectEnergy(bounceIndirectEnergy:Single):Void;
+
+	@:native("GetBounceIndirectEnergy")
+	public function getBounceIndirectEnergy():Single;
 
 	@:native("SetBias")
 	public function setBias(bias:Single):Void;
@@ -283,25 +299,25 @@ extern class BakedLightmap extends godot.VisualInstance {
 
 	#if doc_gen
 	/**		
-		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
+		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no root node is provided, parent of this node will be used as root instead. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
 	**/
 	@:native("Bake")
 	public function bake(?fromNode:godot.Node, ?dataSavePath:std.String):godot.BakedLightmap_BakeError;
 	#else
 	/**		
-		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
+		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no root node is provided, parent of this node will be used as root instead. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
 	**/
 	@:native("Bake")
 	public overload function bake():godot.BakedLightmap_BakeError;
 
 	/**		
-		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
+		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no root node is provided, parent of this node will be used as root instead. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
 	**/
 	@:native("Bake")
 	public overload function bake(fromNode:godot.Node):godot.BakedLightmap_BakeError;
 
 	/**		
-		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
+		Bakes the lightmap, scanning from the given `from_node` root and saves the resulting `godot.BakedLightmapData` in `data_save_path`. If no root node is provided, parent of this node will be used as root instead. If no save path is provided it will try to match the path from the current `godot.BakedLightmap.lightData`.
 	**/
 	@:native("Bake")
 	public overload function bake(fromNode:godot.Node, dataSavePath:std.String):godot.BakedLightmap_BakeError;

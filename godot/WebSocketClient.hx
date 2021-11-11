@@ -91,8 +91,8 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		
 		Note: Specifying `custom_headers` is not supported in HTML5 exports due to browsers restrictions.
 		
-		@param protocols If the parameter is null, then the default value is new string[] {}
-		@param customHeaders If the parameter is null, then the default value is new string[] {}
+		@param protocols If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("ConnectToUrl")
 	public function connectToUrl(url:std.String, ?protocols:std.Array<std.String>, ?gdMpApi:Bool, ?customHeaders:std.Array<std.String>):godot.Error;
@@ -110,8 +110,8 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		
 		Note: Specifying `custom_headers` is not supported in HTML5 exports due to browsers restrictions.
 		
-		@param protocols If the parameter is null, then the default value is new string[] {}
-		@param customHeaders If the parameter is null, then the default value is new string[] {}
+		@param protocols If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("ConnectToUrl")
 	public overload function connectToUrl(url:std.String):godot.Error;
@@ -129,8 +129,8 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		
 		Note: Specifying `custom_headers` is not supported in HTML5 exports due to browsers restrictions.
 		
-		@param protocols If the parameter is null, then the default value is new string[] {}
-		@param customHeaders If the parameter is null, then the default value is new string[] {}
+		@param protocols If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("ConnectToUrl")
 	public overload function connectToUrl(url:std.String, protocols:HaxeArray<std.String>):godot.Error;
@@ -148,8 +148,8 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		
 		Note: Specifying `custom_headers` is not supported in HTML5 exports due to browsers restrictions.
 		
-		@param protocols If the parameter is null, then the default value is new string[] {}
-		@param customHeaders If the parameter is null, then the default value is new string[] {}
+		@param protocols If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("ConnectToUrl")
 	public overload function connectToUrl(url:std.String, protocols:HaxeArray<std.String>, gdMpApi:Bool):godot.Error;
@@ -167,8 +167,8 @@ extern class WebSocketClient extends godot.WebSocketMultiplayerPeer {
 		
 		Note: Specifying `custom_headers` is not supported in HTML5 exports due to browsers restrictions.
 		
-		@param protocols If the parameter is null, then the default value is new string[] {}
-		@param customHeaders If the parameter is null, then the default value is new string[] {}
+		@param protocols If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
+		@param customHeaders If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("ConnectToUrl")
 	public overload function connectToUrl(url:std.String, protocols:HaxeArray<std.String>, gdMpApi:Bool, customHeaders:HaxeArray<std.String>):godot.Error;

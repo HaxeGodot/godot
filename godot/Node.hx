@@ -9,9 +9,9 @@ Nodes are Godot's building blocks. They can be assigned as the child of another 
 
 A tree of nodes is called a scene. Scenes can be saved to the disk and then instanced into other scenes. This allows for very high flexibility in the architecture and data model of Godot projects.
 
-Scene tree: The `godot.SceneTree` contains the active tree of nodes. When a node is added to the scene tree, it receives the  notification and its `godot.Node._EnterTree` callback is triggered. Child nodes are always added after their parent node, i.e. the `godot.Node._EnterTree` callback of a parent node will be triggered before its child's.
+Scene tree: The `godot.SceneTree` contains the active tree of nodes. When a node is added to the scene tree, it receives the `godot.Node.notificationEnterTree` notification and its `godot.Node._EnterTree` callback is triggered. Child nodes are always added after their parent node, i.e. the `godot.Node._EnterTree` callback of a parent node will be triggered before its child's.
 
-Once all nodes have been added in the scene tree, they receive the  notification and their respective `godot.Node._Ready` callbacks are triggered. For groups of nodes, the `godot.Node._Ready` callback is called in reverse order, starting with the children and moving up to the parent nodes.
+Once all nodes have been added in the scene tree, they receive the `godot.Node.notificationReady` notification and their respective `godot.Node._Ready` callbacks are triggered. For groups of nodes, the `godot.Node._Ready` callback is called in reverse order, starting with the children and moving up to the parent nodes.
 
 This means that when adding a node to the scene tree, the following order will be used for the callbacks: `godot.Node._EnterTree` of the parent, `godot.Node._EnterTree` of the children, `godot.Node._Ready` of the children and finally `godot.Node._Ready` of the parent (recursively for the entire scene tree).
 
@@ -83,7 +83,7 @@ extern class Node extends godot.Object {
 	}
 
 	/**		
-		The node's priority in the execution order of the enabled processing callbacks (i.e. ,  and their internal counterparts). Nodes whose process priority value is lower will have their processing callbacks executed first.
+		The node's priority in the execution order of the enabled processing callbacks (i.e. `godot.Node.notificationProcess`, `godot.Node.notificationPhysicsProcess` and their internal counterparts). Nodes whose process priority value is lower will have their processing callbacks executed first.
 	**/
 	@:native("ProcessPriority")
 	public var processPriority:Int;
@@ -107,7 +107,7 @@ extern class Node extends godot.Object {
 	public var owner:godot.Node;
 
 	/**		
-		When a scene is instanced from a file, its topmost node contains the filename from which it was loaded.
+		If a scene is instantiated from a file, its topmost node contains the absolute file path from which it was loaded in `godot.Node.filename` (e.g. `res://levels/1.tscn`). Otherwise, `godot.Node.filename` is set to an empty string.
 	**/
 	@:native("Filename")
 	public var filename:std.String;
@@ -243,7 +243,7 @@ extern class Node extends godot.Object {
 	public static var NOTIFICATION_WM_MOUSE_ENTER(default, never):Int;
 
 	/**		
-		Notification received when the node is ready, just before  is received. Unlike the latter, it's sent every time the node enters tree, instead of only once.
+		Notification received when the node is ready, just before `godot.Node.notificationReady` is received. Unlike the latter, it's sent every time the node enters tree, instead of only once.
 	**/
 	@:native("NotificationPostEnterTree")
 	public static var NOTIFICATION_POST_ENTER_TREE(default, never):Int;
@@ -361,7 +361,7 @@ extern class Node extends godot.Object {
 	/**		
 		Called when the node enters the `godot.SceneTree` (e.g. upon instancing, scene changing, or after calling `godot.Node.addChild` in a script). If the node has children, its `godot.Node._EnterTree` callback will be called first, and then that of the children.
 		
-		Corresponds to the  notification in `godot.Object._Notification`.
+		Corresponds to the `godot.Node.notificationEnterTree` notification in `godot.Object._Notification`.
 	**/
 	@:native("_EnterTree")
 	public function _EnterTree():Void;
@@ -369,7 +369,7 @@ extern class Node extends godot.Object {
 	/**		
 		Called when the node is about to leave the `godot.SceneTree` (e.g. upon freeing, scene changing, or after calling `godot.Node.removeChild` in a script). If the node has children, its `godot.Node._ExitTree` callback will be called last, after all its children have left the tree.
 		
-		Corresponds to the  notification in `godot.Object._Notification` and signal `tree_exiting`. To get notified when the node has already left the active tree, connect to the `tree_exited`.
+		Corresponds to the `godot.Node.notificationExitTree` notification in `godot.Object._Notification` and signal `tree_exiting`. To get notified when the node has already left the active tree, connect to the `tree_exited`.
 	**/
 	@:native("_ExitTree")
 	public function _ExitTree():Void;
@@ -403,7 +403,7 @@ extern class Node extends godot.Object {
 		
 		It is only called if physics processing is enabled, which is done automatically if this method is overridden, and can be toggled with `godot.Node.setPhysicsProcess`.
 		
-		Corresponds to the  notification in `godot.Object._Notification`.
+		Corresponds to the `godot.Node.notificationPhysicsProcess` notification in `godot.Object._Notification`.
 		
 		Note: This method is only called if the node is present in the scene tree (i.e. if it's not orphan).
 	**/
@@ -415,7 +415,7 @@ extern class Node extends godot.Object {
 		
 		It is only called if processing is enabled, which is done automatically if this method is overridden, and can be toggled with `godot.Node.setProcess`.
 		
-		Corresponds to the  notification in `godot.Object._Notification`.
+		Corresponds to the `godot.Node.notificationProcess` notification in `godot.Object._Notification`.
 		
 		Note: This method is only called if the node is present in the scene tree (i.e. if it's not orphan).
 	**/
@@ -425,7 +425,7 @@ extern class Node extends godot.Object {
 	/**		
 		Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their `godot.Node._Ready` callbacks get triggered first, and the parent node will receive the ready notification afterwards.
 		
-		Corresponds to the  notification in `godot.Object._Notification`. See also the `onready` keyword for variables.
+		Corresponds to the `godot.Node.notificationReady` notification in `godot.Object._Notification`. See also the `onready` keyword for variables.
 		
 		Usually used for initialization. For even earlier initialization,  may be used. See also `godot.Node._EnterTree`.
 		
@@ -558,6 +558,8 @@ extern class Node extends godot.Object {
 
 	/**		
 		Removes a child node. The node is NOT deleted and must be deleted manually.
+		
+		Note: This function may set the `godot.Node.owner` of the removed Node (or its descendants) to be `null`, if that `godot.Node.owner` is no longer a parent or ancestor.
 	**/
 	@:native("RemoveChild")
 	public function removeChild(node:godot.Node):Void;
@@ -753,6 +755,8 @@ extern class Node extends godot.Object {
 		Adds the node to a group. Groups are helpers to name and organize a subset of nodes, for example "enemies" or "collectables". A node can be in any number of groups. Nodes can be assigned a group at any time, but will not be added until they are inside the scene tree (see `godot.Node.isInsideTree`). See notes in the description, and the group methods in `godot.SceneTree`.
 		
 		The `persistent` option is used when packing node to `godot.PackedScene` and saving to file. Non-persistent groups aren't stored.
+		
+		Note: For performance reasons, the order of node groups is not guaranteed. The order of node groups should not be relied upon as it can vary across project runs.
 	**/
 	@:native("AddToGroup")
 	public function addToGroup(group:std.String, ?persistent:Bool):Void;
@@ -761,6 +765,8 @@ extern class Node extends godot.Object {
 		Adds the node to a group. Groups are helpers to name and organize a subset of nodes, for example "enemies" or "collectables". A node can be in any number of groups. Nodes can be assigned a group at any time, but will not be added until they are inside the scene tree (see `godot.Node.isInsideTree`). See notes in the description, and the group methods in `godot.SceneTree`.
 		
 		The `persistent` option is used when packing node to `godot.PackedScene` and saving to file. Non-persistent groups aren't stored.
+		
+		Note: For performance reasons, the order of node groups is not guaranteed. The order of node groups should not be relied upon as it can vary across project runs.
 	**/
 	@:native("AddToGroup")
 	public overload function addToGroup(group:std.String):Void;
@@ -769,6 +775,8 @@ extern class Node extends godot.Object {
 		Adds the node to a group. Groups are helpers to name and organize a subset of nodes, for example "enemies" or "collectables". A node can be in any number of groups. Nodes can be assigned a group at any time, but will not be added until they are inside the scene tree (see `godot.Node.isInsideTree`). See notes in the description, and the group methods in `godot.SceneTree`.
 		
 		The `persistent` option is used when packing node to `godot.PackedScene` and saving to file. Non-persistent groups aren't stored.
+		
+		Note: For performance reasons, the order of node groups is not guaranteed. The order of node groups should not be relied upon as it can vary across project runs.
 	**/
 	@:native("AddToGroup")
 	public overload function addToGroup(group:std.String, persistent:Bool):Void;
@@ -794,6 +802,8 @@ extern class Node extends godot.Object {
 
 	/**		
 		Returns an array listing the groups that the node is a member of.
+		
+		Note: For performance reasons, the order of node groups is not guaranteed. The order of node groups should not be relied upon as it can vary across project runs.
 	**/
 	@:native("GetGroups")
 	public function getGroups():godot.collections.Array;
@@ -876,7 +886,7 @@ extern class Node extends godot.Object {
 	/**		
 		Calls the given method (if present) with the arguments given in `args` on this node and recursively on all its children. If the `parent_first` argument is `true`, the method will be called on the current node first, then on all its children. If `parent_first` is `false`, the children will be called first.
 		
-		@param args If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param args If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("PropagateCall")
 	public function propagateCall(method:std.String, ?args:godot.collections.Array, ?parentFirst:Bool):Void;
@@ -884,7 +894,7 @@ extern class Node extends godot.Object {
 	/**		
 		Calls the given method (if present) with the arguments given in `args` on this node and recursively on all its children. If the `parent_first` argument is `true`, the method will be called on the current node first, then on all its children. If `parent_first` is `false`, the children will be called first.
 		
-		@param args If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param args If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("PropagateCall")
 	public overload function propagateCall(method:std.String):Void;
@@ -892,7 +902,7 @@ extern class Node extends godot.Object {
 	/**		
 		Calls the given method (if present) with the arguments given in `args` on this node and recursively on all its children. If the `parent_first` argument is `true`, the method will be called on the current node first, then on all its children. If `parent_first` is `false`, the children will be called first.
 		
-		@param args If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param args If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("PropagateCall")
 	public overload function propagateCall(method:std.String, args:godot.collections.Array):Void;
@@ -900,14 +910,14 @@ extern class Node extends godot.Object {
 	/**		
 		Calls the given method (if present) with the arguments given in `args` on this node and recursively on all its children. If the `parent_first` argument is `true`, the method will be called on the current node first, then on all its children. If `parent_first` is `false`, the children will be called first.
 		
-		@param args If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param args If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("PropagateCall")
 	public overload function propagateCall(method:std.String, args:godot.collections.Array, parentFirst:Bool):Void;
 	#end
 
 	/**		
-		Enables or disables physics (i.e. fixed framerate) processing. When a node is being processed, it will receive a  at a fixed (usually 60 FPS, see `godot.Engine.iterationsPerSecond` to change) interval (and the `godot.Node._PhysicsProcess` callback will be called if exists). Enabled automatically if `godot.Node._PhysicsProcess` is overridden. Any calls to this before `godot.Node._Ready` will be ignored.
+		Enables or disables physics (i.e. fixed framerate) processing. When a node is being processed, it will receive a `godot.Node.notificationPhysicsProcess` at a fixed (usually 60 FPS, see `godot.Engine.iterationsPerSecond` to change) interval (and the `godot.Node._PhysicsProcess` callback will be called if exists). Enabled automatically if `godot.Node._PhysicsProcess` is overridden. Any calls to this before `godot.Node._Ready` will be ignored.
 	**/
 	@:native("SetPhysicsProcess")
 	public function setPhysicsProcess(enable:Bool):Void;
@@ -931,7 +941,7 @@ extern class Node extends godot.Object {
 	public function getProcessDeltaTime():Single;
 
 	/**		
-		Enables or disables processing. When a node is being processed, it will receive a  on every drawn frame (and the `godot.Node._Process` callback will be called if exists). Enabled automatically if `godot.Node._Process` is overridden. Any calls to this before `godot.Node._Ready` will be ignored.
+		Enables or disables processing. When a node is being processed, it will receive a `godot.Node.notificationProcess` on every drawn frame (and the `godot.Node._Process` callback will be called if exists). Enabled automatically if `godot.Node._Process` is overridden. Any calls to this before `godot.Node._Ready` will be ignored.
 	**/
 	@:native("SetProcess")
 	public function setProcess(enable:Bool):Void;

@@ -31,6 +31,11 @@ extern enum CPUParticles_EmissionShapeEnum {
 	DirectedPoints;
 
 	/**		
+		Particles will be emitted in a ring or cylinder.
+	**/
+	Ring;
+
+	/**		
 		Represents the size of the `godot.CPUParticles_EmissionShapeEnum` enum.
 	**/
 	Max;

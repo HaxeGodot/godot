@@ -190,7 +190,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		Left unit vector. Represents the direction of left.
 		
-		Value: Equivalent to `new Vector2(-1, 0)`
+		Value: Equivalent to `new Vector2(-1, 0)`.
 	**/
 	@:native("Left")
 	public static var LEFT(default, never):godot.Vector2;
@@ -198,7 +198,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		Right unit vector. Represents the direction of right.
 		
-		Value: Equivalent to `new Vector2(1, 0)`
+		Value: Equivalent to `new Vector2(1, 0)`.
 	**/
 	@:native("Right")
 	public static var RIGHT(default, never):godot.Vector2;
@@ -206,7 +206,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		Down unit vector. Y is down in 2D, so this vector points +Y.
 		
-		Value: Equivalent to `new Vector2(0, 1)`
+		Value: Equivalent to `new Vector2(0, 1)`.
 	**/
 	@:native("Down")
 	public static var DOWN(default, never):godot.Vector2;
@@ -214,15 +214,15 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		Up unit vector. Y is down in 2D, so this vector points -Y.
 		
-		Value: Equivalent to `new Vector2(0, -1)`
+		Value: Equivalent to `new Vector2(0, -1)`.
 	**/
 	@:native("Up")
 	public static var UP(default, never):godot.Vector2;
 
 	/**		
-		Infinity vector, a vector with all components set to `Mathf.Inf`.
+		Infinity vector, a vector with all components set to `godot.Mathf.INF`.
 		
-		Value: Equivalent to `new Vector2(Mathf.Inf, Mathf.Inf)`
+		Value: Equivalent to `new Vector2(Mathf.Inf, Mathf.Inf)`.
 	**/
 	@:native("Inf")
 	public static var INF(default, never):godot.Vector2;
@@ -230,7 +230,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		One vector, a vector with all components set to `1`.
 		
-		Value: Equivalent to `new Vector2(1, 1)`
+		Value: Equivalent to `new Vector2(1, 1)`.
 	**/
 	@:native("One")
 	public static var ONE(default, never):godot.Vector2;
@@ -238,7 +238,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		Deprecated, please use a negative sign with `godot.Vector2.one` instead.
 		
-		Value: Equivalent to `new Vector2(-1, -1)`
+		Value: Equivalent to `new Vector2(-1, -1)`.
 	**/
 	@:native("NegOne")
 	public static var NEG_ONE(default, never):godot.Vector2;
@@ -246,7 +246,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		Zero vector, a vector with all components set to `0`.
 		
-		Value: Equivalent to `new Vector2(0, 0)`
+		Value: Equivalent to `new Vector2(0, 0)`.
 	**/
 	@:native("Zero")
 	public static var ZERO(default, never):godot.Vector2;
@@ -275,7 +275,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 		Returns this vector's angle with respect to the X axis, or (1, 0) vector, in radians.
 		
 		Equivalent to the result of `godot.Mathf.atan2` when
-		called with the vector's `y` and `x` as parameters: `Mathf.Atan2(v.y, v.x)`.
+		called with the vector's `godot.Vector2.y` and `godot.Vector2.x` as parameters: `Mathf.Atan2(v.y, v.x)`.
 		
 		@returns The angle of this vector, in radians.
 	**/
@@ -301,9 +301,9 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public function angleToPoint(to:godot.Vector2):Single;
 
 	/**		
-		Returns the aspect ratio of this vector, the ratio of `x` to `y`.
+		Returns the aspect ratio of this vector, the ratio of `godot.Vector2.x` to `godot.Vector2.y`.
 		
-		@returns The `x` component divided by the `y` component.
+		@returns The `godot.Vector2.x` component divided by the `godot.Vector2.y` component.
 	**/
 	@:native("Aspect")
 	public function aspect():Single;
@@ -344,16 +344,17 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public function cross(b:godot.Vector2):Single;
 
 	/**		
-		Performs a cubic interpolation between vectors `preA`, this vector, `b`, and `postB`, by the given amount `t`.
+		Performs a cubic interpolation between vectors `preA`, this vector,
+		`b`, and `postB`, by the given amount `weight`.
 		
 		@param b The destination vector.
 		@param preA A vector before this vector.
 		@param postB A vector after `b`.
-		@param t A value on the range of 0.0 to 1.0, representing the amount of interpolation.
+		@param weight A value on the range of 0.0 to 1.0, representing the amount of interpolation.
 		@returns The interpolated vector.
 	**/
 	@:native("CubicInterpolate")
-	public function cubicInterpolate(b:godot.Vector2, preA:godot.Vector2, postB:godot.Vector2, t:Single):godot.Vector2;
+	public function cubicInterpolate(b:godot.Vector2, preA:godot.Vector2, postB:godot.Vector2, weight:Single):godot.Vector2;
 
 	/**		
 		Returns the normalized vector pointing from this vector to `b`.
@@ -410,16 +411,16 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public function inverse():godot.Vector2;
 
 	/**		
-		Returns true if the vector is normalized, and false otherwise.
+		Returns `true` if the vector is normalized, and `false` otherwise.
 		
-		@returns A bool indicating whether or not the vector is normalized.
+		@returns A `bool` indicating whether or not the vector is normalized.
 	**/
 	@:native("IsNormalized")
 	public function isNormalized():Bool;
 
 	/**		
 		Returns the length (magnitude) of this vector.
-		
+		@see `godot.Vector2.lengthSquared`
 		@returns The length of this vector.
 	**/
 	@:native("Length")
@@ -451,7 +452,9 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 		this vector and `to` by the vector amount `weight`.
 		
 		@param to The destination vector for interpolation.
-		@param weight A vector with components on the range of 0.0 to 1.0, representing the amount of interpolation.
+		@param weight
+		A vector with components on the range of 0.0 to 1.0, representing the amount of interpolation.
+		
 		@returns The resulting vector of the interpolation.
 	**/
 	@:native("LinearInterpolate")
@@ -503,25 +506,29 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public function perpendicular():godot.Vector2;
 
 	/**		
-		Returns a vector composed of the `godot.Mathf.posMod` of this vector's components and `mod`.
+		Returns a vector composed of the `godot.Mathf.posMod` of this vector's components
+		and `mod`.
 		
 		@param mod A value representing the divisor of the operation.
-		@returns A vector with each component `godot.Mathf.posMod` by `mod`.
+		@returns
+		A vector with each component `godot.Mathf.posMod` by `mod`.
 	**/
 	@:native("PosMod")
 	public overload function posMod(mod:Single):godot.Vector2;
 
 	/**		
-		Returns a vector composed of the `godot.Mathf.posMod` of this vector's components and `modv`'s components.
+		Returns a vector composed of the `godot.Mathf.posMod` of this vector's components
+		and `modv`'s components.
 		
 		@param modv A vector representing the divisors of the operation.
-		@returns A vector with each component `godot.Mathf.posMod` by `modv`'s components.
+		@returns
+		A vector with each component `godot.Mathf.posMod` by `modv`'s components.
 	**/
 	@:native("PosMod")
 	public overload function posMod(modv:godot.Vector2):godot.Vector2;
 
 	/**		
-		Returns this vector projected onto another vector.
+		Returns this vector projected onto another vector `onNormal`.
 		
 		@param onNormal The vector to project onto.
 		@returns The projected vector.
@@ -586,7 +593,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public function slerp(to:godot.Vector2, weight:Single):godot.Vector2;
 
 	/**		
-		Returns this vector slid along a plane defined by the given normal.
+		Returns this vector slid along a plane defined by the given `normal`.
 		
 		@param normal The normal vector defining the plane to slide on.
 		@returns The slid vector.
@@ -632,8 +639,8 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public overload function new(v:godot.Vector2):Void;
 
 	/**		
-		Returns true if this vector and `other` are approximately equal, by running
-		`godot.Mathf.isEqualApprox` on each component.
+		Returns `true` if this vector and `other` are approximately equal,
+		by running `godot.Mathf.isEqualApprox` on each component.
 		
 		@param other The other vector to compare.
 		@returns Whether or not the vectors are approximately equal.
@@ -641,9 +648,19 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 	@:native("IsEqualApprox")
 	public function isEqualApprox(other:godot.Vector2):Bool;
 
+	/**		
+		Converts this `godot.Vector2` to a string.
+		
+		@returns A string representation of this vector.
+	**/
 	@:native("ToString")
 	public overload function toString():std.String;
 
+	/**		
+		Converts this `godot.Vector2` to a string with the given `format`.
+		
+		@returns A string representation of this vector.
+	**/
 	@:native("ToString")
 	public overload function toString(format:std.String):std.String;
 }

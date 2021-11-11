@@ -6,6 +6,8 @@ import cs.system.*;
 
 /**
 TextEdit is meant for editing large, multiline text. It also has facilities for editing code, such as syntax highlighting support and multiple levels of undo/redo.
+
+Note: When holding down `Alt`, the vertical scroll wheel will scroll 5 times as fast as it would normally do. This also works in the Godot script editor.
 **/
 @:libType
 @:csNative
@@ -109,13 +111,13 @@ extern class TextEdit extends godot.Control {
 	public var minimapDraw:Bool;
 
 	/**		
-		The current horizontal scroll value.
+		If there is a horizontal scrollbar, this determines the current horizontal scroll value in pixels.
 	**/
 	@:native("ScrollHorizontal")
 	public var scrollHorizontal:Int;
 
 	/**		
-		The current vertical scroll value.
+		If there is a vertical scrollbar, this determines the current vertical scroll value in line numbers, starting at 0 for the top line.
 	**/
 	@:native("ScrollVertical")
 	public var scrollVertical:Float;
@@ -567,6 +569,18 @@ extern class TextEdit extends godot.Control {
 	}
 
 	/**		
+		Returns `true` if an "undo" action is available.
+	**/
+	@:native("HasUndo")
+	public function hasUndo():Bool;
+
+	/**		
+		Returns `true` if a "redo" action is available.
+	**/
+	@:native("HasRedo")
+	public function hasRedo():Bool;
+
+	/**		
 		Perform undo operation.
 	**/
 	@:native("Undo")
@@ -774,6 +788,8 @@ extern class TextEdit extends godot.Control {
 
 	/**		
 		Returns the `godot.PopupMenu` of this `godot.TextEdit`. By default, this menu is displayed when right-clicking on the `godot.TextEdit`.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetMenu")
 	public function getMenu():godot.PopupMenu;

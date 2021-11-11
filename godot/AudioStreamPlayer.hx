@@ -6,6 +6,8 @@ import cs.system.*;
 
 /**
 Plays an audio stream non-positionally.
+
+To play audio positionally, use `godot.AudioStreamPlayer2D` or `godot.AudioStreamPlayer3D` instead of `godot.AudioStreamPlayer`.
 **/
 @:libType
 @:csNative

@@ -13,7 +13,7 @@ Performs a lookup operation on the provided texture, with support for multiple t
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualShaderNodeTexture extends godot.VisualShaderNode {
 	/**		
-		Specifies the type of the texture if `godot.VisualShaderNodeTexture.source` is set to . See `godot.VisualShaderNodeTexture_TextureTypeEnum` for options.
+		Specifies the type of the texture if `godot.VisualShaderNodeTexture.source` is set to `godot.VisualShaderNodeTexture_SourceEnum.texture`. See `godot.VisualShaderNodeTexture_TextureTypeEnum` for options.
 	**/
 	@:native("TextureType")
 	public var textureType:godot.VisualShaderNodeTexture_TextureTypeEnum;

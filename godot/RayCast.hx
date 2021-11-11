@@ -21,6 +21,20 @@ RayCast calculates intersection every physics frame (see `godot.Node`), and the 
 @:autoBuild(godot.Godot.buildUserClass())
 extern class RayCast extends godot.Spatial {
 	/**		
+		If set to `1`, a line is used as the debug shape. Otherwise, a truncated pyramid is drawn to represent the `godot.RayCast`. Requires Visible Collision Shapes to be enabled in the Debug menu for the debug shape to be visible at run-time.
+	**/
+	@:native("DebugShapeThickness")
+	public var debugShapeThickness:Single;
+
+	/**		
+		The custom color to use to draw the shape in the editor and at run-time if Visible Collision Shapes is enabled in the Debug menu. This color will be highlighted at run-time if the `godot.RayCast` is colliding with something.
+		
+		If set to `Color(0.0, 0.0, 0.0)` (by default), the color set in  is used.
+	**/
+	@:native("DebugShapeCustomColor")
+	public var debugShapeCustomColor:godot.Color;
+
+	/**		
 		If `true`, collision with `godot.PhysicsBody`s will be reported.
 	**/
 	@:native("CollideWithBodies")
@@ -33,7 +47,7 @@ extern class RayCast extends godot.Spatial {
 	public var collideWithAreas:Bool;
 
 	/**		
-		The ray's collision mask. Only objects in at least one collision layer enabled in the mask will be detected. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The ray's collision mask. Only objects in at least one collision layer enabled in the mask will be detected. See [https://docs.godotengine.org/en/3.4/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionMask")
 	public var collisionMask:UInt;
@@ -182,4 +196,16 @@ extern class RayCast extends godot.Spatial {
 
 	@:native("IsCollideWithBodiesEnabled")
 	public function isCollideWithBodiesEnabled():Bool;
+
+	@:native("SetDebugShapeCustomColor")
+	public function setDebugShapeCustomColor(debugShapeCustomColor:godot.Color):Void;
+
+	@:native("GetDebugShapeCustomColor")
+	public function getDebugShapeCustomColor():godot.Color;
+
+	@:native("SetDebugShapeThickness")
+	public function setDebugShapeThickness(debugShapeThickness:Single):Void;
+
+	@:native("GetDebugShapeThickness")
+	public function getDebugShapeThickness():Single;
 }

@@ -21,7 +21,7 @@ extern enum Environment_BGMode {
 	Sky;
 
 	/**		
-		Clears the background using a custom clear color and allows defining a sky for shading and reflection. This mode is slightly faster than  and should be preferred in scenes where reflections can be visible, but the sky itself never is (e.g. top-down camera).
+		Clears the background using a custom clear color and allows defining a sky for shading and reflection. This mode is slightly faster than `godot.Environment_BGMode.sky` and should be preferred in scenes where reflections can be visible, but the sky itself never is (e.g. top-down camera).
 	**/
 	ColorSky;
 

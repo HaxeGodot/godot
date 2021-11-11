@@ -102,10 +102,28 @@ extern class ARVRServer {
 	public static function getHmdTransform():godot.Transform;
 
 	/**		
+		Registers an `godot.ARVRInterface` object.
+	**/
+	@:native("AddInterface")
+	public static function addInterface(interface_:godot.ARVRInterface):Void;
+
+	/**		
+		Clears our current primary interface if it is set to the provided interface.
+	**/
+	@:native("ClearPrimaryInterfaceIf")
+	public static function clearPrimaryInterfaceIf(interface_:godot.ARVRInterface):Void;
+
+	/**		
 		Returns the number of interfaces currently registered with the AR/VR server. If your project supports multiple AR/VR platforms, you can look through the available interface, and either present the user with a selection or simply try to initialize each interface and use the first one that returns `true`.
 	**/
 	@:native("GetInterfaceCount")
 	public static function getInterfaceCount():Int;
+
+	/**		
+		Removes this interface.
+	**/
+	@:native("RemoveInterface")
+	public static function removeInterface(interface_:godot.ARVRInterface):Void;
 
 	/**		
 		Returns the interface registered at a given index in our list of interfaces.
@@ -136,6 +154,18 @@ extern class ARVRServer {
 	**/
 	@:native("GetTracker")
 	public static function getTracker(idx:Int):godot.ARVRPositionalTracker;
+
+	/**		
+		Registers a new `godot.ARVRPositionalTracker` that tracks a spatial location in real space.
+	**/
+	@:native("AddTracker")
+	public static function addTracker(tracker:godot.ARVRPositionalTracker):Void;
+
+	/**		
+		Removes this positional tracker.
+	**/
+	@:native("RemoveTracker")
+	public static function removeTracker(tracker:godot.ARVRPositionalTracker):Void;
 
 	@:native("GetPrimaryInterface")
 	public static function getPrimaryInterface():godot.ARVRInterface;

@@ -11,6 +11,16 @@ extern enum VisualServer_LightParam {
 	Energy;
 
 	/**		
+		Secondary multiplier used with indirect light (light bounces).
+	**/
+	IndirectEnergy;
+
+	/**		
+		The light's size, currently only used for soft shadows in baked lightmaps.
+	**/
+	Size;
+
+	/**		
 		The light's influence on specularity.
 	**/
 	Specular;

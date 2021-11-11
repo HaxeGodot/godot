@@ -4,6 +4,9 @@ package godot;
 
 import cs.system.*;
 
+/**
+Visual shader graphs consist of various nodes. Each node in the graph is a separate object and they are represented as a rectangular boxes with title and a set of properties. Each node has also connection ports that allow to connect it to another nodes and control the flow of the shader.
+**/
 @:libType
 @:csNative
 @:native("Godot.VisualShaderNode")

@@ -4,41 +4,74 @@ package godot;
 
 import cs.system.*;
 
+/**
+`godot.VisualScriptFunctionCall` is created when you add or drag and drop a function onto the Visual Script graph. It allows to tweak parameters of the call, e.g. what object the function is called on.
+**/
 @:libType
 @:csNative
 @:native("Godot.VisualScriptFunctionCall")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualScriptFunctionCall extends godot.VisualScriptNode {
+	/**		
+		The mode for RPC calls. See `godot.Node.rpc` for more details and `godot.VisualScriptFunctionCall_RPCCallMode` for available options.
+	**/
 	@:native("RpcCallMode")
 	public var rpcCallMode:godot.VisualScriptFunctionCall_RPCCallMode;
 
+	/**		
+		If `false`, call errors (e.g. wrong number of arguments) will be ignored.
+	**/
 	@:native("Validate")
 	public var validate:Bool;
 
+	/**		
+		Number of default arguments that will be used when calling the function. Can't be higher than the number of available default arguments in the method's declaration.
+	**/
 	@:native("UseDefaultArgs")
 	public var useDefaultArgs:Int;
 
+	/**		
+		The name of the function to be called.
+	**/
 	@:native("Function")
 	public var function_:std.String;
 
 	@:native("ArgumentCache")
 	public var argumentCache:godot.collections.Dictionary;
 
+	/**		
+		The node path to use when `godot.VisualScriptFunctionCall.callMode` is set to `godot.VisualScriptFunctionCall_CallModeEnum.nodePath`.
+	**/
 	@:native("NodePath")
 	public var nodePath:godot.NodePath;
 
+	/**		
+		The type to be used when `godot.VisualScriptFunctionCall.callMode` is set to `godot.VisualScriptFunctionCall_CallModeEnum.basicType`.
+	**/
 	@:native("BasicType")
 	public var basicType:godot.Variant_Type;
 
+	/**		
+		The singleton to call the method on. Used when `godot.VisualScriptFunctionCall.callMode` is set to `godot.VisualScriptFunctionCall_CallModeEnum.singleton`.
+	**/
 	@:native("Singleton")
 	public var singleton:std.String;
 
+	/**		
+		The script to be used when `godot.VisualScriptFunctionCall.callMode` is set to `godot.VisualScriptFunctionCall_CallModeEnum.instance`.
+	**/
 	@:native("BaseScript")
 	public var baseScript:std.String;
 
+	/**		
+		The base type to be used when `godot.VisualScriptFunctionCall.callMode` is set to `godot.VisualScriptFunctionCall_CallModeEnum.instance`.
+	**/
 	@:native("BaseType")
 	public var baseType:std.String;
 
+	/**		
+		`call_mode` determines the target object on which the method will be called. See `godot.VisualScriptFunctionCall_CallModeEnum` for options.
+	**/
 	@:native("CallMode")
 	public var callMode:godot.VisualScriptFunctionCall_CallModeEnum;
 

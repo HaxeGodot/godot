@@ -207,7 +207,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		Back unit vector. Represents the local direction of back,
 		and the global direction of south.
 		
-		Value: Equivalent to `new Vector3(0, 0, 1)`
+		Value: Equivalent to `new Vector3(0, 0, 1)`.
 	**/
 	@:native("Back")
 	public static var BACK(default, never):godot.Vector3;
@@ -216,7 +216,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		Forward unit vector. Represents the local direction of forward,
 		and the global direction of north.
 		
-		Value: Equivalent to `new Vector3(0, 0, -1)`
+		Value: Equivalent to `new Vector3(0, 0, -1)`.
 	**/
 	@:native("Forward")
 	public static var FORWARD(default, never):godot.Vector3;
@@ -225,7 +225,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		Left unit vector. Represents the local direction of left,
 		and the global direction of west.
 		
-		Value: Equivalent to `new Vector3(-1, 0, 0)`
+		Value: Equivalent to `new Vector3(-1, 0, 0)`.
 	**/
 	@:native("Left")
 	public static var LEFT(default, never):godot.Vector3;
@@ -234,7 +234,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		Right unit vector. Represents the local direction of right,
 		and the global direction of east.
 		
-		Value: Equivalent to `new Vector3(1, 0, 0)`
+		Value: Equivalent to `new Vector3(1, 0, 0)`.
 	**/
 	@:native("Right")
 	public static var RIGHT(default, never):godot.Vector3;
@@ -242,7 +242,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		Down unit vector.
 		
-		Value: Equivalent to `new Vector3(0, -1, 0)`
+		Value: Equivalent to `new Vector3(0, -1, 0)`.
 	**/
 	@:native("Down")
 	public static var DOWN(default, never):godot.Vector3;
@@ -250,15 +250,15 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		Up unit vector.
 		
-		Value: Equivalent to `new Vector3(0, 1, 0)`
+		Value: Equivalent to `new Vector3(0, 1, 0)`.
 	**/
 	@:native("Up")
 	public static var UP(default, never):godot.Vector3;
 
 	/**		
-		Infinity vector, a vector with all components set to `Mathf.Inf`.
+		Infinity vector, a vector with all components set to `godot.Mathf.INF`.
 		
-		Value: Equivalent to `new Vector3(Mathf.Inf, Mathf.Inf, Mathf.Inf)`
+		Value: Equivalent to `new Vector3(Mathf.Inf, Mathf.Inf, Mathf.Inf)`.
 	**/
 	@:native("Inf")
 	public static var INF(default, never):godot.Vector3;
@@ -266,7 +266,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		Deprecated, please use a negative sign with `godot.Vector3.one` instead.
 		
-		Value: Equivalent to `new Vector3(-1, -1, -1)`
+		Value: Equivalent to `new Vector3(-1, -1, -1)`.
 	**/
 	@:native("NegOne")
 	public static var NEG_ONE(default, never):godot.Vector3;
@@ -274,7 +274,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		One vector, a vector with all components set to `1`.
 		
-		Value: Equivalent to `new Vector3(1, 1, 1)`
+		Value: Equivalent to `new Vector3(1, 1, 1)`.
 	**/
 	@:native("One")
 	public static var ONE(default, never):godot.Vector3;
@@ -282,7 +282,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		Zero vector, a vector with all components set to `0`.
 		
-		Value: Equivalent to `new Vector3(0, 0, 0)`
+		Value: Equivalent to `new Vector3(0, 0, 0)`.
 	**/
 	@:native("Zero")
 	public static var ZERO(default, never):godot.Vector3;
@@ -314,10 +314,10 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public function abs():godot.Vector3;
 
 	/**		
-		Returns the minimum angle to the given vector, in radians.
+		Returns the unsigned minimum angle to the given vector, in radians.
 		
 		@param to The other vector to compare this vector to.
-		@returns The angle between the two vectors, in radians.
+		@returns The unsigned angle between the two vectors, in radians.
 	**/
 	@:native("AngleTo")
 	public function angleTo(to:godot.Vector3):Single;
@@ -350,16 +350,16 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 
 	/**		
 		Performs a cubic interpolation between vectors `preA`, this vector,
-		`b`, and `postB`, by the given amount `t`.
+		`b`, and `postB`, by the given amount `weight`.
 		
 		@param b The destination vector.
 		@param preA A vector before this vector.
 		@param postB A vector after `b`.
-		@param t A value on the range of 0.0 to 1.0, representing the amount of interpolation.
+		@param weight A value on the range of 0.0 to 1.0, representing the amount of interpolation.
 		@returns The interpolated vector.
 	**/
 	@:native("CubicInterpolate")
-	public function cubicInterpolate(b:godot.Vector3, preA:godot.Vector3, postB:godot.Vector3, t:Single):godot.Vector3;
+	public function cubicInterpolate(b:godot.Vector3, preA:godot.Vector3, postB:godot.Vector3, weight:Single):godot.Vector3;
 
 	/**		
 		Returns the normalized vector pointing from this vector to `b`.
@@ -383,7 +383,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 
 	/**		
 		Returns the distance between this vector and `b`.
-		
+		@see `godot.Vector3.distanceSquaredTo`
 		@param b The other vector to use.
 		@returns The distance between the two vectors.
 	**/
@@ -416,16 +416,16 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public function inverse():godot.Vector3;
 
 	/**		
-		Returns true if the vector is normalized, and false otherwise.
+		Returns `true` if the vector is normalized, and `false` otherwise.
 		
-		@returns A bool indicating whether or not the vector is normalized.
+		@returns A `bool` indicating whether or not the vector is normalized.
 	**/
 	@:native("IsNormalized")
 	public function isNormalized():Bool;
 
 	/**		
 		Returns the length (magnitude) of this vector.
-		
+		@see `godot.Vector3.lengthSquared`
 		@returns The length of this vector.
 	**/
 	@:native("Length")
@@ -509,25 +509,29 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public function outer(b:godot.Vector3):godot.Basis;
 
 	/**		
-		Returns a vector composed of the `godot.Mathf.posMod` of this vector's components and `mod`.
+		Returns a vector composed of the `godot.Mathf.posMod` of this vector's components
+		and `mod`.
 		
 		@param mod A value representing the divisor of the operation.
-		@returns A vector with each component `godot.Mathf.posMod` by `mod`.
+		@returns
+		A vector with each component `godot.Mathf.posMod` by `mod`.
 	**/
 	@:native("PosMod")
 	public overload function posMod(mod:Single):godot.Vector3;
 
 	/**		
-		Returns a vector composed of the `godot.Mathf.posMod` of this vector's components and `modv`'s components.
+		Returns a vector composed of the `godot.Mathf.posMod` of this vector's components
+		and `modv`'s components.
 		
 		@param modv A vector representing the divisors of the operation.
-		@returns A vector with each component `godot.Mathf.posMod` by `modv`'s components.
+		@returns
+		A vector with each component `godot.Mathf.posMod` by `modv`'s components.
 	**/
 	@:native("PosMod")
 	public overload function posMod(modv:godot.Vector3):godot.Vector3;
 
 	/**		
-		Returns this vector projected onto another vector `b`.
+		Returns this vector projected onto another vector `onNormal`.
 		
 		@param onNormal The vector to project onto.
 		@returns The projected vector.
@@ -581,6 +585,19 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public function sign():godot.Vector3;
 
 	/**		
+		Returns the signed angle to the given vector, in radians.
+		The sign of the angle is positive in a counter-clockwise
+		direction and negative in a clockwise direction when viewed
+		from the side specified by the `axis`.
+		
+		@param to The other vector to compare this vector to.
+		@param axis The reference axis to use for the angle sign.
+		@returns The signed angle between the two vectors, in radians.
+	**/
+	@:native("SignedAngleTo")
+	public function signedAngleTo(to:godot.Vector3, axis:godot.Vector3):Single;
+
+	/**		
 		Returns the result of the spherical linear interpolation between
 		this vector and `to` by amount `weight`.
 		
@@ -594,7 +611,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public function slerp(to:godot.Vector3, weight:Single):godot.Vector3;
 
 	/**		
-		Returns this vector slid along a plane defined by the given normal.
+		Returns this vector slid along a plane defined by the given `normal`.
 		
 		@param normal The normal vector defining the plane to slide on.
 		@returns The slid vector.
@@ -615,10 +632,10 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	/**		
 		Returns a diagonal matrix with the vector as main diagonal.
 		
-		This is equivalent to a Basis with no rotation or shearing and
+		This is equivalent to a `godot.Basis` with no rotation or shearing and
 		this vector's components set as the scale.
 		
-		@returns A Basis with the vector as its main diagonal.
+		@returns A `godot.Basis` with the vector as its main diagonal.
 	**/
 	@:native("ToDiagonalMatrix")
 	public function toDiagonalMatrix():godot.Basis;
@@ -642,8 +659,8 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	public overload function new(v:godot.Vector3):Void;
 
 	/**		
-		Returns true if this vector and `other` are approximately equal, by running
-		`godot.Mathf.isEqualApprox` on each component.
+		Returns `true` if this vector and `other` are approximately equal,
+		by running `godot.Mathf.isEqualApprox` on each component.
 		
 		@param other The other vector to compare.
 		@returns Whether or not the vectors are approximately equal.
@@ -651,9 +668,19 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 	@:native("IsEqualApprox")
 	public function isEqualApprox(other:godot.Vector3):Bool;
 
+	/**		
+		Converts this `godot.Vector3` to a string.
+		
+		@returns A string representation of this vector.
+	**/
 	@:native("ToString")
 	public overload function toString():std.String;
 
+	/**		
+		Converts this `godot.Vector3` to a string with the given `format`.
+		
+		@returns A string representation of this vector.
+	**/
 	@:native("ToString")
 	public overload function toString(format:std.String):std.String;
 }

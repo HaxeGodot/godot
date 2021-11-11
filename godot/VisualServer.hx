@@ -491,17 +491,14 @@ extern class VisualServer {
 	@:native("MeshSurfaceGetFormatOffset")
 	public static function meshSurfaceGetFormatOffset(format:UInt, vertexLen:Int, indexLen:Int, arrayIndex:Int):UInt;
 
-	/**		
-		Function is unused in Godot 3.x.
-	**/
 	@:native("MeshSurfaceGetFormatStride")
-	public static function meshSurfaceGetFormatStride(format:UInt, vertexLen:Int, indexLen:Int):UInt;
+	public static function meshSurfaceGetFormatStride(format:UInt, vertexLen:Int, indexLen:Int, arrayIndex:Int):UInt;
 
 	#if doc_gen
 	/**		
 		Adds a surface generated from the Arrays to a mesh. See `godot.VisualServer_PrimitiveType` constants for types.
 		
-		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("MeshAddSurfaceFromArrays")
 	public static function meshAddSurfaceFromArrays(mesh:godot.RID, primitive:godot.VisualServer_PrimitiveType, arrays:godot.collections.Array, ?blendShapes:godot.collections.Array, ?compressFormat:UInt):Void;
@@ -509,7 +506,7 @@ extern class VisualServer {
 	/**		
 		Adds a surface generated from the Arrays to a mesh. See `godot.VisualServer_PrimitiveType` constants for types.
 		
-		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("MeshAddSurfaceFromArrays")
 	public static overload function meshAddSurfaceFromArrays(mesh:godot.RID, primitive:godot.VisualServer_PrimitiveType, arrays:godot.collections.Array):Void;
@@ -517,7 +514,7 @@ extern class VisualServer {
 	/**		
 		Adds a surface generated from the Arrays to a mesh. See `godot.VisualServer_PrimitiveType` constants for types.
 		
-		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("MeshAddSurfaceFromArrays")
 	public static overload function meshAddSurfaceFromArrays(mesh:godot.RID, primitive:godot.VisualServer_PrimitiveType, arrays:godot.collections.Array, blendShapes:godot.collections.Array):Void;
@@ -525,7 +522,7 @@ extern class VisualServer {
 	/**		
 		Adds a surface generated from the Arrays to a mesh. See `godot.VisualServer_PrimitiveType` constants for types.
 		
-		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("MeshAddSurfaceFromArrays")
 	public static overload function meshAddSurfaceFromArrays(mesh:godot.RID, primitive:godot.VisualServer_PrimitiveType, arrays:godot.collections.Array, blendShapes:godot.collections.Array, compressFormat:UInt):Void;
@@ -1024,7 +1021,7 @@ extern class VisualServer {
 	public static function lightSetReverseCullFaceMode(light:godot.RID, enabled:Bool):Void;
 
 	/**		
-		Sets whether GI probes capture light information from this light. Deprecated method. Use `godot.VisualServer.lightSetBakeMode` instead. This method is only kept for compatibility reasons and calls `godot.VisualServer.lightSetBakeMode` internally, setting the bake mode to  or  depending on the given parameter.
+		Sets whether GI probes capture light information from this light. Deprecated method. Use `godot.VisualServer.lightSetBakeMode` instead. This method is only kept for compatibility reasons and calls `godot.VisualServer.lightSetBakeMode` internally, setting the bake mode to `godot.VisualServer_LightBakeMode.disabled` or `godot.VisualServer_LightBakeMode.indirect` depending on the given parameter.
 	**/
 	@:native("LightSetUseGi")
 	public static function lightSetUseGi(light:godot.RID, enabled:Bool):Void;
@@ -1450,7 +1447,9 @@ extern class VisualServer {
 	public static function particlesSetUseLocalCoordinates(particles:godot.RID, enable:Bool):Void;
 
 	/**		
-		Sets the material for processing the particles. Note: this is not the material used to draw the materials. Equivalent to `godot.Particles.processMaterial`.
+		Sets the material for processing the particles.
+		
+		Note: This is not the material used to draw the materials. Equivalent to `godot.Particles.processMaterial`.
 	**/
 	@:native("ParticlesSetProcessMaterial")
 	public static function particlesSetProcessMaterial(particles:godot.RID, material:godot.RID):Void;
@@ -1560,7 +1559,7 @@ extern class VisualServer {
 	public static function cameraSetEnvironment(camera:godot.RID, env:godot.RID):Void;
 
 	/**		
-		If `true`, preserves the horizontal aspect ratio which is equivalent to . If `false`, preserves the vertical aspect ratio which is equivalent to .
+		If `true`, preserves the horizontal aspect ratio which is equivalent to `godot.Camera_KeepAspectEnum.width`. If `false`, preserves the vertical aspect ratio which is equivalent to `godot.Camera_KeepAspectEnum.height`.
 	**/
 	@:native("CameraSetUseVerticalAspect")
 	public static function cameraSetUseVerticalAspect(camera:godot.RID, enable:Bool):Void;
@@ -1613,7 +1612,7 @@ extern class VisualServer {
 		
 		Using this can result in significant optimization, especially on lower-end devices. However, it comes at the cost of having to manage your viewports manually. For a further optimization see, `godot.VisualServer.viewportSetRenderDirectToScreen`.
 		
-		@param rect If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
+		@param rect If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(0, 0))
 	**/
 	@:native("ViewportAttachToScreen")
 	public static function viewportAttachToScreen(viewport:godot.RID, ?rect:Null<godot.Rect2>, ?screen:Int):Void;
@@ -1633,7 +1632,7 @@ extern class VisualServer {
 		
 		Using this can result in significant optimization, especially on lower-end devices. However, it comes at the cost of having to manage your viewports manually. For a further optimization see, `godot.VisualServer.viewportSetRenderDirectToScreen`.
 		
-		@param rect If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
+		@param rect If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(0, 0))
 	**/
 	@:native("ViewportAttachToScreen")
 	public static overload function viewportAttachToScreen(viewport:godot.RID):Void;
@@ -1653,7 +1652,7 @@ extern class VisualServer {
 		
 		Using this can result in significant optimization, especially on lower-end devices. However, it comes at the cost of having to manage your viewports manually. For a further optimization see, `godot.VisualServer.viewportSetRenderDirectToScreen`.
 		
-		@param rect If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
+		@param rect If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(0, 0))
 	**/
 	@:native("ViewportAttachToScreen")
 	public static overload function viewportAttachToScreen(viewport:godot.RID, rect:Nullable1<godot.Rect2>):Void;
@@ -1673,7 +1672,7 @@ extern class VisualServer {
 		
 		Using this can result in significant optimization, especially on lower-end devices. However, it comes at the cost of having to manage your viewports manually. For a further optimization see, `godot.VisualServer.viewportSetRenderDirectToScreen`.
 		
-		@param rect If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
+		@param rect If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(0, 0))
 	**/
 	@:native("ViewportAttachToScreen")
 	public static overload function viewportAttachToScreen(viewport:godot.RID, rect:Nullable1<godot.Rect2>, screen:Int):Void;
@@ -1810,7 +1809,7 @@ extern class VisualServer {
 	public static function viewportSetMsaa(viewport:godot.RID, msaa:godot.VisualServer_ViewportMSAA):Void;
 
 	/**		
-		Enables fast approximate antialiasing for this viewport. FXAA is a popular screen-space antialiasing method, which is fast but will make the image look blurry, especially at lower resolutions. It can still work relatively well at large resolutions such as 1440p and 4K.
+		Enables fast approximate antialiasing for this viewport. FXAA is a popular screen-space antialiasing method, which is fast but will make the image look blurry, especially at lower resolutions. It can still work relatively well at large resolutions such as 1440p and 4K. Some of the lost sharpness can be recovered by enabling contrast-adaptive sharpening (see `godot.VisualServer.viewportSetSharpenIntensity`).
 	**/
 	@:native("ViewportSetUseFxaa")
 	public static function viewportSetUseFxaa(viewport:godot.RID, fxaa:Bool):Void;
@@ -1822,6 +1821,12 @@ extern class VisualServer {
 	**/
 	@:native("ViewportSetUseDebanding")
 	public static function viewportSetUseDebanding(viewport:godot.RID, debanding:Bool):Void;
+
+	/**		
+		Sets the sharpening `intensity` for the `viewport`. If set to a value greater than `0.0`, contrast-adaptive sharpening will be applied to the 3D viewport. This has a low performance cost and can be used to recover some of the sharpness lost from using FXAA. Values around `0.5` generally give the best results. See also `godot.VisualServer.viewportSetUseFxaa`.
+	**/
+	@:native("ViewportSetSharpenIntensity")
+	public static function viewportSetSharpenIntensity(viewport:godot.RID, intensity:Single):Void;
 
 	/**		
 		If `true`, the viewport renders to hdr.
@@ -1939,7 +1944,7 @@ extern class VisualServer {
 		Sets the variables to be used with the "glow" post-process effect. See `godot.Environment` for more details.
 	**/
 	@:native("EnvironmentSetGlow")
-	public static function environmentSetGlow(env:godot.RID, enable:Bool, levelFlags:Int, intensity:Single, strength:Single, bloomThreshold:Single, blendMode:godot.VisualServer_EnvironmentGlowBlendMode, hdrBleedThreshold:Single, hdrBleedScale:Single, hdrLuminanceCap:Single, bicubicUpscale:Bool):Void;
+	public static function environmentSetGlow(env:godot.RID, enable:Bool, levelFlags:Int, intensity:Single, strength:Single, bloomThreshold:Single, blendMode:godot.VisualServer_EnvironmentGlowBlendMode, hdrBleedThreshold:Single, hdrBleedScale:Single, hdrLuminanceCap:Single, bicubicUpscale:Bool, highQuality:Bool):Void;
 
 	/**		
 		Sets the variables to be used with the "tonemap" post-process effect. See `godot.Environment` for more details.
@@ -2087,7 +2092,7 @@ extern class VisualServer {
 	/**		
 		Sets the lightmap to use with this instance.
 		
-		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(0, 0, 1, 1)
+		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(1, 1))
 	**/
 	@:native("InstanceSetUseLightmap")
 	public static function instanceSetUseLightmap(instance:godot.RID, lightmapInstance:godot.RID, lightmap:godot.RID, ?lightmapSlice:Int, ?lightmapUvRect:Null<godot.Rect2>):Void;
@@ -2095,7 +2100,7 @@ extern class VisualServer {
 	/**		
 		Sets the lightmap to use with this instance.
 		
-		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(0, 0, 1, 1)
+		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(1, 1))
 	**/
 	@:native("InstanceSetUseLightmap")
 	public static overload function instanceSetUseLightmap(instance:godot.RID, lightmapInstance:godot.RID, lightmap:godot.RID):Void;
@@ -2103,7 +2108,7 @@ extern class VisualServer {
 	/**		
 		Sets the lightmap to use with this instance.
 		
-		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(0, 0, 1, 1)
+		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(1, 1))
 	**/
 	@:native("InstanceSetUseLightmap")
 	public static overload function instanceSetUseLightmap(instance:godot.RID, lightmapInstance:godot.RID, lightmap:godot.RID, lightmapSlice:Int):Void;
@@ -2111,7 +2116,7 @@ extern class VisualServer {
 	/**		
 		Sets the lightmap to use with this instance.
 		
-		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(0, 0, 1, 1)
+		@param lightmapUvRect If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(1, 1))
 	**/
 	@:native("InstanceSetUseLightmap")
 	public static overload function instanceSetUseLightmap(instance:godot.RID, lightmapInstance:godot.RID, lightmap:godot.RID, lightmapSlice:Int, lightmapUvRect:Nullable1<godot.Rect2>):Void;
@@ -2317,7 +2322,7 @@ extern class VisualServer {
 	/**		
 		Defines a custom drawing rectangle for the `godot.CanvasItem`.
 		
-		@param rect If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
+		@param rect If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(0, 0))
 	**/
 	@:native("CanvasItemSetCustomRect")
 	public static function canvasItemSetCustomRect(item:godot.RID, useCustomRect:Bool, ?rect:Null<godot.Rect2>):Void;
@@ -2325,7 +2330,7 @@ extern class VisualServer {
 	/**		
 		Defines a custom drawing rectangle for the `godot.CanvasItem`.
 		
-		@param rect If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
+		@param rect If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(0, 0))
 	**/
 	@:native("CanvasItemSetCustomRect")
 	public static overload function canvasItemSetCustomRect(item:godot.RID, useCustomRect:Bool):Void;
@@ -2333,7 +2338,7 @@ extern class VisualServer {
 	/**		
 		Defines a custom drawing rectangle for the `godot.CanvasItem`.
 		
-		@param rect If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
+		@param rect If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(0, 0))
 	**/
 	@:native("CanvasItemSetCustomRect")
 	public static overload function canvasItemSetCustomRect(item:godot.RID, useCustomRect:Bool, rect:Nullable1<godot.Rect2>):Void;
@@ -2623,7 +2628,7 @@ extern class VisualServer {
 	/**		
 		Adds a polygon to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("CanvasItemAddPolygon")
 	public static function canvasItemAddPolygon(item:godot.RID, points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?uvs:std.Array<godot.Vector2>, ?texture:godot.RID, ?normalMap:godot.RID, ?antialiased:Bool):Void;
@@ -2631,7 +2636,7 @@ extern class VisualServer {
 	/**		
 		Adds a polygon to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("CanvasItemAddPolygon")
 	public static overload function canvasItemAddPolygon(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
@@ -2639,7 +2644,7 @@ extern class VisualServer {
 	/**		
 		Adds a polygon to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("CanvasItemAddPolygon")
 	public static overload function canvasItemAddPolygon(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>):Void;
@@ -2647,7 +2652,7 @@ extern class VisualServer {
 	/**		
 		Adds a polygon to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("CanvasItemAddPolygon")
 	public static overload function canvasItemAddPolygon(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.RID):Void;
@@ -2655,7 +2660,7 @@ extern class VisualServer {
 	/**		
 		Adds a polygon to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("CanvasItemAddPolygon")
 	public static overload function canvasItemAddPolygon(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.RID, normalMap:godot.RID):Void;
@@ -2663,7 +2668,7 @@ extern class VisualServer {
 	/**		
 		Adds a polygon to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("CanvasItemAddPolygon")
 	public static overload function canvasItemAddPolygon(item:godot.RID, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.RID, normalMap:godot.RID, antialiased:Bool):Void;
@@ -2673,9 +2678,9 @@ extern class VisualServer {
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param bones If the parameter is null, then the default value is new int[] {}
-		@param weights If the parameter is null, then the default value is new float[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param bones If the parameter is null, then the default value is Array.Empty&lt;int&gt;()
+		@param weights If the parameter is null, then the default value is Array.Empty&lt;float&gt;()
 	**/
 	@:native("CanvasItemAddTriangleArray")
 	public static function canvasItemAddTriangleArray(item:godot.RID, indices:std.Array<Int>, points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?uvs:std.Array<godot.Vector2>, ?bones:std.Array<Int>, ?weights:std.Array<Single>, ?texture:godot.RID, ?count:Int, ?normalMap:godot.RID, ?antialiased:Bool, ?antialiasingUseIndices:Bool):Void;
@@ -2683,9 +2688,9 @@ extern class VisualServer {
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param bones If the parameter is null, then the default value is new int[] {}
-		@param weights If the parameter is null, then the default value is new float[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param bones If the parameter is null, then the default value is Array.Empty&lt;int&gt;()
+		@param weights If the parameter is null, then the default value is Array.Empty&lt;float&gt;()
 	**/
 	@:native("CanvasItemAddTriangleArray")
 	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
@@ -2693,9 +2698,9 @@ extern class VisualServer {
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param bones If the parameter is null, then the default value is new int[] {}
-		@param weights If the parameter is null, then the default value is new float[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param bones If the parameter is null, then the default value is Array.Empty&lt;int&gt;()
+		@param weights If the parameter is null, then the default value is Array.Empty&lt;float&gt;()
 	**/
 	@:native("CanvasItemAddTriangleArray")
 	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>):Void;
@@ -2703,9 +2708,9 @@ extern class VisualServer {
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param bones If the parameter is null, then the default value is new int[] {}
-		@param weights If the parameter is null, then the default value is new float[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param bones If the parameter is null, then the default value is Array.Empty&lt;int&gt;()
+		@param weights If the parameter is null, then the default value is Array.Empty&lt;float&gt;()
 	**/
 	@:native("CanvasItemAddTriangleArray")
 	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>):Void;
@@ -2713,9 +2718,9 @@ extern class VisualServer {
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param bones If the parameter is null, then the default value is new int[] {}
-		@param weights If the parameter is null, then the default value is new float[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param bones If the parameter is null, then the default value is Array.Empty&lt;int&gt;()
+		@param weights If the parameter is null, then the default value is Array.Empty&lt;float&gt;()
 	**/
 	@:native("CanvasItemAddTriangleArray")
 	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>):Void;
@@ -2723,9 +2728,9 @@ extern class VisualServer {
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param bones If the parameter is null, then the default value is new int[] {}
-		@param weights If the parameter is null, then the default value is new float[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param bones If the parameter is null, then the default value is Array.Empty&lt;int&gt;()
+		@param weights If the parameter is null, then the default value is Array.Empty&lt;float&gt;()
 	**/
 	@:native("CanvasItemAddTriangleArray")
 	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>, texture:godot.RID):Void;
@@ -2733,9 +2738,9 @@ extern class VisualServer {
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param bones If the parameter is null, then the default value is new int[] {}
-		@param weights If the parameter is null, then the default value is new float[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param bones If the parameter is null, then the default value is Array.Empty&lt;int&gt;()
+		@param weights If the parameter is null, then the default value is Array.Empty&lt;float&gt;()
 	**/
 	@:native("CanvasItemAddTriangleArray")
 	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>, texture:godot.RID, count:Int):Void;
@@ -2743,9 +2748,9 @@ extern class VisualServer {
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param bones If the parameter is null, then the default value is new int[] {}
-		@param weights If the parameter is null, then the default value is new float[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param bones If the parameter is null, then the default value is Array.Empty&lt;int&gt;()
+		@param weights If the parameter is null, then the default value is Array.Empty&lt;float&gt;()
 	**/
 	@:native("CanvasItemAddTriangleArray")
 	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>, texture:godot.RID, count:Int, normalMap:godot.RID):Void;
@@ -2753,9 +2758,9 @@ extern class VisualServer {
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param bones If the parameter is null, then the default value is new int[] {}
-		@param weights If the parameter is null, then the default value is new float[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param bones If the parameter is null, then the default value is Array.Empty&lt;int&gt;()
+		@param weights If the parameter is null, then the default value is Array.Empty&lt;float&gt;()
 	**/
 	@:native("CanvasItemAddTriangleArray")
 	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>, texture:godot.RID, count:Int, normalMap:godot.RID, antialiased:Bool):Void;
@@ -2763,9 +2768,9 @@ extern class VisualServer {
 	/**		
 		Adds a triangle array to the `godot.CanvasItem`'s draw commands.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param bones If the parameter is null, then the default value is new int[] {}
-		@param weights If the parameter is null, then the default value is new float[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param bones If the parameter is null, then the default value is Array.Empty&lt;int&gt;()
+		@param weights If the parameter is null, then the default value is Array.Empty&lt;float&gt;()
 	**/
 	@:native("CanvasItemAddTriangleArray")
 	public static overload function canvasItemAddTriangleArray(item:godot.RID, indices:HaxeArray<Int>, points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, bones:HaxeArray<Int>, weights:HaxeArray<Single>, texture:godot.RID, count:Int, normalMap:godot.RID, antialiased:Bool, antialiasingUseIndices:Bool):Void;
@@ -3250,6 +3255,12 @@ extern class VisualServer {
 	**/
 	@:native("SetDebugGenerateWireframes")
 	public static function setDebugGenerateWireframes(generate:Bool):Void;
+
+	/**		
+		Enables or disables occlusion culling.
+	**/
+	@:native("SetUseOcclusionCulling")
+	public static function setUseOcclusionCulling(enable:Bool):Void;
 
 	@:native("IsRenderLoopEnabled")
 	public static function isRenderLoopEnabled():Bool;

@@ -97,7 +97,7 @@ extern class DTLSServer extends godot.Reference {
 	/**		
 		Try to initiate the DTLS handshake with the given `udp_peer` which must be already connected (see `godot.PacketPeerUDP.connectToHost`).
 		
-		Note: You must check that the state of the return PacketPeerUDP is , as it is normal that 50% of the new connections will be invalid due to cookie exchange.
+		Note: You must check that the state of the return PacketPeerUDP is `godot.PacketPeerDTLS_Status.handshaking`, as it is normal that 50% of the new connections will be invalid due to cookie exchange.
 	**/
 	@:native("TakeConnection")
 	public function takeConnection(udpPeer:godot.PacketPeerUDP):godot.PacketPeerDTLS;

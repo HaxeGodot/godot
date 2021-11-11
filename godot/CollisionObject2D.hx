@@ -49,6 +49,22 @@ extern abstract class CollisionObject2D extends godot.Node2D {
 	public var inputPickable:Bool;
 
 	/**		
+		The physics layers this CollisionObject2D scans. Collision objects can scan one or more of 32 different layers. See also `godot.CollisionObject2D.collisionLayer`.
+		
+		Note: A contact is detected if object A is in any of the layers that object B scans, or object B is in any layers that object A scans. See [https://docs.godotengine.org/en/latest/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+	**/
+	@:native("CollisionMask")
+	public var collisionMask:UInt;
+
+	/**		
+		The physics layers this CollisionObject2D is in. Collision objects can exist in one or more of 32 different layers. See also `godot.CollisionObject2D.collisionMask`.
+		
+		Note: A contact is detected if object A is in any of the layers that object B scans, or object B is in any layers that object A scans. See [https://docs.godotengine.org/en/latest/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+	**/
+	@:native("CollisionLayer")
+	public var collisionLayer:UInt;
+
+	/**		
 		Accepts unhandled `godot.InputEvent`s. Requires `godot.CollisionObject2D.inputPickable` to be `true`. `shape_idx` is the child index of the clicked `godot.Shape2D`. Connect to the `input_event` signal to easily pick up these events.
 	**/
 	@:native("_InputEvent")
@@ -59,6 +75,46 @@ extern abstract class CollisionObject2D extends godot.Node2D {
 	**/
 	@:native("GetRid")
 	public function getRid():godot.RID;
+
+	@:native("SetCollisionLayer")
+	public function setCollisionLayer(layer:UInt):Void;
+
+	@:native("GetCollisionLayer")
+	public function getCollisionLayer():UInt;
+
+	@:native("SetCollisionMask")
+	public function setCollisionMask(mask:UInt):Void;
+
+	@:native("GetCollisionMask")
+	public function getCollisionMask():UInt;
+
+	/**		
+		If `value` is `true`, sets the specified `bit` in the the `godot.CollisionObject2D.collisionLayer`.
+		
+		If `value` is `false`, clears the specified `bit` in the the `godot.CollisionObject2D.collisionLayer`.
+	**/
+	@:native("SetCollisionLayerBit")
+	public function setCollisionLayerBit(bit:Int, value:Bool):Void;
+
+	/**		
+		Returns whether or not the specified `bit` of the `godot.CollisionObject2D.collisionLayer` is set.
+	**/
+	@:native("GetCollisionLayerBit")
+	public function getCollisionLayerBit(bit:Int):Bool;
+
+	/**		
+		If `value` is `true`, sets the specified `bit` in the the `godot.CollisionObject2D.collisionMask`.
+		
+		If `value` is `false`, clears the specified `bit` in the the `godot.CollisionObject2D.collisionMask`.
+	**/
+	@:native("SetCollisionMaskBit")
+	public function setCollisionMaskBit(bit:Int, value:Bool):Void;
+
+	/**		
+		Returns whether or not the specified `bit` of the `godot.CollisionObject2D.collisionMask` is set.
+	**/
+	@:native("GetCollisionMaskBit")
+	public function getCollisionMaskBit(bit:Int):Bool;
 
 	@:native("SetPickable")
 	public function setPickable(enabled:Bool):Void;

@@ -26,7 +26,7 @@ return min(0, abs(u - v) - 1)
 
 `godot.AStar._EstimateCost` should return a lower bound of the distance, i.e. `_estimate_cost(u, v) &lt;= _compute_cost(u, v)`. This serves as a hint to the algorithm because the custom `_compute_cost` might be computation-heavy. If this is not the case, make `godot.AStar._EstimateCost` return the same value as `godot.AStar._ComputeCost` to provide the algorithm with the most accurate information.
 
-If the default `godot.AStar._EstimateCost` and `godot.AStar._ComputeCost` methods are used, or if the supplied `godot.AStar._EstimateCost` method returns a lower bound of the cost, then the paths returned by A* will be the lowest cost paths. Here, the cost of a path equals to the sum of the `godot.AStar._ComputeCost` results of all segments in the path multiplied by the `weight_scale`s of the end points of the respective segments. If the default methods are used and the `weight_scale`s of all points are set to `1.0`, then this equals to the sum of Euclidean distances of all segments in the path.
+If the default `godot.AStar._EstimateCost` and `godot.AStar._ComputeCost` methods are used, or if the supplied `godot.AStar._EstimateCost` method returns a lower bound of the cost, then the paths returned by A* will be the lowest-cost paths. Here, the cost of a path equals the sum of the `godot.AStar._ComputeCost` results of all segments in the path multiplied by the `weight_scale`s of the endpoints of the respective segments. If the default methods are used and the `weight_scale`s of all points are set to `1.0`, then this equals the sum of Euclidean distances of all segments in the path.
 **/
 @:libType
 @:csNative

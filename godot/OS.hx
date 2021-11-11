@@ -52,13 +52,13 @@ extern class OS {
 	public static var WINDOW_FULLSCREEN:Bool;
 
 	/**		
-		If `true`, the window background is transparent and window frame is removed.
+		If `true`, the window background is transparent and the window frame is removed.
 		
 		Use `get_tree().get_root().set_transparent_background(true)` to disable main viewport background rendering.
 		
-		Note: This property has no effect if Project &gt; Project Settings &gt; Display &gt; Window &gt; Per-pixel transparency &gt; Allowed setting is disabled.
+		Note: This property has no effect if  setting is disabled.
 		
-		Note: This property is implemented on HTML5, Linux, macOS and Windows.
+		Note: This property is implemented on HTML5, Linux, macOS, Windows, and Android. It can't be changed at runtime for Android. Use  to set it at startup instead.
 	**/
 	@:native("WindowPerPixelTransparencyEnabled")
 	public static var WINDOW_PER_PIXEL_TRANSPARENCY_ENABLED:Bool;
@@ -84,7 +84,9 @@ extern class OS {
 	public static var MAX_WINDOW_SIZE:godot.Vector2;
 
 	/**		
-		The minimum size of the window (without counting window manager decorations). Does not affect fullscreen mode. Set to `(0, 0)` to reset to the system default value.
+		The minimum size of the window in pixels (without counting window manager decorations). Does not affect fullscreen mode. Set to `(0, 0)` to reset to the system's default value.
+		
+		Note: By default, the project window has a minimum size of `Vector2(64, 64)`. This prevents issues that can arise when the window is resized to a near-zero size.
 	**/
 	@:native("MinWindowSize")
 	public static var MIN_WINDOW_SIZE:godot.Vector2;
@@ -106,6 +108,12 @@ extern class OS {
 	**/
 	@:native("LowProcessorUsageMode")
 	public static var LOW_PROCESSOR_USAGE_MODE:Bool;
+
+	/**		
+		If `true`, the engine filters the time delta measured between each frame, and attempts to compensate for random variation. This will only operate on systems where V-Sync is active.
+	**/
+	@:native("DeltaSmoothing")
+	public static var DELTA_SMOOTHING:Bool;
 
 	/**		
 		If `true` and `vsync_enabled` is true, the operating system's window compositor will be used for vsync when the compositor is enabled and the game is in windowed mode.
@@ -558,7 +566,7 @@ extern class OS {
 	/**		
 		Returns the IME cursor position (the currently-edited portion of the string) relative to the characters in the composition string.
 		
-		is sent to the application to notify it of changes to the IME cursor position.
+		`godot.MainLoop.notificationOsImeUpdate` is sent to the application to notify it of changes to the IME cursor position.
 		
 		Note: This method is implemented on macOS.
 	**/
@@ -568,7 +576,7 @@ extern class OS {
 	/**		
 		Returns the IME intermediate composition string.
 		
-		is sent to the application to notify it of changes to the IME composition string.
+		`godot.MainLoop.notificationOsImeUpdate` is sent to the application to notify it of changes to the IME composition string.
 		
 		Note: This method is implemented on macOS.
 	**/
@@ -693,7 +701,7 @@ extern class OS {
 		
 		Note: This method is implemented on Android, iOS, Linux, macOS and Windows.
 		
-		@param output If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param output If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
 	public static function execute(path:std.String, arguments:std.Array<std.String>, ?blocking:Bool, ?output:godot.collections.Array, ?readStderr:Bool):Int;
@@ -738,7 +746,7 @@ extern class OS {
 		
 		Note: This method is implemented on Android, iOS, Linux, macOS and Windows.
 		
-		@param output If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param output If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
 	public static overload function execute(path:std.String, arguments:HaxeArray<std.String>):Int;
@@ -783,7 +791,7 @@ extern class OS {
 		
 		Note: This method is implemented on Android, iOS, Linux, macOS and Windows.
 		
-		@param output If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param output If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
 	public static overload function execute(path:std.String, arguments:HaxeArray<std.String>, blocking:Bool):Int;
@@ -828,7 +836,7 @@ extern class OS {
 		
 		Note: This method is implemented on Android, iOS, Linux, macOS and Windows.
 		
-		@param output If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param output If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
 	public static overload function execute(path:std.String, arguments:HaxeArray<std.String>, blocking:Bool, output:godot.collections.Array):Int;
@@ -873,7 +881,7 @@ extern class OS {
 		
 		Note: This method is implemented on Android, iOS, Linux, macOS and Windows.
 		
-		@param output If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param output If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
 	public static overload function execute(path:std.String, arguments:HaxeArray<std.String>, blocking:Bool, output:godot.collections.Array, readStderr:Bool):Int;
@@ -950,7 +958,7 @@ extern class OS {
 		
 		You can also incorporate environment variables using the `godot.OS.getEnvironment` method.
 		
-		You can set `editor/main_run_args` in the Project Settings to define command-line arguments to be passed by the editor when running the project.
+		You can set  to define command-line arguments to be passed by the editor when running the project.
 		
 		Here's a minimal example on how to parse command-line arguments into a dictionary using the `--key=value` form for arguments:
 		
@@ -1037,7 +1045,7 @@ extern class OS {
 	/**		
 		Returns the current UNIX epoch timestamp in seconds.
 		
-		Important: This is the system clock that the user can manully set. Never use this method for precise time calculation since its results are also subject to automatic adjustments by the operating system. Always use `godot.OS.getTicksUsec` or `godot.OS.getTicksMsec` for precise time calculation instead, since they are guaranteed to be monotonic (i.e. never decrease).
+		Important: This is the system clock that the user can manually set. Never use this method for precise time calculation since its results are also subject to automatic adjustments by the operating system. Always use `godot.OS.getTicksUsec` or `godot.OS.getTicksMsec` for precise time calculation instead, since they are guaranteed to be monotonic (i.e. never decrease).
 	**/
 	@:native("GetUnixTime")
 	public static function getUnixTime():cs.types.UInt64;
@@ -1055,7 +1063,7 @@ extern class OS {
 		
 		`datetime` must be populated with the following keys: `year`, `month`, `day`, `hour`, `minute`, `second`.
 		
-		If the dictionary is empty `0` is returned.
+		If the dictionary is empty `0` is returned. If some keys are omitted, they default to the equivalent values for the UNIX epoch timestamp 0 (1970-01-01 at 00:00:00 UTC).
 		
 		You can pass the output from `godot.OS.getDatetimeFromUnixTime` directly into this function. Daylight Savings Time (`dst`), if present, is ignored.
 	**/
@@ -1101,13 +1109,21 @@ extern class OS {
 	public static function setExitCode(code:Int):Void;
 
 	/**		
-		Delay execution of the current thread by `usec` microseconds. `usec` must be greater than or equal to `0`. Otherwise, `godot.OS.delayUsec` will do nothing and will print an error message.
+		Delays execution of the current thread by `usec` microseconds. `usec` must be greater than or equal to `0`. Otherwise, `godot.OS.delayUsec` will do nothing and will print an error message.
+		
+		Note: `godot.OS.delayUsec` is a blocking way to delay code execution. To delay code execution in a non-blocking way, see `godot.SceneTree.createTimer`. Yielding with `godot.SceneTree.createTimer` will delay the execution of code placed below the `yield` without affecting the rest of the project (or editor, for `Godot.EditorPlugin`s and `Godot.EditorScript`s).
+		
+		Note: When `godot.OS.delayUsec` is called on the main thread, it will freeze the project and will prevent it from redrawing and registering input until the delay has passed. When using `godot.OS.delayUsec` as part of an `Godot.EditorPlugin` or `Godot.EditorScript`, it will freeze the editor but won't freeze the project if it is currently running (since the project is an independent child process).
 	**/
 	@:native("DelayUsec")
 	public static function delayUsec(usec:Int):Void;
 
 	/**		
-		Delay execution of the current thread by `msec` milliseconds. `usec` must be greater than or equal to `0`. Otherwise, `godot.OS.delayMsec` will do nothing and will print an error message.
+		Delays execution of the current thread by `msec` milliseconds. `msec` must be greater than or equal to `0`. Otherwise, `godot.OS.delayMsec` will do nothing and will print an error message.
+		
+		Note: `godot.OS.delayMsec` is a blocking way to delay code execution. To delay code execution in a non-blocking way, see `godot.SceneTree.createTimer`. Yielding with `godot.SceneTree.createTimer` will delay the execution of code placed below the `yield` without affecting the rest of the project (or editor, for `Godot.EditorPlugin`s and `Godot.EditorScript`s).
+		
+		Note: When `godot.OS.delayMsec` is called on the main thread, it will freeze the project and will prevent it from redrawing and registering input until the delay has passed. When using `godot.OS.delayMsec` as part of an `Godot.EditorPlugin` or `Godot.EditorScript`, it will freeze the editor but won't freeze the project if it is currently running (since the project is an independent child process).
 	**/
 	@:native("DelayMsec")
 	public static function delayMsec(msec:Int):Void;
@@ -1116,7 +1132,7 @@ extern class OS {
 		Returns the amount of time passed in milliseconds since the engine started.
 	**/
 	@:native("GetTicksMsec")
-	public static function getTicksMsec():UInt;
+	public static function getTicksMsec():cs.types.UInt64;
 
 	/**		
 		Returns the amount of time passed in microseconds since the engine started.
@@ -1131,10 +1147,28 @@ extern class OS {
 	public static function getSplashTickMsec():UInt;
 
 	/**		
-		Returns the host OS locale.
+		Returns the host OS locale as a string of the form `language_Script_COUNTRY_VARIANT@extra`. If you want only the language code and not the fully specified locale from the OS, you can use `godot.OS.getLocaleLanguage`.
+		
+		`language` - 2 or 3-letter [https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes](language code), in lower case.
+		
+		`Script` - optional, 4-letter [https://en.wikipedia.org/wiki/ISO_15924](script code), in title case.
+		
+		`COUNTRY` - optional, 2 or 3-letter [https://en.wikipedia.org/wiki/ISO_3166-1](country code), in upper case.
+		
+		`VARIANT` - optional, language variant, region and sort order. Variant can have any number of underscored keywords.
+		
+		`extra` - optional, semicolon separated list of additional key words. Currency, calendar, sort order and numbering system information.
 	**/
 	@:native("GetLocale")
 	public static function getLocale():std.String;
+
+	/**		
+		Returns the host OS locale's 2 or 3-letter [https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes](language code) as a string which should be consistent on all platforms. This is equivalent to extracting the `language` part of the `godot.OS.getLocale` string.
+		
+		This can be used to narrow down fully specified locale strings to only the "common" language code, when you don't need the additional information about country code or variants. For example, for a French Canadian user with `fr_CA` locale, this would return `fr`.
+	**/
+	@:native("GetLocaleLanguage")
+	public static function getLocaleLanguage():std.String;
 
 	/**		
 		Returns the current latin keyboard variant as a String.
@@ -1382,20 +1416,72 @@ extern class OS {
 		On Windows, this is `%APPDATA%\Godot\app_userdata\[project_name]`, or `%APPDATA%\[custom_name]` if `use_custom_user_dir` is set. `%APPDATA%` expands to `%USERPROFILE%\AppData\Roaming`.
 		
 		If the project name is empty, `user://` falls back to `res://`.
+		
+		Not to be confused with `godot.OS.getDataDir`, which returns the global (non-project-specific) user data directory.
 	**/
 	@:native("GetUserDataDir")
 	public static function getUserDataDir():std.String;
+
+	#if doc_gen
+	/**		
+		Returns the actual path to commonly used folders across different platforms. Available locations are specified in `godot.OS_SystemDir`.
+		
+		Note: This method is implemented on Android, Linux, macOS and Windows.
+		
+		Note: Shared storage is implemented on Android and allows to differentiate between app specific and shared directories. Shared directories have additional restrictions on Android.
+	**/
+	@:native("GetSystemDir")
+	public static function getSystemDir(dir:godot.OS_SystemDir, ?sharedStorage:Bool):std.String;
+	#else
+	/**		
+		Returns the actual path to commonly used folders across different platforms. Available locations are specified in `godot.OS_SystemDir`.
+		
+		Note: This method is implemented on Android, Linux, macOS and Windows.
+		
+		Note: Shared storage is implemented on Android and allows to differentiate between app specific and shared directories. Shared directories have additional restrictions on Android.
+	**/
+	@:native("GetSystemDir")
+	public static overload function getSystemDir(dir:godot.OS_SystemDir):std.String;
 
 	/**		
 		Returns the actual path to commonly used folders across different platforms. Available locations are specified in `godot.OS_SystemDir`.
 		
 		Note: This method is implemented on Android, Linux, macOS and Windows.
+		
+		Note: Shared storage is implemented on Android and allows to differentiate between app specific and shared directories. Shared directories have additional restrictions on Android.
 	**/
 	@:native("GetSystemDir")
-	public static function getSystemDir(dir:godot.OS_SystemDir):std.String;
+	public static overload function getSystemDir(dir:godot.OS_SystemDir, sharedStorage:Bool):std.String;
+	#end
+
+	/**		
+		Returns the global user configuration directory according to the operating system's standards. On desktop platforms, this path can be overridden by setting the `XDG_CONFIG_HOME` environment variable before starting the project. See [https://docs.godotengine.org/en/latest/tutorials/io/data_paths.html](File paths in Godot projects) in the documentation for more information. See also `godot.OS.getCacheDir` and `godot.OS.getDataDir`.
+		
+		Not to be confused with `godot.OS.getUserDataDir`, which returns the project-specific user data path.
+	**/
+	@:native("GetConfigDir")
+	public static function getConfigDir():std.String;
+
+	/**		
+		Returns the global user data directory according to the operating system's standards. On desktop platforms, this path can be overridden by setting the `XDG_DATA_HOME` environment variable before starting the project. See [https://docs.godotengine.org/en/latest/tutorials/io/data_paths.html](File paths in Godot projects) in the documentation for more information. See also `godot.OS.getCacheDir` and `godot.OS.getConfigDir`.
+		
+		Not to be confused with `godot.OS.getUserDataDir`, which returns the project-specific user data path.
+	**/
+	@:native("GetDataDir")
+	public static function getDataDir():std.String;
+
+	/**		
+		Returns the global cache data directory according to the operating system's standards. On desktop platforms, this path can be overridden by setting the `XDG_CACHE_HOME` environment variable before starting the project. See [https://docs.godotengine.org/en/latest/tutorials/io/data_paths.html](File paths in Godot projects) in the documentation for more information. See also `godot.OS.getConfigDir` and `godot.OS.getDataDir`.
+		
+		Not to be confused with `godot.OS.getUserDataDir`, which returns the project-specific user data path.
+	**/
+	@:native("GetCacheDir")
+	public static function getCacheDir():std.String;
 
 	/**		
 		Returns a string that is unique to the device.
+		
+		Note: This string may change without notice if the user reinstalls/upgrades their operating system or changes their hardware. This means it should generally not be used to encrypt persistent data as the data saved before an unexpected ID change would become inaccessible. The returned string may also be falsified using external programs, so do not rely on the string returned by `godot.OS.getUniqueId` for security purposes.
 		
 		Note: Returns an empty string on HTML5 and UWP, as this method isn't implemented on those platforms yet.
 	**/
@@ -1423,7 +1509,7 @@ extern class OS {
 	/**		
 		Plays native video from the specified path, at the given volume and with audio and subtitle tracks.
 		
-		Note: This method is implemented on Android and iOS, and the current Android implementation does not support the `volume`, `audio_track` and `subtitle_track` options.
+		Note: This method is only implemented on iOS.
 	**/
 	@:native("NativeVideoPlay")
 	public static function nativeVideoPlay(path:std.String, volume:Single, audioTrack:std.String, subtitleTrack:std.String):godot.Error;
@@ -1431,7 +1517,7 @@ extern class OS {
 	/**		
 		Returns `true` if native video is playing.
 		
-		Note: This method is implemented on Android and iOS.
+		Note: This method is only implemented on iOS.
 	**/
 	@:native("NativeVideoIsPlaying")
 	public static function nativeVideoIsPlaying():Bool;
@@ -1439,7 +1525,7 @@ extern class OS {
 	/**		
 		Stops native video playback.
 		
-		Note: This method is implemented on Android and iOS.
+		Note: This method is implemented on iOS.
 	**/
 	@:native("NativeVideoStop")
 	public static function nativeVideoStop():Void;
@@ -1447,7 +1533,7 @@ extern class OS {
 	/**		
 		Pauses native video playback.
 		
-		Note: This method is implemented on Android and iOS.
+		Note: This method is only implemented on iOS.
 	**/
 	@:native("NativeVideoPause")
 	public static function nativeVideoPause():Void;
@@ -1455,7 +1541,7 @@ extern class OS {
 	/**		
 		Resumes native video playback.
 		
-		Note: This method is implemented on Android and iOS.
+		Note: This method is implemented on iOS.
 	**/
 	@:native("NativeVideoUnpause")
 	public static function nativeVideoUnpause():Void;
@@ -1532,8 +1618,14 @@ extern class OS {
 	@:native("IsVsyncViaCompositorEnabled")
 	public static function isVsyncViaCompositorEnabled():Bool;
 
+	@:native("SetDeltaSmoothing")
+	public static function setDeltaSmoothing(deltaSmoothingEnabled:Bool):Void;
+
+	@:native("IsDeltaSmoothingEnabled")
+	public static function isDeltaSmoothingEnabled():Bool;
+
 	/**		
-		Returns `true` if the feature for the given feature tag is supported in the currently running instance, depending on platform, build etc. Can be used to check whether you're currently running a debug build, on a certain platform or arch, etc. Refer to the [https://docs.godotengine.org/en/3.3/getting_started/workflow/export/feature_tags.html](Feature Tags) documentation for more details.
+		Returns `true` if the feature for the given feature tag is supported in the currently running instance, depending on the platform, build etc. Can be used to check whether you're currently running a debug build, on a certain platform or arch, etc. Refer to the [https://docs.godotengine.org/en/3.4/getting_started/workflow/export/feature_tags.html](Feature Tags) documentation for more details.
 		
 		Note: Tag names are case-sensitive.
 	**/
@@ -1571,7 +1663,7 @@ extern class OS {
 	public static function requestPermission(name:std.String):Bool;
 
 	/**		
-		With this function you can request dangerous permissions since normal permissions are automatically granted at install time in Android application.
+		With this function, you can request dangerous permissions since normal permissions are automatically granted at install time in Android applications.
 		
 		Note: This method is implemented on Android.
 	**/
@@ -1579,7 +1671,7 @@ extern class OS {
 	public static function requestPermissions():Bool;
 
 	/**		
-		With this function you can get the list of dangerous permissions that have been granted to the Android application.
+		With this function, you can get the list of dangerous permissions that have been granted to the Android application.
 		
 		Note: This method is implemented on Android.
 	**/

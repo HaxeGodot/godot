@@ -86,7 +86,7 @@ extern class RegEx extends godot.Reference {
 	public function clear():Void;
 
 	/**		
-		Compiles and assign the search pattern to use. Returns  if the compilation is successful. If an error is encountered, details are printed to standard output and an error is returned.
+		Compiles and assign the search pattern to use. Returns `OK` if the compilation is successful. If an error is encountered, details are printed to standard output and an error is returned.
 	**/
 	@:native("Compile")
 	public function compile(pattern:std.String):godot.Error;

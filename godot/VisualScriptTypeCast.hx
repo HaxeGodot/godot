@@ -4,14 +4,23 @@ package godot;
 
 import cs.system.*;
 
+/**
+`godot.VisualScriptTypeCast` will perform a type conversion to an `godot.Object`-derived type.
+**/
 @:libType
 @:csNative
 @:native("Godot.VisualScriptTypeCast")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualScriptTypeCast extends godot.VisualScriptNode {
+	/**		
+		The target script class to be converted to. If none, only the `godot.VisualScriptTypeCast.baseType` will be used.
+	**/
 	@:native("BaseScript")
 	public var baseScript:std.String;
 
+	/**		
+		The target type to be converted to.
+	**/
 	@:native("BaseType")
 	public var baseType:std.String;
 

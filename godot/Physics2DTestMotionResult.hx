@@ -9,6 +9,15 @@ import cs.system.*;
 @:native("Godot.Physics2DTestMotionResult")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Physics2DTestMotionResult extends godot.Reference {
+	@:native("CollisionUnsafeFraction")
+	public var collisionUnsafeFraction(default, never):Single;
+
+	@:native("CollisionSafeFraction")
+	public var collisionSafeFraction(default, never):Single;
+
+	@:native("CollisionDepth")
+	public var collisionDepth(default, never):Single;
+
 	@:native("ColliderShape")
 	public var colliderShape(default, never):Int;
 
@@ -65,4 +74,13 @@ extern class Physics2DTestMotionResult extends godot.Reference {
 
 	@:native("GetColliderShape")
 	public function getColliderShape():Int;
+
+	@:native("GetCollisionDepth")
+	public function getCollisionDepth():Single;
+
+	@:native("GetCollisionSafeFraction")
+	public function getCollisionSafeFraction():Single;
+
+	@:native("GetCollisionUnsafeFraction")
+	public function getCollisionUnsafeFraction():Single;
 }

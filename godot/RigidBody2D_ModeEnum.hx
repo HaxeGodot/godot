@@ -16,7 +16,7 @@ extern enum RigidBody2D_ModeEnum {
 	Static;
 
 	/**		
-		Character mode. Similar to , but the body can not rotate.
+		Character mode. Similar to `godot.RigidBody2D_ModeEnum.rigid`, but the body can not rotate.
 	**/
 	Character;
 

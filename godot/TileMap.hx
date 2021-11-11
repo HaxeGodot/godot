@@ -31,13 +31,13 @@ extern class TileMap extends godot.Node2D {
 	public var occluderLightMask:Int;
 
 	/**		
-		The collision mask(s) for all colliders in the TileMap. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The collision mask(s) for all colliders in the TileMap. See [https://docs.godotengine.org/en/3.4/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionMask")
 	public var collisionMask:UInt;
 
 	/**		
-		The collision layer(s) for all colliders in the TileMap. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The collision layer(s) for all colliders in the TileMap. See [https://docs.godotengine.org/en/3.4/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionLayer")
 	public var collisionLayer:UInt;
@@ -91,7 +91,7 @@ extern class TileMap extends godot.Node2D {
 	public var compatibilityMode:Bool;
 
 	/**		
-		If `true`, collision shapes are shown in the editor and at run-time. Requires Visible Collision Shapes to be enabled in the Debug menu for collision shapes to be visible at run-time.
+		If `true`, collision shapes are visible in the editor. Doesn't affect collision shapes visibility at runtime. To show collision shapes at runtime, enable Visible Collision Shapes in the Debug menu instead.
 	**/
 	@:native("ShowCollision")
 	public var showCollision:Bool;
@@ -528,13 +528,13 @@ extern class TileMap extends godot.Node2D {
 	#end
 
 	/**		
-		Returns the tile index of the given cell. If no tile exists in the cell, returns .
+		Returns the tile index of the given cell. If no tile exists in the cell, returns `godot.TileMap.invalidCell`.
 	**/
 	@:native("GetCell")
 	public function getCell(x:Int, y:Int):Int;
 
 	/**		
-		Returns the tile index of the cell given by a Vector2. If no tile exists in the cell, returns .
+		Returns the tile index of the cell given by a Vector2. If no tile exists in the cell, returns `godot.TileMap.invalidCell`.
 	**/
 	@:native("GetCellv")
 	public function getCellv(position:godot.Vector2):Int;

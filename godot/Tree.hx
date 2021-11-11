@@ -196,7 +196,7 @@ extern class Tree extends godot.Control {
 	public var selectMode:godot.Tree_SelectModeEnum;
 
 	/**		
-		The drop mode as an OR combination of flags. See `godot.Tree_DropModeFlagsEnum` constants. Once dropping is done, reverts to . Setting this during `godot.Control.canDropData` is recommended.
+		The drop mode as an OR combination of flags. See `godot.Tree_DropModeFlagsEnum` constants. Once dropping is done, reverts to `godot.Tree_DropModeFlagsEnum.disabled`. Setting this during `godot.Control.canDropData` is recommended.
 		
 		This controls the drop sections, i.e. the decision and drawing of possible drop locations based on the mouse position.
 	**/
@@ -325,7 +325,7 @@ extern class Tree extends godot.Control {
 	/**		
 		Returns the currently focused item, or `null` if no item is focused.
 		
-		In  and  modes, the focused item is same as the selected item. In  mode, the focused item is the item under the focus cursor, not necessarily selected.
+		In `godot.Tree_SelectModeEnum.row` and `godot.Tree_SelectModeEnum.single` modes, the focused item is same as the selected item. In `godot.Tree_SelectModeEnum.multi` mode, the focused item is the item under the focus cursor, not necessarily selected.
 		
 		To get the currently selected item(s), use `godot.Tree.getNextSelected`.
 	**/
@@ -335,7 +335,7 @@ extern class Tree extends godot.Control {
 	/**		
 		Returns the currently focused column, or -1 if no column is focused.
 		
-		In  mode, the focused column is the selected column. In  mode, the focused column is always 0 if any item is selected. In  mode, the focused column is the column under the focus cursor, and there are not necessarily any column selected.
+		In `godot.Tree_SelectModeEnum.single` mode, the focused column is the selected column. In `godot.Tree_SelectModeEnum.row` mode, the focused column is always 0 if any item is selected. In `godot.Tree_SelectModeEnum.multi` mode, the focused column is the column under the focus cursor, and there are not necessarily any column selected.
 		
 		To tell whether a column of an item is selected, use `godot.TreeItem.isSelected`.
 	**/
@@ -439,9 +439,9 @@ extern class Tree extends godot.Control {
 	/**		
 		Makes the currently focused cell visible.
 		
-		This will scroll the tree if necessary. In  mode, this will not do horizontal scrolling, as all the cells in the selected row is focused logically.
+		This will scroll the tree if necessary. In `godot.Tree_SelectModeEnum.row` mode, this will not do horizontal scrolling, as all the cells in the selected row is focused logically.
 		
-		Note: Despite the name of this method, the focus cursor itself is only visible in  mode.
+		Note: Despite the name of this method, the focus cursor itself is only visible in `godot.Tree_SelectModeEnum.multi` mode.
 	**/
 	@:native("EnsureCursorIsVisible")
 	public function ensureCursorIsVisible():Void;
@@ -476,6 +476,9 @@ extern class Tree extends godot.Control {
 	@:native("GetScroll")
 	public function getScroll():godot.Vector2;
 
+	/**		
+		Causes the `godot.Tree` to jump to the specified item.
+	**/
 	@:native("ScrollToItem")
 	public function scrollToItem(item:godot.Object):Void;
 

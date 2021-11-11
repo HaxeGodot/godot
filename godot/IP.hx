@@ -16,13 +16,13 @@ extern class IP {
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		
-		Invalid ID constant. Returned if  is exceeded.
+		Invalid ID constant. Returned if `godot.IP.resolverMaxQueries` is exceeded.
 	**/
 	@:native("ResolverInvalidId")
 	public static var RESOLVER_INVALID_ID(default, never):Int;
 
 	/**		
-		Maximum number of concurrent DNS resolver queries allowed,  is returned if exceeded.
+		Maximum number of concurrent DNS resolver queries allowed, `godot.IP.resolverInvalidId` is returned if exceeded.
 	**/
 	@:native("ResolverMaxQueries")
 	public static var RESOLVER_MAX_QUERIES(default, never):Int;
@@ -49,19 +49,39 @@ extern class IP {
 
 	#if doc_gen
 	/**		
-		Creates a queue item to resolve a hostname to an IPv4 or IPv6 address depending on the `godot.IP_Type` constant given as `ip_type`. Returns the queue ID if successful, or  on error.
+		Resolves a given hostname in a blocking way. Addresses are returned as an `godot.Collections_Array` of IPv4 or IPv6 depending on `ip_type`.
+	**/
+	@:native("ResolveHostnameAddresses")
+	public static function resolveHostnameAddresses(host:std.String, ?ipType:godot.IP_Type):godot.collections.Array;
+	#else
+	/**		
+		Resolves a given hostname in a blocking way. Addresses are returned as an `godot.Collections_Array` of IPv4 or IPv6 depending on `ip_type`.
+	**/
+	@:native("ResolveHostnameAddresses")
+	public static overload function resolveHostnameAddresses(host:std.String):godot.collections.Array;
+
+	/**		
+		Resolves a given hostname in a blocking way. Addresses are returned as an `godot.Collections_Array` of IPv4 or IPv6 depending on `ip_type`.
+	**/
+	@:native("ResolveHostnameAddresses")
+	public static overload function resolveHostnameAddresses(host:std.String, ipType:godot.IP_Type):godot.collections.Array;
+	#end
+
+	#if doc_gen
+	/**		
+		Creates a queue item to resolve a hostname to an IPv4 or IPv6 address depending on the `godot.IP_Type` constant given as `ip_type`. Returns the queue ID if successful, or `godot.IP.resolverInvalidId` on error.
 	**/
 	@:native("ResolveHostnameQueueItem")
 	public static function resolveHostnameQueueItem(host:std.String, ?ipType:godot.IP_Type):Int;
 	#else
 	/**		
-		Creates a queue item to resolve a hostname to an IPv4 or IPv6 address depending on the `godot.IP_Type` constant given as `ip_type`. Returns the queue ID if successful, or  on error.
+		Creates a queue item to resolve a hostname to an IPv4 or IPv6 address depending on the `godot.IP_Type` constant given as `ip_type`. Returns the queue ID if successful, or `godot.IP.resolverInvalidId` on error.
 	**/
 	@:native("ResolveHostnameQueueItem")
 	public static overload function resolveHostnameQueueItem(host:std.String):Int;
 
 	/**		
-		Creates a queue item to resolve a hostname to an IPv4 or IPv6 address depending on the `godot.IP_Type` constant given as `ip_type`. Returns the queue ID if successful, or  on error.
+		Creates a queue item to resolve a hostname to an IPv4 or IPv6 address depending on the `godot.IP_Type` constant given as `ip_type`. Returns the queue ID if successful, or `godot.IP.resolverInvalidId` on error.
 	**/
 	@:native("ResolveHostnameQueueItem")
 	public static overload function resolveHostnameQueueItem(host:std.String, ipType:godot.IP_Type):Int;
@@ -78,6 +98,12 @@ extern class IP {
 	**/
 	@:native("GetResolveItemAddress")
 	public static function getResolveItemAddress(id:Int):std.String;
+
+	/**		
+		Return resolved addresses, or an empty array if an error happened or resolution didn't happen yet (see `godot.IP.getResolveItemStatus`).
+	**/
+	@:native("GetResolveItemAddresses")
+	public static function getResolveItemAddresses(id:Int):godot.collections.Array;
 
 	/**		
 		Removes a given item `id` from the queue. This should be used to free a queue after it has completed to enable more queries to happen.

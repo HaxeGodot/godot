@@ -26,7 +26,7 @@ extern class TileSet extends godot.Resource {
 	/**		
 		Determines when the auto-tiler should consider two different auto-tile IDs to be bound together.
 		
-		Note: `neighbor_id` will be `-1` () when checking a tile against an empty neighbor tile.
+		Note: `neighbor_id` will be `-1` (`godot.TileMap.invalidCell`) when checking a tile against an empty neighbor tile.
 	**/
 	@:native("_IsTileBound")
 	public function _IsTileBound(drawnId:Int, neighborId:Int):Bool;

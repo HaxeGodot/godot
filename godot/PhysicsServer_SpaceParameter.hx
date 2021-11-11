@@ -41,6 +41,4 @@ extern enum PhysicsServer_SpaceParameter {
 		Constant to set/get the default solver bias for all physics constraints. A solver bias is a factor controlling how much two objects "rebound", after violating a constraint, to avoid leaving them in that state because of numerical imprecision.
 	**/
 	ConstraintDefaultBias;
-
-	TestMotionMinContactDepth;
 }

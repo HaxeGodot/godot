@@ -11,7 +11,7 @@ extern enum Viewport_UpdateMode {
 	Disabled;
 
 	/**		
-		Update the render target once, then switch to .
+		Update the render target once, then switch to `godot.Viewport_UpdateMode.disabled`.
 	**/
 	Once;
 

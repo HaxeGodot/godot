@@ -11,7 +11,7 @@ It consists of a `godot.Basis` (first 3 columns) and a
 `godot.Vector3` for the origin (last column).
 
 For more information, read this documentation article:
-https://docs.godotengine.org/en/3.3/tutorials/math/matrices_and_transforms.html
+https://docs.godotengine.org/en/3.4/tutorials/math/matrices_and_transforms.html
 **/
 #if doc_gen
 @:struct
@@ -41,19 +41,21 @@ extern abstract Transform(Transform_) from Transform_ to Transform_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a transformation matrix from the given quaternion and origin vector.
+		Constructs a transformation matrix from the given `quaternion`
+		and `origin` vector.
 		
-		@param quat The `godot.Quat` to create the basis from.
+		@param quaternion The `godot.Quat` to create the basis from.
 		@param origin The origin vector, or column index 3.
 	**/
-	public overload inline function new(quat:godot.Quat, origin:godot.Vector3) {
-		this = new Transform_(quat, origin);
+	public overload inline function new(quaternion:godot.Quat, origin:godot.Vector3) {
+		this = new Transform_(quaternion, origin);
 	}
 	#end
 
 	#if !doc_gen
 	/**		
-		Constructs a transformation matrix from the given basis and origin vector.
+		Constructs a transformation matrix from the given `basis` and
+		`origin` vector.
 		
 		@param basis The `godot.Basis` to create the basis from.
 		@param origin The origin vector, or column index 3.
@@ -143,7 +145,7 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 	/**		
 		Returns the inverse of the transform, under the assumption that
 		the transformation is composed of rotation, scaling, and translation.
-		
+		@see `godot.Transform.inverse`
 		@returns The inverse transformation matrix.
 	**/
 	@:native("AffineInverse")
@@ -171,11 +173,11 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 
 	/**		
 		Returns a copy of the transform rotated such that its
-		-Z axis (forward) points towards the target position.
+		-Z axis (forward) points towards the `target` position.
 		
-		The transform will first be rotated around the given up vector,
-		and then fully aligned to the target by a further rotation around
-		an axis perpendicular to both the target and up vectors.
+		The transform will first be rotated around the given `up` vector,
+		and then fully aligned to the `target` by a further rotation around
+		an axis perpendicular to both the `target` and `up` vectors.
 		
 		Operations take place in global space.
 		
@@ -215,9 +217,6 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 	@:native("Scaled")
 	public function scaled(scale:godot.Vector3):godot.Transform;
 
-	@:native("SetLookAt")
-	public function setLookAt(eye:godot.Vector3, target:godot.Vector3, up:godot.Vector3):Void;
-
 	/**		
 		Translates the transform by the given `offset`,
 		relative to the transform's basis vectors.
@@ -233,7 +232,7 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 
 	/**		
 		Returns a vector transformed (multiplied) by this transformation matrix.
-		
+		@see `godot.Transform.xformInv`
 		@param v A vector to transform.
 		@returns The transformed vector.
 	**/
@@ -245,7 +244,7 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 		
 		Note: This results in a multiplication by the inverse of the
 		transformation matrix only if it represents a rotation-reflection.
-		
+		@see `godot.Transform.xform`
 		@param v A vector to inversely transform.
 		@returns The inversely transformed vector.
 	**/
@@ -264,16 +263,18 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 	public overload function new(column0:godot.Vector3, column1:godot.Vector3, column2:godot.Vector3, origin:godot.Vector3):Void;
 
 	/**		
-		Constructs a transformation matrix from the given quaternion and origin vector.
+		Constructs a transformation matrix from the given `quaternion`
+		and `origin` vector.
 		
-		@param quat The `godot.Quat` to create the basis from.
+		@param quaternion The `godot.Quat` to create the basis from.
 		@param origin The origin vector, or column index 3.
 	**/
 	@:native("new")
-	public overload function new(quat:godot.Quat, origin:godot.Vector3):Void;
+	public overload function new(quaternion:godot.Quat, origin:godot.Vector3):Void;
 
 	/**		
-		Constructs a transformation matrix from the given basis and origin vector.
+		Constructs a transformation matrix from the given `basis` and
+		`origin` vector.
 		
 		@param basis The `godot.Basis` to create the basis from.
 		@param origin The origin vector, or column index 3.
@@ -282,8 +283,8 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 	public overload function new(basis:godot.Basis, origin:godot.Vector3):Void;
 
 	/**		
-		Returns true if this transform and `other` are approximately equal, by running
-		`godot.Vector3.isEqualApprox` on each component.
+		Returns `true` if this transform and `other` are approximately equal,
+		by running `godot.Vector3.isEqualApprox` on each component.
 		
 		@param other The other transform to compare.
 		@returns Whether or not the matrices are approximately equal.
@@ -291,9 +292,19 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 	@:native("IsEqualApprox")
 	public function isEqualApprox(other:godot.Transform):Bool;
 
+	/**		
+		Converts this `godot.Transform` to a string.
+		
+		@returns A string representation of this transform.
+	**/
 	@:native("ToString")
 	public overload function toString():std.String;
 
+	/**		
+		Converts this `godot.Transform` to a string with the given `format`.
+		
+		@returns A string representation of this transform.
+	**/
 	@:native("ToString")
 	public overload function toString(format:std.String):std.String;
 }

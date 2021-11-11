@@ -13,6 +13,12 @@ Class representing a square `godot.PrimitiveMesh`. This flat mesh does not have 
 @:autoBuild(godot.Godot.buildUserClass())
 extern class QuadMesh extends godot.PrimitiveMesh {
 	/**		
+		Offset of the generated Quad. Useful for particles.
+	**/
+	@:native("CenterOffset")
+	public var centerOffset:godot.Vector3;
+
+	/**		
 		Size on the X and Y axes.
 	**/
 	@:native("Size")
@@ -26,4 +32,10 @@ extern class QuadMesh extends godot.PrimitiveMesh {
 
 	@:native("GetSize")
 	public function getSize():godot.Vector2;
+
+	@:native("SetCenterOffset")
+	public function setCenterOffset(centerOffset:godot.Vector3):Void;
+
+	@:native("GetCenterOffset")
+	public function getCenterOffset():godot.Vector3;
 }

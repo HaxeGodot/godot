@@ -262,7 +262,7 @@ extern class Physics2DServer {
 	/**		
 		Sets the function to call when any body/area enters or exits the area. This callback will be called for any object interacting with the area, and takes five parameters:
 		
-		1:  or , depending on whether the object entered or exited the area.
+		1: `godot.Physics2DServer_AreaBodyStatus.added` or `godot.Physics2DServer_AreaBodyStatus.removed`, depending on whether the object entered or exited the area.
 		
 		2: `godot.RID` of the object that entered/exited the area.
 		
@@ -582,27 +582,51 @@ extern class Physics2DServer {
 	#if doc_gen
 	/**		
 		Returns `true` if a collision would result from moving in the given direction from a given point in space. Margin increases the size of the shapes involved in the collision detection. `godot.Physics2DTestMotionResult` can be passed to return additional information in.
+		
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("BodyTestMotion")
-	public static function bodyTestMotion(body:godot.RID, from:godot.Transform2D, motion:godot.Vector2, infiniteInertia:Bool, ?margin:Single, ?result:godot.Physics2DTestMotionResult):Bool;
+	public static function bodyTestMotion(body:godot.RID, from:godot.Transform2D, motion:godot.Vector2, infiniteInertia:Bool, ?margin:Single, ?result:godot.Physics2DTestMotionResult, ?excludeRaycastShapes:Bool, ?exclude:godot.collections.Array):Bool;
 	#else
 	/**		
 		Returns `true` if a collision would result from moving in the given direction from a given point in space. Margin increases the size of the shapes involved in the collision detection. `godot.Physics2DTestMotionResult` can be passed to return additional information in.
+		
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("BodyTestMotion")
 	public static overload function bodyTestMotion(body:godot.RID, from:godot.Transform2D, motion:godot.Vector2, infiniteInertia:Bool):Bool;
 
 	/**		
 		Returns `true` if a collision would result from moving in the given direction from a given point in space. Margin increases the size of the shapes involved in the collision detection. `godot.Physics2DTestMotionResult` can be passed to return additional information in.
+		
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("BodyTestMotion")
 	public static overload function bodyTestMotion(body:godot.RID, from:godot.Transform2D, motion:godot.Vector2, infiniteInertia:Bool, margin:Single):Bool;
 
 	/**		
 		Returns `true` if a collision would result from moving in the given direction from a given point in space. Margin increases the size of the shapes involved in the collision detection. `godot.Physics2DTestMotionResult` can be passed to return additional information in.
+		
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("BodyTestMotion")
 	public static overload function bodyTestMotion(body:godot.RID, from:godot.Transform2D, motion:godot.Vector2, infiniteInertia:Bool, margin:Single, result:godot.Physics2DTestMotionResult):Bool;
+
+	/**		
+		Returns `true` if a collision would result from moving in the given direction from a given point in space. Margin increases the size of the shapes involved in the collision detection. `godot.Physics2DTestMotionResult` can be passed to return additional information in.
+		
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
+	**/
+	@:native("BodyTestMotion")
+	public static overload function bodyTestMotion(body:godot.RID, from:godot.Transform2D, motion:godot.Vector2, infiniteInertia:Bool, margin:Single, result:godot.Physics2DTestMotionResult, excludeRaycastShapes:Bool):Bool;
+
+	/**		
+		Returns `true` if a collision would result from moving in the given direction from a given point in space. Margin increases the size of the shapes involved in the collision detection. `godot.Physics2DTestMotionResult` can be passed to return additional information in.
+		
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
+	**/
+	@:native("BodyTestMotion")
+	public static overload function bodyTestMotion(body:godot.RID, from:godot.Transform2D, motion:godot.Vector2, infiniteInertia:Bool, margin:Single, result:godot.Physics2DTestMotionResult, excludeRaycastShapes:Bool, exclude:godot.collections.Array):Bool;
 	#end
 
 	/**		
@@ -718,6 +742,12 @@ extern class Physics2DServer {
 	**/
 	@:native("SetActive")
 	public static function setActive(active:Bool):Void;
+
+	/**		
+		Sets the amount of iterations for calculating velocities of colliding bodies. The greater the amount of iterations, the more accurate the collisions will be. However, a greater amount of iterations requires more CPU power, which can decrease performance. The default value is `8`.
+	**/
+	@:native("SetCollisionIterations")
+	public static function setCollisionIterations(iterations:Int):Void;
 
 	/**		
 		Returns information about the current state of the 2D physics engine. See `godot.Physics2DServer_ProcessInfo` for a list of available states.

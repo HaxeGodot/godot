@@ -14,6 +14,16 @@ Group of `godot.Button`. All direct and indirect children buttons become radios.
 @:native("Godot.ButtonGroup")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ButtonGroup extends godot.Resource {
+	/**
+		`pressed` signal.
+		
+		Emitted when one of the buttons of the group is pressed.
+	**/
+	public var onPressed(get, never):Signal<(button:godot.Object)->Void>;
+	@:dox(hide) @:noCompletion inline function get_onPressed():Signal<(button:godot.Object)->Void> {
+		return new Signal(this, "pressed", Signal.SignalHandlerObjectVoid.connectSignal, Signal.SignalHandlerObjectVoid.disconnectSignal, Signal.SignalHandlerObjectVoid.isSignalConnected);
+	}
+
 	@:native("new")
 	public function new():Void;
 

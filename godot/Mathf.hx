@@ -4,6 +4,9 @@ package godot;
 
 import cs.system.*;
 
+/**
+Provides constants and static methods for common mathematical functions.
+**/
 @:libType
 @:csNative
 @:native("Godot.Mathf")
@@ -74,45 +77,52 @@ extern class Mathf {
 	public static overload function abs(s:Single):Single;
 
 	/**		
-		Returns the arc cosine of `s` in radians. Use to get the angle of cosine s.
+		Returns the arc cosine of `s` in radians.
+		Use to get the angle of cosine `s`.
 		
 		@param s The input cosine value. Must be on the range of -1.0 to 1.0.
-		@returns An angle that would result in the given cosine value. On the range `0` to `Tau/2`.
+		@returns
+		An angle that would result in the given cosine value. On the range `0` to `Tau/2`.
 	**/
 	@:native("Acos")
 	public static function acos(s:Single):Single;
 
 	/**		
-		Returns the arc sine of `s` in radians. Use to get the angle of sine s.
+		Returns the arc sine of `s` in radians.
+		Use to get the angle of sine `s`.
 		
 		@param s The input sine value. Must be on the range of -1.0 to 1.0.
-		@returns An angle that would result in the given sine value. On the range `-Tau/4` to `Tau/4`.
+		@returns
+		An angle that would result in the given sine value. On the range `-Tau/4` to `Tau/4`.
 	**/
 	@:native("Asin")
 	public static function asin(s:Single):Single;
 
 	/**		
-		Returns the arc tangent of `s` in radians. Use to get the angle of tangent s.
+		Returns the arc tangent of `s` in radians.
+		Use to get the angle of tangent `s`.
 		
 		The method cannot know in which quadrant the angle should fall.
 		See `godot.Mathf.atan2` if you have both `y` and `x`.
 		
 		@param s The input tangent value.
-		@returns An angle that would result in the given tangent value. On the range `-Tau/4` to `Tau/4`.
+		@returns
+		An angle that would result in the given tangent value. On the range `-Tau/4` to `Tau/4`.
 	**/
 	@:native("Atan")
 	public static function atan(s:Single):Single;
 
 	/**		
-		Returns the arc tangent of `y` and `x` in radians. Use to get the angle
-		of the tangent of `y/x`. To compute the value, the method takes into
+		Returns the arc tangent of `y` and `x` in radians.
+		Use to get the angle of the tangent of `y/x`. To compute the value, the method takes into
 		account the sign of both arguments in order to determine the quadrant.
 		
 		Important note: The Y coordinate comes first, by convention.
 		
 		@param y The Y coordinate of the point to find the angle to.
 		@param x The X coordinate of the point to find the angle to.
-		@returns An angle that would result in the given tangent value. On the range `-Tau/2` to `Tau/2`.
+		@returns
+		An angle that would result in the given tangent value. On the range `-Tau/2` to `Tau/2`.
 	**/
 	@:native("Atan2")
 	public static function atan2(y:Single, x:Single):Single;
@@ -139,7 +149,8 @@ extern class Mathf {
 	public static function ceil(s:Single):Single;
 
 	/**		
-		Clamps a `value` so that it is not less than `min` and not more than `max`.
+		Clamps a `value` so that it is not less than `min`
+		and not more than `max`.
 		
 		@param value The value to clamp.
 		@param min The minimum allowed value.
@@ -150,7 +161,8 @@ extern class Mathf {
 	public static overload function clamp(value:Int, min:Int, max:Int):Int;
 
 	/**		
-		Clamps a `value` so that it is not less than `min` and not more than `max`.
+		Clamps a `value` so that it is not less than `min`
+		and not more than `max`.
 		
 		@param value The value to clamp.
 		@param min The minimum allowed value.
@@ -188,12 +200,14 @@ extern class Mathf {
 	public static function deg2Rad(deg:Single):Single;
 
 	/**		
-		Easing function, based on exponent. The curve values are:
+		Easing function, based on exponent. The `curve` values are:
 		`0` is constant, `1` is linear, `0` to `1` is ease-in, `1` or more is ease-out.
 		Negative values are in-out/out-in.
 		
 		@param s The value to ease.
-		@param curve `0` is constant, `1` is linear, `0` to `1` is ease-in, `1` or more is ease-out.
+		@param curve
+		`0` is constant, `1` is linear, `0` to `1` is ease-in, `1` or more is ease-out.
+		
 		@returns The eased value.
 	**/
 	@:native("Ease")
@@ -231,12 +245,13 @@ extern class Mathf {
 	public static function inverseLerp(from:Single, to:Single, weight:Single):Single;
 
 	/**		
-		Returns true if `a` and `b` are approximately equal to each other.
+		Returns `true` if `a` and `b` are approximately equal
+		to each other.
 		The comparison is done using a tolerance calculation with `godot.Mathf.EPSILON`.
 		
 		@param a One of the values.
 		@param b The other value.
-		@returns A bool for whether or not the two values are approximately equal.
+		@returns A `bool` for whether or not the two values are approximately equal.
 	**/
 	@:native("IsEqualApprox")
 	public static overload function isEqualApprox(a:Single, b:Single):Bool;
@@ -245,7 +260,7 @@ extern class Mathf {
 		Returns whether `s` is an infinity value (either positive infinity or negative infinity).
 		
 		@param s The value to check.
-		@returns A bool for whether or not the value is an infinity value.
+		@returns A `bool` for whether or not the value is an infinity value.
 	**/
 	@:native("IsInf")
 	public static function isInf(s:Single):Bool;
@@ -254,19 +269,19 @@ extern class Mathf {
 		Returns whether `s` is a `NaN` ("Not a Number" or invalid) value.
 		
 		@param s The value to check.
-		@returns A bool for whether or not the value is a `NaN` value.
+		@returns A `bool` for whether or not the value is a `NaN` value.
 	**/
 	@:native("IsNaN")
 	public static function isNaN(s:Single):Bool;
 
 	/**		
-		Returns true if `s` is approximately zero.
+		Returns `true` if `s` is approximately zero.
 		The comparison is done using a tolerance calculation with `godot.Mathf.EPSILON`.
 		
 		This method is faster than using `godot.Mathf.isEqualApprox` with one value as zero.
 		
 		@param s The value to check.
-		@returns A bool for whether or not the value is nearly zero.
+		@returns A `bool` for whether or not the value is nearly zero.
 	**/
 	@:native("IsZeroApprox")
 	public static function isZeroApprox(s:Single):Bool;
@@ -351,7 +366,7 @@ extern class Mathf {
 	/**		
 		Moves `from` toward `to` by the `delta` value.
 		
-		Use a negative delta value to move away.
+		Use a negative `delta` value to move away.
 		
 		@param from The start value.
 		@param to The value to move towards.
@@ -372,8 +387,9 @@ extern class Mathf {
 
 	/**		
 		Converts a 2D point expressed in the polar coordinate
-		system (a distance from the origin `r` and an angle `th`)
-		to the cartesian coordinate system (X and Y axis).
+		system (a distance from the origin `r`
+		and an angle `th`) to the cartesian
+		coordinate system (X and Y axis).
 		
 		@param r The distance from the origin.
 		@param th The angle of the point.
@@ -383,20 +399,20 @@ extern class Mathf {
 	public static function polar2Cartesian(r:Single, th:Single):godot.Vector2;
 
 	/**		
-		Performs a canonical Modulus operation, where the output is on the range `[0, b)`.
+		Performs a canonical Modulus operation, where the output is on the range [0, `b`).
 		
 		@param a The dividend, the primary input.
-		@param b The divisor. The output is on the range `[0, b)`.
+		@param b The divisor. The output is on the range [0, `b`).
 		@returns The resulting output.
 	**/
 	@:native("PosMod")
 	public static overload function posMod(a:Int, b:Int):Int;
 
 	/**		
-		Performs a canonical Modulus operation, where the output is on the range `[0, b)`.
+		Performs a canonical Modulus operation, where the output is on the range [0, `b`).
 		
 		@param a The dividend, the primary input.
-		@param b The divisor. The output is on the range `[0, b)`.
+		@param b The divisor. The output is on the range [0, `b`).
 		@returns The resulting output.
 	**/
 	@:native("PosMod")
@@ -432,7 +448,8 @@ extern class Mathf {
 	public static function round(s:Single):Single;
 
 	/**		
-		Returns the sign of `s`: `-1` or `1`. Returns `0` if `s` is `0`.
+		Returns the sign of `s`: `-1` or `1`.
+		Returns `0` if `s` is `0`.
 		
 		@param s The input number.
 		@returns One of three possible values: `1`, `-1`, or `0`.
@@ -441,7 +458,8 @@ extern class Mathf {
 	public static overload function sign(s:Int):Int;
 
 	/**		
-		Returns the sign of `s`: `-1` or `1`. Returns `0` if `s` is `0`.
+		Returns the sign of `s`: `-1` or `1`.
+		Returns `0` if `s` is `0`.
 		
 		@param s The input number.
 		@returns One of three possible values: `1`, `-1`, or `0`.
@@ -483,7 +501,7 @@ extern class Mathf {
 	/**		
 		Returns the square root of `s`, where `s` is a non-negative number.
 		
-		If you need negative inputs, use `System.Numerics.Complex`.
+		If you need negative inputs, use `cs.system.numerics.Complex`.
 		
 		@param s The input number. Must not be negative.
 		@returns The square root of `s`.
@@ -504,8 +522,7 @@ extern class Mathf {
 
 	/**		
 		Snaps float value `s` to a given `step`.
-		This can also be used to round a floating point
-		number to an arbitrary number of decimals.
+		This can also be used to round a floating point number to an arbitrary number of decimals.
 		
 		@param s The value to stepify.
 		@param step The step size to snap to.
@@ -533,8 +550,9 @@ extern class Mathf {
 	public static function tanh(s:Single):Single;
 
 	/**		
-		Wraps `value` between `min` and `max`. Usable for creating loop-alike
-		behavior or infinite surfaces. If `min` is `0`, this is equivalent
+		Wraps `value` between `min` and `max`.
+		Usable for creating loop-alike behavior or infinite surfaces.
+		If `min` is `0`, this is equivalent
 		to `godot.Mathf.posMod`, so prefer using that instead.
 		
 		@param value The value to wrap.
@@ -546,8 +564,9 @@ extern class Mathf {
 	public static overload function wrap(value:Int, min:Int, max:Int):Int;
 
 	/**		
-		Wraps `value` between `min` and `max`. Usable for creating loop-alike
-		behavior or infinite surfaces. If `min` is `0`, this is equivalent
+		Wraps `value` between `min` and `max`.
+		Usable for creating loop-alike behavior or infinite surfaces.
+		If `min` is `0`, this is equivalent
 		to `godot.Mathf.posMod`, so prefer using that instead.
 		
 		@param value The value to wrap.
@@ -599,22 +618,26 @@ extern class Mathf {
 	public static function floorToInt(s:Single):Int;
 
 	/**		
+		Rounds `s` to the nearest whole number.
 		
-		@param s
-		@returns
+		This is the same as `godot.Mathf.round`, but returns an `int`.
+		
+		@param s The number to round.
+		@returns The rounded number.
 	**/
 	@:native("RoundToInt")
 	public static function roundToInt(s:Single):Int;
 
 	/**		
-		Returns true if `a` and `b` are approximately equal to each other.
+		Returns `true` if `a` and `b` are approximately
+		equal to each other.
 		The comparison is done using the provided tolerance value.
 		If you want the tolerance to be calculated for you, use `godot.Mathf.isEqualApprox`.
 		
 		@param a One of the values.
 		@param b The other value.
 		@param tolerance The pre-calculated tolerance value.
-		@returns A bool for whether or not the two values are equal.
+		@returns A `bool` for whether or not the two values are equal.
 	**/
 	@:native("IsEqualApprox")
 	public static overload function isEqualApprox(a:Single, b:Single, tolerance:Single):Bool;

@@ -16,7 +16,7 @@ extern enum VisualServer_ViewportClearMode {
 	Never;
 
 	/**		
-		The viewport is cleared once, then the clear mode is set to .
+		The viewport is cleared once, then the clear mode is set to `godot.VisualServer_ViewportClearMode.never`.
 	**/
 	OnlyNextFrame;
 }

@@ -15,7 +15,7 @@ Note: VisibilityNotifier uses an approximate heuristic for performance reasons. 
 @:csNative
 @:native("Godot.VisibilityNotifier")
 @:autoBuild(godot.Godot.buildUserClass())
-extern class VisibilityNotifier extends godot.Spatial {
+extern class VisibilityNotifier extends godot.CullInstance {
 	/**
 		`camera_entered` signal.
 		

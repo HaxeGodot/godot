@@ -13,7 +13,7 @@ Event arguments for when unhandled exceptions occur.
 @:autoBuild(godot.Godot.buildUserClass())
 extern class UnhandledExceptionArgs {
 	/**		
-		Exception object
+		Exception object.
 	**/
 	@:native("Exception")
 	public var exception(default, never):cs.system.Exception;

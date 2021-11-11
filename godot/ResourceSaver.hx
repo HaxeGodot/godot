@@ -23,7 +23,7 @@ extern class ResourceSaver {
 		
 		The `flags` bitmask can be specified to customize the save behavior.
 		
-		Returns  on success.
+		Returns `OK` on success.
 	**/
 	@:native("Save")
 	public static function save(path:std.String, resource:godot.Resource, ?flags:godot.ResourceSaver_SaverFlags):godot.Error;
@@ -33,7 +33,7 @@ extern class ResourceSaver {
 		
 		The `flags` bitmask can be specified to customize the save behavior.
 		
-		Returns  on success.
+		Returns `OK` on success.
 	**/
 	@:native("Save")
 	public static overload function save(path:std.String, resource:godot.Resource):godot.Error;
@@ -43,7 +43,7 @@ extern class ResourceSaver {
 		
 		The `flags` bitmask can be specified to customize the save behavior.
 		
-		Returns  on success.
+		Returns `OK` on success.
 	**/
 	@:native("Save")
 	public static overload function save(path:std.String, resource:godot.Resource, flags:godot.ResourceSaver_SaverFlags):godot.Error;

@@ -43,31 +43,181 @@ extern class Input {
 	@:native("IsJoyButtonPressed")
 	public static function isJoyButtonPressed(device:Int, button:Int):Bool;
 
+	#if doc_gen
 	/**		
 		Returns `true` if you are pressing the action event. Note that if an action has multiple buttons assigned and more than one of them is pressed, releasing one button will release the action, even if some other button assigned to this action is still pressed.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
 	**/
 	@:native("IsActionPressed")
-	public static function isActionPressed(action:godot.Action):Bool;
+	public static function isActionPressed(action:std.String, ?exact:Bool):Bool;
+	#else
+	/**		
+		Returns `true` if you are pressing the action event. Note that if an action has multiple buttons assigned and more than one of them is pressed, releasing one button will release the action, even if some other button assigned to this action is still pressed.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+	**/
+	@:native("IsActionPressed")
+	public static overload function isActionPressed(action:godot.Action):Bool;
+
+	/**		
+		Returns `true` if you are pressing the action event. Note that if an action has multiple buttons assigned and more than one of them is pressed, releasing one button will release the action, even if some other button assigned to this action is still pressed.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+	**/
+	@:native("IsActionPressed")
+	public static overload function isActionPressed(action:godot.Action, exact:Bool):Bool;
+	#end
+
+	#if doc_gen
+	/**		
+		Returns `true` when the user starts pressing the action event, meaning it's `true` only on the frame that the user pressed down the button.
+		
+		This is useful for code that needs to run only once when an action is pressed, instead of every frame while it's pressed.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+	**/
+	@:native("IsActionJustPressed")
+	public static function isActionJustPressed(action:std.String, ?exact:Bool):Bool;
+	#else
+	/**		
+		Returns `true` when the user starts pressing the action event, meaning it's `true` only on the frame that the user pressed down the button.
+		
+		This is useful for code that needs to run only once when an action is pressed, instead of every frame while it's pressed.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+	**/
+	@:native("IsActionJustPressed")
+	public static overload function isActionJustPressed(action:godot.Action):Bool;
 
 	/**		
 		Returns `true` when the user starts pressing the action event, meaning it's `true` only on the frame that the user pressed down the button.
 		
 		This is useful for code that needs to run only once when an action is pressed, instead of every frame while it's pressed.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
 	**/
 	@:native("IsActionJustPressed")
-	public static function isActionJustPressed(action:godot.Action):Bool;
+	public static overload function isActionJustPressed(action:godot.Action, exact:Bool):Bool;
+	#end
+
+	#if doc_gen
+	/**		
+		Returns `true` when the user stops pressing the action event, meaning it's `true` only on the frame that the user released the button.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+	**/
+	@:native("IsActionJustReleased")
+	public static function isActionJustReleased(action:std.String, ?exact:Bool):Bool;
+	#else
+	/**		
+		Returns `true` when the user stops pressing the action event, meaning it's `true` only on the frame that the user released the button.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+	**/
+	@:native("IsActionJustReleased")
+	public static overload function isActionJustReleased(action:godot.Action):Bool;
 
 	/**		
 		Returns `true` when the user stops pressing the action event, meaning it's `true` only on the frame that the user released the button.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
 	**/
 	@:native("IsActionJustReleased")
-	public static function isActionJustReleased(action:godot.Action):Bool;
+	public static overload function isActionJustReleased(action:godot.Action, exact:Bool):Bool;
+	#end
+
+	#if doc_gen
+	/**		
+		Returns a value between 0 and 1 representing the intensity of the given action. In a joypad, for example, the further away the axis (analog sticks or L2, R2 triggers) is from the dead zone, the closer the value will be to 1. If the action is mapped to a control that has no axis as the keyboard, the value returned will be 0 or 1.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+	**/
+	@:native("GetActionStrength")
+	public static function getActionStrength(action:std.String, ?exact:Bool):Single;
+	#else
+	/**		
+		Returns a value between 0 and 1 representing the intensity of the given action. In a joypad, for example, the further away the axis (analog sticks or L2, R2 triggers) is from the dead zone, the closer the value will be to 1. If the action is mapped to a control that has no axis as the keyboard, the value returned will be 0 or 1.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+	**/
+	@:native("GetActionStrength")
+	public static overload function getActionStrength(action:godot.Action):Single;
 
 	/**		
 		Returns a value between 0 and 1 representing the intensity of the given action. In a joypad, for example, the further away the axis (analog sticks or L2, R2 triggers) is from the dead zone, the closer the value will be to 1. If the action is mapped to a control that has no axis as the keyboard, the value returned will be 0 or 1.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
 	**/
 	@:native("GetActionStrength")
-	public static function getActionStrength(action:godot.Action):Single;
+	public static overload function getActionStrength(action:godot.Action, exact:Bool):Single;
+	#end
+
+	#if doc_gen
+	/**		
+		Returns a value between 0 and 1 representing the raw intensity of the given action, ignoring the action's deadzone. In most cases, you should use `godot.Input.getActionStrength` instead.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+	**/
+	@:native("GetActionRawStrength")
+	public static function getActionRawStrength(action:std.String, ?exact:Bool):Single;
+	#else
+	/**		
+		Returns a value between 0 and 1 representing the raw intensity of the given action, ignoring the action's deadzone. In most cases, you should use `godot.Input.getActionStrength` instead.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+	**/
+	@:native("GetActionRawStrength")
+	public static overload function getActionRawStrength(action:std.String):Single;
+
+	/**		
+		Returns a value between 0 and 1 representing the raw intensity of the given action, ignoring the action's deadzone. In most cases, you should use `godot.Input.getActionStrength` instead.
+		
+		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+	**/
+	@:native("GetActionRawStrength")
+	public static overload function getActionRawStrength(action:std.String, exact:Bool):Single;
+	#end
+
+	/**		
+		Get axis input by specifying two actions, one negative and one positive.
+		
+		This is a shorthand for writing `Input.get_action_strength("positive_action") - Input.get_action_strength("negative_action")`.
+	**/
+	@:native("GetAxis")
+	public static function getAxis(negativeAction:std.String, positiveAction:std.String):Single;
+
+	#if doc_gen
+	/**		
+		Gets an input vector by specifying four actions for the positive and negative X and Y axes.
+		
+		This method is useful when getting vector input, such as from a joystick, directional pad, arrows, or WASD. The vector has its length limited to 1 and has a circular deadzone, which is useful for using vector input as movement.
+		
+		By default, the deadzone is automatically calculated from the average of the action deadzones. However, you can override the deadzone to be whatever you want (on the range of 0 to 1).
+	**/
+	@:native("GetVector")
+	public static function getVector(negativeX:std.String, positiveX:std.String, negativeY:std.String, positiveY:std.String, ?deadzone:Single):godot.Vector2;
+	#else
+	/**		
+		Gets an input vector by specifying four actions for the positive and negative X and Y axes.
+		
+		This method is useful when getting vector input, such as from a joystick, directional pad, arrows, or WASD. The vector has its length limited to 1 and has a circular deadzone, which is useful for using vector input as movement.
+		
+		By default, the deadzone is automatically calculated from the average of the action deadzones. However, you can override the deadzone to be whatever you want (on the range of 0 to 1).
+	**/
+	@:native("GetVector")
+	public static overload function getVector(negativeX:std.String, positiveX:std.String, negativeY:std.String, positiveY:std.String):godot.Vector2;
+
+	/**		
+		Gets an input vector by specifying four actions for the positive and negative X and Y axes.
+		
+		This method is useful when getting vector input, such as from a joystick, directional pad, arrows, or WASD. The vector has its length limited to 1 and has a circular deadzone, which is useful for using vector input as movement.
+		
+		By default, the deadzone is automatically calculated from the average of the action deadzones. However, you can override the deadzone to be whatever you want (on the range of 0 to 1).
+	**/
+	@:native("GetVector")
+	public static overload function getVector(negativeX:std.String, positiveX:std.String, negativeY:std.String, positiveY:std.String, deadzone:Single):godot.Vector2;
+	#end
 
 	#if doc_gen
 	/**		
@@ -228,38 +378,70 @@ extern class Input {
 	#end
 
 	/**		
-		Returns the gravity of the device's accelerometer sensor, if the device has one. Otherwise, the method returns .
+		Returns the gravity of the device's accelerometer sensor, if the device has one. Otherwise, the method returns `Vector3.ZERO`.
 		
-		Note: This method only works on Android and iOS. On other platforms, it always returns . On Android the unit of measurement for each axis is m/s² while on iOS it's a multiple of the Earth's gravitational acceleration `g` (~9.81 m/s²).
+		Note: This method only works on Android and iOS. On other platforms, it always returns `Vector3.ZERO`. On Android the unit of measurement for each axis is m/s² while on iOS it's a multiple of the Earth's gravitational acceleration `g` (~9.81 m/s²).
 	**/
 	@:native("GetGravity")
 	public static function getGravity():godot.Vector3;
 
 	/**		
-		Returns the acceleration of the device's accelerometer sensor, if the device has one. Otherwise, the method returns .
+		Returns the acceleration of the device's accelerometer sensor, if the device has one. Otherwise, the method returns `Vector3.ZERO`.
 		
 		Note this method returns an empty `godot.Vector3` when running from the editor even when your device has an accelerometer. You must export your project to a supported device to read values from the accelerometer.
 		
-		Note: This method only works on iOS, Android, and UWP. On other platforms, it always returns . On Android the unit of measurement for each axis is m/s² while on iOS and UWP it's a multiple of the Earth's gravitational acceleration `g` (~9.81 m/s²).
+		Note: This method only works on iOS, Android, and UWP. On other platforms, it always returns `Vector3.ZERO`. On Android the unit of measurement for each axis is m/s² while on iOS and UWP it's a multiple of the Earth's gravitational acceleration `g` (~9.81 m/s²).
 	**/
 	@:native("GetAccelerometer")
 	public static function getAccelerometer():godot.Vector3;
 
 	/**		
-		Returns the magnetic field strength in micro-Tesla for all axes of the device's magnetometer sensor, if the device has one. Otherwise, the method returns .
+		Returns the magnetic field strength in micro-Tesla for all axes of the device's magnetometer sensor, if the device has one. Otherwise, the method returns `Vector3.ZERO`.
 		
-		Note: This method only works on Android, iOS and UWP. On other platforms, it always returns .
+		Note: This method only works on Android, iOS and UWP. On other platforms, it always returns `Vector3.ZERO`.
 	**/
 	@:native("GetMagnetometer")
 	public static function getMagnetometer():godot.Vector3;
 
 	/**		
-		Returns the rotation rate in rad/s around a device's X, Y, and Z axes of the gyroscope sensor, if the device has one. Otherwise, the method returns .
+		Returns the rotation rate in rad/s around a device's X, Y, and Z axes of the gyroscope sensor, if the device has one. Otherwise, the method returns `Vector3.ZERO`.
 		
-		Note: This method only works on Android and iOS. On other platforms, it always returns .
+		Note: This method only works on Android and iOS. On other platforms, it always returns `Vector3.ZERO`.
 	**/
 	@:native("GetGyroscope")
 	public static function getGyroscope():godot.Vector3;
+
+	/**		
+		Sets the gravity value of the accelerometer sensor. Can be used for debugging on devices without a hardware sensor, for example in an editor on a PC.
+		
+		Note: This value can be immediately overwritten by the hardware sensor value on Android and iOS.
+	**/
+	@:native("SetGravity")
+	public static function setGravity(value:godot.Vector3):Void;
+
+	/**		
+		Sets the acceleration value of the accelerometer sensor. Can be used for debugging on devices without a hardware sensor, for example in an editor on a PC.
+		
+		Note: This value can be immediately overwritten by the hardware sensor value on Android and iOS.
+	**/
+	@:native("SetAccelerometer")
+	public static function setAccelerometer(value:godot.Vector3):Void;
+
+	/**		
+		Sets the value of the magnetic field of the magnetometer sensor. Can be used for debugging on devices without a hardware sensor, for example in an editor on a PC.
+		
+		Note: This value can be immediately overwritten by the hardware sensor value on Android and iOS.
+	**/
+	@:native("SetMagnetometer")
+	public static function setMagnetometer(value:godot.Vector3):Void;
+
+	/**		
+		Sets the value of the rotation rate of the gyroscope sensor. Can be used for debugging on devices without a hardware sensor, for example in an editor on a PC.
+		
+		Note: This value can be immediately overwritten by the hardware sensor value on Android and iOS.
+	**/
+	@:native("SetGyroscope")
+	public static function setGyroscope(value:godot.Vector3):Void;
 
 	/**		
 		Returns the mouse speed for the last time the cursor was moved, and this until the next frame where the mouse moves. This means that even if the mouse is not moving, this function will still return the value of the last motion.
@@ -331,7 +513,7 @@ extern class Input {
 
 	#if doc_gen
 	/**		
-		Sets the default cursor shape to be used in the viewport instead of .
+		Sets the default cursor shape to be used in the viewport instead of `godot.Input_CursorShape.arrow`.
 		
 		Note: If you want to change the default cursor shape for `godot.Control`'s nodes, use `godot.Control.mouseDefaultCursorShape` instead.
 		
@@ -341,7 +523,7 @@ extern class Input {
 	public static function setDefaultCursorShape(?shape:godot.Input_CursorShape):Void;
 	#else
 	/**		
-		Sets the default cursor shape to be used in the viewport instead of .
+		Sets the default cursor shape to be used in the viewport instead of `godot.Input_CursorShape.arrow`.
 		
 		Note: If you want to change the default cursor shape for `godot.Control`'s nodes, use `godot.Control.mouseDefaultCursorShape` instead.
 		
@@ -351,7 +533,7 @@ extern class Input {
 	public static overload function setDefaultCursorShape():Void;
 
 	/**		
-		Sets the default cursor shape to be used in the viewport instead of .
+		Sets the default cursor shape to be used in the viewport instead of `godot.Input_CursorShape.arrow`.
 		
 		Note: If you want to change the default cursor shape for `godot.Control`'s nodes, use `godot.Control.mouseDefaultCursorShape` instead.
 		
@@ -457,4 +639,12 @@ extern class Input {
 	**/
 	@:native("SetUseAccumulatedInput")
 	public static function setUseAccumulatedInput(enable:Bool):Void;
+
+	/**		
+		Sends all input events which are in the current buffer to the game loop. These events may have been buffered as a result of accumulated input (`godot.Input.setUseAccumulatedInput`) or agile input flushing ().
+		
+		The engine will already do this itself at key execution points (at least once per frame). However, this can be useful in advanced cases where you want precise control over the timing of event handling.
+	**/
+	@:native("FlushBufferedEvents")
+	public static function flushBufferedEvents():Void;
 }

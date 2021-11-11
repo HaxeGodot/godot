@@ -6,7 +6,7 @@ package godot;
 @:csNative
 extern enum TextureRect_StretchModeEnum {
 	/**		
-		Scale to fit the node's bounding rectangle, only if `expand` is `true`. Default `stretch_mode`, for backwards compatibility. Until you set `expand` to `true`, the texture will behave like .
+		Scale to fit the node's bounding rectangle, only if `expand` is `true`. Default `stretch_mode`, for backwards compatibility. Until you set `expand` to `true`, the texture will behave like `godot.TextureRect_StretchModeEnum.keep`.
 	**/
 	ScaleOnExpand;
 

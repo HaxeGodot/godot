@@ -71,7 +71,7 @@ extern class CPUParticles2D extends godot.Node2D {
 	public var hueVariation:Single;
 
 	/**		
-		Each particle's color will vary along this `godot.Gradient`.
+		Each particle's color will vary along this `godot.Gradient` (multiplied with `godot.CPUParticles2D.color`).
 	**/
 	@:native("ColorRamp")
 	public var colorRamp:godot.Gradient;
@@ -263,31 +263,31 @@ extern class CPUParticles2D extends godot.Node2D {
 	public var flagAlignY:Bool;
 
 	/**		
-		Sets the `godot.Color`s to modulate particles by when using  or .
+		Sets the `godot.Color`s to modulate particles by when using `godot.CPUParticles2D_EmissionShapeEnum.points` or `godot.CPUParticles2D_EmissionShapeEnum.directedPoints`.
 	**/
 	@:native("EmissionColors")
 	public var emissionColors:cs.NativeArray<godot.Color>;
 
 	/**		
-		Sets the direction the particles will be emitted in when using .
+		Sets the direction the particles will be emitted in when using `godot.CPUParticles2D_EmissionShapeEnum.directedPoints`.
 	**/
 	@:native("EmissionNormals")
 	public var emissionNormals:cs.NativeArray<godot.Vector2>;
 
 	/**		
-		Sets the initial positions to spawn particles when using  or .
+		Sets the initial positions to spawn particles when using `godot.CPUParticles2D_EmissionShapeEnum.points` or `godot.CPUParticles2D_EmissionShapeEnum.directedPoints`.
 	**/
 	@:native("EmissionPoints")
 	public var emissionPoints:cs.NativeArray<godot.Vector2>;
 
 	/**		
-		The rectangle's extents if `godot.CPUParticles2D.emissionShape` is set to .
+		The rectangle's extents if `godot.CPUParticles2D.emissionShape` is set to `godot.CPUParticles2D_EmissionShapeEnum.rectangle`.
 	**/
 	@:native("EmissionRectExtents")
 	public var emissionRectExtents:godot.Vector2;
 
 	/**		
-		The sphere's radius if `godot.CPUParticles2D.emissionShape` is set to .
+		The sphere's radius if `godot.CPUParticles2D.emissionShape` is set to `godot.CPUParticles2D_EmissionShapeEnum.sphere`.
 	**/
 	@:native("EmissionSphereRadius")
 	public var emissionSphereRadius:Single;

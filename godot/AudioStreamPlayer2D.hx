@@ -6,6 +6,10 @@ import cs.system.*;
 
 /**
 Plays audio that dampens with distance from screen center.
+
+See also `godot.AudioStreamPlayer` to play a sound non-positionally.
+
+Note: Hiding an `godot.AudioStreamPlayer2D` node does not disable its audio output. To temporarily disable an `godot.AudioStreamPlayer2D`'s audio output, set `godot.AudioStreamPlayer2D.volumeDb` to a very low value like `-100` (which isn't audible to human hearing).
 **/
 @:libType
 @:csNative

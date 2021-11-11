@@ -66,14 +66,14 @@ extern abstract class FileSystemDock extends godot.VBoxContainer {
 	}
 
 	@:native("GetDragDataFw")
-	public function getDragDataFw(arg0:godot.Vector2, arg1:godot.Control):Dynamic;
+	public function getDragDataFw(point:godot.Vector2, from:godot.Control):Dynamic;
 
 	@:native("CanDropDataFw")
-	public function canDropDataFw(arg0:godot.Vector2, arg1:Dynamic, arg2:godot.Control):Bool;
+	public function canDropDataFw(point:godot.Vector2, data:Dynamic, from:godot.Control):Bool;
 
 	@:native("DropDataFw")
-	public function dropDataFw(arg0:godot.Vector2, arg1:Dynamic, arg2:godot.Control):Void;
+	public function dropDataFw(point:godot.Vector2, data:Dynamic, from:godot.Control):Void;
 
 	@:native("NavigateToPath")
-	public function navigateToPath(arg0:std.String):Void;
+	public function navigateToPath(path:std.String):Void;
 }

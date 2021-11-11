@@ -118,6 +118,12 @@ extern abstract class PhysicsDirectBodyState extends godot.Object {
 	public function getTransform():godot.Transform;
 
 	/**		
+		Returns the body's velocity at the given relative position, including both translation and rotation.
+	**/
+	@:native("GetVelocityAtLocalPosition")
+	public function getVelocityAtLocalPosition(localPosition:godot.Vector3):godot.Vector3;
+
+	/**		
 		Adds a constant directional force without affecting rotation.
 		
 		This is equivalent to `add_force(force, Vector3(0,0,0))`.

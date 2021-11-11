@@ -11,11 +11,11 @@ For more information on Godot's UI system, anchors, margins, and containers, see
 
 User Interface nodes and input
 
-Godot sends input events to the scene's root node first, by calling `godot.Node._Input`. `godot.Node._Input` forwards the event down the node tree to the nodes under the mouse cursor, or on keyboard focus. To do so, it calls `godot.MainLoop._InputEvent`. Call `godot.Control.acceptEvent` so no other node receives the event. Once you accepted an input, it becomes handled so `godot.Node._UnhandledInput` will not process it.
+Godot sends input events to the scene's root node first, by calling `godot.Node._Input`. `godot.Node._Input` forwards the event down the node tree to the nodes under the mouse cursor, or on keyboard focus. To do so, it calls `godot.MainLoop._InputEvent`. Call `godot.Control.acceptEvent` so no other node receives the event. Once you accept an input, it becomes handled so `godot.Node._UnhandledInput` will not process it.
 
 Only one `godot.Control` node can be in keyboard focus. Only the node in focus will receive keyboard events. To get the focus, call `godot.Control.grabFocus`. `godot.Control` nodes lose focus when another node grabs it, or if you hide the node in focus.
 
-Sets `godot.Control.mouseFilter` to  to tell a `godot.Control` node to ignore mouse or touch events. You'll need it if you place an icon on top of a button.
+Sets `godot.Control.mouseFilter` to `godot.Control_MouseFilterEnum.ignore` to tell a `godot.Control` node to ignore mouse or touch events. You'll need it if you place an icon on top of a button.
 
 `godot.Theme` resources change the Control's appearance. If you change the `godot.Theme` on a `godot.Control` node, it affects all of its children. To override some of the theme's parameters, call one of the `add_*_override` methods, like `godot.Control.addFontOverride`. You can override the theme with the inspector.
 
@@ -80,6 +80,7 @@ extern class Control extends godot.CanvasItem {
 		`mouse_entered` signal.
 		
 		Emitted when the mouse enters the control's `Rect` area, provided its `mouseFilter` lets the event reach it.
+		`b`Note:`/b` `onMouseEntered` will not be emitted if the mouse enters a child `Control` node before entering the parent's `Rect` area, at least until the mouse is moved to reach the parent's `Rect` area.
 	**/
 	public var onMouseEntered(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMouseEntered():Signal<Void->Void> {
@@ -90,6 +91,7 @@ extern class Control extends godot.CanvasItem {
 		`mouse_exited` signal.
 		
 		Emitted when the mouse leaves the control's `Rect` area, provided its `mouseFilter` lets the event reach it.
+		`b`Note:`/b` `onMouseExited` will be emitted if the mouse enters a child `Control` node, even if the mouse cursor is still inside the parent's `Rect` area.
 	**/
 	public var onMouseExited(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMouseExited():Signal<Void->Void> {
@@ -123,7 +125,7 @@ extern class Control extends godot.CanvasItem {
 	public var theme:godot.Theme;
 
 	/**		
-		If the node and at least one of its neighbours uses the  size flag, the parent `godot.Container` will let it take more or less space depending on this property. If this node has a stretch ratio of 2 and its neighbour a ratio of 1, this node will take two thirds of the available space.
+		If the node and at least one of its neighbours uses the `godot.Control_SizeFlags.expand` size flag, the parent `godot.Container` will let it take more or less space depending on this property. If this node has a stretch ratio of 2 and its neighbour a ratio of 1, this node will take two thirds of the available space.
 	**/
 	@:native("SizeFlagsStretchRatio")
 	public var sizeFlagsStretchRatio:Single;
@@ -191,7 +193,7 @@ extern class Control extends godot.CanvasItem {
 	public var focusNeighbourBottom:godot.NodePath;
 
 	/**		
-		Tells Godot which node it should give keyboard focus to if the user presses the right arrow on the keyboard or right on a gamepad  by default. You can change the key by editing the `ui_right` input action. The node must be a `godot.Control`. If this property is not set, Godot will give focus to the closest `godot.Control` to the bottom of this one.
+		Tells Godot which node it should give keyboard focus to if the user presses the right arrow on the keyboard or right on a gamepad by default. You can change the key by editing the `ui_right` input action. The node must be a `godot.Control`. If this property is not set, Godot will give focus to the closest `godot.Control` to the bottom of this one.
 	**/
 	@:native("FocusNeighbourRight")
 	public var focusNeighbourRight:godot.NodePath;
@@ -209,7 +211,7 @@ extern class Control extends godot.CanvasItem {
 	public var focusNeighbourLeft:godot.NodePath;
 
 	/**		
-		Changes the tooltip text. The tooltip appears when the user's mouse cursor stays idle over this control for a few moments, provided that the `godot.Control.mouseFilter` property is not . You can change the time required for the tooltip to appear with `gui/timers/tooltip_delay_sec` option in Project Settings.
+		Changes the tooltip text. The tooltip appears when the user's mouse cursor stays idle over this control for a few moments, provided that the `godot.Control.mouseFilter` property is not `godot.Control_MouseFilterEnum.ignore`. You can change the time required for the tooltip to appear with `gui/timers/tooltip_delay_sec` option in Project Settings.
 		
 		The tooltip popup will use either a default implementation, or a custom one that you can provide by overriding `godot.Control._MakeCustomTooltip`. The default tooltip includes a `godot.PopupPanel` and `godot.Label` whose theme properties can be customized using `godot.Theme` methods with the `"TooltipPanel"` and `"TooltipLabel"` respectively. For example:
 		
@@ -242,7 +244,7 @@ extern class Control extends godot.CanvasItem {
 	/**		
 		The node's scale, relative to its `godot.Control.rectSize`. Change this property to scale the node around its `godot.Control.rectPivotOffset`. The Control's `godot.Control.hintTooltip` will also scale according to this value.
 		
-		Note: This property is mainly intended to be used for animation purposes. Text inside the Control will look pixelated or blurry when the Control is scaled. To support multiple resolutions in your project, use an appropriate viewport stretch mode as described in the [https://docs.godotengine.org/en/3.3/tutorials/viewports/multiple_resolutions.html](documentation) instead of scaling Controls individually.
+		Note: This property is mainly intended to be used for animation purposes. Text inside the Control will look pixelated or blurry when the Control is scaled. To support multiple resolutions in your project, use an appropriate viewport stretch mode as described in the [https://docs.godotengine.org/en/3.4/tutorials/viewports/multiple_resolutions.html](documentation) instead of scaling Controls individually.
 		
 		Note: If the Control node is a child of a `godot.Container` node, the scale will be reset to `Vector2(1, 1)` when the scene is instanced. To set the Control's scale when it's instanced, wait for one frame using `yield(get_tree(), "idle_frame")` then set its `godot.Control.rectScale` property.
 	**/
@@ -336,7 +338,7 @@ extern class Control extends godot.CanvasItem {
 	public var anchorRight:Single;
 
 	/**		
-		Anchors the top edge of the node to the origin, the center or the end of its parent control. It changes how the top margin updates when the node moves or changes size. You can use  one of the `godot.Control_Anchor` constants for convenience.
+		Anchors the top edge of the node to the origin, the center or the end of its parent control. It changes how the top margin updates when the node moves or changes size. You can use one of the `godot.Control_Anchor` constants for convenience.
 	**/
 	@:native("AnchorTop")
 	public var anchorTop:Single;
@@ -415,7 +417,7 @@ extern class Control extends godot.CanvasItem {
 	/**		
 		Virtual method to be implemented by the user. Returns the minimum size for this control. Alternative to `godot.Control.rectMinSize` for controlling minimum size via code. The actual minimum size will be the max value of these two (in each axis separately).
 		
-		If not overridden, defaults to .
+		If not overridden, defaults to `Vector2.ZERO`.
 	**/
 	@:native("_GetMinimumSize")
 	public function _GetMinimumSize():godot.Vector2;
@@ -438,13 +440,15 @@ extern class Control extends godot.CanvasItem {
 		
 		* clicking outside the control (see `godot.Control.hasPoint`);
 		
-		* control has `godot.Control.mouseFilter` set to ;
+		* control has `godot.Control.mouseFilter` set to `godot.Control_MouseFilterEnum.ignore`;
 		
-		* control is obstructed by another `godot.Control` on top of it, which doesn't have `godot.Control.mouseFilter` set to ;
+		* control is obstructed by another `godot.Control` on top of it, which doesn't have `godot.Control.mouseFilter` set to `godot.Control_MouseFilterEnum.ignore`;
 		
-		* control's parent has `godot.Control.mouseFilter` set to  or has accepted the event;
+		* control's parent has `godot.Control.mouseFilter` set to `godot.Control_MouseFilterEnum.stop` or has accepted the event;
 		
-		* it happens outside parent's rectangle and the parent has either `godot.Control.rectClipContent` or `godot.Control._ClipsInput` enabled.
+		* it happens outside the parent's rectangle and the parent has either `godot.Control.rectClipContent` or `godot.Control._ClipsInput` enabled.
+		
+		Note: Event position is relative to the control origin.
 	**/
 	@:native("_GuiInput")
 	public function _GuiInput(event:godot.InputEvent):Void;
@@ -452,7 +456,7 @@ extern class Control extends godot.CanvasItem {
 	/**		
 		Virtual method to be implemented by the user. Returns a `godot.Control` node that should be used as a tooltip instead of the default one. The `for_text` includes the contents of the `godot.Control.hintTooltip` property.
 		
-		The returned node must be of type `godot.Control` or Control-derived. It can have child nodes of any type. It is freed when the tooltip disappears, so make sure you always provide a new instance (if you want to use a pre-existing node from your scene tree, you can duplicate it and pass the duplicated instance).When `null` or a non-Control node is returned, the default tooltip will be used instead.
+		The returned node must be of type `godot.Control` or Control-derived. It can have child nodes of any type. It is freed when the tooltip disappears, so make sure you always provide a new instance (if you want to use a pre-existing node from your scene tree, you can duplicate it and pass the duplicated instance). When `null` or a non-Control node is returned, the default tooltip will be used instead.
 		
 		The returned node will be added as child to a `godot.PopupPanel`, so you should only provide the contents of that panel. That `godot.PopupPanel` can be themed using `godot.Theme.setStylebox` for the type `"TooltipPanel"` (see `godot.Control.hintTooltip` for an example).
 		
@@ -563,7 +567,7 @@ extern class Control extends godot.CanvasItem {
 
 	#if doc_gen
 	/**		
-		Sets the anchors to a `preset` from `godot.Control_LayoutPreset` enum. This is code equivalent of using the Layout menu in 2D editor.
+		Sets the anchors to a `preset` from `godot.Control_LayoutPreset` enum. This is the code equivalent to using the Layout menu in the 2D editor.
 		
 		If `keep_margins` is `true`, control's position will also be updated.
 	**/
@@ -571,7 +575,7 @@ extern class Control extends godot.CanvasItem {
 	public function setAnchorsPreset(preset:godot.Control_LayoutPreset, ?keepMargins:Bool):Void;
 	#else
 	/**		
-		Sets the anchors to a `preset` from `godot.Control_LayoutPreset` enum. This is code equivalent of using the Layout menu in 2D editor.
+		Sets the anchors to a `preset` from `godot.Control_LayoutPreset` enum. This is the code equivalent to using the Layout menu in the 2D editor.
 		
 		If `keep_margins` is `true`, control's position will also be updated.
 	**/
@@ -579,7 +583,7 @@ extern class Control extends godot.CanvasItem {
 	public overload function setAnchorsPreset(preset:godot.Control_LayoutPreset):Void;
 
 	/**		
-		Sets the anchors to a `preset` from `godot.Control_LayoutPreset` enum. This is code equivalent of using the Layout menu in 2D editor.
+		Sets the anchors to a `preset` from `godot.Control_LayoutPreset` enum. This is the code equivalent to using the Layout menu in the 2D editor.
 		
 		If `keep_margins` is `true`, control's position will also be updated.
 	**/
@@ -589,7 +593,7 @@ extern class Control extends godot.CanvasItem {
 
 	#if doc_gen
 	/**		
-		Sets the margins to a `preset` from `godot.Control_LayoutPreset` enum. This is code equivalent of using the Layout menu in 2D editor.
+		Sets the margins to a `preset` from `godot.Control_LayoutPreset` enum. This is the code equivalent to using the Layout menu in the 2D editor.
 		
 		Use parameter `resize_mode` with constants from `godot.Control_LayoutPresetMode` to better determine the resulting size of the `godot.Control`. Constant size will be ignored if used with presets that change size, e.g. `PRESET_LEFT_WIDE`.
 		
@@ -599,7 +603,7 @@ extern class Control extends godot.CanvasItem {
 	public function setMarginsPreset(preset:godot.Control_LayoutPreset, ?resizeMode:godot.Control_LayoutPresetMode, ?margin:Int):Void;
 	#else
 	/**		
-		Sets the margins to a `preset` from `godot.Control_LayoutPreset` enum. This is code equivalent of using the Layout menu in 2D editor.
+		Sets the margins to a `preset` from `godot.Control_LayoutPreset` enum. This is the code equivalent to using the Layout menu in the 2D editor.
 		
 		Use parameter `resize_mode` with constants from `godot.Control_LayoutPresetMode` to better determine the resulting size of the `godot.Control`. Constant size will be ignored if used with presets that change size, e.g. `PRESET_LEFT_WIDE`.
 		
@@ -609,7 +613,7 @@ extern class Control extends godot.CanvasItem {
 	public overload function setMarginsPreset(preset:godot.Control_LayoutPreset):Void;
 
 	/**		
-		Sets the margins to a `preset` from `godot.Control_LayoutPreset` enum. This is code equivalent of using the Layout menu in 2D editor.
+		Sets the margins to a `preset` from `godot.Control_LayoutPreset` enum. This is the code equivalent to using the Layout menu in the 2D editor.
 		
 		Use parameter `resize_mode` with constants from `godot.Control_LayoutPresetMode` to better determine the resulting size of the `godot.Control`. Constant size will be ignored if used with presets that change size, e.g. `PRESET_LEFT_WIDE`.
 		
@@ -619,7 +623,7 @@ extern class Control extends godot.CanvasItem {
 	public overload function setMarginsPreset(preset:godot.Control_LayoutPreset, resizeMode:godot.Control_LayoutPresetMode):Void;
 
 	/**		
-		Sets the margins to a `preset` from `godot.Control_LayoutPreset` enum. This is code equivalent of using the Layout menu in 2D editor.
+		Sets the margins to a `preset` from `godot.Control_LayoutPreset` enum. This is the code equivalent to using the Layout menu in the 2D editor.
 		
 		Use parameter `resize_mode` with constants from `godot.Control_LayoutPresetMode` to better determine the resulting size of the `godot.Control`. Constant size will be ignored if used with presets that change size, e.g. `PRESET_LEFT_WIDE`.
 		
@@ -993,19 +997,23 @@ extern class Control extends godot.CanvasItem {
 	public function getTheme():godot.Theme;
 
 	/**		
-		Overrides the icon with given `name` in the `godot.Control.theme` resource the control uses. If `icon` is `null` or invalid, the override is cleared and the icon from assigned `godot.Theme` is used.
+		Creates a local override for a theme icon with the specified `name`. Local overrides always take precedence when fetching theme items for the control. An override can be removed by assigning it a `null` value.
+		
+		See also `godot.Control.getIcon`.
 	**/
 	@:native("AddIconOverride")
 	public function addIconOverride(name:std.String, texture:godot.Texture):Void;
 
 	/**		
-		Overrides the `godot.Shader` with given `name` in the `godot.Control.theme` resource the control uses. If `shader` is `null` or invalid, the override is cleared and the shader from assigned `godot.Theme` is used.
+		Creates a local override for a theme shader with the specified `name`. Local overrides always take precedence when fetching theme items for the control. An override can be removed by assigning it a `null` value.
 	**/
 	@:native("AddShaderOverride")
 	public function addShaderOverride(name:std.String, shader:godot.Shader):Void;
 
 	/**		
-		Overrides the `godot.StyleBox` with given `name` in the `godot.Control.theme` resource the control uses. If `stylebox` is empty or invalid, the override is cleared and the `godot.StyleBox` from assigned `godot.Theme` is used.
+		Creates a local override for a theme `godot.StyleBox` with the specified `name`. Local overrides always take precedence when fetching theme items for the control. An override can be removed by assigning it a `null` value.
+		
+		See also `godot.Control.getStylebox`.
 		
 		Example of modifying a property in a StyleBox by duplicating it:
 		
@@ -1018,8 +1026,7 @@ extern class Control extends godot.CanvasItem {
 		new_stylebox_normal.border_width_top = 3
 		new_stylebox_normal.border_color = Color(0, 1, 0.5)
 		$MyButton.add_stylebox_override("normal", new_stylebox_normal)
-		
-		# Remove the stylebox override:
+		# Remove the stylebox override.
 		$MyButton.add_stylebox_override("normal", null)
 		
 		```
@@ -1028,26 +1035,26 @@ extern class Control extends godot.CanvasItem {
 	public function addStyleboxOverride(name:std.String, stylebox:godot.StyleBox):Void;
 
 	/**		
-		Overrides the font with given `name` in the `godot.Control.theme` resource the control uses. If `font` is `null` or invalid, the override is cleared and the font from assigned `godot.Theme` is used.
+		Creates a local override for a theme `godot.Font` with the specified `name`. Local overrides always take precedence when fetching theme items for the control. An override can be removed by assigning it a `null` value.
+		
+		See also `godot.Control.getFont`.
 	**/
 	@:native("AddFontOverride")
 	public function addFontOverride(name:std.String, font:godot.Font):Void;
 
 	/**		
-		Overrides the `godot.Color` with given `name` in the `godot.Control.theme` resource the control uses.
+		Creates a local override for a theme `godot.Color` with the specified `name`. Local overrides always take precedence when fetching theme items for the control. An override cannot be removed, but it can be overridden with the corresponding default value.
 		
-		Note: Unlike other theme overrides, there is no way to undo a color override without manually assigning the previous color.
+		See also `godot.Control.getColor`.
 		
 		Example of overriding a label's color and resetting it later:
 		
 		```
 		
-		# Override the child node "MyLabel"'s font color to orange.
+		# Given the child Label node "MyLabel", override its font color with a custom value.
 		$MyLabel.add_color_override("font_color", Color(1, 0.5, 0))
-		
-		# Reset the color by creating a new node to get the default value:
-		var default_label_color = Label.new().get_color("font_color")
-		$MyLabel.add_color_override("font_color", default_label_color)
+		# Reset the font color of the child label.
+		$MyLabel.add_color_override("font_color", get_color("font_color", "Label"))
 		
 		```
 	**/
@@ -1055,92 +1062,122 @@ extern class Control extends godot.CanvasItem {
 	public function addColorOverride(name:std.String, color:godot.Color):Void;
 
 	/**		
-		Overrides an integer constant with given `name` in the `godot.Control.theme` resource the control uses. If the `constant` is `0`, the override is cleared and the constant from assigned `godot.Theme` is used.
+		Creates a local override for a theme constant with the specified `name`. Local overrides always take precedence when fetching theme items for the control. An override cannot be removed, but it can be overridden with the corresponding default value.
+		
+		See also `godot.Control.getConstant`.
 	**/
 	@:native("AddConstantOverride")
 	public function addConstantOverride(name:std.String, constant:Int):Void;
 
 	#if doc_gen
 	/**		
-		Returns an icon from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns an icon from the first matching `godot.Theme` in the tree if that `godot.Theme` has an icon item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetIcon")
-	public function getIcon(name:std.String, ?nodeType:std.String):godot.Texture;
+	public function getIcon(name:std.String, ?themeType:std.String):godot.Texture;
 	#else
 	/**		
-		Returns an icon from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns an icon from the first matching `godot.Theme` in the tree if that `godot.Theme` has an icon item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetIcon")
 	public overload function getIcon(name:std.String):godot.Texture;
 
 	/**		
-		Returns an icon from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns an icon from the first matching `godot.Theme` in the tree if that `godot.Theme` has an icon item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetIcon")
-	public overload function getIcon(name:std.String, nodeType:std.String):godot.Texture;
+	public overload function getIcon(name:std.String, themeType:std.String):godot.Texture;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns a `godot.StyleBox` from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a `godot.StyleBox` from the first matching `godot.Theme` in the tree if that `godot.Theme` has a stylebox item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetStylebox")
-	public function getStylebox(name:std.String, ?nodeType:std.String):godot.StyleBox;
+	public function getStylebox(name:std.String, ?themeType:std.String):godot.StyleBox;
 	#else
 	/**		
-		Returns a `godot.StyleBox` from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a `godot.StyleBox` from the first matching `godot.Theme` in the tree if that `godot.Theme` has a stylebox item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetStylebox")
 	public overload function getStylebox(name:std.String):godot.StyleBox;
 
 	/**		
-		Returns a `godot.StyleBox` from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a `godot.StyleBox` from the first matching `godot.Theme` in the tree if that `godot.Theme` has a stylebox item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetStylebox")
-	public overload function getStylebox(name:std.String, nodeType:std.String):godot.StyleBox;
+	public overload function getStylebox(name:std.String, themeType:std.String):godot.StyleBox;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns a font from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a `godot.Font` from the first matching `godot.Theme` in the tree if that `godot.Theme` has a font item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetFont")
-	public function getFont(name:std.String, ?nodeType:std.String):godot.Font;
+	public function getFont(name:std.String, ?themeType:std.String):godot.Font;
 	#else
 	/**		
-		Returns a font from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a `godot.Font` from the first matching `godot.Theme` in the tree if that `godot.Theme` has a font item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetFont")
 	public overload function getFont(name:std.String):godot.Font;
 
 	/**		
-		Returns a font from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a `godot.Font` from the first matching `godot.Theme` in the tree if that `godot.Theme` has a font item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetFont")
-	public overload function getFont(name:std.String, nodeType:std.String):godot.Font;
+	public overload function getFont(name:std.String, themeType:std.String):godot.Font;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns a color from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a `godot.Color` from the first matching `godot.Theme` in the tree if that `godot.Theme` has a color item with the specified `name` and `theme_type`. If `theme_type` is omitted the class name of the current control is used as the type. If the type is a class name its parent classes are also checked, in order of inheritance.
+		
+		For the current control its local overrides are considered first (see `godot.Control.addColorOverride`), then its assigned `godot.Control.theme`. After the current control, each parent control and its assigned `godot.Control.theme` are considered; controls without a `godot.Control.theme` assigned are skipped. If no matching `godot.Theme` is found in the tree, a custom project `godot.Theme` (see ) and the default `godot.Theme` are used.
 		
 		```
 		
 		func _ready():
-		modulate = get_color("font_color", "Button") #get the color defined for button fonts
+		# Get the font color defined for the current Control's class, if it exists.
+		modulate = get_color("font_color")
+		# Get the font color defined for the Button class.
+		modulate = get_color("font_color", "Button")
 		
 		```
 	**/
 	@:native("GetColor")
-	public function getColor(name:std.String, ?nodeType:std.String):godot.Color;
+	public function getColor(name:std.String, ?themeType:std.String):godot.Color;
 	#else
 	/**		
-		Returns a color from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a `godot.Color` from the first matching `godot.Theme` in the tree if that `godot.Theme` has a color item with the specified `name` and `theme_type`. If `theme_type` is omitted the class name of the current control is used as the type. If the type is a class name its parent classes are also checked, in order of inheritance.
+		
+		For the current control its local overrides are considered first (see `godot.Control.addColorOverride`), then its assigned `godot.Control.theme`. After the current control, each parent control and its assigned `godot.Control.theme` are considered; controls without a `godot.Control.theme` assigned are skipped. If no matching `godot.Theme` is found in the tree, a custom project `godot.Theme` (see ) and the default `godot.Theme` are used.
 		
 		```
 		
 		func _ready():
-		modulate = get_color("font_color", "Button") #get the color defined for button fonts
+		# Get the font color defined for the current Control's class, if it exists.
+		modulate = get_color("font_color")
+		# Get the font color defined for the Button class.
+		modulate = get_color("font_color", "Button")
 		
 		```
 	**/
@@ -1148,174 +1185,235 @@ extern class Control extends godot.CanvasItem {
 	public overload function getColor(name:std.String):godot.Color;
 
 	/**		
-		Returns a color from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a `godot.Color` from the first matching `godot.Theme` in the tree if that `godot.Theme` has a color item with the specified `name` and `theme_type`. If `theme_type` is omitted the class name of the current control is used as the type. If the type is a class name its parent classes are also checked, in order of inheritance.
+		
+		For the current control its local overrides are considered first (see `godot.Control.addColorOverride`), then its assigned `godot.Control.theme`. After the current control, each parent control and its assigned `godot.Control.theme` are considered; controls without a `godot.Control.theme` assigned are skipped. If no matching `godot.Theme` is found in the tree, a custom project `godot.Theme` (see ) and the default `godot.Theme` are used.
 		
 		```
 		
 		func _ready():
-		modulate = get_color("font_color", "Button") #get the color defined for button fonts
+		# Get the font color defined for the current Control's class, if it exists.
+		modulate = get_color("font_color")
+		# Get the font color defined for the Button class.
+		modulate = get_color("font_color", "Button")
 		
 		```
 	**/
 	@:native("GetColor")
-	public overload function getColor(name:std.String, nodeType:std.String):godot.Color;
+	public overload function getColor(name:std.String, themeType:std.String):godot.Color;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns a constant from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a constant from the first matching `godot.Theme` in the tree if that `godot.Theme` has a constant item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetConstant")
-	public function getConstant(name:std.String, ?nodeType:std.String):Int;
+	public function getConstant(name:std.String, ?themeType:std.String):Int;
 	#else
 	/**		
-		Returns a constant from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a constant from the first matching `godot.Theme` in the tree if that `godot.Theme` has a constant item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetConstant")
 	public overload function getConstant(name:std.String):Int;
 
 	/**		
-		Returns a constant from assigned `godot.Theme` with given `name` and associated with `godot.Control` of given `node_type`.
+		Returns a constant from the first matching `godot.Theme` in the tree if that `godot.Theme` has a constant item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("GetConstant")
-	public overload function getConstant(name:std.String, nodeType:std.String):Int;
+	public overload function getConstant(name:std.String, themeType:std.String):Int;
 	#end
 
 	/**		
-		Returns `true` if icon with given `name` has a valid override in this `godot.Control` node.
+		Returns `true` if there is a local override for a theme icon with the specified `name` in this `godot.Control` node.
+		
+		See `godot.Control.addIconOverride`.
 	**/
 	@:native("HasIconOverride")
 	public function hasIconOverride(name:std.String):Bool;
 
 	/**		
-		Returns `true` if `godot.Shader` with given `name` has a valid override in this `godot.Control` node.
+		Returns `true` if there is a local override for a theme shader with the specified `name` in this `godot.Control` node.
+		
+		See `godot.Control.addShaderOverride`.
 	**/
 	@:native("HasShaderOverride")
 	public function hasShaderOverride(name:std.String):Bool;
 
 	/**		
-		Returns `true` if `godot.StyleBox` with given `name` has a valid override in this `godot.Control` node.
+		Returns `true` if there is a local override for a theme `godot.StyleBox` with the specified `name` in this `godot.Control` node.
+		
+		See `godot.Control.addStyleboxOverride`.
 	**/
 	@:native("HasStyleboxOverride")
 	public function hasStyleboxOverride(name:std.String):Bool;
 
 	/**		
-		Returns `true` if font with given `name` has a valid override in this `godot.Control` node.
+		Returns `true` if there is a local override for a theme `godot.Font` with the specified `name` in this `godot.Control` node.
+		
+		See `godot.Control.addFontOverride`.
 	**/
 	@:native("HasFontOverride")
 	public function hasFontOverride(name:std.String):Bool;
 
 	/**		
-		Returns `true` if `godot.Color` with given `name` has a valid override in this `godot.Control` node.
+		Returns `true` if there is a local override for a theme `godot.Color` with the specified `name` in this `godot.Control` node.
+		
+		See `godot.Control.addColorOverride`.
 	**/
 	@:native("HasColorOverride")
 	public function hasColorOverride(name:std.String):Bool;
 
 	/**		
-		Returns `true` if constant with given `name` has a valid override in this `godot.Control` node.
+		Returns `true` if there is a local override for a theme constant with the specified `name` in this `godot.Control` node.
+		
+		See `godot.Control.addConstantOverride`.
 	**/
 	@:native("HasConstantOverride")
 	public function hasConstantOverride(name:std.String):Bool;
 
 	#if doc_gen
 	/**		
-		Returns `true` if icon with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has an icon item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasIcon")
-	public function hasIcon(name:std.String, ?nodeType:std.String):Bool;
+	public function hasIcon(name:std.String, ?themeType:std.String):Bool;
 	#else
 	/**		
-		Returns `true` if icon with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has an icon item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasIcon")
 	public overload function hasIcon(name:std.String):Bool;
 
 	/**		
-		Returns `true` if icon with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has an icon item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasIcon")
-	public overload function hasIcon(name:std.String, nodeType:std.String):Bool;
+	public overload function hasIcon(name:std.String, themeType:std.String):Bool;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns `true` if `godot.StyleBox` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a stylebox item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasStylebox")
-	public function hasStylebox(name:std.String, ?nodeType:std.String):Bool;
+	public function hasStylebox(name:std.String, ?themeType:std.String):Bool;
 	#else
 	/**		
-		Returns `true` if `godot.StyleBox` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a stylebox item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasStylebox")
 	public overload function hasStylebox(name:std.String):Bool;
 
 	/**		
-		Returns `true` if `godot.StyleBox` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a stylebox item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasStylebox")
-	public overload function hasStylebox(name:std.String, nodeType:std.String):Bool;
+	public overload function hasStylebox(name:std.String, themeType:std.String):Bool;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns `true` if font with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a font item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasFont")
-	public function hasFont(name:std.String, ?nodeType:std.String):Bool;
+	public function hasFont(name:std.String, ?themeType:std.String):Bool;
 	#else
 	/**		
-		Returns `true` if font with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a font item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasFont")
 	public overload function hasFont(name:std.String):Bool;
 
 	/**		
-		Returns `true` if font with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a font item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasFont")
-	public overload function hasFont(name:std.String, nodeType:std.String):Bool;
+	public overload function hasFont(name:std.String, themeType:std.String):Bool;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns `true` if `godot.Color` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a color item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasColor")
-	public function hasColor(name:std.String, ?nodeType:std.String):Bool;
+	public function hasColor(name:std.String, ?themeType:std.String):Bool;
 	#else
 	/**		
-		Returns `true` if `godot.Color` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a color item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasColor")
 	public overload function hasColor(name:std.String):Bool;
 
 	/**		
-		Returns `true` if `godot.Color` with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a color item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasColor")
-	public overload function hasColor(name:std.String, nodeType:std.String):Bool;
+	public overload function hasColor(name:std.String, themeType:std.String):Bool;
 	#end
 
 	#if doc_gen
 	/**		
-		Returns `true` if constant with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a constant item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasConstant")
-	public function hasConstant(name:std.String, ?nodeType:std.String):Bool;
+	public function hasConstant(name:std.String, ?themeType:std.String):Bool;
 	#else
 	/**		
-		Returns `true` if constant with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a constant item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasConstant")
 	public overload function hasConstant(name:std.String):Bool;
 
 	/**		
-		Returns `true` if constant with given `name` and associated with `godot.Control` of given `node_type` exists in assigned `godot.Theme`.
+		Returns `true` if there is a matching `godot.Theme` in the tree that has a constant item with the specified `name` and `theme_type`.
+		
+		See `godot.Control.getColor` for details.
 	**/
 	@:native("HasConstant")
-	public overload function hasConstant(name:std.String, nodeType:std.String):Bool;
+	public overload function hasConstant(name:std.String, themeType:std.String):Bool;
 	#end
+
+	/**		
+		Returns the default font from the first matching `godot.Theme` in the tree if that `godot.Theme` has a valid `godot.Theme.defaultFont` value.
+		
+		See `godot.Control.getColor` for details.
+	**/
+	@:native("GetThemeDefaultFont")
+	public function getThemeDefaultFont():godot.Font;
 
 	/**		
 		Returns the parent control node.

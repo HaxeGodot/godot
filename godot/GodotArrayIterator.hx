@@ -1,5 +1,7 @@
 package godot;
 
+@:dox(hide)
+@:noCompletion
 class GodotArrayIterator {
 	final handle:cs.system.collections.IEnumerator;
 	var hasValue = true;

@@ -1581,7 +1581,7 @@ extern class AnimatedTexture extends godot.Texture {
 	public var currentFrame:Int;
 
 	/**		
-		Number of frames to use in the animation. While you can create the frames independently with `godot.AnimatedTexture.setFrameTexture`, you need to set this value for the animation to take new frames into account. The maximum number of frames is .
+		Number of frames to use in the animation. While you can create the frames independently with `godot.AnimatedTexture.setFrameTexture`, you need to set this value for the animation to take new frames into account. The maximum number of frames is `godot.AnimatedTexture.maxFrames`.
 	**/
 	@:native("Frames")
 	public var frames:Int;
@@ -1628,7 +1628,7 @@ extern class AnimatedTexture extends godot.Texture {
 	/**		
 		Assigns a `godot.Texture` to the given frame. Frame IDs start at 0, so the first frame has ID 0, and the last frame of the animation has ID `godot.AnimatedTexture.frames` - 1.
 		
-		You can define any number of textures up to , but keep in mind that only frames from 0 to `godot.AnimatedTexture.frames` - 1 will be part of the animation.
+		You can define any number of textures up to `godot.AnimatedTexture.maxFrames`, but keep in mind that only frames from 0 to `godot.AnimatedTexture.frames` - 1 will be part of the animation.
 	**/
 	@:native("SetFrameTexture")
 	public function setFrameTexture(frame:Int, texture:godot.Texture):Void;

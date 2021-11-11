@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-This node returns a constant from a given class, such as . See the given class' documentation for available constants.
+This node returns a constant from a given class, such as `TYPE_INT`. See the given class' documentation for available constants.
 
 Input Ports:
 

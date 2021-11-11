@@ -19,7 +19,7 @@ var mdt = MeshDataTool.new()
 mdt.create_from_surface(mesh, 0)
 for i in range(mdt.get_vertex_count()):
 var vertex = mdt.get_vertex(i)
-# In this example we extend the mesh by one unit, which results in seperated faces as it is flat shaded.
+# In this example we extend the mesh by one unit, which results in separated faces as it is flat shaded.
 vertex += mdt.get_vertex_normal(i)
 # Save your change.
 mdt.set_vertex(i, vertex)
@@ -52,7 +52,7 @@ extern class MeshDataTool extends godot.Reference {
 	/**		
 		Uses specified surface of given `godot.Mesh` to populate data for MeshDataTool.
 		
-		Requires `godot.Mesh` with primitive type .
+		Requires `godot.Mesh` with primitive type `godot.Mesh_PrimitiveType.triangles`.
 	**/
 	@:native("CreateFromSurface")
 	public function createFromSurface(mesh:godot.ArrayMesh, surface:Int):godot.Error;
@@ -64,7 +64,7 @@ extern class MeshDataTool extends godot.Reference {
 	public function commitToSurface(mesh:godot.ArrayMesh):godot.Error;
 
 	/**		
-		Returns the `godot.Mesh`'s format. Format is an integer made up of `godot.Mesh` format flags combined together. For example, a mesh containing both vertices and normals would return a format of `3` because  is `1` and  is `2`.
+		Returns the `godot.Mesh`'s format. Format is an integer made up of `godot.Mesh` format flags combined together. For example, a mesh containing both vertices and normals would return a format of `3` because `godot.ArrayMesh_ArrayFormat.vertex` is `1` and `godot.ArrayMesh_ArrayFormat.normal` is `2`.
 		
 		See `godot.ArrayMesh_ArrayFormat` for a list of format flags.
 	**/

@@ -15,7 +15,7 @@ Note: Since this node inherits from `godot.Node2D` (and not `godot.Control`), an
 @:autoBuild(godot.Godot.buildUserClass())
 extern class BackBufferCopy extends godot.Node2D {
 	/**		
-		The area covered by the BackBufferCopy. Only used if `godot.BackBufferCopy.copyMode` is .
+		The area covered by the BackBufferCopy. Only used if `godot.BackBufferCopy.copyMode` is `godot.BackBufferCopy_CopyModeEnum.rect`.
 	**/
 	@:native("Rect")
 	public var rect:godot.Rect2;

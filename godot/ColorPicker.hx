@@ -5,7 +5,9 @@ package godot;
 import cs.system.*;
 
 /**
-`godot.Control` node displaying a color picker widget. It's useful for selecting a color from an RGB/RGBA colorspace.
+Displays a color picker widget. Useful for selecting a color from an RGB/RGBA colorspace.
+
+Note: This control is the color picker widget itself. You can use a `godot.ColorPickerButton` instead if you need a button that brings up a `godot.ColorPicker` in a pop-up.
 **/
 @:libType
 @:csNative
@@ -136,7 +138,7 @@ extern class ColorPicker extends godot.BoxContainer {
 	/**		
 		Adds the given color to a list of color presets. The presets are displayed in the color picker and the user will be able to select them.
 		
-		Note: the presets list is only for this color picker.
+		Note: The presets list is only for this color picker.
 	**/
 	@:native("AddPreset")
 	public function addPreset(color:godot.Color):Void;

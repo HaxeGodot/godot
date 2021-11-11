@@ -36,7 +36,7 @@ extern enum KeyModifierMask {
 	MaskCtrl;
 
 	/**		
-		Command key mask. On macOS, this is equivalent to . On other platforms, this is equivalent to . This mask should be preferred to  or  for system shortcuts as it handles all platforms correctly.
+		Command key mask. On macOS, this is equivalent to `KEY_MASK_META`. On other platforms, this is equivalent to `KEY_MASK_CTRL`. This mask should be preferred to `KEY_MASK_META` or `KEY_MASK_CTRL` for system shortcuts as it handles all platforms correctly.
 	**/
 	MaskCmd;
 

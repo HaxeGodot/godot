@@ -48,6 +48,9 @@ extern class Skeleton extends godot.Spatial {
 	@:native("GetBoneName")
 	public function getBoneName(boneIdx:Int):std.String;
 
+	@:native("SetBoneName")
+	public function setBoneName(boneIdx:Int, name:std.String):Void;
+
 	/**		
 		Returns the bone index which is the parent of the bone at `bone_idx`. If -1, then bone has no parent.
 		
@@ -154,6 +157,12 @@ extern class Skeleton extends godot.Spatial {
 	public function getBoneGlobalPose(boneIdx:Int):godot.Transform;
 
 	/**		
+		Returns the overall transform of the specified bone, with respect to the skeleton, but without any global pose overrides. Being relative to the skeleton frame, this is not the actual "global" transform of the bone.
+	**/
+	@:native("GetBoneGlobalPoseNoOverride")
+	public function getBoneGlobalPoseNoOverride(boneIdx:Int):godot.Transform;
+
+	/**		
 		Returns the custom pose of the specified bone. Custom pose is applied on top of the rest pose.
 	**/
 	@:native("GetBoneCustomPose")
@@ -167,19 +176,19 @@ extern class Skeleton extends godot.Spatial {
 
 	#if doc_gen
 	/**		
-		@param bones If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param bones If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("PhysicalBonesStartSimulation")
 	public function physicalBonesStartSimulation(?bones:godot.collections.Array):Void;
 	#else
 	/**		
-		@param bones If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param bones If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("PhysicalBonesStartSimulation")
 	public overload function physicalBonesStartSimulation():Void;
 
 	/**		
-		@param bones If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param bones If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("PhysicalBonesStartSimulation")
 	public overload function physicalBonesStartSimulation(bones:godot.collections.Array):Void;

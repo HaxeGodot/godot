@@ -97,7 +97,7 @@ extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 	/**		
 		Sets the peer to which packets will be sent.
 		
-		The `id` can be one of:  to send to all connected peers,  to send to the peer acting as server, a valid peer ID to send to that specific peer, a negative peer ID to send to all peers except that one. By default, the target peer is .
+		The `id` can be one of: `godot.NetworkedMultiplayerPeer.targetPeerBroadcast` to send to all connected peers, `godot.NetworkedMultiplayerPeer.targetPeerServer` to send to the peer acting as server, a valid peer ID to send to that specific peer, a negative peer ID to send to all peers except that one. By default, the target peer is `godot.NetworkedMultiplayerPeer.targetPeerBroadcast`.
 	**/
 	@:native("SetTargetPeer")
 	public function setTargetPeer(id:Int):Void;

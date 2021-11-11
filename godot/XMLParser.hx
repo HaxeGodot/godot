@@ -28,7 +28,7 @@ extern class XMLParser extends godot.Reference {
 	public function getNodeType():godot.XMLParser_NodeType;
 
 	/**		
-		Gets the name of the current element node. This will raise an error if the current node type is neither  nor .
+		Gets the name of the current element node. This will raise an error if the current node type is neither `godot.XMLParser_NodeType.element` nor `godot.XMLParser_NodeType.elementEnd`.
 	**/
 	@:native("GetNodeName")
 	public function getNodeName():std.String;

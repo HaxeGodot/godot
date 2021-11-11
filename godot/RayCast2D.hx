@@ -33,7 +33,7 @@ extern class RayCast2D extends godot.Node2D {
 	public var collideWithAreas:Bool;
 
 	/**		
-		The ray's collision mask. Only objects in at least one collision layer enabled in the mask will be detected. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The ray's collision mask. Only objects in at least one collision layer enabled in the mask will be detected. See [https://docs.godotengine.org/en/3.4/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionMask")
 	public var collisionMask:UInt;
@@ -100,7 +100,7 @@ extern class RayCast2D extends godot.Node2D {
 	/**		
 		Returns the collision point at which the ray intersects the closest object.
 		
-		Note: this point is in the global coordinate system.
+		Note: This point is in the global coordinate system.
 	**/
 	@:native("GetCollisionPoint")
 	public function getCollisionPoint():godot.Vector2;

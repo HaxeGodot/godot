@@ -36,7 +36,7 @@ extern class SurfaceTool extends godot.Reference {
 	public function new():Void;
 
 	/**		
-		Called before adding any vertices. Takes the primitive type as an argument (e.g. ).
+		Called before adding any vertices. Takes the primitive type as an argument (e.g. `godot.Mesh_PrimitiveType.triangles`).
 	**/
 	@:native("Begin")
 	public function begin(primitive:godot.Mesh_PrimitiveType):Void;
@@ -101,13 +101,13 @@ extern class SurfaceTool extends godot.Reference {
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
 		
-		Requires the primitive type be set to .
+		Requires the primitive type be set to `godot.Mesh_PrimitiveType.triangles`.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param colors If the parameter is null, then the default value is new Color[] {}
-		@param uv2s If the parameter is null, then the default value is new Vector2[] {}
-		@param normals If the parameter is null, then the default value is new Vector3[] {}
-		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param colors If the parameter is null, then the default value is Array.Empty&lt;Color&gt;()
+		@param uv2s If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param normals If the parameter is null, then the default value is Array.Empty&lt;Vector3&gt;()
+		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddTriangleFan")
 	public function addTriangleFan(vertices:std.Array<godot.Vector3>, ?uvs:std.Array<godot.Vector2>, ?colors:std.Array<godot.Color>, ?uv2s:std.Array<godot.Vector2>, ?normals:std.Array<godot.Vector3>, ?tangents:godot.collections.Array):Void;
@@ -115,13 +115,13 @@ extern class SurfaceTool extends godot.Reference {
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
 		
-		Requires the primitive type be set to .
+		Requires the primitive type be set to `godot.Mesh_PrimitiveType.triangles`.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param colors If the parameter is null, then the default value is new Color[] {}
-		@param uv2s If the parameter is null, then the default value is new Vector2[] {}
-		@param normals If the parameter is null, then the default value is new Vector3[] {}
-		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param colors If the parameter is null, then the default value is Array.Empty&lt;Color&gt;()
+		@param uv2s If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param normals If the parameter is null, then the default value is Array.Empty&lt;Vector3&gt;()
+		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddTriangleFan")
 	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>):Void;
@@ -129,13 +129,13 @@ extern class SurfaceTool extends godot.Reference {
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
 		
-		Requires the primitive type be set to .
+		Requires the primitive type be set to `godot.Mesh_PrimitiveType.triangles`.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param colors If the parameter is null, then the default value is new Color[] {}
-		@param uv2s If the parameter is null, then the default value is new Vector2[] {}
-		@param normals If the parameter is null, then the default value is new Vector3[] {}
-		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param colors If the parameter is null, then the default value is Array.Empty&lt;Color&gt;()
+		@param uv2s If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param normals If the parameter is null, then the default value is Array.Empty&lt;Vector3&gt;()
+		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddTriangleFan")
 	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>, uvs:HaxeArray<godot.Vector2>):Void;
@@ -143,13 +143,13 @@ extern class SurfaceTool extends godot.Reference {
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
 		
-		Requires the primitive type be set to .
+		Requires the primitive type be set to `godot.Mesh_PrimitiveType.triangles`.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param colors If the parameter is null, then the default value is new Color[] {}
-		@param uv2s If the parameter is null, then the default value is new Vector2[] {}
-		@param normals If the parameter is null, then the default value is new Vector3[] {}
-		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param colors If the parameter is null, then the default value is Array.Empty&lt;Color&gt;()
+		@param uv2s If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param normals If the parameter is null, then the default value is Array.Empty&lt;Vector3&gt;()
+		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddTriangleFan")
 	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>, uvs:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
@@ -157,13 +157,13 @@ extern class SurfaceTool extends godot.Reference {
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
 		
-		Requires the primitive type be set to .
+		Requires the primitive type be set to `godot.Mesh_PrimitiveType.triangles`.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param colors If the parameter is null, then the default value is new Color[] {}
-		@param uv2s If the parameter is null, then the default value is new Vector2[] {}
-		@param normals If the parameter is null, then the default value is new Vector3[] {}
-		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param colors If the parameter is null, then the default value is Array.Empty&lt;Color&gt;()
+		@param uv2s If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param normals If the parameter is null, then the default value is Array.Empty&lt;Vector3&gt;()
+		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddTriangleFan")
 	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>, uvs:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uv2s:HaxeArray<godot.Vector2>):Void;
@@ -171,13 +171,13 @@ extern class SurfaceTool extends godot.Reference {
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
 		
-		Requires the primitive type be set to .
+		Requires the primitive type be set to `godot.Mesh_PrimitiveType.triangles`.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param colors If the parameter is null, then the default value is new Color[] {}
-		@param uv2s If the parameter is null, then the default value is new Vector2[] {}
-		@param normals If the parameter is null, then the default value is new Vector3[] {}
-		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param colors If the parameter is null, then the default value is Array.Empty&lt;Color&gt;()
+		@param uv2s If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param normals If the parameter is null, then the default value is Array.Empty&lt;Vector3&gt;()
+		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddTriangleFan")
 	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>, uvs:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uv2s:HaxeArray<godot.Vector2>, normals:HaxeArray<godot.Vector3>):Void;
@@ -185,13 +185,13 @@ extern class SurfaceTool extends godot.Reference {
 	/**		
 		Inserts a triangle fan made of array data into `godot.Mesh` being constructed.
 		
-		Requires the primitive type be set to .
+		Requires the primitive type be set to `godot.Mesh_PrimitiveType.triangles`.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
-		@param colors If the parameter is null, then the default value is new Color[] {}
-		@param uv2s If the parameter is null, then the default value is new Vector2[] {}
-		@param normals If the parameter is null, then the default value is new Vector3[] {}
-		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param colors If the parameter is null, then the default value is Array.Empty&lt;Color&gt;()
+		@param uv2s If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
+		@param normals If the parameter is null, then the default value is Array.Empty&lt;Vector3&gt;()
+		@param tangents If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddTriangleFan")
 	public overload function addTriangleFan(vertices:HaxeArray<godot.Vector3>, uvs:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uv2s:HaxeArray<godot.Vector2>, normals:HaxeArray<godot.Vector3>, tangents:godot.collections.Array):Void;
@@ -217,32 +217,32 @@ extern class SurfaceTool extends godot.Reference {
 
 	#if doc_gen
 	/**		
-		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted. `godot.SurfaceTool.generateNormals` should be called after generating geometry and before committing the mesh using `godot.SurfaceTool.commit` or `godot.SurfaceTool.commitToArrays`.
+		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted. `godot.SurfaceTool.generateNormals` should be called after generating geometry and before committing the mesh using `godot.SurfaceTool.commit` or `godot.SurfaceTool.commitToArrays`. For correct display of normal-mapped surfaces, you will also have to generate tangents using `godot.SurfaceTool.generateTangents`.
 		
-		Note: `godot.SurfaceTool.generateNormals` only works if the primitive type to be set to .
+		Note: `godot.SurfaceTool.generateNormals` only works if the primitive type to be set to `godot.Mesh_PrimitiveType.triangles`.
 	**/
 	@:native("GenerateNormals")
 	public function generateNormals(?flip:Bool):Void;
 	#else
 	/**		
-		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted. `godot.SurfaceTool.generateNormals` should be called after generating geometry and before committing the mesh using `godot.SurfaceTool.commit` or `godot.SurfaceTool.commitToArrays`.
+		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted. `godot.SurfaceTool.generateNormals` should be called after generating geometry and before committing the mesh using `godot.SurfaceTool.commit` or `godot.SurfaceTool.commitToArrays`. For correct display of normal-mapped surfaces, you will also have to generate tangents using `godot.SurfaceTool.generateTangents`.
 		
-		Note: `godot.SurfaceTool.generateNormals` only works if the primitive type to be set to .
+		Note: `godot.SurfaceTool.generateNormals` only works if the primitive type to be set to `godot.Mesh_PrimitiveType.triangles`.
 	**/
 	@:native("GenerateNormals")
 	public overload function generateNormals():Void;
 
 	/**		
-		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted. `godot.SurfaceTool.generateNormals` should be called after generating geometry and before committing the mesh using `godot.SurfaceTool.commit` or `godot.SurfaceTool.commitToArrays`.
+		Generates normals from vertices so you do not have to do it manually. If `flip` is `true`, the resulting normals will be inverted. `godot.SurfaceTool.generateNormals` should be called after generating geometry and before committing the mesh using `godot.SurfaceTool.commit` or `godot.SurfaceTool.commitToArrays`. For correct display of normal-mapped surfaces, you will also have to generate tangents using `godot.SurfaceTool.generateTangents`.
 		
-		Note: `godot.SurfaceTool.generateNormals` only works if the primitive type to be set to .
+		Note: `godot.SurfaceTool.generateNormals` only works if the primitive type to be set to `godot.Mesh_PrimitiveType.triangles`.
 	**/
 	@:native("GenerateNormals")
 	public overload function generateNormals(flip:Bool):Void;
 	#end
 
 	/**		
-		Generates a tangent vector for each vertex. Requires that each vertex have UVs and normals set already.
+		Generates a tangent vector for each vertex. Requires that each vertex have UVs and normals set already (see `godot.SurfaceTool.generateNormals`).
 	**/
 	@:native("GenerateTangents")
 	public function generateTangents():Void;
@@ -281,7 +281,7 @@ extern class SurfaceTool extends godot.Reference {
 	/**		
 		Returns a constructed `godot.ArrayMesh` from current information passed in. If an existing `godot.ArrayMesh` is passed in as an argument, will add an extra surface to the existing `godot.ArrayMesh`.
 		
-		Default flag is . See `ARRAY_COMPRESS_*` constants in `godot.Mesh_ArrayFormat` for other flags.
+		Default flag is `godot.Mesh_ArrayFormat.compressDefault` if compression is enabled. If compression is disabled the default flag is `godot.Mesh_ArrayFormat.flagUseOctahedralCompression`. See `ARRAY_COMPRESS_*` constants in `godot.Mesh_ArrayFormat` for other flags.
 	**/
 	@:native("Commit")
 	public function commit(?existing:godot.ArrayMesh, ?flags:UInt):godot.ArrayMesh;
@@ -289,7 +289,7 @@ extern class SurfaceTool extends godot.Reference {
 	/**		
 		Returns a constructed `godot.ArrayMesh` from current information passed in. If an existing `godot.ArrayMesh` is passed in as an argument, will add an extra surface to the existing `godot.ArrayMesh`.
 		
-		Default flag is . See `ARRAY_COMPRESS_*` constants in `godot.Mesh_ArrayFormat` for other flags.
+		Default flag is `godot.Mesh_ArrayFormat.compressDefault` if compression is enabled. If compression is disabled the default flag is `godot.Mesh_ArrayFormat.flagUseOctahedralCompression`. See `ARRAY_COMPRESS_*` constants in `godot.Mesh_ArrayFormat` for other flags.
 	**/
 	@:native("Commit")
 	public overload function commit():godot.ArrayMesh;
@@ -297,7 +297,7 @@ extern class SurfaceTool extends godot.Reference {
 	/**		
 		Returns a constructed `godot.ArrayMesh` from current information passed in. If an existing `godot.ArrayMesh` is passed in as an argument, will add an extra surface to the existing `godot.ArrayMesh`.
 		
-		Default flag is . See `ARRAY_COMPRESS_*` constants in `godot.Mesh_ArrayFormat` for other flags.
+		Default flag is `godot.Mesh_ArrayFormat.compressDefault` if compression is enabled. If compression is disabled the default flag is `godot.Mesh_ArrayFormat.flagUseOctahedralCompression`. See `ARRAY_COMPRESS_*` constants in `godot.Mesh_ArrayFormat` for other flags.
 	**/
 	@:native("Commit")
 	public overload function commit(existing:godot.ArrayMesh):godot.ArrayMesh;
@@ -305,7 +305,7 @@ extern class SurfaceTool extends godot.Reference {
 	/**		
 		Returns a constructed `godot.ArrayMesh` from current information passed in. If an existing `godot.ArrayMesh` is passed in as an argument, will add an extra surface to the existing `godot.ArrayMesh`.
 		
-		Default flag is . See `ARRAY_COMPRESS_*` constants in `godot.Mesh_ArrayFormat` for other flags.
+		Default flag is `godot.Mesh_ArrayFormat.compressDefault` if compression is enabled. If compression is disabled the default flag is `godot.Mesh_ArrayFormat.flagUseOctahedralCompression`. See `ARRAY_COMPRESS_*` constants in `godot.Mesh_ArrayFormat` for other flags.
 	**/
 	@:native("Commit")
 	public overload function commit(existing:godot.ArrayMesh, flags:UInt):godot.ArrayMesh;

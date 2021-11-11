@@ -31,6 +31,11 @@ extern enum ParticlesMaterial_EmissionShapeEnum {
 	DirectedPoints;
 
 	/**		
+		Particles will be emitted in a ring or cylinder.
+	**/
+	Ring;
+
+	/**		
 		Represents the size of the `godot.ParticlesMaterial_EmissionShapeEnum` enum.
 	**/
 	Max;

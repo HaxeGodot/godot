@@ -29,7 +29,7 @@ extern class GridMap extends godot.Spatial {
 	}
 
 	/**		
-		The physics layers this GridMap detects collisions in. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The physics layers this GridMap detects collisions in. See [https://docs.godotengine.org/en/3.4/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionMask")
 	public var collisionMask:UInt;
@@ -167,7 +167,7 @@ extern class GridMap extends godot.Spatial {
 	/**		
 		Sets the mesh index for the cell referenced by its grid-based X, Y and Z coordinates.
 		
-		A negative item index such as  will clear the cell.
+		A negative item index such as `godot.GridMap.invalidCellItem` will clear the cell.
 		
 		Optionally, the item's orientation can be passed. For valid orientation values, see `Basis.get_orthogonal_index`.
 	**/
@@ -177,7 +177,7 @@ extern class GridMap extends godot.Spatial {
 	/**		
 		Sets the mesh index for the cell referenced by its grid-based X, Y and Z coordinates.
 		
-		A negative item index such as  will clear the cell.
+		A negative item index such as `godot.GridMap.invalidCellItem` will clear the cell.
 		
 		Optionally, the item's orientation can be passed. For valid orientation values, see `Basis.get_orthogonal_index`.
 	**/
@@ -187,7 +187,7 @@ extern class GridMap extends godot.Spatial {
 	/**		
 		Sets the mesh index for the cell referenced by its grid-based X, Y and Z coordinates.
 		
-		A negative item index such as  will clear the cell.
+		A negative item index such as `godot.GridMap.invalidCellItem` will clear the cell.
 		
 		Optionally, the item's orientation can be passed. For valid orientation values, see `Basis.get_orthogonal_index`.
 	**/
@@ -196,7 +196,7 @@ extern class GridMap extends godot.Spatial {
 	#end
 
 	/**		
-		The `godot.MeshLibrary` item index located at the grid-based X, Y and Z coordinates. If the cell is empty,  will be returned.
+		The `godot.MeshLibrary` item index located at the grid-based X, Y and Z coordinates. If the cell is empty, `godot.GridMap.invalidCellItem` will be returned.
 	**/
 	@:native("GetCellItem")
 	public function getCellItem(x:Int, y:Int, z:Int):Int;

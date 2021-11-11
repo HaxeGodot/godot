@@ -44,7 +44,7 @@ extern class HashingContext extends godot.Reference {
 	public function new():Void;
 
 	/**		
-		Starts a new hash computation of the given `type` (e.g.  to start computation of a SHA-256).
+		Starts a new hash computation of the given `type` (e.g. `godot.HashingContext_HashType.sha256` to start computation of a SHA-256).
 	**/
 	@:native("Start")
 	public function start(type:godot.HashingContext_HashType):godot.Error;

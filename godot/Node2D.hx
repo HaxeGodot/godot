@@ -19,7 +19,7 @@ extern class Node2D extends godot.CanvasItem {
 	public var zAsRelative:Bool;
 
 	/**		
-		Z index. Controls the order in which the nodes render. A node with a higher Z index will display in front of others.
+		Z index. Controls the order in which the nodes render. A node with a higher Z index will display in front of others. Must be between `godot.VisualServer.canvasItemZMin` and `godot.VisualServer.canvasItemZMax` (inclusive).
 	**/
 	@:native("ZIndex")
 	public var zIndex:Int;
@@ -213,6 +213,8 @@ extern class Node2D extends godot.CanvasItem {
 
 	/**		
 		Returns the angle between the node and the `point` in radians.
+		
+		[https://raw.githubusercontent.com/godotengine/godot-docs/master/img/node2d_get_angle_to.png](Illustration of the returned angle.)
 	**/
 	@:native("GetAngleTo")
 	public function getAngleTo(point:godot.Vector2):Single;

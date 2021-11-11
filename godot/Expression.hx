@@ -43,7 +43,7 @@ extern class Expression extends godot.Reference {
 		
 		You can optionally specify names of variables that may appear in the expression with `input_names`, so that you can bind them when it gets executed.
 		
-		@param inputNames If the parameter is null, then the default value is new string[] {}
+		@param inputNames If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Parse")
 	public function parse(expression:std.String, ?inputNames:std.Array<std.String>):godot.Error;
@@ -53,7 +53,7 @@ extern class Expression extends godot.Reference {
 		
 		You can optionally specify names of variables that may appear in the expression with `input_names`, so that you can bind them when it gets executed.
 		
-		@param inputNames If the parameter is null, then the default value is new string[] {}
+		@param inputNames If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Parse")
 	public overload function parse(expression:std.String):godot.Error;
@@ -63,7 +63,7 @@ extern class Expression extends godot.Reference {
 		
 		You can optionally specify names of variables that may appear in the expression with `input_names`, so that you can bind them when it gets executed.
 		
-		@param inputNames If the parameter is null, then the default value is new string[] {}
+		@param inputNames If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Parse")
 	public overload function parse(expression:std.String, inputNames:HaxeArray<std.String>):godot.Error;
@@ -75,7 +75,7 @@ extern class Expression extends godot.Reference {
 		
 		If you defined input variables in `godot.Expression.parse`, you can specify their values in the inputs array, in the same order.
 		
-		@param inputs If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param inputs If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
 	public function execute(?inputs:godot.collections.Array, ?baseInstance:godot.Object, ?showError:Bool):Dynamic;
@@ -85,7 +85,7 @@ extern class Expression extends godot.Reference {
 		
 		If you defined input variables in `godot.Expression.parse`, you can specify their values in the inputs array, in the same order.
 		
-		@param inputs If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param inputs If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
 	public overload function execute():Dynamic;
@@ -95,7 +95,7 @@ extern class Expression extends godot.Reference {
 		
 		If you defined input variables in `godot.Expression.parse`, you can specify their values in the inputs array, in the same order.
 		
-		@param inputs If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param inputs If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
 	public overload function execute(inputs:godot.collections.Array):Dynamic;
@@ -105,7 +105,7 @@ extern class Expression extends godot.Reference {
 		
 		If you defined input variables in `godot.Expression.parse`, you can specify their values in the inputs array, in the same order.
 		
-		@param inputs If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param inputs If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
 	public overload function execute(inputs:godot.collections.Array, baseInstance:godot.Object):Dynamic;
@@ -115,7 +115,7 @@ extern class Expression extends godot.Reference {
 		
 		If you defined input variables in `godot.Expression.parse`, you can specify their values in the inputs array, in the same order.
 		
-		@param inputs If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param inputs If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
 	public overload function execute(inputs:godot.collections.Array, baseInstance:godot.Object, showError:Bool):Dynamic;

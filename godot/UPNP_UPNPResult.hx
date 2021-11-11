@@ -66,7 +66,7 @@ extern enum UPNP_UPNPResult {
 	NoPortMapsAvailable;
 
 	/**		
-		Conflict with other mechanism. May be returned instead of  if a port mapping conflicts with an existing one.
+		Conflict with other mechanism. May be returned instead of `godot.UPNP_UPNPResult.conflictWithOtherMapping` if a port mapping conflicts with an existing one.
 	**/
 	ConflictWithOtherMechanism;
 

@@ -171,7 +171,7 @@ extern class Popup extends godot.Control {
 	/**		
 		Popup (show the control in modal form).
 		
-		@param bounds If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
+		@param bounds If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(0, 0))
 	**/
 	@:native("Popup_")
 	public function popup_(?bounds:Null<godot.Rect2>):Void;
@@ -179,7 +179,7 @@ extern class Popup extends godot.Control {
 	/**		
 		Popup (show the control in modal form).
 		
-		@param bounds If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
+		@param bounds If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(0, 0))
 	**/
 	@:native("Popup_")
 	public overload function popup_():Void;
@@ -187,7 +187,7 @@ extern class Popup extends godot.Control {
 	/**		
 		Popup (show the control in modal form).
 		
-		@param bounds If the parameter is null, then the default value is new Rect2(0, 0, 0, 0)
+		@param bounds If the parameter is null, then the default value is new Rect2(new Vector2(0, 0), new Vector2(0, 0))
 	**/
 	@:native("Popup_")
 	public overload function popup_(bounds:Nullable1<godot.Rect2>):Void;

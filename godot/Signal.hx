@@ -356,6 +356,44 @@ class SignalHandlerVariantVoid extends Reference {
 @:nativeGen
 @:dox(hide)
 @:noCompletion
+class SignalHandlerVariantVariantVoid extends Reference {
+	static final refs = new Map<String, Map<Object, Array<Any->Any->Void>>>();
+
+	public static function isSignalConnected(source:Object, signal:String, callback:Any->Any->Void):Bool {
+		return SignalHandler.isSignalConnected(refs, source, signal, callback);
+	}
+
+	public static function disconnectSignal(source:Object, signal:String, callback:Any->Any->Void) {
+		SignalHandler.disconnectSignal(refs, source, signal, callback);
+	}
+
+	public static function connectSignal(source:Object, signal:String, callback:Any->Any->Void) {
+		SignalHandler.connectSignal(refs, SignalHandlerVariantVariantVoid.new, source, signal, callback);
+	}
+
+	final callback:Any->Any->Void;
+
+	function new(source:Object, signal:String, callback:Any->Any->Void) {
+		super();
+		this.callback = callback;
+
+		final key = "" + source.getInstanceId() + "-" + signal;
+
+		if (!refs.exists(key)) {
+			refs.set(key, new Map<Object, Array<Any->Any->Void>>());
+		}
+
+		refs.get(key).set(this, [callback]);
+	}
+
+	@:keep function handleSignal(arg0:Any, arg1:Any) {
+		callback(arg0, arg1);
+	}
+}
+
+@:nativeGen
+@:dox(hide)
+@:noCompletion
 class SignalHandlerTreeItemVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<TreeItem->Void>>>();
 
@@ -964,6 +1002,158 @@ class SignalHandlerResourceVoid extends Reference {
 @:nativeGen
 @:dox(hide)
 @:noCompletion
+class SignalHandlerResourceBoolVoid extends Reference {
+	static final refs = new Map<String, Map<Object, Array<Resource->Bool->Void>>>();
+
+	public static function isSignalConnected(source:Object, signal:String, callback:Resource->Bool->Void):Bool {
+		return SignalHandler.isSignalConnected(refs, source, signal, callback);
+	}
+
+	public static function disconnectSignal(source:Object, signal:String, callback:Resource->Bool->Void) {
+		SignalHandler.disconnectSignal(refs, source, signal, callback);
+	}
+
+	public static function connectSignal(source:Object, signal:String, callback:Resource->Bool->Void) {
+		SignalHandler.connectSignal(refs, SignalHandlerResourceBoolVoid.new, source, signal, callback);
+	}
+
+	final callback:Resource->Bool->Void;
+
+	function new(source:Object, signal:String, callback:Resource->Bool->Void) {
+		super();
+		this.callback = callback;
+
+		final key = "" + source.getInstanceId() + "-" + signal;
+
+		if (!refs.exists(key)) {
+			refs.set(key, new Map<Object, Array<Resource->Bool->Void>>());
+		}
+
+		refs.get(key).set(this, [callback]);
+	}
+
+	@:keep function handleSignal(arg0:Resource, arg1:Bool) {
+		callback(arg0, arg1);
+	}
+}
+
+@:nativeGen
+@:dox(hide)
+@:noCompletion
+class SignalHandlerRIDNodeIntIntVoid extends Reference {
+	static final refs = new Map<String, Map<Object, Array<RID->Node->Int->Int->Void>>>();
+
+	public static function isSignalConnected(source:Object, signal:String, callback:RID->Node->Int->Int->Void):Bool {
+		return SignalHandler.isSignalConnected(refs, source, signal, callback);
+	}
+
+	public static function disconnectSignal(source:Object, signal:String, callback:RID->Node->Int->Int->Void) {
+		SignalHandler.disconnectSignal(refs, source, signal, callback);
+	}
+
+	public static function connectSignal(source:Object, signal:String, callback:RID->Node->Int->Int->Void) {
+		SignalHandler.connectSignal(refs, SignalHandlerRIDNodeIntIntVoid.new, source, signal, callback);
+	}
+
+	final callback:RID->Node->Int->Int->Void;
+
+	function new(source:Object, signal:String, callback:RID->Node->Int->Int->Void) {
+		super();
+		this.callback = callback;
+
+		final key = "" + source.getInstanceId() + "-" + signal;
+
+		if (!refs.exists(key)) {
+			refs.set(key, new Map<Object, Array<RID->Node->Int->Int->Void>>());
+		}
+
+		refs.get(key).set(this, [callback]);
+	}
+
+	@:keep function handleSignal(arg0:RID, arg1:Node, arg2:Int, arg3:Int) {
+		callback(arg0, arg1, arg2, arg3);
+	}
+}
+
+@:nativeGen
+@:dox(hide)
+@:noCompletion
+class SignalHandlerRIDAreaIntIntVoid extends Reference {
+	static final refs = new Map<String, Map<Object, Array<RID->Area->Int->Int->Void>>>();
+
+	public static function isSignalConnected(source:Object, signal:String, callback:RID->Area->Int->Int->Void):Bool {
+		return SignalHandler.isSignalConnected(refs, source, signal, callback);
+	}
+
+	public static function disconnectSignal(source:Object, signal:String, callback:RID->Area->Int->Int->Void) {
+		SignalHandler.disconnectSignal(refs, source, signal, callback);
+	}
+
+	public static function connectSignal(source:Object, signal:String, callback:RID->Area->Int->Int->Void) {
+		SignalHandler.connectSignal(refs, SignalHandlerRIDAreaIntIntVoid.new, source, signal, callback);
+	}
+
+	final callback:RID->Area->Int->Int->Void;
+
+	function new(source:Object, signal:String, callback:RID->Area->Int->Int->Void) {
+		super();
+		this.callback = callback;
+
+		final key = "" + source.getInstanceId() + "-" + signal;
+
+		if (!refs.exists(key)) {
+			refs.set(key, new Map<Object, Array<RID->Area->Int->Int->Void>>());
+		}
+
+		refs.get(key).set(this, [callback]);
+	}
+
+	@:keep function handleSignal(arg0:RID, arg1:Area, arg2:Int, arg3:Int) {
+		callback(arg0, arg1, arg2, arg3);
+	}
+}
+
+@:nativeGen
+@:dox(hide)
+@:noCompletion
+class SignalHandlerRIDArea2DIntIntVoid extends Reference {
+	static final refs = new Map<String, Map<Object, Array<RID->Area2D->Int->Int->Void>>>();
+
+	public static function isSignalConnected(source:Object, signal:String, callback:RID->Area2D->Int->Int->Void):Bool {
+		return SignalHandler.isSignalConnected(refs, source, signal, callback);
+	}
+
+	public static function disconnectSignal(source:Object, signal:String, callback:RID->Area2D->Int->Int->Void) {
+		SignalHandler.disconnectSignal(refs, source, signal, callback);
+	}
+
+	public static function connectSignal(source:Object, signal:String, callback:RID->Area2D->Int->Int->Void) {
+		SignalHandler.connectSignal(refs, SignalHandlerRIDArea2DIntIntVoid.new, source, signal, callback);
+	}
+
+	final callback:RID->Area2D->Int->Int->Void;
+
+	function new(source:Object, signal:String, callback:RID->Area2D->Int->Int->Void) {
+		super();
+		this.callback = callback;
+
+		final key = "" + source.getInstanceId() + "-" + signal;
+
+		if (!refs.exists(key)) {
+			refs.set(key, new Map<Object, Array<RID->Area2D->Int->Int->Void>>());
+		}
+
+		refs.get(key).set(this, [callback]);
+	}
+
+	@:keep function handleSignal(arg0:RID, arg1:Area2D, arg2:Int, arg3:Int) {
+		callback(arg0, arg1, arg2, arg3);
+	}
+}
+
+@:nativeGen
+@:dox(hide)
+@:noCompletion
 class SignalHandlerPoolStringArrayVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<std.Array<std.String>->Void>>>();
 
@@ -1534,44 +1724,6 @@ class SignalHandlerIntPoolByteArrayVoid extends Reference {
 @:nativeGen
 @:dox(hide)
 @:noCompletion
-class SignalHandlerIntNodeIntIntVoid extends Reference {
-	static final refs = new Map<String, Map<Object, Array<Int->Node->Int->Int->Void>>>();
-
-	public static function isSignalConnected(source:Object, signal:String, callback:Int->Node->Int->Int->Void):Bool {
-		return SignalHandler.isSignalConnected(refs, source, signal, callback);
-	}
-
-	public static function disconnectSignal(source:Object, signal:String, callback:Int->Node->Int->Int->Void) {
-		SignalHandler.disconnectSignal(refs, source, signal, callback);
-	}
-
-	public static function connectSignal(source:Object, signal:String, callback:Int->Node->Int->Int->Void) {
-		SignalHandler.connectSignal(refs, SignalHandlerIntNodeIntIntVoid.new, source, signal, callback);
-	}
-
-	final callback:Int->Node->Int->Int->Void;
-
-	function new(source:Object, signal:String, callback:Int->Node->Int->Int->Void) {
-		super();
-		this.callback = callback;
-
-		final key = "" + source.getInstanceId() + "-" + signal;
-
-		if (!refs.exists(key)) {
-			refs.set(key, new Map<Object, Array<Int->Node->Int->Int->Void>>());
-		}
-
-		refs.get(key).set(this, [callback]);
-	}
-
-	@:keep function handleSignal(arg0:Int, arg1:Node, arg2:Int, arg3:Int) {
-		callback(arg0, arg1, arg2, arg3);
-	}
-}
-
-@:nativeGen
-@:dox(hide)
-@:noCompletion
 class SignalHandlerIntIntStringVoid extends Reference {
 	static final refs = new Map<String, Map<Object, Array<Int->Int->std.String->Void>>>();
 
@@ -1680,82 +1832,6 @@ class SignalHandlerIntBoolVoid extends Reference {
 
 	@:keep function handleSignal(arg0:Int, arg1:Bool) {
 		callback(arg0, arg1);
-	}
-}
-
-@:nativeGen
-@:dox(hide)
-@:noCompletion
-class SignalHandlerIntAreaIntIntVoid extends Reference {
-	static final refs = new Map<String, Map<Object, Array<Int->Area->Int->Int->Void>>>();
-
-	public static function isSignalConnected(source:Object, signal:String, callback:Int->Area->Int->Int->Void):Bool {
-		return SignalHandler.isSignalConnected(refs, source, signal, callback);
-	}
-
-	public static function disconnectSignal(source:Object, signal:String, callback:Int->Area->Int->Int->Void) {
-		SignalHandler.disconnectSignal(refs, source, signal, callback);
-	}
-
-	public static function connectSignal(source:Object, signal:String, callback:Int->Area->Int->Int->Void) {
-		SignalHandler.connectSignal(refs, SignalHandlerIntAreaIntIntVoid.new, source, signal, callback);
-	}
-
-	final callback:Int->Area->Int->Int->Void;
-
-	function new(source:Object, signal:String, callback:Int->Area->Int->Int->Void) {
-		super();
-		this.callback = callback;
-
-		final key = "" + source.getInstanceId() + "-" + signal;
-
-		if (!refs.exists(key)) {
-			refs.set(key, new Map<Object, Array<Int->Area->Int->Int->Void>>());
-		}
-
-		refs.get(key).set(this, [callback]);
-	}
-
-	@:keep function handleSignal(arg0:Int, arg1:Area, arg2:Int, arg3:Int) {
-		callback(arg0, arg1, arg2, arg3);
-	}
-}
-
-@:nativeGen
-@:dox(hide)
-@:noCompletion
-class SignalHandlerIntArea2DIntIntVoid extends Reference {
-	static final refs = new Map<String, Map<Object, Array<Int->Area2D->Int->Int->Void>>>();
-
-	public static function isSignalConnected(source:Object, signal:String, callback:Int->Area2D->Int->Int->Void):Bool {
-		return SignalHandler.isSignalConnected(refs, source, signal, callback);
-	}
-
-	public static function disconnectSignal(source:Object, signal:String, callback:Int->Area2D->Int->Int->Void) {
-		SignalHandler.disconnectSignal(refs, source, signal, callback);
-	}
-
-	public static function connectSignal(source:Object, signal:String, callback:Int->Area2D->Int->Int->Void) {
-		SignalHandler.connectSignal(refs, SignalHandlerIntArea2DIntIntVoid.new, source, signal, callback);
-	}
-
-	final callback:Int->Area2D->Int->Int->Void;
-
-	function new(source:Object, signal:String, callback:Int->Area2D->Int->Int->Void) {
-		super();
-		this.callback = callback;
-
-		final key = "" + source.getInstanceId() + "-" + signal;
-
-		if (!refs.exists(key)) {
-			refs.set(key, new Map<Object, Array<Int->Area2D->Int->Int->Void>>());
-		}
-
-		refs.get(key).set(this, [callback]);
-	}
-
-	@:keep function handleSignal(arg0:Int, arg1:Area2D, arg2:Int, arg3:Int) {
-		callback(arg0, arg1, arg2, arg3);
 	}
 }
 
@@ -2060,43 +2136,5 @@ class SignalHandlerArea2DVoid extends Reference {
 
 	@:keep function handleSignal(arg0:Area2D) {
 		callback(arg0);
-	}
-}
-
-@:nativeGen
-@:dox(hide)
-@:noCompletion
-class SignalHandlerAnyAnyVoid extends Reference {
-	static final refs = new Map<String, Map<Object, Array<Any->Any->Void>>>();
-
-	public static function isSignalConnected(source:Object, signal:String, callback:Any->Any->Void):Bool {
-		return SignalHandler.isSignalConnected(refs, source, signal, callback);
-	}
-
-	public static function disconnectSignal(source:Object, signal:String, callback:Any->Any->Void) {
-		SignalHandler.disconnectSignal(refs, source, signal, callback);
-	}
-
-	public static function connectSignal(source:Object, signal:String, callback:Any->Any->Void) {
-		SignalHandler.connectSignal(refs, SignalHandlerAnyAnyVoid.new, source, signal, callback);
-	}
-
-	final callback:Any->Any->Void;
-
-	function new(source:Object, signal:String, callback:Any->Any->Void) {
-		super();
-		this.callback = callback;
-
-		final key = "" + source.getInstanceId() + "-" + signal;
-
-		if (!refs.exists(key)) {
-			refs.set(key, new Map<Object, Array<Any->Any->Void>>());
-		}
-
-		refs.get(key).set(this, [callback]);
-	}
-
-	@:keep function handleSignal(arg0:Any, arg1:Any) {
-		callback(arg0, arg1);
 	}
 }

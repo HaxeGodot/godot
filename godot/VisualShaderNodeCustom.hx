@@ -22,6 +22,9 @@ class_name VisualShaderNodeNoise
 @:native("Godot.VisualShaderNodeCustom")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualShaderNodeCustom extends godot.VisualShaderNode {
+	@:native("Initialized")
+	public var initialized:Bool;
+
 	@:native("new")
 	public function new():Void;
 
@@ -86,7 +89,7 @@ extern class VisualShaderNodeCustom extends godot.VisualShaderNode {
 	/**		
 		Override this method to define the returned type of each input port of the associated custom node (see `godot.VisualShaderNode_PortType` for possible types).
 		
-		Defining this method is optional, but recommended. If not overridden, input ports will return the  type.
+		Defining this method is optional, but recommended. If not overridden, input ports will return the `godot.VisualShaderNode_PortType.scalar` type.
 	**/
 	@:native("_GetInputPortType")
 	public function _GetInputPortType(port:Int):Int;
@@ -118,7 +121,7 @@ extern class VisualShaderNodeCustom extends godot.VisualShaderNode {
 	/**		
 		Override this method to define the returned type of each output port of the associated custom node (see `godot.VisualShaderNode_PortType` for possible types).
 		
-		Defining this method is optional, but recommended. If not overridden, output ports will return the  type.
+		Defining this method is optional, but recommended. If not overridden, output ports will return the `godot.VisualShaderNode_PortType.scalar` type.
 	**/
 	@:native("_GetOutputPortType")
 	public function _GetOutputPortType(port:Int):Int;

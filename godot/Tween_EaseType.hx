@@ -16,12 +16,12 @@ extern enum Tween_EaseType {
 	Out;
 
 	/**		
-		A combination of  and . The interpolation is slowest at both ends.
+		A combination of `godot.Tween_EaseType.in` and `godot.Tween_EaseType.out`. The interpolation is slowest at both ends.
 	**/
 	InOut;
 
 	/**		
-		A combination of  and . The interpolation is fastest at both ends.
+		A combination of `godot.Tween_EaseType.in` and `godot.Tween_EaseType.out`. The interpolation is fastest at both ends.
 	**/
 	OutIn;
 }

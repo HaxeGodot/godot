@@ -25,7 +25,15 @@ extern class InputEventKey extends godot.InputEventWithModifiers {
 	public var unicode:UInt;
 
 	/**		
-		The key scancode, which corresponds to one of the `godot.KeyList` constants.
+		Key physical scancode, which corresponds to one of the `godot.KeyList` constants. Represent the physical location of a key on the 101/102-key US QWERTY keyboard.
+		
+		To get a human-readable representation of the `godot.InputEventKey`, use `OS.get_scancode_string(event.physical_scancode)` where `event` is the `godot.InputEventKey`.
+	**/
+	@:native("PhysicalScancode")
+	public var physicalScancode:UInt;
+
+	/**		
+		The key scancode, which corresponds to one of the `godot.KeyList` constants. Represent key in the current keyboard layout.
 		
 		To get a human-readable representation of the `godot.InputEventKey`, use `OS.get_scancode_string(event.scancode)` where `event` is the `godot.InputEventKey`.
 	**/
@@ -50,6 +58,12 @@ extern class InputEventKey extends godot.InputEventWithModifiers {
 	@:native("GetScancode")
 	public function getScancode():UInt;
 
+	@:native("SetPhysicalScancode")
+	public function setPhysicalScancode(scancode:UInt):Void;
+
+	@:native("GetPhysicalScancode")
+	public function getPhysicalScancode():UInt;
+
 	@:native("SetUnicode")
 	public function setUnicode(unicode:UInt):Void;
 
@@ -66,4 +80,12 @@ extern class InputEventKey extends godot.InputEventWithModifiers {
 	**/
 	@:native("GetScancodeWithModifiers")
 	public function getScancodeWithModifiers():UInt;
+
+	/**		
+		Returns the physical scancode combined with modifier keys such as `Shift` or `Alt`. See also `godot.InputEventWithModifiers`.
+		
+		To get a human-readable representation of the `godot.InputEventKey` with modifiers, use `OS.get_scancode_string(event.get_physical_scancode_with_modifiers())` where `event` is the `godot.InputEventKey`.
+	**/
+	@:native("GetPhysicalScancodeWithModifiers")
+	public function getPhysicalScancodeWithModifiers():UInt;
 }

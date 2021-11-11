@@ -25,4 +25,10 @@ extern abstract class Shape extends godot.Resource {
 
 	@:native("GetMargin")
 	public function getMargin():Single;
+
+	/**		
+		Returns the `godot.ArrayMesh` used to draw the debug collision for this `godot.Shape`.
+	**/
+	@:native("GetDebugMesh")
+	public function getDebugMesh():godot.ArrayMesh;
 }

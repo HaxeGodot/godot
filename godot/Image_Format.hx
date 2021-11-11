@@ -17,6 +17,8 @@ extern enum Image_Format {
 
 	/**		
 		OpenGL texture format `RED` with a single component and a bitdepth of 8.
+		
+		Note: When using the GLES2 backend, this uses the alpha channel instead of the red channel for storage.
 	**/
 	R8;
 

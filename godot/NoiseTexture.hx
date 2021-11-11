@@ -25,6 +25,12 @@ var image = texture.get_data()
 @:autoBuild(godot.Godot.buildUserClass())
 extern class NoiseTexture extends godot.Texture {
 	/**		
+		An offset used to specify the noise space coordinate of the top left corner of the generated noise. This value is ignored if `godot.NoiseTexture.seamless` is enabled.
+	**/
+	@:native("NoiseOffset")
+	public var noiseOffset:godot.Vector2;
+
+	/**		
 		The `godot.OpenSimplexNoise` instance used to generate the noise.
 	**/
 	@:native("Noise")
@@ -76,6 +82,12 @@ extern class NoiseTexture extends godot.Texture {
 
 	@:native("GetNoise")
 	public function getNoise():godot.OpenSimplexNoise;
+
+	@:native("SetNoiseOffset")
+	public function setNoiseOffset(noiseOffset:godot.Vector2):Void;
+
+	@:native("GetNoiseOffset")
+	public function getNoiseOffset():godot.Vector2;
 
 	@:native("SetSeamless")
 	public function setSeamless(seamless:Bool):Void;

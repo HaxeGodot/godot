@@ -4,6 +4,9 @@ package godot;
 
 import cs.system.*;
 
+/**
+A Visual Script node for accessing `godot.SceneTree` methods.
+**/
 @:libType
 @:csNative
 @:native("Godot.VisualScriptSceneTree")

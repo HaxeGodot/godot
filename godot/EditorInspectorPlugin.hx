@@ -58,19 +58,19 @@ extern class EditorInspectorPlugin extends godot.Reference {
 	public function parseProperty(object:godot.Object, type:Int, path:std.String, hint:Int, hintText:std.String, usage:Int):Bool;
 
 	/**		
-		Adds a custom control, not necessarily a property editor.
+		Adds a custom control, which is not necessarily a property editor.
 	**/
 	@:native("AddCustomControl")
 	public function addCustomControl(control:godot.Control):Void;
 
 	/**		
-		Adds a property editor, this must inherit `godot.EditorProperty`.
+		Adds a property editor for an individual property. The `editor` control must extend `godot.EditorProperty`.
 	**/
 	@:native("AddPropertyEditor")
 	public function addPropertyEditor(property:std.String, editor:godot.Control):Void;
 
 	/**		
-		Adds an editor that allows modifying multiple properties, this must inherit `godot.EditorProperty`.
+		Adds an editor that allows modifying multiple properties. The `editor` control must extend `godot.EditorProperty`.
 	**/
 	@:native("AddPropertyEditorForMultipleProperties")
 	public function addPropertyEditorForMultipleProperties(label:std.String, properties:HaxeArray<std.String>, editor:godot.Control):Void;

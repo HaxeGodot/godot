@@ -54,26 +54,6 @@ extern abstract class TextureLayered extends godot.Resource {
 	@:native("GetDepth")
 	public function getDepth():UInt;
 
-	#if doc_gen
-	/**		
-		Creates the `godot.Texture3D` or `godot.TextureArray` with specified `width`, `height`, and `depth`. See `godot.Image_Format` for `format` options. See `godot.TextureLayered_FlagsEnum` enumerator for `flags` options.
-	**/
-	@:native("Create")
-	public function create(width:UInt, height:UInt, depth:UInt, format:godot.Image_Format, ?flags:UInt):Void;
-	#else
-	/**		
-		Creates the `godot.Texture3D` or `godot.TextureArray` with specified `width`, `height`, and `depth`. See `godot.Image_Format` for `format` options. See `godot.TextureLayered_FlagsEnum` enumerator for `flags` options.
-	**/
-	@:native("Create")
-	public overload function create(width:UInt, height:UInt, depth:UInt, format:godot.Image_Format):Void;
-
-	/**		
-		Creates the `godot.Texture3D` or `godot.TextureArray` with specified `width`, `height`, and `depth`. See `godot.Image_Format` for `format` options. See `godot.TextureLayered_FlagsEnum` enumerator for `flags` options.
-	**/
-	@:native("Create")
-	public overload function create(width:UInt, height:UInt, depth:UInt, format:godot.Image_Format, flags:UInt):Void;
-	#end
-
 	/**		
 		Sets the data for the specified layer. Data takes the form of a 2-dimensional `godot.Image` resource.
 	**/

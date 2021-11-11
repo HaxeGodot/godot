@@ -4,11 +4,17 @@ package godot;
 
 import cs.system.*;
 
+/**
+A Visual Script node returning a constant from `@GlobalScope`.
+**/
 @:libType
 @:csNative
 @:native("Godot.VisualScriptGlobalConstant")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualScriptGlobalConstant extends godot.VisualScriptNode {
+	/**		
+		The constant to be used.
+	**/
 	@:native("Constant")
 	public var constant:Int;
 

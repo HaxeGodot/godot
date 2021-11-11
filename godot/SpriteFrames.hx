@@ -76,7 +76,7 @@ extern class SpriteFrames extends godot.Resource {
 	public function setAnimationLoop(anim:std.String, loop:Bool):Void;
 
 	/**		
-		If `true`, the given animation will loop.
+		Returns `true` if the given animation is configured to loop when it finishes playing. Otherwise, returns `false`.
 	**/
 	@:native("GetAnimationLoop")
 	public function getAnimationLoop(anim:std.String):Bool;

@@ -49,6 +49,12 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 	}
 
 	/**		
+		The time in seconds before a pending client (i.e. a client that has not yet finished the HTTP handshake) is considered stale and forcefully disconnected.
+	**/
+	@:native("HandshakeTimeout")
+	public var handshakeTimeout:Single;
+
+	/**		
 		When using SSL (see `godot.WebSocketServer.privateKey` and `godot.WebSocketServer.sslCertificate`), you can set this to a valid `godot.X509Certificate` to be provided as additional CA chain information during the SSL handshake.
 	**/
 	@:native("CaChain")
@@ -91,7 +97,7 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 		
 		If `false` is passed instead (default), you must call `godot.PacketPeer` functions (`put_packet`, `get_packet`, etc.), on the `godot.WebSocketPeer` returned via `get_peer(id)` to communicate with the peer with given `id` (e.g. `get_peer(id).get_available_packet_count`).
 		
-		@param protocols If the parameter is null, then the default value is new string[] {}
+		@param protocols If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Listen")
 	public function listen(port:Int, ?protocols:std.Array<std.String>, ?gdMpApi:Bool):godot.Error;
@@ -105,7 +111,7 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 		
 		If `false` is passed instead (default), you must call `godot.PacketPeer` functions (`put_packet`, `get_packet`, etc.), on the `godot.WebSocketPeer` returned via `get_peer(id)` to communicate with the peer with given `id` (e.g. `get_peer(id).get_available_packet_count`).
 		
-		@param protocols If the parameter is null, then the default value is new string[] {}
+		@param protocols If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Listen")
 	public overload function listen(port:Int):godot.Error;
@@ -119,7 +125,7 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 		
 		If `false` is passed instead (default), you must call `godot.PacketPeer` functions (`put_packet`, `get_packet`, etc.), on the `godot.WebSocketPeer` returned via `get_peer(id)` to communicate with the peer with given `id` (e.g. `get_peer(id).get_available_packet_count`).
 		
-		@param protocols If the parameter is null, then the default value is new string[] {}
+		@param protocols If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Listen")
 	public overload function listen(port:Int, protocols:HaxeArray<std.String>):godot.Error;
@@ -133,7 +139,7 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 		
 		If `false` is passed instead (default), you must call `godot.PacketPeer` functions (`put_packet`, `get_packet`, etc.), on the `godot.WebSocketPeer` returned via `get_peer(id)` to communicate with the peer with given `id` (e.g. `get_peer(id).get_available_packet_count`).
 		
-		@param protocols If the parameter is null, then the default value is new string[] {}
+		@param protocols If the parameter is null, then the default value is Array.Empty&lt;string&gt;()
 	**/
 	@:native("Listen")
 	public overload function listen(port:Int, protocols:HaxeArray<std.String>, gdMpApi:Bool):godot.Error;
@@ -212,4 +218,10 @@ extern class WebSocketServer extends godot.WebSocketMultiplayerPeer {
 
 	@:native("SetCaChain")
 	public function setCaChain(arg0:godot.X509Certificate):Void;
+
+	@:native("GetHandshakeTimeout")
+	public function getHandshakeTimeout():Single;
+
+	@:native("SetHandshakeTimeout")
+	public function setHandshakeTimeout(timeout:Single):Void;
 }

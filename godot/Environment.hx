@@ -53,6 +53,12 @@ extern class Environment extends godot.Resource {
 	public var adjustmentEnabled:Bool;
 
 	/**		
+		Takes more samples during downsample pass of glow. This ensures that single pixels are captured by glow which makes the glow look smoother and more stable during movement. However, it is very expensive and makes the glow post process take twice as long.
+	**/
+	@:native("GlowHighQuality")
+	public var glowHighQuality:Bool;
+
+	/**		
 		Smooths out the blockiness created by sampling higher levels, at the cost of performance.
 		
 		Note: When using the GLES2 renderer, this is only available if the GPU supports the `GL_EXT_gpu_shader4` extension.
@@ -349,7 +355,7 @@ extern class Environment extends godot.Resource {
 	public var autoExposureEnabled:Bool;
 
 	/**		
-		The white reference value for tonemapping. Only effective if the `godot.Environment.tonemapMode` isn't set to .
+		The white reference value for tonemapping. Only effective if the `godot.Environment.tonemapMode` isn't set to `godot.Environment_ToneMapper.linear`.
 	**/
 	@:native("TonemapWhite")
 	public var tonemapWhite:Single;
@@ -475,7 +481,7 @@ extern class Environment extends godot.Resource {
 	public var backgroundCameraFeedId:Int;
 
 	/**		
-		The maximum layer ID to display. Only effective when using the  background mode.
+		The maximum layer ID to display. Only effective when using the `godot.Environment_BGMode.canvas` background mode.
 	**/
 	@:native("BackgroundCanvasMaxLayer")
 	public var backgroundCanvasMaxLayer:Int;
@@ -487,7 +493,7 @@ extern class Environment extends godot.Resource {
 	public var backgroundEnergy:Single;
 
 	/**		
-		The `godot.Color` displayed for clear areas of the scene. Only effective when using the  or  background modes).
+		The `godot.Color` displayed for clear areas of the scene. Only effective when using the `godot.Environment_BGMode.color` or `godot.Environment_BGMode.colorSky` background modes).
 	**/
 	@:native("BackgroundColor")
 	public var backgroundColor:godot.Color;
@@ -974,6 +980,12 @@ extern class Environment extends godot.Resource {
 
 	@:native("IsGlowBicubicUpscaleEnabled")
 	public function isGlowBicubicUpscaleEnabled():Bool;
+
+	@:native("SetGlowHighQuality")
+	public function setGlowHighQuality(enabled:Bool):Void;
+
+	@:native("IsGlowHighQualityEnabled")
+	public function isGlowHighQualityEnabled():Bool;
 
 	@:native("SetAdjustmentEnable")
 	public function setAdjustmentEnable(enabled:Bool):Void;

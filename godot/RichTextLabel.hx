@@ -11,7 +11,11 @@ Note: Assignments to `godot.RichTextLabel.bbcodeText` clear the tag stack and re
 
 Note: RichTextLabel doesn't support entangled BBCode tags. For example, instead of using `[b]bold[i]bold italic[/b]italic[/i]`, use `[b]bold[i]bold italic[/i][/b][i]italic[/i]`.
 
+Note: `push_* /pop` functions won't affect BBCode.
+
 Note: Unlike `godot.Label`, RichTextLabel doesn't have a property to horizontally align text to the center. Instead, enable `godot.RichTextLabel.bbcodeEnabled` and surround the text in a `[center]` tag as follows: `[center]Example[/center]`. There is currently no built-in way to vertically align text either, but this can be emulated by relying on anchors/containers and the `godot.RichTextLabel.fitContentHeight` property.
+
+Note: Unicode characters after `0xffff` (such as most emoji) are not supported on Windows. They will display as unknown characters instead. This will be resolved in Godot 4.0.
 **/
 @:libType
 @:csNative
@@ -341,6 +345,8 @@ extern class RichTextLabel extends godot.Control {
 
 	/**		
 		Returns the vertical scrollbar.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetVScroll")
 	public function getVScroll():godot.VScrollBar;
@@ -370,13 +376,13 @@ extern class RichTextLabel extends godot.Control {
 	public function isSelectionEnabled():Bool;
 
 	/**		
-		The assignment version of `godot.RichTextLabel.appendBbcode`. Clears the tag stack and inserts the new content. Returns  if parses `bbcode` successfully.
+		The assignment version of `godot.RichTextLabel.appendBbcode`. Clears the tag stack and inserts the new content. Returns `OK` if parses `bbcode` successfully.
 	**/
 	@:native("ParseBbcode")
 	public function parseBbcode(bbcode:std.String):godot.Error;
 
 	/**		
-		Parses `bbcode` and adds tags to the tag stack as needed. Returns the result of the parsing,  if successful.
+		Parses `bbcode` and adds tags to the tag stack as needed. Returns the result of the parsing, `OK` if successful.
 		
 		Note: Using this method, you can't close a tag that was opened in a previous `godot.RichTextLabel.appendBbcode` call. This is done to improve performance, especially when updating large RichTextLabels since rebuilding the whole BBCode every time would be slower. If you absolutely need to close a tag in a future method call, append the `godot.RichTextLabel.bbcodeText` instead of using `godot.RichTextLabel.appendBbcode`.
 	**/

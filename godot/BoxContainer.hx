@@ -13,7 +13,7 @@ Arranges child controls vertically or horizontally, and rearranges the controls 
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class BoxContainer extends godot.Container {
 	/**		
-		The alignment of the container's children (must be one of ,  or ).
+		The alignment of the container's children (must be one of `godot.BoxContainer_AlignMode.begin`, `godot.BoxContainer_AlignMode.center` or `godot.BoxContainer_AlignMode.end`).
 	**/
 	@:native("Alignment")
 	public var alignment:godot.BoxContainer_AlignMode;

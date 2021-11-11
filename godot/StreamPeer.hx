@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-StreamPeer is an abstraction and base class for stream-based protocols (such as TCP or UNIX sockets). It provides an API for sending and receiving data through streams as raw data or strings.
+StreamPeer is an abstraction and base class for stream-based protocols (such as TCP). It provides an API for sending and receiving data through streams as raw data or strings.
 **/
 @:libType
 @:csNative

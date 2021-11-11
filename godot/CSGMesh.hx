@@ -20,6 +20,8 @@ extern class CSGMesh extends godot.CSGPrimitive {
 
 	/**		
 		The `godot.Mesh` resource to use as a CSG shape.
+		
+		Note: When using an `godot.ArrayMesh`, avoid meshes with vertex normals unless a flat shader is required. By default, CSGMesh will ignore the mesh's vertex normals and use a smooth shader calculated using the faces' normals. If a flat shader is required, ensure that all faces' vertex normals are parallel.
 	**/
 	@:native("Mesh")
 	public var mesh:godot.Mesh;

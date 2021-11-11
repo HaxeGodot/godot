@@ -48,28 +48,28 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 		`body_shape_entered` signal.
 		
 		Emitted when one of this RigidBody2D's `Shape2D`s collides with another `PhysicsBody2D` or `TileMap`'s `Shape2D`s. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
-		`body_id` the `RID` of the other `PhysicsBody2D` or `TileSet`'s `CollisionObject2D` used by the `Physics2DServer`.
+		`body_rid` the `RID` of the other `PhysicsBody2D` or `TileSet`'s `CollisionObject2D` used by the `Physics2DServer`.
 		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
-		`body_shape` the index of the `Shape2D` of the other `PhysicsBody2D` or `TileMap` used by the `Physics2DServer`.
-		`local_shape` the index of the `Shape2D` of this RigidBody2D used by the `Physics2DServer`.
+		`body_shape_index` the index of the `Shape2D` of the other `PhysicsBody2D` or `TileMap` used by the `Physics2DServer`. Get the `CollisionShape2D` node with `body.shape_owner_get_owner(body_shape_index)`.
+		`local_shape_index` the index of the `Shape2D` of this RigidBody2D used by the `Physics2DServer`. Get the `CollisionShape2D` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
-	public var onBodyShapeEntered(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
-	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
-		return new Signal(this, "body_shape_entered", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	public var onBodyShapeEntered(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
+	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
+		return new Signal(this, "body_shape_entered", Signal.SignalHandlerRIDNodeIntIntVoid.connectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.isSignalConnected);
 	}
 
 	/**
 		`body_shape_exited` signal.
 		
 		Emitted when the collision between one of this RigidBody2D's `Shape2D`s and another `PhysicsBody2D` or `TileMap`'s `Shape2D`s ends. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
-		`body_id` the `RID` of the other `PhysicsBody2D` or `TileSet`'s `CollisionObject2D` used by the `Physics2DServer`.
+		`body_rid` the `RID` of the other `PhysicsBody2D` or `TileSet`'s `CollisionObject2D` used by the `Physics2DServer`.
 		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
-		`body_shape` the index of the `Shape2D` of the other `PhysicsBody2D` or `TileMap` used by the `Physics2DServer`.
-		`local_shape` the index of the `Shape2D` of this RigidBody2D used by the `Physics2DServer`.
+		`body_shape_index` the index of the `Shape2D` of the other `PhysicsBody2D` or `TileMap` used by the `Physics2DServer`. Get the `CollisionShape2D` node with `body.shape_owner_get_owner(body_shape_index)`.
+		`local_shape_index` the index of the `Shape2D` of this RigidBody2D used by the `Physics2DServer`. Get the `CollisionShape2D` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
-	public var onBodyShapeExited(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
-	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
-		return new Signal(this, "body_shape_exited", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	public var onBodyShapeExited(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
+	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
+		return new Signal(this, "body_shape_exited", Signal.SignalHandlerRIDNodeIntIntVoid.connectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.isSignalConnected);
 	}
 
 	/**
@@ -126,7 +126,7 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 	/**		
 		If `true`, the body can enter sleep mode when there is no movement. See `godot.RigidBody2D.sleeping`.
 		
-		Note: A RigidBody2D will never enter sleep mode automatically if its `godot.RigidBody2D.mode` is . It can still be put to sleep manually by setting its `godot.RigidBody2D.sleeping` property to `true`.
+		Note: A RigidBody2D will never enter sleep mode automatically if its `godot.RigidBody2D.mode` is `godot.RigidBody2D_ModeEnum.character`. It can still be put to sleep manually by setting its `godot.RigidBody2D.sleeping` property to `true`.
 	**/
 	@:native("CanSleep")
 	public var canSleep:Bool;

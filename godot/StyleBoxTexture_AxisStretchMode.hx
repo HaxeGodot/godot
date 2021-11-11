@@ -16,7 +16,7 @@ extern enum StyleBoxTexture_AxisStretchMode {
 	Tile;
 
 	/**		
-		Repeats the stylebox's texture to match the stylebox's size according to the nine-patch system. Unlike , the texture may be slightly stretched to make the nine-patch texture tile seamlessly.
+		Repeats the stylebox's texture to match the stylebox's size according to the nine-patch system. Unlike `godot.StyleBoxTexture_AxisStretchMode.tile`, the texture may be slightly stretched to make the nine-patch texture tile seamlessly.
 	**/
 	TileFit;
 }

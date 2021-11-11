@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-This class represent a specific WebSocket connection, you can do lower level operations with it.
+This class represents a specific WebSocket connection, allowing you to do lower level operations with it.
 
 You can choose to write to the socket in binary or text mode, and you can recognize the mode used for writing by the other peer.
 **/
@@ -106,4 +106,10 @@ extern class WebSocketPeer extends godot.PacketPeer {
 	**/
 	@:native("SetNoDelay")
 	public function setNoDelay(enabled:Bool):Void;
+
+	/**		
+		Returns the current amount of data in the outbound websocket buffer. Note: HTML5 exports use WebSocket.bufferedAmount, while other platforms use an internal buffer.
+	**/
+	@:native("GetCurrentOutboundBufferedAmount")
+	public function getCurrentOutboundBufferedAmount():Int;
 }

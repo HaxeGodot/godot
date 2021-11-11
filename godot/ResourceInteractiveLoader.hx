@@ -21,9 +21,9 @@ extern abstract class ResourceInteractiveLoader extends godot.Reference {
 	/**		
 		Polls the loading operation, i.e. loads a data chunk up to the next stage.
 		
-		Returns  if the poll is successful but the load operation has not finished yet (intermediate stage). This means `godot.ResourceInteractiveLoader.poll` will have to be called again until the last stage is completed.
+		Returns `OK` if the poll is successful but the load operation has not finished yet (intermediate stage). This means `godot.ResourceInteractiveLoader.poll` will have to be called again until the last stage is completed.
 		
-		Returns  if the load operation has completed successfully. The loaded resource can be obtained by calling `godot.ResourceInteractiveLoader.getResource`.
+		Returns `ERR_FILE_EOF` if the load operation has completed successfully. The loaded resource can be obtained by calling `godot.ResourceInteractiveLoader.getResource`.
 		
 		Returns another `godot.Error` code if the poll has failed.
 	**/
@@ -33,7 +33,7 @@ extern abstract class ResourceInteractiveLoader extends godot.Reference {
 	/**		
 		Polls the loading operation successively until the resource is completely loaded or a `godot.ResourceInteractiveLoader.poll` fails.
 		
-		Returns  if the load operation has completed successfully. The loaded resource can be obtained by calling `godot.ResourceInteractiveLoader.getResource`.
+		Returns `ERR_FILE_EOF` if the load operation has completed successfully. The loaded resource can be obtained by calling `godot.ResourceInteractiveLoader.getResource`.
 		
 		Returns another `godot.Error` code if a poll has failed, aborting the operation.
 	**/

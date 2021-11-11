@@ -11,7 +11,7 @@ The `godot.VisualInstance` is used to connect a resource to a visual representat
 @:csNative
 @:native("Godot.VisualInstance")
 @:autoBuild(godot.Godot.buildUserClass())
-extern abstract class VisualInstance extends godot.Spatial {
+extern abstract class VisualInstance extends godot.CullInstance {
 	/**		
 		The render layer(s) this `godot.VisualInstance` is drawn on.
 		

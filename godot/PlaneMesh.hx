@@ -15,6 +15,12 @@ Note: When using a large textured `godot.PlaneMesh` (e.g. as a floor), you may s
 @:autoBuild(godot.Godot.buildUserClass())
 extern class PlaneMesh extends godot.PrimitiveMesh {
 	/**		
+		Offset from the origin of the generated plane. Useful for particles.
+	**/
+	@:native("CenterOffset")
+	public var centerOffset:godot.Vector3;
+
+	/**		
 		Number of subdivision along the Z axis.
 	**/
 	@:native("SubdivideDepth")
@@ -52,4 +58,10 @@ extern class PlaneMesh extends godot.PrimitiveMesh {
 
 	@:native("GetSubdivideDepth")
 	public function getSubdivideDepth():Int;
+
+	@:native("SetCenterOffset")
+	public function setCenterOffset(offset:godot.Vector3):Void;
+
+	@:native("GetCenterOffset")
+	public function getCenterOffset():godot.Vector3;
 }

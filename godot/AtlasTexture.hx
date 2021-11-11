@@ -9,7 +9,7 @@ import cs.system.*;
 
 `godot.AtlasTexture` cannot be used in an `godot.AnimatedTexture`, cannot be tiled in nodes such as `godot.TextureRect`, and does not work properly if used inside of other `godot.AtlasTexture` resources. Multiple `godot.AtlasTexture` resources can be used to crop multiple textures from the atlas. Using a texture atlas helps to optimize video memory costs and render calls compared to using multiple small files.
 
-Note: AtlasTextures don't support repetition. The  and  flags are ignored when using an AtlasTexture.
+Note: AtlasTextures don't support repetition. The `godot.Texture_FlagsEnum.repeat` and `godot.Texture_FlagsEnum.mirroredRepeat` flags are ignored when using an AtlasTexture.
 **/
 @:libType
 @:csNative

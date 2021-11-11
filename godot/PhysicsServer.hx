@@ -109,7 +109,7 @@ extern class PhysicsServer {
 	/**		
 		Adds a shape to the area, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.
 		
-		@param transform If the parameter is null, then the default value is new Transform()
+		@param transform If the parameter is null, then the default value is Transform.Identity
 	**/
 	@:native("AreaAddShape")
 	public static function areaAddShape(area:godot.RID, shape:godot.RID, ?transform:Null<godot.Transform>, ?disabled:Bool):Void;
@@ -117,7 +117,7 @@ extern class PhysicsServer {
 	/**		
 		Adds a shape to the area, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.
 		
-		@param transform If the parameter is null, then the default value is new Transform()
+		@param transform If the parameter is null, then the default value is Transform.Identity
 	**/
 	@:native("AreaAddShape")
 	public static overload function areaAddShape(area:godot.RID, shape:godot.RID):Void;
@@ -125,7 +125,7 @@ extern class PhysicsServer {
 	/**		
 		Adds a shape to the area, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.
 		
-		@param transform If the parameter is null, then the default value is new Transform()
+		@param transform If the parameter is null, then the default value is Transform.Identity
 	**/
 	@:native("AreaAddShape")
 	public static overload function areaAddShape(area:godot.RID, shape:godot.RID, transform:Nullable1<godot.Transform>):Void;
@@ -133,7 +133,7 @@ extern class PhysicsServer {
 	/**		
 		Adds a shape to the area, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.
 		
-		@param transform If the parameter is null, then the default value is new Transform()
+		@param transform If the parameter is null, then the default value is Transform.Identity
 	**/
 	@:native("AreaAddShape")
 	public static overload function areaAddShape(area:godot.RID, shape:godot.RID, transform:Nullable1<godot.Transform>, disabled:Bool):Void;
@@ -235,7 +235,7 @@ extern class PhysicsServer {
 	/**		
 		Sets the function to call when any body/area enters or exits the area. This callback will be called for any object interacting with the area, and takes five parameters:
 		
-		1:  or , depending on whether the object entered or exited the area.
+		1: `godot.PhysicsServer_AreaBodyStatus.added` or `godot.PhysicsServer_AreaBodyStatus.removed`, depending on whether the object entered or exited the area.
 		
 		2: `godot.RID` of the object that entered/exited the area.
 		
@@ -346,7 +346,7 @@ extern class PhysicsServer {
 	/**		
 		Adds a shape to the body, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.
 		
-		@param transform If the parameter is null, then the default value is new Transform()
+		@param transform If the parameter is null, then the default value is Transform.Identity
 	**/
 	@:native("BodyAddShape")
 	public static function bodyAddShape(body:godot.RID, shape:godot.RID, ?transform:Null<godot.Transform>, ?disabled:Bool):Void;
@@ -354,7 +354,7 @@ extern class PhysicsServer {
 	/**		
 		Adds a shape to the body, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.
 		
-		@param transform If the parameter is null, then the default value is new Transform()
+		@param transform If the parameter is null, then the default value is Transform.Identity
 	**/
 	@:native("BodyAddShape")
 	public static overload function bodyAddShape(body:godot.RID, shape:godot.RID):Void;
@@ -362,7 +362,7 @@ extern class PhysicsServer {
 	/**		
 		Adds a shape to the body, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.
 		
-		@param transform If the parameter is null, then the default value is new Transform()
+		@param transform If the parameter is null, then the default value is Transform.Identity
 	**/
 	@:native("BodyAddShape")
 	public static overload function bodyAddShape(body:godot.RID, shape:godot.RID, transform:Nullable1<godot.Transform>):Void;
@@ -370,7 +370,7 @@ extern class PhysicsServer {
 	/**		
 		Adds a shape to the body, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.
 		
-		@param transform If the parameter is null, then the default value is new Transform()
+		@param transform If the parameter is null, then the default value is Transform.Identity
 	**/
 	@:native("BodyAddShape")
 	public static overload function bodyAddShape(body:godot.RID, shape:godot.RID, transform:Nullable1<godot.Transform>, disabled:Bool):Void;
@@ -583,6 +583,48 @@ extern class PhysicsServer {
 	@:native("BodyIsRayPickable")
 	public static function bodyIsRayPickable(body:godot.RID):Bool;
 
+	#if doc_gen
+	/**		
+		Returns `true` if a collision would result from moving in the given direction from a given point in space. `godot.PhysicsTestMotionResult` can be passed to return additional information in.
+		
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
+	**/
+	@:native("BodyTestMotion")
+	public static function bodyTestMotion(body:godot.RID, from:godot.Transform, motion:godot.Vector3, infiniteInertia:Bool, ?result:godot.PhysicsTestMotionResult, ?excludeRaycastShapes:Bool, ?exclude:godot.collections.Array):Bool;
+	#else
+	/**		
+		Returns `true` if a collision would result from moving in the given direction from a given point in space. `godot.PhysicsTestMotionResult` can be passed to return additional information in.
+		
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
+	**/
+	@:native("BodyTestMotion")
+	public static overload function bodyTestMotion(body:godot.RID, from:godot.Transform, motion:godot.Vector3, infiniteInertia:Bool):Bool;
+
+	/**		
+		Returns `true` if a collision would result from moving in the given direction from a given point in space. `godot.PhysicsTestMotionResult` can be passed to return additional information in.
+		
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
+	**/
+	@:native("BodyTestMotion")
+	public static overload function bodyTestMotion(body:godot.RID, from:godot.Transform, motion:godot.Vector3, infiniteInertia:Bool, result:godot.PhysicsTestMotionResult):Bool;
+
+	/**		
+		Returns `true` if a collision would result from moving in the given direction from a given point in space. `godot.PhysicsTestMotionResult` can be passed to return additional information in.
+		
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
+	**/
+	@:native("BodyTestMotion")
+	public static overload function bodyTestMotion(body:godot.RID, from:godot.Transform, motion:godot.Vector3, infiniteInertia:Bool, result:godot.PhysicsTestMotionResult, excludeRaycastShapes:Bool):Bool;
+
+	/**		
+		Returns `true` if a collision would result from moving in the given direction from a given point in space. `godot.PhysicsTestMotionResult` can be passed to return additional information in.
+		
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
+	**/
+	@:native("BodyTestMotion")
+	public static overload function bodyTestMotion(body:godot.RID, from:godot.Transform, motion:godot.Vector3, infiniteInertia:Bool, result:godot.PhysicsTestMotionResult, excludeRaycastShapes:Bool, exclude:godot.collections.Array):Bool;
+	#end
+
 	/**		
 		Returns the `godot.PhysicsDirectBodyState` of the body.
 	**/
@@ -756,6 +798,14 @@ extern class PhysicsServer {
 	**/
 	@:native("SetActive")
 	public static function setActive(active:Bool):Void;
+
+	/**		
+		Sets the amount of iterations for calculating velocities of colliding bodies. The greater the amount of iterations, the more accurate the collisions will be. However, a greater amount of iterations requires more CPU power, which can decrease performance. The default value is `8`.
+		
+		Note: Only has an effect when using the GodotPhysics engine, not the default Bullet physics engine.
+	**/
+	@:native("SetCollisionIterations")
+	public static function setCollisionIterations(iterations:Int):Void;
 
 	/**		
 		Returns an Info defined by the `godot.PhysicsServer_ProcessInfo` input given.

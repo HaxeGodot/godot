@@ -13,7 +13,7 @@ A 6-sided 3D texture typically used for faking reflections. It can be used to ma
 @:autoBuild(godot.Godot.buildUserClass())
 extern class CubeMap extends godot.Resource {
 	/**		
-		The lossy storage quality of the `godot.CubeMap` if the storage mode is set to .
+		The lossy storage quality of the `godot.CubeMap` if the storage mode is set to `godot.CubeMap_Storage.compressLossy`.
 	**/
 	@:native("LossyStorageQuality")
 	public var lossyStorageQuality:Single;

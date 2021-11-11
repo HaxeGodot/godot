@@ -106,13 +106,23 @@ extern class ScrollContainer extends godot.Container {
 
 	/**		
 		Returns the horizontal scrollbar `godot.HScrollBar` of this `godot.ScrollContainer`.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to disable the horizontal scrollbar, use `godot.ScrollContainer.scrollHorizontalEnabled`. If you want to only hide it instead, use its `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetHScrollbar")
 	public function getHScrollbar():godot.HScrollBar;
 
 	/**		
 		Returns the vertical scrollbar `godot.VScrollBar` of this `godot.ScrollContainer`.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to disable the vertical scrollbar, use `godot.ScrollContainer.scrollVerticalEnabled`. If you want to only hide it instead, use its `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetVScrollbar")
 	public function getVScrollbar():godot.VScrollBar;
+
+	/**		
+		Ensures the given `control` is visible (must be a direct or indirect child of the ScrollContainer). Used by `godot.ScrollContainer.followFocus`.
+	**/
+	@:native("EnsureControlVisible")
+	public function ensureControlVisible(control:godot.Control):Void;
 }

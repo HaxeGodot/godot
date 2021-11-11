@@ -43,10 +43,12 @@ extern class StyleBoxFlat extends godot.StyleBox {
 		This changes the size of the faded ring. Higher values can be used to achieve a "blurry" effect.
 	**/
 	@:native("AntiAliasingSize")
-	public var antiAliasingSize:Int;
+	public var antiAliasingSize:Single;
 
 	/**		
 		Antialiasing draws a small ring around the edges, which fades to transparency. As a result, edges look much smoother. This is only noticeable when using rounded corners.
+		
+		Note: When using beveled corners with 45-degree angles (`godot.StyleBoxFlat.cornerDetail` = 1), it is recommended to set `godot.StyleBoxFlat.antiAliasing` to `false` to ensure crisp visuals and avoid possible visual glitches.
 	**/
 	@:native("AntiAliasing")
 	public var antiAliasing:Bool;
@@ -299,10 +301,10 @@ extern class StyleBoxFlat extends godot.StyleBox {
 	public function isAntiAliased():Bool;
 
 	@:native("SetAaSize")
-	public function setAaSize(size:Int):Void;
+	public function setAaSize(size:Single):Void;
 
 	@:native("GetAaSize")
-	public function getAaSize():Int;
+	public function getAaSize():Single;
 
 	@:native("SetCornerDetail")
 	public function setCornerDetail(detail:Int):Void;

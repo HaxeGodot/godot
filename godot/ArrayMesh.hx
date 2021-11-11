@@ -83,6 +83,9 @@ extern class ArrayMesh extends godot.Mesh {
 	@:native("GetBlendShapeName")
 	public function getBlendShapeName(index:Int):std.String;
 
+	@:native("SetBlendShapeName")
+	public function setBlendShapeName(index:Int, name:std.String):Void;
+
 	/**		
 		Removes all blend shapes from this `godot.ArrayMesh`.
 	**/
@@ -99,13 +102,11 @@ extern class ArrayMesh extends godot.Mesh {
 	/**		
 		Creates a new surface.
 		
-		Surfaces are created to be rendered using a `primitive`, which may be any of the types defined in `godot.Mesh_PrimitiveType`. (As a note, when using indices, it is recommended to only use points, lines or triangles.) `godot.Mesh.getSurfaceCount` will become the `surf_idx` for this new surface.
+		Surfaces are created to be rendered using a `primitive`, which may be any of the types defined in `godot.Mesh_PrimitiveType`. (As a note, when using indices, it is recommended to only use points, lines, or triangles.) `godot.Mesh.getSurfaceCount` will become the `surf_idx` for this new surface.
 		
-		The `arrays` argument is an array of arrays. See `godot.ArrayMesh_ArrayType` for the values used in this array. For example, `arrays[0]` is the array of vertices. That first vertex sub-array is always required; the others are optional. Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data and the index array defines the vertex order. All sub-arrays must have the same length as the vertex array or be empty, except for  if it is used.
+		The `arrays` argument is an array of arrays. See `godot.ArrayMesh_ArrayType` for the values used in this array. For example, `arrays[0]` is the array of vertices. That first vertex sub-array is always required; the others are optional. Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data and the index array defines the vertex order. All sub-arrays must have the same length as the vertex array or be empty, except for `godot.ArrayMesh_ArrayType.index` if it is used.
 		
-		Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data, and the index array defines the order of the vertices.
-		
-		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddSurfaceFromArrays")
 	public function addSurfaceFromArrays(primitive:godot.Mesh_PrimitiveType, arrays:godot.collections.Array, ?blendShapes:godot.collections.Array, ?compressFlags:UInt):Void;
@@ -113,13 +114,11 @@ extern class ArrayMesh extends godot.Mesh {
 	/**		
 		Creates a new surface.
 		
-		Surfaces are created to be rendered using a `primitive`, which may be any of the types defined in `godot.Mesh_PrimitiveType`. (As a note, when using indices, it is recommended to only use points, lines or triangles.) `godot.Mesh.getSurfaceCount` will become the `surf_idx` for this new surface.
+		Surfaces are created to be rendered using a `primitive`, which may be any of the types defined in `godot.Mesh_PrimitiveType`. (As a note, when using indices, it is recommended to only use points, lines, or triangles.) `godot.Mesh.getSurfaceCount` will become the `surf_idx` for this new surface.
 		
-		The `arrays` argument is an array of arrays. See `godot.ArrayMesh_ArrayType` for the values used in this array. For example, `arrays[0]` is the array of vertices. That first vertex sub-array is always required; the others are optional. Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data and the index array defines the vertex order. All sub-arrays must have the same length as the vertex array or be empty, except for  if it is used.
+		The `arrays` argument is an array of arrays. See `godot.ArrayMesh_ArrayType` for the values used in this array. For example, `arrays[0]` is the array of vertices. That first vertex sub-array is always required; the others are optional. Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data and the index array defines the vertex order. All sub-arrays must have the same length as the vertex array or be empty, except for `godot.ArrayMesh_ArrayType.index` if it is used.
 		
-		Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data, and the index array defines the order of the vertices.
-		
-		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddSurfaceFromArrays")
 	public overload function addSurfaceFromArrays(primitive:godot.Mesh_PrimitiveType, arrays:godot.collections.Array):Void;
@@ -127,13 +126,11 @@ extern class ArrayMesh extends godot.Mesh {
 	/**		
 		Creates a new surface.
 		
-		Surfaces are created to be rendered using a `primitive`, which may be any of the types defined in `godot.Mesh_PrimitiveType`. (As a note, when using indices, it is recommended to only use points, lines or triangles.) `godot.Mesh.getSurfaceCount` will become the `surf_idx` for this new surface.
+		Surfaces are created to be rendered using a `primitive`, which may be any of the types defined in `godot.Mesh_PrimitiveType`. (As a note, when using indices, it is recommended to only use points, lines, or triangles.) `godot.Mesh.getSurfaceCount` will become the `surf_idx` for this new surface.
 		
-		The `arrays` argument is an array of arrays. See `godot.ArrayMesh_ArrayType` for the values used in this array. For example, `arrays[0]` is the array of vertices. That first vertex sub-array is always required; the others are optional. Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data and the index array defines the vertex order. All sub-arrays must have the same length as the vertex array or be empty, except for  if it is used.
+		The `arrays` argument is an array of arrays. See `godot.ArrayMesh_ArrayType` for the values used in this array. For example, `arrays[0]` is the array of vertices. That first vertex sub-array is always required; the others are optional. Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data and the index array defines the vertex order. All sub-arrays must have the same length as the vertex array or be empty, except for `godot.ArrayMesh_ArrayType.index` if it is used.
 		
-		Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data, and the index array defines the order of the vertices.
-		
-		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddSurfaceFromArrays")
 	public overload function addSurfaceFromArrays(primitive:godot.Mesh_PrimitiveType, arrays:godot.collections.Array, blendShapes:godot.collections.Array):Void;
@@ -141,17 +138,21 @@ extern class ArrayMesh extends godot.Mesh {
 	/**		
 		Creates a new surface.
 		
-		Surfaces are created to be rendered using a `primitive`, which may be any of the types defined in `godot.Mesh_PrimitiveType`. (As a note, when using indices, it is recommended to only use points, lines or triangles.) `godot.Mesh.getSurfaceCount` will become the `surf_idx` for this new surface.
+		Surfaces are created to be rendered using a `primitive`, which may be any of the types defined in `godot.Mesh_PrimitiveType`. (As a note, when using indices, it is recommended to only use points, lines, or triangles.) `godot.Mesh.getSurfaceCount` will become the `surf_idx` for this new surface.
 		
-		The `arrays` argument is an array of arrays. See `godot.ArrayMesh_ArrayType` for the values used in this array. For example, `arrays[0]` is the array of vertices. That first vertex sub-array is always required; the others are optional. Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data and the index array defines the vertex order. All sub-arrays must have the same length as the vertex array or be empty, except for  if it is used.
+		The `arrays` argument is an array of arrays. See `godot.ArrayMesh_ArrayType` for the values used in this array. For example, `arrays[0]` is the array of vertices. That first vertex sub-array is always required; the others are optional. Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data and the index array defines the vertex order. All sub-arrays must have the same length as the vertex array or be empty, except for `godot.ArrayMesh_ArrayType.index` if it is used.
 		
-		Adding an index array puts this function into "index mode" where the vertex and other arrays become the sources of data, and the index array defines the order of the vertices.
-		
-		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param blendShapes If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddSurfaceFromArrays")
 	public overload function addSurfaceFromArrays(primitive:godot.Mesh_PrimitiveType, arrays:godot.collections.Array, blendShapes:godot.collections.Array, compressFlags:UInt):Void;
 	#end
+
+	/**		
+		Removes all surfaces from this `godot.ArrayMesh`.
+	**/
+	@:native("ClearSurfaces")
+	public function clearSurfaces():Void;
 
 	/**		
 		Removes a surface at position `surf_idx`, shifting greater surfaces one `surf_idx` slot down.

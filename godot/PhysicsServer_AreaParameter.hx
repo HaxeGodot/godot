@@ -26,7 +26,7 @@ extern enum PhysicsServer_AreaParameter {
 	GravityDistanceScale;
 
 	/**		
-		This constant was used to set/get the falloff factor for point gravity. It has been superseded by .
+		This constant was used to set/get the falloff factor for point gravity. It has been superseded by `godot.PhysicsServer_AreaParameter.gravityDistanceScale`.
 	**/
 	GravityPointAttenuation;
 

@@ -5,9 +5,11 @@ package godot;
 import cs.system.*;
 
 /**
-Label displays plain text on the screen. It gives you control over the horizontal and vertical alignment, and can wrap the text inside the node's bounding rectangle. It doesn't support bold, italics or other formatting. For that, use `godot.RichTextLabel` instead.
+Label displays plain text on the screen. It gives you control over the horizontal and vertical alignment and can wrap the text inside the node's bounding rectangle. It doesn't support bold, italics, or other formatting. For that, use `godot.RichTextLabel` instead.
 
-Note: Contrarily to most other `godot.Control`s, Label's `godot.Control.mouseFilter` defaults to  (i.e. it doesn't react to mouse input events). This implies that a label won't display any configured `godot.Control.hintTooltip`, unless you change its mouse filter.
+Note: Contrarily to most other `godot.Control`s, Label's `godot.Control.mouseFilter` defaults to `godot.Control_MouseFilterEnum.ignore` (i.e. it doesn't react to mouse input events). This implies that a label won't display any configured `godot.Control.hintTooltip`, unless you change its mouse filter.
+
+Note: Unicode characters after `0xffff` (such as most emoji) are not supported on Windows. They will display as unknown characters instead. This will be resolved in Godot 4.0.
 **/
 @:libType
 @:csNative
@@ -45,7 +47,7 @@ extern class Label extends godot.Control {
 	public var uppercase:Bool;
 
 	/**		
-		If `true`, the Label only shows the text that fits inside its bounding rectangle. It also lets you scale the node down freely.
+		If `true`, the Label only shows the text that fits inside its bounding rectangle and will clip text horizontally.
 	**/
 	@:native("ClipText")
 	public var clipText:Bool;

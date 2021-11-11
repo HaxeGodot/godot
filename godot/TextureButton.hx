@@ -17,6 +17,18 @@ See also `godot.BaseButton` which contains common properties and methods associa
 @:autoBuild(godot.Godot.buildUserClass())
 extern class TextureButton extends godot.BaseButton {
 	/**		
+		If `true`, texture is flipped vertically.
+	**/
+	@:native("FlipV")
+	public var flipV:Bool;
+
+	/**		
+		If `true`, texture is flipped horizontally.
+	**/
+	@:native("FlipH")
+	public var flipH:Bool;
+
+	/**		
 		Controls the texture's behavior when you resize the node's bounding rectangle, only if `godot.TextureButton.expand` is `true`. Set it to one of the `godot.TextureButton_StretchModeEnum` constants. See the constants to learn more.
 	**/
 	@:native("StretchMode")
@@ -90,6 +102,18 @@ extern class TextureButton extends godot.BaseButton {
 
 	@:native("SetStretchMode")
 	public function setStretchMode(pMode:godot.TextureButton_StretchModeEnum):Void;
+
+	@:native("SetFlipH")
+	public function setFlipH(enable:Bool):Void;
+
+	@:native("IsFlippedH")
+	public function isFlippedH():Bool;
+
+	@:native("SetFlipV")
+	public function setFlipV(enable:Bool):Void;
+
+	@:native("IsFlippedV")
+	public function isFlippedV():Bool;
 
 	@:native("GetNormalTexture")
 	public function getNormalTexture():godot.Texture;

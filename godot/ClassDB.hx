@@ -204,6 +204,92 @@ extern class ClassDB {
 	@:native("ClassGetIntegerConstant")
 	public static function classGetIntegerConstant(class_:std.String, name:std.String):Int;
 
+	#if doc_gen
+	/**		
+		Returns whether `class` or its ancestry has an enum called `name` or not.
+	**/
+	@:native("ClassHasEnum")
+	public static function classHasEnum(class_:std.String, name:std.String, ?noInheritance:Bool):Bool;
+	#else
+	/**		
+		Returns whether `class` or its ancestry has an enum called `name` or not.
+	**/
+	@:native("ClassHasEnum")
+	public static overload function classHasEnum(class_:std.String, name:std.String):Bool;
+
+	/**		
+		Returns whether `class` or its ancestry has an enum called `name` or not.
+	**/
+	@:native("ClassHasEnum")
+	public static overload function classHasEnum(class_:std.String, name:std.String, noInheritance:Bool):Bool;
+	#end
+
+	#if doc_gen
+	/**		
+		Returns an array with all the enums of `class` or its ancestry.
+	**/
+	public static extern inline function classGetEnumList(class_:std.String, ?noInheritance:Bool):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("ClassGetEnumList({0}, {1})", class_, noInheritance));
+	}
+	#else
+	/**		
+		Returns an array with all the enums of `class` or its ancestry.
+	**/
+	public static overload extern inline function classGetEnumList(class_:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("ClassGetEnumList({0})", class_));
+	}
+
+	/**		
+		Returns an array with all the enums of `class` or its ancestry.
+	**/
+	public static overload extern inline function classGetEnumList(class_:std.String, noInheritance:Bool):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("ClassGetEnumList({0}, {1})", class_, noInheritance));
+	}
+	#end
+
+	#if doc_gen
+	/**		
+		Returns an array with all the keys in `enum` of `class` or its ancestry.
+	**/
+	public static extern inline function classGetEnumConstants(class_:std.String, enum_:std.String, ?noInheritance:Bool):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("ClassGetEnumConstants({0}, {1}, {2})", class_, enum_, noInheritance));
+	}
+	#else
+	/**		
+		Returns an array with all the keys in `enum` of `class` or its ancestry.
+	**/
+	public static overload extern inline function classGetEnumConstants(class_:std.String, enum_:std.String):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("ClassGetEnumConstants({0}, {1})", class_, enum_));
+	}
+
+	/**		
+		Returns an array with all the keys in `enum` of `class` or its ancestry.
+	**/
+	public static overload extern inline function classGetEnumConstants(class_:std.String, enum_:std.String, noInheritance:Bool):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("ClassGetEnumConstants({0}, {1}, {2})", class_, enum_, noInheritance));
+	}
+	#end
+
+	#if doc_gen
+	/**		
+		Returns which enum the integer constant `name` of `class` or its ancestry belongs to.
+	**/
+	@:native("ClassGetIntegerConstantEnum")
+	public static function classGetIntegerConstantEnum(class_:std.String, name:std.String, ?noInheritance:Bool):std.String;
+	#else
+	/**		
+		Returns which enum the integer constant `name` of `class` or its ancestry belongs to.
+	**/
+	@:native("ClassGetIntegerConstantEnum")
+	public static overload function classGetIntegerConstantEnum(class_:std.String, name:std.String):std.String;
+
+	/**		
+		Returns which enum the integer constant `name` of `class` or its ancestry belongs to.
+	**/
+	@:native("ClassGetIntegerConstantEnum")
+	public static overload function classGetIntegerConstantEnum(class_:std.String, name:std.String, noInheritance:Bool):std.String;
+	#end
+
 	/**		
 		Returns a category associated with the class for use in documentation and the Asset Library. Debug mode required.
 	**/

@@ -87,7 +87,7 @@ extern class FileDialog extends godot.ConfirmationDialog {
 	public var mode:godot.FileDialog_ModeEnum;
 
 	/**		
-		If `true`, changing the `Mode` property will set the window title accordingly (e.g. setting mode to  will change the window title to "Open a File").
+		If `true`, changing the `Mode` property will set the window title accordingly (e.g. setting mode to `godot.FileDialog_ModeEnum.openFile` will change the window title to "Open a File").
 	**/
 	@:native("ModeOverridesTitle")
 	public var modeOverridesTitle:Bool;
@@ -146,12 +146,16 @@ extern class FileDialog extends godot.ConfirmationDialog {
 
 	/**		
 		Returns the vertical box container of the dialog, custom controls can be added to it.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetVbox")
 	public function getVbox():godot.VBoxContainer;
 
 	/**		
 		Returns the LineEdit for the selected file.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetLineEdit")
 	public function getLineEdit():godot.LineEdit;

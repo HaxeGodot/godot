@@ -92,4 +92,10 @@ extern abstract class WebRTCDataChannel extends godot.PacketPeer {
 	**/
 	@:native("IsNegotiated")
 	public function isNegotiated():Bool;
+
+	/**		
+		Returns the number of bytes currently queued to be sent over this channel.
+	**/
+	@:native("GetBufferedAmount")
+	public function getBufferedAmount():Int;
 }

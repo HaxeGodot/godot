@@ -294,7 +294,7 @@ extern enum VisualScriptBuiltinFunc_BuiltinFunc {
 	VarToStr;
 
 	/**		
-		Deserialize a `Variant` from a string serialized using .
+		Deserialize a `Variant` from a string serialized using `godot.VisualScriptBuiltinFunc_BuiltinFunc.varToStr`.
 	**/
 	StrToVar;
 
@@ -304,7 +304,7 @@ extern enum VisualScriptBuiltinFunc_BuiltinFunc {
 	VarToBytes;
 
 	/**		
-		Deserialize a `Variant` from a `cs.UInt8` serialized using .
+		Deserialize a `Variant` from a `cs.UInt8` serialized using `godot.VisualScriptBuiltinFunc_BuiltinFunc.varToBytes`.
 	**/
 	BytesToVar;
 
@@ -316,7 +316,7 @@ extern enum VisualScriptBuiltinFunc_BuiltinFunc {
 	Colorn;
 
 	/**		
-		Return a number smoothly interpolated between the first two inputs, based on the third input. Similar to , but interpolates faster at the beginning and slower at the end. Using Hermite interpolation formula:
+		Return a number smoothly interpolated between the first two inputs, based on the third input. Similar to `godot.VisualScriptBuiltinFunc_BuiltinFunc.mathLerp`, but interpolates faster at the beginning and slower at the end. Using Hermite interpolation formula:
 		
 		```
 		

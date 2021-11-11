@@ -24,6 +24,12 @@ extern class Translation extends godot.Resource {
 	@:native("new")
 	public function new():Void;
 
+	/**		
+		Virtual method to override `godot.Translation.getMessage`.
+	**/
+	@:native("_GetMessage")
+	public function _GetMessage(srcMessage:std.String):std.String;
+
 	@:native("SetLocale")
 	public function setLocale(locale:std.String):Void;
 

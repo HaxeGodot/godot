@@ -19,15 +19,101 @@ extern class CryptoKey extends godot.Resource {
 	@:native("new")
 	public function new():Void;
 
+	#if doc_gen
 	/**		
-		Saves a key to the given `path` (should be a "*.key" file).
+		Saves a key to the given `path`. If `public_only` is `true`, only the public key will be saved.
+		
+		Note: `path` should be a "*.pub" file if `public_only` is `true`, a "*.key" file otherwise.
 	**/
 	@:native("Save")
-	public function save(path:std.String):godot.Error;
+	public function save(path:std.String, ?publicOnly:Bool):godot.Error;
+	#else
+	/**		
+		Saves a key to the given `path`. If `public_only` is `true`, only the public key will be saved.
+		
+		Note: `path` should be a "*.pub" file if `public_only` is `true`, a "*.key" file otherwise.
+	**/
+	@:native("Save")
+	public overload function save(path:std.String):godot.Error;
 
 	/**		
-		Loads a key from `path` ("*.key" file).
+		Saves a key to the given `path`. If `public_only` is `true`, only the public key will be saved.
+		
+		Note: `path` should be a "*.pub" file if `public_only` is `true`, a "*.key" file otherwise.
+	**/
+	@:native("Save")
+	public overload function save(path:std.String, publicOnly:Bool):godot.Error;
+	#end
+
+	#if doc_gen
+	/**		
+		Loads a key from `path`. If `public_only` is `true`, only the public key will be loaded.
+		
+		Note: `path` should be a "*.pub" file if `public_only` is `true`, a "*.key" file otherwise.
 	**/
 	@:native("Load")
-	public function load(path:std.String):godot.Error;
+	public function load(path:std.String, ?publicOnly:Bool):godot.Error;
+	#else
+	/**		
+		Loads a key from `path`. If `public_only` is `true`, only the public key will be loaded.
+		
+		Note: `path` should be a "*.pub" file if `public_only` is `true`, a "*.key" file otherwise.
+	**/
+	@:native("Load")
+	public overload function load(path:std.String):godot.Error;
+
+	/**		
+		Loads a key from `path`. If `public_only` is `true`, only the public key will be loaded.
+		
+		Note: `path` should be a "*.pub" file if `public_only` is `true`, a "*.key" file otherwise.
+	**/
+	@:native("Load")
+	public overload function load(path:std.String, publicOnly:Bool):godot.Error;
+	#end
+
+	/**		
+		Return `true` if this CryptoKey only has the public part, and not the private one.
+	**/
+	@:native("IsPublicOnly")
+	public function isPublicOnly():Bool;
+
+	#if doc_gen
+	/**		
+		Returns a string containing the key in PEM format. If `public_only` is `true`, only the public key will be included.
+	**/
+	@:native("SaveToString")
+	public function saveToString(?publicOnly:Bool):std.String;
+	#else
+	/**		
+		Returns a string containing the key in PEM format. If `public_only` is `true`, only the public key will be included.
+	**/
+	@:native("SaveToString")
+	public overload function saveToString():std.String;
+
+	/**		
+		Returns a string containing the key in PEM format. If `public_only` is `true`, only the public key will be included.
+	**/
+	@:native("SaveToString")
+	public overload function saveToString(publicOnly:Bool):std.String;
+	#end
+
+	#if doc_gen
+	/**		
+		Loads a key from the given `string`. If `public_only` is `true`, only the public key will be loaded.
+	**/
+	@:native("LoadFromString")
+	public function loadFromString(stringKey:std.String, ?publicOnly:Bool):godot.Error;
+	#else
+	/**		
+		Loads a key from the given `string`. If `public_only` is `true`, only the public key will be loaded.
+	**/
+	@:native("LoadFromString")
+	public overload function loadFromString(stringKey:std.String):godot.Error;
+
+	/**		
+		Loads a key from the given `string`. If `public_only` is `true`, only the public key will be loaded.
+	**/
+	@:native("LoadFromString")
+	public overload function loadFromString(stringKey:std.String, publicOnly:Bool):godot.Error;
+	#end
 }

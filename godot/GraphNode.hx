@@ -146,6 +146,8 @@ extern class GraphNode extends godot.Container {
 		`custom_left`/`right` is a custom texture for this side's port.
 		
 		Note: This method only sets properties of the slot. To create the slot, add a `godot.Control`-derived child to the GraphNode.
+		
+		Individual properties can be set using one of the `set_slot_*` methods. You must enable at least one side of the slot to do so.
 	**/
 	@:native("SetSlot")
 	public function setSlot(idx:Int, enableLeft:Bool, typeLeft:Int, colorLeft:godot.Color, enableRight:Bool, typeRight:Int, colorRight:godot.Color, ?customLeft:godot.Texture, ?customRight:godot.Texture):Void;
@@ -162,6 +164,8 @@ extern class GraphNode extends godot.Container {
 		`custom_left`/`right` is a custom texture for this side's port.
 		
 		Note: This method only sets properties of the slot. To create the slot, add a `godot.Control`-derived child to the GraphNode.
+		
+		Individual properties can be set using one of the `set_slot_*` methods. You must enable at least one side of the slot to do so.
 	**/
 	@:native("SetSlot")
 	public overload function setSlot(idx:Int, enableLeft:Bool, typeLeft:Int, colorLeft:godot.Color, enableRight:Bool, typeRight:Int, colorRight:godot.Color):Void;
@@ -178,6 +182,8 @@ extern class GraphNode extends godot.Container {
 		`custom_left`/`right` is a custom texture for this side's port.
 		
 		Note: This method only sets properties of the slot. To create the slot, add a `godot.Control`-derived child to the GraphNode.
+		
+		Individual properties can be set using one of the `set_slot_*` methods. You must enable at least one side of the slot to do so.
 	**/
 	@:native("SetSlot")
 	public overload function setSlot(idx:Int, enableLeft:Bool, typeLeft:Int, colorLeft:godot.Color, enableRight:Bool, typeRight:Int, colorRight:godot.Color, customLeft:godot.Texture):Void;
@@ -194,6 +200,8 @@ extern class GraphNode extends godot.Container {
 		`custom_left`/`right` is a custom texture for this side's port.
 		
 		Note: This method only sets properties of the slot. To create the slot, add a `godot.Control`-derived child to the GraphNode.
+		
+		Individual properties can be set using one of the `set_slot_*` methods. You must enable at least one side of the slot to do so.
 	**/
 	@:native("SetSlot")
 	public overload function setSlot(idx:Int, enableLeft:Bool, typeLeft:Int, colorLeft:godot.Color, enableRight:Bool, typeRight:Int, colorRight:godot.Color, customLeft:godot.Texture, customRight:godot.Texture):Void;
@@ -212,37 +220,73 @@ extern class GraphNode extends godot.Container {
 	public function clearAllSlots():Void;
 
 	/**		
-		Returns `true` if left (input) slot `idx` is enabled, `false` otherwise.
+		Returns `true` if left (input) side of the slot `idx` is enabled.
 	**/
 	@:native("IsSlotEnabledLeft")
 	public function isSlotEnabledLeft(idx:Int):Bool;
 
 	/**		
-		Returns the (integer) type of left (input) `idx` slot.
+		Toggles the left (input) side of the slot `idx`. If `enable_left` is `true`, a port will appear on the left side and the slot will be able to be connected from this side.
+	**/
+	@:native("SetSlotEnabledLeft")
+	public function setSlotEnabledLeft(idx:Int, enableLeft:Bool):Void;
+
+	/**		
+		Sets the left (input) type of the slot `idx` to `type_left`.
+	**/
+	@:native("SetSlotTypeLeft")
+	public function setSlotTypeLeft(idx:Int, typeLeft:Int):Void;
+
+	/**		
+		Returns the left (input) type of the slot `idx`.
 	**/
 	@:native("GetSlotTypeLeft")
 	public function getSlotTypeLeft(idx:Int):Int;
 
 	/**		
-		Returns the color set to `idx` left (input) slot.
+		Sets the `godot.Color` of the left (input) side of the slot `idx` to `color_left`.
+	**/
+	@:native("SetSlotColorLeft")
+	public function setSlotColorLeft(idx:Int, colorLeft:godot.Color):Void;
+
+	/**		
+		Returns the left (input) `godot.Color` of the slot `idx`.
 	**/
 	@:native("GetSlotColorLeft")
 	public function getSlotColorLeft(idx:Int):godot.Color;
 
 	/**		
-		Returns `true` if right (output) slot `idx` is enabled, `false` otherwise.
+		Returns `true` if right (output) side of the slot `idx` is enabled.
 	**/
 	@:native("IsSlotEnabledRight")
 	public function isSlotEnabledRight(idx:Int):Bool;
 
 	/**		
-		Returns the (integer) type of right (output) `idx` slot.
+		Toggles the right (output) side of the slot `idx`. If `enable_right` is `true`, a port will appear on the right side and the slot will be able to be connected from this side.
+	**/
+	@:native("SetSlotEnabledRight")
+	public function setSlotEnabledRight(idx:Int, enableRight:Bool):Void;
+
+	/**		
+		Sets the right (output) type of the slot `idx` to `type_right`.
+	**/
+	@:native("SetSlotTypeRight")
+	public function setSlotTypeRight(idx:Int, typeRight:Int):Void;
+
+	/**		
+		Returns the right (output) type of the slot `idx`.
 	**/
 	@:native("GetSlotTypeRight")
 	public function getSlotTypeRight(idx:Int):Int;
 
 	/**		
-		Returns the color set to `idx` right (output) slot.
+		Sets the `godot.Color` of the right (output) side of the slot `idx` to `color_right`.
+	**/
+	@:native("SetSlotColorRight")
+	public function setSlotColorRight(idx:Int, colorRight:godot.Color):Void;
+
+	/**		
+		Returns the right (output) `godot.Color` of the slot `idx`.
 	**/
 	@:native("GetSlotColorRight")
 	public function getSlotColorRight(idx:Int):godot.Color;
@@ -296,7 +340,7 @@ extern class GraphNode extends godot.Container {
 	public function getConnectionOutputType(idx:Int):Int;
 
 	/**		
-		Returns the color of the output connection `idx`.
+		Returns the `godot.Color` of the output connection `idx`.
 	**/
 	@:native("GetConnectionOutputColor")
 	public function getConnectionOutputColor(idx:Int):godot.Color;
@@ -314,7 +358,7 @@ extern class GraphNode extends godot.Container {
 	public function getConnectionInputType(idx:Int):Int;
 
 	/**		
-		Returns the color of the input connection `idx`.
+		Returns the `godot.Color` of the input connection `idx`.
 	**/
 	@:native("GetConnectionInputColor")
 	public function getConnectionInputColor(idx:Int):godot.Color;

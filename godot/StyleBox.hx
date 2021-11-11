@@ -95,7 +95,7 @@ extern abstract class StyleBox extends godot.Resource {
 	public function getOffset():godot.Vector2;
 
 	/**		
-		Returns the `godot.CanvasItem` that handles its  or `godot.CanvasItem._Draw` callback at this moment.
+		Returns the `godot.CanvasItem` that handles its `godot.CanvasItem.notificationDraw` or `godot.CanvasItem._Draw` callback at this moment.
 	**/
 	@:native("GetCurrentItemDrawn")
 	public function getCurrentItemDrawn():godot.CanvasItem;

@@ -26,27 +26,27 @@ extern enum MultiplayerAPI_RPCMode {
 	Puppet;
 
 	/**		
-		Deprecated. Use  instead. Analogous to the `slave` keyword.
+		Deprecated. Use `godot.MultiplayerAPI_RPCMode.puppet` instead. Analogous to the `slave` keyword.
 	**/
 	Slave;
 
 	/**		
-		Behave like  but also make the call or property change locally. Analogous to the `remotesync` keyword.
+		Behave like `godot.MultiplayerAPI_RPCMode.remote` but also make the call or property change locally. Analogous to the `remotesync` keyword.
 	**/
 	Remotesync;
 
 	/**		
-		Deprecated. Use  instead. Analogous to the `sync` keyword.
+		Deprecated. Use `godot.MultiplayerAPI_RPCMode.remotesync` instead. Analogous to the `sync` keyword.
 	**/
 	Sync;
 
 	/**		
-		Behave like  but also make the call or property change locally. Analogous to the `mastersync` keyword.
+		Behave like `godot.MultiplayerAPI_RPCMode.master` but also make the call or property change locally. Analogous to the `mastersync` keyword.
 	**/
 	Mastersync;
 
 	/**		
-		Behave like  but also make the call or property change locally. Analogous to the `puppetsync` keyword.
+		Behave like `godot.MultiplayerAPI_RPCMode.puppet` but also make the call or property change locally. Analogous to the `puppetsync` keyword.
 	**/
 	Puppetsync;
 }

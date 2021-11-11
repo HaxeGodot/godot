@@ -15,13 +15,13 @@ extern abstract class PrimitiveMesh extends godot.Mesh {
 	/**		
 		If set, the order of the vertices in each triangle are reversed resulting in the backside of the mesh being drawn.
 		
-		This gives the same result as using  in `godot.SpatialMaterial.paramsCullMode`.
+		This gives the same result as using `godot.SpatialMaterial_CullMode.back` in `godot.SpatialMaterial.paramsCullMode`.
 	**/
 	@:native("FlipFaces")
 	public var flipFaces:Bool;
 
 	/**		
-		Overrides the `godot.AABB` with one defined by user for use with frustum culling. Especially useful to avoid unexpected culling when  using a shader to offset vertices.
+		Overrides the `godot.AABB` with one defined by user for use with frustum culling. Especially useful to avoid unexpected culling when using a shader to offset vertices.
 	**/
 	@:native("CustomAabb")
 	public var customAabb:godot.AABB;

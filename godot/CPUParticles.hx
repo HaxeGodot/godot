@@ -71,13 +71,13 @@ extern class CPUParticles extends godot.GeometryInstance {
 	public var hueVariation:Single;
 
 	/**		
-		Unused for 3D particles.
+		Each particle's color will vary along this `godot.GradientTexture` over its lifetime (multiplied with `godot.CPUParticles.color`).
 	**/
 	@:native("ColorRamp")
 	public var colorRamp:godot.Gradient;
 
 	/**		
-		Unused for 3D particles.
+		Each particle's initial color. To have particle display color in a `godot.SpatialMaterial` make sure to set `godot.SpatialMaterial.vertexColorUseAsAlbedo` to `true`.
 	**/
 	@:native("Color")
 	public var color:godot.Color;
@@ -283,31 +283,55 @@ extern class CPUParticles extends godot.GeometryInstance {
 	public var flagAlignY:Bool;
 
 	/**		
-		Sets the `godot.Color`s to modulate particles by when using  or .
+		The axis for the ring shaped emitter when using `godot.CPUParticles_EmissionShapeEnum.ring`.
+	**/
+	@:native("EmissionRingAxis")
+	public var emissionRingAxis:godot.Vector3;
+
+	/**		
+		The height for the ring shaped emitter when using `godot.CPUParticles_EmissionShapeEnum.ring`.
+	**/
+	@:native("EmissionRingHeight")
+	public var emissionRingHeight:Single;
+
+	/**		
+		The inner radius for the ring shaped emitter when using `godot.CPUParticles_EmissionShapeEnum.ring`.
+	**/
+	@:native("EmissionRingInnerRadius")
+	public var emissionRingInnerRadius:Single;
+
+	/**		
+		The radius for the ring shaped emitter when using `godot.CPUParticles_EmissionShapeEnum.ring`.
+	**/
+	@:native("EmissionRingRadius")
+	public var emissionRingRadius:Single;
+
+	/**		
+		Sets the `godot.Color`s to modulate particles by when using `godot.CPUParticles_EmissionShapeEnum.points` or `godot.CPUParticles_EmissionShapeEnum.directedPoints`.
 	**/
 	@:native("EmissionColors")
 	public var emissionColors:cs.NativeArray<godot.Color>;
 
 	/**		
-		Sets the direction the particles will be emitted in when using .
+		Sets the direction the particles will be emitted in when using `godot.CPUParticles_EmissionShapeEnum.directedPoints`.
 	**/
 	@:native("EmissionNormals")
 	public var emissionNormals:cs.NativeArray<godot.Vector3>;
 
 	/**		
-		Sets the initial positions to spawn particles when using  or .
+		Sets the initial positions to spawn particles when using `godot.CPUParticles_EmissionShapeEnum.points` or `godot.CPUParticles_EmissionShapeEnum.directedPoints`.
 	**/
 	@:native("EmissionPoints")
 	public var emissionPoints:cs.NativeArray<godot.Vector3>;
 
 	/**		
-		The rectangle's extents if `godot.CPUParticles.emissionShape` is set to .
+		The rectangle's extents if `godot.CPUParticles.emissionShape` is set to `godot.CPUParticles_EmissionShapeEnum.box`.
 	**/
 	@:native("EmissionBoxExtents")
 	public var emissionBoxExtents:godot.Vector3;
 
 	/**		
-		The sphere's radius if `godot.CPUParticles_EmissionShapeEnum` is set to .
+		The sphere's radius if `godot.CPUParticles_EmissionShapeEnum` is set to `godot.CPUParticles_EmissionShapeEnum.sphere`.
 	**/
 	@:native("EmissionSphereRadius")
 	public var emissionSphereRadius:Single;
@@ -613,6 +637,30 @@ extern class CPUParticles extends godot.GeometryInstance {
 	public extern inline function getEmissionColors():std.Array<godot.Color> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetEmissionColors()", this));
 	}
+
+	@:native("SetEmissionRingRadius")
+	public function setEmissionRingRadius(radius:Single):Void;
+
+	@:native("GetEmissionRingRadius")
+	public function getEmissionRingRadius():Single;
+
+	@:native("SetEmissionRingInnerRadius")
+	public function setEmissionRingInnerRadius(offset:Single):Void;
+
+	@:native("GetEmissionRingInnerRadius")
+	public function getEmissionRingInnerRadius():Single;
+
+	@:native("SetEmissionRingHeight")
+	public function setEmissionRingHeight(height:Single):Void;
+
+	@:native("GetEmissionRingHeight")
+	public function getEmissionRingHeight():Single;
+
+	@:native("SetEmissionRingAxis")
+	public function setEmissionRingAxis(axis:godot.Vector3):Void;
+
+	@:native("GetEmissionRingAxis")
+	public function getEmissionRingAxis():godot.Vector3;
 
 	@:native("GetGravity")
 	public function getGravity():godot.Vector3;

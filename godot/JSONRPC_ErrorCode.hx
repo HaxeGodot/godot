@@ -11,6 +11,9 @@ extern enum JSONRPC_ErrorCode {
 
 	InvalidParams;
 
+	/**		
+		A method call was requested but no function of that name existed in the JSONRPC subclass.
+	**/
 	MethodNotFound;
 
 	InvalidRequest;

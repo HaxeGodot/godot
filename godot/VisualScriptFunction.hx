@@ -4,6 +4,9 @@ package godot;
 
 import cs.system.*;
 
+/**
+`godot.VisualScriptFunction` represents a function header. It is the starting point for the function body and can be used to tweak the function's properties (e.g. RPC mode).
+**/
 @:libType
 @:csNative
 @:native("Godot.VisualScriptFunction")

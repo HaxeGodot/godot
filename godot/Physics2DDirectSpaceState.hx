@@ -30,7 +30,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Note: `godot.ConcavePolygonShape2D`s and `godot.CollisionPolygon2D`s in `Segments` build mode are not solid shapes. Therefore, they will not be detected.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPoint")
 	public function intersectPoint(point:godot.Vector2, ?maxResults:Int, ?exclude:godot.collections.Array, ?collisionLayer:UInt, ?collideWithBodies:Bool, ?collideWithAreas:Bool):godot.collections.Array;
@@ -52,7 +52,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Note: `godot.ConcavePolygonShape2D`s and `godot.CollisionPolygon2D`s in `Segments` build mode are not solid shapes. Therefore, they will not be detected.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPoint")
 	public overload function intersectPoint(point:godot.Vector2):godot.collections.Array;
@@ -74,7 +74,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Note: `godot.ConcavePolygonShape2D`s and `godot.CollisionPolygon2D`s in `Segments` build mode are not solid shapes. Therefore, they will not be detected.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPoint")
 	public overload function intersectPoint(point:godot.Vector2, maxResults:Int):godot.collections.Array;
@@ -96,7 +96,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Note: `godot.ConcavePolygonShape2D`s and `godot.CollisionPolygon2D`s in `Segments` build mode are not solid shapes. Therefore, they will not be detected.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPoint")
 	public overload function intersectPoint(point:godot.Vector2, maxResults:Int, exclude:godot.collections.Array):godot.collections.Array;
@@ -118,7 +118,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Note: `godot.ConcavePolygonShape2D`s and `godot.CollisionPolygon2D`s in `Segments` build mode are not solid shapes. Therefore, they will not be detected.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPoint")
 	public overload function intersectPoint(point:godot.Vector2, maxResults:Int, exclude:godot.collections.Array, collisionLayer:UInt):godot.collections.Array;
@@ -140,7 +140,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Note: `godot.ConcavePolygonShape2D`s and `godot.CollisionPolygon2D`s in `Segments` build mode are not solid shapes. Therefore, they will not be detected.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPoint")
 	public overload function intersectPoint(point:godot.Vector2, maxResults:Int, exclude:godot.collections.Array, collisionLayer:UInt, collideWithBodies:Bool):godot.collections.Array;
@@ -162,7 +162,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Note: `godot.ConcavePolygonShape2D`s and `godot.CollisionPolygon2D`s in `Segments` build mode are not solid shapes. Therefore, they will not be detected.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPoint")
 	public overload function intersectPoint(point:godot.Vector2, maxResults:Int, exclude:godot.collections.Array, collisionLayer:UInt, collideWithBodies:Bool, collideWithAreas:Bool):godot.collections.Array;
@@ -170,43 +170,43 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 
 	#if doc_gen
 	/**		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPointOnCanvas")
 	public function intersectPointOnCanvas(point:godot.Vector2, canvasInstanceId:cs.types.UInt64, ?maxResults:Int, ?exclude:godot.collections.Array, ?collisionLayer:UInt, ?collideWithBodies:Bool, ?collideWithAreas:Bool):godot.collections.Array;
 	#else
 	/**		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPointOnCanvas")
 	public overload function intersectPointOnCanvas(point:godot.Vector2, canvasInstanceId:cs.types.UInt64):godot.collections.Array;
 
 	/**		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPointOnCanvas")
 	public overload function intersectPointOnCanvas(point:godot.Vector2, canvasInstanceId:cs.types.UInt64, maxResults:Int):godot.collections.Array;
 
 	/**		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPointOnCanvas")
 	public overload function intersectPointOnCanvas(point:godot.Vector2, canvasInstanceId:cs.types.UInt64, maxResults:Int, exclude:godot.collections.Array):godot.collections.Array;
 
 	/**		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPointOnCanvas")
 	public overload function intersectPointOnCanvas(point:godot.Vector2, canvasInstanceId:cs.types.UInt64, maxResults:Int, exclude:godot.collections.Array, collisionLayer:UInt):godot.collections.Array;
 
 	/**		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPointOnCanvas")
 	public overload function intersectPointOnCanvas(point:godot.Vector2, canvasInstanceId:cs.types.UInt64, maxResults:Int, exclude:godot.collections.Array, collisionLayer:UInt, collideWithBodies:Bool):godot.collections.Array;
 
 	/**		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectPointOnCanvas")
 	public overload function intersectPointOnCanvas(point:godot.Vector2, canvasInstanceId:cs.types.UInt64, maxResults:Int, exclude:godot.collections.Array, collisionLayer:UInt, collideWithBodies:Bool, collideWithAreas:Bool):godot.collections.Array;
@@ -234,7 +234,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public function intersectRay(from:godot.Vector2, to:godot.Vector2, ?exclude:godot.collections.Array, ?collisionLayer:UInt, ?collideWithBodies:Bool, ?collideWithAreas:Bool):godot.collections.Dictionary;
@@ -260,7 +260,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public overload function intersectRay(from:godot.Vector2, to:godot.Vector2):godot.collections.Dictionary;
@@ -286,7 +286,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public overload function intersectRay(from:godot.Vector2, to:godot.Vector2, exclude:godot.collections.Array):godot.collections.Dictionary;
@@ -312,7 +312,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public overload function intersectRay(from:godot.Vector2, to:godot.Vector2, exclude:godot.collections.Array, collisionLayer:UInt):godot.collections.Dictionary;
@@ -338,7 +338,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public overload function intersectRay(from:godot.Vector2, to:godot.Vector2, exclude:godot.collections.Array, collisionLayer:UInt, collideWithBodies:Bool):godot.collections.Dictionary;
@@ -364,7 +364,7 @@ extern abstract class Physics2DDirectSpaceState extends godot.Object {
 		
 		Additionally, the method can take an `exclude` array of objects or `godot.RID`s that are to be excluded from collisions, a `collision_mask` bitmask representing the physics layers to check in, or booleans to determine if the ray should collide with `godot.PhysicsBody`s or `godot.Area`s, respectively.
 		
-		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param exclude If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("IntersectRay")
 	public overload function intersectRay(from:godot.Vector2, to:godot.Vector2, exclude:godot.collections.Array, collisionLayer:UInt, collideWithBodies:Bool, collideWithAreas:Bool):godot.collections.Dictionary;

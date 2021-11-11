@@ -99,7 +99,7 @@ extern class EditorProperty extends godot.Container {
 	public var keying:Bool;
 
 	/**		
-		Used by the inspector, set to `true` when the property must draw with error color. This is used for editable children's properties.
+		Used by the inspector, set to `true` when the property is drawn with the editor theme's warning color. This is used for editable children's properties.
 	**/
 	@:native("DrawRed")
 	public var drawRed:Bool;
@@ -186,7 +186,7 @@ extern class EditorProperty extends godot.Container {
 	public function getEditedObject():godot.Object;
 
 	/**		
-		Override if you want to allow a custom tooltip over your property.
+		Must be implemented to provide a custom tooltip to the property editor.
 	**/
 	@:native("GetTooltipText")
 	public function getTooltipText():std.String;
@@ -198,7 +198,7 @@ extern class EditorProperty extends godot.Container {
 	public function addFocusable(control:godot.Control):Void;
 
 	/**		
-		Adds controls with this function if you want them on the bottom (below the label).
+		Puts the `editor` control below the property label. The control must be previously added using `godot.Node.addChild`.
 	**/
 	@:native("SetBottomEditor")
 	public function setBottomEditor(editor:godot.Control):Void;

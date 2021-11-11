@@ -810,6 +810,9 @@ extern class PopupMenu extends godot.Popup {
 	@:native("GetItemShortcut")
 	public function getItemShortcut(idx:Int):godot.ShortCut;
 
+	/**		
+		Returns the index of the currently focused item. Returns `-1` if no item is focused.
+	**/
 	@:native("GetCurrentIndex")
 	public function getCurrentIndex():Int;
 

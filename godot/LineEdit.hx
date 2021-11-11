@@ -53,11 +53,11 @@ extern class LineEdit extends godot.Control {
 	/**
 		`text_change_rejected` signal.
 		
-		Emitted when trying to append text that would overflow the `maxLength`.
+		Emitted when appending text that overflows the `maxLength`. The appended text is truncated to fit `maxLength`, and the part that couldn't fit is passed as the `rejected_substring` argument.
 	**/
-	public var onTextChangeRejected(get, never):Signal<Void->Void>;
-	@:dox(hide) @:noCompletion inline function get_onTextChangeRejected():Signal<Void->Void> {
-		return new Signal(this, "text_change_rejected", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
+	public var onTextChangeRejected(get, never):Signal<(rejectedSubstring:std.String)->Void>;
+	@:dox(hide) @:noCompletion inline function get_onTextChangeRejected():Signal<(rejectedSubstring:std.String)->Void> {
+		return new Signal(this, "text_change_rejected", Signal.SignalHandlerStringVoid.connectSignal, Signal.SignalHandlerStringVoid.disconnectSignal, Signal.SignalHandlerStringVoid.isSignalConnected);
 	}
 
 	/**
@@ -172,6 +172,22 @@ extern class LineEdit extends godot.Control {
 
 	/**		
 		Maximum amount of characters that can be entered inside the `godot.LineEdit`. If `0`, there is no limit.
+		
+		When a limit is defined, characters that would exceed `godot.LineEdit.maxLength` are truncated. This happens both for existing `godot.LineEdit.text` contents when setting the max length, or for new text inserted in the `godot.LineEdit`, including pasting. If any input text is truncated, the `text_change_rejected` signal is emitted with the truncated substring as parameter.
+		
+		Example:
+		
+		```
+		
+		text = "Hello world"
+		max_length = 5
+		# `text` becomes "Hello".
+		max_length = 10
+		text += " goodbye"
+		# `text` becomes "Hello good".
+		# `text_change_rejected` is emitted with "bye" as parameter.
+		
+		```
 	**/
 	@:native("MaxLength")
 	public var maxLength:Int;
@@ -377,6 +393,8 @@ extern class LineEdit extends godot.Control {
 
 	/**		
 		Returns the `godot.PopupMenu` of this `godot.LineEdit`. By default, this menu is displayed when right-clicking on the `godot.LineEdit`.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetMenu")
 	public function getMenu():godot.PopupMenu;

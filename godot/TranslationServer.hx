@@ -16,13 +16,17 @@ extern class TranslationServer {
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		
-		Sets the locale of the game.
+		Sets the locale of the project. The `locale` string will be standardized to match known locales (e.g. `en-US` would be matched to `en_US`).
+		
+		If translations have been loaded beforehand for the new locale, they will be applied.
 	**/
 	@:native("SetLocale")
 	public static function setLocale(locale:std.String):Void;
 
 	/**		
-		Returns the current locale of the game.
+		Returns the current locale of the project.
+		
+		See also `godot.OS.getLocale` and `godot.OS.getLocaleLanguage` to query the locale of the user system.
 	**/
 	@:native("GetLocale")
 	public static function getLocale():std.String;
@@ -58,7 +62,7 @@ extern class TranslationServer {
 	public static function clear():Void;
 
 	/**		
-		Returns an Array of all loaded locales of the game.
+		Returns an array of all loaded locales of the project.
 	**/
 	@:native("GetLoadedLocales")
 	public static function getLoadedLocales():godot.collections.Array;

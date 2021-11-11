@@ -404,9 +404,15 @@ extern class EditorPlugin extends godot.Node {
 	@:native("UpdateOverlays")
 	public function updateOverlays():Int;
 
+	/**		
+		Makes a specific item in the bottom panel visible.
+	**/
 	@:native("MakeBottomPanelItemVisible")
 	public function makeBottomPanelItemVisible(item:godot.Control):Void;
 
+	/**		
+		Minimizes the bottom panel.
+	**/
 	@:native("HideBottomPanel")
 	public function hideBottomPanel():Void;
 
@@ -422,36 +428,86 @@ extern class EditorPlugin extends godot.Node {
 	@:native("QueueSaveLayout")
 	public function queueSaveLayout():Void;
 
+	/**		
+		Registers a new `godot.EditorImportPlugin`. Import plugins are used to import custom and unsupported assets as a custom `godot.Resource` type.
+		
+		Note: If you want to import custom 3D asset formats use `godot.EditorPlugin.addSceneImportPlugin` instead.
+		
+		See `godot.EditorPlugin.addInspectorPlugin` for an example of how to register a plugin.
+	**/
 	@:native("AddImportPlugin")
 	public function addImportPlugin(importer:godot.EditorImportPlugin):Void;
 
+	/**		
+		Removes an import plugin registered by `godot.EditorPlugin.addImportPlugin`.
+	**/
 	@:native("RemoveImportPlugin")
 	public function removeImportPlugin(importer:godot.EditorImportPlugin):Void;
 
+	/**		
+		Registers a new `godot.EditorSceneImporter`. Scene importers are used to import custom 3D asset formats as scenes.
+	**/
 	@:native("AddSceneImportPlugin")
 	public function addSceneImportPlugin(sceneImporter:godot.EditorSceneImporter):Void;
 
+	/**		
+		Removes a scene importer registered by `godot.EditorPlugin.addSceneImportPlugin`.
+	**/
 	@:native("RemoveSceneImportPlugin")
 	public function removeSceneImportPlugin(sceneImporter:godot.EditorSceneImporter):Void;
 
 	/**		
-		Registers a new export plugin. Export plugins are used when the project is being exported. See `godot.EditorExportPlugin` for more information.
+		Registers a new `godot.EditorExportPlugin`. Export plugins are used to perform tasks when the project is being exported.
+		
+		See `godot.EditorPlugin.addInspectorPlugin` for an example of how to register a plugin.
 	**/
 	@:native("AddExportPlugin")
 	public function addExportPlugin(plugin:godot.EditorExportPlugin):Void;
 
+	/**		
+		Removes an export plugin registered by `godot.EditorPlugin.addExportPlugin`.
+	**/
 	@:native("RemoveExportPlugin")
 	public function removeExportPlugin(plugin:godot.EditorExportPlugin):Void;
 
+	/**		
+		Registers a new `godot.EditorSpatialGizmoPlugin`. Gizmo plugins are used to add custom gizmos to the 3D preview viewport for a `godot.Spatial`.
+		
+		See `godot.EditorPlugin.addInspectorPlugin` for an example of how to register a plugin.
+	**/
 	@:native("AddSpatialGizmoPlugin")
 	public function addSpatialGizmoPlugin(plugin:godot.EditorSpatialGizmoPlugin):Void;
 
+	/**		
+		Removes a gizmo plugin registered by `godot.EditorPlugin.addSpatialGizmoPlugin`.
+	**/
 	@:native("RemoveSpatialGizmoPlugin")
 	public function removeSpatialGizmoPlugin(plugin:godot.EditorSpatialGizmoPlugin):Void;
 
+	/**		
+		Registers a new `godot.EditorInspectorPlugin`. Inspector plugins are used to extend `godot.EditorInspector` and provide custom configuration tools for your object's properties.
+		
+		Note: Always use `godot.EditorPlugin.removeInspectorPlugin` to remove the registered `godot.EditorInspectorPlugin` when your `godot.EditorPlugin` is disabled to prevent leaks and an unexpected behavior.
+		
+		```
+		
+		const MyInspectorPlugin = preload("res://addons/your_addon/path/to/your/script.gd")
+		var inspector_plugin = MyInspectorPlugin.new()
+		
+		func _enter_tree():
+		add_inspector_plugin(inspector_plugin)
+		
+		func _exit_tree():
+		remove_inspector_plugin(inspector_plugin)
+		
+		```
+	**/
 	@:native("AddInspectorPlugin")
 	public function addInspectorPlugin(plugin:godot.EditorInspectorPlugin):Void;
 
+	/**		
+		Removes an inspector plugin registered by `godot.EditorPlugin.addImportPlugin`
+	**/
 	@:native("RemoveInspectorPlugin")
 	public function removeInspectorPlugin(plugin:godot.EditorInspectorPlugin):Void;
 
@@ -477,6 +533,8 @@ extern class EditorPlugin extends godot.Node {
 		Gets the Editor's dialogue used for making scripts.
 		
 		Note: Users can configure it before use.
+		
+		Warning: Removing and freeing this node will render a part of the editor useless and may cause a crash.
 	**/
 	@:native("GetScriptCreateDialog")
 	public function getScriptCreateDialog():godot.ScriptCreateDialog;

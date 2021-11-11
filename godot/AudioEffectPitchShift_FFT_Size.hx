@@ -5,14 +5,29 @@ package godot;
 @:native("Godot.AudioEffectPitchShift.FFT_Size")
 @:csNative
 extern enum AudioEffectPitchShift_FFT_Size {
+	/**		
+		Use a buffer of 256 samples for the Fast Fourier transform. Lowest latency, but least stable over time.
+	**/
 	Size256;
 
+	/**		
+		Use a buffer of 512 samples for the Fast Fourier transform. Low latency, but less stable over time.
+	**/
 	Size512;
 
+	/**		
+		Use a buffer of 1024 samples for the Fast Fourier transform. This is a compromise between latency and stability over time.
+	**/
 	Size1024;
 
+	/**		
+		Use a buffer of 2048 samples for the Fast Fourier transform. High latency, but stable over time.
+	**/
 	Size2048;
 
+	/**		
+		Use a buffer of 4096 samples for the Fast Fourier transform. Highest latency, but most stable over time.
+	**/
 	Size4096;
 
 	/**		

@@ -7,7 +7,7 @@ import cs.system.*;
 /**
 AudioStreamSample stores sound samples loaded from WAV files. To play the stored sound, use an `godot.AudioStreamPlayer` (for non-positional audio) or `godot.AudioStreamPlayer2D`/`godot.AudioStreamPlayer3D` (for positional audio). The sound can be looped.
 
-This class can also be used to store dynamically-generated PCM audio data.
+This class can also be used to store dynamically-generated PCM audio data. See also `godot.AudioStreamGenerator` for procedural audio generation.
 **/
 @:libType
 @:csNative
@@ -21,7 +21,11 @@ extern class AudioStreamSample extends godot.AudioStream {
 	public var stereo:Bool;
 
 	/**		
-		The sample rate for mixing this audio.
+		The sample rate for mixing this audio. Higher values require more storage space, but result in better quality.
+		
+		In games, common sample rates in use are `11025`, `16000`, `22050`, `32000`, `44100`, and `48000`.
+		
+		According to the [https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem](Nyquist-Shannon sampling theorem), there is no quality difference to human hearing when going past 40,000 Hz (since most humans can only hear up to ~20,000 Hz, often less). If you are using lower-pitched sounds such as voices, lower sample rates such as `32000` or `22050` may be usable with no loss in quality.
 	**/
 	@:native("MixRate")
 	public var mixRate:Int;

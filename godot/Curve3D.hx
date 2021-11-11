@@ -15,7 +15,7 @@ It keeps a cache of precalculated points along the curve, to speed up further ca
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Curve3D extends godot.Resource {
 	/**		
-		If `true`, the curve will bake up vectors used for orientation. This is used when `godot.PathFollow.rotationMode` is set to . Changing it forces the cache to be recomputed.
+		If `true`, the curve will bake up vectors used for orientation. This is used when `godot.PathFollow.rotationMode` is set to `godot.PathFollow_RotationModeEnum.oriented`. Changing it forces the cache to be recomputed.
 	**/
 	@:native("UpVectorEnabled")
 	public var upVectorEnabled:Bool;

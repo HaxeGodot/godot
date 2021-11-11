@@ -95,14 +95,34 @@ extern class OpenSimplexNoise extends godot.Resource {
 	@:native("GetLacunarity")
 	public function getLacunarity():Single;
 
+	#if doc_gen
 	/**		
-		Generate a noise image in  format with the requested `width` and `height`, based on the current noise parameters.
+		Generate a noise image in `godot.Image_Format.l8` format with the requested `width` and `height`, based on the current noise parameters. If `noise_offset` is specified, then the offset value is used as the coordinates of the top-left corner of the generated noise.
+		
+		@param noiseOffset If the parameter is null, then the default value is new Vector2(0, 0)
 	**/
 	@:native("GetImage")
-	public function getImage(width:Int, height:Int):godot.Image;
+	public function getImage(width:Int, height:Int, ?noiseOffset:Null<godot.Vector2>):godot.Image;
+	#else
+	/**		
+		Generate a noise image in `godot.Image_Format.l8` format with the requested `width` and `height`, based on the current noise parameters. If `noise_offset` is specified, then the offset value is used as the coordinates of the top-left corner of the generated noise.
+		
+		@param noiseOffset If the parameter is null, then the default value is new Vector2(0, 0)
+	**/
+	@:native("GetImage")
+	public overload function getImage(width:Int, height:Int):godot.Image;
 
 	/**		
-		Generate a tileable noise image in  format, based on the current noise parameters. Generated seamless images are always square (`size` × `size`).
+		Generate a noise image in `godot.Image_Format.l8` format with the requested `width` and `height`, based on the current noise parameters. If `noise_offset` is specified, then the offset value is used as the coordinates of the top-left corner of the generated noise.
+		
+		@param noiseOffset If the parameter is null, then the default value is new Vector2(0, 0)
+	**/
+	@:native("GetImage")
+	public overload function getImage(width:Int, height:Int, noiseOffset:Nullable1<godot.Vector2>):godot.Image;
+	#end
+
+	/**		
+		Generate a tileable noise image in `godot.Image_Format.l8` format, based on the current noise parameters. Generated seamless images are always square (`size` × `size`).
 		
 		Note: Seamless noise has a lower contrast compared to non-seamless noise. This is due to the way noise uses higher dimensions for generating seamless noise.
 	**/

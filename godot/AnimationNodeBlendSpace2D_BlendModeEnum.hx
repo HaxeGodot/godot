@@ -16,7 +16,7 @@ extern enum AnimationNodeBlendSpace2D_BlendModeEnum {
 	Discrete;
 
 	/**		
-		Similar to , but starts the new animation at the last animation's playback position.
+		Similar to `godot.AnimationNodeBlendSpace2D_BlendModeEnum.discrete`, but starts the new animation at the last animation's playback position.
 	**/
 	DiscreteCarry;
 }

@@ -8,10 +8,6 @@ import cs.system.*;
 Sets the active tab's `visible` property to the value `true`. Sets all other children's to `false`.
 
 Ignores non-`godot.Control` children.
-
-Individual tabs are always visible unless you use `godot.TabContainer.setTabDisabled` and `godot.TabContainer.setTabTitle` to hide it.
-
-To hide only a tab's content, nest the content inside a child `godot.Control`, so it receives the `godot.TabContainer`'s visibility setting instead.
 **/
 @:libType
 @:csNative
@@ -136,7 +132,7 @@ extern class TabContainer extends godot.Container {
 	public function isAllTabsInFront():Bool;
 
 	/**		
-		Sets a title for the tab at index `tab_idx`. Tab titles default to the name of the indexed child node, but this can be overridden with `godot.TabContainer.setTabTitle`.
+		Sets a title for the tab at index `tab_idx`. Tab titles default to the name of the indexed child node.
 	**/
 	@:native("SetTabTitle")
 	public function setTabTitle(tabIdx:Int, title:std.String):Void;
@@ -160,9 +156,7 @@ extern class TabContainer extends godot.Container {
 	public function getTabIcon(tabIdx:Int):godot.Texture;
 
 	/**		
-		If `disabled` is `false`, hides the tab at index `tab_idx`.
-		
-		Note: Its title text will remain, unless also removed with `godot.TabContainer.setTabTitle`.
+		If `disabled` is `true`, disables the tab at index `tab_idx`, making it non-interactable.
 	**/
 	@:native("SetTabDisabled")
 	public function setTabDisabled(tabIdx:Int, disabled:Bool):Void;
@@ -174,6 +168,24 @@ extern class TabContainer extends godot.Container {
 	public function getTabDisabled(tabIdx:Int):Bool;
 
 	/**		
+		If `hidden` is `true`, hides the tab at index `tab_idx`, making it disappear from the tab area.
+	**/
+	@:native("SetTabHidden")
+	public function setTabHidden(tabIdx:Int, hidden:Bool):Void;
+
+	/**		
+		Returns `true` if the tab at index `tab_idx` is hidden.
+	**/
+	@:native("GetTabHidden")
+	public function getTabHidden(tabIdx:Int):Bool;
+
+	/**		
+		Returns the index of the tab at local coordinates `point`. Returns `-1` if the point is outside the control boundaries or if there's no tab at the queried position.
+	**/
+	@:native("GetTabIdxAtPoint")
+	public function getTabIdxAtPoint(point:godot.Vector2):Int;
+
+	/**		
 		If set on a `godot.Popup` node instance, a popup menu icon appears in the top-right corner of the `godot.TabContainer`. Clicking it will expand the `godot.Popup` node.
 	**/
 	@:native("SetPopup")
@@ -181,6 +193,8 @@ extern class TabContainer extends godot.Container {
 
 	/**		
 		Returns the `godot.Popup` node instance if one has been set already with `godot.TabContainer.setPopup`.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetPopup")
 	public function getPopup():godot.Popup;
@@ -192,7 +206,7 @@ extern class TabContainer extends godot.Container {
 	public function getDragToRearrangeEnabled():Bool;
 
 	/**		
-		Defines rearrange group id, choose for each `godot.TabContainer` the same value to enable tab drag between `godot.TabContainer`. Enable drag with `set_drag_to_rearrange_enabled(true)`.
+		Defines rearrange group id, choose for each `godot.TabContainer` the same value to enable tab drag between `godot.TabContainer`. Enable drag with `godot.TabContainer.dragToRearrangeEnabled`.
 	**/
 	@:native("SetTabsRearrangeGroup")
 	public function setTabsRearrangeGroup(groupId:Int):Void;

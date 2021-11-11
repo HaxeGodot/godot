@@ -17,7 +17,7 @@ extern abstract class Sky extends godot.Resource {
 		
 		See `godot.Sky_RadianceSizeEnum` constants for values.
 		
-		Note: Some hardware will have trouble with higher radiance sizes, especially  and above. Only use such high values on high-end hardware.
+		Note: You will only benefit from high radiance sizes if you have perfectly sharp reflective surfaces in your project and are not using `godot.ReflectionProbe`s or `godot.GIProbe`s. For most projects, keeping `godot.Sky.radianceSize` to the default value is the best compromise between visuals and performance. Be careful when using high radiance size values as these can cause crashes on low-end GPUs.
 	**/
 	@:native("RadianceSize")
 	public var radianceSize:godot.Sky_RadianceSizeEnum;

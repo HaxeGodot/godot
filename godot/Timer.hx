@@ -53,7 +53,9 @@ extern class Timer extends godot.Node {
 	public var oneShot:Bool;
 
 	/**		
-		Wait time in seconds.
+		The wait time in seconds.
+		
+		Note: Timers can only emit once per rendered frame at most (or once per physics frame if `godot.Timer.processMode` is `godot.Timer_TimerProcessMode.physics`). This means very low wait times (lower than 0.05 seconds) will behave in significantly different ways depending on the rendered framerate. For very low wait times, it is recommended to use a process loop in a script instead of using a Timer node.
 	**/
 	@:native("WaitTime")
 	public var waitTime:Single;
@@ -89,7 +91,7 @@ extern class Timer extends godot.Node {
 	/**		
 		Starts the timer. Sets `wait_time` to `time_sec` if `time_sec &gt; 0`. This also resets the remaining time to `wait_time`.
 		
-		Note: this method will not resume a paused timer. See `godot.Timer.paused`.
+		Note: This method will not resume a paused timer. See `godot.Timer.paused`.
 	**/
 	@:native("Start")
 	public function start(?timeSec:Single):Void;
@@ -97,7 +99,7 @@ extern class Timer extends godot.Node {
 	/**		
 		Starts the timer. Sets `wait_time` to `time_sec` if `time_sec &gt; 0`. This also resets the remaining time to `wait_time`.
 		
-		Note: this method will not resume a paused timer. See `godot.Timer.paused`.
+		Note: This method will not resume a paused timer. See `godot.Timer.paused`.
 	**/
 	@:native("Start")
 	public overload function start():Void;
@@ -105,7 +107,7 @@ extern class Timer extends godot.Node {
 	/**		
 		Starts the timer. Sets `wait_time` to `time_sec` if `time_sec &gt; 0`. This also resets the remaining time to `wait_time`.
 		
-		Note: this method will not resume a paused timer. See `godot.Timer.paused`.
+		Note: This method will not resume a paused timer. See `godot.Timer.paused`.
 	**/
 	@:native("Start")
 	public overload function start(timeSec:Single):Void;

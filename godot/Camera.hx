@@ -39,15 +39,15 @@ extern class Camera extends godot.Spatial {
 	/**		
 		The camera's field of view angle (in degrees). Only applicable in perspective mode. Since `godot.Camera.keepAspect` locks one axis, `fov` sets the other axis' field of view angle.
 		
-		For reference, the default vertical field of view value (`75.0`) is equivalent to a horizontal FOV of:
+		For reference, the default vertical field of view value (`70.0`) is equivalent to a horizontal FOV of:
 		
-		- ~91.31 degrees in a 4:3 viewport
+		- ~86.07 degrees in a 4:3 viewport
 		
-		- ~101.67 degrees in a 16:10 viewport
+		- ~96.50 degrees in a 16:10 viewport
 		
-		- ~107.51 degrees in a 16:9 viewport
+		- ~102.45 degrees in a 16:9 viewport
 		
-		- ~121.63 degrees in a 21:9 viewport
+		- ~117.06 degrees in a 21:9 viewport
 	**/
 	@:native("Fov")
 	public var fov:Single;
@@ -59,13 +59,15 @@ extern class Camera extends godot.Spatial {
 	public var current:Bool;
 
 	/**		
-		The camera's projection mode. In  mode, objects' Z distance from the camera's local space scales their perceived size.
+		The camera's projection mode. In `godot.Camera_ProjectionEnum.perspective` mode, objects' Z distance from the camera's local space scales their perceived size.
 	**/
 	@:native("Projection")
 	public var projection:godot.Camera_ProjectionEnum;
 
 	/**		
-		If not , this camera will simulate the [https://en.wikipedia.org/wiki/Doppler_effect](Doppler effect) for objects changed in particular `_process` methods. See `godot.Camera_DopplerTrackingEnum` for possible values.
+		If not `godot.Camera_DopplerTrackingEnum.disabled`, this camera will simulate the [https://en.wikipedia.org/wiki/Doppler_effect](Doppler effect) for objects changed in particular `_process` methods. The Doppler effect is only simulated for `godot.AudioStreamPlayer3D` nodes that have `godot.AudioStreamPlayer3D.dopplerTracking` set to a value other than `godot.AudioStreamPlayer3D_DopplerTrackingEnum.disabled`.
+		
+		Note: To toggle the Doppler effect preview in the editor, use the Perspective menu in the top-left corner of the 3D viewport and toggle Enable Doppler.
 	**/
 	@:native("DopplerTracking")
 	public var dopplerTracking:godot.Camera_DopplerTrackingEnum;
@@ -95,7 +97,7 @@ extern class Camera extends godot.Spatial {
 	public var cullMask:UInt;
 
 	/**		
-		The axis to lock during `godot.Camera.fov`/`godot.Camera.size` adjustments. Can be either  or .
+		The axis to lock during `godot.Camera.fov`/`godot.Camera.size` adjustments. Can be either `godot.Camera_KeepAspectEnum.width` or `godot.Camera_KeepAspectEnum.height`.
 	**/
 	@:native("KeepAspect")
 	public var keepAspect:godot.Camera_KeepAspectEnum;
@@ -104,7 +106,7 @@ extern class Camera extends godot.Spatial {
 	public function new():Void;
 
 	/**		
-		Returns a normal vector in worldspace, that is the result of projecting a point on the `godot.Viewport` rectangle by the camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.
+		Returns a normal vector in world space, that is the result of projecting a point on the `godot.Viewport` rectangle by the camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.
 	**/
 	@:native("ProjectRayNormal")
 	public function projectRayNormal(screenPoint:godot.Vector2):godot.Vector3;
@@ -116,13 +118,13 @@ extern class Camera extends godot.Spatial {
 	public function projectLocalRayNormal(screenPoint:godot.Vector2):godot.Vector3;
 
 	/**		
-		Returns a 3D position in worldspace, that is the result of projecting a point on the `godot.Viewport` rectangle by the camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.
+		Returns a 3D position in world space, that is the result of projecting a point on the `godot.Viewport` rectangle by the camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.
 	**/
 	@:native("ProjectRayOrigin")
 	public function projectRayOrigin(screenPoint:godot.Vector2):godot.Vector3;
 
 	/**		
-		Returns the 2D coordinate in the `godot.Viewport` rectangle that maps to the given 3D point in worldspace.
+		Returns the 2D coordinate in the `godot.Viewport` rectangle that maps to the given 3D point in world space.
 		
 		Note: When using this to position GUI elements over a 3D viewport, use `godot.Camera.isPositionBehind` to prevent them from appearing if the 3D point is behind the camera:
 		
@@ -147,25 +149,25 @@ extern class Camera extends godot.Spatial {
 	public function isPositionBehind(worldPoint:godot.Vector3):Bool;
 
 	/**		
-		Returns the 3D point in worldspace that maps to the given 2D coordinate in the `godot.Viewport` rectangle on a plane that is the given `z_depth` distance into the scene away from the camera.
+		Returns the 3D point in world space that maps to the given 2D coordinate in the `godot.Viewport` rectangle on a plane that is the given `z_depth` distance into the scene away from the camera.
 	**/
 	@:native("ProjectPosition")
 	public function projectPosition(screenPoint:godot.Vector2, zDepth:Single):godot.Vector3;
 
 	/**		
-		Sets the camera projection to perspective mode (see ), by specifying a `fov` (field of view) angle in degrees, and the `z_near` and `z_far` clip planes in world-space units.
+		Sets the camera projection to perspective mode (see `godot.Camera_ProjectionEnum.perspective`), by specifying a `fov` (field of view) angle in degrees, and the `z_near` and `z_far` clip planes in world space units.
 	**/
 	@:native("SetPerspective")
 	public function setPerspective(fov:Single, zNear:Single, zFar:Single):Void;
 
 	/**		
-		Sets the camera projection to orthogonal mode (see ), by specifying a `size`, and the `z_near` and `z_far` clip planes in world-space units. (As a hint, 2D games often use this projection, with values specified in pixels.)
+		Sets the camera projection to orthogonal mode (see `godot.Camera_ProjectionEnum.orthogonal`), by specifying a `size`, and the `z_near` and `z_far` clip planes in world space units. (As a hint, 2D games often use this projection, with values specified in pixels.)
 	**/
 	@:native("SetOrthogonal")
 	public function setOrthogonal(size:Single, zNear:Single, zFar:Single):Void;
 
 	/**		
-		Sets the camera projection to frustum mode (see ), by specifying a `size`, an `offset`, and the `z_near` and `z_far` clip planes in world-space units.
+		Sets the camera projection to frustum mode (see `godot.Camera_ProjectionEnum.frustum`), by specifying a `size`, an `offset`, and the `z_near` and `z_far` clip planes in world space units.
 	**/
 	@:native("SetFrustum")
 	public function setFrustum(size:Single, offset:godot.Vector2, zNear:Single, zFar:Single):Void;
@@ -203,7 +205,7 @@ extern class Camera extends godot.Spatial {
 	public function isCurrent():Bool;
 
 	/**		
-		Gets the camera transform. Subclassed cameras such as `godot.InterpolatedCamera` may provide different transforms than the `godot.Node` transform.
+		Returns the transform of the camera plus the vertical (`godot.Camera.vOffset`) and horizontal (`godot.Camera.hOffset`) offsets; and any other adjustments made to the position and orientation of the camera by subclassed cameras such as `godot.ClippedCamera`, `godot.InterpolatedCamera` and `godot.ARVRCamera`.
 	**/
 	@:native("GetCameraTransform")
 	public function getCameraTransform():godot.Transform;
@@ -281,7 +283,7 @@ extern class Camera extends godot.Spatial {
 	public function getDopplerTracking():godot.Camera_DopplerTrackingEnum;
 
 	/**		
-		Returns the camera's frustum planes in world-space units as an array of `godot.Plane`s in the following order: near, far, left, top, right, bottom. Not to be confused with `godot.Camera.frustumOffset`.
+		Returns the camera's frustum planes in world space units as an array of `godot.Plane`s in the following order: near, far, left, top, right, bottom. Not to be confused with `godot.Camera.frustumOffset`.
 	**/
 	@:native("GetFrustum")
 	public function getFrustum():godot.collections.Array;

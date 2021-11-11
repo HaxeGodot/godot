@@ -39,6 +39,12 @@ extern class KinematicCollision2D extends godot.Reference {
 	public var colliderShape(default, never):godot.Object;
 
 	/**		
+		The colliding body's `godot.RID` used by the `godot.Physics2DServer`.
+	**/
+	@:native("ColliderRid")
+	public var colliderRid(default, never):godot.RID;
+
+	/**		
 		The colliding body's unique instance ID. See `godot.Object.getInstanceId`.
 	**/
 	@:native("ColliderId")
@@ -95,6 +101,32 @@ extern class KinematicCollision2D extends godot.Reference {
 	@:native("GetRemainder")
 	public function getRemainder():godot.Vector2;
 
+	#if doc_gen
+	/**		
+		The collision angle according to `up_direction`, which is `Vector2.UP` by default. This value is always positive.
+		
+		@param upDirection If the parameter is null, then the default value is new Vector2(0, -1)
+	**/
+	@:native("GetAngle")
+	public function getAngle(?upDirection:Null<godot.Vector2>):Single;
+	#else
+	/**		
+		The collision angle according to `up_direction`, which is `Vector2.UP` by default. This value is always positive.
+		
+		@param upDirection If the parameter is null, then the default value is new Vector2(0, -1)
+	**/
+	@:native("GetAngle")
+	public overload function getAngle():Single;
+
+	/**		
+		The collision angle according to `up_direction`, which is `Vector2.UP` by default. This value is always positive.
+		
+		@param upDirection If the parameter is null, then the default value is new Vector2(0, -1)
+	**/
+	@:native("GetAngle")
+	public overload function getAngle(upDirection:Nullable1<godot.Vector2>):Single;
+	#end
+
 	@:native("GetLocalShape")
 	public function getLocalShape():godot.Object;
 
@@ -103,6 +135,9 @@ extern class KinematicCollision2D extends godot.Reference {
 
 	@:native("GetColliderId")
 	public function getColliderId():cs.types.UInt64;
+
+	@:native("GetColliderRid")
+	public function getColliderRid():godot.RID;
 
 	@:native("GetColliderShape")
 	public function getColliderShape():godot.Object;

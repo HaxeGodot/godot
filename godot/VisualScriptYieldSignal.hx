@@ -4,20 +4,35 @@ package godot;
 
 import cs.system.*;
 
+/**
+`godot.VisualScriptYieldSignal` will pause the function execution until the provided signal is emitted.
+**/
 @:libType
 @:csNative
 @:native("Godot.VisualScriptYieldSignal")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualScriptYieldSignal extends godot.VisualScriptNode {
+	/**		
+		The signal name to be waited for.
+	**/
 	@:native("Signal")
 	public var signal:std.String;
 
+	/**		
+		The node path to use when `godot.VisualScriptYieldSignal.callMode` is set to `godot.VisualScriptYieldSignal_CallModeEnum.nodePath`.
+	**/
 	@:native("NodePath")
 	public var nodePath:godot.NodePath;
 
+	/**		
+		The base type to be used when `godot.VisualScriptYieldSignal.callMode` is set to `godot.VisualScriptYieldSignal_CallModeEnum.instance`.
+	**/
 	@:native("BaseType")
 	public var baseType:std.String;
 
+	/**		
+		`call_mode` determines the target object to wait for the signal emission. See `godot.VisualScriptYieldSignal_CallModeEnum` for options.
+	**/
 	@:native("CallMode")
 	public var callMode:godot.VisualScriptYieldSignal_CallModeEnum;
 

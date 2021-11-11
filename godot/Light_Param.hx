@@ -16,6 +16,11 @@ extern enum Light_Param {
 	IndirectEnergy;
 
 	/**		
+		Constant for accessing `godot.Light.lightSize`.
+	**/
+	Size;
+
+	/**		
 		Constant for accessing `godot.Light.lightSpecular`.
 	**/
 	Specular;

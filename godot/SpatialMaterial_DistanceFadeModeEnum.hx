@@ -16,12 +16,12 @@ extern enum SpatialMaterial_DistanceFadeModeEnum {
 	PixelAlpha;
 
 	/**		
-		Smoothly fades the object out based on each pixel's distance from the camera using a dither approach. Dithering discards pixels based on a set pattern to smoothly fade without enabling transparency. On certain hardware this can be faster than .
+		Smoothly fades the object out based on each pixel's distance from the camera using a dither approach. Dithering discards pixels based on a set pattern to smoothly fade without enabling transparency. On certain hardware this can be faster than `godot.SpatialMaterial_DistanceFadeModeEnum.pixelAlpha`.
 	**/
 	PixelDither;
 
 	/**		
-		Smoothly fades the object out based on the object's distance from the camera using a dither approach. Dithering discards pixels based on a set pattern to smoothly fade without enabling transparency. On certain hardware this can be faster than .
+		Smoothly fades the object out based on the object's distance from the camera using a dither approach. Dithering discards pixels based on a set pattern to smoothly fade without enabling transparency. On certain hardware this can be faster than `godot.SpatialMaterial_DistanceFadeModeEnum.pixelAlpha`.
 	**/
 	ObjectDither;
 }

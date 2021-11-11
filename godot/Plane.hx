@@ -23,7 +23,8 @@ extern abstract Plane(Plane_) from Plane_ to Plane_ {
 #end
 	#if !doc_gen
 	/**		
-		Constructs a plane from four values. `a`, `b` and `c` become the
+		Constructs a `godot.Plane` from four values.
+		`a`, `b` and `c` become the
 		components of the resulting plane's `godot.Plane.normal` vector.
 		`d` becomes the plane's distance from the origin.
 		
@@ -39,7 +40,8 @@ extern abstract Plane(Plane_) from Plane_ to Plane_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a plane from a normal vector and the plane's distance to the origin.
+		Constructs a `godot.Plane` from a `normal` vector and
+		the plane's distance to the origin `d`.
 		
 		@param normal The normal of the plane, must be normalized.
 		@param d The plane's distance from the origin. This value is typically non-negative.
@@ -51,7 +53,7 @@ extern abstract Plane(Plane_) from Plane_ to Plane_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a plane from the three points, given in clockwise order.
+		Constructs a `godot.Plane` from the three points, given in clockwise order.
 		
 		@param v1 The first point.
 		@param v2 The second point.
@@ -93,7 +95,7 @@ extern abstract Plane(Plane_) from Plane_ to Plane_ {
 extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_1<godot.Plane> {
 #end
 	/**		
-		A plane that extends in the X and Y axes (normal vector points +Z).
+		A `godot.Plane` that extends in the X and Y axes (normal vector points +Z).
 		
 		Value: Equivalent to `new Plane(0, 0, 1, 0)`.
 	**/
@@ -101,7 +103,7 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public static var PLANE_X_Y(default, never):godot.Plane;
 
 	/**		
-		A plane that extends in the X and Z axes (normal vector points +Y).
+		A `godot.Plane` that extends in the X and Z axes (normal vector points +Y).
 		
 		Value: Equivalent to `new Plane(0, 1, 0, 0)`.
 	**/
@@ -109,7 +111,7 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public static var PLANE_X_Z(default, never):godot.Plane;
 
 	/**		
-		A plane that extends in the Y and Z axes (normal vector points +X).
+		A `godot.Plane` that extends in the Y and Z axes (normal vector points +X).
 		
 		Value: Equivalent to `new Plane(1, 0, 0, 0)`.
 	**/
@@ -119,7 +121,7 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 	/**		
 		The center of the plane, the point where the normal line intersects the plane.
 		
-		Value: Equivalent to `godot.Plane.normal` multiplied by `D`.
+		Value: Equivalent to `godot.Plane.normal` multiplied by `godot.Plane.d`.
 	**/
 	@:native("Center")
 	public var center:godot.Vector3;
@@ -165,7 +167,7 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 		In the scalar equation of the plane `ax + by + cz = d`, this is
 		the vector `(a, b, c)`, where `d` is the `godot.Plane.d` property.
 		
-		Value: Equivalent to `x`, `y`, and `z`.
+		Value: Equivalent to `godot.Plane.x`, `godot.Plane.y`, and `godot.Plane.z`.
 	**/
 	@:native("Normal")
 	public var normal:godot.Vector3;
@@ -190,34 +192,34 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 
 	#if doc_gen
 	/**		
-		Returns true if point is inside the plane.
+		Returns `true` if point is inside the plane.
 		Comparison uses a custom minimum epsilon threshold.
 		
 		@param point The point to check.
 		@param epsilon The tolerance threshold.
-		@returns A bool for whether or not the plane has the point.
+		@returns A `bool` for whether or not the plane has the point.
 	**/
 	@:native("HasPoint")
 	public function hasPoint(point:godot.Vector3, ?epsilon:Single):Bool;
 	#else
 	/**		
-		Returns true if point is inside the plane.
+		Returns `true` if point is inside the plane.
 		Comparison uses a custom minimum epsilon threshold.
 		
 		@param point The point to check.
 		@param epsilon The tolerance threshold.
-		@returns A bool for whether or not the plane has the point.
+		@returns A `bool` for whether or not the plane has the point.
 	**/
 	@:native("HasPoint")
 	public overload function hasPoint(point:godot.Vector3):Bool;
 
 	/**		
-		Returns true if point is inside the plane.
+		Returns `true` if point is inside the plane.
 		Comparison uses a custom minimum epsilon threshold.
 		
 		@param point The point to check.
 		@param epsilon The tolerance threshold.
-		@returns A bool for whether or not the plane has the point.
+		@returns A `bool` for whether or not the plane has the point.
 	**/
 	@:native("HasPoint")
 	public overload function hasPoint(point:godot.Vector3, epsilon:Single):Bool;
@@ -235,8 +237,8 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public function intersect3(b:godot.Plane, c:godot.Plane):cs.system.Nullable_1<godot.Vector3>;
 
 	/**		
-		Returns the intersection point of a ray consisting of the
-		position `from` and the direction normal `dir` with this plane.
+		Returns the intersection point of a ray consisting of the position `from`
+		and the direction normal `dir` with this plane.
 		If no intersection is found, `null` is returned.
 		
 		@param from The start of the ray.
@@ -259,10 +261,10 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public function intersectSegment(begin:godot.Vector3, end:godot.Vector3):cs.system.Nullable_1<godot.Vector3>;
 
 	/**		
-		Returns true if `point` is located above the plane.
+		Returns `true` if `point` is located above the plane.
 		
 		@param point The point to check.
-		@returns A bool for whether or not the point is above the plane.
+		@returns A `bool` for whether or not the point is above the plane.
 	**/
 	@:native("IsPointOver")
 	public function isPointOver(point:godot.Vector3):Bool;
@@ -285,7 +287,8 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public function project(point:godot.Vector3):godot.Vector3;
 
 	/**		
-		Constructs a plane from four values. `a`, `b` and `c` become the
+		Constructs a `godot.Plane` from four values.
+		`a`, `b` and `c` become the
 		components of the resulting plane's `godot.Plane.normal` vector.
 		`d` becomes the plane's distance from the origin.
 		
@@ -298,7 +301,8 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function new(a:Single, b:Single, c:Single, d:Single):Void;
 
 	/**		
-		Constructs a plane from a normal vector and the plane's distance to the origin.
+		Constructs a `godot.Plane` from a `normal` vector and
+		the plane's distance to the origin `d`.
 		
 		@param normal The normal of the plane, must be normalized.
 		@param d The plane's distance from the origin. This value is typically non-negative.
@@ -307,7 +311,7 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function new(normal:godot.Vector3, d:Single):Void;
 
 	/**		
-		Constructs a plane from the three points, given in clockwise order.
+		Constructs a `godot.Plane` from the three points, given in clockwise order.
 		
 		@param v1 The first point.
 		@param v2 The second point.
@@ -317,8 +321,8 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function new(v1:godot.Vector3, v2:godot.Vector3, v3:godot.Vector3):Void;
 
 	/**		
-		Returns true if this plane and `other` are approximately equal, by running
-		`godot.Mathf.isEqualApprox` on each component.
+		Returns `true` if this plane and `other` are
+		approximately equal, by running `godot.Mathf.isEqualApprox` on each component.
 		
 		@param other The other plane to compare.
 		@returns Whether or not the planes are approximately equal.
@@ -326,9 +330,19 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 	@:native("IsEqualApprox")
 	public function isEqualApprox(other:godot.Plane):Bool;
 
+	/**		
+		Converts this `godot.Plane` to a string.
+		
+		@returns A string representation of this plane.
+	**/
 	@:native("ToString")
 	public overload function toString():std.String;
 
+	/**		
+		Converts this `godot.Plane` to a string with the given `format`.
+		
+		@returns A string representation of this plane.
+	**/
 	@:native("ToString")
 	public overload function toString(format:std.String):std.String;
 }

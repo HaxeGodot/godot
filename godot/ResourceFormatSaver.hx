@@ -33,7 +33,7 @@ extern class ResourceFormatSaver extends godot.Reference {
 	/**		
 		Saves the given resource object to a file at the target `path`. `flags` is a bitmask composed with `godot.ResourceSaver_SaverFlags` constants.
 		
-		Returns  on success, or an `godot.Error` constant in case of failure.
+		Returns `OK` on success, or an `godot.Error` constant in case of failure.
 	**/
 	@:native("Save")
 	public function save(path:std.String, resource:godot.Resource, flags:Int):Int;

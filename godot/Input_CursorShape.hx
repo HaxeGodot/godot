@@ -66,7 +66,7 @@ extern enum Input_CursorShape {
 	Bdiagsize;
 
 	/**		
-		Window resize mouse cursor. The cursor is a double-headed arrow that goes from the top left to the bottom right, the opposite of . It tells the user they can resize the window or the panel both horizontally and vertically.
+		Window resize mouse cursor. The cursor is a double-headed arrow that goes from the top left to the bottom right, the opposite of `godot.Input_CursorShape.bdiagsize`. It tells the user they can resize the window or the panel both horizontally and vertically.
 	**/
 	Fdiagsize;
 
@@ -76,12 +76,12 @@ extern enum Input_CursorShape {
 	Move;
 
 	/**		
-		Vertical split mouse cursor. On Windows, it's the same as .
+		Vertical split mouse cursor. On Windows, it's the same as `godot.Input_CursorShape.vsize`.
 	**/
 	Vsplit;
 
 	/**		
-		Horizontal split mouse cursor. On Windows, it's the same as .
+		Horizontal split mouse cursor. On Windows, it's the same as `godot.Input_CursorShape.hsize`.
 	**/
 	Hsplit;
 

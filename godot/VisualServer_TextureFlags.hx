@@ -21,7 +21,7 @@ extern enum VisualServer_TextureFlags {
 	Filter;
 
 	/**		
-		Default flags. ,  and  are enabled.
+		Default flags. `godot.VisualServer_TextureFlags.mipmaps`, `godot.VisualServer_TextureFlags.repeat` and `godot.VisualServer_TextureFlags.filter` are enabled.
 	**/
 	Default;
 

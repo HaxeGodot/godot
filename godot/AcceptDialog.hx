@@ -57,12 +57,16 @@ extern class AcceptDialog extends godot.WindowDialog {
 
 	/**		
 		Returns the OK `godot.Button` instance.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetOk")
 	public function getOk():godot.Button;
 
 	/**		
 		Returns the label used for built-in text.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetLabel")
 	public function getLabel():godot.Label;
@@ -78,6 +82,8 @@ extern class AcceptDialog extends godot.WindowDialog {
 		Adds a button with label `text` and a custom `action` to the dialog and returns the created button. `action` will be passed to the `custom_action` signal when pressed.
 		
 		If `true`, `right` will place the button to the right of any sibling buttons.
+		
+		You can use `godot.AcceptDialog.removeButton` method to remove a button created with this method from the dialog.
 	**/
 	@:native("AddButton")
 	public function addButton(text:std.String, ?right:Bool, ?action:std.String):godot.Button;
@@ -86,6 +92,8 @@ extern class AcceptDialog extends godot.WindowDialog {
 		Adds a button with label `text` and a custom `action` to the dialog and returns the created button. `action` will be passed to the `custom_action` signal when pressed.
 		
 		If `true`, `right` will place the button to the right of any sibling buttons.
+		
+		You can use `godot.AcceptDialog.removeButton` method to remove a button created with this method from the dialog.
 	**/
 	@:native("AddButton")
 	public overload function addButton(text:std.String):godot.Button;
@@ -94,6 +102,8 @@ extern class AcceptDialog extends godot.WindowDialog {
 		Adds a button with label `text` and a custom `action` to the dialog and returns the created button. `action` will be passed to the `custom_action` signal when pressed.
 		
 		If `true`, `right` will place the button to the right of any sibling buttons.
+		
+		You can use `godot.AcceptDialog.removeButton` method to remove a button created with this method from the dialog.
 	**/
 	@:native("AddButton")
 	public overload function addButton(text:std.String, right:Bool):godot.Button;
@@ -102,6 +112,8 @@ extern class AcceptDialog extends godot.WindowDialog {
 		Adds a button with label `text` and a custom `action` to the dialog and returns the created button. `action` will be passed to the `custom_action` signal when pressed.
 		
 		If `true`, `right` will place the button to the right of any sibling buttons.
+		
+		You can use `godot.AcceptDialog.removeButton` method to remove a button created with this method from the dialog.
 	**/
 	@:native("AddButton")
 	public overload function addButton(text:std.String, right:Bool, action:std.String):godot.Button;
@@ -109,9 +121,17 @@ extern class AcceptDialog extends godot.WindowDialog {
 
 	/**		
 		Adds a button with label `name` and a cancel action to the dialog and returns the created button.
+		
+		You can use `godot.AcceptDialog.removeButton` method to remove a button created with this method from the dialog.
 	**/
 	@:native("AddCancel")
 	public function addCancel(name:std.String):godot.Button;
+
+	/**		
+		Removes the `button` from the dialog. Does NOT free the `button`. The `button` must be a `godot.Button` added with `godot.AcceptDialog.addButton` or `godot.AcceptDialog.addCancel` method. After removal, pressing the `button` will no longer emit this dialog's `custom_action` signal or cancel this dialog.
+	**/
+	@:native("RemoveButton")
+	public function removeButton(button:godot.Control):Void;
 
 	/**		
 		Registers a `godot.LineEdit` in the dialog. When the enter key is pressed, the dialog will be accepted.

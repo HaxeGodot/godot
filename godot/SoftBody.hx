@@ -58,7 +58,7 @@ extern class SoftBody extends godot.MeshInstance {
 	public var parentCollisionIgnore:godot.NodePath;
 
 	/**		
-		The physics layers this SoftBody scans for collisions. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The physics layers this SoftBody scans for collisions. See [https://docs.godotengine.org/en/3.4/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionMask")
 	public var collisionMask:UInt;
@@ -68,13 +68,25 @@ extern class SoftBody extends godot.MeshInstance {
 		
 		Collidable objects can exist in any of 32 different layers. These layers work like a tagging system, and are not visual. A collidable can use these layers to select with which objects it can collide, using the collision_mask property.
 		
-		A contact is detected if object A is in any of the layers that object B scans, or object B is in any layer scanned by object A. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		A contact is detected if object A is in any of the layers that object B scans, or object B is in any layer scanned by object A. See [https://docs.godotengine.org/en/3.4/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionLayer")
 	public var collisionLayer:UInt;
 
+	/**		
+		If `true`, the `godot.SoftBody` is simulated in physics. Can be set to `false` to pause the physics simulation.
+	**/
+	@:native("PhysicsEnabled")
+	public var physicsEnabled:Bool;
+
 	@:native("new")
 	public function new():Void;
+
+	@:native("SetPhysicsEnabled")
+	public function setPhysicsEnabled(enabled:Bool):Void;
+
+	@:native("IsPhysicsEnabled")
+	public function isPhysicsEnabled():Bool;
 
 	@:native("SetCollisionMask")
 	public function setCollisionMask(collisionMask:UInt):Void;
@@ -189,6 +201,44 @@ extern class SoftBody extends godot.MeshInstance {
 
 	@:native("GetDragCoefficient")
 	public function getDragCoefficient():Single;
+
+	/**		
+		Returns local translation of a vertex in the surface array.
+	**/
+	@:native("GetPointTransform")
+	public function getPointTransform(pointIndex:Int):godot.Vector3;
+
+	#if doc_gen
+	/**		
+		Sets the pinned state of a surface vertex. When set to `true`, the optional `attachment_path` can define a `godot.Spatial` the pinned vertex will be attached to.
+		
+		@param attachmentPath If the parameter is null, then the default value is (NodePath)""
+	**/
+	@:native("SetPointPinned")
+	public function setPointPinned(pointIndex:Int, pinned:Bool, ?attachmentPath:godot.NodePath):Void;
+	#else
+	/**		
+		Sets the pinned state of a surface vertex. When set to `true`, the optional `attachment_path` can define a `godot.Spatial` the pinned vertex will be attached to.
+		
+		@param attachmentPath If the parameter is null, then the default value is (NodePath)""
+	**/
+	@:native("SetPointPinned")
+	public overload function setPointPinned(pointIndex:Int, pinned:Bool):Void;
+
+	/**		
+		Sets the pinned state of a surface vertex. When set to `true`, the optional `attachment_path` can define a `godot.Spatial` the pinned vertex will be attached to.
+		
+		@param attachmentPath If the parameter is null, then the default value is (NodePath)""
+	**/
+	@:native("SetPointPinned")
+	public overload function setPointPinned(pointIndex:Int, pinned:Bool, attachmentPath:godot.NodePath):Void;
+	#end
+
+	/**		
+		Returns `true` if vertex is set to pinned.
+	**/
+	@:native("IsPointPinned")
+	public function isPointPinned(pointIndex:Int):Bool;
 
 	@:native("SetRayPickable")
 	public function setRayPickable(rayPickable:Bool):Void;

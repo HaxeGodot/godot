@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-This class contains the shape and other parameters for 2D intersection/collision queries. See also `godot.Physics2DShapeQueryResult`.
+This class contains the shape and other parameters for 2D intersection/collision queries.
 **/
 @:libType
 @:csNative
@@ -55,10 +55,10 @@ extern class Physics2DShapeQueryParameters extends godot.Reference {
 	public var exclude:godot.collections.Array;
 
 	/**		
-		The physics layer(s) the query will take into account (as a bitmask). See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The physics layer(s) the query will take into account (as a bitmask). See [https://docs.godotengine.org/en/3.4/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionLayer")
-	public var collisionLayer:Int;
+	public var collisionLayer:UInt;
 
 	@:native("new")
 	public function new():Void;
@@ -94,10 +94,10 @@ extern class Physics2DShapeQueryParameters extends godot.Reference {
 	public function getMargin():Single;
 
 	@:native("SetCollisionLayer")
-	public function setCollisionLayer(collisionLayer:Int):Void;
+	public function setCollisionLayer(collisionLayer:UInt):Void;
 
 	@:native("GetCollisionLayer")
-	public function getCollisionLayer():Int;
+	public function getCollisionLayer():UInt;
 
 	@:native("SetExclude")
 	public function setExclude(exclude:godot.collections.Array):Void;

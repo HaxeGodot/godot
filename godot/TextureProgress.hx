@@ -43,13 +43,13 @@ extern class TextureProgress extends godot.Range {
 	public var ninePatchStretch:Bool;
 
 	/**		
-		Offsets `godot.TextureProgress.textureProgress_` if `godot.TextureProgress.fillMode` is  or .
+		Offsets `godot.TextureProgress.textureProgress_` if `godot.TextureProgress.fillMode` is `godot.TextureProgress_FillModeEnum.clockwise` or `godot.TextureProgress_FillModeEnum.counterClockwise`.
 	**/
 	@:native("RadialCenterOffset")
 	public var radialCenterOffset:godot.Vector2;
 
 	/**		
-		Upper limit for the fill of `godot.TextureProgress.textureProgress_` if `godot.TextureProgress.fillMode` is  or . When the node's `value` is equal to its `max_value`, the texture fills up to this angle.
+		Upper limit for the fill of `godot.TextureProgress.textureProgress_` if `godot.TextureProgress.fillMode` is `godot.TextureProgress_FillModeEnum.clockwise` or `godot.TextureProgress_FillModeEnum.counterClockwise`. When the node's `value` is equal to its `max_value`, the texture fills up to this angle.
 		
 		See `godot.Range.value`, `godot.Range.maxValue`.
 	**/
@@ -57,7 +57,7 @@ extern class TextureProgress extends godot.Range {
 	public var radialFillDegrees:Single;
 
 	/**		
-		Starting angle for the fill of `godot.TextureProgress.textureProgress_` if `godot.TextureProgress.fillMode` is  or . When the node's `value` is equal to its `min_value`, the texture doesn't show up at all. When the `value` increases, the texture fills and tends towards `godot.TextureProgress.radialFillDegrees`.
+		Starting angle for the fill of `godot.TextureProgress.textureProgress_` if `godot.TextureProgress.fillMode` is `godot.TextureProgress_FillModeEnum.clockwise` or `godot.TextureProgress_FillModeEnum.counterClockwise`. When the node's `value` is equal to its `min_value`, the texture doesn't show up at all. When the `value` increases, the texture fills and tends towards `godot.TextureProgress.radialFillDegrees`.
 	**/
 	@:native("RadialInitialAngle")
 	public var radialInitialAngle:Single;
@@ -85,6 +85,12 @@ extern class TextureProgress extends godot.Range {
 	**/
 	@:native("FillMode")
 	public var fillMode:Int;
+
+	/**		
+		The offset of `godot.TextureProgress.textureProgress_`. Useful for `godot.TextureProgress.textureOver` and `godot.TextureProgress.textureUnder` with fancy borders, to avoid transparent margins in your progress texture.
+	**/
+	@:native("TextureProgressOffset")
+	public var textureProgressOffset:godot.Vector2;
 
 	/**		
 		`godot.Texture` that clips based on the node's `value` and `godot.TextureProgress.fillMode`. As `value` increased, the texture fills up. It shows entirely when `value` reaches `max_value`. It doesn't show at all if `value` is equal to `min_value`.
@@ -150,6 +156,12 @@ extern class TextureProgress extends godot.Range {
 
 	@:native("GetTintOver")
 	public function getTintOver():godot.Color;
+
+	@:native("SetTextureProgressOffset")
+	public function setTextureProgressOffset(offset:godot.Vector2):Void;
+
+	@:native("GetTextureProgressOffset")
+	public function getTextureProgressOffset():godot.Vector2;
 
 	@:native("SetRadialInitialAngle")
 	public function setRadialInitialAngle(mode:Single):Void;

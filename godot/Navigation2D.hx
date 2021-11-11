@@ -6,6 +6,8 @@ import cs.system.*;
 
 /**
 Navigation2D provides navigation and pathfinding within a 2D area, specified as a collection of `godot.NavigationPolygon` resources. By default, these are automatically collected from child `godot.NavigationPolygonInstance` nodes, but they can also be added on the fly with `godot.Navigation2D.navpolyAdd`.
+
+Note: The current navigation system has many known issues and will not always return optimal paths as expected. These issues will be fixed in Godot 4.0.
 **/
 @:libType
 @:csNative
@@ -50,6 +52,8 @@ extern class Navigation2D extends godot.Node2D {
 	#if doc_gen
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the path is smoothed by merging path segments where possible.
+		
+		Note: This method has known issues and will often return non-optimal paths. These issues will be fixed in Godot 4.0.
 	**/
 	public extern inline function getSimplePath(start:godot.Vector2, end:godot.Vector2, ?optimize:Bool):std.Array<godot.Vector2> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2}, {3})", this, start, end, optimize));
@@ -57,6 +61,8 @@ extern class Navigation2D extends godot.Node2D {
 	#else
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the path is smoothed by merging path segments where possible.
+		
+		Note: This method has known issues and will often return non-optimal paths. These issues will be fixed in Godot 4.0.
 	**/
 	public overload extern inline function getSimplePath(start:godot.Vector2, end:godot.Vector2):std.Array<godot.Vector2> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2})", this, start, end));
@@ -64,6 +70,8 @@ extern class Navigation2D extends godot.Node2D {
 
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the path is smoothed by merging path segments where possible.
+		
+		Note: This method has known issues and will often return non-optimal paths. These issues will be fixed in Godot 4.0.
 	**/
 	public overload extern inline function getSimplePath(start:godot.Vector2, end:godot.Vector2, optimize:Bool):std.Array<godot.Vector2> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2}, {3})", this, start, end, optimize));

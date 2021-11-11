@@ -49,7 +49,7 @@ Note: The maximum texture size is 16384×16384 pixels due to graphics hardware l
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ImageTexture extends godot.Texture {
 	/**		
-		The storage quality for .
+		The storage quality for `godot.ImageTexture_StorageEnum.compressLossy`.
 	**/
 	@:native("LossyQuality")
 	public var lossyQuality:Single;
@@ -118,7 +118,7 @@ extern class ImageTexture extends godot.Texture {
 	/**		
 		Loads an image from a file path and creates a texture from it.
 		
-		Note: the method is deprecated and will be removed in Godot 4.0, use `godot.Image.load` and `godot.ImageTexture.createFromImage` instead.
+		Note: This method is deprecated and will be removed in Godot 4.0, use `godot.Image.load` and `godot.ImageTexture.createFromImage` instead.
 	**/
 	@:native("Load")
 	public function load(path:std.String):godot.Error;

@@ -13,7 +13,7 @@ Compares `a` and `b` of `godot.VisualShaderNodeCompare.type` by `godot.VisualSha
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualShaderNodeCompare extends godot.VisualShaderNode {
 	/**		
-		Extra condition which is applied if `godot.VisualShaderNodeCompare.type` is set to .
+		Extra condition which is applied if `godot.VisualShaderNodeCompare.type` is set to `godot.VisualShaderNodeCompare_ComparisonType.vector`.
 	**/
 	@:native("Condition")
 	public var condition:godot.VisualShaderNodeCompare_ConditionEnum;

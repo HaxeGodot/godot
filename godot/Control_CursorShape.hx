@@ -66,7 +66,7 @@ extern enum Control_CursorShape {
 	Bdiagsize;
 
 	/**		
-		Show the system's window resize mouse cursor when the user hovers the node. The cursor is a double-headed arrow that goes from the top left to the bottom right, the opposite of . It tells the user they can resize the window or the panel both horizontally and vertically.
+		Show the system's window resize mouse cursor when the user hovers the node. The cursor is a double-headed arrow that goes from the top left to the bottom right, the opposite of `godot.Control_CursorShape.bdiagsize`. It tells the user they can resize the window or the panel both horizontally and vertically.
 	**/
 	Fdiagsize;
 
@@ -76,12 +76,12 @@ extern enum Control_CursorShape {
 	Move;
 
 	/**		
-		Show the system's vertical split mouse cursor when the user hovers the node. On Windows, it's the same as .
+		Show the system's vertical split mouse cursor when the user hovers the node. On Windows, it's the same as `godot.Control_CursorShape.vsize`.
 	**/
 	Vsplit;
 
 	/**		
-		Show the system's horizontal split mouse cursor when the user hovers the node. On Windows, it's the same as .
+		Show the system's horizontal split mouse cursor when the user hovers the node. On Windows, it's the same as `godot.Control_CursorShape.hsize`.
 	**/
 	Hsplit;
 

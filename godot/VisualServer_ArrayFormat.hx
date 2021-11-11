@@ -91,11 +91,6 @@ extern enum VisualServer_ArrayFormat {
 	CompressWeights;
 
 	/**		
-		Used to set flags , , , ,  and  quickly.
-	**/
-	CompressDefault;
-
-	/**		
 		Flag used to mark a compressed index array.
 	**/
 	CompressIndex;
@@ -109,4 +104,14 @@ extern enum VisualServer_ArrayFormat {
 		Flag used to mark that the array uses 16-bit bones instead of 8-bit.
 	**/
 	FlagUse16BitBones;
+
+	/**		
+		Flag used to mark that the array uses an octahedral representation of normal and tangent vectors rather than cartesian.
+	**/
+	FlagUseOctahedralCompression;
+
+	/**		
+		Used to set flags `godot.VisualServer_ArrayFormat.compressNormal`, `godot.VisualServer_ArrayFormat.compressTangent`, `godot.VisualServer_ArrayFormat.compressColor`, `godot.VisualServer_ArrayFormat.compressTexUv`, `godot.VisualServer_ArrayFormat.compressTexUv2`, `godot.VisualServer_ArrayFormat.compressWeights`, and `godot.VisualServer_ArrayFormat.flagUseOctahedralCompression` quickly.
+	**/
+	CompressDefault;
 }

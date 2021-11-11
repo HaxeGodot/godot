@@ -31,4 +31,24 @@ Set the integer uniform "index" to show a particular part of the texture as defi
 extern class TextureArray extends godot.TextureLayered {
 	@:native("new")
 	public function new():Void;
+
+	#if doc_gen
+	/**		
+		Creates the TextureArray with specified `width`, `height`, and `depth`. See `godot.Image_Format` for `format` options. See `godot.TextureLayered_FlagsEnum` enumerator for `flags` options.
+	**/
+	@:native("Create")
+	public function create(width:UInt, height:UInt, depth:UInt, format:godot.Image_Format, ?flags:UInt):Void;
+	#else
+	/**		
+		Creates the TextureArray with specified `width`, `height`, and `depth`. See `godot.Image_Format` for `format` options. See `godot.TextureLayered_FlagsEnum` enumerator for `flags` options.
+	**/
+	@:native("Create")
+	public overload function create(width:UInt, height:UInt, depth:UInt, format:godot.Image_Format):Void;
+
+	/**		
+		Creates the TextureArray with specified `width`, `height`, and `depth`. See `godot.Image_Format` for `format` options. See `godot.TextureLayered_FlagsEnum` enumerator for `flags` options.
+	**/
+	@:native("Create")
+	public overload function create(width:UInt, height:UInt, depth:UInt, format:godot.Image_Format, flags:UInt):Void;
+	#end
 }

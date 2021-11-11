@@ -130,6 +130,8 @@ extern class EditorFileDialog extends godot.ConfirmationDialog {
 
 	/**		
 		Returns the `VBoxContainer` used to display the file system.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetVbox")
 	public function getVbox():godot.VBoxContainer;

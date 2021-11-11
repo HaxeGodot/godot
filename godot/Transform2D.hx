@@ -10,7 +10,7 @@ It can represent transformations such as translation, rotation, or scaling.
 It consists of a three `godot.Vector2` values: x, y, and the origin.
 
 For more information, read this documentation article:
-https://docs.godotengine.org/en/3.3/tutorials/math/matrices_and_transforms.html
+https://docs.godotengine.org/en/3.4/tutorials/math/matrices_and_transforms.html
 **/
 #if doc_gen
 @:struct
@@ -56,21 +56,64 @@ extern abstract Transform2D(Transform2D_) from Transform2D_ to Transform2D_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a transformation matrix from a rotation value and origin vector.
+		Constructs a transformation matrix from a `rotation` value and
+		`origin` vector.
 		
-		@param rot The rotation of the new transform, in radians.
-		@param pos The origin vector, or column index 2.
+		@param rotation The rotation of the new transform, in radians.
+		@param origin The origin vector, or column index 2.
 	**/
-	public overload inline function new(rot:Single, pos:godot.Vector2) {
-		this = new Transform2D_(rot, pos);
+	public overload inline function new(rotation:Single, origin:godot.Vector2) {
+		this = new Transform2D_(rotation, origin);
 	}
 	#end
 
 	/**
 		Operator overload for `godot.Transform2D` * `godot.Transform2D`.
 	**/
-	@:op(A * B) static inline function op_Multiply(left:godot.Transform2D, right:godot.Transform2D):godot.Transform2D {
+	@:op(A * B) static inline overload function op_Multiply(left:godot.Transform2D, right:godot.Transform2D):godot.Transform2D {
 		return cs.Syntax.code("{0} * {1}", left, right);
+	}
+
+	/**
+		Operator overload for `godot.Transform2D` * `godot.Vector2`.
+	**/
+	@:op(A * B) static inline overload function op_Multiply(transform:godot.Transform2D, vector:godot.Vector2):godot.Vector2 {
+		return cs.Syntax.code("{0} * {1}", transform, vector);
+	}
+
+	/**
+		Operator overload for `godot.Vector2` * `godot.Transform2D`.
+	**/
+	@:op(A * B) static inline overload function op_Multiply(vector:godot.Vector2, transform:godot.Transform2D):godot.Vector2 {
+		return cs.Syntax.code("{0} * {1}", vector, transform);
+	}
+
+	/**
+		Operator overload for `godot.Transform2D` * `godot.Rect2`.
+	**/
+	@:op(A * B) static inline overload function op_Multiply(transform:godot.Transform2D, rect:godot.Rect2):godot.Rect2 {
+		return cs.Syntax.code("{0} * {1}", transform, rect);
+	}
+
+	/**
+		Operator overload for `godot.Rect2` * `godot.Transform2D`.
+	**/
+	@:op(A * B) static inline overload function op_Multiply(rect:godot.Rect2, transform:godot.Transform2D):godot.Rect2 {
+		return cs.Syntax.code("{0} * {1}", rect, transform);
+	}
+
+	/**
+		Operator overload for `godot.Transform2D` * `cs.NativeArray<godot.Vector2>`.
+	**/
+	@:op(A * B) static inline overload function op_Multiply(transform:godot.Transform2D, array:cs.NativeArray<godot.Vector2>):cs.NativeArray<godot.Vector2> {
+		return cs.Syntax.code("{0} * {1}", transform, array);
+	}
+
+	/**
+		Operator overload for `cs.NativeArray<godot.Vector2>` * `godot.Transform2D`.
+	**/
+	@:op(A * B) static inline overload function op_Multiply(array:cs.NativeArray<godot.Vector2>, transform:godot.Transform2D):cs.NativeArray<godot.Vector2> {
+		return cs.Syntax.code("{0} * {1}", array, transform);
 	}
 
 	/**
@@ -162,7 +205,7 @@ extern class Transform2D_ extends cs.system.ValueType implements cs.system.IEqua
 	/**		
 		Returns the inverse of the transform, under the assumption that
 		the transformation is composed of rotation, scaling, and translation.
-		
+		@see `godot.Transform2D.inverse`
 		@returns The inverse transformation matrix.
 	**/
 	@:native("AffineInverse")
@@ -170,8 +213,8 @@ extern class Transform2D_ extends cs.system.ValueType implements cs.system.IEqua
 
 	/**		
 		Returns a vector transformed (multiplied) by the basis matrix.
-		This method does not account for translation (the origin vector).
-		
+		This method does not account for translation (the `godot.Transform2D.origin` vector).
+		@see `godot.Transform2D.basisXformInv`
 		@param v A vector to transform.
 		@returns The transformed vector.
 	**/
@@ -180,11 +223,11 @@ extern class Transform2D_ extends cs.system.ValueType implements cs.system.IEqua
 
 	/**		
 		Returns a vector transformed (multiplied) by the inverse basis matrix.
-		This method does not account for translation (the origin vector).
+		This method does not account for translation (the `godot.Transform2D.origin` vector).
 		
 		Note: This results in a multiplication by the inverse of the
 		basis matrix only if it represents a rotation-reflection.
-		
+		@see `godot.Transform2D.basisXform`
 		@param v A vector to inversely transform.
 		@returns The inversely transformed vector.
 	**/
@@ -253,7 +296,7 @@ extern class Transform2D_ extends cs.system.ValueType implements cs.system.IEqua
 
 	/**		
 		Returns a vector transformed (multiplied) by this transformation matrix.
-		
+		@see `godot.Transform2D.xformInv`
 		@param v A vector to transform.
 		@returns The transformed vector.
 	**/
@@ -262,7 +305,7 @@ extern class Transform2D_ extends cs.system.ValueType implements cs.system.IEqua
 
 	/**		
 		Returns a vector transformed (multiplied) by the inverse transformation matrix.
-		
+		@see `godot.Transform2D.xform`
 		@param v A vector to inversely transform.
 		@returns The inversely transformed vector.
 	**/
@@ -294,17 +337,18 @@ extern class Transform2D_ extends cs.system.ValueType implements cs.system.IEqua
 	public overload function new(xx:Single, xy:Single, yx:Single, yy:Single, ox:Single, oy:Single):Void;
 
 	/**		
-		Constructs a transformation matrix from a rotation value and origin vector.
+		Constructs a transformation matrix from a `rotation` value and
+		`origin` vector.
 		
-		@param rot The rotation of the new transform, in radians.
-		@param pos The origin vector, or column index 2.
+		@param rotation The rotation of the new transform, in radians.
+		@param origin The origin vector, or column index 2.
 	**/
 	@:native("new")
-	public overload function new(rot:Single, pos:godot.Vector2):Void;
+	public overload function new(rotation:Single, origin:godot.Vector2):Void;
 
 	/**		
-		Returns true if this transform and `other` are approximately equal, by running
-		`godot.Vector2.isEqualApprox` on each component.
+		Returns `true` if this transform and `other` are approximately equal,
+		by running `godot.Vector2.isEqualApprox` on each component.
 		
 		@param other The other transform to compare.
 		@returns Whether or not the matrices are approximately equal.
@@ -312,9 +356,19 @@ extern class Transform2D_ extends cs.system.ValueType implements cs.system.IEqua
 	@:native("IsEqualApprox")
 	public function isEqualApprox(other:godot.Transform2D):Bool;
 
+	/**		
+		Converts this `godot.Transform2D` to a string.
+		
+		@returns A string representation of this transform.
+	**/
 	@:native("ToString")
 	public overload function toString():std.String;
 
+	/**		
+		Converts this `godot.Transform2D` to a string with the given `format`.
+		
+		@returns A string representation of this transform.
+	**/
 	@:native("ToString")
 	public overload function toString(format:std.String):std.String;
 }

@@ -7,7 +7,7 @@ import cs.system.*;
 /**
 Base class of anything 2D. Canvas items are laid out in a tree; children inherit and extend their parent's transform. `godot.CanvasItem` is extended by `godot.Control` for anything GUI-related, and by `godot.Node2D` for anything related to the 2D engine.
 
-Any `godot.CanvasItem` can draw. For this, `godot.CanvasItem.update` must be called, then  will be received on idle time to request redraw. Because of this, canvas items don't need to be redrawn on every frame, improving the performance significantly. Several functions for drawing on the `godot.CanvasItem` are provided (see `draw_*` functions). However, they can only be used inside the `godot.Object._Notification`, signal or `godot.CanvasItem._Draw` virtual functions.
+Any `godot.CanvasItem` can draw. For this, `godot.CanvasItem.update` must be called, then `godot.CanvasItem.notificationDraw` will be received on idle time to request redraw. Because of this, canvas items don't need to be redrawn on every frame, improving the performance significantly. Several functions for drawing on the `godot.CanvasItem` are provided (see `draw_*` functions). However, they can only be used inside the `godot.Object._Notification`, signal or `godot.CanvasItem._Draw` virtual functions.
 
 Canvas items are drawn in tree order. By default, children are on top of their parents so a root `godot.CanvasItem` will be drawn behind everything. This behavior can be changed on a per-item basis.
 
@@ -179,7 +179,7 @@ extern abstract class CanvasItem extends godot.Node {
 	public function hide():Void;
 
 	/**		
-		Queue the `godot.CanvasItem` for update.  will be called on idle time to request redraw.
+		Queue the `godot.CanvasItem` for update. `godot.CanvasItem.notificationDraw` will be called on idle time to request redraw.
 	**/
 	@:native("Update")
 	public function update():Void;
@@ -608,7 +608,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawPolygon")
 	public function drawPolygon(points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?uvs:std.Array<godot.Vector2>, ?texture:godot.Texture, ?normalMap:godot.Texture, ?antialiased:Bool):Void;
@@ -616,7 +616,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawPolygon")
 	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
@@ -624,7 +624,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawPolygon")
 	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>):Void;
@@ -632,7 +632,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawPolygon")
 	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture):Void;
@@ -640,7 +640,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawPolygon")
 	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture):Void;
@@ -648,7 +648,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawPolygon")
 	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture, antialiased:Bool):Void;
@@ -658,7 +658,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a colored polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawColoredPolygon")
 	public function drawColoredPolygon(points:std.Array<godot.Vector2>, color:godot.Color, ?uvs:std.Array<godot.Vector2>, ?texture:godot.Texture, ?normalMap:godot.Texture, ?antialiased:Bool):Void;
@@ -666,7 +666,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a colored polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawColoredPolygon")
 	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color):Void;
@@ -674,7 +674,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a colored polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawColoredPolygon")
 	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color, uvs:HaxeArray<godot.Vector2>):Void;
@@ -682,7 +682,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a colored polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawColoredPolygon")
 	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture):Void;
@@ -690,7 +690,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a colored polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawColoredPolygon")
 	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture):Void;
@@ -698,7 +698,7 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		Draws a colored polygon of any amount of points, convex or concave.
 		
-		@param uvs If the parameter is null, then the default value is new Vector2[] {}
+		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
 	@:native("DrawColoredPolygon")
 	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture, antialiased:Bool):Void;

@@ -130,7 +130,7 @@ extern class Tabs extends godot.Control {
 	public function setTabTitle(tabIdx:Int, title:std.String):Void;
 
 	/**		
-		Returns the title of the tab at index `tab_idx`. Tab titles default to the name of the indexed child node, but this can be overridden with `godot.Tabs.setTabTitle`.
+		Returns the title of the tab at index `tab_idx`.
 	**/
 	@:native("GetTabTitle")
 	public function getTabTitle(tabIdx:Int):std.String;
@@ -148,9 +148,7 @@ extern class Tabs extends godot.Control {
 	public function getTabIcon(tabIdx:Int):godot.Texture;
 
 	/**		
-		If `disabled` is `false`, hides the tab at index `tab_idx`.
-		
-		Note: Its title text will remain unless it is also removed with `godot.Tabs.setTabTitle`.
+		If `disabled` is `true`, disables the tab at index `tab_idx`, making it non-interactable.
 	**/
 	@:native("SetTabDisabled")
 	public function setTabDisabled(tabIdx:Int, disabled:Bool):Void;
@@ -248,7 +246,7 @@ extern class Tabs extends godot.Control {
 	public function getDragToRearrangeEnabled():Bool;
 
 	/**		
-		Defines the rearrange group ID. Choose for each `godot.Tabs` the same value to dragging tabs between `godot.Tabs`. Enable drag with `set_drag_to_rearrange_enabled(true)`.
+		Defines the rearrange group ID. Choose for each `godot.Tabs` the same value to dragging tabs between `godot.Tabs`. Enable drag with `godot.Tabs.dragToRearrangeEnabled`.
 	**/
 	@:native("SetTabsRearrangeGroup")
 	public function setTabsRearrangeGroup(groupId:Int):Void;

@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-A `godot.Texture` capable of storing many smaller textures with offsets.
+Deprecated (will be removed in Godot 4.0). A `godot.Texture` capable of storing many smaller textures with offsets.
 
 You can dynamically add pieces (`godot.Texture`s) to this `godot.LargeTexture` using different offsets.
 **/

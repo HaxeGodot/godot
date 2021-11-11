@@ -11,7 +11,7 @@ extern enum ReflectionProbe_UpdateModeEnum {
 	Once;
 
 	/**		
-		Update the probe every frame. This is needed when you want to capture dynamic objects. However, it results in an increased render time. Use  whenever possible.
+		Update the probe every frame. This is needed when you want to capture dynamic objects. However, it results in an increased render time. Use `godot.ReflectionProbe_UpdateModeEnum.once` whenever possible.
 	**/
 	Always;
 }

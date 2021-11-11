@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-A Visual Script node representing a constant from base types, such as .
+A Visual Script node representing a constant from base types, such as `Vector3.AXIS_X`.
 **/
 @:libType
 @:csNative

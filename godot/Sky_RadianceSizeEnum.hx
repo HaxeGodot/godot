@@ -32,11 +32,15 @@ extern enum Sky_RadianceSizeEnum {
 
 	/**		
 		Radiance texture size is 1024×1024 pixels.
+		
+		Note: `godot.Sky_RadianceSizeEnum.size1024` is not exposed in the inspector as it is known to cause GPU hangs on certain systems.
 	**/
 	Size1024;
 
 	/**		
 		Radiance texture size is 2048×2048 pixels.
+		
+		Note: `godot.Sky_RadianceSizeEnum.size2048` is not exposed in the inspector as it is known to cause GPU hangs on certain systems.
 	**/
 	Size2048;
 

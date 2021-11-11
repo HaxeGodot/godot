@@ -8,7 +8,7 @@ import cs.system.*;
 A color represented by red, green, blue, and alpha (RGBA) components.
 The alpha component is often used for transparency.
 Values are in floating-point and usually range from 0 to 1.
-Some properties (such as CanvasItem.modulate) may accept values
+Some properties (such as `godot.CanvasItem.modulate`) may accept values
 greater than 1 (overbright or HDR colors).
 
 If you want to supply values in a range of 0 to 255, you should use
@@ -28,7 +28,7 @@ extern abstract Color(Color_) from Color_ to Color_ {
 #end
 	#if !doc_gen
 	/**		
-		Constructs a color from RGBA values, typically on the range of 0 to 1.
+		Constructs a `godot.Color` from RGBA values, typically on the range of 0 to 1.
 		
 		@param r The color's red component, typically on the range of 0 to 1.
 		@param g The color's green component, typically on the range of 0 to 1.
@@ -42,7 +42,7 @@ extern abstract Color(Color_) from Color_ to Color_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a color from an existing color and an alpha value.
+		Constructs a `godot.Color` from an existing color and an alpha value.
 		
 		@param c The color to construct from. Only its RGB values are used.
 		@param a The color's alpha (transparency) value, typically on the range of 0 to 1. Default: 1.
@@ -54,10 +54,10 @@ extern abstract Color(Color_) from Color_ to Color_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a color from a 32-bit integer in RGBA format
+		Constructs a `godot.Color` from a 32-bit integer in RGBA format
 		(each byte represents a color channel).
 		
-		@param rgba The int representing the color.
+		@param rgba The `int` representing the color.
 	**/
 	public overload inline function new(rgba:Int) {
 		this = new Color_(rgba);
@@ -66,10 +66,10 @@ extern abstract Color(Color_) from Color_ to Color_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a color from a 64-bit integer in RGBA format
+		Constructs a `godot.Color` from a 64-bit integer in RGBA format
 		(each word represents a color channel).
 		
-		@param rgba The long representing the color.
+		@param rgba The `long` representing the color.
 	**/
 	public overload inline function new(rgba:haxe.Int64) {
 		this = new Color_(rgba);
@@ -78,9 +78,9 @@ extern abstract Color(Color_) from Color_ to Color_ {
 
 	#if !doc_gen
 	/**		
-		Constructs a color from the HTML hexadecimal color string in RGBA format.
+		Constructs a `godot.Color` from the HTML hexadecimal color string in RGBA format.
 		
-		@param rgba A string for the HTML hexadecimal representation of this color.
+		@param rgba A string for the HTML hexadecimal representation of this color.@throws ArgumentOutOfRangeException
 	**/
 	public overload inline function new(rgba:std.String) {
 		this = new Color_(rgba);
@@ -183,7 +183,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	/**		
 		The HSV value (brightness) of this color, on the range 0 to 1.
 		
-		Value: Getting is equivalent to using `Max()` on the RGB components. Setting uses `godot.Color.fromHsv`.
+		Value: Getting is equivalent to using `Math.max` on the RGB components. Setting uses `godot.Color.fromHsv`.
 	**/
 	@:native("v")
 	public var v:Single;
@@ -427,7 +427,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 		format (each byte represents a color channel).
 		ABGR is the reversed version of the default format.
 		
-		@returns An int representing this color in ABGR32 format.
+		@returns A `int` representing this color in ABGR32 format.
 	**/
 	@:native("ToAbgr32")
 	public function toAbgr32():Int;
@@ -437,7 +437,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 		format (each word represents a color channel).
 		ABGR is the reversed version of the default format.
 		
-		@returns An int representing this color in ABGR64 format.
+		@returns A `long` representing this color in ABGR64 format.
 	**/
 	@:native("ToAbgr64")
 	public function toAbgr64():haxe.Int64;
@@ -447,7 +447,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 		format (each byte represents a color channel).
 		ARGB is more compatible with DirectX, but not used much in Godot.
 		
-		@returns An int representing this color in ARGB32 format.
+		@returns A `int` representing this color in ARGB32 format.
 	**/
 	@:native("ToArgb32")
 	public function toArgb32():Int;
@@ -457,7 +457,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 		format (each word represents a color channel).
 		ARGB is more compatible with DirectX, but not used much in Godot.
 		
-		@returns A long representing this color in ARGB64 format.
+		@returns A `long` representing this color in ARGB64 format.
 	**/
 	@:native("ToArgb64")
 	public function toArgb64():haxe.Int64;
@@ -467,7 +467,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 		format (each byte represents a color channel).
 		RGBA is Godot's default and recommended format.
 		
-		@returns An int representing this color in RGBA32 format.
+		@returns A `int` representing this color in RGBA32 format.
 	**/
 	@:native("ToRgba32")
 	public function toRgba32():Int;
@@ -477,7 +477,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 		format (each word represents a color channel).
 		RGBA is Godot's default and recommended format.
 		
-		@returns A long representing this color in RGBA64 format.
+		@returns A `long` representing this color in RGBA64 format.
 	**/
 	@:native("ToRgba64")
 	public function toRgba64():haxe.Int64;
@@ -486,7 +486,9 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	/**		
 		Returns the color's HTML hexadecimal color string in RGBA format.
 		
-		@param includeAlpha Whether or not to include alpha. If false, the color is RGB instead of RGBA.
+		@param includeAlpha
+		Whether or not to include alpha. If `false`, the color is RGB instead of RGBA.
+		
 		@returns A string for the HTML hexadecimal representation of this color.
 	**/
 	@:native("ToHtml")
@@ -495,7 +497,9 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	/**		
 		Returns the color's HTML hexadecimal color string in RGBA format.
 		
-		@param includeAlpha Whether or not to include alpha. If false, the color is RGB instead of RGBA.
+		@param includeAlpha
+		Whether or not to include alpha. If `false`, the color is RGB instead of RGBA.
+		
 		@returns A string for the HTML hexadecimal representation of this color.
 	**/
 	@:native("ToHtml")
@@ -504,7 +508,9 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	/**		
 		Returns the color's HTML hexadecimal color string in RGBA format.
 		
-		@param includeAlpha Whether or not to include alpha. If false, the color is RGB instead of RGBA.
+		@param includeAlpha
+		Whether or not to include alpha. If `false`, the color is RGB instead of RGBA.
+		
 		@returns A string for the HTML hexadecimal representation of this color.
 	**/
 	@:native("ToHtml")
@@ -513,7 +519,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 
 	#if doc_gen
 	/**		
-		Constructs a color from RGBA values, typically on the range of 0 to 1.
+		Constructs a `godot.Color` from RGBA values, typically on the range of 0 to 1.
 		
 		@param r The color's red component, typically on the range of 0 to 1.
 		@param g The color's green component, typically on the range of 0 to 1.
@@ -524,7 +530,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function new(r:Single, g:Single, b:Single, ?a:Single):Void;
 	#else
 	/**		
-		Constructs a color from RGBA values, typically on the range of 0 to 1.
+		Constructs a `godot.Color` from RGBA values, typically on the range of 0 to 1.
 		
 		@param r The color's red component, typically on the range of 0 to 1.
 		@param g The color's green component, typically on the range of 0 to 1.
@@ -535,7 +541,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function new(r:Single, g:Single, b:Single):Void;
 
 	/**		
-		Constructs a color from RGBA values, typically on the range of 0 to 1.
+		Constructs a `godot.Color` from RGBA values, typically on the range of 0 to 1.
 		
 		@param r The color's red component, typically on the range of 0 to 1.
 		@param g The color's green component, typically on the range of 0 to 1.
@@ -548,7 +554,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 
 	#if doc_gen
 	/**		
-		Constructs a color from an existing color and an alpha value.
+		Constructs a `godot.Color` from an existing color and an alpha value.
 		
 		@param c The color to construct from. Only its RGB values are used.
 		@param a The color's alpha (transparency) value, typically on the range of 0 to 1. Default: 1.
@@ -557,7 +563,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function new(c:godot.Color, ?a:Single):Void;
 	#else
 	/**		
-		Constructs a color from an existing color and an alpha value.
+		Constructs a `godot.Color` from an existing color and an alpha value.
 		
 		@param c The color to construct from. Only its RGB values are used.
 		@param a The color's alpha (transparency) value, typically on the range of 0 to 1. Default: 1.
@@ -566,7 +572,7 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function new(c:godot.Color):Void;
 
 	/**		
-		Constructs a color from an existing color and an alpha value.
+		Constructs a `godot.Color` from an existing color and an alpha value.
 		
 		@param c The color to construct from. Only its RGB values are used.
 		@param a The color's alpha (transparency) value, typically on the range of 0 to 1. Default: 1.
@@ -576,19 +582,19 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	#end
 
 	/**		
-		Constructs a color from a 32-bit integer in RGBA format
+		Constructs a `godot.Color` from a 32-bit integer in RGBA format
 		(each byte represents a color channel).
 		
-		@param rgba The int representing the color.
+		@param rgba The `int` representing the color.
 	**/
 	@:native("new")
 	public overload function new(rgba:Int):Void;
 
 	/**		
-		Constructs a color from a 64-bit integer in RGBA format
+		Constructs a `godot.Color` from a 64-bit integer in RGBA format
 		(each word represents a color channel).
 		
-		@param rgba The long representing the color.
+		@param rgba The `long` representing the color.
 	**/
 	@:native("new")
 	public overload function new(rgba:haxe.Int64):Void;
@@ -635,16 +641,16 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	#end
 
 	/**		
-		Constructs a color from the HTML hexadecimal color string in RGBA format.
+		Constructs a `godot.Color` from the HTML hexadecimal color string in RGBA format.
 		
-		@param rgba A string for the HTML hexadecimal representation of this color.
+		@param rgba A string for the HTML hexadecimal representation of this color.@throws ArgumentOutOfRangeException
 	**/
 	@:native("new")
 	public overload function new(rgba:std.String):Void;
 
 	/**		
-		Returns true if this color and `other` are approximately equal, by running
-		`godot.Mathf.isEqualApprox` on each component.
+		Returns `true` if this color and `other` are approximately equal,
+		by running `godot.Mathf.isEqualApprox` on each component.
 		
 		@param other The other color to compare.
 		@returns Whether or not the colors are approximately equal.
@@ -652,9 +658,19 @@ extern class Color_ extends cs.system.ValueType implements cs.system.IEquatable_
 	@:native("IsEqualApprox")
 	public function isEqualApprox(other:godot.Color):Bool;
 
+	/**		
+		Converts this `godot.Color` to a string.
+		
+		@returns A string representation of this color.
+	**/
 	@:native("ToString")
 	public overload function toString():std.String;
 
+	/**		
+		Converts this `godot.Color` to a string with the given `format`.
+		
+		@returns A string representation of this color.
+	**/
 	@:native("ToString")
 	public overload function toString(format:std.String):std.String;
 }

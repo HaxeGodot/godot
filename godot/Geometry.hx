@@ -211,7 +211,7 @@ extern class Geometry {
 	}
 
 	/**		
-		Merges (combines) `polygon_a` and `polygon_b` and returns an array of merged polygons. This performs  between polygons.
+		Merges (combines) `polygon_a` and `polygon_b` and returns an array of merged polygons. This performs `godot.Geometry_PolyBooleanOperation.union` between polygons.
 		
 		The operation may result in an outer polygon (boundary) and multiple inner polygons (holes) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
@@ -219,7 +219,7 @@ extern class Geometry {
 	public static function mergePolygons2d(polygonA:HaxeArray<godot.Vector2>, polygonB:HaxeArray<godot.Vector2>):godot.collections.Array;
 
 	/**		
-		Clips `polygon_a` against `polygon_b` and returns an array of clipped polygons. This performs  between polygons. Returns an empty array if `polygon_b` completely overlaps `polygon_a`.
+		Clips `polygon_a` against `polygon_b` and returns an array of clipped polygons. This performs `godot.Geometry_PolyBooleanOperation.difference` between polygons. Returns an empty array if `polygon_b` completely overlaps `polygon_a`.
 		
 		If `polygon_b` is enclosed by `polygon_a`, returns an outer polygon (boundary) and inner polygon (hole) which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
@@ -227,7 +227,7 @@ extern class Geometry {
 	public static function clipPolygons2d(polygonA:HaxeArray<godot.Vector2>, polygonB:HaxeArray<godot.Vector2>):godot.collections.Array;
 
 	/**		
-		Intersects `polygon_a` with `polygon_b` and returns an array of intersected polygons. This performs  between polygons. In other words, returns common area shared by polygons. Returns an empty array if no intersection occurs.
+		Intersects `polygon_a` with `polygon_b` and returns an array of intersected polygons. This performs `godot.Geometry_PolyBooleanOperation.intersection` between polygons. In other words, returns common area shared by polygons. Returns an empty array if no intersection occurs.
 		
 		The operation may result in an outer polygon (boundary) and inner polygon (hole) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
@@ -235,7 +235,7 @@ extern class Geometry {
 	public static function intersectPolygons2d(polygonA:HaxeArray<godot.Vector2>, polygonB:HaxeArray<godot.Vector2>):godot.collections.Array;
 
 	/**		
-		Mutually excludes common area defined by intersection of `polygon_a` and `polygon_b` (see `godot.Geometry.intersectPolygons2d`) and returns an array of excluded polygons. This performs  between polygons. In other words, returns all but common area between polygons.
+		Mutually excludes common area defined by intersection of `polygon_a` and `polygon_b` (see `godot.Geometry.intersectPolygons2d`) and returns an array of excluded polygons. This performs `godot.Geometry_PolyBooleanOperation.xor` between polygons. In other words, returns all but common area between polygons.
 		
 		The operation may result in an outer polygon (boundary) and inner polygon (hole) produced which could be distinguished by calling `godot.Geometry.isPolygonClockwise`.
 	**/
@@ -243,13 +243,13 @@ extern class Geometry {
 	public static function excludePolygons2d(polygonA:HaxeArray<godot.Vector2>, polygonB:HaxeArray<godot.Vector2>):godot.collections.Array;
 
 	/**		
-		Clips `polyline` against `polygon` and returns an array of clipped polylines. This performs  between the polyline and the polygon. This operation can be thought of as cutting a line with a closed shape.
+		Clips `polyline` against `polygon` and returns an array of clipped polylines. This performs `godot.Geometry_PolyBooleanOperation.difference` between the polyline and the polygon. This operation can be thought of as cutting a line with a closed shape.
 	**/
 	@:native("ClipPolylineWithPolygon2d")
 	public static function clipPolylineWithPolygon2d(polyline:HaxeArray<godot.Vector2>, polygon:HaxeArray<godot.Vector2>):godot.collections.Array;
 
 	/**		
-		Intersects `polyline` with `polygon` and returns an array of intersected polylines. This performs  between the polyline and the polygon. This operation can be thought of as chopping a line with a closed shape.
+		Intersects `polyline` with `polygon` and returns an array of intersected polylines. This performs `godot.Geometry_PolyBooleanOperation.intersection` between the polyline and the polygon. This operation can be thought of as chopping a line with a closed shape.
 	**/
 	@:native("IntersectPolylineWithPolygon2d")
 	public static function intersectPolylineWithPolygon2d(polyline:HaxeArray<godot.Vector2>, polygon:HaxeArray<godot.Vector2>):godot.collections.Array;

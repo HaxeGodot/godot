@@ -96,10 +96,52 @@ extern class MeshInstance extends godot.GeometryInstance {
 	public function createTrimeshCollision():Void;
 
 	/**		
+		This helper creates a `godot.StaticBody` child node with multiple `godot.ConvexPolygonShape` collision shapes calculated from the mesh geometry via convex decomposition. It's mainly used for testing.
+	**/
+	@:native("CreateMultipleConvexCollisions")
+	public function createMultipleConvexCollisions():Void;
+
+	#if doc_gen
+	/**		
 		This helper creates a `godot.StaticBody` child node with a `godot.ConvexPolygonShape` collision shape calculated from the mesh geometry. It's mainly used for testing.
+		
+		If `clean` is `true` (default), duplicate and interior vertices are removed automatically. You can set it to `false` to make the process faster if not needed.
+		
+		If `simplify` is `true`, the geometry can be further simplified to reduce the amount of vertices. Disabled by default.
 	**/
 	@:native("CreateConvexCollision")
-	public function createConvexCollision():Void;
+	public function createConvexCollision(?clean:Bool, ?simplify:Bool):Void;
+	#else
+	/**		
+		This helper creates a `godot.StaticBody` child node with a `godot.ConvexPolygonShape` collision shape calculated from the mesh geometry. It's mainly used for testing.
+		
+		If `clean` is `true` (default), duplicate and interior vertices are removed automatically. You can set it to `false` to make the process faster if not needed.
+		
+		If `simplify` is `true`, the geometry can be further simplified to reduce the amount of vertices. Disabled by default.
+	**/
+	@:native("CreateConvexCollision")
+	public overload function createConvexCollision():Void;
+
+	/**		
+		This helper creates a `godot.StaticBody` child node with a `godot.ConvexPolygonShape` collision shape calculated from the mesh geometry. It's mainly used for testing.
+		
+		If `clean` is `true` (default), duplicate and interior vertices are removed automatically. You can set it to `false` to make the process faster if not needed.
+		
+		If `simplify` is `true`, the geometry can be further simplified to reduce the amount of vertices. Disabled by default.
+	**/
+	@:native("CreateConvexCollision")
+	public overload function createConvexCollision(clean:Bool):Void;
+
+	/**		
+		This helper creates a `godot.StaticBody` child node with a `godot.ConvexPolygonShape` collision shape calculated from the mesh geometry. It's mainly used for testing.
+		
+		If `clean` is `true` (default), duplicate and interior vertices are removed automatically. You can set it to `false` to make the process faster if not needed.
+		
+		If `simplify` is `true`, the geometry can be further simplified to reduce the amount of vertices. Disabled by default.
+	**/
+	@:native("CreateConvexCollision")
+	public overload function createConvexCollision(clean:Bool, simplify:Bool):Void;
+	#end
 
 	/**		
 		This helper creates a `godot.MeshInstance` child node with gizmos at every vertex calculated from the mesh geometry. It's mainly used for testing.

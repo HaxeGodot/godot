@@ -71,7 +71,7 @@ extern class ParticlesMaterial extends godot.Material {
 	public var hueVariation:Single;
 
 	/**		
-		Each particle's color will vary along this `godot.GradientTexture`.
+		Each particle's color will vary along this `godot.GradientTexture` over its lifetime (multiplied with `godot.ParticlesMaterial.color`).
 	**/
 	@:native("ColorRamp")
 	public var colorRamp:godot.Texture;
@@ -115,7 +115,7 @@ extern class ParticlesMaterial extends godot.Material {
 	/**		
 		Initial rotation applied to each particle, in degrees.
 		
-		Only applied when `godot.ParticlesMaterial.flagDisableZ` or `godot.ParticlesMaterial.flagRotateY` are `true` or the `godot.SpatialMaterial` being used to draw the particle is using .
+		Only applied when `godot.ParticlesMaterial.flagDisableZ` or `godot.ParticlesMaterial.flagRotateY` are `true` or the `godot.SpatialMaterial` being used to draw the particle is using `godot.SpatialMaterial_BillboardMode.particles`.
 	**/
 	@:native("Angle")
 	public var angle:Single;
@@ -227,7 +227,7 @@ extern class ParticlesMaterial extends godot.Material {
 	/**		
 		Initial angular velocity applied to each particle. Sets the speed of rotation of the particle.
 		
-		Only applied when `godot.ParticlesMaterial.flagDisableZ` or `godot.ParticlesMaterial.flagRotateY` are `true` or the `godot.SpatialMaterial` being used to draw the particle is using .
+		Only applied when `godot.ParticlesMaterial.flagDisableZ` or `godot.ParticlesMaterial.flagRotateY` are `true` or the `godot.SpatialMaterial` being used to draw the particle is using `godot.SpatialMaterial_BillboardMode.particles`.
 	**/
 	@:native("AngularVelocity")
 	public var angularVelocity:Single;
@@ -251,13 +251,13 @@ extern class ParticlesMaterial extends godot.Material {
 	public var gravity:godot.Vector3;
 
 	/**		
-		Amount of `godot.ParticlesMaterial.spread` in Y/Z plane. A value of `1` restricts particles to X/Z plane.
+		Amount of `godot.ParticlesMaterial.spread` along the Y axis.
 	**/
 	@:native("Flatness")
 	public var flatness:Single;
 
 	/**		
-		Each particle's initial direction range from `+spread` to `-spread` degrees. Applied to X/Z plane and Y/Z planes.
+		Each particle's initial direction range from `+spread` to `-spread` degrees.
 	**/
 	@:native("Spread")
 	public var spread:Single;
@@ -287,7 +287,31 @@ extern class ParticlesMaterial extends godot.Material {
 	public var flagAlignY:Bool;
 
 	/**		
-		The number of emission points if `emission_shape` is set to  or .
+		The axis of the ring when using the emitter `godot.ParticlesMaterial_EmissionShapeEnum.ring`.
+	**/
+	@:native("EmissionRingAxis")
+	public var emissionRingAxis:godot.Vector3;
+
+	/**		
+		The height of the ring when using the emitter `godot.ParticlesMaterial_EmissionShapeEnum.ring`.
+	**/
+	@:native("EmissionRingHeight")
+	public var emissionRingHeight:Single;
+
+	/**		
+		The inner radius of the ring when using the emitter `godot.ParticlesMaterial_EmissionShapeEnum.ring`.
+	**/
+	@:native("EmissionRingInnerRadius")
+	public var emissionRingInnerRadius:Single;
+
+	/**		
+		The radius of the ring when using the emitter `godot.ParticlesMaterial_EmissionShapeEnum.ring`.
+	**/
+	@:native("EmissionRingRadius")
+	public var emissionRingRadius:Single;
+
+	/**		
+		The number of emission points if `emission_shape` is set to `godot.ParticlesMaterial_EmissionShapeEnum.points` or `godot.ParticlesMaterial_EmissionShapeEnum.directedPoints`.
 	**/
 	@:native("EmissionPointCount")
 	public var emissionPointCount:Int;
@@ -299,25 +323,25 @@ extern class ParticlesMaterial extends godot.Material {
 	public var emissionColorTexture:godot.Texture;
 
 	/**		
-		Particle velocity and rotation will be set by sampling this texture at the same point as the `godot.ParticlesMaterial.emissionPointTexture`. Used only in . Can be created automatically from mesh or node by selecting "Create Emission Points from Mesh/Node" under the "Particles" tool in the toolbar.
+		Particle velocity and rotation will be set by sampling this texture at the same point as the `godot.ParticlesMaterial.emissionPointTexture`. Used only in `godot.ParticlesMaterial_EmissionShapeEnum.directedPoints`. Can be created automatically from mesh or node by selecting "Create Emission Points from Mesh/Node" under the "Particles" tool in the toolbar.
 	**/
 	@:native("EmissionNormalTexture")
 	public var emissionNormalTexture:godot.Texture;
 
 	/**		
-		Particles will be emitted at positions determined by sampling this texture at a random position. Used with  and . Can be created automatically from mesh or node by selecting "Create Emission Points from Mesh/Node" under the "Particles" tool in the toolbar.
+		Particles will be emitted at positions determined by sampling this texture at a random position. Used with `godot.ParticlesMaterial_EmissionShapeEnum.points` and `godot.ParticlesMaterial_EmissionShapeEnum.directedPoints`. Can be created automatically from mesh or node by selecting "Create Emission Points from Mesh/Node" under the "Particles" tool in the toolbar.
 	**/
 	@:native("EmissionPointTexture")
 	public var emissionPointTexture:godot.Texture;
 
 	/**		
-		The box's extents if `emission_shape` is set to .
+		The box's extents if `emission_shape` is set to `godot.ParticlesMaterial_EmissionShapeEnum.box`.
 	**/
 	@:native("EmissionBoxExtents")
 	public var emissionBoxExtents:godot.Vector3;
 
 	/**		
-		The sphere's radius if `emission_shape` is set to .
+		The sphere's radius if `emission_shape` is set to `godot.ParticlesMaterial_EmissionShapeEnum.sphere`.
 	**/
 	@:native("EmissionSphereRadius")
 	public var emissionSphereRadius:Single;
@@ -474,6 +498,30 @@ extern class ParticlesMaterial extends godot.Material {
 
 	@:native("GetEmissionPointCount")
 	public function getEmissionPointCount():Int;
+
+	@:native("SetEmissionRingRadius")
+	public function setEmissionRingRadius(radius:Single):Void;
+
+	@:native("GetEmissionRingRadius")
+	public function getEmissionRingRadius():Single;
+
+	@:native("SetEmissionRingInnerRadius")
+	public function setEmissionRingInnerRadius(offset:Single):Void;
+
+	@:native("GetEmissionRingInnerRadius")
+	public function getEmissionRingInnerRadius():Single;
+
+	@:native("SetEmissionRingHeight")
+	public function setEmissionRingHeight(height:Single):Void;
+
+	@:native("GetEmissionRingHeight")
+	public function getEmissionRingHeight():Single;
+
+	@:native("SetEmissionRingAxis")
+	public function setEmissionRingAxis(axis:godot.Vector3):Void;
+
+	@:native("GetEmissionRingAxis")
+	public function getEmissionRingAxis():godot.Vector3;
 
 	@:native("SetTrailDivisor")
 	public function setTrailDivisor(divisor:Int):Void;

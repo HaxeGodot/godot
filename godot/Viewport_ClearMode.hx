@@ -16,7 +16,7 @@ extern enum Viewport_ClearMode {
 	Never;
 
 	/**		
-		Clear the render target next frame, then switch to .
+		Clear the render target next frame, then switch to `godot.Viewport_ClearMode.never`.
 	**/
 	OnlyNextFrame;
 }

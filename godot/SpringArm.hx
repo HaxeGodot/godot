@@ -45,7 +45,7 @@ extern class SpringArm extends godot.Spatial {
 	public var shape:godot.Shape;
 
 	/**		
-		The layers against which the collision check shall be done. See [https://docs.godotengine.org/en/3.3/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
+		The layers against which the collision check shall be done. See [https://docs.godotengine.org/en/3.4/tutorials/physics/physics_introduction.html#collision-layers-and-masks](Collision layers and masks) in the documentation for more information.
 	**/
 	@:native("CollisionMask")
 	public var collisionMask:UInt;

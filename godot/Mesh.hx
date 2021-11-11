@@ -68,11 +68,47 @@ extern abstract class Mesh extends godot.Resource {
 	@:native("CreateTrimeshShape")
 	public function createTrimeshShape():godot.Shape;
 
+	#if doc_gen
 	/**		
 		Calculate a `godot.ConvexPolygonShape` from the mesh.
+		
+		If `clean` is `true` (default), duplicate and interior vertices are removed automatically. You can set it to `false` to make the process faster if not needed.
+		
+		If `simplify` is `true`, the geometry can be further simplified to reduce the amount of vertices. Disabled by default.
 	**/
 	@:native("CreateConvexShape")
-	public function createConvexShape():godot.Shape;
+	public function createConvexShape(?clean:Bool, ?simplify:Bool):godot.Shape;
+	#else
+	/**		
+		Calculate a `godot.ConvexPolygonShape` from the mesh.
+		
+		If `clean` is `true` (default), duplicate and interior vertices are removed automatically. You can set it to `false` to make the process faster if not needed.
+		
+		If `simplify` is `true`, the geometry can be further simplified to reduce the amount of vertices. Disabled by default.
+	**/
+	@:native("CreateConvexShape")
+	public overload function createConvexShape():godot.Shape;
+
+	/**		
+		Calculate a `godot.ConvexPolygonShape` from the mesh.
+		
+		If `clean` is `true` (default), duplicate and interior vertices are removed automatically. You can set it to `false` to make the process faster if not needed.
+		
+		If `simplify` is `true`, the geometry can be further simplified to reduce the amount of vertices. Disabled by default.
+	**/
+	@:native("CreateConvexShape")
+	public overload function createConvexShape(clean:Bool):godot.Shape;
+
+	/**		
+		Calculate a `godot.ConvexPolygonShape` from the mesh.
+		
+		If `clean` is `true` (default), duplicate and interior vertices are removed automatically. You can set it to `false` to make the process faster if not needed.
+		
+		If `simplify` is `true`, the geometry can be further simplified to reduce the amount of vertices. Disabled by default.
+	**/
+	@:native("CreateConvexShape")
+	public overload function createConvexShape(clean:Bool, simplify:Bool):godot.Shape;
+	#end
 
 	/**		
 		Calculate an outline mesh at a defined offset (margin) from the original mesh.

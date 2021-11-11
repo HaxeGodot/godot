@@ -24,4 +24,9 @@ extern enum VisualServer_EnvironmentToneMapper {
 		Use the ACES tonemapper.
 	**/
 	Aces;
+
+	/**		
+		Use the ACES Fitted tonemapper.
+	**/
+	AcesFitted;
 }

@@ -49,7 +49,7 @@ extern class Directory extends godot.Reference {
 
 	#if doc_gen
 	/**		
-		Initializes the stream used to list all files and directories using the `godot.Directory.getNext` function, closing the current opened stream if needed. Once the stream has been processed, it should typically be closed with `godot.Directory.listDirEnd`.
+		Initializes the stream used to list all files and directories using the `godot.Directory.getNext` function, closing the currently opened stream if needed. Once the stream has been processed, it should typically be closed with `godot.Directory.listDirEnd`.
 		
 		If `skip_navigational` is `true`, `.` and `..` are filtered out.
 		
@@ -59,7 +59,7 @@ extern class Directory extends godot.Reference {
 	public function listDirBegin(?skipNavigational:Bool, ?skipHidden:Bool):godot.Error;
 	#else
 	/**		
-		Initializes the stream used to list all files and directories using the `godot.Directory.getNext` function, closing the current opened stream if needed. Once the stream has been processed, it should typically be closed with `godot.Directory.listDirEnd`.
+		Initializes the stream used to list all files and directories using the `godot.Directory.getNext` function, closing the currently opened stream if needed. Once the stream has been processed, it should typically be closed with `godot.Directory.listDirEnd`.
 		
 		If `skip_navigational` is `true`, `.` and `..` are filtered out.
 		
@@ -69,7 +69,7 @@ extern class Directory extends godot.Reference {
 	public overload function listDirBegin():godot.Error;
 
 	/**		
-		Initializes the stream used to list all files and directories using the `godot.Directory.getNext` function, closing the current opened stream if needed. Once the stream has been processed, it should typically be closed with `godot.Directory.listDirEnd`.
+		Initializes the stream used to list all files and directories using the `godot.Directory.getNext` function, closing the currently opened stream if needed. Once the stream has been processed, it should typically be closed with `godot.Directory.listDirEnd`.
 		
 		If `skip_navigational` is `true`, `.` and `..` are filtered out.
 		
@@ -79,7 +79,7 @@ extern class Directory extends godot.Reference {
 	public overload function listDirBegin(skipNavigational:Bool):godot.Error;
 
 	/**		
-		Initializes the stream used to list all files and directories using the `godot.Directory.getNext` function, closing the current opened stream if needed. Once the stream has been processed, it should typically be closed with `godot.Directory.listDirEnd`.
+		Initializes the stream used to list all files and directories using the `godot.Directory.getNext` function, closing the currently opened stream if needed. Once the stream has been processed, it should typically be closed with `godot.Directory.listDirEnd`.
 		
 		If `skip_navigational` is `true`, `.` and `..` are filtered out.
 		
@@ -173,7 +173,7 @@ extern class Directory extends godot.Reference {
 		On UNIX desktop systems, returns the available space on the current directory's disk. On other platforms, this information is not available and the method returns 0 or -1.
 	**/
 	@:native("GetSpaceLeft")
-	public function getSpaceLeft():Int;
+	public function getSpaceLeft():cs.types.UInt64;
 
 	/**		
 		Copies the `from` file to the `to` destination. Both arguments should be paths to files, either relative or absolute. If the destination file exists and is not access-protected, it will be overwritten.
@@ -184,7 +184,7 @@ extern class Directory extends godot.Reference {
 	public function copy(from:std.String, to:std.String):godot.Error;
 
 	/**		
-		Renames (move) the `from` file to the `to` destination. Both arguments should be paths to files, either relative or absolute. If the destination file exists and is not access-protected, it will be overwritten.
+		Renames (move) the `from` file or directory to the `to` destination. Both arguments should be paths to files or directories, either relative or absolute. If the destination file or directory exists and is not access-protected, it will be overwritten.
 		
 		Returns one of the `godot.Error` code constants (`OK` on success).
 	**/

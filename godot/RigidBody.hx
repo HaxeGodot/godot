@@ -46,30 +46,30 @@ extern class RigidBody extends godot.PhysicsBody {
 		`body_shape_entered` signal.
 		
 		Emitted when one of this RigidBody's `Shape`s collides with another `PhysicsBody` or `GridMap`'s `Shape`s. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body_id` the `RID` of the other `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`.
+		`body_rid` the `RID` of the other `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`.
 		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
-		`body_shape` the index of the `Shape` of the other `PhysicsBody` or `GridMap` used by the `PhysicsServer`.
-		`local_shape` the index of the `Shape` of this RigidBody used by the `PhysicsServer`.
+		`body_shape_index` the index of the `Shape` of the other `PhysicsBody` or `GridMap` used by the `PhysicsServer`. Get the `CollisionShape` node with `body.shape_owner_get_owner(body_shape_index)`.
+		`local_shape_index` the index of the `Shape` of this RigidBody used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
 		`b`Note:`/b` Bullet physics cannot identify the shape index when using a `ConcavePolygonShape`. Don't use multiple `CollisionShape`s when using a `ConcavePolygonShape` with Bullet physics if you need shape indices.
 	**/
-	public var onBodyShapeEntered(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
-	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
-		return new Signal(this, "body_shape_entered", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	public var onBodyShapeEntered(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
+	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
+		return new Signal(this, "body_shape_entered", Signal.SignalHandlerRIDNodeIntIntVoid.connectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.isSignalConnected);
 	}
 
 	/**
 		`body_shape_exited` signal.
 		
 		Emitted when the collision between one of this RigidBody's `Shape`s and another `PhysicsBody` or `GridMap`'s `Shape`s ends. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body_id` the `RID` of the other `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`. `GridMap`s are detected if the Meshes have `Shape`s.
+		`body_rid` the `RID` of the other `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`. `GridMap`s are detected if the Meshes have `Shape`s.
 		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
-		`body_shape` the index of the `Shape` of the other `PhysicsBody` or `GridMap` used by the `PhysicsServer`.
-		`local_shape` the index of the `Shape` of this RigidBody used by the `PhysicsServer`.
+		`body_shape_index` the index of the `Shape` of the other `PhysicsBody` or `GridMap` used by the `PhysicsServer`. Get the `CollisionShape` node with `body.shape_owner_get_owner(body_shape_index)`.
+		`local_shape_index` the index of the `Shape` of this RigidBody used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
 		`b`Note:`/b` Bullet physics cannot identify the shape index when using a `ConcavePolygonShape`. Don't use multiple `CollisionShape`s when using a `ConcavePolygonShape` with Bullet physics if you need shape indices.
 	**/
-	public var onBodyShapeExited(get, never):Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void>;
-	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyId:Int, body:Node, bodyShape:Int, localShape:Int)->Void> {
-		return new Signal(this, "body_shape_exited", Signal.SignalHandlerIntNodeIntIntVoid.connectSignal, Signal.SignalHandlerIntNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerIntNodeIntIntVoid.isSignalConnected);
+	public var onBodyShapeExited(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
+	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
+		return new Signal(this, "body_shape_exited", Signal.SignalHandlerRIDNodeIntIntVoid.connectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.disconnectSignal, Signal.SignalHandlerRIDNodeIntIntVoid.isSignalConnected);
 	}
 
 	/**
@@ -150,7 +150,7 @@ extern class RigidBody extends godot.PhysicsBody {
 	/**		
 		If `true`, the body can enter sleep mode when there is no movement. See `godot.RigidBody.sleeping`.
 		
-		Note: A RigidBody3D will never enter sleep mode automatically if its `godot.RigidBody.mode` is . It can still be put to sleep manually by setting its `godot.RigidBody.sleeping` property to `true`.
+		Note: A RigidBody3D will never enter sleep mode automatically if its `godot.RigidBody.mode` is `godot.RigidBody_ModeEnum.character`. It can still be put to sleep manually by setting its `godot.RigidBody.sleeping` property to `true`.
 	**/
 	@:native("CanSleep")
 	public var canSleep:Bool;

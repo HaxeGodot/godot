@@ -356,9 +356,9 @@ extern enum JoystickList {
 	Button16;
 
 	/**		
-		Gamepad SDL miscellaneous button.
+		Gamepad SDL guide button.
 	**/
-	Misc1;
+	Guide;
 
 	/**		
 		Gamepad button 17.
@@ -366,9 +366,9 @@ extern enum JoystickList {
 	Button17;
 
 	/**		
-		Gamepad SDL paddle 1 button.
+		Gamepad SDL miscellaneous button.
 	**/
-	Paddle1;
+	Misc1;
 
 	/**		
 		Gamepad button 18.
@@ -376,9 +376,9 @@ extern enum JoystickList {
 	Button18;
 
 	/**		
-		Gamepad SDL paddle 2 button.
+		Gamepad SDL paddle 1 button.
 	**/
-	Paddle2;
+	Paddle1;
 
 	/**		
 		Gamepad button 19.
@@ -386,9 +386,9 @@ extern enum JoystickList {
 	Button19;
 
 	/**		
-		Gamepad SDL paddle 3 button.
+		Gamepad SDL paddle 2 button.
 	**/
-	Paddle3;
+	Paddle2;
 
 	/**		
 		Gamepad button 20.
@@ -396,14 +396,24 @@ extern enum JoystickList {
 	Button20;
 
 	/**		
-		Gamepad SDL paddle 4 button.
+		Gamepad SDL paddle 3 button.
 	**/
-	Paddle4;
+	Paddle3;
 
 	/**		
 		Gamepad button 21.
 	**/
 	Button21;
+
+	/**		
+		Gamepad SDL paddle 4 button.
+	**/
+	Paddle4;
+
+	/**		
+		Gamepad button 22.
+	**/
+	Button22;
 
 	/**		
 		Gamepad SDL touchpad button.

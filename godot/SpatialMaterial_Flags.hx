@@ -41,7 +41,7 @@ extern enum SpatialMaterial_Flags {
 	FixedSize;
 
 	/**		
-		Shader will keep the scale set for the mesh. Otherwise the scale is lost when billboarding. Only applies when `godot.SpatialMaterial.paramsBillboardMode` is .
+		Shader will keep the scale set for the mesh. Otherwise the scale is lost when billboarding. Only applies when `godot.SpatialMaterial.paramsBillboardMode` is `godot.SpatialMaterial_BillboardMode.enabled`.
 	**/
 	BillboardKeepScale;
 

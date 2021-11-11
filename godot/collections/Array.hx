@@ -52,20 +52,8 @@ extern class Array_ implements cs.system.collections.IList implements cs.system.
 		return new godot.GodotArrayIterator(this);
 	}
 
-	@:native("IsSynchronized")
-	public var isSynchronized(default, never):Bool;
-
-	@:native("SyncRoot")
-	public var syncRoot(default, never):Dynamic;
-
 	@:native("Count")
 	public var count(default, never):Int;
-
-	@:native("IsFixedSize")
-	public var isFixedSize(default, never):Bool;
-
-	@:native("IsReadOnly")
-	public var isReadOnly(default, never):Bool;
 
 	@:native("new")
 	public overload function new():Void;

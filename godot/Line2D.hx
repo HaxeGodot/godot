@@ -16,6 +16,8 @@ Note: By default, Godot can only draw up to 4,096 polygon points at a time. To i
 extern class Line2D extends godot.Node2D {
 	/**		
 		If `true`, the line's border will be anti-aliased.
+		
+		Note: Line2D is not accelerated by batching when being anti-aliased.
 	**/
 	@:native("Antialiased")
 	public var antialiased:Bool;
@@ -27,7 +29,7 @@ extern class Line2D extends godot.Node2D {
 	public var roundPrecision:Int;
 
 	/**		
-		The direction difference in radians between vector points. This value is only used if `joint mode` is set to .
+		The direction difference in radians between vector points. This value is only used if `joint mode` is set to `godot.Line2D_LineJointMode.sharp`.
 	**/
 	@:native("SharpLimit")
 	public var sharpLimit:Single;

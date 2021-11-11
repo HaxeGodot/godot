@@ -19,7 +19,7 @@ extern class VisualShaderNodeCubeMap extends godot.VisualShaderNode {
 	public var textureType:godot.VisualShaderNodeCubeMap_TextureTypeEnum;
 
 	/**		
-		The `godot.CubeMap` texture to sample when using  as `godot.VisualShaderNodeCubeMap.source`.
+		The `godot.CubeMap` texture to sample when using `godot.VisualShaderNodeCubeMap_SourceEnum.texture` as `godot.VisualShaderNodeCubeMap.source`.
 	**/
 	@:native("CubeMap")
 	public var cubeMap:godot.CubeMap;

@@ -51,7 +51,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 
 	#if doc_gen
 	/**		
-		Re-initialize this peer connection, closing any previously active connection, and going back to state . A dictionary of `options` can be passed to configure the peer connection.
+		Re-initialize this peer connection, closing any previously active connection, and going back to state `godot.WebRTCPeerConnection_ConnectionState.new`. A dictionary of `options` can be passed to configure the peer connection.
 		
 		Valid `options` are:
 		
@@ -78,7 +78,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 	public function initialize(?configuration:godot.collections.Dictionary):godot.Error;
 	#else
 	/**		
-		Re-initialize this peer connection, closing any previously active connection, and going back to state . A dictionary of `options` can be passed to configure the peer connection.
+		Re-initialize this peer connection, closing any previously active connection, and going back to state `godot.WebRTCPeerConnection_ConnectionState.new`. A dictionary of `options` can be passed to configure the peer connection.
 		
 		Valid `options` are:
 		
@@ -105,7 +105,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 	public overload function initialize():godot.Error;
 
 	/**		
-		Re-initialize this peer connection, closing any previously active connection, and going back to state . A dictionary of `options` can be passed to configure the peer connection.
+		Re-initialize this peer connection, closing any previously active connection, and going back to state `godot.WebRTCPeerConnection_ConnectionState.new`. A dictionary of `options` can be passed to configure the peer connection.
 		
 		Valid `options` are:
 		
@@ -134,7 +134,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 
 	#if doc_gen
 	/**		
-		Returns a new `godot.WebRTCDataChannel` (or `null` on failure) with given `label` and optionally configured via the `options` dictionary. This method can only be called when the connection is in state .
+		Returns a new `godot.WebRTCDataChannel` (or `null` on failure) with given `label` and optionally configured via the `options` dictionary. This method can only be called when the connection is in state `godot.WebRTCPeerConnection_ConnectionState.new`.
 		
 		There are two ways to create a working data channel: either call `godot.WebRTCPeerConnection.createDataChannel` on only one of the peer and listen to `data_channel_received` on the other, or call `godot.WebRTCPeerConnection.createDataChannel` on both peers, with the same values, and the `negotiated` option set to `true`.
 		
@@ -143,7 +143,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 		```
 		
 		{
-		"negotiated": true, # When set to true (default off), means the channel is negotiated out of band. "id" must be set too. data_channel_received will not be called.
+		"negotiated": true, # When set to true (default off), means the channel is negotiated out of band. "id" must be set too. "data_channel_received" will not be called.
 		"id": 1, # When "negotiated" is true this value must also be set to the same value on both peer.
 		
 		# Only one of maxRetransmits and maxPacketLifeTime can be specified, not both. They make the channel unreliable (but also better at real time).
@@ -164,7 +164,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 	public function createDataChannel(label:std.String, ?options:godot.collections.Dictionary):godot.WebRTCDataChannel;
 	#else
 	/**		
-		Returns a new `godot.WebRTCDataChannel` (or `null` on failure) with given `label` and optionally configured via the `options` dictionary. This method can only be called when the connection is in state .
+		Returns a new `godot.WebRTCDataChannel` (or `null` on failure) with given `label` and optionally configured via the `options` dictionary. This method can only be called when the connection is in state `godot.WebRTCPeerConnection_ConnectionState.new`.
 		
 		There are two ways to create a working data channel: either call `godot.WebRTCPeerConnection.createDataChannel` on only one of the peer and listen to `data_channel_received` on the other, or call `godot.WebRTCPeerConnection.createDataChannel` on both peers, with the same values, and the `negotiated` option set to `true`.
 		
@@ -173,7 +173,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 		```
 		
 		{
-		"negotiated": true, # When set to true (default off), means the channel is negotiated out of band. "id" must be set too. data_channel_received will not be called.
+		"negotiated": true, # When set to true (default off), means the channel is negotiated out of band. "id" must be set too. "data_channel_received" will not be called.
 		"id": 1, # When "negotiated" is true this value must also be set to the same value on both peer.
 		
 		# Only one of maxRetransmits and maxPacketLifeTime can be specified, not both. They make the channel unreliable (but also better at real time).
@@ -194,7 +194,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 	public overload function createDataChannel(label:std.String):godot.WebRTCDataChannel;
 
 	/**		
-		Returns a new `godot.WebRTCDataChannel` (or `null` on failure) with given `label` and optionally configured via the `options` dictionary. This method can only be called when the connection is in state .
+		Returns a new `godot.WebRTCDataChannel` (or `null` on failure) with given `label` and optionally configured via the `options` dictionary. This method can only be called when the connection is in state `godot.WebRTCPeerConnection_ConnectionState.new`.
 		
 		There are two ways to create a working data channel: either call `godot.WebRTCPeerConnection.createDataChannel` on only one of the peer and listen to `data_channel_received` on the other, or call `godot.WebRTCPeerConnection.createDataChannel` on both peers, with the same values, and the `negotiated` option set to `true`.
 		
@@ -203,7 +203,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 		```
 		
 		{
-		"negotiated": true, # When set to true (default off), means the channel is negotiated out of band. "id" must be set too. data_channel_received will not be called.
+		"negotiated": true, # When set to true (default off), means the channel is negotiated out of band. "id" must be set too. "data_channel_received" will not be called.
 		"id": 1, # When "negotiated" is true this value must also be set to the same value on both peer.
 		
 		# Only one of maxRetransmits and maxPacketLifeTime can be specified, not both. They make the channel unreliable (but also better at real time).
@@ -227,7 +227,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 	/**		
 		Creates a new SDP offer to start a WebRTC connection with a remote peer. At least one `godot.WebRTCDataChannel` must have been created before calling this method.
 		
-		If this functions returns , `session_description_created` will be called when the session is ready to be sent.
+		If this functions returns `OK`, `session_description_created` will be called when the session is ready to be sent.
 	**/
 	@:native("CreateOffer")
 	public function createOffer():godot.Error;
@@ -235,7 +235,7 @@ extern class WebRTCPeerConnection extends godot.Reference {
 	/**		
 		Sets the SDP description of the local peer. This should be called in response to `session_description_created`.
 		
-		After calling this function the peer will start emitting `ice_candidate_created` (unless an `godot.Error` different from  is returned).
+		After calling this function the peer will start emitting `ice_candidate_created` (unless an `godot.Error` different from `OK` is returned).
 	**/
 	@:native("SetLocalDescription")
 	public function setLocalDescription(type:std.String, sdp:std.String):godot.Error;
@@ -263,7 +263,9 @@ extern class WebRTCPeerConnection extends godot.Reference {
 	public function poll():godot.Error;
 
 	/**		
-		Close the peer connection and all data channels associated with it. Note, you cannot reuse this object for a new connection unless you call `godot.WebRTCPeerConnection.initialize`.
+		Close the peer connection and all data channels associated with it.
+		
+		Note: You cannot reuse this object for a new connection unless you call `godot.WebRTCPeerConnection.initialize`.
 	**/
 	@:native("Close")
 	public function close():Void;

@@ -17,6 +17,12 @@ Kinematic characters: KinematicBody also has an API for moving objects (the `god
 @:autoBuild(godot.Godot.buildUserClass())
 extern class KinematicBody extends godot.PhysicsBody {
 	/**		
+		If `true`, the body's movement will be synchronized to the physics frame. This is useful when animating movement via `godot.AnimationPlayer`, for example on moving platforms. Do not use together with `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndCollide` functions.
+	**/
+	@:native("Motion__syncToPhysics")
+	public var motion__syncToPhysics:Bool;
+
+	/**		
 		Extra margin used for collision recovery in motion functions (see `godot.KinematicBody.moveAndCollide`, `godot.KinematicBody.moveAndSlide`, `godot.KinematicBody.moveAndSlideWithSnap`).
 		
 		If the body is at least this close to another body, it will consider them to be colliding and will be pushed away before performing the actual motion.
@@ -29,22 +35,40 @@ extern class KinematicBody extends godot.PhysicsBody {
 	public var collision__safeMargin:Single;
 
 	/**		
-		Lock the body's Z axis movement.
+		Lock the body's Z axis movement. Deprecated alias for `godot.KinematicBody.axisLockMotionZ`.
 	**/
 	@:native("MoveLockZ")
 	public var moveLockZ:Bool;
 
 	/**		
-		Lock the body's Y axis movement.
+		Lock the body's Y axis movement. Deprecated alias for `godot.KinematicBody.axisLockMotionY`.
 	**/
 	@:native("MoveLockY")
 	public var moveLockY:Bool;
 
 	/**		
-		Lock the body's X axis movement.
+		Lock the body's X axis movement. Deprecated alias for `godot.KinematicBody.axisLockMotionX`.
 	**/
 	@:native("MoveLockX")
 	public var moveLockX:Bool;
+
+	/**		
+		Lock the body's Z axis movement.
+	**/
+	@:native("AxisLockMotionZ")
+	public var axisLockMotionZ:Bool;
+
+	/**		
+		Lock the body's Y axis movement.
+	**/
+	@:native("AxisLockMotionY")
+	public var axisLockMotionY:Bool;
+
+	/**		
+		Lock the body's X axis movement.
+	**/
+	@:native("AxisLockMotionX")
+	public var axisLockMotionX:Bool;
 
 	@:native("new")
 	public function new():Void;
@@ -111,6 +135,8 @@ extern class KinematicBody extends godot.PhysicsBody {
 		
 		Returns the `linear_velocity` vector, rotated and/or scaled if a slide collision occurred. To get detailed information about collisions that occurred, use `godot.KinematicBody.getSlideCollision`.
 		
+		When the body touches a moving platform, the platform's velocity is automatically added to the body motion. If a collision occurs due to the platform's motion, it will always be first in the slide collisions.
+		
 		@param upDirection If the parameter is null, then the default value is new Vector3(0, 0, 0)
 	**/
 	@:native("MoveAndSlide")
@@ -134,6 +160,8 @@ extern class KinematicBody extends godot.PhysicsBody {
 		If `infinite_inertia` is `true`, body will be able to push `godot.RigidBody` nodes, but it won't also detect any collisions with them. If `false`, it will interact with `godot.RigidBody` nodes like with `godot.StaticBody`.
 		
 		Returns the `linear_velocity` vector, rotated and/or scaled if a slide collision occurred. To get detailed information about collisions that occurred, use `godot.KinematicBody.getSlideCollision`.
+		
+		When the body touches a moving platform, the platform's velocity is automatically added to the body motion. If a collision occurs due to the platform's motion, it will always be first in the slide collisions.
 		
 		@param upDirection If the parameter is null, then the default value is new Vector3(0, 0, 0)
 	**/
@@ -159,6 +187,8 @@ extern class KinematicBody extends godot.PhysicsBody {
 		
 		Returns the `linear_velocity` vector, rotated and/or scaled if a slide collision occurred. To get detailed information about collisions that occurred, use `godot.KinematicBody.getSlideCollision`.
 		
+		When the body touches a moving platform, the platform's velocity is automatically added to the body motion. If a collision occurs due to the platform's motion, it will always be first in the slide collisions.
+		
 		@param upDirection If the parameter is null, then the default value is new Vector3(0, 0, 0)
 	**/
 	@:native("MoveAndSlide")
@@ -182,6 +212,8 @@ extern class KinematicBody extends godot.PhysicsBody {
 		If `infinite_inertia` is `true`, body will be able to push `godot.RigidBody` nodes, but it won't also detect any collisions with them. If `false`, it will interact with `godot.RigidBody` nodes like with `godot.StaticBody`.
 		
 		Returns the `linear_velocity` vector, rotated and/or scaled if a slide collision occurred. To get detailed information about collisions that occurred, use `godot.KinematicBody.getSlideCollision`.
+		
+		When the body touches a moving platform, the platform's velocity is automatically added to the body motion. If a collision occurs due to the platform's motion, it will always be first in the slide collisions.
 		
 		@param upDirection If the parameter is null, then the default value is new Vector3(0, 0, 0)
 	**/
@@ -207,6 +239,8 @@ extern class KinematicBody extends godot.PhysicsBody {
 		
 		Returns the `linear_velocity` vector, rotated and/or scaled if a slide collision occurred. To get detailed information about collisions that occurred, use `godot.KinematicBody.getSlideCollision`.
 		
+		When the body touches a moving platform, the platform's velocity is automatically added to the body motion. If a collision occurs due to the platform's motion, it will always be first in the slide collisions.
+		
 		@param upDirection If the parameter is null, then the default value is new Vector3(0, 0, 0)
 	**/
 	@:native("MoveAndSlide")
@@ -231,6 +265,8 @@ extern class KinematicBody extends godot.PhysicsBody {
 		
 		Returns the `linear_velocity` vector, rotated and/or scaled if a slide collision occurred. To get detailed information about collisions that occurred, use `godot.KinematicBody.getSlideCollision`.
 		
+		When the body touches a moving platform, the platform's velocity is automatically added to the body motion. If a collision occurs due to the platform's motion, it will always be first in the slide collisions.
+		
 		@param upDirection If the parameter is null, then the default value is new Vector3(0, 0, 0)
 	**/
 	@:native("MoveAndSlide")
@@ -254,6 +290,8 @@ extern class KinematicBody extends godot.PhysicsBody {
 		If `infinite_inertia` is `true`, body will be able to push `godot.RigidBody` nodes, but it won't also detect any collisions with them. If `false`, it will interact with `godot.RigidBody` nodes like with `godot.StaticBody`.
 		
 		Returns the `linear_velocity` vector, rotated and/or scaled if a slide collision occurred. To get detailed information about collisions that occurred, use `godot.KinematicBody.getSlideCollision`.
+		
+		When the body touches a moving platform, the platform's velocity is automatically added to the body motion. If a collision occurs due to the platform's motion, it will always be first in the slide collisions.
 		
 		@param upDirection If the parameter is null, then the default value is new Vector3(0, 0, 0)
 	**/
@@ -354,19 +392,19 @@ extern class KinematicBody extends godot.PhysicsBody {
 	#end
 
 	/**		
-		Returns `true` if the body is on the floor. Only updates when calling `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap`.
+		Returns `true` if the body collided with the floor on the last call of `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap`. Otherwise, returns `false`.
 	**/
 	@:native("IsOnFloor")
 	public function isOnFloor():Bool;
 
 	/**		
-		Returns `true` if the body is on the ceiling. Only updates when calling `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap`.
+		Returns `true` if the body collided with the ceiling on the last call of `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap`. Otherwise, returns `false`.
 	**/
 	@:native("IsOnCeiling")
 	public function isOnCeiling():Bool;
 
 	/**		
-		Returns `true` if the body is on a wall. Only updates when calling `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap`.
+		Returns `true` if the body collided with a wall on the last call of `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap`. Otherwise, returns `false`.
 	**/
 	@:native("IsOnWall")
 	public function isOnWall():Bool;
@@ -376,6 +414,32 @@ extern class KinematicBody extends godot.PhysicsBody {
 	**/
 	@:native("GetFloorNormal")
 	public function getFloorNormal():godot.Vector3;
+
+	#if doc_gen
+	/**		
+		Returns the floor's collision angle at the last collision point according to `up_direction`, which is `Vector3.UP` by default. This value is always positive and only valid after calling `godot.KinematicBody.moveAndSlide` and when `godot.KinematicBody.isOnFloor` returns `true`.
+		
+		@param upDirection If the parameter is null, then the default value is new Vector3(0, 1, 0)
+	**/
+	@:native("GetFloorAngle")
+	public function getFloorAngle(?upDirection:Null<godot.Vector3>):Single;
+	#else
+	/**		
+		Returns the floor's collision angle at the last collision point according to `up_direction`, which is `Vector3.UP` by default. This value is always positive and only valid after calling `godot.KinematicBody.moveAndSlide` and when `godot.KinematicBody.isOnFloor` returns `true`.
+		
+		@param upDirection If the parameter is null, then the default value is new Vector3(0, 1, 0)
+	**/
+	@:native("GetFloorAngle")
+	public overload function getFloorAngle():Single;
+
+	/**		
+		Returns the floor's collision angle at the last collision point according to `up_direction`, which is `Vector3.UP` by default. This value is always positive and only valid after calling `godot.KinematicBody.moveAndSlide` and when `godot.KinematicBody.isOnFloor` returns `true`.
+		
+		@param upDirection If the parameter is null, then the default value is new Vector3(0, 1, 0)
+	**/
+	@:native("GetFloorAngle")
+	public overload function getFloorAngle(upDirection:Nullable1<godot.Vector3>):Single;
+	#end
 
 	/**		
 		Returns the linear velocity of the floor at the last collision point. Only valid after calling `godot.KinematicBody.moveAndSlide` or `godot.KinematicBody.moveAndSlideWithSnap` and when `godot.KinematicBody.isOnFloor` returns `true`.
@@ -412,4 +476,16 @@ extern class KinematicBody extends godot.PhysicsBody {
 	**/
 	@:native("GetSlideCollision")
 	public function getSlideCollision(slideIdx:Int):godot.KinematicCollision;
+
+	/**		
+		Returns a `godot.KinematicCollision`, which contains information about the latest collision that occurred during the last call to `godot.KinematicBody.moveAndSlide`.
+	**/
+	@:native("GetLastSlideCollision")
+	public function getLastSlideCollision():godot.KinematicCollision;
+
+	@:native("SetSyncToPhysics")
+	public function setSyncToPhysics(enable:Bool):Void;
+
+	@:native("IsSyncToPhysicsEnabled")
+	public function isSyncToPhysicsEnabled():Bool;
 }

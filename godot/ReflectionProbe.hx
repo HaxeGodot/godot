@@ -10,6 +10,8 @@ Capture its surroundings as a dual paraboloid image, and stores versions of it w
 The `godot.ReflectionProbe` is used to create high-quality reflections at the cost of performance. It can be combined with `godot.GIProbe`s and Screen Space Reflections to achieve high quality reflections. `godot.ReflectionProbe`s render all objects within their `godot.ReflectionProbe.cullMask`, so updating them can be quite expensive. It is best to update them once with the important static objects and then leave them.
 
 Note: By default Godot will only render 16 reflection probes. If you need more, increase the number of atlas subdivisions. This setting can be found in .
+
+Note: The GLES2 backend will only display two reflection probes at the same time for a single mesh. If possible, split up large meshes that span over multiple reflection probes into smaller ones.
 **/
 @:libType
 @:csNative
@@ -47,7 +49,7 @@ extern class ReflectionProbe extends godot.VisualInstance {
 	public var cullMask:UInt;
 
 	/**		
-		If `true`, computes shadows in the reflection probe. This makes the reflection probe slower to render; you may want to disable this if using the  `godot.ReflectionProbe.updateMode`.
+		If `true`, computes shadows in the reflection probe. This makes the reflection probe slower to render; you may want to disable this if using the `godot.ReflectionProbe_UpdateModeEnum.always` `godot.ReflectionProbe.updateMode`.
 	**/
 	@:native("EnableShadows")
 	public var enableShadows:Bool;
@@ -83,7 +85,7 @@ extern class ReflectionProbe extends godot.VisualInstance {
 	public var intensity:Single;
 
 	/**		
-		Sets how frequently the probe is updated. Can be  or .
+		Sets how frequently the probe is updated. Can be `godot.ReflectionProbe_UpdateModeEnum.once` or `godot.ReflectionProbe_UpdateModeEnum.always`.
 	**/
 	@:native("UpdateMode")
 	public var updateMode:godot.ReflectionProbe_UpdateModeEnum;

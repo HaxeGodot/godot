@@ -104,7 +104,7 @@ extern class Animation extends godot.Resource {
 	public function trackGetPath(trackIdx:Int):godot.NodePath;
 
 	/**		
-		Sets the path of a track. Paths must be valid scene-tree paths to a node, and must be specified starting from the parent node of the node that will reproduce the animation. Tracks that control properties or bones must append their name after the path, separated by `":"`.
+		Sets the path of a track. Paths must be valid scene-tree paths to a node and must be specified starting from the parent node of the node that will reproduce the animation. Tracks that control properties or bones must append their name after the path, separated by `":"`.
 		
 		For example, `"character/skeleton:ankle"` or `"character/mesh:transform/local"`.
 	**/

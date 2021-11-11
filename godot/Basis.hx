@@ -16,7 +16,7 @@ Can also be accessed as array of 3D vectors. These vectors are normally
 orthogonal to each other, but are not necessarily normalized (due to scaling).
 
 For more information, read this documentation article:
-https://docs.godotengine.org/en/3.3/tutorials/math/matrices_and_transforms.html
+https://docs.godotengine.org/en/3.4/tutorials/math/matrices_and_transforms.html
 **/
 #if doc_gen
 @:struct
@@ -34,10 +34,10 @@ extern abstract Basis(Basis_) from Basis_ to Basis_ {
 	/**		
 		Constructs a pure rotation basis matrix from the given quaternion.
 		
-		@param quat The quaternion to create the basis from.
+		@param quaternion The quaternion to create the basis from.
 	**/
-	public overload inline function new(quat:godot.Quat) {
-		this = new Basis_(quat);
+	public overload inline function new(quaternion:godot.Quat) {
+		this = new Basis_(quaternion);
 	}
 	#end
 
@@ -227,6 +227,14 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 	@:native("Row0")
 	public var row0:godot.Vector3;
 
+	/**		
+		Returns the `godot.Basis`'s rotation in the form of a
+		`godot.Basis.quat`. See `godot.Basis.getEuler` if you
+		need Euler angles, but keep in mind quaternions should generally
+		be preferred to Euler angles.
+		
+		@returns The basis rotation.
+	**/
 	@:native("RotationQuat")
 	public function rotationQuat():godot.Quat;
 
@@ -252,7 +260,7 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 		Consider using the `godot.Basis.quat` method instead, which
 		returns a `godot.Quat` quaternion instead of Euler angles.
 		
-		@returns A Vector3 representing the basis rotation in Euler angles.
+		@returns A `godot.Vector3` representing the basis rotation in Euler angles.
 	**/
 	@:native("GetEuler")
 	public function getEuler():godot.Vector3;
@@ -261,7 +269,7 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 		Get rows by index. Rows are not very useful for user code,
 		but are more efficient for some internal calculations.
 		
-		@param index Which row.
+		@param index Which row.@throws cs.system.IndexOutOfRangeException
 		@returns One of `Row0`, `Row1`, or `Row2`.
 	**/
 	@:native("GetRow")
@@ -272,7 +280,7 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 		but are more efficient for some internal calculations.
 		
 		@param index Which row.
-		@param value The vector to set the row to.
+		@param value The vector to set the row to.@throws cs.system.IndexOutOfRangeException
 	**/
 	@:native("SetRow")
 	public function setRow(index:Int, value:godot.Vector3):Void;
@@ -404,7 +412,7 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 
 	/**		
 		Returns a vector transformed (multiplied) by the basis matrix.
-		
+		@see `godot.Basis.xformInv`
 		@param v A vector to transform.
 		@returns The transformed vector.
 	**/
@@ -416,7 +424,7 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 		
 		Note: This results in a multiplication by the inverse of the
 		basis matrix only if it represents a rotation-reflection.
-		
+		@see `godot.Basis.xform`
 		@param v A vector to inversely transform.
 		@returns The inversely transformed vector.
 	**/
@@ -436,10 +444,10 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 	/**		
 		Constructs a pure rotation basis matrix from the given quaternion.
 		
-		@param quat The quaternion to create the basis from.
+		@param quaternion The quaternion to create the basis from.
 	**/
 	@:native("new")
-	public overload function new(quat:godot.Quat):Void;
+	public overload function new(quaternion:godot.Quat):Void;
 
 	/**		
 		Constructs a pure rotation basis matrix from the given Euler angles
@@ -475,18 +483,28 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 	public overload function new(column0:godot.Vector3, column1:godot.Vector3, column2:godot.Vector3):Void;
 
 	/**		
-		Returns true if this basis and `other` are approximately equal, by running
-		`godot.Vector3.isEqualApprox` on each component.
+		Returns `true` if this basis and `other` are approximately equal,
+		by running `godot.Vector3.isEqualApprox` on each component.
 		
 		@param other The other basis to compare.
-		@returns Whether or not the matrices are approximately equal.
+		@returns Whether or not the bases are approximately equal.
 	**/
 	@:native("IsEqualApprox")
 	public function isEqualApprox(other:godot.Basis):Bool;
 
+	/**		
+		Converts this `godot.Basis` to a string.
+		
+		@returns A string representation of this basis.
+	**/
 	@:native("ToString")
 	public overload function toString():std.String;
 
+	/**		
+		Converts this `godot.Basis` to a string with the given `format`.
+		
+		@returns A string representation of this basis.
+	**/
 	@:native("ToString")
 	public overload function toString(format:std.String):std.String;
 }

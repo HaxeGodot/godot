@@ -9,9 +9,6 @@ import cs.system.*;
 @:native("Godot.Collections.Dictionary`2")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Dictionary_2<T0, T1> implements cs.system.collections.generic.IDictionary_2<T0, T1> implements cs.system.collections.generic.ICollection_1<cs.system.collections.generic.KeyValuePair_2<T0, T1>> implements cs.system.collections.generic.IEnumerable_1<cs.system.collections.generic.KeyValuePair_2<T0, T1>> implements cs.system.collections.IEnumerable {
-	@:native("IsReadOnly")
-	public var isReadOnly(default, never):Bool;
-
 	@:native("Count")
 	public var count(default, never):Int;
 
@@ -41,32 +38,23 @@ extern class Dictionary_2<T0, T1> implements cs.system.collections.generic.IDict
 	public overload function duplicate(deep:Bool):godot.collections.Dictionary_2<T0, T1>;
 	#end
 
-	@:native("Add")
-	public overload function add(key:T0, value:T1):Void;
+	@:native("Add") @:noCompletion @:skipReflection
+	public function add(key:T0, value:T1):Void;
 
 	@:native("ContainsKey")
 	public function containsKey(key:T0):Bool;
 
-	@:native("Remove")
-	public overload function remove(key:T0):Bool;
+	@:native("Remove") @:noCompletion @:skipReflection
+	public function remove(key:T0):Bool;
 
 	@:native("TryGetValue")
 	public function tryGetValue(key:T0, value:cs.Out<T1>):Bool;
 
-	@:native("Add")
-	public overload function add(item:cs.system.collections.generic.KeyValuePair_2<T0, T1>):Void;
-
 	@:native("Clear")
 	public function clear():Void;
 
-	@:native("Contains")
-	public function contains(item:cs.system.collections.generic.KeyValuePair_2<T0, T1>):Bool;
-
 	@:native("CopyTo")
 	public function copyTo(array:HaxeArray<cs.system.collections.generic.KeyValuePair_2<T0, T1>>, arrayIndex:Int):Void;
-
-	@:native("Remove")
-	public overload function remove(item:cs.system.collections.generic.KeyValuePair_2<T0, T1>):Bool;
 
 	@:native("GetEnumerator") @:noCompletion @:skipReflection
 	public function getEnumerator():cs.system.collections.generic.IEnumerator_1<cs.system.collections.generic.KeyValuePair_2<T0, T1>>;

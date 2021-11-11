@@ -11,7 +11,7 @@ extern enum DirectionalLight_ShadowMode {
 	Orthogonal;
 
 	/**		
-		Splits the view frustum in 2 areas, each with its own shadow map. This shadow mode is a compromise between  and  in terms of performance.
+		Splits the view frustum in 2 areas, each with its own shadow map. This shadow mode is a compromise between `godot.DirectionalLight_ShadowMode.orthogonal` and `godot.DirectionalLight_ShadowMode.parallel4Splits` in terms of performance.
 	**/
 	Parallel2Splits;
 

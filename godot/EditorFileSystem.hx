@@ -97,7 +97,7 @@ extern abstract class EditorFileSystem extends godot.Node {
 	public function getFilesystemPath(path:std.String):godot.EditorFileSystemDirectory;
 
 	/**		
-		Gets the type of the file, given the full path.
+		Returns the resource type of the file, given the full path. This returns a string such as `"Resource"` or `"GDScript"`, not a file extension such as `".gd"`.
 	**/
 	@:native("GetFileType")
 	public function getFileType(path:std.String):std.String;

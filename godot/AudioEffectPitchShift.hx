@@ -12,14 +12,20 @@ Allows modulation of pitch independently of tempo. All frequencies can be increa
 @:native("Godot.AudioEffectPitchShift")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class AudioEffectPitchShift extends godot.AudioEffect {
+	/**		
+		The size of the [https://en.wikipedia.org/wiki/Fast_Fourier_transform](Fast Fourier transform) buffer. Higher values smooth out the effect over time, but have greater latency. The effects of this higher latency are especially noticeable on sounds that have sudden amplitude changes.
+	**/
 	@:native("FftSize")
 	public var fftSize:godot.AudioEffectPitchShift_FFT_Size;
 
+	/**		
+		The oversampling factor to use. Higher values result in better quality, but are more demanding on the CPU and may cause audio cracking if the CPU can't keep up.
+	**/
 	@:native("Oversampling")
 	public var oversampling:Int;
 
 	/**		
-		Pitch value. Can range from 0 (-1 octave) to 16 (+16 octaves).
+		The pitch scale to use. `1.0` is the default pitch and plays sounds unaltered. `godot.AudioEffectPitchShift.pitchScale` can range from `0.0` (infinitely low pitch, inaudible) to `16` (16 times higher than the initial pitch).
 	**/
 	@:native("PitchScale")
 	public var pitchScale:Single;

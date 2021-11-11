@@ -30,7 +30,7 @@ extern class VisualScriptCustomNode extends godot.VisualScriptNode {
 	public static var STEP_NO_ADVANCE_BIT(default, never):Int;
 
 	/**		
-		Hint used by `godot.VisualScriptCustomNode._Step` to tell that control should return back, either hitting a previous  or exiting the function.
+		Hint used by `godot.VisualScriptCustomNode._Step` to tell that control should return back, either hitting a previous `godot.VisualScriptCustomNode.stepPushStackBit` or exiting the function.
 	**/
 	@:native("StepGoBackBit")
 	public static var STEP_GO_BACK_BIT(default, never):Int;
@@ -65,6 +65,18 @@ extern class VisualScriptCustomNode extends godot.VisualScriptNode {
 	public function _GetInputValuePortCount():Int;
 
 	/**		
+		Return the specified input port's hint. See the `godot.PropertyHint` hints.
+	**/
+	@:native("_GetInputValuePortHint")
+	public function _GetInputValuePortHint(idx:Int):Int;
+
+	/**		
+		Return the specified input port's hint string.
+	**/
+	@:native("_GetInputValuePortHintString")
+	public function _GetInputValuePortHintString(idx:Int):std.String;
+
+	/**		
 		Return the specified input port's name.
 	**/
 	@:native("_GetInputValuePortName")
@@ -95,13 +107,25 @@ extern class VisualScriptCustomNode extends godot.VisualScriptNode {
 	public function _GetOutputValuePortCount():Int;
 
 	/**		
-		Return the specified output's name.
+		Return the specified output port's hint. See the `godot.PropertyHint` hints.
+	**/
+	@:native("_GetOutputValuePortHint")
+	public function _GetOutputValuePortHint(idx:Int):Int;
+
+	/**		
+		Return the specified output port's hint string.
+	**/
+	@:native("_GetOutputValuePortHintString")
+	public function _GetOutputValuePortHintString(idx:Int):std.String;
+
+	/**		
+		Return the specified output port's name.
 	**/
 	@:native("_GetOutputValuePortName")
 	public function _GetOutputValuePortName(idx:Int):std.String;
 
 	/**		
-		Return the specified output's type. See the `godot.Variant_Type` values.
+		Return the specified output port's type. See the `godot.Variant_Type` values.
 	**/
 	@:native("_GetOutputValuePortType")
 	public function _GetOutputValuePortType(idx:Int):Int;
@@ -131,9 +155,9 @@ extern class VisualScriptCustomNode extends godot.VisualScriptNode {
 		
 		`outputs` is an array whose indices should be set to the respective outputs.
 		
-		The `start_mode` is usually , unless you have used the `STEP_*` constants.
+		The `start_mode` is usually `godot.VisualScriptCustomNode_StartMode.beginSequence`, unless you have used the `STEP_*` constants.
 		
-		`working_mem` is an array which can be used to persist information between runs of the custom node.
+		`working_mem` is an array which can be used to persist information between runs of the custom node. The size needs to be predefined using `godot.VisualScriptCustomNode._GetWorkingMemorySize`.
 		
 		When returning, you can mask the returned value with one of the `STEP_*` constants.
 	**/

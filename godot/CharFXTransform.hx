@@ -59,7 +59,7 @@ extern class CharFXTransform extends godot.Reference {
 	public var visible:Bool;
 
 	/**		
-		The time elapsed since the `godot.RichTextLabel` was added to the scene tree (in seconds). Time stops when the project is paused, unless the `godot.RichTextLabel`'s `godot.Node.pauseMode` is set to .
+		The time elapsed since the `godot.RichTextLabel` was added to the scene tree (in seconds). Time stops when the `godot.RichTextLabel` is paused (see `godot.Node.pauseMode`). Resets when the text in the `godot.RichTextLabel` is changed.
 		
 		Note: Time still passes while the `godot.RichTextLabel` is hidden.
 	**/

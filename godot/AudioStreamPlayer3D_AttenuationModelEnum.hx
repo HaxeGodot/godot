@@ -21,7 +21,7 @@ extern enum AudioStreamPlayer3D_AttenuationModelEnum {
 	Logarithmic;
 
 	/**		
-		No dampening of loudness according to distance. The sound will still be heard positionally, unlike an `godot.AudioStreamPlayer`.
+		No dampening of loudness according to distance. The sound will still be heard positionally, unlike an `godot.AudioStreamPlayer`. `godot.AudioStreamPlayer3D_AttenuationModelEnum.disabled` can be combined with a `godot.AudioStreamPlayer3D.maxDistance` value greater than `0.0` to achieve linear attenuation clamped to a sphere of a defined size.
 	**/
 	Disabled;
 }

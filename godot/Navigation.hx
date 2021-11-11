@@ -6,6 +6,8 @@ import cs.system.*;
 
 /**
 Provides navigation and pathfinding within a collection of `godot.NavigationMesh`es. By default, these will be automatically collected from child `godot.NavigationMeshInstance` nodes, but they can also be added on the fly with `godot.Navigation.navmeshAdd`. In addition to basic pathfinding, this class also assists with aligning navigation agents with the meshes they are navigating on.
+
+Note: The current navigation system has many known issues and will not always return optimal paths as expected. These issues will be fixed in Godot 4.0.
 **/
 @:libType
 @:csNative
@@ -56,6 +58,8 @@ extern class Navigation extends godot.Spatial {
 	#if doc_gen
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the agent properties associated with each `godot.NavigationMesh` (radius, height, etc.) are considered in the path calculation, otherwise they are ignored.
+		
+		Note: This method has known issues and will often return non-optimal paths. These issues will be fixed in Godot 4.0.
 	**/
 	public extern inline function getSimplePath(start:godot.Vector3, end:godot.Vector3, ?optimize:Bool):std.Array<godot.Vector3> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2}, {3})", this, start, end, optimize));
@@ -63,6 +67,8 @@ extern class Navigation extends godot.Spatial {
 	#else
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the agent properties associated with each `godot.NavigationMesh` (radius, height, etc.) are considered in the path calculation, otherwise they are ignored.
+		
+		Note: This method has known issues and will often return non-optimal paths. These issues will be fixed in Godot 4.0.
 	**/
 	public overload extern inline function getSimplePath(start:godot.Vector3, end:godot.Vector3):std.Array<godot.Vector3> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2})", this, start, end));
@@ -70,6 +76,8 @@ extern class Navigation extends godot.Spatial {
 
 	/**		
 		Returns the path between two given points. Points are in local coordinate space. If `optimize` is `true` (the default), the agent properties associated with each `godot.NavigationMesh` (radius, height, etc.) are considered in the path calculation, otherwise they are ignored.
+		
+		Note: This method has known issues and will often return non-optimal paths. These issues will be fixed in Godot 4.0.
 	**/
 	public overload extern inline function getSimplePath(start:godot.Vector3, end:godot.Vector3, optimize:Bool):std.Array<godot.Vector3> {
 		return cs.Lib.array(cs.Syntax.code("{0}.GetSimplePath({1}, {2}, {3})", this, start, end, optimize));

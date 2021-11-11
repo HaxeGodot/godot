@@ -53,7 +53,7 @@ extern class SceneTree extends godot.MainLoop {
 	**/
 	public var onGlobalMenuAction(get, never):Signal<(id:Any, meta:Any)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onGlobalMenuAction():Signal<(id:Any, meta:Any)->Void> {
-		return new Signal(this, "global_menu_action", Signal.SignalHandlerAnyAnyVoid.connectSignal, Signal.SignalHandlerAnyAnyVoid.disconnectSignal, Signal.SignalHandlerAnyAnyVoid.isSignalConnected);
+		return new Signal(this, "global_menu_action", Signal.SignalHandlerVariantVariantVoid.connectSignal, Signal.SignalHandlerVariantVariantVoid.disconnectSignal, Signal.SignalHandlerVariantVariantVoid.isSignalConnected);
 	}
 
 	/**
@@ -219,7 +219,7 @@ extern class SceneTree extends godot.MainLoop {
 	/**		
 		If `true`, the `godot.SceneTree` is paused. Doing so will have the following behavior:
 		
-		- 2D and 3D physics will be stopped.
+		- 2D and 3D physics will be stopped. This includes signals and collision detection.
 		
 		- `godot.Node._Process`, `godot.Node._PhysicsProcess` and `godot.Node._Input` will not be called anymore in nodes.
 	**/
@@ -261,7 +261,7 @@ extern class SceneTree extends godot.MainLoop {
 	/**		
 		If `true`, the application quits automatically on going back (e.g. on Android). Enabled by default.
 		
-		To handle 'Go Back' button when this option is disabled, use .
+		To handle 'Go Back' button when this option is disabled, use `godot.MainLoop.notificationWmGoBackRequest`.
 	**/
 	@:native("SetQuitOnGoBack")
 	public function setQuitOnGoBack(enabled:Bool):Void;
@@ -376,18 +376,24 @@ extern class SceneTree extends godot.MainLoop {
 	#if doc_gen
 	/**		
 		Quits the application at the end of the current iteration. A process `exit_code` can optionally be passed as an argument. If this argument is `0` or greater, it will override the `godot.OS.exitCode` defined before quitting the application.
+		
+		Note: On iOS this method doesn't work. Instead, as recommended by the iOS Human Interface Guidelines, the user is expected to close apps via the Home button.
 	**/
 	@:native("Quit")
 	public function quit(?exitCode:Int):Void;
 	#else
 	/**		
 		Quits the application at the end of the current iteration. A process `exit_code` can optionally be passed as an argument. If this argument is `0` or greater, it will override the `godot.OS.exitCode` defined before quitting the application.
+		
+		Note: On iOS this method doesn't work. Instead, as recommended by the iOS Human Interface Guidelines, the user is expected to close apps via the Home button.
 	**/
 	@:native("Quit")
 	public overload function quit():Void;
 
 	/**		
 		Quits the application at the end of the current iteration. A process `exit_code` can optionally be passed as an argument. If this argument is `0` or greater, it will override the `godot.OS.exitCode` defined before quitting the application.
+		
+		Note: On iOS this method doesn't work. Instead, as recommended by the iOS Human Interface Guidelines, the user is expected to close apps via the Home button.
 	**/
 	@:native("Quit")
 	public overload function quit(exitCode:Int):Void;
@@ -395,22 +401,22 @@ extern class SceneTree extends godot.MainLoop {
 
 	#if doc_gen
 	/**		
-		Configures screen stretching to the given `godot.SceneTree_StretchMode`, `godot.SceneTree_StretchAspect`, minimum size and `shrink` ratio.
+		Configures screen stretching to the given `godot.SceneTree_StretchMode`, `godot.SceneTree_StretchAspect`, minimum size and `scale`.
 	**/
 	@:native("SetScreenStretch")
-	public function setScreenStretch(mode:godot.SceneTree_StretchMode, aspect:godot.SceneTree_StretchAspect, minsize:godot.Vector2, ?shrink:Single):Void;
+	public function setScreenStretch(mode:godot.SceneTree_StretchMode, aspect:godot.SceneTree_StretchAspect, minsize:godot.Vector2, ?scale:Single):Void;
 	#else
 	/**		
-		Configures screen stretching to the given `godot.SceneTree_StretchMode`, `godot.SceneTree_StretchAspect`, minimum size and `shrink` ratio.
+		Configures screen stretching to the given `godot.SceneTree_StretchMode`, `godot.SceneTree_StretchAspect`, minimum size and `scale`.
 	**/
 	@:native("SetScreenStretch")
 	public overload function setScreenStretch(mode:godot.SceneTree_StretchMode, aspect:godot.SceneTree_StretchAspect, minsize:godot.Vector2):Void;
 
 	/**		
-		Configures screen stretching to the given `godot.SceneTree_StretchMode`, `godot.SceneTree_StretchAspect`, minimum size and `shrink` ratio.
+		Configures screen stretching to the given `godot.SceneTree_StretchMode`, `godot.SceneTree_StretchAspect`, minimum size and `scale`.
 	**/
 	@:native("SetScreenStretch")
-	public overload function setScreenStretch(mode:godot.SceneTree_StretchMode, aspect:godot.SceneTree_StretchAspect, minsize:godot.Vector2, shrink:Single):Void;
+	public overload function setScreenStretch(mode:godot.SceneTree_StretchMode, aspect:godot.SceneTree_StretchAspect, minsize:godot.Vector2, scale:Single):Void;
 	#end
 
 	/**		
@@ -423,6 +429,15 @@ extern class SceneTree extends godot.MainLoop {
 		Calls `method` on each member of the given group, respecting the given `godot.SceneTree_GroupCallFlags`. You can pass arguments to `method` by specifying them at the end of the method call.
 		
 		Note: `method` may only have 5 arguments at most (8 arguments passed to this method in total).
+		
+		Note: Due to design limitations, `godot.SceneTree.callGroupFlags` will fail silently if one of the arguments is `null`.
+		
+		```
+		
+		# Call the method immediately and in reverse order.
+		get_tree().call_group_flags(SceneTree.GROUP_CALL_REALTIME | SceneTree.GROUP_CALL_REVERSE, "bases", "destroy")
+		
+		```
 	**/
 	@:native("CallGroupFlags")
 	public function callGroupFlags(flags:Int, group:std.String, method:std.String, args:HaxeArray<Dynamic>):Dynamic;
@@ -440,9 +455,13 @@ extern class SceneTree extends godot.MainLoop {
 	public function setGroupFlags(callFlags:UInt, group:std.String, property:std.String, value:Dynamic):Void;
 
 	/**		
-		Calls `method` on each member of the given group. You can pass arguments to `method` by specifying them at the end of the method call.
+		Calls `method` on each member of the given group. You can pass arguments to `method` by specifying them at the end of the method call. This method is equivalent of calling `godot.SceneTree.callGroupFlags` with `godot.SceneTree_GroupCallFlags.default` flag.
 		
 		Note: `method` may only have 5 arguments at most (7 arguments passed to this method in total).
+		
+		Note: Due to design limitations, `godot.SceneTree.callGroup` will fail silently if one of the arguments is `null`.
+		
+		Note: `godot.SceneTree.callGroup` will always call methods with an one-frame delay, in a way similar to `godot.Object.callDeferred`. To call methods immediately, use `godot.SceneTree.callGroupFlags` with the `godot.SceneTree_GroupCallFlags.realtime` flag.
 	**/
 	@:native("CallGroup")
 	public function callGroup(group:std.String, method:std.String, args:HaxeArray<Dynamic>):Dynamic;
@@ -474,7 +493,7 @@ extern class SceneTree extends godot.MainLoop {
 	/**		
 		Changes the running scene to the one at the given `path`, after loading it into a `godot.PackedScene` and creating a new instance.
 		
-		Returns  on success,  if the `path` cannot be loaded into a `godot.PackedScene`, or  if that scene cannot be instantiated.
+		Returns `OK` on success, `ERR_CANT_OPEN` if the `path` cannot be loaded into a `godot.PackedScene`, or `ERR_CANT_CREATE` if that scene cannot be instantiated.
 		
 		Note: The scene change is deferred, which means that the new scene node is added on the next idle frame. You won't be able to access it immediately after the `godot.SceneTree.changeScene` call.
 	**/
@@ -484,7 +503,7 @@ extern class SceneTree extends godot.MainLoop {
 	/**		
 		Changes the running scene to a new instance of the given `godot.PackedScene`.
 		
-		Returns  on success or  if the scene cannot be instantiated.
+		Returns `OK` on success or `ERR_CANT_CREATE` if the scene cannot be instantiated.
 		
 		Note: The scene change is deferred, which means that the new scene node is added on the next idle frame. You won't be able to access it immediately after the `godot.SceneTree.changeSceneTo` call.
 	**/
@@ -494,7 +513,7 @@ extern class SceneTree extends godot.MainLoop {
 	/**		
 		Reloads the currently active scene.
 		
-		Returns  on success,  if no `godot.SceneTree.currentScene` was defined yet,  if `godot.SceneTree.currentScene` cannot be loaded into a `godot.PackedScene`, or  if the scene cannot be instantiated.
+		Returns `OK` on success, `ERR_UNCONFIGURED` if no `godot.SceneTree.currentScene` was defined yet, `ERR_CANT_OPEN` if `godot.SceneTree.currentScene` cannot be loaded into a `godot.PackedScene`, or `ERR_CANT_CREATE` if the scene cannot be instantiated.
 	**/
 	@:native("ReloadCurrentScene")
 	public function reloadCurrentScene():godot.Error;

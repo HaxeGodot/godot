@@ -40,5 +40,13 @@ extern enum BakedLightmap_BakeError {
 	**/
 	UserAborted;
 
+	/**		
+		Returns if lightmapper can't be created. Unless you are using a custom lightmapper, please report this as bug.
+	**/
 	NoLightmapper;
+
+	/**		
+		There is no root node to start baking from. Either provide `from_node` argument or attach this node to a parent that should be used as root.
+	**/
+	NoRoot;
 }

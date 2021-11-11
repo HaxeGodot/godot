@@ -129,20 +129,20 @@ extern abstract class TreeItem extends godot.Object {
 	public function getIconModulate(column:Int):godot.Color;
 
 	/**		
-		Sets the value of a  column.
+		Sets the value of a `godot.TreeItem_TreeCellMode.range` column.
 	**/
 	@:native("SetRange")
 	public function setRange(column:Int, value:Float):Void;
 
 	/**		
-		Returns the value of a  column.
+		Returns the value of a `godot.TreeItem_TreeCellMode.range` column.
 	**/
 	@:native("GetRange")
 	public function getRange(column:Int):Float;
 
 	#if doc_gen
 	/**		
-		Sets the range of accepted values for a column. The column must be in the  mode.
+		Sets the range of accepted values for a column. The column must be in the `godot.TreeItem_TreeCellMode.range` mode.
 		
 		If `expr` is `true`, the edit mode slider will use an exponential scale as with `godot.Range.expEdit`.
 	**/
@@ -150,7 +150,7 @@ extern abstract class TreeItem extends godot.Object {
 	public function setRangeConfig(column:Int, min:Float, max:Float, step:Float, ?expr:Bool):Void;
 	#else
 	/**		
-		Sets the range of accepted values for a column. The column must be in the  mode.
+		Sets the range of accepted values for a column. The column must be in the `godot.TreeItem_TreeCellMode.range` mode.
 		
 		If `expr` is `true`, the edit mode slider will use an exponential scale as with `godot.Range.expEdit`.
 	**/
@@ -158,7 +158,7 @@ extern abstract class TreeItem extends godot.Object {
 	public overload function setRangeConfig(column:Int, min:Float, max:Float, step:Float):Void;
 
 	/**		
-		Sets the range of accepted values for a column. The column must be in the  mode.
+		Sets the range of accepted values for a column. The column must be in the `godot.TreeItem_TreeCellMode.range` mode.
 		
 		If `expr` is `true`, the edit mode slider will use an exponential scale as with `godot.Range.expEdit`.
 	**/

@@ -16,13 +16,13 @@ extern class Semaphore extends godot.Reference {
 	public function new():Void;
 
 	/**		
-		Tries to wait for the `godot.Semaphore`, if its value is zero, blocks until non-zero. Returns  on success,  otherwise.
+		Tries to wait for the `godot.Semaphore`, if its value is zero, blocks until non-zero. Returns `OK` on success, `ERR_BUSY` otherwise.
 	**/
 	@:native("Wait")
 	public function wait():godot.Error;
 
 	/**		
-		Lowers the `godot.Semaphore`, allowing one more thread in. Returns  on success,  otherwise.
+		Lowers the `godot.Semaphore`, allowing one more thread in. Returns `OK` on success, `ERR_BUSY` otherwise.
 	**/
 	@:native("Post")
 	public function post():godot.Error;

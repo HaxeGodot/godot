@@ -6,17 +6,17 @@ package godot;
 @:csNative
 extern enum CSGPolygon_ModeEnum {
 	/**		
-		Shape is extruded to `godot.CSGPolygon.depth`.
+		The `godot.CSGPolygon.polygon` shape is extruded along the negative Z axis.
 	**/
 	Depth;
 
 	/**		
-		Shape is extruded by rotating it around an axis.
+		The `godot.CSGPolygon.polygon` shape is extruded by rotating it around the Y axis.
 	**/
 	Spin;
 
 	/**		
-		Shape is extruded along a path set by a `godot.Shape` set in `godot.CSGPolygon.pathNode`.
+		The `godot.CSGPolygon.polygon` shape is extruded along the `godot.Path` specified in `godot.CSGPolygon.pathNode`.
 	**/
 	Path;
 }

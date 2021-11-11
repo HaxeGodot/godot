@@ -9,7 +9,7 @@ This control provides a selectable list of items that may be in a single (or mul
 
 Selectable items in the list may be selected or deselected and multiple selection may be enabled. Selection with right mouse button may also be enabled to allow use of popup context menus. Items may also be "activated" by double-clicking them or by pressing Enter.
 
-Item text only supports single-line strings, newline characters (e.g. `\n`) in the string won't produce a newline. Text wrapping is enabled in  mode, but column's width is adjusted to fully fit its content by default. You need to set `godot.ItemList.fixedColumnWidth` greater than zero to wrap the text.
+Item text only supports single-line strings, newline characters (e.g. `\n`) in the string won't produce a newline. Text wrapping is enabled in `godot.ItemList_IconModeEnum.top` mode, but column's width is adjusted to fully fit its content by default. You need to set `godot.ItemList.fixedColumnWidth` greater than zero to wrap the text.
 **/
 @:libType
 @:csNative
@@ -135,7 +135,7 @@ extern class ItemList extends godot.Control {
 	/**		
 		Maximum lines of text allowed in each item. Space will be reserved even when there is not enough lines of text to display.
 		
-		Note: This property takes effect only when `godot.ItemList.iconMode` is . To make the text wrap, `godot.ItemList.fixedColumnWidth` should be greater than zero.
+		Note: This property takes effect only when `godot.ItemList.iconMode` is `godot.ItemList_IconModeEnum.top`. To make the text wrap, `godot.ItemList.fixedColumnWidth` should be greater than zero.
 	**/
 	@:native("MaxTextLines")
 	public var maxTextLines:Int;
@@ -551,6 +551,8 @@ extern class ItemList extends godot.Control {
 
 	/**		
 		Returns the `godot.Object` ID associated with the list.
+		
+		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/
 	@:native("GetVScroll")
 	public function getVScroll():godot.VScrollBar;

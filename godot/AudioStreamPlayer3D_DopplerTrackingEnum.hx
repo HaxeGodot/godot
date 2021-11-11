@@ -11,12 +11,12 @@ extern enum AudioStreamPlayer3D_DopplerTrackingEnum {
 	Disabled;
 
 	/**		
-		Executes doppler tracking in idle step.
+		Executes doppler tracking in idle step (every rendered frame).
 	**/
 	IdleStep;
 
 	/**		
-		Executes doppler tracking in physics step.
+		Executes doppler tracking in physics step (every simulated physics frame).
 	**/
 	PhysicsStep;
 }

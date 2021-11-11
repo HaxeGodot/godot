@@ -54,6 +54,9 @@ extern class Object implements cs.system.IDisposable {
 	@:native("DynamicObject")
 	public var dynamicObject(default, never):Dynamic;
 
+	/**		
+		The pointer to the native instance of this `godot.Object`.
+	**/
 	@:native("NativeInstance")
 	public var nativeInstance(default, never):cs.system.IntPtr;
 
@@ -69,21 +72,56 @@ extern class Object implements cs.system.IDisposable {
 	@:native("NotificationPostinitialize")
 	public static var NOTIFICATION_POSTINITIALIZE(default, never):Int;
 
+	/**		
+		Returns whether `instance` is a valid object
+		(e.g. has not been deleted from memory).
+		
+		@param instance The instance to check.
+		@returns If the instance is a valid object.
+	**/
 	@:native("IsInstanceValid")
 	public static function isInstanceValid(instance:godot.Object):Bool;
 
+	/**		
+		Returns a weak reference to an object, or `null`
+		if the argument is invalid.
+		A weak reference to an object is not enough to keep the object alive:
+		when the only remaining references to a referent are weak references,
+		garbage collection is free to destroy the referent and reuse its memory
+		for something else. However, until the object is actually destroyed the
+		weak reference may return the object even if there are no strong references
+		to it.
+		
+		@param obj The object.
+		@returns
+		The `godot.Object.weakRef` reference to the object or `null`.
+	**/
 	@:native("WeakRef")
 	public static function weakRef(obj:godot.Object):godot.WeakRef;
 
+	/**		
+		Constructs a new `godot.Object`.
+	**/
 	@:native("new")
 	public function new():Void;
 
+	/**		
+		Disposes of this `godot.Object`.
+	**/
 	@:native("Dispose")
 	public overload function dispose():Void;
 
+	/**		
+		Disposes implementation of this `godot.Object`.
+	**/
 	@:native("Dispose") @:protected
 	public overload function dispose(disposing:Bool):Void;
 
+	/**		
+		Converts this `godot.Object` to a string.
+		
+		@returns A string representation of this object.
+	**/
 	@:native("ToString")
 	public function toString():std.String;
 
@@ -111,6 +149,10 @@ extern class Object implements cs.system.IDisposable {
 		}
 		
 		```
+		
+		@returns
+		A `godot.SignalAwaiter` that completes when
+		`source` emits the `signal`.
 	**/
 	@:native("ToSignal")
 	public function toSignal(source:godot.Object, signal:std.String):godot.SignalAwaiter;
@@ -134,7 +176,7 @@ extern class Object implements cs.system.IDisposable {
 	public function _GetPropertyList():godot.collections.Array;
 
 	/**		
-		Called whenever the object receives a notification, which is identified in `what` by a constant. The base `godot.Object` has two constants  and , but subclasses such as `godot.Node` define a lot more notifications which are also received by this method.
+		Called whenever the object receives a notification, which is identified in `what` by a constant. The base `godot.Object` has two constants `godot.Object.notificationPostinitialize` and `godot.Object.notificationPredelete`, but subclasses such as `godot.Node` define a lot more notifications which are also received by this method.
 	**/
 	@:native("_Notification")
 	public function _Notification(what:Int):Void;
@@ -156,13 +198,17 @@ extern class Object implements cs.system.IDisposable {
 	public function free():Void;
 
 	/**		
-		Returns the object's class as a `String`.
+		Returns the object's class as a `String`. See also `godot.Object.isClass`.
+		
+		Note: `godot.Object.getClass` does not take `class_name` declarations into account. If the object has a `class_name` defined, the base class name will be returned instead.
 	**/
 	@:native("GetClass")
 	public function getClass():std.String;
 
 	/**		
-		Returns `true` if the object inherits from the given `class`.
+		Returns `true` if the object inherits from the given `class`. See also `godot.Object.getClass`.
+		
+		Note: `godot.Object.isClass` does not take `class_name` declarations into account. If the object has a `class_name` defined, `godot.Object.isClass` will return `false` for that name.
 	**/
 	@:native("IsClass")
 	public function isClass(class_:std.String):Bool;
@@ -302,7 +348,7 @@ extern class Object implements cs.system.IDisposable {
 	/**		
 		Adds a user-defined `signal`. Arguments are optional, but can be added as an `godot.Collections_Array` of dictionaries, each containing `name: String` and `type: int` (see `godot.Variant_Type`) entries.
 		
-		@param arguments If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param arguments If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddUserSignal")
 	public function addUserSignal(signal:std.String, ?arguments:godot.collections.Array):Void;
@@ -310,7 +356,7 @@ extern class Object implements cs.system.IDisposable {
 	/**		
 		Adds a user-defined `signal`. Arguments are optional, but can be added as an `godot.Collections_Array` of dictionaries, each containing `name: String` and `type: int` (see `godot.Variant_Type`) entries.
 		
-		@param arguments If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param arguments If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddUserSignal")
 	public overload function addUserSignal(signal:std.String):Void;
@@ -318,7 +364,7 @@ extern class Object implements cs.system.IDisposable {
 	/**		
 		Adds a user-defined `signal`. Arguments are optional, but can be added as an `godot.Collections_Array` of dictionaries, each containing `name: String` and `type: int` (see `godot.Variant_Type`) entries.
 		
-		@param arguments If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param arguments If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("AddUserSignal")
 	public overload function addUserSignal(signal:std.String, arguments:godot.collections.Array):Void;
@@ -433,7 +479,7 @@ extern class Object implements cs.system.IDisposable {
 	/**		
 		Connects a `signal` to a `method` on a `target` object. Pass optional `binds` to the call as an `godot.Collections_Array` of parameters. These parameters will be passed to the method after any parameter used in the call to `godot.Object.emitSignal`. Use `flags` to set deferred or one-shot connections. See `godot.Object_ConnectFlags` constants.
 		
-		A `signal` can only be connected once to a `method`. It will throw an error if already connected, unless the signal was connected with . To avoid this, first, use `godot.Object.isConnected` to check for existing connections.
+		A `signal` can only be connected once to a `method`. It will throw an error if already connected, unless the signal was connected with `godot.Object_ConnectFlags.referenceCounted`. To avoid this, first, use `godot.Object.isConnected` to check for existing connections.
 		
 		If the `target` is destroyed in the game's lifecycle, the connection will be lost.
 		
@@ -458,7 +504,7 @@ extern class Object implements cs.system.IDisposable {
 		
 		```
 		
-		@param binds If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param binds If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Connect")
 	public function connect(signal:std.String, target:godot.Object, method:std.String, ?binds:godot.collections.Array, ?flags:UInt):godot.Error;
@@ -466,7 +512,7 @@ extern class Object implements cs.system.IDisposable {
 	/**		
 		Connects a `signal` to a `method` on a `target` object. Pass optional `binds` to the call as an `godot.Collections_Array` of parameters. These parameters will be passed to the method after any parameter used in the call to `godot.Object.emitSignal`. Use `flags` to set deferred or one-shot connections. See `godot.Object_ConnectFlags` constants.
 		
-		A `signal` can only be connected once to a `method`. It will throw an error if already connected, unless the signal was connected with . To avoid this, first, use `godot.Object.isConnected` to check for existing connections.
+		A `signal` can only be connected once to a `method`. It will throw an error if already connected, unless the signal was connected with `godot.Object_ConnectFlags.referenceCounted`. To avoid this, first, use `godot.Object.isConnected` to check for existing connections.
 		
 		If the `target` is destroyed in the game's lifecycle, the connection will be lost.
 		
@@ -491,7 +537,7 @@ extern class Object implements cs.system.IDisposable {
 		
 		```
 		
-		@param binds If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param binds If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Connect")
 	public overload function connect(signal:std.String, target:godot.Object, method:std.String):godot.Error;
@@ -499,7 +545,7 @@ extern class Object implements cs.system.IDisposable {
 	/**		
 		Connects a `signal` to a `method` on a `target` object. Pass optional `binds` to the call as an `godot.Collections_Array` of parameters. These parameters will be passed to the method after any parameter used in the call to `godot.Object.emitSignal`. Use `flags` to set deferred or one-shot connections. See `godot.Object_ConnectFlags` constants.
 		
-		A `signal` can only be connected once to a `method`. It will throw an error if already connected, unless the signal was connected with . To avoid this, first, use `godot.Object.isConnected` to check for existing connections.
+		A `signal` can only be connected once to a `method`. It will throw an error if already connected, unless the signal was connected with `godot.Object_ConnectFlags.referenceCounted`. To avoid this, first, use `godot.Object.isConnected` to check for existing connections.
 		
 		If the `target` is destroyed in the game's lifecycle, the connection will be lost.
 		
@@ -524,7 +570,7 @@ extern class Object implements cs.system.IDisposable {
 		
 		```
 		
-		@param binds If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param binds If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Connect")
 	public overload function connect(signal:std.String, target:godot.Object, method:std.String, binds:godot.collections.Array):godot.Error;
@@ -532,7 +578,7 @@ extern class Object implements cs.system.IDisposable {
 	/**		
 		Connects a `signal` to a `method` on a `target` object. Pass optional `binds` to the call as an `godot.Collections_Array` of parameters. These parameters will be passed to the method after any parameter used in the call to `godot.Object.emitSignal`. Use `flags` to set deferred or one-shot connections. See `godot.Object_ConnectFlags` constants.
 		
-		A `signal` can only be connected once to a `method`. It will throw an error if already connected, unless the signal was connected with . To avoid this, first, use `godot.Object.isConnected` to check for existing connections.
+		A `signal` can only be connected once to a `method`. It will throw an error if already connected, unless the signal was connected with `godot.Object_ConnectFlags.referenceCounted`. To avoid this, first, use `godot.Object.isConnected` to check for existing connections.
 		
 		If the `target` is destroyed in the game's lifecycle, the connection will be lost.
 		
@@ -557,7 +603,7 @@ extern class Object implements cs.system.IDisposable {
 		
 		```
 		
-		@param binds If the parameter is null, then the default value is new Godot.Collections.Array {}
+		@param binds If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Connect")
 	public overload function connect(signal:std.String, target:godot.Object, method:std.String, binds:godot.collections.Array, flags:UInt):godot.Error;

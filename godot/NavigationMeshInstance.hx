@@ -4,14 +4,23 @@ package godot;
 
 import cs.system.*;
 
+/**
+NavigationMeshInstance is a node that takes a `godot.NavigationMesh` resource and adds it to the current scenario by creating an instance of it.
+**/
 @:libType
 @:csNative
 @:native("Godot.NavigationMeshInstance")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class NavigationMeshInstance extends godot.Spatial {
+	/**		
+		If `true`, the navigation mesh will be used by `godot.Navigation`.
+	**/
 	@:native("Enabled")
 	public var enabled:Bool;
 
+	/**		
+		The `godot.NavigationMesh` resource for the instance.
+	**/
 	@:native("Navmesh")
 	public var navmesh:godot.NavigationMesh;
 

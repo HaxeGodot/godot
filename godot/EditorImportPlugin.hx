@@ -7,7 +7,7 @@ import cs.system.*;
 /**
 EditorImportPlugins provide a way to extend the editor's resource import functionality. Use them to import resources from custom files or to provide alternatives to the editor's existing importers. Register your `godot.EditorPlugin` with `godot.EditorPlugin.addImportPlugin`.
 
-EditorImportPlugins work by associating with specific file extensions and a resource type. See `godot.EditorImportPlugin.getRecognizedExtensions` and `godot.EditorImportPlugin.getResourceType`. They may optionally specify some import presets that affect the import process. EditorImportPlugins are responsible for creating the resources and saving them in the `.import` directory.
+EditorImportPlugins work by associating with specific file extensions and a resource type. See `godot.EditorImportPlugin.getRecognizedExtensions` and `godot.EditorImportPlugin.getResourceType`. They may optionally specify some import presets that affect the import process. EditorImportPlugins are responsible for creating the resources and saving them in the `.import` directory (see ).
 
 Below is an example EditorImportPlugin that imports a `godot.Mesh` from a file with the extension ".special" or ".spec":
 
@@ -68,7 +68,7 @@ extern class EditorImportPlugin extends godot.ResourceImporter {
 	public function getImportOptions(preset:Int):godot.collections.Array;
 
 	/**		
-		Gets the order of this importer to be run when importing resources. Higher values will be called later. Use this to ensure the importer runs after the dependencies are already imported.
+		Gets the order of this importer to be run when importing resources. Importers with lower import orders will be called first, and higher values will be called later. Use this to ensure the importer runs after the dependencies are already imported. The default import order is `0` unless overridden by a specific importer. See `godot.ResourceImporter_ImportOrder` for some predefined values.
 	**/
 	@:native("GetImportOrder")
 	public function getImportOrder():Int;
@@ -129,7 +129,7 @@ extern class EditorImportPlugin extends godot.ResourceImporter {
 	public function getResourceType():std.String;
 
 	/**		
-		Gets the extension used to save this resource in the `.import` directory.
+		Gets the extension used to save this resource in the `.import` directory (see ).
 	**/
 	@:native("GetSaveExtension")
 	public function getSaveExtension():std.String;

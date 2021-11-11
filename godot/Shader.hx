@@ -30,7 +30,7 @@ extern class Shader extends godot.Resource {
 	public function new():Void;
 
 	/**		
-		Returns the shader mode for the shader, either ,  or .
+		Returns the shader mode for the shader, either `godot.Shader_Mode.canvasItem`, `godot.Shader_Mode.spatial` or `godot.Shader_Mode.particles`.
 	**/
 	@:native("GetMode")
 	public function getMode():godot.Shader_Mode;

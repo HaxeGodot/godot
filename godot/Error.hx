@@ -6,9 +6,9 @@ package godot;
 @:csNative
 extern enum Error {
 	/**		
-		Methods that return `godot.Error` return  when no error occurred. Note that many functions don't return an error code but will print error messages to standard output.
+		Methods that return `godot.Error` return `OK` when no error occurred. Note that many functions don't return an error code but will print error messages to standard output.
 		
-		Since  has value 0, and all other failure codes are positive integers, it can also be used in boolean checks, e.g.:
+		Since `OK` has value 0, and all other failure codes are positive integers, it can also be used in boolean checks, e.g.:
 		
 		```
 		

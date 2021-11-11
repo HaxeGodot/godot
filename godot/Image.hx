@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-Native image datatype. Contains image data which can be converted to an `godot.ImageTexture` and provides commonly used image processing methods. The maximum width and height for an `godot.Image` are  and .
+Native image datatype. Contains image data which can be converted to an `godot.ImageTexture` and provides commonly used image processing methods. The maximum width and height for an `godot.Image` are `godot.Image.maxWidth` and `godot.Image.maxHeight`.
 
 An `godot.Image` cannot be assigned to a `texture` property of an object directly (such as `godot.Sprite`), and has to be converted manually to an `godot.ImageTexture` first.
 
@@ -164,19 +164,25 @@ extern class Image extends godot.Resource {
 
 	#if doc_gen
 	/**		
-		Generates mipmaps for the image. Mipmaps are precalculated and lower resolution copies of the image. Mipmaps are automatically used if the image needs to be scaled down when rendered. This improves image quality and the performance of the rendering. Returns an error if the image is compressed, in a custom format or if the image's width/height is 0.
+		Generates mipmaps for the image. Mipmaps are precalculated lower-resolution copies of the image that are automatically used if the image needs to be scaled down when rendered. They help improve image quality and performance when rendering. This method returns an error if the image is compressed, in a custom format, or if the image's width/height is `0`.
+		
+		Note: Mipmap generation is done on the CPU, is single-threaded and is always done on the main thread. This means generating mipmaps will result in noticeable stuttering during gameplay, even if `godot.Image.generateMipmaps` is called from a `godot.Thread`.
 	**/
 	@:native("GenerateMipmaps")
 	public function generateMipmaps(?renormalize:Bool):godot.Error;
 	#else
 	/**		
-		Generates mipmaps for the image. Mipmaps are precalculated and lower resolution copies of the image. Mipmaps are automatically used if the image needs to be scaled down when rendered. This improves image quality and the performance of the rendering. Returns an error if the image is compressed, in a custom format or if the image's width/height is 0.
+		Generates mipmaps for the image. Mipmaps are precalculated lower-resolution copies of the image that are automatically used if the image needs to be scaled down when rendered. They help improve image quality and performance when rendering. This method returns an error if the image is compressed, in a custom format, or if the image's width/height is `0`.
+		
+		Note: Mipmap generation is done on the CPU, is single-threaded and is always done on the main thread. This means generating mipmaps will result in noticeable stuttering during gameplay, even if `godot.Image.generateMipmaps` is called from a `godot.Thread`.
 	**/
 	@:native("GenerateMipmaps")
 	public overload function generateMipmaps():godot.Error;
 
 	/**		
-		Generates mipmaps for the image. Mipmaps are precalculated and lower resolution copies of the image. Mipmaps are automatically used if the image needs to be scaled down when rendered. This improves image quality and the performance of the rendering. Returns an error if the image is compressed, in a custom format or if the image's width/height is 0.
+		Generates mipmaps for the image. Mipmaps are precalculated lower-resolution copies of the image that are automatically used if the image needs to be scaled down when rendered. They help improve image quality and performance when rendering. This method returns an error if the image is compressed, in a custom format, or if the image's width/height is `0`.
+		
+		Note: Mipmap generation is done on the CPU, is single-threaded and is always done on the main thread. This means generating mipmaps will result in noticeable stuttering during gameplay, even if `godot.Image.generateMipmaps` is called from a `godot.Thread`.
 	**/
 	@:native("GenerateMipmaps")
 	public overload function generateMipmaps(renormalize:Bool):godot.Error;
@@ -207,7 +213,7 @@ extern class Image extends godot.Resource {
 	public function isEmpty():Bool;
 
 	/**		
-		Loads an image from file `path`. See [https://docs.godotengine.org/en/3.3/getting_started/workflow/assets/importing_images.html#supported-image-formats](Supported image formats) for a list of supported image formats and limitations.
+		Loads an image from file `path`. See [https://docs.godotengine.org/en/3.4/getting_started/workflow/assets/importing_images.html#supported-image-formats](Supported image formats) for a list of supported image formats and limitations.
 		
 		Warning: This method should only be used in the editor or in cases when you need to load external images at run-time, such as images located at the `user://` directory, and may not work in exported projects.
 		
@@ -228,26 +234,32 @@ extern class Image extends godot.Resource {
 
 	#if doc_gen
 	/**		
-		Saves the image as an EXR file to `path`. If `grayscale` is `true` and the image has only one channel, it will be saved explicitly as monochrome rather than one red channel. This function will return  if Godot was compiled without the TinyEXR module.
+		Saves the image as an EXR file to `path`. If `grayscale` is `true` and the image has only one channel, it will be saved explicitly as monochrome rather than one red channel. This function will return `ERR_UNAVAILABLE` if Godot was compiled without the TinyEXR module.
+		
+		Note: The TinyEXR module is disabled in non-editor builds, which means `godot.Image.saveExr` will return `ERR_UNAVAILABLE` when it is called from an exported project.
 	**/
 	@:native("SaveExr")
 	public function saveExr(path:std.String, ?grayscale:Bool):godot.Error;
 	#else
 	/**		
-		Saves the image as an EXR file to `path`. If `grayscale` is `true` and the image has only one channel, it will be saved explicitly as monochrome rather than one red channel. This function will return  if Godot was compiled without the TinyEXR module.
+		Saves the image as an EXR file to `path`. If `grayscale` is `true` and the image has only one channel, it will be saved explicitly as monochrome rather than one red channel. This function will return `ERR_UNAVAILABLE` if Godot was compiled without the TinyEXR module.
+		
+		Note: The TinyEXR module is disabled in non-editor builds, which means `godot.Image.saveExr` will return `ERR_UNAVAILABLE` when it is called from an exported project.
 	**/
 	@:native("SaveExr")
 	public overload function saveExr(path:std.String):godot.Error;
 
 	/**		
-		Saves the image as an EXR file to `path`. If `grayscale` is `true` and the image has only one channel, it will be saved explicitly as monochrome rather than one red channel. This function will return  if Godot was compiled without the TinyEXR module.
+		Saves the image as an EXR file to `path`. If `grayscale` is `true` and the image has only one channel, it will be saved explicitly as monochrome rather than one red channel. This function will return `ERR_UNAVAILABLE` if Godot was compiled without the TinyEXR module.
+		
+		Note: The TinyEXR module is disabled in non-editor builds, which means `godot.Image.saveExr` will return `ERR_UNAVAILABLE` when it is called from an exported project.
 	**/
 	@:native("SaveExr")
 	public overload function saveExr(path:std.String, grayscale:Bool):godot.Error;
 	#end
 
 	/**		
-		Returns  if the image has data for alpha values. Returns  if all the alpha values are stored in a single bit. Returns  if no data for alpha values is found.
+		Returns `godot.Image_AlphaMode.blend` if the image has data for alpha values. Returns `godot.Image_AlphaMode.bit` if all the alpha values are stored in a single bit. Returns `godot.Image_AlphaMode.none` if no data for alpha values is found.
 	**/
 	@:native("DetectAlpha")
 	public function detectAlpha():godot.Image_AlphaMode;
