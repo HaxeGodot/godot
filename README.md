@@ -7,7 +7,7 @@
 [![Haxelib Downloads](https://badgen.net/haxelib/d/godot?color=blue)](https://lib.haxe.org/p/godot)
 [![Haxelib License](https://badgen.net/haxelib/license/godot)](LICENSE.md)
 
-# Haxe/C# externs for Godot 3.4.0
+# Haxe/C# externs for Godot 3.4
 
 Use the Godot engine with Haxe scripting, using the Haxe/C# target.
 
