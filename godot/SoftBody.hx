@@ -6,6 +6,8 @@ import cs.system.*;
 
 /**
 A deformable physics body. Used to create elastic or deformable objects such as cloth, rubber, or other flexible materials.
+
+Note: There are many known bugs in `godot.SoftBody`. Therefore, it's not recommended to use them for things that can affect gameplay (such as a player character made entirely out of soft bodies).
 **/
 @:libType
 @:csNative

@@ -14,8 +14,6 @@ This control allows property editing for one or multiple properties into `godot.
 extern class EditorProperty extends godot.Container {
 	/**
 		`multiple_properties_changed` signal.
-		
-		Emit it if you want multiple properties modified at the same time. Do not use if added via `editorInspectorPlugin.parseProperty`.
 	**/
 	public var onMultiplePropertiesChanged(get, never):Signal<(properties:std.Array<std.String>, value:godot.collections.Array)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMultiplePropertiesChanged():Signal<(properties:std.Array<std.String>, value:godot.collections.Array)->Void> {
@@ -24,8 +22,6 @@ extern class EditorProperty extends godot.Container {
 
 	/**
 		`object_id_selected` signal.
-		
-		Used by sub-inspectors. Emit it if what was selected was an Object ID.
 	**/
 	public var onObjectIdSelected(get, never):Signal<(property:std.String, id:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onObjectIdSelected():Signal<(property:std.String, id:Int)->Void> {
@@ -34,8 +30,6 @@ extern class EditorProperty extends godot.Container {
 
 	/**
 		`property_changed` signal.
-		
-		Do not emit this manually, use the `emitChanged` method instead.
 	**/
 	public var onPropertyChanged(get, never):Signal<(property:std.String, value:Any)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPropertyChanged():Signal<(property:std.String, value:Any)->Void> {
@@ -44,8 +38,6 @@ extern class EditorProperty extends godot.Container {
 
 	/**
 		`property_checked` signal.
-		
-		Emitted when a property was checked. Used internally.
 	**/
 	public var onPropertyChecked(get, never):Signal<(property:std.String, bool:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPropertyChecked():Signal<(property:std.String, bool:std.String)->Void> {
@@ -54,8 +46,6 @@ extern class EditorProperty extends godot.Container {
 
 	/**
 		`property_keyed` signal.
-		
-		Emit it if you want to add this value as an animation key (check for keying being enabled first).
 	**/
 	public var onPropertyKeyed(get, never):Signal<(property:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPropertyKeyed():Signal<(property:std.String)->Void> {
@@ -64,8 +54,6 @@ extern class EditorProperty extends godot.Container {
 
 	/**
 		`property_keyed_with_value` signal.
-		
-		Emit it if you want to key a property with a single value.
 	**/
 	public var onPropertyKeyedWithValue(get, never):Signal<(property:std.String, value:Any)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPropertyKeyedWithValue():Signal<(property:std.String, value:Any)->Void> {
@@ -74,8 +62,6 @@ extern class EditorProperty extends godot.Container {
 
 	/**
 		`resource_selected` signal.
-		
-		If you want a sub-resource to be edited, emit this signal with the resource.
 	**/
 	public var onResourceSelected(get, never):Signal<(path:std.String, resource:Resource)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onResourceSelected():Signal<(path:std.String, resource:Resource)->Void> {
@@ -84,8 +70,6 @@ extern class EditorProperty extends godot.Container {
 
 	/**
 		`selected` signal.
-		
-		Emitted when selected. Used internally.
 	**/
 	public var onSelected(get, never):Signal<(path:std.String, focusableIdx:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onSelected():Signal<(path:std.String, focusableIdx:Int)->Void> {

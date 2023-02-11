@@ -28,8 +28,6 @@ Note: Theme items are not `godot.Object` properties. This means you can't access
 extern class Control extends godot.CanvasItem {
 	/**
 		`focus_entered` signal.
-		
-		Emitted when the node gains keyboard focus.
 	**/
 	public var onFocusEntered(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFocusEntered():Signal<Void->Void> {
@@ -38,8 +36,6 @@ extern class Control extends godot.CanvasItem {
 
 	/**
 		`focus_exited` signal.
-		
-		Emitted when the node loses keyboard focus.
 	**/
 	public var onFocusExited(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFocusExited():Signal<Void->Void> {
@@ -48,8 +44,6 @@ extern class Control extends godot.CanvasItem {
 
 	/**
 		`gui_input` signal.
-		
-		Emitted when the node receives an `InputEvent`.
 	**/
 	public var onGuiInput(get, never):Signal<(event:InputEvent)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onGuiInput():Signal<(event:InputEvent)->Void> {
@@ -58,8 +52,6 @@ extern class Control extends godot.CanvasItem {
 
 	/**
 		`minimum_size_changed` signal.
-		
-		Emitted when the node's minimum size changes.
 	**/
 	public var onMinimumSizeChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMinimumSizeChanged():Signal<Void->Void> {
@@ -68,8 +60,6 @@ extern class Control extends godot.CanvasItem {
 
 	/**
 		`modal_closed` signal.
-		
-		Emitted when a modal `Control` is closed. See `showModal`.
 	**/
 	public var onModalClosed(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onModalClosed():Signal<Void->Void> {
@@ -78,9 +68,6 @@ extern class Control extends godot.CanvasItem {
 
 	/**
 		`mouse_entered` signal.
-		
-		Emitted when the mouse enters the control's `Rect` area, provided its `mouseFilter` lets the event reach it.
-		`b`Note:`/b` `onMouseEntered` will not be emitted if the mouse enters a child `Control` node before entering the parent's `Rect` area, at least until the mouse is moved to reach the parent's `Rect` area.
 	**/
 	public var onMouseEntered(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMouseEntered():Signal<Void->Void> {
@@ -89,9 +76,6 @@ extern class Control extends godot.CanvasItem {
 
 	/**
 		`mouse_exited` signal.
-		
-		Emitted when the mouse leaves the control's `Rect` area, provided its `mouseFilter` lets the event reach it.
-		`b`Note:`/b` `onMouseExited` will be emitted if the mouse enters a child `Control` node, even if the mouse cursor is still inside the parent's `Rect` area.
 	**/
 	public var onMouseExited(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMouseExited():Signal<Void->Void> {
@@ -100,8 +84,6 @@ extern class Control extends godot.CanvasItem {
 
 	/**
 		`resized` signal.
-		
-		Emitted when the control changes size.
 	**/
 	public var onResized(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onResized():Signal<Void->Void> {
@@ -110,8 +92,6 @@ extern class Control extends godot.CanvasItem {
 
 	/**
 		`size_flags_changed` signal.
-		
-		Emitted when one of the size flags changes. See `sizeFlagsHorizontal` and `sizeFlagsVertical`.
 	**/
 	public var onSizeFlagsChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onSizeFlagsChanged():Signal<Void->Void> {
@@ -236,7 +216,7 @@ extern class Control extends godot.CanvasItem {
 	public var rectClipContent:Bool;
 
 	/**		
-		By default, the node's pivot is its top-left corner. When you change its `godot.Control.rectScale`, it will scale around this pivot. Set this property to `godot.Control.rectSize` / 2 to center the pivot in the node's rectangle.
+		By default, the node's pivot is its top-left corner. When you change its `godot.Control.rectRotation` or `godot.Control.rectScale`, it will rotate or scale around this pivot. Set this property to `godot.Control.rectSize` / 2 to pivot around the Control's center.
 	**/
 	@:native("RectPivotOffset")
 	public var rectPivotOffset:godot.Vector2;
@@ -244,7 +224,7 @@ extern class Control extends godot.CanvasItem {
 	/**		
 		The node's scale, relative to its `godot.Control.rectSize`. Change this property to scale the node around its `godot.Control.rectPivotOffset`. The Control's `godot.Control.hintTooltip` will also scale according to this value.
 		
-		Note: This property is mainly intended to be used for animation purposes. Text inside the Control will look pixelated or blurry when the Control is scaled. To support multiple resolutions in your project, use an appropriate viewport stretch mode as described in the [https://docs.godotengine.org/en/3.4/tutorials/viewports/multiple_resolutions.html](documentation) instead of scaling Controls individually.
+		Note: This property is mainly intended to be used for animation purposes. Text inside the Control will look pixelated or blurry when the Control is scaled. To support multiple resolutions in your project, use an appropriate viewport stretch mode as described in the [https://docs.godotengine.org/en/3.4/tutorials/rendering/multiple_resolutions.html](documentation) instead of scaling Controls individually.
 		
 		Note: If the Control node is a child of a `godot.Container` node, the scale will be reset to `Vector2(1, 1)` when the scene is instanced. To set the Control's scale when it's instanced, wait for one frame using `yield(get_tree(), "idle_frame")` then set its `godot.Control.rectScale` property.
 	**/

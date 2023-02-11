@@ -53,8 +53,6 @@ print("  Keys typed: %s" % var2str(keys_typed))
 extern class MainLoop extends godot.Object {
 	/**
 		`on_request_permissions_result` signal.
-		
-		Emitted when a user responds to a permission request.
 	**/
 	public var onOnRequestPermissionsResult(get, never):Signal<(permission:std.String, granted:Bool)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onOnRequestPermissionsResult():Signal<(permission:std.String, granted:Bool)->Void> {

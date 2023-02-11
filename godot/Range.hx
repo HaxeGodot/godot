@@ -14,8 +14,6 @@ Range is a base class for `godot.Control` nodes that change a floating-point val
 extern abstract class Range extends godot.Control {
 	/**
 		`changed` signal.
-		
-		Emitted when `minValue`, `maxValue`, `page`, or `step` change.
 	**/
 	public var onChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onChanged():Signal<Void->Void> {
@@ -24,8 +22,6 @@ extern abstract class Range extends godot.Control {
 
 	/**
 		`value_changed` signal.
-		
-		Emitted when `value` changes.
 	**/
 	public var onValueChanged(get, never):Signal<(value:Float)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onValueChanged():Signal<(value:Float)->Void> {
@@ -153,13 +149,13 @@ extern abstract class Range extends godot.Control {
 	public function isLesserAllowed():Bool;
 
 	/**		
-		Binds two ranges together along with any ranges previously grouped with either of them. When any of range's member variables change, it will share the new value with all other ranges in its group.
+		Binds two `godot.Range`s together along with any ranges previously grouped with either of them. When any of range's member variables change, it will share the new value with all other ranges in its group.
 	**/
 	@:native("Share")
 	public function share(with:godot.Node):Void;
 
 	/**		
-		Stops range from sharing its member variables with any other.
+		Stops the `godot.Range` from sharing its member variables with any other.
 	**/
 	@:native("Unshare")
 	public function unshare():Void;

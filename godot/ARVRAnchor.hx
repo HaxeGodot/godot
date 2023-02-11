@@ -18,8 +18,6 @@ Keep in mind that, as long as plane detection is enabled, the size, placing and 
 extern class ARVRAnchor extends godot.Spatial {
 	/**
 		`mesh_updated` signal.
-		
-		Emitted when the mesh associated with the anchor changes or when one becomes available. This is especially important for topology that is constantly being `mesh_updated`.
 	**/
 	public var onMeshUpdated(get, never):Signal<(mesh:Mesh)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMeshUpdated():Signal<(mesh:Mesh)->Void> {

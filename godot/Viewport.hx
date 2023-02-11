@@ -16,6 +16,8 @@ Viewports can also choose to be audio listeners, so they generate positional aud
 Also, viewports can be assigned to different screens in case the devices have multiple screens.
 
 Finally, viewports can also behave as render targets, in which case they will not be visible unless the associated texture is used to draw.
+
+Note: By default, a newly created Viewport in Godot 3.x will appear to be upside down. Enabling `godot.Viewport.renderTargetVFlip` will display the Viewport with the correct orientation.
 **/
 @:libType
 @:csNative
@@ -24,8 +26,6 @@ Finally, viewports can also behave as render targets, in which case they will no
 extern class Viewport extends godot.Node {
 	/**
 		`gui_focus_changed` signal.
-		
-		Emitted when a Control node grabs keyboard focus.
 	**/
 	public var onGuiFocusChanged(get, never):Signal<(node:Control)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onGuiFocusChanged():Signal<(node:Control)->Void> {
@@ -34,8 +34,6 @@ extern class Viewport extends godot.Node {
 
 	/**
 		`size_changed` signal.
-		
-		Emitted when the size of the viewport is changed, whether by `setSizeOverride`, resize of window, or some other means.
 	**/
 	public var onSizeChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onSizeChanged():Signal<Void->Void> {
@@ -131,7 +129,7 @@ extern class Viewport extends godot.Node {
 	public var renderTargetClearMode:godot.Viewport_ClearMode;
 
 	/**		
-		If `true`, the result of rendering will be flipped vertically.
+		If `true`, the result of rendering will be flipped vertically. Since Viewports in Godot 3.x render upside-down, it's recommended to set this to `true` in most situations.
 	**/
 	@:native("RenderTargetVFlip")
 	public var renderTargetVFlip:Bool;
@@ -267,7 +265,7 @@ extern class Viewport extends godot.Node {
 	public function getWorld2d():godot.World2D;
 
 	/**		
-		Returns the 2D world of the viewport.
+		Returns the first valid `godot.World2D` for this viewport, searching the `godot.Viewport.world2d` property of itself and any Viewport ancestor.
 	**/
 	@:native("FindWorld2d")
 	public function findWorld2d():godot.World2D;
@@ -279,7 +277,7 @@ extern class Viewport extends godot.Node {
 	public function getWorld():godot.World;
 
 	/**		
-		Returns the 3D world of the viewport, or if none the world of the parent viewport.
+		Returns the first valid `godot.World` for this viewport, searching the `godot.Viewport.world` property of itself and any Viewport ancestor.
 	**/
 	@:native("FindWorld")
 	public function findWorld():godot.World;

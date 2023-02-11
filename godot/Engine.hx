@@ -36,7 +36,9 @@ extern class Engine {
 	public static var TARGET_FPS:Int;
 
 	/**		
-		The number of fixed iterations per second. This controls how often physics simulation and `godot.Node._PhysicsProcess` methods are run. This value should generally always be set to `60` or above, as Godot doesn't interpolate the physics step. As a result, values lower than `60` will look stuttery. This value can be increased to make input more reactive or work around tunneling issues, but keep in mind doing so will increase CPU usage.
+		The number of fixed iterations per second. This controls how often physics simulation and `godot.Node._PhysicsProcess` methods are run. This value should generally always be set to `60` or above, as Godot doesn't interpolate the physics step. As a result, values lower than `60` will look stuttery. This value can be increased to make input more reactive or work around collision tunneling issues, but keep in mind doing so will increase CPU usage. See also `godot.Engine.targetFps` and .
+		
+		Note: Only 8 physics ticks may be simulated per rendered frame at most. If more than 8 physics ticks have to be simulated per rendered frame to keep up with rendering, the game will appear to slow down (even if `delta` is used consistently in physics calculations). Therefore, it is recommended not to increase `godot.Engine.iterationsPerSecond` above 240. Otherwise, the game will slow down when the rendering framerate goes below 30 FPS.
 	**/
 	@:native("IterationsPerSecond")
 	public static var ITERATIONS_PER_SECOND:Int;
@@ -44,7 +46,7 @@ extern class Engine {
 	/**		
 		If `false`, stops printing error and warning messages to the console and editor Output log. This can be used to hide error and warning messages during unit test suite runs. This property is equivalent to the  project setting.
 		
-		Warning: If you set this to `false` anywhere in the project, important error messages may be hidden even if they are emitted from other scripts. If this is set to `false` in a `@tool` script, this will also impact the editor itself. Do not report bugs before ensuring error messages are enabled (as they are by default).
+		Warning: If you set this to `false` anywhere in the project, important error messages may be hidden even if they are emitted from other scripts. If this is set to `false` in a `tool` script, this will also impact the editor itself. Do not report bugs before ensuring error messages are enabled (as they are by default).
 		
 		Note: This property does not impact the editor's Errors tab when running a project from the editor.
 	**/

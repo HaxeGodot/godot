@@ -24,7 +24,7 @@ extern class RayCast extends godot.Spatial {
 		If set to `1`, a line is used as the debug shape. Otherwise, a truncated pyramid is drawn to represent the `godot.RayCast`. Requires Visible Collision Shapes to be enabled in the Debug menu for the debug shape to be visible at run-time.
 	**/
 	@:native("DebugShapeThickness")
-	public var debugShapeThickness:Single;
+	public var debugShapeThickness:Int;
 
 	/**		
 		The custom color to use to draw the shape in the editor and at run-time if Visible Collision Shapes is enabled in the Debug menu. This color will be highlighted at run-time if the `godot.RayCast` is colliding with something.
@@ -204,8 +204,8 @@ extern class RayCast extends godot.Spatial {
 	public function getDebugShapeCustomColor():godot.Color;
 
 	@:native("SetDebugShapeThickness")
-	public function setDebugShapeThickness(debugShapeThickness:Single):Void;
+	public function setDebugShapeThickness(debugShapeThickness:Int):Void;
 
 	@:native("GetDebugShapeThickness")
-	public function getDebugShapeThickness():Single;
+	public function getDebugShapeThickness():Int;
 }

@@ -9,7 +9,11 @@ import cs.system.*;
 
 Having `godot.GIProbe`s in a scene can be expensive, the quality of the probe can be turned down in exchange for better performance in the `godot.ProjectSettings` using .
 
-Note: Meshes should have sufficiently thick walls to avoid light leaks (avoid one-sided walls). For interior levels, enclose your level geometry in a sufficiently large box and bridge the loops to close the mesh.
+Procedural generation: `godot.GIProbe` can be baked in an exported project, which makes it suitable for procedurally generated or user-built levels as long as all the geometry is generated in advance.
+
+Performance: `godot.GIProbe` is relatively demanding on the GPU and is not suited to low-end hardware such as integrated graphics (consider `godot.BakedLightmap` instead). To provide a fallback for low-end hardware, consider adding an option to disable `godot.GIProbe` in your project's options menus. A `godot.GIProbe` node can be disabled by hiding it.
+
+Note: Meshes should have sufficiently thick walls to avoid light leaks (avoid one-sided walls). For interior levels, enclose your level geometry in a sufficiently large box and bridge the loops to close the mesh. To further prevent light leaks, you can also strategically place temporary `godot.MeshInstance` nodes with `godot.GeometryInstance.useInBakedLight` enabled. These temporary nodes can then be hidden after baking the `godot.GIProbe` node.
 
 Note: Due to a renderer limitation, emissive `godot.ShaderMaterial`s cannot emit light when used in a `godot.GIProbe`. Only emissive `godot.SpatialMaterial`s can emit light in a `godot.GIProbe`.
 **/
@@ -146,24 +150,40 @@ extern class GIProbe extends godot.VisualInstance {
 	#if doc_gen
 	/**		
 		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either `godot.Light_BakeMode.indirect` or `godot.Light_BakeMode.all`. If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
+		
+		Note: `godot.GIProbe.bake` works from the editor and in exported projects. This makes it suitable for procedurally generated or user-built levels. Baking a `godot.GIProbe` generally takes from 5 to 20 seconds in most scenes. Reducing `godot.GIProbe.subdiv` can speed up baking.
+		
+		Note: `godot.GeometryInstance`s and `godot.Light`s must be fully ready before `godot.GIProbe.bake` is called. If you are procedurally creating those and some meshes or lights are missing from your baked `godot.GIProbe`, use `call_deferred("bake")` instead of calling `godot.GIProbe.bake` directly.
 	**/
 	@:native("Bake")
 	public function bake(?fromNode:godot.Node, ?createVisualDebug:Bool):Void;
 	#else
 	/**		
 		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either `godot.Light_BakeMode.indirect` or `godot.Light_BakeMode.all`. If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
+		
+		Note: `godot.GIProbe.bake` works from the editor and in exported projects. This makes it suitable for procedurally generated or user-built levels. Baking a `godot.GIProbe` generally takes from 5 to 20 seconds in most scenes. Reducing `godot.GIProbe.subdiv` can speed up baking.
+		
+		Note: `godot.GeometryInstance`s and `godot.Light`s must be fully ready before `godot.GIProbe.bake` is called. If you are procedurally creating those and some meshes or lights are missing from your baked `godot.GIProbe`, use `call_deferred("bake")` instead of calling `godot.GIProbe.bake` directly.
 	**/
 	@:native("Bake")
 	public overload function bake():Void;
 
 	/**		
 		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either `godot.Light_BakeMode.indirect` or `godot.Light_BakeMode.all`. If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
+		
+		Note: `godot.GIProbe.bake` works from the editor and in exported projects. This makes it suitable for procedurally generated or user-built levels. Baking a `godot.GIProbe` generally takes from 5 to 20 seconds in most scenes. Reducing `godot.GIProbe.subdiv` can speed up baking.
+		
+		Note: `godot.GeometryInstance`s and `godot.Light`s must be fully ready before `godot.GIProbe.bake` is called. If you are procedurally creating those and some meshes or lights are missing from your baked `godot.GIProbe`, use `call_deferred("bake")` instead of calling `godot.GIProbe.bake` directly.
 	**/
 	@:native("Bake")
 	public overload function bake(fromNode:godot.Node):Void;
 
 	/**		
 		Bakes the effect from all `godot.GeometryInstance`s marked with `godot.GeometryInstance.useInBakedLight` and `godot.Light`s marked with either `godot.Light_BakeMode.indirect` or `godot.Light_BakeMode.all`. If `create_visual_debug` is `true`, after baking the light, this will generate a `godot.MultiMesh` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the `godot.GIProbe`'s data and debug any issues that may be occurring.
+		
+		Note: `godot.GIProbe.bake` works from the editor and in exported projects. This makes it suitable for procedurally generated or user-built levels. Baking a `godot.GIProbe` generally takes from 5 to 20 seconds in most scenes. Reducing `godot.GIProbe.subdiv` can speed up baking.
+		
+		Note: `godot.GeometryInstance`s and `godot.Light`s must be fully ready before `godot.GIProbe.bake` is called. If you are procedurally creating those and some meshes or lights are missing from your baked `godot.GIProbe`, use `call_deferred("bake")` instead of calling `godot.GIProbe.bake` directly.
 	**/
 	@:native("Bake")
 	public overload function bake(fromNode:godot.Node, createVisualDebug:Bool):Void;

@@ -498,7 +498,7 @@ extern class StringExtensions {
 
 	/**		
 		Returns `true` if the string is a path to a file or
-		directory and its startign point is explicitly defined. This includes
+		directory and its starting point is explicitly defined. This includes
 		`res://`, `user://`, `C:\`, `/`, etc.
 		@see `godot.StringExtensions.isRelPath`
 		@param instance The string to check.

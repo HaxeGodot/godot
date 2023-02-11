@@ -41,7 +41,11 @@ extern abstract class Shape2D extends godot.Resource {
 	public function collideWithMotion(localXform:godot.Transform2D, localMotion:godot.Vector2, withShape:godot.Shape2D, shapeXform:godot.Transform2D, shapeMotion:godot.Vector2):Bool;
 
 	/**		
-		Returns a list of the points where this shape touches another. If there are no collisions the list is empty.
+		Returns a list of contact point pairs where this shape touches another.
+		
+		If there are no collisions, the returned list is empty. Otherwise, the returned list contains contact points arranged in pairs, with entries alternating between points on the boundary of this shape and points on the boundary of `with_shape`.
+		
+		A collision pair A, B can be used to calculate the collision normal with `(B - A).normalized()`, and the collision depth with `(B - A).length()`. This information is typically used to separate shapes, particularly in collision solvers.
 		
 		This method needs the transformation matrix for this shape (`local_xform`), the shape to check collisions with (`with_shape`), and the transformation matrix of that shape (`shape_xform`).
 	**/
@@ -49,7 +53,11 @@ extern abstract class Shape2D extends godot.Resource {
 	public function collideAndGetContacts(localXform:godot.Transform2D, withShape:godot.Shape2D, shapeXform:godot.Transform2D):godot.collections.Array;
 
 	/**		
-		Returns a list of the points where this shape would touch another, if a given movement was applied. If there are no collisions the list is empty.
+		Returns a list of contact point pairs where this shape would touch another, if a given movement was applied.
+		
+		If there would be no collisions, the returned list is empty. Otherwise, the returned list contains contact points arranged in pairs, with entries alternating between points on the boundary of this shape and points on the boundary of `with_shape`.
+		
+		A collision pair A, B can be used to calculate the collision normal with `(B - A).normalized()`, and the collision depth with `(B - A).length()`. This information is typically used to separate shapes, particularly in collision solvers.
 		
 		This method needs the transformation matrix for this shape (`local_xform`), the movement to test on this shape (`local_motion`), the shape to check collisions with (`with_shape`), the transformation matrix of that shape (`shape_xform`), and the movement to test onto the other object (`shape_motion`).
 	**/

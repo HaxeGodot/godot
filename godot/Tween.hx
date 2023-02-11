@@ -26,6 +26,8 @@ Many methods require a property name, such as `"position"` above. You can find t
 Many of the methods accept `trans_type` and `ease_type`. The first accepts an `godot.Tween_TransitionType` constant, and refers to the way the timing of the animation is handled (see [https://easings.net/](easings.net) for some examples). The second accepts an `godot.Tween_EaseType` constant, and controls where the `trans_type` is applied to the interpolation (in the beginning, the end, or both). If you don't know which transition and easing to pick, you can try different `godot.Tween_TransitionType` constants with `godot.Tween_EaseType.inOut`, and use the one that looks best.
 
 [https://raw.githubusercontent.com/godotengine/godot-docs/master/img/tween_cheatsheet.png](Tween easing and transition types cheatsheet)
+
+Note: Tween methods will return `false` if the requested operation cannot be completed.
 **/
 @:libType
 @:csNative
@@ -34,8 +36,6 @@ Many of the methods accept `trans_type` and `ease_type`. The first accepts an `g
 extern class Tween extends godot.Node {
 	/**
 		`tween_all_completed` signal.
-		
-		Emitted when all processes in a tween end.
 	**/
 	public var onTweenAllCompleted(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTweenAllCompleted():Signal<Void->Void> {
@@ -44,8 +44,6 @@ extern class Tween extends godot.Node {
 
 	/**
 		`tween_completed` signal.
-		
-		Emitted when a tween ends.
 	**/
 	public var onTweenCompleted(get, never):Signal<(object:godot.Object, key:NodePath)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTweenCompleted():Signal<(object:godot.Object, key:NodePath)->Void> {
@@ -54,8 +52,6 @@ extern class Tween extends godot.Node {
 
 	/**
 		`tween_started` signal.
-		
-		Emitted when a tween starts.
 	**/
 	public var onTweenStarted(get, never):Signal<(object:godot.Object, key:NodePath)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTweenStarted():Signal<(object:godot.Object, key:NodePath)->Void> {
@@ -64,8 +60,6 @@ extern class Tween extends godot.Node {
 
 	/**
 		`tween_step` signal.
-		
-		Emitted at each step of the animation.
 	**/
 	public var onTweenStep(get, never):Signal<(object:godot.Object, key:NodePath, elapsed:Float, value:godot.Object)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTweenStep():Signal<(object:godot.Object, key:NodePath, elapsed:Float, value:godot.Object)->Void> {

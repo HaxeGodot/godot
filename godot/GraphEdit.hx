@@ -16,8 +16,6 @@ It is greatly advised to enable low-processor usage mode (see `godot.OS.lowProce
 extern class GraphEdit extends godot.Control {
 	/**
 		`_begin_node_move` signal.
-		
-		Emitted at the beginning of a GraphNode movement.
 	**/
 	public var onBeginNodeMove(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBeginNodeMove():Signal<Void->Void> {
@@ -26,8 +24,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`_end_node_move` signal.
-		
-		Emitted at the end of a GraphNode movement.
 	**/
 	public var onEndNodeMove(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onEndNodeMove():Signal<Void->Void> {
@@ -36,8 +32,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`connection_from_empty` signal.
-		
-		Emitted when user dragging connection from input port into empty space of the graph.
 	**/
 	public var onConnectionFromEmpty(get, never):Signal<(to:std.String, toSlot:Int, releasePosition:Vector2)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onConnectionFromEmpty():Signal<(to:std.String, toSlot:Int, releasePosition:Vector2)->Void> {
@@ -46,8 +40,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`connection_request` signal.
-		
-		Emitted to the GraphEdit when the connection between the `from_slot` slot of the `from` GraphNode and the `to_slot` slot of the `to` GraphNode is attempted to be created.
 	**/
 	public var onConnectionRequest(get, never):Signal<(from:std.String, fromSlot:Int, to:std.String, toSlot:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onConnectionRequest():Signal<(from:std.String, fromSlot:Int, to:std.String, toSlot:Int)->Void> {
@@ -56,8 +48,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`connection_to_empty` signal.
-		
-		Emitted when user dragging connection from output port into empty space of the graph.
 	**/
 	public var onConnectionToEmpty(get, never):Signal<(from:std.String, fromSlot:Int, releasePosition:Vector2)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onConnectionToEmpty():Signal<(from:std.String, fromSlot:Int, releasePosition:Vector2)->Void> {
@@ -66,8 +56,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`copy_nodes_request` signal.
-		
-		Emitted when the user presses `Ctrl + C`.
 	**/
 	public var onCopyNodesRequest(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onCopyNodesRequest():Signal<Void->Void> {
@@ -76,8 +64,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`delete_nodes_request` signal.
-		
-		Emitted when a GraphNode is attempted to be removed from the GraphEdit.
 	**/
 	public var onDeleteNodesRequest(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onDeleteNodesRequest():Signal<Void->Void> {
@@ -86,8 +72,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`disconnection_request` signal.
-		
-		Emitted to the GraphEdit when the connection between `from_slot` slot of `from` GraphNode and `to_slot` slot of `to` GraphNode is attempted to be removed.
 	**/
 	public var onDisconnectionRequest(get, never):Signal<(from:std.String, fromSlot:Int, to:std.String, toSlot:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onDisconnectionRequest():Signal<(from:std.String, fromSlot:Int, to:std.String, toSlot:Int)->Void> {
@@ -96,8 +80,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`duplicate_nodes_request` signal.
-		
-		Emitted when a GraphNode is attempted to be duplicated in the GraphEdit.
 	**/
 	public var onDuplicateNodesRequest(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onDuplicateNodesRequest():Signal<Void->Void> {
@@ -106,8 +88,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`node_selected` signal.
-		
-		Emitted when a GraphNode is selected.
 	**/
 	public var onNodeSelected(get, never):Signal<(node:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNodeSelected():Signal<(node:Node)->Void> {
@@ -124,8 +104,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`paste_nodes_request` signal.
-		
-		Emitted when the user presses `Ctrl + V`.
 	**/
 	public var onPasteNodesRequest(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPasteNodesRequest():Signal<Void->Void> {
@@ -134,8 +112,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`popup_request` signal.
-		
-		Emitted when a popup is requested. Happens on right-clicking in the GraphEdit. `position` is the position of the mouse pointer when the signal is sent.
 	**/
 	public var onPopupRequest(get, never):Signal<(position:Vector2)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPopupRequest():Signal<(position:Vector2)->Void> {
@@ -144,8 +120,6 @@ extern class GraphEdit extends godot.Control {
 
 	/**
 		`scroll_offset_changed` signal.
-		
-		Emitted when the scroll offset is changed by the user. It will not be emitted when changed in code.
 	**/
 	public var onScrollOffsetChanged(get, never):Signal<(ofs:Vector2)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onScrollOffsetChanged():Signal<(ofs:Vector2)->Void> {

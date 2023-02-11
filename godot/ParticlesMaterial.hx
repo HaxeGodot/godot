@@ -115,7 +115,7 @@ extern class ParticlesMaterial extends godot.Material {
 	/**		
 		Initial rotation applied to each particle, in degrees.
 		
-		Only applied when `godot.ParticlesMaterial.flagDisableZ` or `godot.ParticlesMaterial.flagRotateY` are `true` or the `godot.SpatialMaterial` being used to draw the particle is using `godot.SpatialMaterial_BillboardMode.particles`.
+		Note: Only applied when `godot.ParticlesMaterial.flagDisableZ` or `godot.ParticlesMaterial.flagRotateY` are `true` or the `godot.SpatialMaterial` being used to draw the particle is using `godot.SpatialMaterial_BillboardMode.particles`.
 	**/
 	@:native("Angle")
 	public var angle:Single;
@@ -207,7 +207,7 @@ extern class ParticlesMaterial extends godot.Material {
 	/**		
 		Orbital velocity applied to each particle. Makes the particles circle around origin. Specified in number of full rotations around origin per second.
 		
-		Only available when `godot.ParticlesMaterial.flagDisableZ` is `true`.
+		Note: Only available when `godot.ParticlesMaterial.flagDisableZ` is `true`.
 	**/
 	@:native("OrbitVelocity")
 	public var orbitVelocity:Single;
@@ -225,9 +225,9 @@ extern class ParticlesMaterial extends godot.Material {
 	public var angularVelocityRandom:Single;
 
 	/**		
-		Initial angular velocity applied to each particle. Sets the speed of rotation of the particle.
+		Initial angular velocity applied to each particle in degrees per second. Sets the speed of rotation of the particle.
 		
-		Only applied when `godot.ParticlesMaterial.flagDisableZ` or `godot.ParticlesMaterial.flagRotateY` are `true` or the `godot.SpatialMaterial` being used to draw the particle is using `godot.SpatialMaterial_BillboardMode.particles`.
+		Note: Only applied when `godot.ParticlesMaterial.flagDisableZ` or `godot.ParticlesMaterial.flagRotateY` are `true` or the `godot.SpatialMaterial` being used to draw the particle is using `godot.SpatialMaterial_BillboardMode.particles`.
 	**/
 	@:native("AngularVelocity")
 	public var angularVelocity:Single;

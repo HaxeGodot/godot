@@ -22,9 +22,6 @@ With Bullet physics (the default), the center of mass is the RigidBody3D center.
 extern class RigidBody extends godot.PhysicsBody {
 	/**
 		`body_entered` signal.
-		
-		Emitted when a collision with another `PhysicsBody` or `GridMap` occurs. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
 	**/
 	public var onBodyEntered(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyEntered():Signal<(body:Node)->Void> {
@@ -33,9 +30,6 @@ extern class RigidBody extends godot.PhysicsBody {
 
 	/**
 		`body_exited` signal.
-		
-		Emitted when the collision with another `PhysicsBody` or `GridMap` ends. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
 	**/
 	public var onBodyExited(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyExited():Signal<(body:Node)->Void> {
@@ -44,13 +38,6 @@ extern class RigidBody extends godot.PhysicsBody {
 
 	/**
 		`body_shape_entered` signal.
-		
-		Emitted when one of this RigidBody's `Shape`s collides with another `PhysicsBody` or `GridMap`'s `Shape`s. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body_rid` the `RID` of the other `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
-		`body_shape_index` the index of the `Shape` of the other `PhysicsBody` or `GridMap` used by the `PhysicsServer`. Get the `CollisionShape` node with `body.shape_owner_get_owner(body_shape_index)`.
-		`local_shape_index` the index of the `Shape` of this RigidBody used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
-		`b`Note:`/b` Bullet physics cannot identify the shape index when using a `ConcavePolygonShape`. Don't use multiple `CollisionShape`s when using a `ConcavePolygonShape` with Bullet physics if you need shape indices.
 	**/
 	public var onBodyShapeEntered(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
@@ -59,13 +46,6 @@ extern class RigidBody extends godot.PhysicsBody {
 
 	/**
 		`body_shape_exited` signal.
-		
-		Emitted when the collision between one of this RigidBody's `Shape`s and another `PhysicsBody` or `GridMap`'s `Shape`s ends. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body_rid` the `RID` of the other `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`. `GridMap`s are detected if the Meshes have `Shape`s.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
-		`body_shape_index` the index of the `Shape` of the other `PhysicsBody` or `GridMap` used by the `PhysicsServer`. Get the `CollisionShape` node with `body.shape_owner_get_owner(body_shape_index)`.
-		`local_shape_index` the index of the `Shape` of this RigidBody used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
-		`b`Note:`/b` Bullet physics cannot identify the shape index when using a `ConcavePolygonShape`. Don't use multiple `CollisionShape`s when using a `ConcavePolygonShape` with Bullet physics if you need shape indices.
 	**/
 	public var onBodyShapeExited(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
@@ -74,9 +54,6 @@ extern class RigidBody extends godot.PhysicsBody {
 
 	/**
 		`sleeping_state_changed` signal.
-		
-		Emitted when the physics engine changes the body's sleeping state.
-		`b`Note:`/b` Changing the value `sleeping` will not trigger this signal. It is only emitted if the sleeping state is changed by the physics engine or `emit_signal("sleeping_state_changed")` is used.
 	**/
 	public var onSleepingStateChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onSleepingStateChanged():Signal<Void->Void> {
@@ -84,7 +61,7 @@ extern class RigidBody extends godot.PhysicsBody {
 	}
 
 	/**		
-		Damps RigidBody's rotational forces.
+		Damps RigidBody's rotational forces. If this value is different from -1.0 it will be added to any linear damp derived from the world or areas.
 		
 		See  for more details about damping.
 	**/
@@ -92,13 +69,13 @@ extern class RigidBody extends godot.PhysicsBody {
 	public var angularDamp:Single;
 
 	/**		
-		RigidBody's rotational velocity.
+		The body's rotational velocity in axis-angle format. The magnitude of the vector is the rotation rate in radians per second.
 	**/
 	@:native("AngularVelocity")
 	public var angularVelocity:godot.Vector3;
 
 	/**		
-		The body's linear damp. Cannot be less than -1.0. If this value is different from -1.0, any linear damp derived from the world or areas will be overridden.
+		The body's linear damp. Cannot be less than -1.0. If this value is different from -1.0 it will be added to any linear damp derived from the world or areas.
 		
 		See  for more details about damping.
 	**/
@@ -106,7 +83,7 @@ extern class RigidBody extends godot.PhysicsBody {
 	public var linearDamp:Single;
 
 	/**		
-		The body's linear velocity. Can be used sporadically, but don't set this every frame, because physics may run in another thread and runs at a different granularity. Use `godot.RigidBody._IntegrateForces` as your process loop for precise control of the body state.
+		The body's linear velocity in units per second. Can be used sporadically, but don't set this every frame, because physics may run in another thread and runs at a different granularity. Use `godot.RigidBody._IntegrateForces` as your process loop for precise control of the body state.
 	**/
 	@:native("LinearVelocity")
 	public var linearVelocity:godot.Vector3;

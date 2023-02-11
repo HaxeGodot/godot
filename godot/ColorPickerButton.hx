@@ -18,8 +18,6 @@ Note: By default, the button may not be wide enough for the color preview swatch
 extern class ColorPickerButton extends godot.Button {
 	/**
 		`color_changed` signal.
-		
-		Emitted when the color changes.
 	**/
 	public var onColorChanged(get, never):Signal<(color:Color)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onColorChanged():Signal<(color:Color)->Void> {
@@ -28,8 +26,6 @@ extern class ColorPickerButton extends godot.Button {
 
 	/**
 		`picker_created` signal.
-		
-		Emitted when the `ColorPicker` is created (the button is pressed for the first time).
 	**/
 	public var onPickerCreated(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPickerCreated():Signal<Void->Void> {
@@ -38,8 +34,6 @@ extern class ColorPickerButton extends godot.Button {
 
 	/**
 		`popup_closed` signal.
-		
-		Emitted when the `ColorPicker` is closed.
 	**/
 	public var onPopupClosed(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPopupClosed():Signal<Void->Void> {

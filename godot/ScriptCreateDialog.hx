@@ -23,8 +23,6 @@ dialog.popup_centered()
 extern class ScriptCreateDialog extends godot.ConfirmationDialog {
 	/**
 		`script_created` signal.
-		
-		Emitted when the user clicks the OK button.
 	**/
 	public var onScriptCreated(get, never):Signal<(script:Script)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onScriptCreated():Signal<(script:Script)->Void> {

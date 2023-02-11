@@ -16,8 +16,6 @@ Note: This class shouldn't be instantiated directly. Instead, access the singlet
 extern abstract class EditorFileSystem extends godot.Node {
 	/**
 		`filesystem_changed` signal.
-		
-		Emitted if the filesystem changed.
 	**/
 	public var onFilesystemChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFilesystemChanged():Signal<Void->Void> {
@@ -26,8 +24,6 @@ extern abstract class EditorFileSystem extends godot.Node {
 
 	/**
 		`resources_reimported` signal.
-		
-		Emitted if a resource is reimported.
 	**/
 	public var onResourcesReimported(get, never):Signal<(resources:std.Array<std.String>)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onResourcesReimported():Signal<(resources:std.Array<std.String>)->Void> {
@@ -36,8 +32,6 @@ extern abstract class EditorFileSystem extends godot.Node {
 
 	/**
 		`resources_reload` signal.
-		
-		Emitted if at least one resource is reloaded when the filesystem is scanned.
 	**/
 	public var onResourcesReload(get, never):Signal<(resources:std.Array<std.String>)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onResourcesReload():Signal<(resources:std.Array<std.String>)->Void> {
@@ -46,8 +40,6 @@ extern abstract class EditorFileSystem extends godot.Node {
 
 	/**
 		`sources_changed` signal.
-		
-		Emitted if the source of any imported file changed.
 	**/
 	public var onSourcesChanged(get, never):Signal<(exist:Bool)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onSourcesChanged():Signal<(exist:Bool)->Void> {

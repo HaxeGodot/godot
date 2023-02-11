@@ -16,8 +16,6 @@ Note: To create a one-shot timer without instantiating a node, use `godot.SceneT
 extern class Timer extends godot.Node {
 	/**
 		`timeout` signal.
-		
-		Emitted when the timer reaches 0.
 	**/
 	public var onTimeout(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTimeout():Signal<Void->Void> {

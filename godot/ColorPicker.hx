@@ -16,8 +16,6 @@ Note: This control is the color picker widget itself. You can use a `godot.Color
 extern class ColorPicker extends godot.BoxContainer {
 	/**
 		`color_changed` signal.
-		
-		Emitted when the color is changed.
 	**/
 	public var onColorChanged(get, never):Signal<(color:Color)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onColorChanged():Signal<(color:Color)->Void> {
@@ -26,8 +24,6 @@ extern class ColorPicker extends godot.BoxContainer {
 
 	/**
 		`preset_added` signal.
-		
-		Emitted when a preset is added.
 	**/
 	public var onPresetAdded(get, never):Signal<(color:Color)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPresetAdded():Signal<(color:Color)->Void> {
@@ -36,8 +32,6 @@ extern class ColorPicker extends godot.BoxContainer {
 
 	/**
 		`preset_removed` signal.
-		
-		Emitted when a preset is removed.
 	**/
 	public var onPresetRemoved(get, never):Signal<(color:Color)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPresetRemoved():Signal<(color:Color)->Void> {
@@ -79,7 +73,7 @@ extern class ColorPicker extends godot.BoxContainer {
 	public var hsvMode:Bool;
 
 	/**		
-		If `true`, shows an alpha channel slider (transparency).
+		If `true`, shows an alpha channel slider (opacity).
 	**/
 	@:native("EditAlpha")
 	public var editAlpha:Bool;

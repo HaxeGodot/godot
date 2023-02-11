@@ -14,9 +14,6 @@ import cs.system.*;
 extern class Area2D extends godot.CollisionObject2D {
 	/**
 		`area_entered` signal.
-		
-		Emitted when another Area2D enters this Area2D. Requires `monitoring` to be set to `true`.
-		`area` the other Area2D.
 	**/
 	public var onAreaEntered(get, never):Signal<(area:Area2D)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAreaEntered():Signal<(area:Area2D)->Void> {
@@ -25,9 +22,6 @@ extern class Area2D extends godot.CollisionObject2D {
 
 	/**
 		`area_exited` signal.
-		
-		Emitted when another Area2D exits this Area2D. Requires `monitoring` to be set to `true`.
-		`area` the other Area2D.
 	**/
 	public var onAreaExited(get, never):Signal<(area:Area2D)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAreaExited():Signal<(area:Area2D)->Void> {
@@ -36,12 +30,6 @@ extern class Area2D extends godot.CollisionObject2D {
 
 	/**
 		`area_shape_entered` signal.
-		
-		Emitted when one of another Area2D's `Shape2D`s enters one of this Area2D's `Shape2D`s. Requires `monitoring` to be set to `true`.
-		`area_rid` the `RID` of the other Area2D's `CollisionObject2D` used by the `Physics2DServer`.
-		`area` the other Area2D.
-		`area_shape_index` the index of the `Shape2D` of the other Area2D used by the `Physics2DServer`. Get the `CollisionShape2D` node with `area.shape_owner_get_owner(area_shape_index)`.
-		`local_shape_index` the index of the `Shape2D` of this Area2D used by the `Physics2DServer`. Get the `CollisionShape2D` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
 	public var onAreaShapeEntered(get, never):Signal<(areaRid:RID, area:Area2D, areaShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAreaShapeEntered():Signal<(areaRid:RID, area:Area2D, areaShapeIndex:Int, localShapeIndex:Int)->Void> {
@@ -50,12 +38,6 @@ extern class Area2D extends godot.CollisionObject2D {
 
 	/**
 		`area_shape_exited` signal.
-		
-		Emitted when one of another Area2D's `Shape2D`s exits one of this Area2D's `Shape2D`s. Requires `monitoring` to be set to `true`.
-		`area_rid` the `RID` of the other Area2D's `CollisionObject2D` used by the `Physics2DServer`.
-		`area` the other Area2D.
-		`area_shape_index` the index of the `Shape2D` of the other Area2D used by the `Physics2DServer`. Get the `CollisionShape2D` node with `area.shape_owner_get_owner(area_shape_index)`.
-		`local_shape_index` the index of the `Shape2D` of this Area2D used by the `Physics2DServer`. Get the `CollisionShape2D` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
 	public var onAreaShapeExited(get, never):Signal<(areaRid:RID, area:Area2D, areaShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAreaShapeExited():Signal<(areaRid:RID, area:Area2D, areaShapeIndex:Int, localShapeIndex:Int)->Void> {
@@ -64,9 +46,6 @@ extern class Area2D extends godot.CollisionObject2D {
 
 	/**
 		`body_entered` signal.
-		
-		Emitted when a `PhysicsBody2D` or `TileMap` enters this Area2D. Requires `monitoring` to be set to `true`. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
 	**/
 	public var onBodyEntered(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyEntered():Signal<(body:Node)->Void> {
@@ -75,9 +54,6 @@ extern class Area2D extends godot.CollisionObject2D {
 
 	/**
 		`body_exited` signal.
-		
-		Emitted when a `PhysicsBody2D` or `TileMap` exits this Area2D. Requires `monitoring` to be set to `true`. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
 	**/
 	public var onBodyExited(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyExited():Signal<(body:Node)->Void> {
@@ -86,12 +62,6 @@ extern class Area2D extends godot.CollisionObject2D {
 
 	/**
 		`body_shape_entered` signal.
-		
-		Emitted when one of a `PhysicsBody2D` or `TileMap`'s `Shape2D`s enters one of this Area2D's `Shape2D`s. Requires `monitoring` to be set to `true`. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
-		`body_rid` the `RID` of the `PhysicsBody2D` or `TileSet`'s `CollisionObject2D` used by the `Physics2DServer`.
-		`body` the `Node`, if it exists in the tree, of the `PhysicsBody2D` or `TileMap`.
-		`body_shape_index` the index of the `Shape2D` of the `PhysicsBody2D` or `TileMap` used by the `Physics2DServer`. Get the `CollisionShape2D` node with `body.shape_owner_get_owner(body_shape_index)`.
-		`local_shape_index` the index of the `Shape2D` of this Area2D used by the `Physics2DServer`. Get the `CollisionShape2D` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
 	public var onBodyShapeEntered(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
@@ -100,12 +70,6 @@ extern class Area2D extends godot.CollisionObject2D {
 
 	/**
 		`body_shape_exited` signal.
-		
-		Emitted when one of a `PhysicsBody2D` or `TileMap`'s `Shape2D`s exits one of this Area2D's `Shape2D`s. Requires `monitoring` to be set to `true`. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
-		`body_rid` the `RID` of the `PhysicsBody2D` or `TileSet`'s `CollisionObject2D` used by the `Physics2DServer`.
-		`body` the `Node`, if it exists in the tree, of the `PhysicsBody2D` or `TileMap`.
-		`body_shape_index` the index of the `Shape2D` of the `PhysicsBody2D` or `TileMap` used by the `Physics2DServer`. Get the `CollisionShape2D` node with `body.shape_owner_get_owner(body_shape_index)`.
-		`local_shape_index` the index of the `Shape2D` of this Area2D used by the `Physics2DServer`. Get the `CollisionShape2D` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
 	public var onBodyShapeExited(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {

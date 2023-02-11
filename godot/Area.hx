@@ -14,9 +14,6 @@ import cs.system.*;
 extern class Area extends godot.CollisionObject {
 	/**
 		`area_entered` signal.
-		
-		Emitted when another Area enters this Area. Requires `monitoring` to be set to `true`.
-		`area` the other Area.
 	**/
 	public var onAreaEntered(get, never):Signal<(area:Area)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAreaEntered():Signal<(area:Area)->Void> {
@@ -25,9 +22,6 @@ extern class Area extends godot.CollisionObject {
 
 	/**
 		`area_exited` signal.
-		
-		Emitted when another Area exits this Area. Requires `monitoring` to be set to `true`.
-		`area` the other Area.
 	**/
 	public var onAreaExited(get, never):Signal<(area:Area)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAreaExited():Signal<(area:Area)->Void> {
@@ -36,12 +30,6 @@ extern class Area extends godot.CollisionObject {
 
 	/**
 		`area_shape_entered` signal.
-		
-		Emitted when one of another Area's `Shape`s enters one of this Area's `Shape`s. Requires `monitoring` to be set to `true`.
-		`area_rid` the `RID` of the other Area's `CollisionObject` used by the `PhysicsServer`.
-		`area` the other Area.
-		`area_shape_index` the index of the `Shape` of the other Area used by the `PhysicsServer`. Get the `CollisionShape` node with `area.shape_owner_get_owner(area_shape_index)`.
-		`local_shape_index` the index of the `Shape` of this Area used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
 	public var onAreaShapeEntered(get, never):Signal<(areaRid:RID, area:Area, areaShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAreaShapeEntered():Signal<(areaRid:RID, area:Area, areaShapeIndex:Int, localShapeIndex:Int)->Void> {
@@ -50,12 +38,6 @@ extern class Area extends godot.CollisionObject {
 
 	/**
 		`area_shape_exited` signal.
-		
-		Emitted when one of another Area's `Shape`s enters one of this Area's `Shape`s. Requires `monitoring` to be set to `true`.
-		`area_rid` the `RID` of the other Area's `CollisionObject` used by the `PhysicsServer`.
-		`area` the other Area.
-		`area_shape_index` the index of the `Shape` of the other Area used by the `PhysicsServer`. Get the `CollisionShape` node with `area.shape_owner_get_owner(area_shape_index)`.
-		`local_shape_index` the index of the `Shape` of this Area used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
 	public var onAreaShapeExited(get, never):Signal<(areaRid:RID, area:Area, areaShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAreaShapeExited():Signal<(areaRid:RID, area:Area, areaShapeIndex:Int, localShapeIndex:Int)->Void> {
@@ -64,9 +46,6 @@ extern class Area extends godot.CollisionObject {
 
 	/**
 		`body_entered` signal.
-		
-		Emitted when a `PhysicsBody` or `GridMap` enters this Area. Requires `monitoring` to be set to `true`. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
 	**/
 	public var onBodyEntered(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyEntered():Signal<(body:Node)->Void> {
@@ -75,9 +54,6 @@ extern class Area extends godot.CollisionObject {
 
 	/**
 		`body_exited` signal.
-		
-		Emitted when a `PhysicsBody` or `GridMap` exits this Area. Requires `monitoring` to be set to `true`. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody` or `GridMap`.
 	**/
 	public var onBodyExited(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyExited():Signal<(body:Node)->Void> {
@@ -86,12 +62,6 @@ extern class Area extends godot.CollisionObject {
 
 	/**
 		`body_shape_entered` signal.
-		
-		Emitted when one of a `PhysicsBody` or `GridMap`'s `Shape`s enters one of this Area's `Shape`s. Requires `monitoring` to be set to `true`. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body_rid` the `RID` of the `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`.
-		`body` the `Node`, if it exists in the tree, of the `PhysicsBody` or `GridMap`.
-		`body_shape_index` the index of the `Shape` of the `PhysicsBody` or `GridMap` used by the `PhysicsServer`. Get the `CollisionShape` node with `body.shape_owner_get_owner(body_shape_index)`.
-		`local_shape_index` the index of the `Shape` of this Area used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
 	public var onBodyShapeEntered(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
@@ -100,12 +70,6 @@ extern class Area extends godot.CollisionObject {
 
 	/**
 		`body_shape_exited` signal.
-		
-		Emitted when one of a `PhysicsBody` or `GridMap`'s `Shape`s enters one of this Area's `Shape`s. Requires `monitoring` to be set to `true`. `GridMap`s are detected if the `MeshLibrary` has Collision `Shape`s.
-		`body_rid` the `RID` of the `PhysicsBody` or `MeshLibrary`'s `CollisionObject` used by the `PhysicsServer`.
-		`body` the `Node`, if it exists in the tree, of the `PhysicsBody` or `GridMap`.
-		`body_shape_index` the index of the `Shape` of the `PhysicsBody` or `GridMap` used by the `PhysicsServer`. Get the `CollisionShape` node with `body.shape_owner_get_owner(body_shape_index)`.
-		`local_shape_index` the index of the `Shape` of this Area used by the `PhysicsServer`. Get the `CollisionShape` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
 	public var onBodyShapeExited(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {

@@ -16,8 +16,6 @@ Note: The high-level multiplayer API protocol is an implementation detail and is
 extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 	/**
 		`connection_failed` signal.
-		
-		Emitted when a connection attempt fails.
 	**/
 	public var onConnectionFailed(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onConnectionFailed():Signal<Void->Void> {
@@ -26,8 +24,6 @@ extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 
 	/**
 		`connection_succeeded` signal.
-		
-		Emitted when a connection attempt succeeds.
 	**/
 	public var onConnectionSucceeded(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onConnectionSucceeded():Signal<Void->Void> {
@@ -36,8 +32,6 @@ extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 
 	/**
 		`peer_connected` signal.
-		
-		Emitted by the server when a client connects.
 	**/
 	public var onPeerConnected(get, never):Signal<(id:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPeerConnected():Signal<(id:Int)->Void> {
@@ -46,8 +40,6 @@ extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 
 	/**
 		`peer_disconnected` signal.
-		
-		Emitted by the server when a client disconnects.
 	**/
 	public var onPeerDisconnected(get, never):Signal<(id:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPeerDisconnected():Signal<(id:Int)->Void> {
@@ -56,8 +48,6 @@ extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 
 	/**
 		`server_disconnected` signal.
-		
-		Emitted by clients when the server disconnects.
 	**/
 	public var onServerDisconnected(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onServerDisconnected():Signal<Void->Void> {

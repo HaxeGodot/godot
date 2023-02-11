@@ -273,6 +273,8 @@ extern class SurfaceTool extends godot.Reference {
 
 	/**		
 		Append vertices from a given `godot.Mesh` surface onto the current vertex array with specified `godot.Transform`.
+		
+		Note: Using `godot.SurfaceTool.appendFrom` on a `godot.Thread` is much slower as the GPU must communicate data back to the CPU, while also causing the main thread to stall (as OpenGL is not thread-safe). Consider requesting a copy of the mesh, converting it to an `godot.ArrayMesh` and adding vertices manually instead.
 	**/
 	@:native("AppendFrom")
 	public function appendFrom(existing:godot.Mesh, surface:Int, transform:godot.Transform):Void;

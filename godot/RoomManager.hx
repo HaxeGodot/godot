@@ -13,6 +13,16 @@ In order to utilize the portal occlusion culling system, you must build your lev
 @:autoBuild(godot.Godot.buildUserClass())
 extern class RoomManager extends godot.Spatial {
 	/**		
+		In order to reduce processing for roaming objects, an expansion is applied to their AABB as they move. This expanded volume is used to calculate which rooms the roaming object is within. If the object's exact AABB is still within this expanded volume on the next move, there is no need to reprocess the object, which can save considerable CPU.
+		
+		The downside is that if the expansion is too much, the object may end up unexpectedly sprawling into neighbouring rooms and showing up where it might otherwise be culled.
+		
+		In order to balance roaming performance against culling accuracy, this expansion margin can be customized by the user. It will typically depend on your room and object sizes, and movement speeds. The default value should work reasonably in most circumstances.
+	**/
+	@:native("RoamingExpansionMargin")
+	public var roamingExpansionMargin:Single;
+
+	/**		
 		Usually we don't want objects that only just cross a boundary into an adjacent `godot.Room` to sprawl into that room. To prevent this, each `godot.Portal` has an extra margin, or tolerance zone where objects can enter without sprawling to a neighbouring room.
 		
 		In most cases you can set this here for all portals. It is possible to override the margin for each portal.
@@ -240,4 +250,10 @@ extern class RoomManager extends godot.Spatial {
 
 	@:native("GetDefaultPortalMargin")
 	public function getDefaultPortalMargin():Single;
+
+	@:native("SetRoamingExpansionMargin")
+	public function setRoamingExpansionMargin(roamingExpansionMargin:Single):Void;
+
+	@:native("GetRoamingExpansionMargin")
+	public function getRoamingExpansionMargin():Single;
 }

@@ -97,6 +97,8 @@ extern class InputMap {
 
 	/**		
 		Returns an array of `godot.InputEvent`s associated with a given action.
+		
+		Note: When used in the editor (e.g. a tool script or `Godot.EditorPlugin`), this method will return events for the editor action. If you want to access your project's input binds from the editor, read the `input/*` settings from `godot.ProjectSettings`.
 	**/
 	@:native("GetActionList")
 	public static function getActionList(action:std.String):godot.collections.Array;

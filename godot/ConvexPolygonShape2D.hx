@@ -15,7 +15,7 @@ The main difference between a `godot.ConvexPolygonShape2D` and a `godot.ConcaveP
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ConvexPolygonShape2D extends godot.Shape2D {
 	/**		
-		The polygon's list of vertices. Can be in either clockwise or counterclockwise order.
+		The polygon's list of vertices. Can be in either clockwise or counterclockwise order. Only set this property with convex hull points, use `godot.ConvexPolygonShape2D.setPointCloud` to generate a convex hull shape from concave shape points.
 	**/
 	@:native("Points")
 	public var points:cs.NativeArray<godot.Vector2>;

@@ -18,8 +18,6 @@ See also `godot.BaseButton` which contains common properties and methods associa
 extern class MenuButton extends godot.Button {
 	/**
 		`about_to_show` signal.
-		
-		Emitted when `PopupMenu` of this MenuButton is about to show.
 	**/
 	public var onAboutToShow(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAboutToShow():Signal<Void->Void> {

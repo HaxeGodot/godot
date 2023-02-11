@@ -18,8 +18,6 @@ Note: For performance reasons, VisibilityNotifier2D uses an approximate heuristi
 extern class VisibilityNotifier2D extends godot.Node2D {
 	/**
 		`screen_entered` signal.
-		
-		Emitted when the VisibilityNotifier2D enters the screen.
 	**/
 	public var onScreenEntered(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onScreenEntered():Signal<Void->Void> {
@@ -28,8 +26,6 @@ extern class VisibilityNotifier2D extends godot.Node2D {
 
 	/**
 		`screen_exited` signal.
-		
-		Emitted when the VisibilityNotifier2D exits the screen.
 	**/
 	public var onScreenExited(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onScreenExited():Signal<Void->Void> {
@@ -38,8 +34,6 @@ extern class VisibilityNotifier2D extends godot.Node2D {
 
 	/**
 		`viewport_entered` signal.
-		
-		Emitted when the VisibilityNotifier2D enters a `Viewport`'s view.
 	**/
 	public var onViewportEntered(get, never):Signal<(viewport:Viewport)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onViewportEntered():Signal<(viewport:Viewport)->Void> {
@@ -48,8 +42,6 @@ extern class VisibilityNotifier2D extends godot.Node2D {
 
 	/**
 		`viewport_exited` signal.
-		
-		Emitted when the VisibilityNotifier2D exits a `Viewport`'s view.
 	**/
 	public var onViewportExited(get, never):Signal<(viewport:Viewport)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onViewportExited():Signal<(viewport:Viewport)->Void> {

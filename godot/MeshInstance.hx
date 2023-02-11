@@ -5,7 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-MeshInstance is a node that takes a `godot.Mesh` resource and adds it to the current scenario by creating an instance of it. This is the class most often used to get 3D geometry rendered and can be used to instance a single `godot.Mesh` in many places. This allows to reuse geometry and save on resources. When a `godot.Mesh` has to be instanced more than thousands of times at close proximity, consider using a `godot.MultiMesh` in a `godot.MultiMeshInstance` instead.
+MeshInstance is a node that takes a `godot.Mesh` resource and adds it to the current scenario by creating an instance of it. This is the class most often used to get 3D geometry rendered and can be used to instance a single `godot.Mesh` in many places. This allows reusing geometry, which can save on resources. When a `godot.Mesh` has to be instanced more than thousands of times at close proximity, consider using a `godot.MultiMesh` in a `godot.MultiMeshInstance` instead.
 **/
 @:libType
 @:csNative
@@ -60,19 +60,21 @@ extern class MeshInstance extends godot.GeometryInstance {
 	public function getSkin():godot.Skin;
 
 	/**		
-		Returns the number of surface materials.
+		Returns the number of surface override materials.
 	**/
 	@:native("GetSurfaceMaterialCount")
 	public function getSurfaceMaterialCount():Int;
 
 	/**		
-		Sets the `godot.Material` for a surface of the `godot.Mesh` resource.
+		Sets the override `godot.Material` for the specified surface of the `godot.Mesh` resource. This material is associated with this `godot.MeshInstance` rather than with the `godot.Mesh` resource.
 	**/
 	@:native("SetSurfaceMaterial")
 	public function setSurfaceMaterial(surface:Int, material:godot.Material):Void;
 
 	/**		
-		Returns the `godot.Material` for a surface of the `godot.Mesh` resource.
+		Returns the override `godot.Material` for a surface of the `godot.Mesh` resource.
+		
+		Note: This function only returns override materials associated with this `godot.MeshInstance`. Consider using `godot.MeshInstance.getActiveMaterial` or `godot.Mesh.surfaceGetMaterial` to get materials associated with the `godot.Mesh` resource.
 	**/
 	@:native("GetSurfaceMaterial")
 	public function getSurfaceMaterial(surface:Int):godot.Material;

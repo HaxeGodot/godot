@@ -16,9 +16,6 @@ Note: In C#, resources will not be freed instantly after they are no longer in u
 extern class Resource extends godot.Reference {
 	/**
 		`changed` signal.
-		
-		Emitted whenever the resource changes.
-		`b`Note:`/b` This signal is not emitted automatically for custom resources, which means that you need to create a setter and emit the signal yourself.
 	**/
 	public var onChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onChanged():Signal<Void->Void> {

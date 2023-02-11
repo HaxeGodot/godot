@@ -386,38 +386,38 @@ extern abstract class TreeItem extends godot.Object {
 
 	#if doc_gen
 	/**		
-		Adds a button with `godot.Texture` `button` at column `column`. The `button_idx` index is used to identify the button when calling other methods. If not specified, the next available index is used, which may be retrieved by calling `godot.TreeItem.getButtonCount` immediately after this method. Optionally, the button can be `disabled` and have a `tooltip`.
+		Adds a button with `godot.Texture` `button` at column `column`. The `button_idx` is used to identify the button. If not specified, the next available index is used, which may be retrieved by calling `godot.TreeItem.getButtonCount` immediately after this method. Optionally, the button can be `disabled` and have a `tooltip`.
 	**/
 	@:native("AddButton")
 	public function addButton(column:Int, button:godot.Texture, ?buttonIdx:Int, ?disabled:Bool, ?tooltip:std.String):Void;
 	#else
 	/**		
-		Adds a button with `godot.Texture` `button` at column `column`. The `button_idx` index is used to identify the button when calling other methods. If not specified, the next available index is used, which may be retrieved by calling `godot.TreeItem.getButtonCount` immediately after this method. Optionally, the button can be `disabled` and have a `tooltip`.
+		Adds a button with `godot.Texture` `button` at column `column`. The `button_idx` is used to identify the button. If not specified, the next available index is used, which may be retrieved by calling `godot.TreeItem.getButtonCount` immediately after this method. Optionally, the button can be `disabled` and have a `tooltip`.
 	**/
 	@:native("AddButton")
 	public overload function addButton(column:Int, button:godot.Texture):Void;
 
 	/**		
-		Adds a button with `godot.Texture` `button` at column `column`. The `button_idx` index is used to identify the button when calling other methods. If not specified, the next available index is used, which may be retrieved by calling `godot.TreeItem.getButtonCount` immediately after this method. Optionally, the button can be `disabled` and have a `tooltip`.
+		Adds a button with `godot.Texture` `button` at column `column`. The `button_idx` is used to identify the button. If not specified, the next available index is used, which may be retrieved by calling `godot.TreeItem.getButtonCount` immediately after this method. Optionally, the button can be `disabled` and have a `tooltip`.
 	**/
 	@:native("AddButton")
 	public overload function addButton(column:Int, button:godot.Texture, buttonIdx:Int):Void;
 
 	/**		
-		Adds a button with `godot.Texture` `button` at column `column`. The `button_idx` index is used to identify the button when calling other methods. If not specified, the next available index is used, which may be retrieved by calling `godot.TreeItem.getButtonCount` immediately after this method. Optionally, the button can be `disabled` and have a `tooltip`.
+		Adds a button with `godot.Texture` `button` at column `column`. The `button_idx` is used to identify the button. If not specified, the next available index is used, which may be retrieved by calling `godot.TreeItem.getButtonCount` immediately after this method. Optionally, the button can be `disabled` and have a `tooltip`.
 	**/
 	@:native("AddButton")
 	public overload function addButton(column:Int, button:godot.Texture, buttonIdx:Int, disabled:Bool):Void;
 
 	/**		
-		Adds a button with `godot.Texture` `button` at column `column`. The `button_idx` index is used to identify the button when calling other methods. If not specified, the next available index is used, which may be retrieved by calling `godot.TreeItem.getButtonCount` immediately after this method. Optionally, the button can be `disabled` and have a `tooltip`.
+		Adds a button with `godot.Texture` `button` at column `column`. The `button_idx` is used to identify the button. If not specified, the next available index is used, which may be retrieved by calling `godot.TreeItem.getButtonCount` immediately after this method. Optionally, the button can be `disabled` and have a `tooltip`.
 	**/
 	@:native("AddButton")
 	public overload function addButton(column:Int, button:godot.Texture, buttonIdx:Int, disabled:Bool, tooltip:std.String):Void;
 	#end
 
 	/**		
-		Returns the number of buttons in column `column`. May be used to get the most recently added button's index, if no index was specified.
+		Returns the number of buttons in column `column`.
 	**/
 	@:native("GetButtonCount")
 	public function getButtonCount(column:Int):Int;

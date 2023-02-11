@@ -20,8 +20,6 @@ Note: Hiding an `godot.AudioStreamPlayer3D` node does not disable its audio outp
 extern class AudioStreamPlayer3D extends godot.Spatial {
 	/**
 		`finished` signal.
-		
-		Emitted when the audio stops playing.
 	**/
 	public var onFinished(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFinished():Signal<Void->Void> {
@@ -67,7 +65,7 @@ extern class AudioStreamPlayer3D extends godot.Spatial {
 	public var emissionAngleEnabled:Bool;
 
 	/**		
-		Areas in which this sound plays.
+		Determines which `godot.Area` layers affect the sound for reverb and audio bus effects. Areas can be used to redirect `godot.AudioStream`s so that they play in a certain audio bus. An example of how you might use this is making a "water" area so that sounds played in the water are redirected through an audio bus to make them sound like they are being played underwater.
 	**/
 	@:native("AreaMask")
 	public var areaMask:UInt;

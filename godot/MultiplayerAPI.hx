@@ -20,8 +20,6 @@ Note: The high-level multiplayer API protocol is an implementation detail and is
 extern class MultiplayerAPI extends godot.Reference {
 	/**
 		`connected_to_server` signal.
-		
-		Emitted when this MultiplayerAPI's `networkPeer` successfully connected to a server. Only emitted on clients.
 	**/
 	public var onConnectedToServer(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onConnectedToServer():Signal<Void->Void> {
@@ -30,8 +28,6 @@ extern class MultiplayerAPI extends godot.Reference {
 
 	/**
 		`connection_failed` signal.
-		
-		Emitted when this MultiplayerAPI's `networkPeer` fails to establish a connection to a server. Only emitted on clients.
 	**/
 	public var onConnectionFailed(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onConnectionFailed():Signal<Void->Void> {
@@ -40,8 +36,6 @@ extern class MultiplayerAPI extends godot.Reference {
 
 	/**
 		`network_peer_connected` signal.
-		
-		Emitted when this MultiplayerAPI's `networkPeer` connects with a new peer. ID is the peer ID of the new peer. Clients get notified when other clients connect to the same server. Upon connecting to a server, a client also receives this signal for the server (with ID being 1).
 	**/
 	public var onNetworkPeerConnected(get, never):Signal<(id:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNetworkPeerConnected():Signal<(id:Int)->Void> {
@@ -50,8 +44,6 @@ extern class MultiplayerAPI extends godot.Reference {
 
 	/**
 		`network_peer_disconnected` signal.
-		
-		Emitted when this MultiplayerAPI's `networkPeer` disconnects from a peer. Clients get notified when other clients disconnect from the same server.
 	**/
 	public var onNetworkPeerDisconnected(get, never):Signal<(id:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNetworkPeerDisconnected():Signal<(id:Int)->Void> {
@@ -60,8 +52,6 @@ extern class MultiplayerAPI extends godot.Reference {
 
 	/**
 		`network_peer_packet` signal.
-		
-		Emitted when this MultiplayerAPI's `networkPeer` receive a `packet` with custom data (see `sendBytes`). ID is the peer ID of the peer that sent the packet.
 	**/
 	public var onNetworkPeerPacket(get, never):Signal<(id:Int, packet:std.Array<cs.types.UInt8>)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNetworkPeerPacket():Signal<(id:Int, packet:std.Array<cs.types.UInt8>)->Void> {
@@ -70,8 +60,6 @@ extern class MultiplayerAPI extends godot.Reference {
 
 	/**
 		`server_disconnected` signal.
-		
-		Emitted when this MultiplayerAPI's `networkPeer` disconnects from server. Only emitted on clients.
 	**/
 	public var onServerDisconnected(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onServerDisconnected():Signal<Void->Void> {

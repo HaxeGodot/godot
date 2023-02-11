@@ -18,9 +18,6 @@ Updating the target properties of animations occurs at process time.
 extern class AnimationPlayer extends godot.Node {
 	/**
 		`animation_changed` signal.
-		
-		Emitted when a queued animation plays after the previous animation was finished. See `queue`.
-		`b`Note:`/b` The signal is not emitted when the animation is changed via `play` or from `AnimationTree`.
 	**/
 	public var onAnimationChanged(get, never):Signal<(oldName:std.String, newName:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAnimationChanged():Signal<(oldName:std.String, newName:std.String)->Void> {
@@ -29,8 +26,6 @@ extern class AnimationPlayer extends godot.Node {
 
 	/**
 		`animation_finished` signal.
-		
-		Notifies when an animation finished playing.
 	**/
 	public var onAnimationFinished(get, never):Signal<(animName:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAnimationFinished():Signal<(animName:std.String)->Void> {
@@ -39,8 +34,6 @@ extern class AnimationPlayer extends godot.Node {
 
 	/**
 		`animation_started` signal.
-		
-		Notifies when an animation starts playing.
 	**/
 	public var onAnimationStarted(get, never):Signal<(animName:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAnimationStarted():Signal<(animName:std.String)->Void> {
@@ -49,8 +42,6 @@ extern class AnimationPlayer extends godot.Node {
 
 	/**
 		`caches_cleared` signal.
-		
-		Notifies when the caches have been cleared, either automatically, or manually via `clearCaches`.
 	**/
 	public var onCachesCleared(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onCachesCleared():Signal<Void->Void> {

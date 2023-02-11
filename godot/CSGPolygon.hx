@@ -5,7 +5,9 @@ package godot;
 import cs.system.*;
 
 /**
-An array of 2D points is extruded to quickly and easily create a variety of 3D meshes.
+An array of 2D points is extruded to quickly and easily create a variety of 3D meshes. See also `godot.CSGMesh` for using 3D meshes as CSG nodes.
+
+Note: CSG nodes are intended to be used for level prototyping. Creating CSG nodes has a significant CPU cost compared to creating a `godot.MeshInstance` with a `godot.PrimitiveMesh`. Moving a CSG node within another CSG node also has a significant CPU cost, so it should be avoided during gameplay.
 **/
 @:libType
 @:csNative
@@ -103,7 +105,9 @@ extern class CSGPolygon extends godot.CSGPrimitive {
 	public var mode:godot.CSGPolygon_ModeEnum;
 
 	/**		
-		The point array that defines the 2D polygon that is extruded.
+		The point array that defines the 2D polygon that is extruded. This can be a convex or concave polygon with 3 or more points. The polygon must not have any intersecting edges. Otherwise, triangulation will fail and no mesh will be generated.
+		
+		Note: If only 1 or 2 points are defined in `godot.CSGPolygon.polygon`, no mesh will be generated.
 	**/
 	@:native("Polygon")
 	public var polygon:cs.NativeArray<godot.Vector2>;

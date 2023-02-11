@@ -14,8 +14,6 @@ CollisionObject is the base class for physics objects. It can hold any number of
 extern abstract class CollisionObject extends godot.Spatial {
 	/**
 		`input_event` signal.
-		
-		Emitted when the object receives an unhandled `InputEvent`. `position` is the location in world space of the mouse pointer on the surface of the shape with index `shape_idx` and `normal` is the normal vector of the surface at that point.
 	**/
 	public var onInputEvent(get, never):Signal<(camera:Node, event:InputEvent, position:Vector3, normal:Vector3, shapeIdx:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onInputEvent():Signal<(camera:Node, event:InputEvent, position:Vector3, normal:Vector3, shapeIdx:Int)->Void> {
@@ -24,8 +22,6 @@ extern abstract class CollisionObject extends godot.Spatial {
 
 	/**
 		`mouse_entered` signal.
-		
-		Emitted when the mouse pointer enters any of this object's shapes.
 	**/
 	public var onMouseEntered(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMouseEntered():Signal<Void->Void> {
@@ -34,8 +30,6 @@ extern abstract class CollisionObject extends godot.Spatial {
 
 	/**
 		`mouse_exited` signal.
-		
-		Emitted when the mouse pointer exits all this object's shapes.
 	**/
 	public var onMouseExited(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMouseExited():Signal<Void->Void> {
@@ -49,7 +43,7 @@ extern abstract class CollisionObject extends godot.Spatial {
 	public var inputCaptureOnDrag:Bool;
 
 	/**		
-		If `true`, the `godot.CollisionObject`'s shapes will respond to `godot.RayCast`s.
+		If `true`, this object is pickable. A pickable object can detect the mouse pointer entering/leaving, and if the mouse is inside it, report input events. Requires at least one `godot.CollisionObject.collisionLayer` bit to be set.
 	**/
 	@:native("InputRayPickable")
 	public var inputRayPickable:Bool;

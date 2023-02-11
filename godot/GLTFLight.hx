@@ -4,6 +4,9 @@ package godot;
 
 import cs.system.*;
 
+/**
+Note: This class is only compiled in editor builds. Run-time glTF loading and saving is not available in exported projects. References to `godot.GLTFLight` within a script will cause an error in an exported project.
+**/
 @:libType
 @:csNative
 @:native("Godot.GLTFLight")

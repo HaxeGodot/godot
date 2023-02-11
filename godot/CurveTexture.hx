@@ -13,13 +13,13 @@ Renders a given `godot.Curve` provided to it. Simplifies the task of drawing cur
 @:autoBuild(godot.Godot.buildUserClass())
 extern class CurveTexture extends godot.Texture {
 	/**		
-		The `curve` rendered onto the texture.
+		The `godot.Curve` that is rendered onto the texture.
 	**/
 	@:native("Curve")
 	public var curve:godot.Curve;
 
 	/**		
-		The width of the texture.
+		The width of the texture (in pixels). Higher values make it possible to represent high-frequency data better (such as sudden direction changes), at the cost of increased generation time and memory usage.
 	**/
 	@:native("Width")
 	public var width:Int;

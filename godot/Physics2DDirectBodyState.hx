@@ -25,13 +25,13 @@ extern abstract class Physics2DDirectBodyState extends godot.Object {
 	public var sleeping:Bool;
 
 	/**		
-		The body's linear velocity.
+		The body's linear velocity in pixels per second.
 	**/
 	@:native("LinearVelocity")
 	public var linearVelocity:godot.Vector2;
 
 	/**		
-		The body's rotational velocity.
+		The body's rotational velocity in radians per second.
 	**/
 	@:native("AngularVelocity")
 	public var angularVelocity:Single;

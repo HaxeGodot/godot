@@ -21,7 +21,9 @@ extern enum PropertyHint {
 	ExpRange;
 
 	/**		
-		Hints that an integer, float or string property is an enumerated value to pick in a list specified via a hint string such as `"Hello,Something,Else"`.
+		Hints that an integer, float or string property is an enumerated value to pick in a list specified via a hint string.
+		
+		The hint string is a comma separated list of names such as `"Hello,Something,Else"`. For integer and float properties, the first name in the list has value 0, the next 1, and so on. Explicit values can also be specified by appending `:integer` to the name, e.g. `"Zero,One,Three:3,Four,Six:6"`.
 	**/
 	Enum;
 

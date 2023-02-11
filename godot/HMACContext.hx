@@ -17,7 +17,7 @@ var key = "supersecret".to_utf8()
 var err = ctx.start(HashingContext.HASH_SHA256, key)
 assert(err == OK)
 var msg1 = "this is ".to_utf8()
-var msg2 = "vewy vewy secret".to_utf8()
+var msg2 = "super duper secret".to_utf8()
 err = ctx.update(msg1)
 assert(err == OK)
 err = ctx.update(msg2)
@@ -44,7 +44,7 @@ PoolByteArray key = String("supersecret").to_utf8();
 Error err = ctx.Start(HashingContext.HASH_SHA256, key);
 GD.Assert(err == OK);
 PoolByteArray msg1 = String("this is ").to_utf8();
-PoolByteArray msg2 = String("vewy vew secret").to_utf8();
+PoolByteArray msg2 = String("super duper secret").to_utf8();
 err = ctx.Update(msg1);
 GD.Assert(err == OK);
 err = ctx.Update(msg2);

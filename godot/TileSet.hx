@@ -215,6 +215,8 @@ extern class TileSet extends godot.Resource {
 
 	/**		
 		Sets the tile's modulation color.
+		
+		Note: Modulation is performed by setting the tile's vertex color. To access this in a shader, use `COLOR` rather than `MODULATE` (which instead accesses the `godot.TileMap`'s `godot.CanvasItem.modulate` property).
 	**/
 	@:native("TileSetModulate")
 	public function tileSetModulate(id:Int, color:godot.Color):Void;

@@ -14,8 +14,6 @@ Texture-based nine-patch `godot.StyleBox`, in a way similar to `godot.NinePatchR
 extern class StyleBoxTexture extends godot.StyleBox {
 	/**
 		`texture_changed` signal.
-		
-		Emitted when the stylebox's texture is changed.
 	**/
 	public var onTextureChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTextureChanged():Signal<Void->Void> {

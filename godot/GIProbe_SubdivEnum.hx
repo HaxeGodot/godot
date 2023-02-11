@@ -21,7 +21,7 @@ extern enum GIProbe_SubdivEnum {
 	Subdiv256;
 
 	/**		
-		Use 512 subdivisions. This is the highest quality setting, but the slowest. On lower-end hardware this could cause the GPU to stall.
+		Use 512 subdivisions. This is the highest quality setting, but the slowest. On lower-end hardware, this could cause the GPU to stall.
 	**/
 	Subdiv512;
 

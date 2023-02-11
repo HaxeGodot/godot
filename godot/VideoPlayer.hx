@@ -20,8 +20,6 @@ Warning: On HTML5, video playback will perform poorly due to missing architectur
 extern class VideoPlayer extends godot.Control {
 	/**
 		`finished` signal.
-		
-		Emitted when playback is finished.
 	**/
 	public var onFinished(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFinished():Signal<Void->Void> {

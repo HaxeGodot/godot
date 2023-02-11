@@ -52,8 +52,6 @@ On macOS, some extra keyboard shortcuts are available:
 extern class LineEdit extends godot.Control {
 	/**
 		`text_change_rejected` signal.
-		
-		Emitted when appending text that overflows the `maxLength`. The appended text is truncated to fit `maxLength`, and the part that couldn't fit is passed as the `rejected_substring` argument.
 	**/
 	public var onTextChangeRejected(get, never):Signal<(rejectedSubstring:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTextChangeRejected():Signal<(rejectedSubstring:std.String)->Void> {
@@ -62,8 +60,6 @@ extern class LineEdit extends godot.Control {
 
 	/**
 		`text_changed` signal.
-		
-		Emitted when the text changes.
 	**/
 	public var onTextChanged(get, never):Signal<(newText:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTextChanged():Signal<(newText:std.String)->Void> {
@@ -72,8 +68,6 @@ extern class LineEdit extends godot.Control {
 
 	/**
 		`text_entered` signal.
-		
-		Emitted when the user presses `KEY_ENTER` on the `LineEdit`.
 	**/
 	public var onTextEntered(get, never):Signal<(newText:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTextEntered():Signal<(newText:std.String)->Void> {

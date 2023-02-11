@@ -5,9 +5,11 @@ package godot;
 import cs.system.*;
 
 /**
-Sets the active tab's `visible` property to the value `true`. Sets all other children's to `false`.
+Arranges `godot.Control` children into a tabbed view, creating a tab for each one. The active tab's corresponding `godot.Control` has its `visible` property set to `true`, and all other children's to `false`.
 
 Ignores non-`godot.Control` children.
+
+Note: The drawing of the clickable tabs themselves is handled by this node. Adding `godot.Tabs` as children is not needed.
 **/
 @:libType
 @:csNative
@@ -16,8 +18,6 @@ Ignores non-`godot.Control` children.
 extern class TabContainer extends godot.Container {
 	/**
 		`pre_popup_pressed` signal.
-		
-		Emitted when the `TabContainer`'s `Popup` button is clicked. See `setPopup` for details.
 	**/
 	public var onPrePopupPressed(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPrePopupPressed():Signal<Void->Void> {
@@ -26,8 +26,6 @@ extern class TabContainer extends godot.Container {
 
 	/**
 		`tab_changed` signal.
-		
-		Emitted when switching to another tab.
 	**/
 	public var onTabChanged(get, never):Signal<(tab:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTabChanged():Signal<(tab:Int)->Void> {
@@ -36,8 +34,6 @@ extern class TabContainer extends godot.Container {
 
 	/**
 		`tab_selected` signal.
-		
-		Emitted when a tab is selected, even if it is the current tab.
 	**/
 	public var onTabSelected(get, never):Signal<(tab:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTabSelected():Signal<(tab:Int)->Void> {

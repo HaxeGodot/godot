@@ -39,6 +39,9 @@ extern class AnimationNodeOneShot extends godot.AnimationNode {
 	@:native("FadeinTime")
 	public var fadeinTime:Single;
 
+	@:native("MixMode")
+	public var mixMode:godot.AnimationNodeOneShot_MixModeEnum;
+
 	@:native("new")
 	public function new():Void;
 
@@ -73,10 +76,10 @@ extern class AnimationNodeOneShot extends godot.AnimationNode {
 	public function getAutorestartRandomDelay():Single;
 
 	@:native("SetMixMode")
-	public function setMixMode(mode:godot.AnimationNodeOneShot_MixMode):Void;
+	public function setMixMode(mode:godot.AnimationNodeOneShot_MixModeEnum):Void;
 
 	@:native("GetMixMode")
-	public function getMixMode():godot.AnimationNodeOneShot_MixMode;
+	public function getMixMode():godot.AnimationNodeOneShot_MixModeEnum;
 
 	@:native("SetUseSync")
 	public function setUseSync(enable:Bool):Void;

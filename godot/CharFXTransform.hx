@@ -67,13 +67,13 @@ extern class CharFXTransform extends godot.Reference {
 	public var elapsedTime:Single;
 
 	/**		
-		The index of the current character (starting from 0). Setting this property won't affect drawing.
+		The index of the current character (starting from 0) for the `godot.RichTextLabel`'s BBCode text. Setting this property won't affect drawing.
 	**/
 	@:native("AbsoluteIndex")
 	public var absoluteIndex:cs.types.UInt64;
 
 	/**		
-		The index of the current character (starting from 0). Setting this property won't affect drawing.
+		The index of the current character (starting from 0) for this `godot.RichTextEffect` custom block. Setting this property won't affect drawing.
 	**/
 	@:native("RelativeIndex")
 	public var relativeIndex:cs.types.UInt64;

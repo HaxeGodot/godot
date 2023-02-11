@@ -16,8 +16,6 @@ Note: This class shouldn't be instantiated directly. Instead, access the singlet
 extern class EditorSelection extends godot.Object {
 	/**
 		`selection_changed` signal.
-		
-		Emitted when the selection changes.
 	**/
 	public var onSelectionChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onSelectionChanged():Signal<Void->Void> {

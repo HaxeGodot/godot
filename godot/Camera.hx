@@ -106,7 +106,7 @@ extern class Camera extends godot.Spatial {
 	public function new():Void;
 
 	/**		
-		Returns a normal vector in world space, that is the result of projecting a point on the `godot.Viewport` rectangle by the camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.
+		Returns a normal vector in world space, that is the result of projecting a point on the `godot.Viewport` rectangle by the inverse camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.
 	**/
 	@:native("ProjectRayNormal")
 	public function projectRayNormal(screenPoint:godot.Vector2):godot.Vector3;
@@ -118,7 +118,7 @@ extern class Camera extends godot.Spatial {
 	public function projectLocalRayNormal(screenPoint:godot.Vector2):godot.Vector3;
 
 	/**		
-		Returns a 3D position in world space, that is the result of projecting a point on the `godot.Viewport` rectangle by the camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.
+		Returns a 3D position in world space, that is the result of projecting a point on the `godot.Viewport` rectangle by the inverse camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.
 	**/
 	@:native("ProjectRayOrigin")
 	public function projectRayOrigin(screenPoint:godot.Vector2):godot.Vector3;

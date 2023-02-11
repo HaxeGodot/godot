@@ -40,7 +40,7 @@ extern class Curve3D extends godot.Resource {
 
 	#if doc_gen
 	/**		
-		Adds a point to a curve at `position`, with control points `in` and `out`.
+		Adds a point to a curve at `position` relative to the `godot.Curve3D`'s position, with control points `in` and `out`.
 		
 		If `at_position` is given, the point is inserted before the point number `at_position`, moving that point (and every point after) after the inserted point. If `at_position` is not given, or is an illegal value (`at_position &lt;0` or `at_position &gt;= [method get_point_count]`), the point will be appended at the end of the point list.
 		
@@ -51,7 +51,7 @@ extern class Curve3D extends godot.Resource {
 	public function addPoint(position:godot.Vector3, ?in_:Null<godot.Vector3>, ?out:Null<godot.Vector3>, ?atPosition:Int):Void;
 	#else
 	/**		
-		Adds a point to a curve at `position`, with control points `in` and `out`.
+		Adds a point to a curve at `position` relative to the `godot.Curve3D`'s position, with control points `in` and `out`.
 		
 		If `at_position` is given, the point is inserted before the point number `at_position`, moving that point (and every point after) after the inserted point. If `at_position` is not given, or is an illegal value (`at_position &lt;0` or `at_position &gt;= [method get_point_count]`), the point will be appended at the end of the point list.
 		
@@ -62,7 +62,7 @@ extern class Curve3D extends godot.Resource {
 	public overload function addPoint(position:godot.Vector3):Void;
 
 	/**		
-		Adds a point to a curve at `position`, with control points `in` and `out`.
+		Adds a point to a curve at `position` relative to the `godot.Curve3D`'s position, with control points `in` and `out`.
 		
 		If `at_position` is given, the point is inserted before the point number `at_position`, moving that point (and every point after) after the inserted point. If `at_position` is not given, or is an illegal value (`at_position &lt;0` or `at_position &gt;= [method get_point_count]`), the point will be appended at the end of the point list.
 		
@@ -73,7 +73,7 @@ extern class Curve3D extends godot.Resource {
 	public overload function addPoint(position:godot.Vector3, in_:Nullable1<godot.Vector3>):Void;
 
 	/**		
-		Adds a point to a curve at `position`, with control points `in` and `out`.
+		Adds a point to a curve at `position` relative to the `godot.Curve3D`'s position, with control points `in` and `out`.
 		
 		If `at_position` is given, the point is inserted before the point number `at_position`, moving that point (and every point after) after the inserted point. If `at_position` is not given, or is an illegal value (`at_position &lt;0` or `at_position &gt;= [method get_point_count]`), the point will be appended at the end of the point list.
 		
@@ -84,7 +84,7 @@ extern class Curve3D extends godot.Resource {
 	public overload function addPoint(position:godot.Vector3, in_:Nullable1<godot.Vector3>, out:Nullable1<godot.Vector3>):Void;
 
 	/**		
-		Adds a point to a curve at `position`, with control points `in` and `out`.
+		Adds a point to a curve at `position` relative to the `godot.Curve3D`'s position, with control points `in` and `out`.
 		
 		If `at_position` is given, the point is inserted before the point number `at_position`, moving that point (and every point after) after the inserted point. If `at_position` is not given, or is an illegal value (`at_position &lt;0` or `at_position &gt;= [method get_point_count]`), the point will be appended at the end of the point list.
 		

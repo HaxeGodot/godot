@@ -8,6 +8,8 @@ import cs.system.*;
 The `godot.CameraServer` keeps track of different cameras accessible in Godot. These are external cameras such as webcams or the cameras on your phone.
 
 It is notably used to provide AR modules with a video feed from the camera.
+
+Note: This class is currently only implemented on macOS and iOS. On other platforms, no `godot.CameraFeed`s will be available.
 **/
 @:libType
 @:csNative
@@ -16,8 +18,6 @@ It is notably used to provide AR modules with a video feed from the camera.
 extern class CameraServer {
 	/**
 		`camera_feed_added` signal.
-		
-		Emitted when a `CameraFeed` is added (e.g. webcam is plugged in).
 	**/
 	public static var onCameraFeedAdded(get, never):Signal<(id:Int)->Void>;
 	@:dox(hide) @:noCompletion inline static function get_onCameraFeedAdded():Signal<(id:Int)->Void> {
@@ -26,8 +26,6 @@ extern class CameraServer {
 
 	/**
 		`camera_feed_removed` signal.
-		
-		Emitted when a `CameraFeed` is removed (e.g. webcam is unplugged).
 	**/
 	public static var onCameraFeedRemoved(get, never):Signal<(id:Int)->Void>;
 	@:dox(hide) @:noCompletion inline static function get_onCameraFeedRemoved():Signal<(id:Int)->Void> {
@@ -38,7 +36,7 @@ extern class CameraServer {
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		
-		Returns the `godot.CameraFeed` with this id.
+		Returns the `godot.CameraFeed` corresponding to the camera with the given `index`.
 	**/
 	@:native("GetFeed")
 	public static function getFeed(index:Int):godot.CameraFeed;
@@ -56,13 +54,13 @@ extern class CameraServer {
 	public static function feeds():godot.collections.Array;
 
 	/**		
-		Adds a camera feed to the camera server.
+		Adds the camera `feed` to the camera server.
 	**/
 	@:native("AddFeed")
 	public static function addFeed(feed:godot.CameraFeed):Void;
 
 	/**		
-		Removes a `godot.CameraFeed`.
+		Removes the specified camera `feed`.
 	**/
 	@:native("RemoveFeed")
 	public static function removeFeed(feed:godot.CameraFeed):Void;

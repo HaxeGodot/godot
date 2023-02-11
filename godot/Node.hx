@@ -34,8 +34,6 @@ Networking with nodes: After connecting to a server (or making one, see `godot.N
 extern class Node extends godot.Object {
 	/**
 		`ready` signal.
-		
-		Emitted when the node is ready.
 	**/
 	public var onReady(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onReady():Signal<Void->Void> {
@@ -44,8 +42,6 @@ extern class Node extends godot.Object {
 
 	/**
 		`renamed` signal.
-		
-		Emitted when the node is renamed.
 	**/
 	public var onRenamed(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onRenamed():Signal<Void->Void> {
@@ -54,8 +50,6 @@ extern class Node extends godot.Object {
 
 	/**
 		`tree_entered` signal.
-		
-		Emitted when the node enters the tree.
 	**/
 	public var onTreeEntered(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTreeEntered():Signal<Void->Void> {
@@ -64,8 +58,6 @@ extern class Node extends godot.Object {
 
 	/**
 		`tree_exited` signal.
-		
-		Emitted after the node exits the tree and is no longer active.
 	**/
 	public var onTreeExited(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTreeExited():Signal<Void->Void> {
@@ -74,8 +66,6 @@ extern class Node extends godot.Object {
 
 	/**
 		`tree_exiting` signal.
-		
-		Emitted when the node is still active but about to exit the tree. This is the right place for de-initialization (or a "destructor", if you will).
 	**/
 	public var onTreeExiting(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTreeExiting():Signal<Void->Void> {
@@ -102,6 +92,8 @@ extern class Node extends godot.Object {
 
 	/**		
 		The node owner. A node can have any other node as owner (as long as it is a valid parent, grandparent, etc. ascending in the tree). When saving a node (using `godot.PackedScene`), all the nodes it owns will be saved with it. This allows for the creation of complex `godot.SceneTree`s, with instancing and subinstancing.
+		
+		Note: If you want a child to be persisted to a `godot.PackedScene`, you must set `godot.Node.owner` in addition to calling `godot.Node.addChild`. This is typically relevant for [https://docs.godotengine.org/en/3.4/tutorials/misc/running_code_in_the_editor.html](tool scripts) and [https://docs.godotengine.org/en/3.4/tutorials/plugins/editor/index.html](editor plugins). If `godot.Node.addChild` is called without setting `godot.Node.owner`, the newly added `godot.Node` will not be visible in the scene tree, though it will be visible in the 2D/3D view.
 	**/
 	@:native("Owner")
 	public var owner:godot.Node;
@@ -510,7 +502,7 @@ extern class Node extends godot.Object {
 		
 		```
 		
-		Note: If you want a child to be persisted to a `godot.PackedScene`, you must set `godot.Node.owner` in addition to calling `godot.Node.addChild`. This is typically relevant for [https://godot.readthedocs.io/en/3.2/tutorials/misc/running_code_in_the_editor.html](tool scripts) and [https://godot.readthedocs.io/en/latest/tutorials/plugins/editor/index.html](editor plugins). If `godot.Node.addChild` is called without setting `godot.Node.owner`, the newly added `godot.Node` will not be visible in the scene tree, though it will be visible in the 2D/3D view.
+		Note: If you want a child to be persisted to a `godot.PackedScene`, you must set `godot.Node.owner` in addition to calling `godot.Node.addChild`. This is typically relevant for [https://docs.godotengine.org/en/3.4/tutorials/misc/running_code_in_the_editor.html](tool scripts) and [https://docs.godotengine.org/en/3.4/tutorials/plugins/editor/index.html](editor plugins). If `godot.Node.addChild` is called without setting `godot.Node.owner`, the newly added `godot.Node` will not be visible in the scene tree, though it will be visible in the 2D/3D view.
 	**/
 	@:native("AddChild")
 	public function addChild(node:godot.Node, ?legibleUniqueName:Bool):Void;
@@ -530,7 +522,7 @@ extern class Node extends godot.Object {
 		
 		```
 		
-		Note: If you want a child to be persisted to a `godot.PackedScene`, you must set `godot.Node.owner` in addition to calling `godot.Node.addChild`. This is typically relevant for [https://godot.readthedocs.io/en/3.2/tutorials/misc/running_code_in_the_editor.html](tool scripts) and [https://godot.readthedocs.io/en/latest/tutorials/plugins/editor/index.html](editor plugins). If `godot.Node.addChild` is called without setting `godot.Node.owner`, the newly added `godot.Node` will not be visible in the scene tree, though it will be visible in the 2D/3D view.
+		Note: If you want a child to be persisted to a `godot.PackedScene`, you must set `godot.Node.owner` in addition to calling `godot.Node.addChild`. This is typically relevant for [https://docs.godotengine.org/en/3.4/tutorials/misc/running_code_in_the_editor.html](tool scripts) and [https://docs.godotengine.org/en/3.4/tutorials/plugins/editor/index.html](editor plugins). If `godot.Node.addChild` is called without setting `godot.Node.owner`, the newly added `godot.Node` will not be visible in the scene tree, though it will be visible in the 2D/3D view.
 	**/
 	@:native("AddChild")
 	public overload function addChild(node:godot.Node):Void;
@@ -550,7 +542,7 @@ extern class Node extends godot.Object {
 		
 		```
 		
-		Note: If you want a child to be persisted to a `godot.PackedScene`, you must set `godot.Node.owner` in addition to calling `godot.Node.addChild`. This is typically relevant for [https://godot.readthedocs.io/en/3.2/tutorials/misc/running_code_in_the_editor.html](tool scripts) and [https://godot.readthedocs.io/en/latest/tutorials/plugins/editor/index.html](editor plugins). If `godot.Node.addChild` is called without setting `godot.Node.owner`, the newly added `godot.Node` will not be visible in the scene tree, though it will be visible in the 2D/3D view.
+		Note: If you want a child to be persisted to a `godot.PackedScene`, you must set `godot.Node.owner` in addition to calling `godot.Node.addChild`. This is typically relevant for [https://docs.godotengine.org/en/3.4/tutorials/misc/running_code_in_the_editor.html](tool scripts) and [https://docs.godotengine.org/en/3.4/tutorials/plugins/editor/index.html](editor plugins). If `godot.Node.addChild` is called without setting `godot.Node.owner`, the newly added `godot.Node` will not be visible in the scene tree, though it will be visible in the 2D/3D view.
 	**/
 	@:native("AddChild")
 	public overload function addChild(node:godot.Node, legibleUniqueName:Bool):Void;
@@ -638,7 +630,7 @@ extern class Node extends godot.Object {
 
 	#if doc_gen
 	/**		
-		Finds a descendant of this node whose name matches `mask` as in `String.match` (i.e. case-sensitive, but `"*"` matches zero or more characters and `"?"` matches any single character except `"."`).
+		Finds a descendant of this node whose name matches `mask` as in `String.match` (i.e. case-sensitive, but `"*"` matches zero or more characters and `"?"` matches any single character except `"."`). Returns `null` if no matching `godot.Node` is found.
 		
 		Note: It does not match against the full path, just against individual node names.
 		
@@ -650,7 +642,7 @@ extern class Node extends godot.Object {
 	public function findNode(mask:std.String, ?recursive:Bool, ?owned:Bool):godot.Node;
 	#else
 	/**		
-		Finds a descendant of this node whose name matches `mask` as in `String.match` (i.e. case-sensitive, but `"*"` matches zero or more characters and `"?"` matches any single character except `"."`).
+		Finds a descendant of this node whose name matches `mask` as in `String.match` (i.e. case-sensitive, but `"*"` matches zero or more characters and `"?"` matches any single character except `"."`). Returns `null` if no matching `godot.Node` is found.
 		
 		Note: It does not match against the full path, just against individual node names.
 		
@@ -662,7 +654,7 @@ extern class Node extends godot.Object {
 	public overload function findNode(mask:std.String):godot.Node;
 
 	/**		
-		Finds a descendant of this node whose name matches `mask` as in `String.match` (i.e. case-sensitive, but `"*"` matches zero or more characters and `"?"` matches any single character except `"."`).
+		Finds a descendant of this node whose name matches `mask` as in `String.match` (i.e. case-sensitive, but `"*"` matches zero or more characters and `"?"` matches any single character except `"."`). Returns `null` if no matching `godot.Node` is found.
 		
 		Note: It does not match against the full path, just against individual node names.
 		
@@ -674,7 +666,7 @@ extern class Node extends godot.Object {
 	public overload function findNode(mask:std.String, recursive:Bool):godot.Node;
 
 	/**		
-		Finds a descendant of this node whose name matches `mask` as in `String.match` (i.e. case-sensitive, but `"*"` matches zero or more characters and `"?"` matches any single character except `"."`).
+		Finds a descendant of this node whose name matches `mask` as in `String.match` (i.e. case-sensitive, but `"*"` matches zero or more characters and `"?"` matches any single character except `"."`). Returns `null` if no matching `godot.Node` is found.
 		
 		Note: It does not match against the full path, just against individual node names.
 		
@@ -804,6 +796,18 @@ extern class Node extends godot.Object {
 		Returns an array listing the groups that the node is a member of.
 		
 		Note: For performance reasons, the order of node groups is not guaranteed. The order of node groups should not be relied upon as it can vary across project runs.
+		
+		Note: The engine uses some group names internally (all starting with an underscore). To avoid conflicts with internal groups, do not add custom groups whose name starts with an underscore. To exclude internal groups while looping over `godot.Node.getGroups`, use the following snippet:
+		
+		```
+		
+		# Stores the node's non-internal groups only (as an array of Strings).
+		var non_internal_groups = []
+		for group in get_groups():
+		if not group.begins_with("_"):
+		non_internal_groups.push_back(group)
+		
+		```
 	**/
 	@:native("GetGroups")
 	public function getGroups():godot.collections.Array;
@@ -1099,18 +1103,24 @@ extern class Node extends godot.Object {
 	#if doc_gen
 	/**		
 		Replaces a node in a scene by the given one. Subscriptions that pass through this node will be lost.
+		
+		Note that the replaced node is not automatically freed, so you either need to keep it in a variable for later use or free it using `godot.Object.free`.
 	**/
 	@:native("ReplaceBy")
 	public function replaceBy(node:godot.Node, ?keepData:Bool):Void;
 	#else
 	/**		
 		Replaces a node in a scene by the given one. Subscriptions that pass through this node will be lost.
+		
+		Note that the replaced node is not automatically freed, so you either need to keep it in a variable for later use or free it using `godot.Object.free`.
 	**/
 	@:native("ReplaceBy")
 	public overload function replaceBy(node:godot.Node):Void;
 
 	/**		
 		Replaces a node in a scene by the given one. Subscriptions that pass through this node will be lost.
+		
+		Note that the replaced node is not automatically freed, so you either need to keep it in a variable for later use or free it using `godot.Object.free`.
 	**/
 	@:native("ReplaceBy")
 	public overload function replaceBy(node:godot.Node, keepData:Bool):Void;
@@ -1202,7 +1212,7 @@ extern class Node extends godot.Object {
 	public function rsetConfig(property:std.String, mode:godot.MultiplayerAPI_RPCMode):Void;
 
 	/**		
-		Sends a remote procedure call request for the given `method` to peers on the network (and locally), optionally sending all additional arguments as arguments to the method called by the RPC. The call request will only be received by nodes with the same `godot.NodePath`, including the exact same node name. Behaviour depends on the RPC configuration for the given method, see `godot.Node.rpcConfig`. Methods are not exposed to RPCs by default. See also `godot.Node.rset` and `godot.Node.rsetConfig` for properties. Returns an empty `Variant`.
+		Sends a remote procedure call request for the given `method` to peers on the network (and locally), optionally sending all additional arguments as arguments to the method called by the RPC. The call request will only be received by nodes with the same `godot.NodePath`, including the exact same node name. Behaviour depends on the RPC configuration for the given method, see `godot.Node.rpcConfig`. Methods are not exposed to RPCs by default. See also `godot.Node.rset` and `godot.Node.rsetConfig` for properties. Returns `null`.
 		
 		Note: You can only safely use RPCs on clients after you received the `connected_to_server` signal from the `godot.SceneTree`. You also need to keep track of the connection state, either by the `godot.SceneTree` signals like `server_disconnected` or by checking `SceneTree.network_peer.get_connection_status() == CONNECTION_CONNECTED`.
 	**/
@@ -1210,19 +1220,19 @@ extern class Node extends godot.Object {
 	public function rpc(method:std.String, args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
-		Sends a `godot.Node.rpc` using an unreliable protocol. Returns an empty `Variant`.
+		Sends a `godot.Node.rpc` using an unreliable protocol. Returns `null`.
 	**/
 	@:native("RpcUnreliable")
 	public function rpcUnreliable(method:std.String, args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
-		Sends a `godot.Node.rpc` to a specific peer identified by `peer_id` (see `godot.NetworkedMultiplayerPeer.setTargetPeer`). Returns an empty `Variant`.
+		Sends a `godot.Node.rpc` to a specific peer identified by `peer_id` (see `godot.NetworkedMultiplayerPeer.setTargetPeer`). Returns `null`.
 	**/
 	@:native("RpcId")
 	public function rpcId(peerId:Int, method:std.String, args:HaxeArray<Dynamic>):Dynamic;
 
 	/**		
-		Sends a `godot.Node.rpc` to a specific peer identified by `peer_id` using an unreliable protocol (see `godot.NetworkedMultiplayerPeer.setTargetPeer`). Returns an empty `Variant`.
+		Sends a `godot.Node.rpc` to a specific peer identified by `peer_id` using an unreliable protocol (see `godot.NetworkedMultiplayerPeer.setTargetPeer`). Returns `null`.
 	**/
 	@:native("RpcUnreliableId")
 	public function rpcUnreliableId(peerId:Int, method:std.String, args:HaxeArray<Dynamic>):Dynamic;

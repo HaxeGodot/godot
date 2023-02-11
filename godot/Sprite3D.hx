@@ -14,8 +14,6 @@ A node that displays a 2D texture in a 3D environment. The texture displayed can
 extern class Sprite3D extends godot.SpriteBase3D {
 	/**
 		`frame_changed` signal.
-		
-		Emitted when the `frame` changes.
 	**/
 	public var onFrameChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFrameChanged():Signal<Void->Void> {

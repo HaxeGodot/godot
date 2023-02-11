@@ -14,8 +14,6 @@ FileDialog is a preset dialog used to choose files and directories in the filesy
 extern class FileDialog extends godot.ConfirmationDialog {
 	/**
 		`dir_selected` signal.
-		
-		Emitted when the user selects a directory.
 	**/
 	public var onDirSelected(get, never):Signal<(dir:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onDirSelected():Signal<(dir:std.String)->Void> {
@@ -24,8 +22,6 @@ extern class FileDialog extends godot.ConfirmationDialog {
 
 	/**
 		`file_selected` signal.
-		
-		Emitted when the user selects a file by double-clicking it or pressing the `b`OK`/b` button.
 	**/
 	public var onFileSelected(get, never):Signal<(path:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFileSelected():Signal<(path:std.String)->Void> {
@@ -34,8 +30,6 @@ extern class FileDialog extends godot.ConfirmationDialog {
 
 	/**
 		`files_selected` signal.
-		
-		Emitted when the user selects multiple files.
 	**/
 	public var onFilesSelected(get, never):Signal<(paths:std.Array<std.String>)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFilesSelected():Signal<(paths:std.Array<std.String>)->Void> {
@@ -67,7 +61,7 @@ extern class FileDialog extends godot.ConfirmationDialog {
 	public var showHiddenFiles:Bool;
 
 	/**		
-		The available file type filters. For example, this shows only `.png` and `.gd` files: `set_filters(PoolStringArray(["*.png ; PNG Images","*.gd ; GDScript Files"]))`.
+		The available file type filters. For example, this shows only `.png` and `.gd` files: `set_filters(PoolStringArray(["*.png ; PNG Images","*.gd ; GDScript Files"]))`. Multiple file types can also be specified in a single filter. `"*.png, *.jpg, *.jpeg ; Supported Images"` will show both PNG and JPEG files when selected.
 	**/
 	@:native("Filters")
 	public var filters:cs.NativeArray<std.String>;
@@ -102,7 +96,11 @@ extern class FileDialog extends godot.ConfirmationDialog {
 	public function clearFilters():Void;
 
 	/**		
-		Adds `filter` as a custom filter; `filter` should be of the form `"filename.extension ; Description"`. For example, `"*.png ; PNG Images"`.
+		Adds `filter` to the list of filters, which restricts what files can be picked.
+		
+		A `filter` should be of the form `"filename.extension ; Description"`, where filename and extension can be `*` to match any string. Filters starting with `.` (i.e. empty filenames) are not allowed.
+		
+		Example filters: `"*.png ; PNG Images"`, `"project.godot ; Godot Project"`.
 	**/
 	@:native("AddFilter")
 	public function addFilter(filter:std.String):Void;

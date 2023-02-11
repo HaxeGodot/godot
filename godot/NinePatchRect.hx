@@ -14,8 +14,6 @@ Also known as 9-slice panels, NinePatchRect produces clean panels of any size, b
 extern class NinePatchRect extends godot.Control {
 	/**
 		`texture_changed` signal.
-		
-		Emitted when the node's texture changes.
 	**/
 	public var onTextureChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTextureChanged():Signal<Void->Void> {

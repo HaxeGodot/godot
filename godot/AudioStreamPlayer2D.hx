@@ -18,8 +18,6 @@ Note: Hiding an `godot.AudioStreamPlayer2D` node does not disable its audio outp
 extern class AudioStreamPlayer2D extends godot.Node2D {
 	/**
 		`finished` signal.
-		
-		Emitted when the audio stops playing.
 	**/
 	public var onFinished(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFinished():Signal<Void->Void> {
@@ -27,7 +25,7 @@ extern class AudioStreamPlayer2D extends godot.Node2D {
 	}
 
 	/**		
-		Areas in which this sound plays.
+		Determines which `godot.Area2D` layers affect the sound for reverb and audio bus effects. Areas can be used to redirect `godot.AudioStream`s so that they play in a certain audio bus. An example of how you might use this is making a "water" area so that sounds played in the water are redirected through an audio bus to make them sound like they are being played underwater.
 	**/
 	@:native("AreaMask")
 	public var areaMask:UInt;

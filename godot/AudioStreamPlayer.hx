@@ -16,8 +16,6 @@ To play audio positionally, use `godot.AudioStreamPlayer2D` or `godot.AudioStrea
 extern class AudioStreamPlayer extends godot.Node {
 	/**
 		`finished` signal.
-		
-		Emitted when the audio stops playing.
 	**/
 	public var onFinished(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFinished():Signal<Void->Void> {

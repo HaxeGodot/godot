@@ -89,7 +89,9 @@ extern class Polygon2D extends godot.Node2D {
 	public var texture:godot.Texture;
 
 	/**		
-		If `true`, polygon edges will be anti-aliased.
+		If `true`, attempts to perform antialiasing for polygon edges by drawing a thin OpenGL smooth line on the edges.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("Antialiased")
 	public var antialiased:Bool;

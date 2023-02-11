@@ -21,7 +21,7 @@ extern class JSON {
 		
 		Note: The JSON specification does not define integer or float types, but only a number type. Therefore, converting a Variant to JSON text will convert all numerical values to `Single` types.
 		
-		Use `indent` parameter to pretty print the output.
+		The `indent` parameter controls if and how something is indented, the string used for this parameter will be used where there should be an indent in the output, even spaces like `"   "` will work. `\t` and `\n` can also be used for a tab indent, or to make a newline for each indent respectively.
 		
 		Example output:
 		
@@ -44,6 +44,22 @@ extern class JSON {
 		"value": "value_1"
 		}
 		]
+		}
+		
+		## JSON.print(my_dictionary, "...")
+		{
+		..."name": "my_dictionary",
+		..."version": "1.0.0",
+		..."entities": [
+		......{
+		........."name": "entity_0",
+		........."value": "value_0"
+		......},
+		......{
+		........."name": "entity_1",
+		........."value": "value_1"
+		......}
+		...]
 		}
 		
 		```
@@ -56,7 +72,7 @@ extern class JSON {
 		
 		Note: The JSON specification does not define integer or float types, but only a number type. Therefore, converting a Variant to JSON text will convert all numerical values to `Single` types.
 		
-		Use `indent` parameter to pretty print the output.
+		The `indent` parameter controls if and how something is indented, the string used for this parameter will be used where there should be an indent in the output, even spaces like `"   "` will work. `\t` and `\n` can also be used for a tab indent, or to make a newline for each indent respectively.
 		
 		Example output:
 		
@@ -79,6 +95,22 @@ extern class JSON {
 		"value": "value_1"
 		}
 		]
+		}
+		
+		## JSON.print(my_dictionary, "...")
+		{
+		..."name": "my_dictionary",
+		..."version": "1.0.0",
+		..."entities": [
+		......{
+		........."name": "entity_0",
+		........."value": "value_0"
+		......},
+		......{
+		........."name": "entity_1",
+		........."value": "value_1"
+		......}
+		...]
 		}
 		
 		```
@@ -91,7 +123,7 @@ extern class JSON {
 		
 		Note: The JSON specification does not define integer or float types, but only a number type. Therefore, converting a Variant to JSON text will convert all numerical values to `Single` types.
 		
-		Use `indent` parameter to pretty print the output.
+		The `indent` parameter controls if and how something is indented, the string used for this parameter will be used where there should be an indent in the output, even spaces like `"   "` will work. `\t` and `\n` can also be used for a tab indent, or to make a newline for each indent respectively.
 		
 		Example output:
 		
@@ -114,6 +146,22 @@ extern class JSON {
 		"value": "value_1"
 		}
 		]
+		}
+		
+		## JSON.print(my_dictionary, "...")
+		{
+		..."name": "my_dictionary",
+		..."version": "1.0.0",
+		..."entities": [
+		......{
+		........."name": "entity_0",
+		........."value": "value_0"
+		......},
+		......{
+		........."name": "entity_1",
+		........."value": "value_1"
+		......}
+		...]
 		}
 		
 		```
@@ -126,7 +174,7 @@ extern class JSON {
 		
 		Note: The JSON specification does not define integer or float types, but only a number type. Therefore, converting a Variant to JSON text will convert all numerical values to `Single` types.
 		
-		Use `indent` parameter to pretty print the output.
+		The `indent` parameter controls if and how something is indented, the string used for this parameter will be used where there should be an indent in the output, even spaces like `"   "` will work. `\t` and `\n` can also be used for a tab indent, or to make a newline for each indent respectively.
 		
 		Example output:
 		
@@ -149,6 +197,22 @@ extern class JSON {
 		"value": "value_1"
 		}
 		]
+		}
+		
+		## JSON.print(my_dictionary, "...")
+		{
+		..."name": "my_dictionary",
+		..."version": "1.0.0",
+		..."entities": [
+		......{
+		........."name": "entity_0",
+		........."value": "value_0"
+		......},
+		......{
+		........."name": "entity_1",
+		........."value": "value_1"
+		......}
+		...]
 		}
 		
 		```
