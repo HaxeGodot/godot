@@ -12,7 +12,7 @@ Geometry provides users with a set of helper functions to create geometric shape
 @:native("Godot.Geometry")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Geometry {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

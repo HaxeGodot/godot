@@ -14,7 +14,7 @@ It uses the many `godot.ResourceFormatLoader` classes registered in the engine (
 @:native("Godot.ResourceLoader")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ResourceLoader {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	#if doc_gen

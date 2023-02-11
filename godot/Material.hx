@@ -31,13 +31,13 @@ extern abstract class Material extends godot.Resource {
 	/**		
 		Minimum value for the `godot.Material.renderPriority` parameter.
 	**/
-	@:native("RenderPriorityMin")
+	@:native("RenderPriorityMin") @:readOnly
 	public static var RENDER_PRIORITY_MIN(default, never):Int;
 
 	/**		
 		Maximum value for the `godot.Material.renderPriority` parameter.
 	**/
-	@:native("RenderPriorityMax")
+	@:native("RenderPriorityMax") @:readOnly
 	public static var RENDER_PRIORITY_MAX(default, never):Int;
 
 	@:native("SetNextPass")

@@ -16,7 +16,7 @@ Note: Many of these monitors are not updated in real-time, so there may be a sho
 @:native("Godot.Performance")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Performance {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

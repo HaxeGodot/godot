@@ -9,13 +9,13 @@ import cs.system.*;
 @:native("Godot.Collections.Dictionary")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Dictionary implements cs.system.collections.IDictionary implements cs.system.collections.ICollection implements cs.system.collections.IEnumerable implements cs.system.IDisposable {
-	@:native("Count")
+	@:native("Count") @:readOnly
 	public var count(default, never):Int;
 
-	@:native("Values")
+	@:native("Values") @:readOnly
 	public var values(default, never):cs.system.collections.ICollection;
 
-	@:native("Keys")
+	@:native("Keys") @:readOnly
 	public var keys(default, never):cs.system.collections.ICollection;
 
 	@:native("new")

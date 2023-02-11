@@ -13,441 +13,441 @@ The standardized color set is based on the X11 and .NET color names.
 @:native("Godot.Colors")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Colors {
-	@:native("YellowGreen")
+	@:native("YellowGreen") @:readOnly
 	public static var YELLOW_GREEN(default, never):godot.Color;
 
-	@:native("Yellow")
+	@:native("Yellow") @:readOnly
 	public static var YELLOW(default, never):godot.Color;
 
-	@:native("WhiteSmoke")
+	@:native("WhiteSmoke") @:readOnly
 	public static var WHITE_SMOKE(default, never):godot.Color;
 
-	@:native("White")
+	@:native("White") @:readOnly
 	public static var WHITE(default, never):godot.Color;
 
-	@:native("Wheat")
+	@:native("Wheat") @:readOnly
 	public static var WHEAT(default, never):godot.Color;
 
-	@:native("WebPurple")
+	@:native("WebPurple") @:readOnly
 	public static var WEB_PURPLE(default, never):godot.Color;
 
-	@:native("WebMaroon")
+	@:native("WebMaroon") @:readOnly
 	public static var WEB_MAROON(default, never):godot.Color;
 
-	@:native("WebGray")
+	@:native("WebGray") @:readOnly
 	public static var WEB_GRAY(default, never):godot.Color;
 
-	@:native("WebGreen")
+	@:native("WebGreen") @:readOnly
 	public static var WEB_GREEN(default, never):godot.Color;
 
-	@:native("Violet")
+	@:native("Violet") @:readOnly
 	public static var VIOLET(default, never):godot.Color;
 
-	@:native("Turquoise")
+	@:native("Turquoise") @:readOnly
 	public static var TURQUOISE(default, never):godot.Color;
 
-	@:native("Transparent")
+	@:native("Transparent") @:readOnly
 	public static var TRANSPARENT(default, never):godot.Color;
 
-	@:native("Tomato")
+	@:native("Tomato") @:readOnly
 	public static var TOMATO(default, never):godot.Color;
 
-	@:native("Thistle")
+	@:native("Thistle") @:readOnly
 	public static var THISTLE(default, never):godot.Color;
 
-	@:native("Teal")
+	@:native("Teal") @:readOnly
 	public static var TEAL(default, never):godot.Color;
 
-	@:native("Tan")
+	@:native("Tan") @:readOnly
 	public static var TAN(default, never):godot.Color;
 
-	@:native("SteelBlue")
+	@:native("SteelBlue") @:readOnly
 	public static var STEEL_BLUE(default, never):godot.Color;
 
-	@:native("SpringGreen")
+	@:native("SpringGreen") @:readOnly
 	public static var SPRING_GREEN(default, never):godot.Color;
 
-	@:native("Snow")
+	@:native("Snow") @:readOnly
 	public static var SNOW(default, never):godot.Color;
 
-	@:native("SlateGray")
+	@:native("SlateGray") @:readOnly
 	public static var SLATE_GRAY(default, never):godot.Color;
 
-	@:native("SlateBlue")
+	@:native("SlateBlue") @:readOnly
 	public static var SLATE_BLUE(default, never):godot.Color;
 
-	@:native("SkyBlue")
+	@:native("SkyBlue") @:readOnly
 	public static var SKY_BLUE(default, never):godot.Color;
 
-	@:native("Silver")
+	@:native("Silver") @:readOnly
 	public static var SILVER(default, never):godot.Color;
 
-	@:native("Sienna")
+	@:native("Sienna") @:readOnly
 	public static var SIENNA(default, never):godot.Color;
 
-	@:native("SeaShell")
+	@:native("SeaShell") @:readOnly
 	public static var SEA_SHELL(default, never):godot.Color;
 
-	@:native("SeaGreen")
+	@:native("SeaGreen") @:readOnly
 	public static var SEA_GREEN(default, never):godot.Color;
 
-	@:native("SandyBrown")
+	@:native("SandyBrown") @:readOnly
 	public static var SANDY_BROWN(default, never):godot.Color;
 
-	@:native("Salmon")
+	@:native("Salmon") @:readOnly
 	public static var SALMON(default, never):godot.Color;
 
-	@:native("SaddleBrown")
+	@:native("SaddleBrown") @:readOnly
 	public static var SADDLE_BROWN(default, never):godot.Color;
 
-	@:native("RoyalBlue")
+	@:native("RoyalBlue") @:readOnly
 	public static var ROYAL_BLUE(default, never):godot.Color;
 
-	@:native("RosyBrown")
+	@:native("RosyBrown") @:readOnly
 	public static var ROSY_BROWN(default, never):godot.Color;
 
-	@:native("Red")
+	@:native("Red") @:readOnly
 	public static var RED(default, never):godot.Color;
 
-	@:native("RebeccaPurple")
+	@:native("RebeccaPurple") @:readOnly
 	public static var REBECCA_PURPLE(default, never):godot.Color;
 
-	@:native("Purple")
+	@:native("Purple") @:readOnly
 	public static var PURPLE(default, never):godot.Color;
 
-	@:native("PowderBlue")
+	@:native("PowderBlue") @:readOnly
 	public static var POWDER_BLUE(default, never):godot.Color;
 
-	@:native("Plum")
+	@:native("Plum") @:readOnly
 	public static var PLUM(default, never):godot.Color;
 
-	@:native("Pink")
+	@:native("Pink") @:readOnly
 	public static var PINK(default, never):godot.Color;
 
-	@:native("Peru")
+	@:native("Peru") @:readOnly
 	public static var PERU(default, never):godot.Color;
 
-	@:native("PeachPuff")
+	@:native("PeachPuff") @:readOnly
 	public static var PEACH_PUFF(default, never):godot.Color;
 
-	@:native("PapayaWhip")
+	@:native("PapayaWhip") @:readOnly
 	public static var PAPAYA_WHIP(default, never):godot.Color;
 
-	@:native("PaleVioletRed")
+	@:native("PaleVioletRed") @:readOnly
 	public static var PALE_VIOLET_RED(default, never):godot.Color;
 
-	@:native("PaleTurquoise")
+	@:native("PaleTurquoise") @:readOnly
 	public static var PALE_TURQUOISE(default, never):godot.Color;
 
-	@:native("PaleGreen")
+	@:native("PaleGreen") @:readOnly
 	public static var PALE_GREEN(default, never):godot.Color;
 
-	@:native("PaleGoldenrod")
+	@:native("PaleGoldenrod") @:readOnly
 	public static var PALE_GOLDENROD(default, never):godot.Color;
 
-	@:native("Orchid")
+	@:native("Orchid") @:readOnly
 	public static var ORCHID(default, never):godot.Color;
 
-	@:native("OrangeRed")
+	@:native("OrangeRed") @:readOnly
 	public static var ORANGE_RED(default, never):godot.Color;
 
-	@:native("Orange")
+	@:native("Orange") @:readOnly
 	public static var ORANGE(default, never):godot.Color;
 
-	@:native("OliveDrab")
+	@:native("OliveDrab") @:readOnly
 	public static var OLIVE_DRAB(default, never):godot.Color;
 
-	@:native("Olive")
+	@:native("Olive") @:readOnly
 	public static var OLIVE(default, never):godot.Color;
 
-	@:native("OldLace")
+	@:native("OldLace") @:readOnly
 	public static var OLD_LACE(default, never):godot.Color;
 
-	@:native("NavyBlue")
+	@:native("NavyBlue") @:readOnly
 	public static var NAVY_BLUE(default, never):godot.Color;
 
-	@:native("NavajoWhite")
+	@:native("NavajoWhite") @:readOnly
 	public static var NAVAJO_WHITE(default, never):godot.Color;
 
-	@:native("Moccasin")
+	@:native("Moccasin") @:readOnly
 	public static var MOCCASIN(default, never):godot.Color;
 
-	@:native("MistyRose")
+	@:native("MistyRose") @:readOnly
 	public static var MISTY_ROSE(default, never):godot.Color;
 
-	@:native("MintCream")
+	@:native("MintCream") @:readOnly
 	public static var MINT_CREAM(default, never):godot.Color;
 
-	@:native("MidnightBlue")
+	@:native("MidnightBlue") @:readOnly
 	public static var MIDNIGHT_BLUE(default, never):godot.Color;
 
-	@:native("MediumVioletRed")
+	@:native("MediumVioletRed") @:readOnly
 	public static var MEDIUM_VIOLET_RED(default, never):godot.Color;
 
-	@:native("MediumTurquoise")
+	@:native("MediumTurquoise") @:readOnly
 	public static var MEDIUM_TURQUOISE(default, never):godot.Color;
 
-	@:native("MediumSpringGreen")
+	@:native("MediumSpringGreen") @:readOnly
 	public static var MEDIUM_SPRING_GREEN(default, never):godot.Color;
 
-	@:native("MediumSlateBlue")
+	@:native("MediumSlateBlue") @:readOnly
 	public static var MEDIUM_SLATE_BLUE(default, never):godot.Color;
 
-	@:native("MediumSeaGreen")
+	@:native("MediumSeaGreen") @:readOnly
 	public static var MEDIUM_SEA_GREEN(default, never):godot.Color;
 
-	@:native("MediumPurple")
+	@:native("MediumPurple") @:readOnly
 	public static var MEDIUM_PURPLE(default, never):godot.Color;
 
-	@:native("MediumOrchid")
+	@:native("MediumOrchid") @:readOnly
 	public static var MEDIUM_ORCHID(default, never):godot.Color;
 
-	@:native("MediumBlue")
+	@:native("MediumBlue") @:readOnly
 	public static var MEDIUM_BLUE(default, never):godot.Color;
 
-	@:native("MediumAquamarine")
+	@:native("MediumAquamarine") @:readOnly
 	public static var MEDIUM_AQUAMARINE(default, never):godot.Color;
 
-	@:native("Maroon")
+	@:native("Maroon") @:readOnly
 	public static var MAROON(default, never):godot.Color;
 
-	@:native("Magenta")
+	@:native("Magenta") @:readOnly
 	public static var MAGENTA(default, never):godot.Color;
 
-	@:native("Linen")
+	@:native("Linen") @:readOnly
 	public static var LINEN(default, never):godot.Color;
 
-	@:native("Limegreen")
+	@:native("Limegreen") @:readOnly
 	public static var LIMEGREEN(default, never):godot.Color;
 
-	@:native("Lime")
+	@:native("Lime") @:readOnly
 	public static var LIME(default, never):godot.Color;
 
-	@:native("LightYellow")
+	@:native("LightYellow") @:readOnly
 	public static var LIGHT_YELLOW(default, never):godot.Color;
 
-	@:native("LightSteelBlue")
+	@:native("LightSteelBlue") @:readOnly
 	public static var LIGHT_STEEL_BLUE(default, never):godot.Color;
 
-	@:native("LightSlateGray")
+	@:native("LightSlateGray") @:readOnly
 	public static var LIGHT_SLATE_GRAY(default, never):godot.Color;
 
-	@:native("LightSkyBlue")
+	@:native("LightSkyBlue") @:readOnly
 	public static var LIGHT_SKY_BLUE(default, never):godot.Color;
 
-	@:native("LightSeaGreen")
+	@:native("LightSeaGreen") @:readOnly
 	public static var LIGHT_SEA_GREEN(default, never):godot.Color;
 
-	@:native("LightSalmon")
+	@:native("LightSalmon") @:readOnly
 	public static var LIGHT_SALMON(default, never):godot.Color;
 
-	@:native("LightPink")
+	@:native("LightPink") @:readOnly
 	public static var LIGHT_PINK(default, never):godot.Color;
 
-	@:native("LightGreen")
+	@:native("LightGreen") @:readOnly
 	public static var LIGHT_GREEN(default, never):godot.Color;
 
-	@:native("LightGray")
+	@:native("LightGray") @:readOnly
 	public static var LIGHT_GRAY(default, never):godot.Color;
 
-	@:native("LightGoldenrod")
+	@:native("LightGoldenrod") @:readOnly
 	public static var LIGHT_GOLDENROD(default, never):godot.Color;
 
-	@:native("LightCyan")
+	@:native("LightCyan") @:readOnly
 	public static var LIGHT_CYAN(default, never):godot.Color;
 
-	@:native("LightCoral")
+	@:native("LightCoral") @:readOnly
 	public static var LIGHT_CORAL(default, never):godot.Color;
 
-	@:native("LightBlue")
+	@:native("LightBlue") @:readOnly
 	public static var LIGHT_BLUE(default, never):godot.Color;
 
-	@:native("LemonChiffon")
+	@:native("LemonChiffon") @:readOnly
 	public static var LEMON_CHIFFON(default, never):godot.Color;
 
-	@:native("LawnGreen")
+	@:native("LawnGreen") @:readOnly
 	public static var LAWN_GREEN(default, never):godot.Color;
 
-	@:native("LavenderBlush")
+	@:native("LavenderBlush") @:readOnly
 	public static var LAVENDER_BLUSH(default, never):godot.Color;
 
-	@:native("Lavender")
+	@:native("Lavender") @:readOnly
 	public static var LAVENDER(default, never):godot.Color;
 
-	@:native("Khaki")
+	@:native("Khaki") @:readOnly
 	public static var KHAKI(default, never):godot.Color;
 
-	@:native("Ivory")
+	@:native("Ivory") @:readOnly
 	public static var IVORY(default, never):godot.Color;
 
-	@:native("Indigo")
+	@:native("Indigo") @:readOnly
 	public static var INDIGO(default, never):godot.Color;
 
-	@:native("IndianRed")
+	@:native("IndianRed") @:readOnly
 	public static var INDIAN_RED(default, never):godot.Color;
 
-	@:native("HotPink")
+	@:native("HotPink") @:readOnly
 	public static var HOT_PINK(default, never):godot.Color;
 
-	@:native("Honeydew")
+	@:native("Honeydew") @:readOnly
 	public static var HONEYDEW(default, never):godot.Color;
 
-	@:native("GreenYellow")
+	@:native("GreenYellow") @:readOnly
 	public static var GREEN_YELLOW(default, never):godot.Color;
 
-	@:native("Green")
+	@:native("Green") @:readOnly
 	public static var GREEN(default, never):godot.Color;
 
-	@:native("Gray")
+	@:native("Gray") @:readOnly
 	public static var GRAY(default, never):godot.Color;
 
-	@:native("Goldenrod")
+	@:native("Goldenrod") @:readOnly
 	public static var GOLDENROD(default, never):godot.Color;
 
-	@:native("Gold")
+	@:native("Gold") @:readOnly
 	public static var GOLD(default, never):godot.Color;
 
-	@:native("GhostWhite")
+	@:native("GhostWhite") @:readOnly
 	public static var GHOST_WHITE(default, never):godot.Color;
 
-	@:native("Gainsboro")
+	@:native("Gainsboro") @:readOnly
 	public static var GAINSBORO(default, never):godot.Color;
 
-	@:native("Fuchsia")
+	@:native("Fuchsia") @:readOnly
 	public static var FUCHSIA(default, never):godot.Color;
 
-	@:native("ForestGreen")
+	@:native("ForestGreen") @:readOnly
 	public static var FOREST_GREEN(default, never):godot.Color;
 
-	@:native("FloralWhite")
+	@:native("FloralWhite") @:readOnly
 	public static var FLORAL_WHITE(default, never):godot.Color;
 
-	@:native("Firebrick")
+	@:native("Firebrick") @:readOnly
 	public static var FIREBRICK(default, never):godot.Color;
 
-	@:native("DodgerBlue")
+	@:native("DodgerBlue") @:readOnly
 	public static var DODGER_BLUE(default, never):godot.Color;
 
-	@:native("DimGray")
+	@:native("DimGray") @:readOnly
 	public static var DIM_GRAY(default, never):godot.Color;
 
-	@:native("DeepSkyBlue")
+	@:native("DeepSkyBlue") @:readOnly
 	public static var DEEP_SKY_BLUE(default, never):godot.Color;
 
-	@:native("DeepPink")
+	@:native("DeepPink") @:readOnly
 	public static var DEEP_PINK(default, never):godot.Color;
 
-	@:native("DarkViolet")
+	@:native("DarkViolet") @:readOnly
 	public static var DARK_VIOLET(default, never):godot.Color;
 
-	@:native("DarkTurquoise")
+	@:native("DarkTurquoise") @:readOnly
 	public static var DARK_TURQUOISE(default, never):godot.Color;
 
-	@:native("DarkSlateGray")
+	@:native("DarkSlateGray") @:readOnly
 	public static var DARK_SLATE_GRAY(default, never):godot.Color;
 
-	@:native("DarkSlateBlue")
+	@:native("DarkSlateBlue") @:readOnly
 	public static var DARK_SLATE_BLUE(default, never):godot.Color;
 
-	@:native("DarkSeaGreen")
+	@:native("DarkSeaGreen") @:readOnly
 	public static var DARK_SEA_GREEN(default, never):godot.Color;
 
-	@:native("DarkSalmon")
+	@:native("DarkSalmon") @:readOnly
 	public static var DARK_SALMON(default, never):godot.Color;
 
-	@:native("DarkRed")
+	@:native("DarkRed") @:readOnly
 	public static var DARK_RED(default, never):godot.Color;
 
-	@:native("DarkOrchid")
+	@:native("DarkOrchid") @:readOnly
 	public static var DARK_ORCHID(default, never):godot.Color;
 
-	@:native("DarkOrange")
+	@:native("DarkOrange") @:readOnly
 	public static var DARK_ORANGE(default, never):godot.Color;
 
-	@:native("DarkOliveGreen")
+	@:native("DarkOliveGreen") @:readOnly
 	public static var DARK_OLIVE_GREEN(default, never):godot.Color;
 
-	@:native("DarkMagenta")
+	@:native("DarkMagenta") @:readOnly
 	public static var DARK_MAGENTA(default, never):godot.Color;
 
-	@:native("DarkKhaki")
+	@:native("DarkKhaki") @:readOnly
 	public static var DARK_KHAKI(default, never):godot.Color;
 
-	@:native("DarkGreen")
+	@:native("DarkGreen") @:readOnly
 	public static var DARK_GREEN(default, never):godot.Color;
 
-	@:native("DarkGray")
+	@:native("DarkGray") @:readOnly
 	public static var DARK_GRAY(default, never):godot.Color;
 
-	@:native("DarkGoldenrod")
+	@:native("DarkGoldenrod") @:readOnly
 	public static var DARK_GOLDENROD(default, never):godot.Color;
 
-	@:native("DarkCyan")
+	@:native("DarkCyan") @:readOnly
 	public static var DARK_CYAN(default, never):godot.Color;
 
-	@:native("DarkBlue")
+	@:native("DarkBlue") @:readOnly
 	public static var DARK_BLUE(default, never):godot.Color;
 
-	@:native("Cyan")
+	@:native("Cyan") @:readOnly
 	public static var CYAN(default, never):godot.Color;
 
-	@:native("Crimson")
+	@:native("Crimson") @:readOnly
 	public static var CRIMSON(default, never):godot.Color;
 
-	@:native("Cornsilk")
+	@:native("Cornsilk") @:readOnly
 	public static var CORNSILK(default, never):godot.Color;
 
-	@:native("Cornflower")
+	@:native("Cornflower") @:readOnly
 	public static var CORNFLOWER(default, never):godot.Color;
 
-	@:native("Coral")
+	@:native("Coral") @:readOnly
 	public static var CORAL(default, never):godot.Color;
 
-	@:native("Chocolate")
+	@:native("Chocolate") @:readOnly
 	public static var CHOCOLATE(default, never):godot.Color;
 
-	@:native("Chartreuse")
+	@:native("Chartreuse") @:readOnly
 	public static var CHARTREUSE(default, never):godot.Color;
 
-	@:native("CadetBlue")
+	@:native("CadetBlue") @:readOnly
 	public static var CADET_BLUE(default, never):godot.Color;
 
-	@:native("BurlyWood")
+	@:native("BurlyWood") @:readOnly
 	public static var BURLY_WOOD(default, never):godot.Color;
 
-	@:native("Brown")
+	@:native("Brown") @:readOnly
 	public static var BROWN(default, never):godot.Color;
 
-	@:native("BlueViolet")
+	@:native("BlueViolet") @:readOnly
 	public static var BLUE_VIOLET(default, never):godot.Color;
 
-	@:native("Blue")
+	@:native("Blue") @:readOnly
 	public static var BLUE(default, never):godot.Color;
 
-	@:native("BlanchedAlmond")
+	@:native("BlanchedAlmond") @:readOnly
 	public static var BLANCHED_ALMOND(default, never):godot.Color;
 
-	@:native("Black")
+	@:native("Black") @:readOnly
 	public static var BLACK(default, never):godot.Color;
 
-	@:native("Bisque")
+	@:native("Bisque") @:readOnly
 	public static var BISQUE(default, never):godot.Color;
 
-	@:native("Beige")
+	@:native("Beige") @:readOnly
 	public static var BEIGE(default, never):godot.Color;
 
-	@:native("Azure")
+	@:native("Azure") @:readOnly
 	public static var AZURE(default, never):godot.Color;
 
-	@:native("Aquamarine")
+	@:native("Aquamarine") @:readOnly
 	public static var AQUAMARINE(default, never):godot.Color;
 
-	@:native("Aqua")
+	@:native("Aqua") @:readOnly
 	public static var AQUA(default, never):godot.Color;
 
-	@:native("AntiqueWhite")
+	@:native("AntiqueWhite") @:readOnly
 	public static var ANTIQUE_WHITE(default, never):godot.Color;
 
-	@:native("AliceBlue")
+	@:native("AliceBlue") @:readOnly
 	public static var ALICE_BLUE(default, never):godot.Color;
 }

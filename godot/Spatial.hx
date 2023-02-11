@@ -93,31 +93,31 @@ extern class Spatial extends godot.Node {
 	/**		
 		Spatial nodes receives this notification if the portal system gameplay monitor detects they have exited the gameplay area.
 	**/
-	@:native("NotificationExitGameplay")
+	@:native("NotificationExitGameplay") @:readOnly
 	public static var NOTIFICATION_EXIT_GAMEPLAY(default, never):Int;
 
 	/**		
 		Spatial nodes receives this notification if the portal system gameplay monitor detects they have entered the gameplay area.
 	**/
-	@:native("NotificationEnterGameplay")
+	@:native("NotificationEnterGameplay") @:readOnly
 	public static var NOTIFICATION_ENTER_GAMEPLAY(default, never):Int;
 
 	/**		
 		Spatial nodes receives this notification when their visibility changes.
 	**/
-	@:native("NotificationVisibilityChanged")
+	@:native("NotificationVisibilityChanged") @:readOnly
 	public static var NOTIFICATION_VISIBILITY_CHANGED(default, never):Int;
 
 	/**		
 		Spatial nodes receives this notification when they are unregistered from current `godot.World` resource.
 	**/
-	@:native("NotificationExitWorld")
+	@:native("NotificationExitWorld") @:readOnly
 	public static var NOTIFICATION_EXIT_WORLD(default, never):Int;
 
 	/**		
 		Spatial nodes receives this notification when they are registered to new `godot.World` resource.
 	**/
-	@:native("NotificationEnterWorld")
+	@:native("NotificationEnterWorld") @:readOnly
 	public static var NOTIFICATION_ENTER_WORLD(default, never):Int;
 
 	/**		
@@ -125,7 +125,7 @@ extern class Spatial extends godot.Node {
 		
 		In order for `godot.Spatial.notificationTransformChanged` to work, users first need to ask for it, with `godot.Spatial.setNotifyTransform`. The notification is also sent if the node is in the editor context and it has a valid gizmo.
 	**/
-	@:native("NotificationTransformChanged")
+	@:native("NotificationTransformChanged") @:readOnly
 	public static var NOTIFICATION_TRANSFORM_CHANGED(default, never):Int;
 
 	@:native("new")

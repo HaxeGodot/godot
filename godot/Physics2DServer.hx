@@ -12,7 +12,7 @@ Physics2DServer is the server responsible for all 2D physics. It can create many
 @:native("Godot.Physics2DServer")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Physics2DServer {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	@:native("LineShapeCreate")

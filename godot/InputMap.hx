@@ -12,7 +12,7 @@ Manages all `godot.InputEventAction` which can be created/modified from the proj
 @:native("Godot.InputMap")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class InputMap {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

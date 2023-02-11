@@ -209,7 +209,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector3(0, 0, 1)`.
 	**/
-	@:native("Back")
+	@:native("Back") @:readOnly
 	public static var BACK(default, never):godot.Vector3;
 
 	/**		
@@ -218,7 +218,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector3(0, 0, -1)`.
 	**/
-	@:native("Forward")
+	@:native("Forward") @:readOnly
 	public static var FORWARD(default, never):godot.Vector3;
 
 	/**		
@@ -227,7 +227,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector3(-1, 0, 0)`.
 	**/
-	@:native("Left")
+	@:native("Left") @:readOnly
 	public static var LEFT(default, never):godot.Vector3;
 
 	/**		
@@ -236,7 +236,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector3(1, 0, 0)`.
 	**/
-	@:native("Right")
+	@:native("Right") @:readOnly
 	public static var RIGHT(default, never):godot.Vector3;
 
 	/**		
@@ -244,7 +244,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector3(0, -1, 0)`.
 	**/
-	@:native("Down")
+	@:native("Down") @:readOnly
 	public static var DOWN(default, never):godot.Vector3;
 
 	/**		
@@ -252,7 +252,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector3(0, 1, 0)`.
 	**/
-	@:native("Up")
+	@:native("Up") @:readOnly
 	public static var UP(default, never):godot.Vector3;
 
 	/**		
@@ -260,7 +260,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector3(Mathf.Inf, Mathf.Inf, Mathf.Inf)`.
 	**/
-	@:native("Inf")
+	@:native("Inf") @:readOnly
 	public static var INF(default, never):godot.Vector3;
 
 	/**		
@@ -268,7 +268,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector3(-1, -1, -1)`.
 	**/
-	@:native("NegOne")
+	@:native("NegOne") @:readOnly
 	public static var NEG_ONE(default, never):godot.Vector3;
 
 	/**		
@@ -276,7 +276,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector3(1, 1, 1)`.
 	**/
-	@:native("One")
+	@:native("One") @:readOnly
 	public static var ONE(default, never):godot.Vector3;
 
 	/**		
@@ -284,7 +284,7 @@ extern class Vector3_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector3(0, 0, 0)`.
 	**/
-	@:native("Zero")
+	@:native("Zero") @:readOnly
 	public static var ZERO(default, never):godot.Vector3;
 
 	/**		

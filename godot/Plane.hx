@@ -99,7 +99,7 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 		
 		Value: Equivalent to `new Plane(0, 0, 1, 0)`.
 	**/
-	@:native("PlaneXY")
+	@:native("PlaneXY") @:readOnly
 	public static var PLANE_X_Y(default, never):godot.Plane;
 
 	/**		
@@ -107,7 +107,7 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 		
 		Value: Equivalent to `new Plane(0, 1, 0, 0)`.
 	**/
-	@:native("PlaneXZ")
+	@:native("PlaneXZ") @:readOnly
 	public static var PLANE_X_Z(default, never):godot.Plane;
 
 	/**		
@@ -115,7 +115,7 @@ extern class Plane_ extends cs.system.ValueType implements cs.system.IEquatable_
 		
 		Value: Equivalent to `new Plane(1, 0, 0, 0)`.
 	**/
-	@:native("PlaneYZ")
+	@:native("PlaneYZ") @:readOnly
 	public static var PLANE_Y_Z(default, never):godot.Plane;
 
 	/**		

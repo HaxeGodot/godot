@@ -12,7 +12,7 @@ The `godot.Engine` singleton allows you to query and modify the project's run-ti
 @:native("Godot.Engine")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Engine {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

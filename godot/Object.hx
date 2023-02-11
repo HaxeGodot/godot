@@ -49,25 +49,25 @@ extern class Object implements cs.system.IDisposable {
 	/**		
 		Gets a new `godot.DynamicGodotObject` associated with this instance.
 	**/
-	@:native("DynamicObject")
+	@:native("DynamicObject") @:readOnly
 	public var dynamicObject(default, never):Dynamic;
 
 	/**		
 		The pointer to the native instance of this `godot.Object`.
 	**/
-	@:native("NativeInstance")
+	@:native("NativeInstance") @:readOnly
 	public var nativeInstance(default, never):cs.system.IntPtr;
 
 	/**		
 		Called before the object is about to be deleted.
 	**/
-	@:native("NotificationPredelete")
+	@:native("NotificationPredelete") @:readOnly
 	public static var NOTIFICATION_PREDELETE(default, never):Int;
 
 	/**		
 		Called right when the object is initialized. Not available in script.
 	**/
-	@:native("NotificationPostinitialize")
+	@:native("NotificationPostinitialize") @:readOnly
 	public static var NOTIFICATION_POSTINITIALIZE(default, never):Int;
 
 	/**		

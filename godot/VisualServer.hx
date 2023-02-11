@@ -44,7 +44,7 @@ extern class VisualServer {
 		return new Signal(SINGLETON, "frame_pre_draw", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		
@@ -56,49 +56,49 @@ extern class VisualServer {
 	/**		
 		The maximum renderpriority of all materials.
 	**/
-	@:native("MaterialRenderPriorityMax")
+	@:native("MaterialRenderPriorityMax") @:readOnly
 	public static var MATERIAL_RENDER_PRIORITY_MAX(default, never):Int;
 
 	/**		
 		The minimum renderpriority of all materials.
 	**/
-	@:native("MaterialRenderPriorityMin")
+	@:native("MaterialRenderPriorityMin") @:readOnly
 	public static var MATERIAL_RENDER_PRIORITY_MIN(default, never):Int;
 
 	/**		
 		Unused enum in Godot 3.x.
 	**/
-	@:native("MaxCursors")
+	@:native("MaxCursors") @:readOnly
 	public static var MAX_CURSORS(default, never):Int;
 
 	/**		
 		Max number of glow levels that can be used with glow post-process effect.
 	**/
-	@:native("MaxGlowLevels")
+	@:native("MaxGlowLevels") @:readOnly
 	public static var MAX_GLOW_LEVELS(default, never):Int;
 
 	/**		
 		The maximum Z-layer for canvas items.
 	**/
-	@:native("CanvasItemZMax")
+	@:native("CanvasItemZMax") @:readOnly
 	public static var CANVAS_ITEM_Z_MAX(default, never):Int;
 
 	/**		
 		The minimum Z-layer for canvas items.
 	**/
-	@:native("CanvasItemZMin")
+	@:native("CanvasItemZMin") @:readOnly
 	public static var CANVAS_ITEM_Z_MIN(default, never):Int;
 
 	/**		
 		Number of weights/bones per vertex.
 	**/
-	@:native("ArrayWeightsSize")
+	@:native("ArrayWeightsSize") @:readOnly
 	public static var ARRAY_WEIGHTS_SIZE(default, never):Int;
 
 	/**		
 		Marks an error that shows that the index array is empty.
 	**/
-	@:native("NoIndexArray")
+	@:native("NoIndexArray") @:readOnly
 	public static var NO_INDEX_ARRAY(default, never):Int;
 
 	/**		

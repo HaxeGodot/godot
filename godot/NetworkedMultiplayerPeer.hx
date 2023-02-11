@@ -69,13 +69,13 @@ extern abstract class NetworkedMultiplayerPeer extends godot.PacketPeer {
 	/**		
 		Packets are sent to the server alone.
 	**/
-	@:native("TargetPeerServer")
+	@:native("TargetPeerServer") @:readOnly
 	public static var TARGET_PEER_SERVER(default, never):Int;
 
 	/**		
 		Packets are sent to the server and then redistributed to other peers.
 	**/
-	@:native("TargetPeerBroadcast")
+	@:native("TargetPeerBroadcast") @:readOnly
 	public static var TARGET_PEER_BROADCAST(default, never):Int;
 
 	@:native("SetTransferMode")

@@ -107,31 +107,31 @@ extern abstract class CanvasItem extends godot.Node {
 	/**		
 		The `godot.CanvasItem` has exited the canvas.
 	**/
-	@:native("NotificationExitCanvas")
+	@:native("NotificationExitCanvas") @:readOnly
 	public static var NOTIFICATION_EXIT_CANVAS(default, never):Int;
 
 	/**		
 		The `godot.CanvasItem` has entered the canvas.
 	**/
-	@:native("NotificationEnterCanvas")
+	@:native("NotificationEnterCanvas") @:readOnly
 	public static var NOTIFICATION_ENTER_CANVAS(default, never):Int;
 
 	/**		
 		The `godot.CanvasItem`'s visibility has changed.
 	**/
-	@:native("NotificationVisibilityChanged")
+	@:native("NotificationVisibilityChanged") @:readOnly
 	public static var NOTIFICATION_VISIBILITY_CHANGED(default, never):Int;
 
 	/**		
 		The `godot.CanvasItem` is requested to draw.
 	**/
-	@:native("NotificationDraw")
+	@:native("NotificationDraw") @:readOnly
 	public static var NOTIFICATION_DRAW(default, never):Int;
 
 	/**		
 		The `godot.CanvasItem`'s transform has changed. This notification is only received if enabled by `godot.CanvasItem.setNotifyTransform` or `godot.CanvasItem.setNotifyLocalTransform`.
 	**/
-	@:native("NotificationTransformChanged")
+	@:native("NotificationTransformChanged") @:readOnly
 	public static var NOTIFICATION_TRANSFORM_CHANGED(default, never):Int;
 
 	/**		

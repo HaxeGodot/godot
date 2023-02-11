@@ -192,7 +192,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector2(-1, 0)`.
 	**/
-	@:native("Left")
+	@:native("Left") @:readOnly
 	public static var LEFT(default, never):godot.Vector2;
 
 	/**		
@@ -200,7 +200,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector2(1, 0)`.
 	**/
-	@:native("Right")
+	@:native("Right") @:readOnly
 	public static var RIGHT(default, never):godot.Vector2;
 
 	/**		
@@ -208,7 +208,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector2(0, 1)`.
 	**/
-	@:native("Down")
+	@:native("Down") @:readOnly
 	public static var DOWN(default, never):godot.Vector2;
 
 	/**		
@@ -216,7 +216,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector2(0, -1)`.
 	**/
-	@:native("Up")
+	@:native("Up") @:readOnly
 	public static var UP(default, never):godot.Vector2;
 
 	/**		
@@ -224,7 +224,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector2(Mathf.Inf, Mathf.Inf)`.
 	**/
-	@:native("Inf")
+	@:native("Inf") @:readOnly
 	public static var INF(default, never):godot.Vector2;
 
 	/**		
@@ -232,7 +232,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector2(1, 1)`.
 	**/
-	@:native("One")
+	@:native("One") @:readOnly
 	public static var ONE(default, never):godot.Vector2;
 
 	/**		
@@ -240,7 +240,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector2(-1, -1)`.
 	**/
-	@:native("NegOne")
+	@:native("NegOne") @:readOnly
 	public static var NEG_ONE(default, never):godot.Vector2;
 
 	/**		
@@ -248,7 +248,7 @@ extern class Vector2_ extends cs.system.ValueType implements cs.system.IEquatabl
 		
 		Value: Equivalent to `new Vector2(0, 0)`.
 	**/
-	@:native("Zero")
+	@:native("Zero") @:readOnly
 	public static var ZERO(default, never):godot.Vector2;
 
 	/**		

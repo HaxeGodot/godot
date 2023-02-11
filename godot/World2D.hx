@@ -15,19 +15,19 @@ extern class World2D extends godot.Resource {
 	/**		
 		Direct access to the world's physics 2D space state. Used for querying current and potential collisions. When using multi-threaded physics, access is limited to `_physics_process(delta)` in the main thread.
 	**/
-	@:native("DirectSpaceState")
+	@:native("DirectSpaceState") @:readOnly
 	public var directSpaceState(default, never):godot.Physics2DDirectSpaceState;
 
 	/**		
 		The `godot.RID` of this world's physics space resource. Used by the `godot.Physics2DServer` for 2D physics, treating it as both a space and an area.
 	**/
-	@:native("Space")
+	@:native("Space") @:readOnly
 	public var space(default, never):godot.RID;
 
 	/**		
 		The `godot.RID` of this world's canvas resource. Used by the `godot.VisualServer` for 2D drawing.
 	**/
-	@:native("Canvas")
+	@:native("Canvas") @:readOnly
 	public var canvas(default, never):godot.RID;
 
 	@:native("new")

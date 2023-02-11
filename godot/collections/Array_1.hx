@@ -54,7 +54,7 @@ extern abstract Array_1<T0>(Array_1<T0>_) from Array_1<T0>_ to Array_1<T0>_ {
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Array_1<T0>_ implements cs.system.collections.generic.IList_1<T0> implements cs.system.collections.generic.ICollection_1<T0> implements cs.system.collections.generic.IEnumerable_1<T0> implements cs.system.collections.IEnumerable {
 #end
-	@:native("Count")
+	@:native("Count") @:readOnly
 	public var count(default, never):Int;
 
 	@:native("new")

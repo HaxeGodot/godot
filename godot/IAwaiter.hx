@@ -9,7 +9,7 @@ import cs.system.*;
 @:native("Godot.IAwaiter")
 @:autoBuild(godot.Godot.buildUserClass())
 extern interface IAwaiter extends cs.system.runtime.compilerservices.INotifyCompletion {
-	@:native("IsCompleted")
+	@:native("IsCompleted") @:readOnly
 	public var isCompleted(default, never):Bool;
 
 	@:native("GetResult")

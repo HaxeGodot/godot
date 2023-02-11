@@ -145,7 +145,7 @@ extern class TileMap extends godot.Node2D {
 	/**		
 		Returned when a cell doesn't exist.
 	**/
-	@:native("InvalidCell")
+	@:native("InvalidCell") @:readOnly
 	public static var INVALID_CELL(default, never):Int;
 
 	@:native("new")

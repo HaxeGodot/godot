@@ -18,7 +18,7 @@ Overriding: Any project setting can be overridden by creating a file named `over
 @:native("Godot.ProjectSettings")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ProjectSettings {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

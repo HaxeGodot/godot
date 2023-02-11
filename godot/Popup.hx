@@ -39,13 +39,13 @@ extern class Popup extends godot.Control {
 	/**		
 		Notification sent right after the popup is hidden.
 	**/
-	@:native("NotificationPopupHide")
+	@:native("NotificationPopupHide") @:readOnly
 	public static var NOTIFICATION_POPUP_HIDE(default, never):Int;
 
 	/**		
 		Notification sent right after the popup is shown.
 	**/
-	@:native("NotificationPostPopup")
+	@:native("NotificationPostPopup") @:readOnly
 	public static var NOTIFICATION_POST_POPUP(default, never):Int;
 
 	@:native("new")

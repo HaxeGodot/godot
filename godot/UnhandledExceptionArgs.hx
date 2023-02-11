@@ -15,6 +15,6 @@ extern class UnhandledExceptionArgs {
 	/**		
 		Exception object.
 	**/
-	@:native("Exception")
+	@:native("Exception") @:readOnly
 	public var exception(default, never):cs.system.Exception;
 }

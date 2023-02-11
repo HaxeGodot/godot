@@ -64,7 +64,7 @@ extern class MainLoop extends godot.Object {
 		
 		Specific to the Android platform.
 	**/
-	@:native("NotificationAppPaused")
+	@:native("NotificationAppPaused") @:readOnly
 	public static var NOTIFICATION_APP_PAUSED(default, never):Int;
 
 	/**		
@@ -72,7 +72,7 @@ extern class MainLoop extends godot.Object {
 		
 		Specific to the Android platform.
 	**/
-	@:native("NotificationAppResumed")
+	@:native("NotificationAppResumed") @:readOnly
 	public static var NOTIFICATION_APP_RESUMED(default, never):Int;
 
 	/**		
@@ -80,7 +80,7 @@ extern class MainLoop extends godot.Object {
 		
 		Specific to the macOS platform.
 	**/
-	@:native("NotificationOsImeUpdate")
+	@:native("NotificationOsImeUpdate") @:readOnly
 	public static var NOTIFICATION_OS_IME_UPDATE(default, never):Int;
 
 	/**		
@@ -88,7 +88,7 @@ extern class MainLoop extends godot.Object {
 		
 		Implemented on desktop platforms if the crash handler is enabled.
 	**/
-	@:native("NotificationCrash")
+	@:native("NotificationCrash") @:readOnly
 	public static var NOTIFICATION_CRASH(default, never):Int;
 
 	/**		
@@ -96,13 +96,13 @@ extern class MainLoop extends godot.Object {
 		
 		Specific to the macOS platform.
 	**/
-	@:native("NotificationWmAbout")
+	@:native("NotificationWmAbout") @:readOnly
 	public static var NOTIFICATION_WM_ABOUT(default, never):Int;
 
 	/**		
 		Notification received when translations may have changed. Can be triggered by the user changing the locale. Can be used to respond to language changes, for example to change the UI strings on the fly. Useful when working with the built-in translation support, like `godot.Object.tr`.
 	**/
-	@:native("NotificationTranslationChanged")
+	@:native("NotificationTranslationChanged") @:readOnly
 	public static var NOTIFICATION_TRANSLATION_CHANGED(default, never):Int;
 
 	/**		
@@ -110,7 +110,7 @@ extern class MainLoop extends godot.Object {
 		
 		Specific to the iOS platform.
 	**/
-	@:native("NotificationOsMemoryWarning")
+	@:native("NotificationOsMemoryWarning") @:readOnly
 	public static var NOTIFICATION_OS_MEMORY_WARNING(default, never):Int;
 
 	/**		
@@ -118,7 +118,7 @@ extern class MainLoop extends godot.Object {
 		
 		No supported platforms currently send this notification.
 	**/
-	@:native("NotificationWmUnfocusRequest")
+	@:native("NotificationWmUnfocusRequest") @:readOnly
 	public static var NOTIFICATION_WM_UNFOCUS_REQUEST(default, never):Int;
 
 	/**		
@@ -126,7 +126,7 @@ extern class MainLoop extends godot.Object {
 		
 		Specific to the Android platform.
 	**/
-	@:native("NotificationWmGoBackRequest")
+	@:native("NotificationWmGoBackRequest") @:readOnly
 	public static var NOTIFICATION_WM_GO_BACK_REQUEST(default, never):Int;
 
 	/**		
@@ -134,7 +134,7 @@ extern class MainLoop extends godot.Object {
 		
 		Implemented on desktop platforms.
 	**/
-	@:native("NotificationWmQuitRequest")
+	@:native("NotificationWmQuitRequest") @:readOnly
 	public static var NOTIFICATION_WM_QUIT_REQUEST(default, never):Int;
 
 	/**		
@@ -142,7 +142,7 @@ extern class MainLoop extends godot.Object {
 		
 		Implemented on all platforms.
 	**/
-	@:native("NotificationWmFocusOut")
+	@:native("NotificationWmFocusOut") @:readOnly
 	public static var NOTIFICATION_WM_FOCUS_OUT(default, never):Int;
 
 	/**		
@@ -150,7 +150,7 @@ extern class MainLoop extends godot.Object {
 		
 		Implemented on all platforms.
 	**/
-	@:native("NotificationWmFocusIn")
+	@:native("NotificationWmFocusIn") @:readOnly
 	public static var NOTIFICATION_WM_FOCUS_IN(default, never):Int;
 
 	/**		
@@ -158,7 +158,7 @@ extern class MainLoop extends godot.Object {
 		
 		Implemented on desktop and web platforms.
 	**/
-	@:native("NotificationWmMouseExit")
+	@:native("NotificationWmMouseExit") @:readOnly
 	public static var NOTIFICATION_WM_MOUSE_EXIT(default, never):Int;
 
 	/**		
@@ -166,7 +166,7 @@ extern class MainLoop extends godot.Object {
 		
 		Implemented on desktop and web platforms.
 	**/
-	@:native("NotificationWmMouseEnter")
+	@:native("NotificationWmMouseEnter") @:readOnly
 	public static var NOTIFICATION_WM_MOUSE_ENTER(default, never):Int;
 
 	@:native("new")

@@ -53,13 +53,13 @@ extern class ArrayMesh extends godot.Mesh {
 	/**		
 		Amount of weights/bone indices per vertex (always 4).
 	**/
-	@:native("ArrayWeightsSize")
+	@:native("ArrayWeightsSize") @:readOnly
 	public static var ARRAY_WEIGHTS_SIZE(default, never):Int;
 
 	/**		
 		Default value used for index_array_len when no indices are present.
 	**/
-	@:native("NoIndexArray")
+	@:native("NoIndexArray") @:readOnly
 	public static var NO_INDEX_ARRAY(default, never):Int;
 
 	@:native("new")

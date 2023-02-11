@@ -9,6 +9,6 @@ import cs.system.*;
 @:native("Godot.Dispatcher")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Dispatcher {
-	@:native("SynchronizationContext")
+	@:native("SynchronizationContext") @:readOnly
 	public static var SYNCHRONIZATION_CONTEXT(default, never):godot.GodotSynchronizationContext;
 }

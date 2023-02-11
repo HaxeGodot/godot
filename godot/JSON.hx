@@ -12,7 +12,7 @@ Helper class for parsing JSON data. For usage example and other important hints,
 @:native("Godot.JSON")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class JSON {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	#if doc_gen

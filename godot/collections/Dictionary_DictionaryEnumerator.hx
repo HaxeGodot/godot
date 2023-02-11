@@ -9,16 +9,16 @@ import cs.system.*;
 @:native("Godot.Collections.Dictionary.DictionaryEnumerator")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Dictionary_DictionaryEnumerator implements cs.system.collections.IDictionaryEnumerator implements cs.system.collections.IEnumerator {
-	@:native("Value")
+	@:native("Value") @:readOnly
 	public var value(default, never):Dynamic;
 
-	@:native("Key")
+	@:native("Key") @:readOnly
 	public var key(default, never):Dynamic;
 
-	@:native("Entry")
+	@:native("Entry") @:readOnly
 	public var entry(default, never):cs.system.collections.DictionaryEntry;
 
-	@:native("Current")
+	@:native("Current") @:readOnly
 	public var current(default, never):Dynamic;
 
 	@:native("new")

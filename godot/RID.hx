@@ -18,7 +18,7 @@ extern class RID implements cs.system.IDisposable {
 	/**		
 		The pointer to the native instance of this `godot.RID`.
 	**/
-	@:native("NativeInstance")
+	@:native("NativeInstance") @:readOnly
 	public var nativeInstance(default, never):cs.system.IntPtr;
 
 	/**		

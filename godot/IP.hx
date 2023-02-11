@@ -12,19 +12,19 @@ IP contains support functions for the Internet Protocol (IP). TCP/IP support is 
 @:native("Godot.IP")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class IP {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		
 		Invalid ID constant. Returned if `godot.IP.resolverMaxQueries` is exceeded.
 	**/
-	@:native("ResolverInvalidId")
+	@:native("ResolverInvalidId") @:readOnly
 	public static var RESOLVER_INVALID_ID(default, never):Int;
 
 	/**		
 		Maximum number of concurrent DNS resolver queries allowed, `godot.IP.resolverInvalidId` is returned if exceeded.
 	**/
-	@:native("ResolverMaxQueries")
+	@:native("ResolverMaxQueries") @:readOnly
 	public static var RESOLVER_MAX_QUERIES(default, never):Int;
 
 	#if doc_gen

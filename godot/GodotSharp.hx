@@ -14,7 +14,7 @@ See also `godot.CSharpScript`.
 @:native("Godot.GodotSharp")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class GodotSharp {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

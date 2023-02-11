@@ -211,7 +211,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		
 		The `reference_space_reset` signal may indicate when this changes.
 	**/
-	@:native("BoundsGeometry")
+	@:native("BoundsGeometry") @:readOnly
 	public var boundsGeometry(default, never):cs.NativeArray<godot.Vector3>;
 
 	/**		
@@ -219,7 +219,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		
 		Possible values come from [https://developer.mozilla.org/en-US/docs/Web/API/XRVisibilityState](WebXR's XRVisibilityState), including `"hidden"`, `"visible"`, and `"visible-blurred"`.
 	**/
-	@:native("VisibilityState")
+	@:native("VisibilityState") @:readOnly
 	public var visibilityState(default, never):std.String;
 
 	/**		
@@ -227,7 +227,7 @@ extern abstract class WebXRInterface extends godot.ARVRInterface {
 		
 		Possible values come from [https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceType](WebXR's XRReferenceSpaceType). If you want to use a particular reference space type, it must be listed in either `godot.WebXRInterface.requiredFeatures` or `godot.WebXRInterface.optionalFeatures`.
 	**/
-	@:native("ReferenceSpaceType")
+	@:native("ReferenceSpaceType") @:readOnly
 	public var referenceSpaceType(default, never):std.String;
 
 	/**		

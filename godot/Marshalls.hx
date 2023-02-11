@@ -12,7 +12,7 @@ Provides data transformation and encoding utility functions.
 @:native("Godot.Marshalls")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Marshalls {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	#if doc_gen

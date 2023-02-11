@@ -39,37 +39,37 @@ extern abstract class Physics2DDirectBodyState extends godot.Object {
 	/**		
 		The total gravity vector being currently applied to this body.
 	**/
-	@:native("TotalGravity")
+	@:native("TotalGravity") @:readOnly
 	public var totalGravity(default, never):godot.Vector2;
 
 	/**		
 		The rate at which the body stops moving, if there are not any other forces moving it.
 	**/
-	@:native("TotalLinearDamp")
+	@:native("TotalLinearDamp") @:readOnly
 	public var totalLinearDamp(default, never):Single;
 
 	/**		
 		The rate at which the body stops rotating, if there are not any other forces moving it.
 	**/
-	@:native("TotalAngularDamp")
+	@:native("TotalAngularDamp") @:readOnly
 	public var totalAngularDamp(default, never):Single;
 
 	/**		
 		The inverse of the inertia of the body.
 	**/
-	@:native("InverseInertia")
+	@:native("InverseInertia") @:readOnly
 	public var inverseInertia(default, never):Single;
 
 	/**		
 		The inverse of the mass of the body.
 	**/
-	@:native("InverseMass")
+	@:native("InverseMass") @:readOnly
 	public var inverseMass(default, never):Single;
 
 	/**		
 		The timestep (delta) used for the simulation.
 	**/
-	@:native("Step")
+	@:native("Step") @:readOnly
 	public var step(default, never):Single;
 
 	@:native("GetTotalGravity")

@@ -21,37 +21,37 @@ extern class AnimationNodeBlendTree extends godot.AnimationRootNode {
 	/**		
 		The specified connection already exists.
 	**/
-	@:native("ConnectionErrorConnectionExists")
+	@:native("ConnectionErrorConnectionExists") @:readOnly
 	public static var CONNECTION_ERROR_CONNECTION_EXISTS(default, never):Int;
 
 	/**		
 		Input and output nodes are the same.
 	**/
-	@:native("ConnectionErrorSameNode")
+	@:native("ConnectionErrorSameNode") @:readOnly
 	public static var CONNECTION_ERROR_SAME_NODE(default, never):Int;
 
 	/**		
 		The output node is `null`.
 	**/
-	@:native("ConnectionErrorNoOutput")
+	@:native("ConnectionErrorNoOutput") @:readOnly
 	public static var CONNECTION_ERROR_NO_OUTPUT(default, never):Int;
 
 	/**		
 		The specified input port is out of range.
 	**/
-	@:native("ConnectionErrorNoInputIndex")
+	@:native("ConnectionErrorNoInputIndex") @:readOnly
 	public static var CONNECTION_ERROR_NO_INPUT_INDEX(default, never):Int;
 
 	/**		
 		The input node is `null`.
 	**/
-	@:native("ConnectionErrorNoInput")
+	@:native("ConnectionErrorNoInput") @:readOnly
 	public static var CONNECTION_ERROR_NO_INPUT(default, never):Int;
 
 	/**		
 		The connection was successful.
 	**/
-	@:native("ConnectionOk")
+	@:native("ConnectionOk") @:readOnly
 	public static var CONNECTION_OK(default, never):Int;
 
 	@:native("new")

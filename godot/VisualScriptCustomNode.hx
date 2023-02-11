@@ -17,22 +17,22 @@ extern class VisualScriptCustomNode extends godot.VisualScriptNode {
 		
 		Using this requires you to have at least one working memory slot, which is used for the `godot.VisualScriptFunctionState`.
 	**/
-	@:native("StepYieldBit")
+	@:native("StepYieldBit") @:readOnly
 	public static var STEP_YIELD_BIT(default, never):Int;
 
 	/**		
 		Hint used by `godot.VisualScriptCustomNode._Step` to tell that control should stop and exit the function.
 	**/
-	@:native("StepExitFunctionBit")
+	@:native("StepExitFunctionBit") @:readOnly
 	public static var STEP_EXIT_FUNCTION_BIT(default, never):Int;
 
-	@:native("StepNoAdvanceBit")
+	@:native("StepNoAdvanceBit") @:readOnly
 	public static var STEP_NO_ADVANCE_BIT(default, never):Int;
 
 	/**		
 		Hint used by `godot.VisualScriptCustomNode._Step` to tell that control should return back, either hitting a previous `godot.VisualScriptCustomNode.stepPushStackBit` or exiting the function.
 	**/
-	@:native("StepGoBackBit")
+	@:native("StepGoBackBit") @:readOnly
 	public static var STEP_GO_BACK_BIT(default, never):Int;
 
 	/**		
@@ -40,7 +40,7 @@ extern class VisualScriptCustomNode extends godot.VisualScriptNode {
 		
 		This is used by `godot.VisualScriptCondition` to redirect the sequence to the "Done" port after the `true`/`false` branch has finished execution.
 	**/
-	@:native("StepPushStackBit")
+	@:native("StepPushStackBit") @:readOnly
 	public static var STEP_PUSH_STACK_BIT(default, never):Int;
 
 	@:native("new")

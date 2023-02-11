@@ -100,7 +100,7 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 		
 		Value: Equivalent to `new Transform(Vector3.Right, Vector3.Up, Vector3.Forward, Vector3.Zero)`.
 	**/
-	@:native("FlipZ")
+	@:native("FlipZ") @:readOnly
 	public static var FLIP_Z(default, never):godot.Transform;
 
 	/**		
@@ -108,7 +108,7 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 		
 		Value: Equivalent to `new Transform(Vector3.Right, Vector3.Down, Vector3.Back, Vector3.Zero)`.
 	**/
-	@:native("FlipY")
+	@:native("FlipY") @:readOnly
 	public static var FLIP_Y(default, never):godot.Transform;
 
 	/**		
@@ -116,7 +116,7 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 		
 		Value: Equivalent to `new Transform(Vector3.Left, Vector3.Up, Vector3.Back, Vector3.Zero)`.
 	**/
-	@:native("FlipX")
+	@:native("FlipX") @:readOnly
 	public static var FLIP_X(default, never):godot.Transform;
 
 	/**		
@@ -126,7 +126,7 @@ extern class Transform_ extends cs.system.ValueType implements cs.system.IEquata
 		
 		Value: Equivalent to `new Transform(Vector3.Right, Vector3.Up, Vector3.Back, Vector3.Zero)`.
 	**/
-	@:native("Identity")
+	@:native("Identity") @:readOnly
 	public static var IDENTITY(default, never):godot.Transform;
 
 	/**		

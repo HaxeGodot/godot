@@ -24,7 +24,7 @@ extern class Skeleton extends godot.Spatial {
 		return new Signal(this, "skeleton_updated", Signal.SignalHandlerVoidVoid.connectSignal, Signal.SignalHandlerVoidVoid.disconnectSignal, Signal.SignalHandlerVoidVoid.isSignalConnected);
 	}
 
-	@:native("NotificationUpdateSkeleton")
+	@:native("NotificationUpdateSkeleton") @:readOnly
 	public static var NOTIFICATION_UPDATE_SKELETON(default, never):Int;
 
 	@:native("new")

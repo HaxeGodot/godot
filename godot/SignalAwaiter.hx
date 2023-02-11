@@ -9,7 +9,7 @@ import cs.system.*;
 @:native("Godot.SignalAwaiter")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class SignalAwaiter implements godot.IAwaiter_1<cs.NativeArray<Dynamic>> implements cs.system.runtime.compilerservices.INotifyCompletion implements godot.IAwaitable_1<cs.NativeArray<Dynamic>> {
-	@:native("IsCompleted")
+	@:native("IsCompleted") @:readOnly
 	public var isCompleted(default, never):Bool;
 
 	@:native("new")

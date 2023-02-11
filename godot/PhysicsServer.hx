@@ -12,7 +12,7 @@ PhysicsServer is the server responsible for all 3D physics. It can create many k
 @:native("Godot.PhysicsServer")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class PhysicsServer {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

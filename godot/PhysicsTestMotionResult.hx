@@ -9,40 +9,40 @@ import cs.system.*;
 @:native("Godot.PhysicsTestMotionResult")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class PhysicsTestMotionResult extends godot.Reference {
-	@:native("CollisionUnsafeFraction")
+	@:native("CollisionUnsafeFraction") @:readOnly
 	public var collisionUnsafeFraction(default, never):Single;
 
-	@:native("CollisionSafeFraction")
+	@:native("CollisionSafeFraction") @:readOnly
 	public var collisionSafeFraction(default, never):Single;
 
-	@:native("CollisionDepth")
+	@:native("CollisionDepth") @:readOnly
 	public var collisionDepth(default, never):Single;
 
-	@:native("ColliderShape")
+	@:native("ColliderShape") @:readOnly
 	public var colliderShape(default, never):Int;
 
-	@:native("Collider")
+	@:native("Collider") @:readOnly
 	public var collider(default, never):godot.Object;
 
-	@:native("ColliderRid")
+	@:native("ColliderRid") @:readOnly
 	public var colliderRid(default, never):godot.RID;
 
-	@:native("ColliderId")
+	@:native("ColliderId") @:readOnly
 	public var colliderId(default, never):cs.types.UInt64;
 
-	@:native("ColliderVelocity")
+	@:native("ColliderVelocity") @:readOnly
 	public var colliderVelocity(default, never):godot.Vector3;
 
-	@:native("CollisionNormal")
+	@:native("CollisionNormal") @:readOnly
 	public var collisionNormal(default, never):godot.Vector3;
 
-	@:native("CollisionPoint")
+	@:native("CollisionPoint") @:readOnly
 	public var collisionPoint(default, never):godot.Vector3;
 
-	@:native("MotionRemainder")
+	@:native("MotionRemainder") @:readOnly
 	public var motionRemainder(default, never):godot.Vector3;
 
-	@:native("Motion")
+	@:native("Motion") @:readOnly
 	public var motion(default, never):godot.Vector3;
 
 	@:native("new")

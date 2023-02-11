@@ -12,7 +12,7 @@ Server that manages all translations. Translations can be set to it and removed 
 @:native("Godot.TranslationServer")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class TranslationServer {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

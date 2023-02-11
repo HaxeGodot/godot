@@ -18,7 +18,7 @@ extern class GD {
 	/**		
 		Scancodes with this bit applied are non-printable.
 	**/
-	@:native("Spkey")
+	@:native("Spkey") @:readOnly
 	public static var SPKEY(default, never):Int;
 
 	#if doc_gen

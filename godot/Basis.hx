@@ -118,7 +118,7 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 		
 		Value: Equivalent to `new Basis(Vector3.Right, Vector3.Up, Vector3.Forward)`.
 	**/
-	@:native("FlipZ")
+	@:native("FlipZ") @:readOnly
 	public static var FLIP_Z(default, never):godot.Basis;
 
 	/**		
@@ -126,7 +126,7 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 		
 		Value: Equivalent to `new Basis(Vector3.Right, Vector3.Down, Vector3.Back)`.
 	**/
-	@:native("FlipY")
+	@:native("FlipY") @:readOnly
 	public static var FLIP_Y(default, never):godot.Basis;
 
 	/**		
@@ -134,7 +134,7 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 		
 		Value: Equivalent to `new Basis(Vector3.Left, Vector3.Up, Vector3.Back)`.
 	**/
-	@:native("FlipX")
+	@:native("FlipX") @:readOnly
 	public static var FLIP_X(default, never):godot.Basis;
 
 	/**		
@@ -144,7 +144,7 @@ extern class Basis_ extends cs.system.ValueType implements cs.system.IEquatable_
 		
 		Value: Equivalent to `new Basis(Vector3.Right, Vector3.Up, Vector3.Back)`.
 	**/
-	@:native("Identity")
+	@:native("Identity") @:readOnly
 	public static var IDENTITY(default, never):godot.Basis;
 
 	/**		

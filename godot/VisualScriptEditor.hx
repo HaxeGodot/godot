@@ -9,7 +9,7 @@ import cs.system.*;
 @:native("Godot.VisualScriptEditor")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class VisualScriptEditor {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

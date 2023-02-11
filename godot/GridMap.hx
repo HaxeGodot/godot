@@ -97,7 +97,7 @@ extern class GridMap extends godot.Spatial {
 	/**		
 		Invalid cell item that can be used in `godot.GridMap.setCellItem` to clear cells (or represent an empty cell in `godot.GridMap.getCellItem`).
 	**/
-	@:native("InvalidCellItem")
+	@:native("InvalidCellItem") @:readOnly
 	public static var INVALID_CELL_ITEM(default, never):Int;
 
 	@:native("new")

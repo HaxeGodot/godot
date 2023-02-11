@@ -15,19 +15,19 @@ extern class World extends godot.Resource {
 	/**		
 		Direct access to the world's physics 3D space state. Used for querying current and potential collisions.
 	**/
-	@:native("DirectSpaceState")
+	@:native("DirectSpaceState") @:readOnly
 	public var directSpaceState(default, never):godot.PhysicsDirectSpaceState;
 
 	/**		
 		The World's visual scenario.
 	**/
-	@:native("Scenario")
+	@:native("Scenario") @:readOnly
 	public var scenario(default, never):godot.RID;
 
 	/**		
 		The World's physics space.
 	**/
-	@:native("Space")
+	@:native("Space") @:readOnly
 	public var space(default, never):godot.RID;
 
 	/**		

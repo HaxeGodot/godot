@@ -25,13 +25,13 @@ extern class Image extends godot.Resource {
 	/**		
 		The maximal height allowed for `godot.Image` resources.
 	**/
-	@:native("MaxHeight")
+	@:native("MaxHeight") @:readOnly
 	public static var MAX_HEIGHT(default, never):Int;
 
 	/**		
 		The maximal width allowed for `godot.Image` resources.
 	**/
-	@:native("MaxWidth")
+	@:native("MaxWidth") @:readOnly
 	public static var MAX_WIDTH(default, never):Int;
 
 	@:native("new")

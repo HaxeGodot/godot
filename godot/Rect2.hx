@@ -100,7 +100,7 @@ extern class Rect2_ extends cs.system.ValueType implements cs.system.IEquatable_
 		
 		Value: Equivalent to `godot.Rect2.getArea`.
 	**/
-	@:native("Area")
+	@:native("Area") @:readOnly
 	public var area(default, never):Single;
 
 	/**		

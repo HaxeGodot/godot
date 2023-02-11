@@ -14,31 +14,31 @@ To use `godot.EditorSceneImporter`, register it using the `godot.EditorPlugin.ad
 @:native("Godot.EditorSceneImporter")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class EditorSceneImporter extends godot.Reference {
-	@:native("ImportMaterialsInInstances")
+	@:native("ImportMaterialsInInstances") @:readOnly
 	public static var IMPORT_MATERIALS_IN_INSTANCES(default, never):Int;
 
-	@:native("ImportFailOnMissingDependencies")
+	@:native("ImportFailOnMissingDependencies") @:readOnly
 	public static var IMPORT_FAIL_ON_MISSING_DEPENDENCIES(default, never):Int;
 
-	@:native("ImportGenerateTangentArrays")
+	@:native("ImportGenerateTangentArrays") @:readOnly
 	public static var IMPORT_GENERATE_TANGENT_ARRAYS(default, never):Int;
 
-	@:native("ImportAnimationKeepValueTracks")
+	@:native("ImportAnimationKeepValueTracks") @:readOnly
 	public static var IMPORT_ANIMATION_KEEP_VALUE_TRACKS(default, never):Int;
 
-	@:native("ImportAnimationForceAllTracksInAllClips")
+	@:native("ImportAnimationForceAllTracksInAllClips") @:readOnly
 	public static var IMPORT_ANIMATION_FORCE_ALL_TRACKS_IN_ALL_CLIPS(default, never):Int;
 
-	@:native("ImportAnimationOptimize")
+	@:native("ImportAnimationOptimize") @:readOnly
 	public static var IMPORT_ANIMATION_OPTIMIZE(default, never):Int;
 
-	@:native("ImportAnimationDetectLoop")
+	@:native("ImportAnimationDetectLoop") @:readOnly
 	public static var IMPORT_ANIMATION_DETECT_LOOP(default, never):Int;
 
-	@:native("ImportAnimation")
+	@:native("ImportAnimation") @:readOnly
 	public static var IMPORT_ANIMATION(default, never):Int;
 
-	@:native("ImportScene")
+	@:native("ImportScene") @:readOnly
 	public static var IMPORT_SCENE(default, never):Int;
 
 	@:native("new")

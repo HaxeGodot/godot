@@ -44,7 +44,7 @@ extern class ARVRServer {
 		return new Signal(SINGLETON, "tracker_removed", Signal.SignalHandlerStringIntIntVoid.connectSignal, Signal.SignalHandlerStringIntIntVoid.disconnectSignal, Signal.SignalHandlerStringIntIntVoid.isSignalConnected);
 	}
 
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

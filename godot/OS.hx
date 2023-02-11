@@ -12,7 +12,7 @@ Operating System functions. OS wraps the most common functionality to communicat
 @:native("Godot.OS")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class OS {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

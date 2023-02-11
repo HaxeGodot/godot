@@ -153,7 +153,7 @@ extern class SceneTree extends godot.MainLoop {
 	/**		
 		The `godot.SceneTree`'s root `godot.Viewport`.
 	**/
-	@:native("Root")
+	@:native("Root") @:readOnly
 	public var root(default, never):godot.Viewport;
 
 	/**		

@@ -1589,7 +1589,7 @@ extern class AnimatedTexture extends godot.Texture {
 	/**		
 		The maximum number of frames supported by `godot.AnimatedTexture`. If you need more frames in your animation, use `godot.AnimationPlayer` or `godot.AnimatedSprite`.
 	**/
-	@:native("MaxFrames")
+	@:native("MaxFrames") @:readOnly
 	public static var MAX_FRAMES(default, never):Int;
 
 	@:native("new")

@@ -17,73 +17,73 @@ extern class KinematicCollision2D extends godot.Reference {
 	/**		
 		The colliding body's metadata. See `godot.Object`.
 	**/
-	@:native("ColliderMetadata")
+	@:native("ColliderMetadata") @:readOnly
 	public var colliderMetadata(default, never):Dynamic;
 
 	/**		
 		The colliding object's velocity.
 	**/
-	@:native("ColliderVelocity")
+	@:native("ColliderVelocity") @:readOnly
 	public var colliderVelocity(default, never):godot.Vector2;
 
 	/**		
 		The colliding shape's index. See `godot.CollisionObject2D`.
 	**/
-	@:native("ColliderShapeIndex")
+	@:native("ColliderShapeIndex") @:readOnly
 	public var colliderShapeIndex(default, never):Int;
 
 	/**		
 		The colliding body's shape.
 	**/
-	@:native("ColliderShape")
+	@:native("ColliderShape") @:readOnly
 	public var colliderShape(default, never):godot.Object;
 
 	/**		
 		The colliding body's `godot.RID` used by the `godot.Physics2DServer`.
 	**/
-	@:native("ColliderRid")
+	@:native("ColliderRid") @:readOnly
 	public var colliderRid(default, never):godot.RID;
 
 	/**		
 		The colliding body's unique instance ID. See `godot.Object.getInstanceId`.
 	**/
-	@:native("ColliderId")
+	@:native("ColliderId") @:readOnly
 	public var colliderId(default, never):cs.types.UInt64;
 
 	/**		
 		The colliding body.
 	**/
-	@:native("Collider")
+	@:native("Collider") @:readOnly
 	public var collider(default, never):godot.Object;
 
 	/**		
 		The moving object's colliding shape.
 	**/
-	@:native("LocalShape")
+	@:native("LocalShape") @:readOnly
 	public var localShape(default, never):godot.Object;
 
 	/**		
 		The moving object's remaining movement vector.
 	**/
-	@:native("Remainder")
+	@:native("Remainder") @:readOnly
 	public var remainder(default, never):godot.Vector2;
 
 	/**		
 		The distance the moving object traveled before collision.
 	**/
-	@:native("Travel")
+	@:native("Travel") @:readOnly
 	public var travel(default, never):godot.Vector2;
 
 	/**		
 		The colliding body's shape's normal at the point of collision.
 	**/
-	@:native("Normal")
+	@:native("Normal") @:readOnly
 	public var normal(default, never):godot.Vector2;
 
 	/**		
 		The point of collision, in global coordinates.
 	**/
-	@:native("Position")
+	@:native("Position") @:readOnly
 	public var position(default, never):godot.Vector2;
 
 	@:native("new")

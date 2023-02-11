@@ -41,7 +41,7 @@ extern abstract class EditorSettings extends godot.Resource {
 	/**		
 		Emitted after any editor setting has changed. It's used by various editor plugins to update their visuals on theme changes or logic on configuration changes.
 	**/
-	@:native("NotificationEditorSettingsChanged")
+	@:native("NotificationEditorSettingsChanged") @:readOnly
 	public static var NOTIFICATION_EDITOR_SETTINGS_CHANGED(default, never):Int;
 
 	/**		

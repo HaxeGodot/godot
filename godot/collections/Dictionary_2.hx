@@ -9,13 +9,13 @@ import cs.system.*;
 @:native("Godot.Collections.Dictionary`2")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class Dictionary_2<T0, T1> implements cs.system.collections.generic.IDictionary_2<T0, T1> implements cs.system.collections.generic.ICollection_1<cs.system.collections.generic.KeyValuePair_2<T0, T1>> implements cs.system.collections.generic.IEnumerable_1<cs.system.collections.generic.KeyValuePair_2<T0, T1>> implements cs.system.collections.IEnumerable {
-	@:native("Count")
+	@:native("Count") @:readOnly
 	public var count(default, never):Int;
 
-	@:native("Values")
+	@:native("Values") @:readOnly
 	public var values(default, never):cs.system.collections.generic.ICollection_1<T1>;
 
-	@:native("Keys")
+	@:native("Keys") @:readOnly
 	public var keys(default, never):cs.system.collections.generic.ICollection_1<T0>;
 
 	@:native("new")

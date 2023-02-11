@@ -184,7 +184,7 @@ extern class Quat_ extends cs.system.ValueType implements cs.system.IEquatable_1
 		
 		Value: Equivalent to `new Quat(0, 0, 0, 1)`.
 	**/
-	@:native("Identity")
+	@:native("Identity") @:readOnly
 	public static var IDENTITY(default, never):godot.Quat;
 
 	/**		
@@ -194,7 +194,7 @@ extern class Quat_ extends cs.system.ValueType implements cs.system.IEquatable_1
 		
 		Value: Equivalent to `Dot(this)`.
 	**/
-	@:native("LengthSquared")
+	@:native("LengthSquared") @:readOnly
 	public var lengthSquared(default, never):Single;
 
 	/**		
@@ -202,7 +202,7 @@ extern class Quat_ extends cs.system.ValueType implements cs.system.IEquatable_1
 		@see `godot.Quat.lengthSquared`
 		Value: Equivalent to `Mathf.Sqrt(LengthSquared)`.
 	**/
-	@:native("Length")
+	@:native("Length") @:readOnly
 	public var length(default, never):Single;
 
 	/**		

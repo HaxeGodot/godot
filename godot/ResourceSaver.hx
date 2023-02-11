@@ -14,7 +14,7 @@ It uses the many `godot.ResourceFormatSaver` classes registered in the engine (e
 @:native("Godot.ResourceSaver")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ResourceSaver {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	#if doc_gen

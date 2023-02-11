@@ -125,7 +125,7 @@ extern class NodePath_ implements cs.system.IDisposable {
 	/**		
 		The pointer to the native instance of this `godot.NodePath`.
 	**/
-	@:native("NativeInstance")
+	@:native("NativeInstance") @:readOnly
 	public var nativeInstance(default, never):cs.system.IntPtr;
 
 	/**		

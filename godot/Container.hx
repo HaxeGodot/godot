@@ -25,7 +25,7 @@ extern class Container extends godot.Control {
 	/**		
 		Notification for when sorting the children, it must be obeyed immediately.
 	**/
-	@:native("NotificationSortChildren")
+	@:native("NotificationSortChildren") @:readOnly
 	public static var NOTIFICATION_SORT_CHILDREN(default, never):Int;
 
 	@:native("new")

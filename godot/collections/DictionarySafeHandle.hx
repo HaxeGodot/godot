@@ -9,7 +9,7 @@ import cs.system.*;
 @:native("Godot.Collections.DictionarySafeHandle")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class DictionarySafeHandle extends cs.system.runtime.interopservices.SafeHandle {
-	@:native("IsInvalid")
+	@:native("IsInvalid") @:readOnly
 	public var isInvalid(default, never):Bool;
 
 	@:native("new")

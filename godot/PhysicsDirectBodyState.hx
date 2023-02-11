@@ -36,46 +36,46 @@ extern abstract class PhysicsDirectBodyState extends godot.Object {
 	@:native("AngularVelocity")
 	public var angularVelocity:godot.Vector3;
 
-	@:native("PrincipalInertiaAxes")
+	@:native("PrincipalInertiaAxes") @:readOnly
 	public var principalInertiaAxes(default, never):godot.Basis;
 
-	@:native("CenterOfMass")
+	@:native("CenterOfMass") @:readOnly
 	public var centerOfMass(default, never):godot.Vector3;
 
 	/**		
 		The total gravity vector being currently applied to this body.
 	**/
-	@:native("TotalGravity")
+	@:native("TotalGravity") @:readOnly
 	public var totalGravity(default, never):godot.Vector3;
 
 	/**		
 		The inverse of the inertia of the body.
 	**/
-	@:native("InverseInertia")
+	@:native("InverseInertia") @:readOnly
 	public var inverseInertia(default, never):godot.Vector3;
 
 	/**		
 		The rate at which the body stops moving, if there are not any other forces moving it.
 	**/
-	@:native("TotalLinearDamp")
+	@:native("TotalLinearDamp") @:readOnly
 	public var totalLinearDamp(default, never):Single;
 
 	/**		
 		The rate at which the body stops rotating, if there are not any other forces moving it.
 	**/
-	@:native("TotalAngularDamp")
+	@:native("TotalAngularDamp") @:readOnly
 	public var totalAngularDamp(default, never):Single;
 
 	/**		
 		The inverse of the mass of the body.
 	**/
-	@:native("InverseMass")
+	@:native("InverseMass") @:readOnly
 	public var inverseMass(default, never):Single;
 
 	/**		
 		The timestep (delta) used for the simulation.
 	**/
-	@:native("Step")
+	@:native("Step") @:readOnly
 	public var step(default, never):Single;
 
 	@:native("GetTotalGravity")

@@ -87,7 +87,7 @@ extern class Node extends godot.Object {
 	/**		
 		The `godot.MultiplayerAPI` instance associated with this node. Either the `godot.Node.customMultiplayer`, or the default SceneTree one (if inside tree).
 	**/
-	@:native("Multiplayer")
+	@:native("Multiplayer") @:readOnly
 	public var multiplayer(default, never):godot.MultiplayerAPI;
 
 	/**		
@@ -129,7 +129,7 @@ extern class Node extends godot.Object {
 		
 		Specific to the Android platform.
 	**/
-	@:native("NotificationAppPaused")
+	@:native("NotificationAppPaused") @:readOnly
 	public static var NOTIFICATION_APP_PAUSED(default, never):Int;
 
 	/**		
@@ -137,7 +137,7 @@ extern class Node extends godot.Object {
 		
 		Specific to the Android platform.
 	**/
-	@:native("NotificationAppResumed")
+	@:native("NotificationAppResumed") @:readOnly
 	public static var NOTIFICATION_APP_RESUMED(default, never):Int;
 
 	/**		
@@ -145,7 +145,7 @@ extern class Node extends godot.Object {
 		
 		Specific to the macOS platform.
 	**/
-	@:native("NotificationOsImeUpdate")
+	@:native("NotificationOsImeUpdate") @:readOnly
 	public static var NOTIFICATION_OS_IME_UPDATE(default, never):Int;
 
 	/**		
@@ -153,7 +153,7 @@ extern class Node extends godot.Object {
 		
 		Implemented on desktop platforms if the crash handler is enabled.
 	**/
-	@:native("NotificationCrash")
+	@:native("NotificationCrash") @:readOnly
 	public static var NOTIFICATION_CRASH(default, never):Int;
 
 	/**		
@@ -161,13 +161,13 @@ extern class Node extends godot.Object {
 		
 		Specific to the macOS platform.
 	**/
-	@:native("NotificationWmAbout")
+	@:native("NotificationWmAbout") @:readOnly
 	public static var NOTIFICATION_WM_ABOUT(default, never):Int;
 
 	/**		
 		Notification received when translations may have changed. Can be triggered by the user changing the locale. Can be used to respond to language changes, for example to change the UI strings on the fly. Useful when working with the built-in translation support, like `godot.Object.tr`.
 	**/
-	@:native("NotificationTranslationChanged")
+	@:native("NotificationTranslationChanged") @:readOnly
 	public static var NOTIFICATION_TRANSLATION_CHANGED(default, never):Int;
 
 	/**		
@@ -175,7 +175,7 @@ extern class Node extends godot.Object {
 		
 		Specific to the iOS platform.
 	**/
-	@:native("NotificationOsMemoryWarning")
+	@:native("NotificationOsMemoryWarning") @:readOnly
 	public static var NOTIFICATION_OS_MEMORY_WARNING(default, never):Int;
 
 	/**		
@@ -183,7 +183,7 @@ extern class Node extends godot.Object {
 		
 		No supported platforms currently send this notification.
 	**/
-	@:native("NotificationWmUnfocusRequest")
+	@:native("NotificationWmUnfocusRequest") @:readOnly
 	public static var NOTIFICATION_WM_UNFOCUS_REQUEST(default, never):Int;
 
 	/**		
@@ -191,7 +191,7 @@ extern class Node extends godot.Object {
 		
 		Specific to the Android platform.
 	**/
-	@:native("NotificationWmGoBackRequest")
+	@:native("NotificationWmGoBackRequest") @:readOnly
 	public static var NOTIFICATION_WM_GO_BACK_REQUEST(default, never):Int;
 
 	/**		
@@ -199,7 +199,7 @@ extern class Node extends godot.Object {
 		
 		Implemented on desktop platforms.
 	**/
-	@:native("NotificationWmQuitRequest")
+	@:native("NotificationWmQuitRequest") @:readOnly
 	public static var NOTIFICATION_WM_QUIT_REQUEST(default, never):Int;
 
 	/**		
@@ -207,7 +207,7 @@ extern class Node extends godot.Object {
 		
 		Implemented on all platforms.
 	**/
-	@:native("NotificationWmFocusOut")
+	@:native("NotificationWmFocusOut") @:readOnly
 	public static var NOTIFICATION_WM_FOCUS_OUT(default, never):Int;
 
 	/**		
@@ -215,7 +215,7 @@ extern class Node extends godot.Object {
 		
 		Implemented on all platforms.
 	**/
-	@:native("NotificationWmFocusIn")
+	@:native("NotificationWmFocusIn") @:readOnly
 	public static var NOTIFICATION_WM_FOCUS_IN(default, never):Int;
 
 	/**		
@@ -223,7 +223,7 @@ extern class Node extends godot.Object {
 		
 		Implemented on desktop and web platforms.
 	**/
-	@:native("NotificationWmMouseExit")
+	@:native("NotificationWmMouseExit") @:readOnly
 	public static var NOTIFICATION_WM_MOUSE_EXIT(default, never):Int;
 
 	/**		
@@ -231,55 +231,55 @@ extern class Node extends godot.Object {
 		
 		Implemented on desktop and web platforms.
 	**/
-	@:native("NotificationWmMouseEnter")
+	@:native("NotificationWmMouseEnter") @:readOnly
 	public static var NOTIFICATION_WM_MOUSE_ENTER(default, never):Int;
 
 	/**		
 		Notification received when the node is ready, just before `godot.Node.notificationReady` is received. Unlike the latter, it's sent every time the node enters tree, instead of only once.
 	**/
-	@:native("NotificationPostEnterTree")
+	@:native("NotificationPostEnterTree") @:readOnly
 	public static var NOTIFICATION_POST_ENTER_TREE(default, never):Int;
 
 	/**		
 		Notification received every frame when the internal physics process flag is set (see `godot.Node.setPhysicsProcessInternal`).
 	**/
-	@:native("NotificationInternalPhysicsProcess")
+	@:native("NotificationInternalPhysicsProcess") @:readOnly
 	public static var NOTIFICATION_INTERNAL_PHYSICS_PROCESS(default, never):Int;
 
 	/**		
 		Notification received every frame when the internal process flag is set (see `godot.Node.setProcessInternal`).
 	**/
-	@:native("NotificationInternalProcess")
+	@:native("NotificationInternalProcess") @:readOnly
 	public static var NOTIFICATION_INTERNAL_PROCESS(default, never):Int;
 
 	/**		
 		Notification received when the node's `godot.NodePath` changed.
 	**/
-	@:native("NotificationPathChanged")
+	@:native("NotificationPathChanged") @:readOnly
 	public static var NOTIFICATION_PATH_CHANGED(default, never):Int;
 
 	/**		
 		Notification received when a drag ends.
 	**/
-	@:native("NotificationDragEnd")
+	@:native("NotificationDragEnd") @:readOnly
 	public static var NOTIFICATION_DRAG_END(default, never):Int;
 
 	/**		
 		Notification received when a drag begins.
 	**/
-	@:native("NotificationDragBegin")
+	@:native("NotificationDragBegin") @:readOnly
 	public static var NOTIFICATION_DRAG_BEGIN(default, never):Int;
 
 	/**		
 		Notification received when the node is instanced.
 	**/
-	@:native("NotificationInstanced")
+	@:native("NotificationInstanced") @:readOnly
 	public static var NOTIFICATION_INSTANCED(default, never):Int;
 
 	/**		
 		Notification received when a node is unparented (parent removed it from the list of children).
 	**/
-	@:native("NotificationUnparented")
+	@:native("NotificationUnparented") @:readOnly
 	public static var NOTIFICATION_UNPARENTED(default, never):Int;
 
 	/**		
@@ -287,55 +287,55 @@ extern class Node extends godot.Object {
 		
 		Note: This doesn't mean that a node entered the `godot.SceneTree`.
 	**/
-	@:native("NotificationParented")
+	@:native("NotificationParented") @:readOnly
 	public static var NOTIFICATION_PARENTED(default, never):Int;
 
 	/**		
 		Notification received every frame when the process flag is set (see `godot.Node.setProcess`).
 	**/
-	@:native("NotificationProcess")
+	@:native("NotificationProcess") @:readOnly
 	public static var NOTIFICATION_PROCESS(default, never):Int;
 
 	/**		
 		Notification received every frame when the physics process flag is set (see `godot.Node.setPhysicsProcess`).
 	**/
-	@:native("NotificationPhysicsProcess")
+	@:native("NotificationPhysicsProcess") @:readOnly
 	public static var NOTIFICATION_PHYSICS_PROCESS(default, never):Int;
 
 	/**		
 		Notification received when the node is unpaused.
 	**/
-	@:native("NotificationUnpaused")
+	@:native("NotificationUnpaused") @:readOnly
 	public static var NOTIFICATION_UNPAUSED(default, never):Int;
 
 	/**		
 		Notification received when the node is paused.
 	**/
-	@:native("NotificationPaused")
+	@:native("NotificationPaused") @:readOnly
 	public static var NOTIFICATION_PAUSED(default, never):Int;
 
 	/**		
 		Notification received when the node is ready. See `godot.Node._Ready`.
 	**/
-	@:native("NotificationReady")
+	@:native("NotificationReady") @:readOnly
 	public static var NOTIFICATION_READY(default, never):Int;
 
 	/**		
 		Notification received when the node is moved in the parent.
 	**/
-	@:native("NotificationMovedInParent")
+	@:native("NotificationMovedInParent") @:readOnly
 	public static var NOTIFICATION_MOVED_IN_PARENT(default, never):Int;
 
 	/**		
 		Notification received when the node is about to exit a `godot.SceneTree`.
 	**/
-	@:native("NotificationExitTree")
+	@:native("NotificationExitTree") @:readOnly
 	public static var NOTIFICATION_EXIT_TREE(default, never):Int;
 
 	/**		
 		Notification received when the node enters a `godot.SceneTree`.
 	**/
-	@:native("NotificationEnterTree")
+	@:native("NotificationEnterTree") @:readOnly
 	public static var NOTIFICATION_ENTER_TREE(default, never):Int;
 
 	@:native("GetChildOrNull")

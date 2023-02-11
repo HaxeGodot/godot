@@ -143,7 +143,7 @@ extern class Particles extends godot.GeometryInstance {
 	/**		
 		Maximum number of draw passes supported.
 	**/
-	@:native("MaxDrawPasses")
+	@:native("MaxDrawPasses") @:readOnly
 	public static var MAX_DRAW_PASSES(default, never):Int;
 
 	@:native("new")

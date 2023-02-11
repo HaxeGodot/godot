@@ -12,7 +12,7 @@ Provides access to metadata stored for every available class.
 @:native("Godot.ClassDB")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class ClassDB {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		

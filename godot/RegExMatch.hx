@@ -15,19 +15,19 @@ extern class RegExMatch extends godot.Reference {
 	/**		
 		An `godot.Collections_Array` of the match and its capturing groups.
 	**/
-	@:native("Strings")
+	@:native("Strings") @:readOnly
 	public var strings(default, never):godot.collections.Array;
 
 	/**		
 		A dictionary of named groups and its corresponding group number. Only groups that were matched are included. If multiple groups have the same name, that name would refer to the first matching one.
 	**/
-	@:native("Names")
+	@:native("Names") @:readOnly
 	public var names(default, never):godot.collections.Dictionary;
 
 	/**		
 		The source string used with the search pattern to find this matching result.
 	**/
-	@:native("Subject")
+	@:native("Subject") @:readOnly
 	public var subject(default, never):std.String;
 
 	@:native("new")

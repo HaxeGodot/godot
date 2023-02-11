@@ -144,7 +144,7 @@ extern class Transform2D_ extends cs.system.ValueType implements cs.system.IEqua
 		
 		Value: Equivalent to `new Transform2D(Vector2.Right, Vector2.Up, Vector2.Zero)`.
 	**/
-	@:native("FlipY")
+	@:native("FlipY") @:readOnly
 	public static var FLIP_Y(default, never):godot.Transform2D;
 
 	/**		
@@ -152,7 +152,7 @@ extern class Transform2D_ extends cs.system.ValueType implements cs.system.IEqua
 		
 		Value: Equivalent to `new Transform2D(Vector2.Left, Vector2.Down, Vector2.Zero)`.
 	**/
-	@:native("FlipX")
+	@:native("FlipX") @:readOnly
 	public static var FLIP_X(default, never):godot.Transform2D;
 
 	/**		
@@ -162,7 +162,7 @@ extern class Transform2D_ extends cs.system.ValueType implements cs.system.IEqua
 		
 		Value: Equivalent to `new Transform2D(Vector2.Right, Vector2.Down, Vector2.Zero)`.
 	**/
-	@:native("Identity")
+	@:native("Identity") @:readOnly
 	public static var IDENTITY(default, never):godot.Transform2D;
 
 	/**		

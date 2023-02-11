@@ -16,19 +16,19 @@ extern class Mathf {
 		A very small number used for float comparison with error tolerance.
 		1e-06 with single-precision floats, but 1e-14 if `REAL_T_IS_DOUBLE`.
 	**/
-	@:native("Epsilon")
+	@:native("Epsilon") @:readOnly
 	public static var EPSILON(default, never):Single;
 
 	/**		
 		The square root of 2.
 	**/
-	@:native("Sqrt2")
+	@:native("Sqrt2") @:readOnly
 	public static var SQRT_2(default, never):Single;
 
 	/**		
 		The natural number `e`.
 	**/
-	@:native("E")
+	@:native("E") @:readOnly
 	public static var E(default, never):Single;
 
 	/**		
@@ -36,26 +36,26 @@ extern class Mathf {
 		that it is not equal to itself. It is output by some invalid operations,
 		such as dividing zero by zero.
 	**/
-	@:native("NaN")
+	@:native("NaN") @:readOnly
 	public static var NA_N(default, never):Single;
 
 	/**		
 		Positive infinity. For negative infinity, use `-Mathf.Inf`.
 	**/
-	@:native("Inf")
+	@:native("Inf") @:readOnly
 	public static var INF(default, never):Single;
 
 	/**		
 		Constant that represents how many times the diameter of a circle
 		fits around its perimeter. This is equivalent to `Mathf.Tau / 2`.
 	**/
-	@:native("Pi")
+	@:native("Pi") @:readOnly
 	public static var PI(default, never):Single;
 
 	/**		
 		The circle constant, the circumference of the unit circle in radians.
 	**/
-	@:native("Tau")
+	@:native("Tau") @:readOnly
 	public static var TAU(default, never):Single;
 
 	/**		

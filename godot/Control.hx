@@ -332,55 +332,55 @@ extern class Control extends godot.CanvasItem {
 	/**		
 		Sent when this node is inside a `godot.ScrollContainer` which has stopped being scrolled.
 	**/
-	@:native("NotificationScrollEnd")
+	@:native("NotificationScrollEnd") @:readOnly
 	public static var NOTIFICATION_SCROLL_END(default, never):Int;
 
 	/**		
 		Sent when this node is inside a `godot.ScrollContainer` which has begun being scrolled.
 	**/
-	@:native("NotificationScrollBegin")
+	@:native("NotificationScrollBegin") @:readOnly
 	public static var NOTIFICATION_SCROLL_BEGIN(default, never):Int;
 
 	/**		
 		Sent when an open modal dialog closes. See `godot.Control.showModal`.
 	**/
-	@:native("NotificationModalClose")
+	@:native("NotificationModalClose") @:readOnly
 	public static var NOTIFICATION_MODAL_CLOSE(default, never):Int;
 
 	/**		
 		Sent when the node's `godot.Control.theme` changes, right before Godot redraws the control. Happens when you call one of the `add_*_override` methods.
 	**/
-	@:native("NotificationThemeChanged")
+	@:native("NotificationThemeChanged") @:readOnly
 	public static var NOTIFICATION_THEME_CHANGED(default, never):Int;
 
 	/**		
 		Sent when the node loses focus.
 	**/
-	@:native("NotificationFocusExit")
+	@:native("NotificationFocusExit") @:readOnly
 	public static var NOTIFICATION_FOCUS_EXIT(default, never):Int;
 
 	/**		
 		Sent when the node grabs focus.
 	**/
-	@:native("NotificationFocusEnter")
+	@:native("NotificationFocusEnter") @:readOnly
 	public static var NOTIFICATION_FOCUS_ENTER(default, never):Int;
 
 	/**		
 		Sent when the mouse pointer exits the node.
 	**/
-	@:native("NotificationMouseExit")
+	@:native("NotificationMouseExit") @:readOnly
 	public static var NOTIFICATION_MOUSE_EXIT(default, never):Int;
 
 	/**		
 		Sent when the mouse pointer enters the node.
 	**/
-	@:native("NotificationMouseEnter")
+	@:native("NotificationMouseEnter") @:readOnly
 	public static var NOTIFICATION_MOUSE_ENTER(default, never):Int;
 
 	/**		
 		Sent when the node changes size. Use `godot.Control.rectSize` to get the new size.
 	**/
-	@:native("NotificationResized")
+	@:native("NotificationResized") @:readOnly
 	public static var NOTIFICATION_RESIZED(default, never):Int;
 
 	@:native("new")

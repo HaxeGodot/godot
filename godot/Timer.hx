@@ -27,7 +27,7 @@ extern class Timer extends godot.Node {
 		
 		Note: You cannot set this value. To change the timer's remaining time, use `godot.Timer.start`.
 	**/
-	@:native("TimeLeft")
+	@:native("TimeLeft") @:readOnly
 	public var timeLeft(default, never):Single;
 
 	/**		

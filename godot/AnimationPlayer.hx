@@ -81,13 +81,13 @@ extern class AnimationPlayer extends godot.Node {
 	/**		
 		The position (in seconds) of the currently playing animation.
 	**/
-	@:native("CurrentAnimationPosition")
+	@:native("CurrentAnimationPosition") @:readOnly
 	public var currentAnimationPosition(default, never):Single;
 
 	/**		
 		The length (in seconds) of the currently being played animation.
 	**/
-	@:native("CurrentAnimationLength")
+	@:native("CurrentAnimationLength") @:readOnly
 	public var currentAnimationLength(default, never):Single;
 
 	/**		

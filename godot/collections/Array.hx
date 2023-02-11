@@ -52,7 +52,7 @@ extern class Array_ implements cs.system.collections.IList implements cs.system.
 		return new godot.GodotArrayIterator(this);
 	}
 
-	@:native("Count")
+	@:native("Count") @:readOnly
 	public var count(default, never):Int;
 
 	@:native("new")

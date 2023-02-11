@@ -20,10 +20,10 @@ extern class VisualShader extends godot.Shader {
 	@:native("GraphOffset")
 	public var graphOffset:godot.Vector2;
 
-	@:native("NodeIdOutput")
+	@:native("NodeIdOutput") @:readOnly
 	public static var NODE_ID_OUTPUT(default, never):Int;
 
-	@:native("NodeIdInvalid")
+	@:native("NodeIdInvalid") @:readOnly
 	public static var NODE_ID_INVALID(default, never):Int;
 
 	@:native("new")

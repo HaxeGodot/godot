@@ -14,7 +14,7 @@ Note: This singleton can be disabled at build-time to improve security. By defau
 @:native("Godot.JavaScript")
 @:autoBuild(godot.Godot.buildUserClass())
 extern class JavaScript {
-	@:native("Singleton")
+	@:native("Singleton") @:readOnly
 	public static var SINGLETON(default, never):godot.Object;
 
 	#if doc_gen
