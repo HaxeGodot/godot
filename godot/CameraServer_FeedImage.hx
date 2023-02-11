@@ -11,7 +11,7 @@ extern enum CameraServer_FeedImage {
 	RgbaImage;
 
 	/**		
-		The YCbCr camera image.
+		The [https://en.wikipedia.org/wiki/YCbCr](YCbCr) camera image.
 	**/
 	YcbcrImage;
 

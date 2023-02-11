@@ -30,8 +30,6 @@ In 2D, all visible objects are some form of canvas item. In order to be visible,
 extern class VisualServer {
 	/**
 		`frame_post_draw` signal.
-		
-		Emitted at the end of the frame, after the VisualServer has finished updating all the Viewports.
 	**/
 	public static var onFramePostDraw(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline static function get_onFramePostDraw():Signal<Void->Void> {
@@ -40,8 +38,6 @@ extern class VisualServer {
 
 	/**
 		`frame_pre_draw` signal.
-		
-		Emitted at the beginning of the frame, before the VisualServer updates all the Viewports.
 	**/
 	public static var onFramePreDraw(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline static function get_onFramePreDraw():Signal<Void->Void> {
@@ -452,7 +448,7 @@ extern class VisualServer {
 	public static function materialGetParam(material:godot.RID, parameter:std.String):Dynamic;
 
 	/**		
-		Returns the default value for the param if available. Otherwise returns an empty `Variant`.
+		Returns the default value for the param if available. Returns `null` otherwise.
 	**/
 	@:native("MaterialGetParamDefault")
 	public static function materialGetParamDefault(material:godot.RID, parameter:std.String):Dynamic;

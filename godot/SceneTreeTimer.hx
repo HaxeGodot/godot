@@ -17,6 +17,8 @@ yield(get_tree().create_timer(1.0), "timeout")
 print("Timer ended.")
 
 ```
+
+The timer will be automatically freed after its time elapses.
 **/
 @:libType
 @:csNative
@@ -25,8 +27,6 @@ print("Timer ended.")
 extern abstract class SceneTreeTimer extends godot.Reference {
 	/**
 		`timeout` signal.
-		
-		Emitted when the timer reaches 0.
 	**/
 	public var onTimeout(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTimeout():Signal<Void->Void> {
@@ -34,7 +34,7 @@ extern abstract class SceneTreeTimer extends godot.Reference {
 	}
 
 	/**		
-		The time remaining.
+		The time remaining (in seconds).
 	**/
 	@:native("TimeLeft")
 	public var timeLeft:Single;

@@ -14,8 +14,6 @@ Popup is a base `godot.Control` used to show dialogs and popups. It's a subwindo
 extern class Popup extends godot.Control {
 	/**
 		`about_to_show` signal.
-		
-		Emitted when a popup is about to be shown. This is often used in `PopupMenu` to clear the list of options then create a new one according to the current context.
 	**/
 	public var onAboutToShow(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAboutToShow():Signal<Void->Void> {
@@ -24,8 +22,6 @@ extern class Popup extends godot.Control {
 
 	/**
 		`popup_hide` signal.
-		
-		Emitted when a popup is hidden.
 	**/
 	public var onPopupHide(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPopupHide():Signal<Void->Void> {

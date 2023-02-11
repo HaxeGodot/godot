@@ -243,7 +243,7 @@ extern class MeshDataTool extends godot.Reference {
 	/**		
 		Returns the specified vertex of the given face.
 		
-		Vertex argument must be 2 or less because faces contain three vertices.
+		Vertex argument must be either 0, 1, or 2 because faces contain three vertices.
 	**/
 	@:native("GetFaceVertex")
 	public function getFaceVertex(idx:Int, vertex:Int):Int;
@@ -251,7 +251,7 @@ extern class MeshDataTool extends godot.Reference {
 	/**		
 		Returns specified edge associated with given face.
 		
-		Edge argument must 2 or less because a face only has three edges.
+		Edge argument must be either 0, 1, or 2 because a face only has three edges.
 	**/
 	@:native("GetFaceEdge")
 	public function getFaceEdge(idx:Int, edge:Int):Int;

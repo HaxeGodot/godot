@@ -336,8 +336,6 @@ extern class PhysicsServer {
 
 	/**		
 		Returns the physics layer or layers a body can collide with.
-		
-		-
 	**/
 	@:native("BodyGetCollisionMask")
 	public static function bodyGetCollisionMask(body:godot.RID):UInt;
@@ -626,7 +624,7 @@ extern class PhysicsServer {
 	#end
 
 	/**		
-		Returns the `godot.PhysicsDirectBodyState` of the body.
+		Returns the `godot.PhysicsDirectBodyState` of the body. Returns `null` if the body is destroyed or removed from the physics space.
 	**/
 	@:native("BodyGetDirectState")
 	public static function bodyGetDirectState(body:godot.RID):godot.PhysicsDirectBodyState;
@@ -808,7 +806,7 @@ extern class PhysicsServer {
 	public static function setCollisionIterations(iterations:Int):Void;
 
 	/**		
-		Returns an Info defined by the `godot.PhysicsServer_ProcessInfo` input given.
+		Returns information about the current state of the 3D physics engine. See `godot.PhysicsServer_ProcessInfo` for a list of available states. Only implemented for Godot Physics.
 	**/
 	@:native("GetProcessInfo")
 	public static function getProcessInfo(processInfo:godot.PhysicsServer_ProcessInfo):Int;

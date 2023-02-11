@@ -4,6 +4,11 @@ package godot;
 
 import cs.system.*;
 
+/**
+`godot.EditorSceneImporter` allows to define an importer script for a third-party 3D format.
+
+To use `godot.EditorSceneImporter`, register it using the `godot.EditorPlugin.addSceneImportPlugin` method first.
+**/
 @:libType
 @:csNative
 @:native("Godot.EditorSceneImporter")

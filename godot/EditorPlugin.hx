@@ -14,8 +14,6 @@ Plugins are used by the editor to extend functionality. The most common types of
 extern class EditorPlugin extends godot.Node {
 	/**
 		`main_screen_changed` signal.
-		
-		Emitted when user changes the workspace (`b`2D`/b`, `b`3D`/b`, `b`Script`/b`, `b`AssetLib`/b`). Also works with custom screens defined by plugins.
 	**/
 	public var onMainScreenChanged(get, never):Signal<(screenName:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMainScreenChanged():Signal<(screenName:std.String)->Void> {
@@ -32,8 +30,6 @@ extern class EditorPlugin extends godot.Node {
 
 	/**
 		`scene_changed` signal.
-		
-		Emitted when the scene is changed in the editor. The argument will return the root node of the scene that has just become active. If this scene is new and empty, the argument will be `null`.
 	**/
 	public var onSceneChanged(get, never):Signal<(sceneRoot:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onSceneChanged():Signal<(sceneRoot:Node)->Void> {
@@ -42,8 +38,6 @@ extern class EditorPlugin extends godot.Node {
 
 	/**
 		`scene_closed` signal.
-		
-		Emitted when user closes a scene. The argument is file path to a closed scene.
 	**/
 	public var onSceneClosed(get, never):Signal<(filepath:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onSceneClosed():Signal<(filepath:std.String)->Void> {

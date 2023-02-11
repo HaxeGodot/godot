@@ -18,8 +18,6 @@ The position of the controller node is automatically updated by the `godot.ARVRS
 extern class ARVRController extends godot.Spatial {
 	/**
 		`button_pressed` signal.
-		
-		Emitted when a button on this controller is pressed.
 	**/
 	public var onButtonPressed(get, never):Signal<(button:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onButtonPressed():Signal<(button:Int)->Void> {
@@ -28,8 +26,6 @@ extern class ARVRController extends godot.Spatial {
 
 	/**
 		`button_release` signal.
-		
-		Emitted when a button on this controller is released.
 	**/
 	public var onButtonRelease(get, never):Signal<(button:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onButtonRelease():Signal<(button:Int)->Void> {
@@ -38,8 +34,6 @@ extern class ARVRController extends godot.Spatial {
 
 	/**
 		`mesh_updated` signal.
-		
-		Emitted when the mesh associated with the controller changes or when one becomes available. Generally speaking this will be a static mesh after becoming available.
 	**/
 	public var onMeshUpdated(get, never):Signal<(mesh:Mesh)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMeshUpdated():Signal<(mesh:Mesh)->Void> {

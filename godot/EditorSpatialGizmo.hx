@@ -96,31 +96,31 @@ extern class EditorSpatialGizmo extends godot.SpatialGizmo {
 		Adds a mesh to the gizmo with the specified `billboard` state, `skeleton` and `material`. If `billboard` is `true`, the mesh will rotate to always face the camera. Call this function during `godot.EditorSpatialGizmo.redraw`.
 	**/
 	@:native("AddMesh")
-	public function addMesh(mesh:godot.ArrayMesh, ?billboard:Bool, ?skeleton:godot.SkinReference, ?material:godot.Material):Void;
+	public function addMesh(mesh:godot.Mesh, ?billboard:Bool, ?skeleton:godot.SkinReference, ?material:godot.Material):Void;
 	#else
 	/**		
 		Adds a mesh to the gizmo with the specified `billboard` state, `skeleton` and `material`. If `billboard` is `true`, the mesh will rotate to always face the camera. Call this function during `godot.EditorSpatialGizmo.redraw`.
 	**/
 	@:native("AddMesh")
-	public overload function addMesh(mesh:godot.ArrayMesh):Void;
+	public overload function addMesh(mesh:godot.Mesh):Void;
 
 	/**		
 		Adds a mesh to the gizmo with the specified `billboard` state, `skeleton` and `material`. If `billboard` is `true`, the mesh will rotate to always face the camera. Call this function during `godot.EditorSpatialGizmo.redraw`.
 	**/
 	@:native("AddMesh")
-	public overload function addMesh(mesh:godot.ArrayMesh, billboard:Bool):Void;
+	public overload function addMesh(mesh:godot.Mesh, billboard:Bool):Void;
 
 	/**		
 		Adds a mesh to the gizmo with the specified `billboard` state, `skeleton` and `material`. If `billboard` is `true`, the mesh will rotate to always face the camera. Call this function during `godot.EditorSpatialGizmo.redraw`.
 	**/
 	@:native("AddMesh")
-	public overload function addMesh(mesh:godot.ArrayMesh, billboard:Bool, skeleton:godot.SkinReference):Void;
+	public overload function addMesh(mesh:godot.Mesh, billboard:Bool, skeleton:godot.SkinReference):Void;
 
 	/**		
 		Adds a mesh to the gizmo with the specified `billboard` state, `skeleton` and `material`. If `billboard` is `true`, the mesh will rotate to always face the camera. Call this function during `godot.EditorSpatialGizmo.redraw`.
 	**/
 	@:native("AddMesh")
-	public overload function addMesh(mesh:godot.ArrayMesh, billboard:Bool, skeleton:godot.SkinReference, material:godot.Material):Void;
+	public overload function addMesh(mesh:godot.Mesh, billboard:Bool, skeleton:godot.SkinReference, material:godot.Material):Void;
 	#end
 
 	/**		

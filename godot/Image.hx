@@ -213,7 +213,7 @@ extern class Image extends godot.Resource {
 	public function isEmpty():Bool;
 
 	/**		
-		Loads an image from file `path`. See [https://docs.godotengine.org/en/3.4/getting_started/workflow/assets/importing_images.html#supported-image-formats](Supported image formats) for a list of supported image formats and limitations.
+		Loads an image from file `path`. See [https://docs.godotengine.org/en/3.4/tutorials/assets_pipeline/importing_images.html#supported-image-formats](Supported image formats) for a list of supported image formats and limitations.
 		
 		Warning: This method should only be used in the editor or in cases when you need to load external images at run-time, such as images located at the `user://` directory, and may not work in exported projects.
 		

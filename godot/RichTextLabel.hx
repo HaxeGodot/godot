@@ -24,8 +24,6 @@ Note: Unicode characters after `0xffff` (such as most emoji) are not supported o
 extern class RichTextLabel extends godot.Control {
 	/**
 		`meta_clicked` signal.
-		
-		Triggered when the user clicks on content between meta tags. If the meta is defined in text, e.g. ``url={"data"="hi"}`hi`/url``, then the parameter for this signal will be a `String` type. If a particular type or an object is desired, the `pushMeta` method must be used to manually insert the data into the tag stack.
 	**/
 	public var onMetaClicked(get, never):Signal<(meta:Any)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMetaClicked():Signal<(meta:Any)->Void> {
@@ -34,8 +32,6 @@ extern class RichTextLabel extends godot.Control {
 
 	/**
 		`meta_hover_ended` signal.
-		
-		Triggers when the mouse exits a meta tag.
 	**/
 	public var onMetaHoverEnded(get, never):Signal<(meta:Any)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMetaHoverEnded():Signal<(meta:Any)->Void> {
@@ -44,8 +40,6 @@ extern class RichTextLabel extends godot.Control {
 
 	/**
 		`meta_hover_started` signal.
-		
-		Triggers when the mouse enters a meta tag.
 	**/
 	public var onMetaHoverStarted(get, never):Signal<(meta:Any)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMetaHoverStarted():Signal<(meta:Any)->Void> {
@@ -131,7 +125,7 @@ extern class RichTextLabel extends godot.Control {
 	/**		
 		The label's text in BBCode format. Is not representative of manual modifications to the internal tag stack. Erases changes made by other methods when edited.
 		
-		Note: It is unadvised to use the `+=` operator with `bbcode_text` (e.g. `bbcode_text += "some string"`) as it replaces the whole text and can cause slowdowns. Use `godot.RichTextLabel.appendBbcode` for adding text instead, unless you absolutely need to close a tag that was opened in an earlier method call.
+		Note: It is unadvised to use the `+=` operator with `bbcode_text` (e.g. `bbcode_text += "some string"`) as it replaces the whole text and can cause slowdowns. It will also erase all BBCode that was added to stack using `push_*` methods. Use `godot.RichTextLabel.appendBbcode` for adding text instead, unless you absolutely need to close a tag that was opened in an earlier method call.
 	**/
 	@:native("BbcodeText")
 	public var bbcodeText:std.String;

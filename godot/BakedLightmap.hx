@@ -7,6 +7,8 @@ import cs.system.*;
 /**
 Baked lightmaps are an alternative workflow for adding indirect (or baked) lighting to a scene. Unlike the `godot.GIProbe` approach, baked lightmaps work fine on low-end PCs and mobile devices as they consume almost no resources in run-time.
 
+Procedural generation: Lightmap baking functionality is only available in the editor. This means `godot.BakedLightmap` is not suited to procedurally generated or user-built levels. For procedurally generated or user-built levels, use `godot.GIProbe` instead.
+
 Note: Due to how lightmaps work, most properties only have a visible effect once lightmaps are baked again.
 **/
 @:libType
@@ -27,7 +29,7 @@ extern class BakedLightmap extends godot.VisualInstance {
 	public var imagePath:std.String;
 
 	/**		
-		Bias value to reduce the amount of light proagation in the captured octree.
+		Bias value to reduce the amount of light propagation in the captured octree.
 	**/
 	@:native("CapturePropagation")
 	public var capturePropagation:Single;
@@ -145,7 +147,7 @@ extern class BakedLightmap extends godot.VisualInstance {
 	public var bounces:Int;
 
 	/**		
-		Determines the amount of samples per texel used in indrect light baking. The amount of samples for each quality level can be configured in the project settings.
+		Determines the amount of samples per texel used in indirect light baking. The amount of samples for each quality level can be configured in the project settings.
 	**/
 	@:native("Quality")
 	public var quality:godot.BakedLightmap_BakeQuality;

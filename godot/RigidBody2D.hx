@@ -24,9 +24,6 @@ The center of mass is always located at the node's origin without taking into ac
 extern class RigidBody2D extends godot.PhysicsBody2D {
 	/**
 		`body_entered` signal.
-		
-		Emitted when a collision with another `PhysicsBody2D` or `TileMap` occurs. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
 	**/
 	public var onBodyEntered(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyEntered():Signal<(body:Node)->Void> {
@@ -35,9 +32,6 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 
 	/**
 		`body_exited` signal.
-		
-		Emitted when the collision with another `PhysicsBody2D` or `TileMap` ends. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
 	**/
 	public var onBodyExited(get, never):Signal<(body:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyExited():Signal<(body:Node)->Void> {
@@ -46,12 +40,6 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 
 	/**
 		`body_shape_entered` signal.
-		
-		Emitted when one of this RigidBody2D's `Shape2D`s collides with another `PhysicsBody2D` or `TileMap`'s `Shape2D`s. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
-		`body_rid` the `RID` of the other `PhysicsBody2D` or `TileSet`'s `CollisionObject2D` used by the `Physics2DServer`.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
-		`body_shape_index` the index of the `Shape2D` of the other `PhysicsBody2D` or `TileMap` used by the `Physics2DServer`. Get the `CollisionShape2D` node with `body.shape_owner_get_owner(body_shape_index)`.
-		`local_shape_index` the index of the `Shape2D` of this RigidBody2D used by the `Physics2DServer`. Get the `CollisionShape2D` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
 	public var onBodyShapeEntered(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyShapeEntered():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
@@ -60,12 +48,6 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 
 	/**
 		`body_shape_exited` signal.
-		
-		Emitted when the collision between one of this RigidBody2D's `Shape2D`s and another `PhysicsBody2D` or `TileMap`'s `Shape2D`s ends. Requires `contactMonitor` to be set to `true` and `contactsReported` to be set high enough to detect all the collisions. `TileMap`s are detected if the `TileSet` has Collision `Shape2D`s.
-		`body_rid` the `RID` of the other `PhysicsBody2D` or `TileSet`'s `CollisionObject2D` used by the `Physics2DServer`.
-		`body` the `Node`, if it exists in the tree, of the other `PhysicsBody2D` or `TileMap`.
-		`body_shape_index` the index of the `Shape2D` of the other `PhysicsBody2D` or `TileMap` used by the `Physics2DServer`. Get the `CollisionShape2D` node with `body.shape_owner_get_owner(body_shape_index)`.
-		`local_shape_index` the index of the `Shape2D` of this RigidBody2D used by the `Physics2DServer`. Get the `CollisionShape2D` node with `self.shape_owner_get_owner(local_shape_index)`.
 	**/
 	public var onBodyShapeExited(get, never):Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBodyShapeExited():Signal<(bodyRid:RID, body:Node, bodyShapeIndex:Int, localShapeIndex:Int)->Void> {
@@ -74,9 +56,6 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 
 	/**
 		`sleeping_state_changed` signal.
-		
-		Emitted when the physics engine changes the body's sleeping state.
-		`b`Note:`/b` Changing the value `sleeping` will not trigger this signal. It is only emitted if the sleeping state is changed by the physics engine or `emit_signal("sleeping_state_changed")` is used.
 	**/
 	public var onSleepingStateChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onSleepingStateChanged():Signal<Void->Void> {
@@ -96,7 +75,7 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 	public var appliedForce:godot.Vector2;
 
 	/**		
-		Damps the body's `godot.RigidBody2D.angularVelocity`. If `-1`, the body will use the Default Angular Damp defined in Project &gt; Project Settings &gt; Physics &gt; 2d.
+		Damps the body's `godot.RigidBody2D.angularVelocity`. If `-1`, the body will use the Default Angular Damp defined in Project &gt; Project Settings &gt; Physics &gt; 2d. If greater than `-1` it will be added to the default project value.
 		
 		See  for more details about damping.
 	**/
@@ -104,13 +83,13 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 	public var angularDamp:Single;
 
 	/**		
-		The body's rotational velocity.
+		The body's rotational velocity in radians per second.
 	**/
 	@:native("AngularVelocity")
 	public var angularVelocity:Single;
 
 	/**		
-		Damps the body's `godot.RigidBody2D.linearVelocity`. If `-1`, the body will use the Default Linear Damp in Project &gt; Project Settings &gt; Physics &gt; 2d.
+		Damps the body's `godot.RigidBody2D.linearVelocity`. If `-1`, the body will use the Default Linear Damp in Project &gt; Project Settings &gt; Physics &gt; 2d. If greater than `-1` it will be added to the default project value.
 		
 		See  for more details about damping.
 	**/
@@ -118,7 +97,7 @@ extern class RigidBody2D extends godot.PhysicsBody2D {
 	public var linearDamp:Single;
 
 	/**		
-		The body's linear velocity.
+		The body's linear velocity in pixels per second. Can be used sporadically, but don't set this every frame, because physics may run in another thread and runs at a different granularity. Use `godot.RigidBody2D._IntegrateForces` as your process loop for precise control of the body state.
 	**/
 	@:native("LinearVelocity")
 	public var linearVelocity:godot.Vector2;

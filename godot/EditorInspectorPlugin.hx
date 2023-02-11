@@ -5,9 +5,7 @@ package godot;
 import cs.system.*;
 
 /**
-These plugins allow adding custom property editors to `godot.EditorInspector`.
-
-Plugins are registered via `godot.EditorPlugin.addInspectorPlugin`.
+`godot.EditorInspectorPlugin` allows adding custom property editors to `godot.EditorInspector`.
 
 When an object is edited, the `godot.EditorInspectorPlugin.canHandle` function is called and must return `true` if the object type is supported.
 
@@ -18,6 +16,8 @@ Subsequently, the `godot.EditorInspectorPlugin.parseCategory` and `godot.EditorI
 Finally, `godot.EditorInspectorPlugin.parseEnd` will be called.
 
 On each of these calls, the "add" functions can be called.
+
+To use `godot.EditorInspectorPlugin`, register it using the `godot.EditorPlugin.addInspectorPlugin` method first.
 **/
 @:libType
 @:csNative

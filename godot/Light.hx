@@ -25,7 +25,9 @@ extern abstract class Light extends godot.VisualInstance {
 	public var shadowReverseCullFace:Bool;
 
 	/**		
-		Attempts to reduce `godot.Light.shadowBias` gap.
+		Attempts to reduce `godot.Light.shadowBias` gap by rendering screen-space contact shadows. This has a performance impact, especially at higher values.
+		
+		Note: Contact shadows can look broken, so leaving this property to `0.0` is recommended.
 	**/
 	@:native("ShadowContact")
 	public var shadowContact:Single;

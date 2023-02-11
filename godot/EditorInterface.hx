@@ -83,7 +83,7 @@ extern abstract class EditorInterface extends godot.Node {
 	public function getEditorScale():Single;
 
 	/**		
-		Edits the given `godot.Resource`.
+		Edits the given `godot.Resource`. If the resource is a `godot.Script` you can also edit it with `godot.EditorInterface.editScript` to specify the line and column position.
 	**/
 	@:native("EditResource")
 	public function editResource(resource:godot.Resource):Void;
@@ -93,6 +93,38 @@ extern abstract class EditorInterface extends godot.Node {
 	**/
 	@:native("EditNode")
 	public function editNode(node:godot.Node):Void;
+
+	#if doc_gen
+	/**		
+		Edits the given `godot.Script`. The line and column on which to open the script can also be specified. The script will be open with the user-configured editor for the script's language which may be an external editor.
+	**/
+	@:native("EditScript")
+	public function editScript(script:godot.Script, ?line:Int, ?column:Int, ?grabFocus:Bool):Void;
+	#else
+	/**		
+		Edits the given `godot.Script`. The line and column on which to open the script can also be specified. The script will be open with the user-configured editor for the script's language which may be an external editor.
+	**/
+	@:native("EditScript")
+	public overload function editScript(script:godot.Script):Void;
+
+	/**		
+		Edits the given `godot.Script`. The line and column on which to open the script can also be specified. The script will be open with the user-configured editor for the script's language which may be an external editor.
+	**/
+	@:native("EditScript")
+	public overload function editScript(script:godot.Script, line:Int):Void;
+
+	/**		
+		Edits the given `godot.Script`. The line and column on which to open the script can also be specified. The script will be open with the user-configured editor for the script's language which may be an external editor.
+	**/
+	@:native("EditScript")
+	public overload function editScript(script:godot.Script, line:Int, column:Int):Void;
+
+	/**		
+		Edits the given `godot.Script`. The line and column on which to open the script can also be specified. The script will be open with the user-configured editor for the script's language which may be an external editor.
+	**/
+	@:native("EditScript")
+	public overload function editScript(script:godot.Script, line:Int, column:Int, grabFocus:Bool):Void;
+	#end
 
 	/**		
 		Opens the scene at the given path.

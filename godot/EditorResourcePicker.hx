@@ -16,8 +16,6 @@ Note: This `godot.Control` does not include any editor for the resource, as edit
 extern class EditorResourcePicker extends godot.HBoxContainer {
 	/**
 		`resource_changed` signal.
-		
-		Emitted when the value of the edited resource was changed.
 	**/
 	public var onResourceChanged(get, never):Signal<(resource:Resource)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onResourceChanged():Signal<(resource:Resource)->Void> {
@@ -26,8 +24,6 @@ extern class EditorResourcePicker extends godot.HBoxContainer {
 
 	/**
 		`resource_selected` signal.
-		
-		Emitted when the resource value was set and user clicked to edit it. When `edit` is `true`, the signal was caused by the context menu "Edit" option.
 	**/
 	public var onResourceSelected(get, never):Signal<(resource:Resource, edit:Bool)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onResourceSelected():Signal<(resource:Resource, edit:Bool)->Void> {
@@ -65,7 +61,7 @@ extern class EditorResourcePicker extends godot.HBoxContainer {
 		This virtual method can be implemented to handle context menu items not handled by default. See `godot.EditorResourcePicker.setCreateOptions`.
 	**/
 	@:native("HandleMenuSelected")
-	public function handleMenuSelected(id:Int):Void;
+	public function handleMenuSelected(id:Int):Bool;
 
 	/**		
 		This virtual method is called when updating the context menu of `godot.EditorResourcePicker`. Implement this method to override the "New ..." items with your own options. `menu_node` is a reference to the `godot.PopupMenu` node.

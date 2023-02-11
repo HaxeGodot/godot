@@ -14,8 +14,6 @@ Visual shader graphs consist of various nodes. Each node in the graph is a separ
 extern abstract class VisualShaderNode extends godot.Resource {
 	/**
 		`editor_refresh_request` signal.
-		
-		Emitted when the node requests an editor refresh. Currently called only in setter of `visualShaderNodeTexture.source`, `VisualShaderNodeTexture`, and `VisualShaderNodeCubeMap` (and their derivatives).
 	**/
 	public var onEditorRefreshRequest(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onEditorRefreshRequest():Signal<Void->Void> {

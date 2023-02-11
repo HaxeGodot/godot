@@ -18,8 +18,6 @@ Item text only supports single-line strings, newline characters (e.g. `\n`) in t
 extern class ItemList extends godot.Control {
 	/**
 		`item_activated` signal.
-		
-		Triggered when specified list item is activated via double-clicking or by pressing Enter.
 	**/
 	public var onItemActivated(get, never):Signal<(index:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemActivated():Signal<(index:Int)->Void> {
@@ -28,10 +26,6 @@ extern class ItemList extends godot.Control {
 
 	/**
 		`item_rmb_selected` signal.
-		
-		Triggered when specified list item has been selected via right mouse clicking.
-		The click position is also provided to allow appropriate popup of context menus at the correct location.
-		`allowRmbSelect` must be enabled.
 	**/
 	public var onItemRmbSelected(get, never):Signal<(index:Int, atPosition:Vector2)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemRmbSelected():Signal<(index:Int, atPosition:Vector2)->Void> {
@@ -40,9 +34,6 @@ extern class ItemList extends godot.Control {
 
 	/**
 		`item_selected` signal.
-		
-		Triggered when specified item has been selected.
-		`allowReselect` must be enabled to reselect an item.
 	**/
 	public var onItemSelected(get, never):Signal<(index:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemSelected():Signal<(index:Int)->Void> {
@@ -51,8 +42,6 @@ extern class ItemList extends godot.Control {
 
 	/**
 		`multi_selected` signal.
-		
-		Triggered when a multiple selection is altered on a list allowing multiple selection.
 	**/
 	public var onMultiSelected(get, never):Signal<(index:Int, selected:Bool)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMultiSelected():Signal<(index:Int, selected:Bool)->Void> {
@@ -61,8 +50,6 @@ extern class ItemList extends godot.Control {
 
 	/**
 		`nothing_selected` signal.
-		
-		Triggered when a left mouse click is issued within the rect of the list but on empty space.
 	**/
 	public var onNothingSelected(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNothingSelected():Signal<Void->Void> {
@@ -71,9 +58,6 @@ extern class ItemList extends godot.Control {
 
 	/**
 		`rmb_clicked` signal.
-		
-		Triggered when a right mouse click is issued within the rect of the list but on empty space.
-		`allowRmbSelect` must be enabled.
 	**/
 	public var onRmbClicked(get, never):Signal<(atPosition:Vector2)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onRmbClicked():Signal<(atPosition:Vector2)->Void> {
@@ -550,7 +534,7 @@ extern class ItemList extends godot.Control {
 	public function ensureCurrentIsVisible():Void;
 
 	/**		
-		Returns the `godot.Object` ID associated with the list.
+		Returns the vertical scrollbar.
 		
 		Warning: This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their `godot.CanvasItem.visible` property.
 	**/

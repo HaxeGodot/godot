@@ -32,8 +32,6 @@ Note: This class shouldn't be instantiated directly. Instead, access the singlet
 extern abstract class EditorSettings extends godot.Resource {
 	/**
 		`settings_changed` signal.
-		
-		Emitted after any editor setting has changed.
 	**/
 	public var onSettingsChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onSettingsChanged():Signal<Void->Void> {

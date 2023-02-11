@@ -14,8 +14,6 @@ Scrollbars are a `godot.Range`-based `godot.Control`, that display a draggable a
 extern abstract class ScrollBar extends godot.Range {
 	/**
 		`scrolling` signal.
-		
-		Emitted when the scrollbar is being scrolled.
 	**/
 	public var onScrolling(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onScrolling():Signal<Void->Void> {

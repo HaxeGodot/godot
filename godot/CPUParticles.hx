@@ -223,7 +223,7 @@ extern class CPUParticles extends godot.GeometryInstance {
 	public var angularVelocityRandom:Single;
 
 	/**		
-		Initial angular velocity applied to each particle. Sets the speed of rotation of the particle.
+		Initial angular velocity applied to each particle in degrees per second. Sets the speed of rotation of the particle.
 	**/
 	@:native("AngularVelocity")
 	public var angularVelocity:Single;

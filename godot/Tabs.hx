@@ -14,8 +14,6 @@ Simple tabs control, similar to `godot.TabContainer` but is only in charge of dr
 extern class Tabs extends godot.Control {
 	/**
 		`reposition_active_tab_request` signal.
-		
-		Emitted when the active tab is rearranged via mouse drag. See `dragToRearrangeEnabled`.
 	**/
 	public var onRepositionActiveTabRequest(get, never):Signal<(idxTo:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onRepositionActiveTabRequest():Signal<(idxTo:Int)->Void> {
@@ -24,8 +22,6 @@ extern class Tabs extends godot.Control {
 
 	/**
 		`right_button_pressed` signal.
-		
-		Emitted when a tab is right-clicked.
 	**/
 	public var onRightButtonPressed(get, never):Signal<(tab:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onRightButtonPressed():Signal<(tab:Int)->Void> {
@@ -34,8 +30,6 @@ extern class Tabs extends godot.Control {
 
 	/**
 		`tab_changed` signal.
-		
-		Emitted when switching to another tab.
 	**/
 	public var onTabChanged(get, never):Signal<(tab:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTabChanged():Signal<(tab:Int)->Void> {
@@ -44,8 +38,6 @@ extern class Tabs extends godot.Control {
 
 	/**
 		`tab_clicked` signal.
-		
-		Emitted when a tab is clicked, even if it is the current tab.
 	**/
 	public var onTabClicked(get, never):Signal<(tab:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTabClicked():Signal<(tab:Int)->Void> {
@@ -54,8 +46,6 @@ extern class Tabs extends godot.Control {
 
 	/**
 		`tab_close` signal.
-		
-		Emitted when a tab is closed.
 	**/
 	public var onTabClose(get, never):Signal<(tab:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTabClose():Signal<(tab:Int)->Void> {
@@ -64,8 +54,6 @@ extern class Tabs extends godot.Control {
 
 	/**
 		`tab_hover` signal.
-		
-		Emitted when a tab is hovered by the mouse.
 	**/
 	public var onTabHover(get, never):Signal<(tab:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTabHover():Signal<(tab:Int)->Void> {

@@ -630,7 +630,7 @@ extern class Physics2DServer {
 	#end
 
 	/**		
-		Returns the `godot.Physics2DDirectBodyState` of the body.
+		Returns the `godot.Physics2DDirectBodyState` of the body. Returns `null` if the body is destroyed or removed from the physics space.
 	**/
 	@:native("BodyGetDirectState")
 	public static function bodyGetDirectState(body:godot.RID):godot.Physics2DDirectBodyState;

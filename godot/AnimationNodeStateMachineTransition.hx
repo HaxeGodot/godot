@@ -11,8 +11,6 @@ import cs.system.*;
 extern class AnimationNodeStateMachineTransition extends godot.Resource {
 	/**
 		`advance_condition_changed` signal.
-		
-		Emitted when `advanceCondition` is changed.
 	**/
 	public var onAdvanceConditionChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onAdvanceConditionChanged():Signal<Void->Void> {

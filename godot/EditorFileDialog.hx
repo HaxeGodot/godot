@@ -11,8 +11,6 @@ import cs.system.*;
 extern class EditorFileDialog extends godot.ConfirmationDialog {
 	/**
 		`dir_selected` signal.
-		
-		Emitted when a directory is selected.
 	**/
 	public var onDirSelected(get, never):Signal<(dir:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onDirSelected():Signal<(dir:std.String)->Void> {
@@ -21,8 +19,6 @@ extern class EditorFileDialog extends godot.ConfirmationDialog {
 
 	/**
 		`file_selected` signal.
-		
-		Emitted when a file is selected.
 	**/
 	public var onFileSelected(get, never):Signal<(path:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFileSelected():Signal<(path:std.String)->Void> {
@@ -31,8 +27,6 @@ extern class EditorFileDialog extends godot.ConfirmationDialog {
 
 	/**
 		`files_selected` signal.
-		
-		Emitted when multiple files are selected.
 	**/
 	public var onFilesSelected(get, never):Signal<(paths:std.Array<std.String>)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFilesSelected():Signal<(paths:std.Array<std.String>)->Void> {

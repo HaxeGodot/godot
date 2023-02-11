@@ -49,13 +49,17 @@ extern abstract class SpriteBase3D extends godot.GeometryInstance {
 	public var pixelSize:Single;
 
 	/**		
-		The objects' visibility on a scale from `0` fully invisible to `1` fully visible.
+		The texture's visibility on a scale from `0` (fully invisible) to `1` (fully visible). `godot.SpriteBase3D.opacity` is a multiplier for the `godot.SpriteBase3D.modulate` color's alpha channel.
+		
+		Note: If a `godot.GeometryInstance.materialOverride` is defined on the `godot.SpriteBase3D`, the material override must be configured to take vertex colors into account for albedo. Otherwise, the opacity defined in `godot.SpriteBase3D.opacity` will be ignored. For a `godot.SpatialMaterial`, `godot.SpatialMaterial.vertexColorUseAsAlbedo` must be `true`. For a `godot.ShaderMaterial`, `ALPHA *= COLOR.a;[/color] must be inserted in the shader's [code]fragment()` function.
 	**/
 	@:native("Opacity")
 	public var opacity:Single;
 
 	/**		
-		A color value that gets multiplied on, could be used for mood-coloring or to simulate the color of light.
+		A color value used to multiply the texture's colors. Can be used for mood-coloring or to simulate the color of light.
+		
+		Note: If a `godot.GeometryInstance.materialOverride` is defined on the `godot.SpriteBase3D`, the material override must be configured to take vertex colors into account for albedo. Otherwise, the color defined in `godot.SpriteBase3D.modulate` will be ignored. For a `godot.SpatialMaterial`, `godot.SpatialMaterial.vertexColorUseAsAlbedo` must be `true`. For a `godot.ShaderMaterial`, `ALBEDO *= COLOR.rgb;[/color] must be inserted in the shader's [code]fragment()` function.
 	**/
 	@:native("Modulate")
 	public var modulate:godot.Color;

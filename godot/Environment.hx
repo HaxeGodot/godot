@@ -15,7 +15,15 @@ Resource for environment nodes (like `godot.WorldEnvironment`) that define multi
 
 - Adjustments
 
-These effects will only apply when the `godot.Viewport`'s intended usage is "3D" or "3D Without Effects". This can be configured for the root Viewport with , or for specific Viewports via the `godot.Viewport.usage` property.
+If the target `godot.Viewport` is set to "2D Without Sampling", all post-processing effects will be unavailable. With "3D Without Effects", the following options will be unavailable:
+
+- Ssao
+
+- Ss Reflections
+
+This can be configured for the root Viewport with , or for specific Viewports via the `godot.Viewport.usage` property.
+
+Note that  has a mobile platform override to use "3D Without Effects" by default. It improves the performance on mobile devices, but at the same time affects the screen display on mobile devices.
 **/
 @:libType
 @:csNative
@@ -152,6 +160,10 @@ extern class Environment extends godot.Resource {
 
 	/**		
 		If `true`, the glow effect is enabled.
+		
+		Note: Only effective if  is 3D (not 3D Without Effects). On mobile,  defaults to 3D Without Effects by default, so its `.mobile` override needs to be changed to 3D.
+		
+		Note: When using GLES3 on mobile, HDR rendering is disabled by default for performance reasons. This means glow will only be visible if `godot.Environment.glowHdrThreshold` is decreased below `1.0` or if `godot.Environment.glowBloom` is increased above `0.0`. Also consider increasing `godot.Environment.glowIntensity` to `1.5`. If you want glow to behave on mobile like it does on desktop (at a performance cost), enable 's `.mobile` override.
 	**/
 	@:native("GlowEnabled")
 	public var glowEnabled:Bool;
@@ -457,7 +469,9 @@ extern class Environment extends godot.Resource {
 	public var fogEnabled:Bool;
 
 	/**		
-		Defines the amount of light that the sky brings on the scene. A value of 0 means that the sky's light emission has no effect on the scene illumination, thus all ambient illumination is provided by the ambient light. On the contrary, a value of 1 means that all the light that affects the scene is provided by the sky, thus the ambient light parameter has no effect on the scene.
+		Defines the amount of light that the sky brings on the scene. A value of `0.0` means that the sky's light emission has no effect on the scene illumination, thus all ambient illumination is provided by the ambient light. On the contrary, a value of `1.0` means that all the light that affects the scene is provided by the sky, thus the ambient light parameter has no effect on the scene.
+		
+		Note: `godot.Environment.ambientLightSkyContribution` is internally clamped between `0.0` and `1.0` (inclusive).
 	**/
 	@:native("AmbientLightSkyContribution")
 	public var ambientLightSkyContribution:Single;

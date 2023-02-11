@@ -16,8 +16,6 @@ Note: This class shouldn't be instantiated directly. Instead, access the singlet
 extern class EditorInspector extends godot.ScrollContainer {
 	/**
 		`object_id_selected` signal.
-		
-		Emitted when the Edit button of an `Object` has been pressed in the inspector. This is mainly used in the remote scene tree inspector.
 	**/
 	public var onObjectIdSelected(get, never):Signal<(id:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onObjectIdSelected():Signal<(id:Int)->Void> {
@@ -26,8 +24,6 @@ extern class EditorInspector extends godot.ScrollContainer {
 
 	/**
 		`property_edited` signal.
-		
-		Emitted when a property is edited in the inspector.
 	**/
 	public var onPropertyEdited(get, never):Signal<(property:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPropertyEdited():Signal<(property:std.String)->Void> {
@@ -36,8 +32,6 @@ extern class EditorInspector extends godot.ScrollContainer {
 
 	/**
 		`property_keyed` signal.
-		
-		Emitted when a property is keyed in the inspector. Properties can be keyed by clicking the "key" icon next to a property when the Animation panel is toggled.
 	**/
 	public var onPropertyKeyed(get, never):Signal<(property:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPropertyKeyed():Signal<(property:std.String)->Void> {
@@ -46,8 +40,6 @@ extern class EditorInspector extends godot.ScrollContainer {
 
 	/**
 		`property_selected` signal.
-		
-		Emitted when a property is selected in the inspector.
 	**/
 	public var onPropertySelected(get, never):Signal<(property:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPropertySelected():Signal<(property:std.String)->Void> {
@@ -56,9 +48,6 @@ extern class EditorInspector extends godot.ScrollContainer {
 
 	/**
 		`property_toggled` signal.
-		
-		Emitted when a boolean property is toggled in the inspector.
-		`b`Note:`/b` This signal is never emitted if the internal `autoclear` property enabled. Since this property is always enabled in the editor inspector, this signal is never emitted by the editor itself.
 	**/
 	public var onPropertyToggled(get, never):Signal<(property:std.String, checked:Bool)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPropertyToggled():Signal<(property:std.String, checked:Bool)->Void> {
@@ -67,8 +56,6 @@ extern class EditorInspector extends godot.ScrollContainer {
 
 	/**
 		`resource_selected` signal.
-		
-		Emitted when a resource is selected in the inspector.
 	**/
 	public var onResourceSelected(get, never):Signal<(res:godot.Object, prop:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onResourceSelected():Signal<(res:godot.Object, prop:std.String)->Void> {
@@ -77,8 +64,6 @@ extern class EditorInspector extends godot.ScrollContainer {
 
 	/**
 		`restart_requested` signal.
-		
-		Emitted when a property that requires a restart to be applied is edited in the inspector. This is only used in the Project Settings and Editor Settings.
 	**/
 	public var onRestartRequested(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onRestartRequested():Signal<Void->Void> {

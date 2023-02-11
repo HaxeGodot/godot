@@ -14,8 +14,6 @@ Container for splitting two `godot.Control`s vertically or horizontally, with a 
 extern abstract class SplitContainer extends godot.Container {
 	/**
 		`dragged` signal.
-		
-		Emitted when the dragger is dragged by user.
 	**/
 	public var onDragged(get, never):Signal<(offset:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onDragged():Signal<(offset:Int)->Void> {

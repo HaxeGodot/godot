@@ -16,8 +16,6 @@ Note: When holding down `Alt`, the vertical scroll wheel will scroll 5 times as 
 extern class TextEdit extends godot.Control {
 	/**
 		`breakpoint_toggled` signal.
-		
-		Emitted when a breakpoint is placed via the breakpoint gutter.
 	**/
 	public var onBreakpointToggled(get, never):Signal<(row:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onBreakpointToggled():Signal<(row:Int)->Void> {
@@ -26,8 +24,6 @@ extern class TextEdit extends godot.Control {
 
 	/**
 		`cursor_changed` signal.
-		
-		Emitted when the cursor changes.
 	**/
 	public var onCursorChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onCursorChanged():Signal<Void->Void> {
@@ -36,8 +32,6 @@ extern class TextEdit extends godot.Control {
 
 	/**
 		`info_clicked` signal.
-		
-		Emitted when the info icon is clicked.
 	**/
 	public var onInfoClicked(get, never):Signal<(row:Int, info:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onInfoClicked():Signal<(row:Int, info:std.String)->Void> {
@@ -62,8 +56,6 @@ extern class TextEdit extends godot.Control {
 
 	/**
 		`text_changed` signal.
-		
-		Emitted when the text changes.
 	**/
 	public var onTextChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTextChanged():Signal<Void->Void> {
@@ -197,6 +189,12 @@ extern class TextEdit extends godot.Control {
 	public var breakpointGutter:Bool;
 
 	/**		
+		If `true`, the bookmark gutter is visible.
+	**/
+	@:native("BookmarkGutter")
+	public var bookmarkGutter:Bool;
+
+	/**		
 		If `true`, the "space" character will have a visible representation.
 	**/
 	@:native("DrawSpaces")
@@ -270,6 +268,51 @@ extern class TextEdit extends godot.Control {
 	**/
 	@:native("SetLine")
 	public function setLine(line:Int, newText:std.String):Void;
+
+	/**		
+		Returns an array of `String`s representing each wrapped index.
+	**/
+	public extern inline function getLineWrappedText(line:Int):std.Array<std.String> {
+		return cs.Lib.array(cs.Syntax.code("{0}.GetLineWrappedText({1})", this, line));
+	}
+
+	#if doc_gen
+	/**		
+		Returns the width in pixels of the `wrap_index` on `line`.
+	**/
+	@:native("GetLineWidth")
+	public function getLineWidth(line:Int, ?wrapIndex:Int):Int;
+	#else
+	/**		
+		Returns the width in pixels of the `wrap_index` on `line`.
+	**/
+	@:native("GetLineWidth")
+	public overload function getLineWidth(line:Int):Int;
+
+	/**		
+		Returns the width in pixels of the `wrap_index` on `line`.
+	**/
+	@:native("GetLineWidth")
+	public overload function getLineWidth(line:Int, wrapIndex:Int):Int;
+	#end
+
+	/**		
+		Returns the height of a largest line.
+	**/
+	@:native("GetLineHeight")
+	public function getLineHeight():Int;
+
+	/**		
+		Returns if the given line is wrapped.
+	**/
+	@:native("IsLineWrapped")
+	public function isLineWrapped(line:Int):Bool;
+
+	/**		
+		Returns the number of times the given line is wrapped.
+	**/
+	@:native("GetLineWrapCount")
+	public function getLineWrapCount(line:Int):Int;
 
 	/**		
 		Centers the viewport on the line the editing cursor is at. This also resets the `godot.TextEdit.scrollHorizontal` value to `0`.
@@ -390,6 +433,28 @@ extern class TextEdit extends godot.Control {
 
 	@:native("IsRightClickMovingCaret")
 	public function isRightClickMovingCaret():Bool;
+
+	/**		
+		Returns the local position for the given `line` and `column`. If `x` or `y` of the returned vector equal `-1`, the position is outside of the viewable area of the control.
+		
+		Note: The Y position corresponds to the bottom side of the line. Use `godot.TextEdit.getRectAtLineColumn` to get the top side position.
+	**/
+	@:native("GetPosAtLineColumn")
+	public function getPosAtLineColumn(line:Int, column:Int):godot.Vector2;
+
+	/**		
+		Returns the local position and size for the grapheme at the given `line` and `column`. If `x` or `y` position of the returned rect equal `-1`, the position is outside of the viewable area of the control.
+		
+		Note: The Y position of the returned rect corresponds to the top side of the line, unlike `godot.TextEdit.getPosAtLineColumn` which returns the bottom side.
+	**/
+	@:native("GetRectAtLineColumn")
+	public function getRectAtLineColumn(line:Int, column:Int):godot.Rect2;
+
+	/**		
+		Returns the line and column at the given position. In the returned vector, `x` is the column, `y` is the line.
+	**/
+	@:native("GetLineColumnAtPos")
+	public function getLineColumnAtPos(position:godot.Vector2):godot.Vector2;
 
 	@:native("SetReadonly")
 	public function setReadonly(enable:Bool):Void;
@@ -616,6 +681,12 @@ extern class TextEdit extends godot.Control {
 	@:native("IsDrawingSpaces")
 	public function isDrawingSpaces():Bool;
 
+	@:native("SetBookmarkGutterEnabled")
+	public function setBookmarkGutterEnabled(enable:Bool):Void;
+
+	@:native("IsBookmarkGutterEnabled")
+	public function isBookmarkGutterEnabled():Bool;
+
 	@:native("SetBreakpointGutterEnabled")
 	public function setBreakpointGutterEnabled(enable:Bool):Void;
 
@@ -627,6 +698,12 @@ extern class TextEdit extends godot.Control {
 
 	@:native("IsDrawingFoldGutter")
 	public function isDrawingFoldGutter():Bool;
+
+	/**		
+		Returns the total width of all gutters and internal padding.
+	**/
+	@:native("GetTotalGutterWidth")
+	public function getTotalGutterWidth():Int;
 
 	@:native("SetHidingEnabled")
 	public function setHidingEnabled(enable:Bool):Void;

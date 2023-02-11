@@ -16,8 +16,6 @@ A Control can inherit this to create custom container classes.
 extern class Container extends godot.Control {
 	/**
 		`sort_children` signal.
-		
-		Emitted when sorting the children is needed.
 	**/
 	public var onSortChildren(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onSortChildren():Signal<Void->Void> {

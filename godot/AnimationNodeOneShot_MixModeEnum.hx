@@ -2,9 +2,9 @@
 // MIT licensed, see LICENSE.md
 package godot;
 
-@:native("Godot.AnimationNodeOneShot.MixMode")
+@:native("Godot.AnimationNodeOneShot.MixModeEnum")
 @:csNative
-extern enum AnimationNodeOneShot_MixMode {
+extern enum AnimationNodeOneShot_MixModeEnum {
 	Blend;
 
 	Add;

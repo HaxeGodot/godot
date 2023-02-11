@@ -24,8 +24,6 @@ Note: Unless otherwise specified, all methods that have angle parameters must ha
 extern abstract class CanvasItem extends godot.Node {
 	/**
 		`draw` signal.
-		
-		Emitted when the `CanvasItem` must redraw. This can only be connected realtime, as deferred will not allow drawing.
 	**/
 	public var onDraw(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onDraw():Signal<Void->Void> {
@@ -34,8 +32,6 @@ extern abstract class CanvasItem extends godot.Node {
 
 	/**
 		`hide` signal.
-		
-		Emitted when becoming hidden.
 	**/
 	public var onHide(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onHide():Signal<Void->Void> {
@@ -44,8 +40,6 @@ extern abstract class CanvasItem extends godot.Node {
 
 	/**
 		`item_rect_changed` signal.
-		
-		Emitted when the item's `Rect2` boundaries (position or size) have changed, or when an action is taking place that may have impacted these boundaries (e.g. changing `sprite.texture`).
 	**/
 	public var onItemRectChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemRectChanged():Signal<Void->Void> {
@@ -54,8 +48,6 @@ extern abstract class CanvasItem extends godot.Node {
 
 	/**
 		`visibility_changed` signal.
-		
-		Emitted when the visibility (hidden/visible) changes.
 	**/
 	public var onVisibilityChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onVisibilityChanged():Signal<Void->Void> {
@@ -167,13 +159,13 @@ extern abstract class CanvasItem extends godot.Node {
 	public function isVisibleInTree():Bool;
 
 	/**		
-		Show the `godot.CanvasItem` if it's currently hidden. For controls that inherit `godot.Popup`, the correct way to make them visible is to call one of the multiple `popup*()` functions instead.
+		Show the `godot.CanvasItem` if it's currently hidden. This is equivalent to setting `godot.CanvasItem.visible` to `true`. For controls that inherit `godot.Popup`, the correct way to make them visible is to call one of the multiple `popup*()` functions instead.
 	**/
 	@:native("Show")
 	public function show():Void;
 
 	/**		
-		Hide the `godot.CanvasItem` if it's currently visible.
+		Hide the `godot.CanvasItem` if it's currently visible. This is equivalent to setting `godot.CanvasItem.visible` to `false`.
 	**/
 	@:native("Hide")
 	public function hide():Void;
@@ -185,7 +177,7 @@ extern abstract class CanvasItem extends godot.Node {
 	public function update():Void;
 
 	/**		
-		If `enable` is `true`, the node won't inherit its transform from parent canvas items.
+		If `enable` is `true`, this `godot.CanvasItem` will not inherit its transform from parent `godot.CanvasItem`s. Its draw order will also be changed to make it draw on top of other `godot.CanvasItem`s that are not set as top-level. The `godot.CanvasItem` will effectively act as if it was placed as a child of a bare `godot.Node`. See also `godot.CanvasItem.isSetAsToplevel`.
 	**/
 	@:native("SetAsToplevel")
 	public function setAsToplevel(enable:Bool):Void;
@@ -222,25 +214,41 @@ extern abstract class CanvasItem extends godot.Node {
 
 	#if doc_gen
 	/**		
-		Draws a line from a 2D point to another, with a given color and width. It can be optionally antialiased.
+		Draws a line from a 2D point to another, with a given color and width. It can be optionally antialiased. See also `godot.CanvasItem.drawMultiline` and `godot.CanvasItem.drawPolyline`.
+		
+		Note: Line drawing is not accelerated by batching if `antialiased` is `true`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent lines and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawLine")
 	public function drawLine(from:godot.Vector2, to:godot.Vector2, color:godot.Color, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
-		Draws a line from a 2D point to another, with a given color and width. It can be optionally antialiased.
+		Draws a line from a 2D point to another, with a given color and width. It can be optionally antialiased. See also `godot.CanvasItem.drawMultiline` and `godot.CanvasItem.drawPolyline`.
+		
+		Note: Line drawing is not accelerated by batching if `antialiased` is `true`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent lines and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawLine")
 	public overload function drawLine(from:godot.Vector2, to:godot.Vector2, color:godot.Color):Void;
 
 	/**		
-		Draws a line from a 2D point to another, with a given color and width. It can be optionally antialiased.
+		Draws a line from a 2D point to another, with a given color and width. It can be optionally antialiased. See also `godot.CanvasItem.drawMultiline` and `godot.CanvasItem.drawPolyline`.
+		
+		Note: Line drawing is not accelerated by batching if `antialiased` is `true`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent lines and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawLine")
 	public overload function drawLine(from:godot.Vector2, to:godot.Vector2, color:godot.Color, width:Single):Void;
 
 	/**		
-		Draws a line from a 2D point to another, with a given color and width. It can be optionally antialiased.
+		Draws a line from a 2D point to another, with a given color and width. It can be optionally antialiased. See also `godot.CanvasItem.drawMultiline` and `godot.CanvasItem.drawPolyline`.
+		
+		Note: Line drawing is not accelerated by batching if `antialiased` is `true`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent lines and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawLine")
 	public overload function drawLine(from:godot.Vector2, to:godot.Vector2, color:godot.Color, width:Single, antialiased:Bool):Void;
@@ -248,25 +256,33 @@ extern abstract class CanvasItem extends godot.Node {
 
 	#if doc_gen
 	/**		
-		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing.
+		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw disconnected lines, use `godot.CanvasItem.drawMultiline` instead. See also `godot.CanvasItem.drawPolygon`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawPolyline")
 	public function drawPolyline(points:std.Array<godot.Vector2>, color:godot.Color, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
-		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing.
+		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw disconnected lines, use `godot.CanvasItem.drawMultiline` instead. See also `godot.CanvasItem.drawPolygon`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawPolyline")
 	public overload function drawPolyline(points:HaxeArray<godot.Vector2>, color:godot.Color):Void;
 
 	/**		
-		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing.
+		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw disconnected lines, use `godot.CanvasItem.drawMultiline` instead. See also `godot.CanvasItem.drawPolygon`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawPolyline")
 	public overload function drawPolyline(points:HaxeArray<godot.Vector2>, color:godot.Color, width:Single):Void;
 
 	/**		
-		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing.
+		Draws interconnected line segments with a uniform `color` and `width` and optional antialiasing. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw disconnected lines, use `godot.CanvasItem.drawMultiline` instead. See also `godot.CanvasItem.drawPolygon`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawPolyline")
 	public overload function drawPolyline(points:HaxeArray<godot.Vector2>, color:godot.Color, width:Single, antialiased:Bool):Void;
@@ -274,25 +290,33 @@ extern abstract class CanvasItem extends godot.Node {
 
 	#if doc_gen
 	/**		
-		Draws interconnected line segments with a uniform `width`, segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`.
+		Draws interconnected line segments with a uniform `width` and segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw disconnected lines, use `godot.CanvasItem.drawMultilineColors` instead. See also `godot.CanvasItem.drawPolygon`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawPolylineColors")
 	public function drawPolylineColors(points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
-		Draws interconnected line segments with a uniform `width`, segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`.
+		Draws interconnected line segments with a uniform `width` and segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw disconnected lines, use `godot.CanvasItem.drawMultilineColors` instead. See also `godot.CanvasItem.drawPolygon`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawPolylineColors")
 	public overload function drawPolylineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
 
 	/**		
-		Draws interconnected line segments with a uniform `width`, segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`.
+		Draws interconnected line segments with a uniform `width` and segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw disconnected lines, use `godot.CanvasItem.drawMultilineColors` instead. See also `godot.CanvasItem.drawPolygon`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawPolylineColors")
 	public overload function drawPolylineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, width:Single):Void;
 
 	/**		
-		Draws interconnected line segments with a uniform `width`, segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`.
+		Draws interconnected line segments with a uniform `width` and segment-by-segment coloring, and optional antialiasing. Colors assigned to line segments match by index between `points` and `colors`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw disconnected lines, use `godot.CanvasItem.drawMultilineColors` instead. See also `godot.CanvasItem.drawPolygon`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawPolylineColors")
 	public overload function drawPolylineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, width:Single, antialiased:Bool):Void;
@@ -300,25 +324,41 @@ extern abstract class CanvasItem extends godot.Node {
 
 	#if doc_gen
 	/**		
-		Draws an arc between the given angles. The larger the value of `point_count`, the smoother the curve.
+		Draws a unfilled arc between the given angles. The larger the value of `point_count`, the smoother the curve. See also `godot.CanvasItem.drawCircle`.
+		
+		Note: Line drawing is not accelerated by batching if `antialiased` is `true`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent lines and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedRegularPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawArc")
 	public function drawArc(center:godot.Vector2, radius:Single, startAngle:Single, endAngle:Single, pointCount:Int, color:godot.Color, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
-		Draws an arc between the given angles. The larger the value of `point_count`, the smoother the curve.
+		Draws a unfilled arc between the given angles. The larger the value of `point_count`, the smoother the curve. See also `godot.CanvasItem.drawCircle`.
+		
+		Note: Line drawing is not accelerated by batching if `antialiased` is `true`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent lines and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedRegularPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawArc")
 	public overload function drawArc(center:godot.Vector2, radius:Single, startAngle:Single, endAngle:Single, pointCount:Int, color:godot.Color):Void;
 
 	/**		
-		Draws an arc between the given angles. The larger the value of `point_count`, the smoother the curve.
+		Draws a unfilled arc between the given angles. The larger the value of `point_count`, the smoother the curve. See also `godot.CanvasItem.drawCircle`.
+		
+		Note: Line drawing is not accelerated by batching if `antialiased` is `true`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent lines and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedRegularPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawArc")
 	public overload function drawArc(center:godot.Vector2, radius:Single, startAngle:Single, endAngle:Single, pointCount:Int, color:godot.Color, width:Single):Void;
 
 	/**		
-		Draws an arc between the given angles. The larger the value of `point_count`, the smoother the curve.
+		Draws a unfilled arc between the given angles. The larger the value of `point_count`, the smoother the curve. See also `godot.CanvasItem.drawCircle`.
+		
+		Note: Line drawing is not accelerated by batching if `antialiased` is `true`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent lines and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedRegularPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawArc")
 	public overload function drawArc(center:godot.Vector2, radius:Single, startAngle:Single, endAngle:Single, pointCount:Int, color:godot.Color, width:Single, antialiased:Bool):Void;
@@ -326,33 +366,33 @@ extern abstract class CanvasItem extends godot.Node {
 
 	#if doc_gen
 	/**		
-		Draws multiple, parallel lines with a uniform `color`.
+		Draws multiple disconnected lines with a uniform `color`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw interconnected lines, use `godot.CanvasItem.drawPolyline` instead.
 		
-		Note: `width` and `antialiased` are currently not implemented and have no effect.
+		Note: `width` and `antialiased` are currently not implemented and have no effect. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawMultiline")
 	public function drawMultiline(points:std.Array<godot.Vector2>, color:godot.Color, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
-		Draws multiple, parallel lines with a uniform `color`.
+		Draws multiple disconnected lines with a uniform `color`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw interconnected lines, use `godot.CanvasItem.drawPolyline` instead.
 		
-		Note: `width` and `antialiased` are currently not implemented and have no effect.
+		Note: `width` and `antialiased` are currently not implemented and have no effect. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawMultiline")
 	public overload function drawMultiline(points:HaxeArray<godot.Vector2>, color:godot.Color):Void;
 
 	/**		
-		Draws multiple, parallel lines with a uniform `color`.
+		Draws multiple disconnected lines with a uniform `color`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw interconnected lines, use `godot.CanvasItem.drawPolyline` instead.
 		
-		Note: `width` and `antialiased` are currently not implemented and have no effect.
+		Note: `width` and `antialiased` are currently not implemented and have no effect. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawMultiline")
 	public overload function drawMultiline(points:HaxeArray<godot.Vector2>, color:godot.Color, width:Single):Void;
 
 	/**		
-		Draws multiple, parallel lines with a uniform `color`.
+		Draws multiple disconnected lines with a uniform `color`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw interconnected lines, use `godot.CanvasItem.drawPolyline` instead.
 		
-		Note: `width` and `antialiased` are currently not implemented and have no effect.
+		Note: `width` and `antialiased` are currently not implemented and have no effect. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawMultiline")
 	public overload function drawMultiline(points:HaxeArray<godot.Vector2>, color:godot.Color, width:Single, antialiased:Bool):Void;
@@ -360,33 +400,33 @@ extern abstract class CanvasItem extends godot.Node {
 
 	#if doc_gen
 	/**		
-		Draws multiple, parallel lines with a uniform `width` and segment-by-segment coloring. Colors assigned to line segments match by index between `points` and `colors`.
+		Draws multiple disconnected lines with a uniform `width` and segment-by-segment coloring. Colors assigned to line segments match by index between `points` and `colors`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw interconnected lines, use `godot.CanvasItem.drawPolylineColors` instead.
 		
-		Note: `width` and `antialiased` are currently not implemented and have no effect.
+		Note: `width` and `antialiased` are currently not implemented and have no effect. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawMultilineColors")
 	public function drawMultilineColors(points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
-		Draws multiple, parallel lines with a uniform `width` and segment-by-segment coloring. Colors assigned to line segments match by index between `points` and `colors`.
+		Draws multiple disconnected lines with a uniform `width` and segment-by-segment coloring. Colors assigned to line segments match by index between `points` and `colors`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw interconnected lines, use `godot.CanvasItem.drawPolylineColors` instead.
 		
-		Note: `width` and `antialiased` are currently not implemented and have no effect.
+		Note: `width` and `antialiased` are currently not implemented and have no effect. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawMultilineColors")
 	public overload function drawMultilineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
 
 	/**		
-		Draws multiple, parallel lines with a uniform `width` and segment-by-segment coloring. Colors assigned to line segments match by index between `points` and `colors`.
+		Draws multiple disconnected lines with a uniform `width` and segment-by-segment coloring. Colors assigned to line segments match by index between `points` and `colors`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw interconnected lines, use `godot.CanvasItem.drawPolylineColors` instead.
 		
-		Note: `width` and `antialiased` are currently not implemented and have no effect.
+		Note: `width` and `antialiased` are currently not implemented and have no effect. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawMultilineColors")
 	public overload function drawMultilineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, width:Single):Void;
 
 	/**		
-		Draws multiple, parallel lines with a uniform `width` and segment-by-segment coloring. Colors assigned to line segments match by index between `points` and `colors`.
+		Draws multiple disconnected lines with a uniform `width` and segment-by-segment coloring. Colors assigned to line segments match by index between `points` and `colors`. When drawing large amounts of lines, this is faster than using individual `godot.CanvasItem.drawLine` calls. To draw interconnected lines, use `godot.CanvasItem.drawPolylineColors` instead.
 		
-		Note: `width` and `antialiased` are currently not implemented and have no effect.
+		Note: `width` and `antialiased` are currently not implemented and have no effect. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedLine2D node. That node relies on a texture with custom mipmaps to perform antialiasing. 2D batching is also still supported with those antialiased lines.
 	**/
 	@:native("DrawMultilineColors")
 	public overload function drawMultilineColors(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, width:Single, antialiased:Bool):Void;
@@ -394,48 +434,60 @@ extern abstract class CanvasItem extends godot.Node {
 
 	#if doc_gen
 	/**		
-		Draws a rectangle. If `filled` is `true`, the rectangle will be filled with the `color` specified. If `filled` is `false`, the rectangle will be drawn as a stroke with the `color` and `width` specified. If `antialiased` is `true`, the lines will be antialiased.
+		Draws a rectangle. If `filled` is `true`, the rectangle will be filled with the `color` specified. If `filled` is `false`, the rectangle will be drawn as a stroke with the `color` and `width` specified. If `antialiased` is `true`, the lines will attempt to perform antialiasing using OpenGL line smoothing.
 		
 		Note: `width` and `antialiased` are only effective if `filled` is `false`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawRect")
 	public function drawRect(rect:godot.Rect2, color:godot.Color, ?filled:Bool, ?width:Single, ?antialiased:Bool):Void;
 	#else
 	/**		
-		Draws a rectangle. If `filled` is `true`, the rectangle will be filled with the `color` specified. If `filled` is `false`, the rectangle will be drawn as a stroke with the `color` and `width` specified. If `antialiased` is `true`, the lines will be antialiased.
+		Draws a rectangle. If `filled` is `true`, the rectangle will be filled with the `color` specified. If `filled` is `false`, the rectangle will be drawn as a stroke with the `color` and `width` specified. If `antialiased` is `true`, the lines will attempt to perform antialiasing using OpenGL line smoothing.
 		
 		Note: `width` and `antialiased` are only effective if `filled` is `false`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawRect")
 	public overload function drawRect(rect:godot.Rect2, color:godot.Color):Void;
 
 	/**		
-		Draws a rectangle. If `filled` is `true`, the rectangle will be filled with the `color` specified. If `filled` is `false`, the rectangle will be drawn as a stroke with the `color` and `width` specified. If `antialiased` is `true`, the lines will be antialiased.
+		Draws a rectangle. If `filled` is `true`, the rectangle will be filled with the `color` specified. If `filled` is `false`, the rectangle will be drawn as a stroke with the `color` and `width` specified. If `antialiased` is `true`, the lines will attempt to perform antialiasing using OpenGL line smoothing.
 		
 		Note: `width` and `antialiased` are only effective if `filled` is `false`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawRect")
 	public overload function drawRect(rect:godot.Rect2, color:godot.Color, filled:Bool):Void;
 
 	/**		
-		Draws a rectangle. If `filled` is `true`, the rectangle will be filled with the `color` specified. If `filled` is `false`, the rectangle will be drawn as a stroke with the `color` and `width` specified. If `antialiased` is `true`, the lines will be antialiased.
+		Draws a rectangle. If `filled` is `true`, the rectangle will be filled with the `color` specified. If `filled` is `false`, the rectangle will be drawn as a stroke with the `color` and `width` specified. If `antialiased` is `true`, the lines will attempt to perform antialiasing using OpenGL line smoothing.
 		
 		Note: `width` and `antialiased` are only effective if `filled` is `false`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawRect")
 	public overload function drawRect(rect:godot.Rect2, color:godot.Color, filled:Bool, width:Single):Void;
 
 	/**		
-		Draws a rectangle. If `filled` is `true`, the rectangle will be filled with the `color` specified. If `filled` is `false`, the rectangle will be drawn as a stroke with the `color` and `width` specified. If `antialiased` is `true`, the lines will be antialiased.
+		Draws a rectangle. If `filled` is `true`, the rectangle will be filled with the `color` specified. If `filled` is `false`, the rectangle will be drawn as a stroke with the `color` and `width` specified. If `antialiased` is `true`, the lines will attempt to perform antialiasing using OpenGL line smoothing.
 		
 		Note: `width` and `antialiased` are only effective if `filled` is `false`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawRect")
 	public overload function drawRect(rect:godot.Rect2, color:godot.Color, filled:Bool, width:Single, antialiased:Bool):Void;
 	#end
 
 	/**		
-		Draws a colored circle.
+		Draws a colored, filled circle. See also `godot.CanvasItem.drawArc`, `godot.CanvasItem.drawPolyline` and `godot.CanvasItem.drawPolygon`.
+		
+		Note: Built-in antialiasing is not provided for `godot.CanvasItem.drawCircle`. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedRegularPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 	**/
 	@:native("DrawCircle")
 	public function drawCircle(position:godot.Vector2, radius:Single, color:godot.Color):Void;
@@ -574,31 +626,31 @@ extern abstract class CanvasItem extends godot.Node {
 
 	#if doc_gen
 	/**		
-		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle and 4 points for a quad.
+		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle, and 4 points for a quad. If 0 points or more than 4 points are specified, nothing will be drawn and an error message will be printed. See also `godot.CanvasItem.drawLine`, `godot.CanvasItem.drawPolyline`, `godot.CanvasItem.drawPolygon`, and `godot.CanvasItem.drawRect`.
 	**/
 	@:native("DrawPrimitive")
 	public function drawPrimitive(points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, uvs:std.Array<godot.Vector2>, ?texture:godot.Texture, ?width:Single, ?normalMap:godot.Texture):Void;
 	#else
 	/**		
-		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle and 4 points for a quad.
+		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle, and 4 points for a quad. If 0 points or more than 4 points are specified, nothing will be drawn and an error message will be printed. See also `godot.CanvasItem.drawLine`, `godot.CanvasItem.drawPolyline`, `godot.CanvasItem.drawPolygon`, and `godot.CanvasItem.drawRect`.
 	**/
 	@:native("DrawPrimitive")
 	public overload function drawPrimitive(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>):Void;
 
 	/**		
-		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle and 4 points for a quad.
+		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle, and 4 points for a quad. If 0 points or more than 4 points are specified, nothing will be drawn and an error message will be printed. See also `godot.CanvasItem.drawLine`, `godot.CanvasItem.drawPolyline`, `godot.CanvasItem.drawPolygon`, and `godot.CanvasItem.drawRect`.
 	**/
 	@:native("DrawPrimitive")
 	public overload function drawPrimitive(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture):Void;
 
 	/**		
-		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle and 4 points for a quad.
+		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle, and 4 points for a quad. If 0 points or more than 4 points are specified, nothing will be drawn and an error message will be printed. See also `godot.CanvasItem.drawLine`, `godot.CanvasItem.drawPolyline`, `godot.CanvasItem.drawPolygon`, and `godot.CanvasItem.drawRect`.
 	**/
 	@:native("DrawPrimitive")
 	public overload function drawPrimitive(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, width:Single):Void;
 
 	/**		
-		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle and 4 points for a quad.
+		Draws a custom primitive. 1 point for a point, 2 points for a line, 3 points for a triangle, and 4 points for a quad. If 0 points or more than 4 points are specified, nothing will be drawn and an error message will be printed. See also `godot.CanvasItem.drawLine`, `godot.CanvasItem.drawPolyline`, `godot.CanvasItem.drawPolygon`, and `godot.CanvasItem.drawRect`.
 	**/
 	@:native("DrawPrimitive")
 	public overload function drawPrimitive(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, width:Single, normalMap:godot.Texture):Void;
@@ -606,7 +658,9 @@ extern abstract class CanvasItem extends godot.Node {
 
 	#if doc_gen
 	/**		
-		Draws a polygon of any amount of points, convex or concave.
+		Draws a solid polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawColoredPolygon`, each point's color can be changed individually. See also `godot.CanvasItem.drawPolyline` and `godot.CanvasItem.drawPolylineColors`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
@@ -614,7 +668,9 @@ extern abstract class CanvasItem extends godot.Node {
 	public function drawPolygon(points:std.Array<godot.Vector2>, colors:std.Array<godot.Color>, ?uvs:std.Array<godot.Vector2>, ?texture:godot.Texture, ?normalMap:godot.Texture, ?antialiased:Bool):Void;
 	#else
 	/**		
-		Draws a polygon of any amount of points, convex or concave.
+		Draws a solid polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawColoredPolygon`, each point's color can be changed individually. See also `godot.CanvasItem.drawPolyline` and `godot.CanvasItem.drawPolylineColors`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
@@ -622,7 +678,9 @@ extern abstract class CanvasItem extends godot.Node {
 	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>):Void;
 
 	/**		
-		Draws a polygon of any amount of points, convex or concave.
+		Draws a solid polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawColoredPolygon`, each point's color can be changed individually. See also `godot.CanvasItem.drawPolyline` and `godot.CanvasItem.drawPolylineColors`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
@@ -630,7 +688,9 @@ extern abstract class CanvasItem extends godot.Node {
 	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>):Void;
 
 	/**		
-		Draws a polygon of any amount of points, convex or concave.
+		Draws a solid polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawColoredPolygon`, each point's color can be changed individually. See also `godot.CanvasItem.drawPolyline` and `godot.CanvasItem.drawPolylineColors`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
@@ -638,7 +698,9 @@ extern abstract class CanvasItem extends godot.Node {
 	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture):Void;
 
 	/**		
-		Draws a polygon of any amount of points, convex or concave.
+		Draws a solid polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawColoredPolygon`, each point's color can be changed individually. See also `godot.CanvasItem.drawPolyline` and `godot.CanvasItem.drawPolylineColors`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
@@ -646,7 +708,9 @@ extern abstract class CanvasItem extends godot.Node {
 	public overload function drawPolygon(points:HaxeArray<godot.Vector2>, colors:HaxeArray<godot.Color>, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture):Void;
 
 	/**		
-		Draws a polygon of any amount of points, convex or concave.
+		Draws a solid polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawColoredPolygon`, each point's color can be changed individually. See also `godot.CanvasItem.drawPolyline` and `godot.CanvasItem.drawPolylineColors`.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
@@ -656,7 +720,9 @@ extern abstract class CanvasItem extends godot.Node {
 
 	#if doc_gen
 	/**		
-		Draws a colored polygon of any amount of points, convex or concave.
+		Draws a colored polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawPolygon`, a single color must be specified for the whole polygon.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
@@ -664,7 +730,9 @@ extern abstract class CanvasItem extends godot.Node {
 	public function drawColoredPolygon(points:std.Array<godot.Vector2>, color:godot.Color, ?uvs:std.Array<godot.Vector2>, ?texture:godot.Texture, ?normalMap:godot.Texture, ?antialiased:Bool):Void;
 	#else
 	/**		
-		Draws a colored polygon of any amount of points, convex or concave.
+		Draws a colored polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawPolygon`, a single color must be specified for the whole polygon.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
@@ -672,7 +740,9 @@ extern abstract class CanvasItem extends godot.Node {
 	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color):Void;
 
 	/**		
-		Draws a colored polygon of any amount of points, convex or concave.
+		Draws a colored polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawPolygon`, a single color must be specified for the whole polygon.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
@@ -680,7 +750,9 @@ extern abstract class CanvasItem extends godot.Node {
 	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color, uvs:HaxeArray<godot.Vector2>):Void;
 
 	/**		
-		Draws a colored polygon of any amount of points, convex or concave.
+		Draws a colored polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawPolygon`, a single color must be specified for the whole polygon.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
@@ -688,7 +760,9 @@ extern abstract class CanvasItem extends godot.Node {
 	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture):Void;
 
 	/**		
-		Draws a colored polygon of any amount of points, convex or concave.
+		Draws a colored polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawPolygon`, a single color must be specified for the whole polygon.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/
@@ -696,7 +770,9 @@ extern abstract class CanvasItem extends godot.Node {
 	public overload function drawColoredPolygon(points:HaxeArray<godot.Vector2>, color:godot.Color, uvs:HaxeArray<godot.Vector2>, texture:godot.Texture, normalMap:godot.Texture):Void;
 
 	/**		
-		Draws a colored polygon of any amount of points, convex or concave.
+		Draws a colored polygon of any amount of points, convex or concave. Unlike `godot.CanvasItem.drawPolygon`, a single color must be specified for the whole polygon.
+		
+		Note: Due to how it works, built-in antialiasing will not look correct for translucent polygons and may not work on certain platforms. As a workaround, install the [https://github.com/godot-extended-libraries/godot-antialiased-line2d](Antialiased Line2D) add-on then create an AntialiasedPolygon2D node. That node relies on a texture with custom mipmaps to perform antialiasing.
 		
 		@param uvs If the parameter is null, then the default value is Array.Empty&lt;Vector2&gt;()
 	**/

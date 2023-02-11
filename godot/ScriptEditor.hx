@@ -14,8 +14,6 @@ Note: This class shouldn't be instantiated directly. Instead, access the singlet
 extern abstract class ScriptEditor extends godot.PanelContainer {
 	/**
 		`editor_script_changed` signal.
-		
-		Emitted when user changed active script. Argument is a freshly activated `Script`.
 	**/
 	public var onEditorScriptChanged(get, never):Signal<(script:Script)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onEditorScriptChanged():Signal<(script:Script)->Void> {
@@ -24,8 +22,6 @@ extern abstract class ScriptEditor extends godot.PanelContainer {
 
 	/**
 		`script_close` signal.
-		
-		Emitted when editor is about to close the active script. Argument is a `Script` that is going to be closed.
 	**/
 	public var onScriptClose(get, never):Signal<(script:Script)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onScriptClose():Signal<(script:Script)->Void> {

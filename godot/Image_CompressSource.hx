@@ -19,4 +19,9 @@ extern enum Image_CompressSource {
 		Source texture (before compression) is a normal texture (e.g. it can be compressed into two channels).
 	**/
 	Normal;
+
+	/**		
+		Source texture (before compression) is a `godot.TextureLayered`.
+	**/
+	Layered;
 }

@@ -13,13 +13,13 @@ Stores general mouse events information.
 @:autoBuild(godot.Godot.buildUserClass())
 extern abstract class InputEventMouse extends godot.InputEventWithModifiers {
 	/**		
-		The global mouse position relative to the current `godot.Viewport` when used in `godot.Control._GuiInput`, otherwise is at 0,0.
+		The global mouse position relative to the current `godot.Viewport`. If used in `godot.Control._GuiInput` and if the current `godot.Control` is not under the mouse, moving it will not update this value.
 	**/
 	@:native("GlobalPosition")
 	public var globalPosition:godot.Vector2;
 
 	/**		
-		The local mouse position relative to the `godot.Viewport`. If used in `godot.Control._GuiInput`, the position is relative to the current `godot.Control` which is under the mouse.
+		The local mouse position relative to the `godot.Viewport`. If used in `godot.Control._GuiInput`, the position is relative to the current `godot.Control` which is under the mouse. If the current `godot.Control` is not under the mouse, moving it will not update this value.
 	**/
 	@:native("Position")
 	public var position:godot.Vector2;

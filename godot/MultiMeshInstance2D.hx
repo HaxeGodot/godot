@@ -16,8 +16,6 @@ Usage is the same as `godot.MultiMeshInstance`.
 extern class MultiMeshInstance2D extends godot.Node2D {
 	/**
 		`texture_changed` signal.
-		
-		Emitted when the `texture` is changed.
 	**/
 	public var onTextureChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTextureChanged():Signal<Void->Void> {
@@ -27,7 +25,7 @@ extern class MultiMeshInstance2D extends godot.Node2D {
 	/**		
 		The normal map that will be used if using the default `godot.CanvasItemMaterial`.
 		
-		Note: Godot expects the normal map to use X+, Y-, and Z+ coordinates. See [http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#Common_Swizzle_Coordinates](this page) for a comparison of normal map coordinates expected by popular engines.
+		Note: Godot expects the normal map to use X+, Y+, and Z+ coordinates. See [http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#Common_Swizzle_Coordinates](this page) for a comparison of normal map coordinates expected by popular engines.
 	**/
 	@:native("NormalMap")
 	public var normalMap:godot.Texture;

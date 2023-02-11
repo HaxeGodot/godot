@@ -16,8 +16,6 @@ See also `godot.BaseButton` which contains common properties and methods associa
 extern class OptionButton extends godot.Button {
 	/**
 		`item_focused` signal.
-		
-		Emitted when the user navigates to an item using the `ui_up` or `ui_down` actions. The index of the item selected is passed as argument.
 	**/
 	public var onItemFocused(get, never):Signal<(index:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemFocused():Signal<(index:Int)->Void> {
@@ -26,8 +24,6 @@ extern class OptionButton extends godot.Button {
 
 	/**
 		`item_selected` signal.
-		
-		Emitted when the current item has been changed by the user. The index of the item selected is passed as argument.
 	**/
 	public var onItemSelected(get, never):Signal<(index:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemSelected():Signal<(index:Int)->Void> {

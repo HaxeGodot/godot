@@ -97,7 +97,7 @@ extern class SpatialMaterial extends godot.Material {
 	/**		
 		Texture that specifies the per-pixel normal of the detail overlay.
 		
-		Note: Godot expects the normal map to use X+, Y-, and Z+ coordinates. See [http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#Common_Swizzle_Coordinates](this page) for a comparison of normal map coordinates expected by popular engines.
+		Note: Godot expects the normal map to use X+, Y+, and Z+ coordinates. See [http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#Common_Swizzle_Coordinates](this page) for a comparison of normal map coordinates expected by popular engines.
 	**/
 	@:native("DetailNormal")
 	public var detailNormal:godot.Texture;
@@ -273,19 +273,25 @@ extern class SpatialMaterial extends godot.Material {
 	public var aoEnabled:Bool;
 
 	/**		
-		Texture that offsets the tangent map for anisotropy calculations.
+		Texture that offsets the tangent map for anisotropy calculations and optionally controls the anisotropy effect (if an alpha channel is present). The flowmap texture is expected to be a derivative map, with the red channel representing distortion on the X axis and green channel representing distortion on the Y axis. Values below 0.5 will result in negative distortion, whereas values above 0.5 will result in positive distortion.
+		
+		If present, the texture's alpha channel will be used to multiply the strength of the `godot.SpatialMaterial.anisotropy` effect. Fully opaque pixels will keep the anisotropy effect's original strength while fully transparent pixels will disable the anisotropy effect entirely. The flowmap texture's blue channel is ignored.
 	**/
 	@:native("AnisotropyFlowmap")
 	public var anisotropyFlowmap:godot.Texture;
 
 	/**		
-		The strength of the anisotropy effect.
+		The strength of the anisotropy effect. This is multiplied by `godot.SpatialMaterial.anisotropyFlowmap`'s alpha channel if a texture is defined there and the texture contains an alpha channel.
 	**/
 	@:native("Anisotropy")
 	public var anisotropy:Single;
 
 	/**		
-		If `true`, anisotropy is enabled. Changes the shape of the specular blob and aligns it to tangent space. Mesh tangents are needed for this to work. If the mesh does not contain tangents the anisotropy effect will appear broken.
+		If `true`, anisotropy is enabled. Anisotropy changes the shape of the specular blob and aligns it to tangent space. This is useful for brushed aluminium and hair reflections.
+		
+		Note: Mesh tangents are needed for anisotropy to work. If the mesh does not contain tangents, the anisotropy effect will appear broken.
+		
+		Note: Material anisotropy should not to be confused with anisotropic texture filtering. Anisotropic texture filtering can be enabled by selecting a texture in the FileSystem dock, going to the Import dock, checking the Anisotropic checkbox then clicking Reimport.
 	**/
 	@:native("AnisotropyEnabled")
 	public var anisotropyEnabled:Bool;
@@ -347,7 +353,7 @@ extern class SpatialMaterial extends godot.Material {
 		
 		Note: The mesh must have both normals and tangents defined in its vertex data. Otherwise, the normal map won't render correctly and will only appear to darken the whole surface. If creating geometry with `godot.SurfaceTool`, you can use `godot.SurfaceTool.generateNormals` and `godot.SurfaceTool.generateTangents` to automatically generate normals and tangents respectively.
 		
-		Note: Godot expects the normal map to use X+, Y-, and Z+ coordinates. See [http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#Common_Swizzle_Coordinates](this page) for a comparison of normal map coordinates expected by popular engines.
+		Note: Godot expects the normal map to use X+, Y+, and Z+ coordinates. See [http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#Common_Swizzle_Coordinates](this page) for a comparison of normal map coordinates expected by popular engines.
 	**/
 	@:native("NormalTexture")
 	public var normalTexture:godot.Texture;
@@ -619,7 +625,13 @@ extern class SpatialMaterial extends godot.Material {
 	public var flagsNoDepthTest:Bool;
 
 	/**		
-		If `true`, lighting is calculated per vertex rather than per pixel. This may increase performance on low-end devices.
+		If `true`, lighting is calculated per vertex rather than per pixel. This may increase performance on low-end devices, especially for meshes with a lower polygon count. The downside is that shading becomes much less accurate, with visible linear interpolation between vertices that are joined together. This can be compensated by ensuring meshes have a sufficient level of subdivision (but not too much, to avoid reducing performance). Some material features are also not supported when vertex shading is enabled.
+		
+		See also  which can globally enable vertex shading on all materials.
+		
+		Note: By default, vertex shading is enforced on mobile platforms by 's `mobile` override.
+		
+		Note: `godot.SpatialMaterial.flagsVertexLighting` has no effect if `godot.SpatialMaterial.flagsUnshaded` is `true`.
 	**/
 	@:native("FlagsVertexLighting")
 	public var flagsVertexLighting:Bool;

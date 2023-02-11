@@ -19,13 +19,13 @@ extern class HeightMapShape extends godot.Shape {
 	public var mapData:cs.NativeArray<Single>;
 
 	/**		
-		Depth of the height map data. Changing this will resize the `godot.HeightMapShape.mapData`.
+		Number of vertices in the depth of the height map. Changing this will resize the `godot.HeightMapShape.mapData`.
 	**/
 	@:native("MapDepth")
 	public var mapDepth:Int;
 
 	/**		
-		Width of the height map data. Changing this will resize the `godot.HeightMapShape.mapData`.
+		Number of vertices in the width of the height map. Changing this will resize the `godot.HeightMapShape.mapData`.
 	**/
 	@:native("MapWidth")
 	public var mapWidth:Int;

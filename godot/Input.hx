@@ -14,8 +14,6 @@ A singleton that deals with inputs. This includes key presses, mouse buttons and
 extern class Input {
 	/**
 		`joy_connection_changed` signal.
-		
-		Emitted when a joypad device has been connected or disconnected.
 	**/
 	public static var onJoyConnectionChanged(get, never):Signal<(device:Int, connected:Bool)->Void>;
 	@:dox(hide) @:noCompletion inline static function get_onJoyConnectionChanged():Signal<(device:Int, connected:Bool)->Void> {
@@ -26,10 +24,24 @@ extern class Input {
 	public static var SINGLETON(default, never):godot.Object;
 
 	/**		
-		Returns `true` if you are pressing the key. You can pass a `godot.KeyList` constant.
+		Returns `true` if you are pressing the key in the current keyboard layout. You can pass a `godot.KeyList` constant.
+		
+		`godot.Input.isKeyPressed` is only recommended over `godot.Input.isPhysicalKeyPressed` in non-game applications. This ensures that shortcut keys behave as expected depending on the user's keyboard layout, as keyboard shortcuts are generally dependent on the keyboard layout in non-game applications. If in doubt, use `godot.Input.isPhysicalKeyPressed`.
+		
+		Note: Due to keyboard ghosting, `godot.Input.isKeyPressed` may return `false` even if one of the action's keys is pressed. See [https://docs.godotengine.org/en/3.4/tutorials/inputs/input_examples.html#keyboard-events](Input examples) in the documentation for more information.
 	**/
 	@:native("IsKeyPressed")
 	public static function isKeyPressed(scancode:Int):Bool;
+
+	/**		
+		Returns `true` if you are pressing the key in the physical location on the 101/102-key US QWERTY keyboard. You can pass a `godot.KeyList` constant.
+		
+		`godot.Input.isPhysicalKeyPressed` is recommended over `godot.Input.isKeyPressed` for in-game actions, as it will make W/A/S/D layouts work regardless of the user's keyboard layout. `godot.Input.isPhysicalKeyPressed` will also ensure that the top row number keys work on any keyboard layout. If in doubt, use `godot.Input.isPhysicalKeyPressed`.
+		
+		Note: Due to keyboard ghosting, `godot.Input.isPhysicalKeyPressed` may return `false` even if one of the action's keys is pressed. See [https://docs.godotengine.org/en/3.4/tutorials/inputs/input_examples.html#keyboard-events](Input examples) in the documentation for more information.
+	**/
+	@:native("IsPhysicalKeyPressed")
+	public static function isPhysicalKeyPressed(scancode:Int):Bool;
 
 	/**		
 		Returns `true` if you are pressing the mouse button specified with `godot.ButtonList`.
@@ -48,6 +60,8 @@ extern class Input {
 		Returns `true` if you are pressing the action event. Note that if an action has multiple buttons assigned and more than one of them is pressed, releasing one button will release the action, even if some other button assigned to this action is still pressed.
 		
 		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+		
+		Note: Due to keyboard ghosting, `godot.Input.isActionPressed` may return `false` even if one of the action's keys is pressed. See [https://docs.godotengine.org/en/3.4/tutorials/inputs/input_examples.html#keyboard-events](Input examples) in the documentation for more information.
 	**/
 	@:native("IsActionPressed")
 	public static function isActionPressed(action:std.String, ?exact:Bool):Bool;
@@ -56,6 +70,8 @@ extern class Input {
 		Returns `true` if you are pressing the action event. Note that if an action has multiple buttons assigned and more than one of them is pressed, releasing one button will release the action, even if some other button assigned to this action is still pressed.
 		
 		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+		
+		Note: Due to keyboard ghosting, `godot.Input.isActionPressed` may return `false` even if one of the action's keys is pressed. See [https://docs.godotengine.org/en/3.4/tutorials/inputs/input_examples.html#keyboard-events](Input examples) in the documentation for more information.
 	**/
 	@:native("IsActionPressed")
 	public static overload function isActionPressed(action:godot.Action):Bool;
@@ -64,6 +80,8 @@ extern class Input {
 		Returns `true` if you are pressing the action event. Note that if an action has multiple buttons assigned and more than one of them is pressed, releasing one button will release the action, even if some other button assigned to this action is still pressed.
 		
 		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+		
+		Note: Due to keyboard ghosting, `godot.Input.isActionPressed` may return `false` even if one of the action's keys is pressed. See [https://docs.godotengine.org/en/3.4/tutorials/inputs/input_examples.html#keyboard-events](Input examples) in the documentation for more information.
 	**/
 	@:native("IsActionPressed")
 	public static overload function isActionPressed(action:godot.Action, exact:Bool):Bool;
@@ -76,6 +94,8 @@ extern class Input {
 		This is useful for code that needs to run only once when an action is pressed, instead of every frame while it's pressed.
 		
 		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+		
+		Note: Due to keyboard ghosting, `godot.Input.isActionJustPressed` may return `false` even if one of the action's keys is pressed. See [https://docs.godotengine.org/en/3.4/tutorials/inputs/input_examples.html#keyboard-events](Input examples) in the documentation for more information.
 	**/
 	@:native("IsActionJustPressed")
 	public static function isActionJustPressed(action:std.String, ?exact:Bool):Bool;
@@ -86,6 +106,8 @@ extern class Input {
 		This is useful for code that needs to run only once when an action is pressed, instead of every frame while it's pressed.
 		
 		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+		
+		Note: Due to keyboard ghosting, `godot.Input.isActionJustPressed` may return `false` even if one of the action's keys is pressed. See [https://docs.godotengine.org/en/3.4/tutorials/inputs/input_examples.html#keyboard-events](Input examples) in the documentation for more information.
 	**/
 	@:native("IsActionJustPressed")
 	public static overload function isActionJustPressed(action:godot.Action):Bool;
@@ -96,6 +118,8 @@ extern class Input {
 		This is useful for code that needs to run only once when an action is pressed, instead of every frame while it's pressed.
 		
 		If `exact` is `false`, it ignores the input modifiers for `godot.InputEventKey` and `godot.InputEventMouseButton` events, and the direction for `godot.InputEventJoypadMotion` events.
+		
+		Note: Due to keyboard ghosting, `godot.Input.isActionJustPressed` may return `false` even if one of the action's keys is pressed. See [https://docs.godotengine.org/en/3.4/tutorials/inputs/input_examples.html#keyboard-events](Input examples) in the documentation for more information.
 	**/
 	@:native("IsActionJustPressed")
 	public static overload function isActionJustPressed(action:godot.Action, exact:Bool):Bool;
@@ -468,7 +492,9 @@ extern class Input {
 	public static function getMouseMode():godot.Input_MouseMode;
 
 	/**		
-		Sets the mouse position to the specified vector.
+		Sets the mouse position to the specified vector, provided in pixels and relative to an origin at the upper left corner of the game window.
+		
+		Mouse position is clipped to the limits of the screen resolution, or to the limits of the game window if `godot.Input_MouseMode` is set to `godot.Input_MouseMode.confined`.
 	**/
 	@:native("WarpMousePosition")
 	public static function warpMousePosition(to:godot.Vector2):Void;
@@ -635,7 +661,9 @@ extern class Input {
 	/**		
 		Enables or disables the accumulation of similar input events sent by the operating system. When input accumulation is enabled, all input events generated during a frame will be merged and emitted when the frame is done rendering. Therefore, this limits the number of input method calls per second to the rendering FPS.
 		
-		Input accumulation is enabled by default. It can be disabled to get slightly more precise/reactive input at the cost of increased CPU usage. In applications where drawing freehand lines is required, input accumulation should generally be disabled while the user is drawing the line to get results that closely follow the actual input.
+		Input accumulation can be disabled to get slightly more precise/reactive input at the cost of increased CPU usage. In applications where drawing freehand lines is required, input accumulation should generally be disabled while the user is drawing the line to get results that closely follow the actual input.
+		
+		Note: Input accumulation is disabled by default for backward compatibility reasons. It is however recommended to enable it for games which don't require very reactive input, as this will decrease CPU usage.
 	**/
 	@:native("SetUseAccumulatedInput")
 	public static function setUseAccumulatedInput(enable:Bool):Void;

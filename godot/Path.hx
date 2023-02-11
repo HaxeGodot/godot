@@ -16,8 +16,6 @@ Note that the path is considered as relative to the moved nodes (children of `go
 extern class Path extends godot.Spatial {
 	/**
 		`curve_changed` signal.
-		
-		Emitted when the `curve` changes.
 	**/
 	public var onCurveChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onCurveChanged():Signal<Void->Void> {

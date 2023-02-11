@@ -266,19 +266,19 @@ extern class OS {
 
 	#if doc_gen
 	/**		
-		Returns the position of the specified screen by index. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Returns the position of the specified screen by index. If `screen` is `-1` (the default value), the current screen will be used.
 	**/
 	@:native("GetScreenPosition")
 	public static function getScreenPosition(?screen:Int):godot.Vector2;
 	#else
 	/**		
-		Returns the position of the specified screen by index. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Returns the position of the specified screen by index. If `screen` is `-1` (the default value), the current screen will be used.
 	**/
 	@:native("GetScreenPosition")
 	public static overload function getScreenPosition():godot.Vector2;
 
 	/**		
-		Returns the position of the specified screen by index. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Returns the position of the specified screen by index. If `screen` is `-1` (the default value), the current screen will be used.
 	**/
 	@:native("GetScreenPosition")
 	public static overload function getScreenPosition(screen:Int):godot.Vector2;
@@ -286,19 +286,19 @@ extern class OS {
 
 	#if doc_gen
 	/**		
-		Returns the dimensions in pixels of the specified screen. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Returns the dimensions in pixels of the specified screen. If `screen` is `-1` (the default value), the current screen will be used.
 	**/
 	@:native("GetScreenSize")
 	public static function getScreenSize(?screen:Int):godot.Vector2;
 	#else
 	/**		
-		Returns the dimensions in pixels of the specified screen. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Returns the dimensions in pixels of the specified screen. If `screen` is `-1` (the default value), the current screen will be used.
 	**/
 	@:native("GetScreenSize")
 	public static overload function getScreenSize():godot.Vector2;
 
 	/**		
-		Returns the dimensions in pixels of the specified screen. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Returns the dimensions in pixels of the specified screen. If `screen` is `-1` (the default value), the current screen will be used.
 	**/
 	@:native("GetScreenSize")
 	public static overload function getScreenSize(screen:Int):godot.Vector2;
@@ -306,7 +306,7 @@ extern class OS {
 
 	#if doc_gen
 	/**		
-		Returns the dots per inch density of the specified screen. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Returns the dots per inch density of the specified screen. If `screen` is `-1` (the default value), the current screen will be used.
 		
 		Note: On macOS, returned value is inaccurate if fractional display scaling mode is used.
 		
@@ -329,7 +329,7 @@ extern class OS {
 	public static function getScreenDpi(?screen:Int):Int;
 	#else
 	/**		
-		Returns the dots per inch density of the specified screen. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Returns the dots per inch density of the specified screen. If `screen` is `-1` (the default value), the current screen will be used.
 		
 		Note: On macOS, returned value is inaccurate if fractional display scaling mode is used.
 		
@@ -352,7 +352,7 @@ extern class OS {
 	public static overload function getScreenDpi():Int;
 
 	/**		
-		Returns the dots per inch density of the specified screen. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Returns the dots per inch density of the specified screen. If `screen` is `-1` (the default value), the current screen will be used.
 		
 		Note: On macOS, returned value is inaccurate if fractional display scaling mode is used.
 		
@@ -377,7 +377,7 @@ extern class OS {
 
 	#if doc_gen
 	/**		
-		Return the scale factor of the specified screen by index. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Return the scale factor of the specified screen by index. If `screen` is `-1` (the default value), the current screen will be used.
 		
 		Note: On macOS returned value is `2.0` for hiDPI (Retina) screen, and `1.0` for all other cases.
 		
@@ -387,7 +387,7 @@ extern class OS {
 	public static function getScreenScale(?screen:Int):Single;
 	#else
 	/**		
-		Return the scale factor of the specified screen by index. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Return the scale factor of the specified screen by index. If `screen` is `-1` (the default value), the current screen will be used.
 		
 		Note: On macOS returned value is `2.0` for hiDPI (Retina) screen, and `1.0` for all other cases.
 		
@@ -397,7 +397,7 @@ extern class OS {
 	public static overload function getScreenScale():Single;
 
 	/**		
-		Return the scale factor of the specified screen by index. If `screen` is [/code]-1[/code] (the default value), the current screen will be used.
+		Return the scale factor of the specified screen by index. If `screen` is `-1` (the default value), the current screen will be used.
 		
 		Note: On macOS returned value is `2.0` for hiDPI (Retina) screen, and `1.0` for all other cases.
 		
@@ -701,6 +701,12 @@ extern class OS {
 		
 		Note: This method is implemented on Android, iOS, Linux, macOS and Windows.
 		
+		Note: To execute a Windows command interpreter built-in command, specify `cmd.exe` in `path`, `/c` as the first argument, and the desired command as the second argument.
+		
+		Note: To execute a PowerShell built-in command, specify `powershell.exe` in `path`, `-Command` as the first argument, and the desired command as the second argument.
+		
+		Note: To execute a Unix shell built-in command, specify shell executable name in `path`, `-c` as the first argument, and the desired command as the second argument.
+		
 		@param output If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
@@ -745,6 +751,12 @@ extern class OS {
 		```
 		
 		Note: This method is implemented on Android, iOS, Linux, macOS and Windows.
+		
+		Note: To execute a Windows command interpreter built-in command, specify `cmd.exe` in `path`, `/c` as the first argument, and the desired command as the second argument.
+		
+		Note: To execute a PowerShell built-in command, specify `powershell.exe` in `path`, `-Command` as the first argument, and the desired command as the second argument.
+		
+		Note: To execute a Unix shell built-in command, specify shell executable name in `path`, `-c` as the first argument, and the desired command as the second argument.
 		
 		@param output If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
@@ -791,6 +803,12 @@ extern class OS {
 		
 		Note: This method is implemented on Android, iOS, Linux, macOS and Windows.
 		
+		Note: To execute a Windows command interpreter built-in command, specify `cmd.exe` in `path`, `/c` as the first argument, and the desired command as the second argument.
+		
+		Note: To execute a PowerShell built-in command, specify `powershell.exe` in `path`, `-Command` as the first argument, and the desired command as the second argument.
+		
+		Note: To execute a Unix shell built-in command, specify shell executable name in `path`, `-c` as the first argument, and the desired command as the second argument.
+		
 		@param output If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
@@ -836,6 +854,12 @@ extern class OS {
 		
 		Note: This method is implemented on Android, iOS, Linux, macOS and Windows.
 		
+		Note: To execute a Windows command interpreter built-in command, specify `cmd.exe` in `path`, `/c` as the first argument, and the desired command as the second argument.
+		
+		Note: To execute a PowerShell built-in command, specify `powershell.exe` in `path`, `-Command` as the first argument, and the desired command as the second argument.
+		
+		Note: To execute a Unix shell built-in command, specify shell executable name in `path`, `-c` as the first argument, and the desired command as the second argument.
+		
 		@param output If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
 	@:native("Execute")
@@ -880,6 +904,12 @@ extern class OS {
 		```
 		
 		Note: This method is implemented on Android, iOS, Linux, macOS and Windows.
+		
+		Note: To execute a Windows command interpreter built-in command, specify `cmd.exe` in `path`, `/c` as the first argument, and the desired command as the second argument.
+		
+		Note: To execute a PowerShell built-in command, specify `powershell.exe` in `path`, `-Command` as the first argument, and the desired command as the second argument.
+		
+		Note: To execute a Unix shell built-in command, specify shell executable name in `path`, `-c` as the first argument, and the desired command as the second argument.
 		
 		@param output If the parameter is null, then the default value is new Godot.Collections.Array { }
 	**/
@@ -969,6 +999,10 @@ extern class OS {
 		if argument.find("=") &gt; -1:
 		var key_value = argument.split("=")
 		arguments[key_value[0].lstrip("--")] = key_value[1]
+		else:
+		# Options without an argument will be present in the dictionary,
+		# with the value set to an empty string.
+		arguments[argument.lstrip("--")] = ""
 		
 		```
 	**/
@@ -1389,7 +1423,7 @@ extern class OS {
 	#end
 
 	/**		
-		Returns the amount of static memory being used by the program in bytes.
+		Returns the amount of static memory being used by the program in bytes (only works in debug).
 	**/
 	@:native("GetStaticMemoryUsage")
 	public static function getStaticMemoryUsage():cs.types.UInt64;
@@ -1625,7 +1659,7 @@ extern class OS {
 	public static function isDeltaSmoothingEnabled():Bool;
 
 	/**		
-		Returns `true` if the feature for the given feature tag is supported in the currently running instance, depending on the platform, build etc. Can be used to check whether you're currently running a debug build, on a certain platform or arch, etc. Refer to the [https://docs.godotengine.org/en/3.4/getting_started/workflow/export/feature_tags.html](Feature Tags) documentation for more details.
+		Returns `true` if the feature for the given feature tag is supported in the currently running instance, depending on the platform, build etc. Can be used to check whether you're currently running a debug build, on a certain platform or arch, etc. Refer to the [https://docs.godotengine.org/en/3.4/tutorials/export/feature_tags.html](Feature Tags) documentation for more details.
 		
 		Note: Tag names are case-sensitive.
 	**/

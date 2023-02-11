@@ -14,8 +14,6 @@ A node that displays a 2D texture. The texture displayed can be a region from a 
 extern class Sprite extends godot.Node2D {
 	/**
 		`frame_changed` signal.
-		
-		Emitted when the `frame` changes.
 	**/
 	public var onFrameChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFrameChanged():Signal<Void->Void> {
@@ -24,8 +22,6 @@ extern class Sprite extends godot.Node2D {
 
 	/**
 		`texture_changed` signal.
-		
-		Emitted when the `texture` changes.
 	**/
 	public var onTextureChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTextureChanged():Signal<Void->Void> {

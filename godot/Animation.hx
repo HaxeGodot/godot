@@ -28,8 +28,6 @@ Animations are just data containers, and must be added to nodes such as an `godo
 extern class Animation extends godot.Resource {
 	/**
 		`tracks_changed` signal.
-		
-		Emitted when there's a change in the list of tracks, e.g. tracks are added, moved or have changed paths.
 	**/
 	public var onTracksChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTracksChanged():Signal<Void->Void> {

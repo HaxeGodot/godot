@@ -31,8 +31,6 @@ To iterate over all the `godot.TreeItem` objects in a `godot.Tree` object, use `
 extern class Tree extends godot.Control {
 	/**
 		`button_pressed` signal.
-		
-		Emitted when a button on the tree was pressed (see `treeItem.addButton`).
 	**/
 	public var onButtonPressed(get, never):Signal<(item:TreeItem, column:Int, id:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onButtonPressed():Signal<(item:TreeItem, column:Int, id:Int)->Void> {
@@ -41,8 +39,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`cell_selected` signal.
-		
-		Emitted when a cell is selected.
 	**/
 	public var onCellSelected(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onCellSelected():Signal<Void->Void> {
@@ -51,8 +47,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`column_title_pressed` signal.
-		
-		Emitted when a column's title is pressed.
 	**/
 	public var onColumnTitlePressed(get, never):Signal<(column:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onColumnTitlePressed():Signal<(column:Int)->Void> {
@@ -61,8 +55,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`custom_popup_edited` signal.
-		
-		Emitted when a cell with the `CELL_MODE_CUSTOM` is clicked to be edited.
 	**/
 	public var onCustomPopupEdited(get, never):Signal<(arrowClicked:Bool)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onCustomPopupEdited():Signal<(arrowClicked:Bool)->Void> {
@@ -71,8 +63,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`empty_rmb` signal.
-		
-		Emitted when the right mouse button is pressed in the empty space of the tree.
 	**/
 	public var onEmptyRmb(get, never):Signal<(position:Vector2)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onEmptyRmb():Signal<(position:Vector2)->Void> {
@@ -81,8 +71,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`empty_tree_rmb_selected` signal.
-		
-		Emitted when the right mouse button is pressed if right mouse button selection is active and the tree is empty.
 	**/
 	public var onEmptyTreeRmbSelected(get, never):Signal<(position:Vector2)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onEmptyTreeRmbSelected():Signal<(position:Vector2)->Void> {
@@ -91,8 +79,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`item_activated` signal.
-		
-		Emitted when an item's label is double-clicked.
 	**/
 	public var onItemActivated(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemActivated():Signal<Void->Void> {
@@ -101,8 +87,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`item_collapsed` signal.
-		
-		Emitted when an item is collapsed by a click on the folding arrow.
 	**/
 	public var onItemCollapsed(get, never):Signal<(item:TreeItem)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemCollapsed():Signal<(item:TreeItem)->Void> {
@@ -111,8 +95,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`item_custom_button_pressed` signal.
-		
-		Emitted when a custom button is pressed (i.e. in a `CELL_MODE_CUSTOM` mode cell).
 	**/
 	public var onItemCustomButtonPressed(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemCustomButtonPressed():Signal<Void->Void> {
@@ -121,8 +103,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`item_double_clicked` signal.
-		
-		Emitted when an item's icon is double-clicked.
 	**/
 	public var onItemDoubleClicked(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemDoubleClicked():Signal<Void->Void> {
@@ -131,8 +111,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`item_edited` signal.
-		
-		Emitted when an item is edited.
 	**/
 	public var onItemEdited(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemEdited():Signal<Void->Void> {
@@ -141,8 +119,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`item_rmb_edited` signal.
-		
-		Emitted when an item is edited using the right mouse button.
 	**/
 	public var onItemRmbEdited(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemRmbEdited():Signal<Void->Void> {
@@ -151,8 +127,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`item_rmb_selected` signal.
-		
-		Emitted when an item is selected with the right mouse button.
 	**/
 	public var onItemRmbSelected(get, never):Signal<(position:Vector2)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemRmbSelected():Signal<(position:Vector2)->Void> {
@@ -161,8 +135,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`item_selected` signal.
-		
-		Emitted when an item is selected.
 	**/
 	public var onItemSelected(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onItemSelected():Signal<Void->Void> {
@@ -171,8 +143,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`multi_selected` signal.
-		
-		Emitted instead of `item_selected` if `select_mode` is `SELECT_MULTI`.
 	**/
 	public var onMultiSelected(get, never):Signal<(item:TreeItem, column:Int, selected:Bool)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onMultiSelected():Signal<(item:TreeItem, column:Int, selected:Bool)->Void> {
@@ -181,8 +151,6 @@ extern class Tree extends godot.Control {
 
 	/**
 		`nothing_selected` signal.
-		
-		Emitted when a left mouse button click does not select any item.
 	**/
 	public var onNothingSelected(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNothingSelected():Signal<Void->Void> {
@@ -244,7 +212,7 @@ extern class Tree extends godot.Control {
 
 	#if doc_gen
 	/**		
-		Creates an item in the tree and adds it as a child of `parent`.
+		Creates an item in the tree and adds it as a child of `parent`, which can be either a valid `godot.TreeItem` or `null`.
 		
 		If `parent` is `null`, the root item will be the parent, or the new item will be the root itself if the tree is empty.
 		
@@ -254,7 +222,7 @@ extern class Tree extends godot.Control {
 	public function createItem(?parent:godot.Object, ?idx:Int):godot.TreeItem;
 	#else
 	/**		
-		Creates an item in the tree and adds it as a child of `parent`.
+		Creates an item in the tree and adds it as a child of `parent`, which can be either a valid `godot.TreeItem` or `null`.
 		
 		If `parent` is `null`, the root item will be the parent, or the new item will be the root itself if the tree is empty.
 		
@@ -264,7 +232,7 @@ extern class Tree extends godot.Control {
 	public overload function createItem():godot.TreeItem;
 
 	/**		
-		Creates an item in the tree and adds it as a child of `parent`.
+		Creates an item in the tree and adds it as a child of `parent`, which can be either a valid `godot.TreeItem` or `null`.
 		
 		If `parent` is `null`, the root item will be the parent, or the new item will be the root itself if the tree is empty.
 		
@@ -274,7 +242,7 @@ extern class Tree extends godot.Control {
 	public overload function createItem(parent:godot.Object):godot.TreeItem;
 
 	/**		
-		Creates an item in the tree and adds it as a child of `parent`.
+		Creates an item in the tree and adds it as a child of `parent`, which can be either a valid `godot.TreeItem` or `null`.
 		
 		If `parent` is `null`, the root item will be the parent, or the new item will be the root itself if the tree is empty.
 		
@@ -315,7 +283,7 @@ extern class Tree extends godot.Control {
 	public function isRootHidden():Bool;
 
 	/**		
-		Returns the next selected item after the given one, or `null` if the end is reached.
+		Returns the next selected `godot.TreeItem` after the given one, or `null` if the end is reached.
 		
 		If `from` is `null`, this returns the first selected item.
 	**/
@@ -366,7 +334,7 @@ extern class Tree extends godot.Control {
 		```
 		
 		func _ready():
-		$Tree.item_edited.connect(on_Tree_item_edited)
+		$Tree.connect("item_edited", self, "on_Tree_item_edited")
 		
 		func on_Tree_item_edited():
 		print($Tree.get_edited()) # This item just got edited (e.g. checked).
@@ -396,19 +364,19 @@ extern class Tree extends godot.Control {
 
 	#if doc_gen
 	/**		
-		Returns the rectangle area for the specified item. If `column` is specified, only get the position and size of that column, otherwise get the rectangle containing all columns.
+		Returns the rectangle area for the specified `godot.TreeItem`. If `column` is specified, only get the position and size of that column, otherwise get the rectangle containing all columns.
 	**/
 	@:native("GetItemAreaRect")
 	public function getItemAreaRect(item:godot.Object, ?column:Int):godot.Rect2;
 	#else
 	/**		
-		Returns the rectangle area for the specified item. If `column` is specified, only get the position and size of that column, otherwise get the rectangle containing all columns.
+		Returns the rectangle area for the specified `godot.TreeItem`. If `column` is specified, only get the position and size of that column, otherwise get the rectangle containing all columns.
 	**/
 	@:native("GetItemAreaRect")
 	public overload function getItemAreaRect(item:godot.Object):godot.Rect2;
 
 	/**		
-		Returns the rectangle area for the specified item. If `column` is specified, only get the position and size of that column, otherwise get the rectangle containing all columns.
+		Returns the rectangle area for the specified `godot.TreeItem`. If `column` is specified, only get the position and size of that column, otherwise get the rectangle containing all columns.
 	**/
 	@:native("GetItemAreaRect")
 	public overload function getItemAreaRect(item:godot.Object, column:Int):godot.Rect2;
@@ -477,7 +445,7 @@ extern class Tree extends godot.Control {
 	public function getScroll():godot.Vector2;
 
 	/**		
-		Causes the `godot.Tree` to jump to the specified item.
+		Causes the `godot.Tree` to jump to the specified `godot.TreeItem`.
 	**/
 	@:native("ScrollToItem")
 	public function scrollToItem(item:godot.Object):Void;

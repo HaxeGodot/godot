@@ -18,8 +18,6 @@ Note: Unless otherwise specified, all methods that have angle parameters must ha
 extern class Spatial extends godot.Node {
 	/**
 		`gameplay_entered` signal.
-		
-		Emitted by portal system gameplay monitor when a node enters the gameplay area.
 	**/
 	public var onGameplayEntered(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onGameplayEntered():Signal<Void->Void> {
@@ -28,8 +26,6 @@ extern class Spatial extends godot.Node {
 
 	/**
 		`gameplay_exited` signal.
-		
-		Emitted by portal system gameplay monitor when a node exits the gameplay area.
 	**/
 	public var onGameplayExited(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onGameplayExited():Signal<Void->Void> {
@@ -38,8 +34,6 @@ extern class Spatial extends godot.Node {
 
 	/**
 		`visibility_changed` signal.
-		
-		Emitted when node visibility changes.
 	**/
 	public var onVisibilityChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onVisibilityChanged():Signal<Void->Void> {
@@ -362,9 +356,11 @@ extern class Spatial extends godot.Node {
 	public function setIdentity():Void;
 
 	/**		
-		Rotates itself so that the local -Z axis points towards the `target` position.
+		Rotates the node so that the local forward axis (-Z) points toward the `target` position.
 		
-		The transform will first be rotated around the given `up` vector, and then fully aligned to the target by a further rotation around an axis perpendicular to both the `target` and `up` vectors.
+		The local up axis (+Y) points as close to the `up` vector as possible while staying perpendicular to the local forward axis. The resulting transform is orthogonal, and the scale is preserved. Non-uniform scaling may not work correctly.
+		
+		The `target` position cannot be the same as the node's position, the `up` vector cannot be zero, and the direction from the node's position to the `target` vector cannot be parallel to the `up` vector.
 		
 		Operations take place in global space.
 	**/

@@ -82,8 +82,6 @@ texture_rect.texture = texture
 extern class HTTPRequest extends godot.Node {
 	/**
 		`request_completed` signal.
-		
-		Emitted when a request is completed.
 	**/
 	public var onRequestCompleted(get, never):Signal<(result:Int, responseCode:Int, headers:std.Array<std.String>, body:std.Array<cs.types.UInt8>)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onRequestCompleted():Signal<(result:Int, responseCode:Int, headers:std.Array<std.String>, body:std.Array<cs.types.UInt8>)->Void> {

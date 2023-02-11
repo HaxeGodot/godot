@@ -18,8 +18,6 @@ You can also use the `godot.SceneTree` to organize your nodes into groups: every
 extern class SceneTree extends godot.MainLoop {
 	/**
 		`connected_to_server` signal.
-		
-		Emitted whenever this `SceneTree`'s `networkPeer` successfully connected to a server. Only emitted on clients.
 	**/
 	public var onConnectedToServer(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onConnectedToServer():Signal<Void->Void> {
@@ -28,8 +26,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`connection_failed` signal.
-		
-		Emitted whenever this `SceneTree`'s `networkPeer` fails to establish a connection to a server. Only emitted on clients.
 	**/
 	public var onConnectionFailed(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onConnectionFailed():Signal<Void->Void> {
@@ -38,8 +34,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`files_dropped` signal.
-		
-		Emitted when files are dragged from the OS file manager and dropped in the game window. The arguments are a list of file paths and the identifier of the screen where the drag originated.
 	**/
 	public var onFilesDropped(get, never):Signal<(files:std.Array<std.String>, screen:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onFilesDropped():Signal<(files:std.Array<std.String>, screen:Int)->Void> {
@@ -48,8 +42,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`global_menu_action` signal.
-		
-		Emitted whenever global menu item is clicked.
 	**/
 	public var onGlobalMenuAction(get, never):Signal<(id:Any, meta:Any)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onGlobalMenuAction():Signal<(id:Any, meta:Any)->Void> {
@@ -58,8 +50,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`idle_frame` signal.
-		
-		Emitted immediately before `node.Process` is called on every node in the `SceneTree`.
 	**/
 	public var onIdleFrame(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onIdleFrame():Signal<Void->Void> {
@@ -68,8 +58,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`network_peer_connected` signal.
-		
-		Emitted whenever this `SceneTree`'s `networkPeer` connects with a new peer. ID is the peer ID of the new peer. Clients get notified when other clients connect to the same server. Upon connecting to a server, a client also receives this signal for the server (with ID being 1).
 	**/
 	public var onNetworkPeerConnected(get, never):Signal<(id:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNetworkPeerConnected():Signal<(id:Int)->Void> {
@@ -78,8 +66,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`network_peer_disconnected` signal.
-		
-		Emitted whenever this `SceneTree`'s `networkPeer` disconnects from a peer. Clients get notified when other clients disconnect from the same server.
 	**/
 	public var onNetworkPeerDisconnected(get, never):Signal<(id:Int)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNetworkPeerDisconnected():Signal<(id:Int)->Void> {
@@ -88,8 +74,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`node_added` signal.
-		
-		Emitted whenever a node is added to the `SceneTree`.
 	**/
 	public var onNodeAdded(get, never):Signal<(node:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNodeAdded():Signal<(node:Node)->Void> {
@@ -98,8 +82,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`node_configuration_warning_changed` signal.
-		
-		Emitted when a node's configuration changed. Only emitted in `tool` mode.
 	**/
 	public var onNodeConfigurationWarningChanged(get, never):Signal<(node:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNodeConfigurationWarningChanged():Signal<(node:Node)->Void> {
@@ -108,8 +90,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`node_removed` signal.
-		
-		Emitted whenever a node is removed from the `SceneTree`.
 	**/
 	public var onNodeRemoved(get, never):Signal<(node:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNodeRemoved():Signal<(node:Node)->Void> {
@@ -118,8 +98,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`node_renamed` signal.
-		
-		Emitted whenever a node is renamed.
 	**/
 	public var onNodeRenamed(get, never):Signal<(node:Node)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onNodeRenamed():Signal<(node:Node)->Void> {
@@ -128,8 +106,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`physics_frame` signal.
-		
-		Emitted immediately before `node.PhysicsProcess` is called on every node in the `SceneTree`.
 	**/
 	public var onPhysicsFrame(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPhysicsFrame():Signal<Void->Void> {
@@ -138,8 +114,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`screen_resized` signal.
-		
-		Emitted when the screen resolution (fullscreen) or window size (windowed) changes.
 	**/
 	public var onScreenResized(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onScreenResized():Signal<Void->Void> {
@@ -148,8 +122,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`server_disconnected` signal.
-		
-		Emitted whenever this `SceneTree`'s `networkPeer` disconnected from server. Only emitted on clients.
 	**/
 	public var onServerDisconnected(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onServerDisconnected():Signal<Void->Void> {
@@ -158,8 +130,6 @@ extern class SceneTree extends godot.MainLoop {
 
 	/**
 		`tree_changed` signal.
-		
-		Emitted whenever the `SceneTree` hierarchy changed (children being moved or renamed, etc.).
 	**/
 	public var onTreeChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onTreeChanged():Signal<Void->Void> {
@@ -205,7 +175,11 @@ extern class SceneTree extends godot.MainLoop {
 	public var editedSceneRoot:godot.Node;
 
 	/**		
-		If `true`, font oversampling is used.
+		If `true`, font oversampling is enabled. This means that `godot.DynamicFont`s will be rendered at higher or lower size than configured based on the viewport's scaling ratio. For example, in a viewport scaled with a factor 1.5, a font configured with size 14 would be rendered with size 21 (`14 * 1.5`).
+		
+		Note: Font oversampling is only used if the viewport stretch mode is `godot.SceneTree_StretchMode.viewport`, and if the stretch aspect mode is different from `godot.SceneTree_StretchAspect.ignore`.
+		
+		Note: This property is set automatically for the active `godot.SceneTree` when the project starts based on the configuration of `rendering/quality/dynamic_fonts/use_oversampling` in `godot.ProjectSettings`. The property can however be overridden at runtime as needed.
 	**/
 	@:native("UseFontOversampling")
 	public var useFontOversampling:Bool;
@@ -506,6 +480,8 @@ extern class SceneTree extends godot.MainLoop {
 		Returns `OK` on success or `ERR_CANT_CREATE` if the scene cannot be instantiated.
 		
 		Note: The scene change is deferred, which means that the new scene node is added on the next idle frame. You won't be able to access it immediately after the `godot.SceneTree.changeSceneTo` call.
+		
+		Note: Passing a value of `null` into the method will unload the current scene without loading a new one.
 	**/
 	@:native("ChangeSceneTo")
 	public function changeSceneTo(packedScene:godot.PackedScene):godot.Error;

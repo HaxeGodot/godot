@@ -16,8 +16,6 @@ Note: This class shouldn't be instantiated directly. Instead, access the singlet
 extern abstract class EditorResourcePreview extends godot.Node {
 	/**
 		`preview_invalidated` signal.
-		
-		Emitted if a preview was invalidated (changed). `path` corresponds to the path of the preview.
 	**/
 	public var onPreviewInvalidated(get, never):Signal<(path:std.String)->Void>;
 	@:dox(hide) @:noCompletion inline function get_onPreviewInvalidated():Signal<(path:std.String)->Void> {

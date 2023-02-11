@@ -43,8 +43,6 @@ If you don't need to register a method, you can leave `godot.UndoRedo.addDoMetho
 extern class UndoRedo extends godot.Object {
 	/**
 		`version_changed` signal.
-		
-		Called when `undo` or `redo` was called.
 	**/
 	public var onVersionChanged(get, never):Signal<Void->Void>;
 	@:dox(hide) @:noCompletion inline function get_onVersionChanged():Signal<Void->Void> {

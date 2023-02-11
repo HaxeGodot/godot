@@ -421,7 +421,13 @@ extern enum JoystickList {
 	Touchpad;
 
 	/**		
-		Represents the maximum number of joystick buttons supported.
+		The maximum number of game controller buttons supported by the engine. The actual limit may be lower on specific platforms:
+		
+		- Android: Up to 36 buttons.
+		
+		- Linux: Up to 80 buttons.
+		
+		- Windows and macOS: Up to 128 buttons.
 	**/
 	ButtonMax;
 }

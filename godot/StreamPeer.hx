@@ -224,19 +224,19 @@ extern abstract class StreamPeer extends godot.Reference {
 
 	#if doc_gen
 	/**		
-		Gets a string with byte-length `bytes` from the stream. If `bytes` is negative (default) the length will be read from the stream using the reverse process of `godot.StreamPeer.putString`.
+		Gets an ASCII string with byte-length `bytes` from the stream. If `bytes` is negative (default) the length will be read from the stream using the reverse process of `godot.StreamPeer.putString`.
 	**/
 	@:native("GetString")
 	public function getString(?bytes:Int):std.String;
 	#else
 	/**		
-		Gets a string with byte-length `bytes` from the stream. If `bytes` is negative (default) the length will be read from the stream using the reverse process of `godot.StreamPeer.putString`.
+		Gets an ASCII string with byte-length `bytes` from the stream. If `bytes` is negative (default) the length will be read from the stream using the reverse process of `godot.StreamPeer.putString`.
 	**/
 	@:native("GetString")
 	public overload function getString():std.String;
 
 	/**		
-		Gets a string with byte-length `bytes` from the stream. If `bytes` is negative (default) the length will be read from the stream using the reverse process of `godot.StreamPeer.putString`.
+		Gets an ASCII string with byte-length `bytes` from the stream. If `bytes` is negative (default) the length will be read from the stream using the reverse process of `godot.StreamPeer.putString`.
 	**/
 	@:native("GetString")
 	public overload function getString(bytes:Int):std.String;
